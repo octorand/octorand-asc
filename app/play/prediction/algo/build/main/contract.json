@@ -1,0 +1,61 @@
+{
+    "name": "PredictionAlgoMain",
+    "methods": [
+        {
+            "name": "clean",
+            "args": [],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "update_game",
+            "args": [
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "create_game",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "timer"
+                },
+                {
+                    "type": "uint64",
+                    "name": "manager_percentage"
+                },
+                {
+                    "type": "uint64",
+                    "name": "winner_percentage"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "name"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "option_1"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "option_2"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "option_3"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

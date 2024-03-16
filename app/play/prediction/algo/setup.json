@@ -1,0 +1,29 @@
+{
+    "main_app_id": 302077408,
+    "main_app_address": "4MPXRXX43RN5OTMSRARG7GBMLWEML25A6ZWZLEL5RBUOPJA7W56G62J5I4",
+    "main_app_creator": "WLVADO2ZNE7IGUZACDL6PJU2JJHFUYG4PQ6FDZ2FGFNFAEUMKUSD6XTL2E",
+    "game_app": {
+        "app_id": 302077843,
+        "app_address": "UK3GRPAKNU5OIC3C2R4KN7OCKB7NECRS45U5INMCS32ATLT4XSIHOTEQGI",
+        "app_creator": "4MPXRXX43RN5OTMSRARG7GBMLWEML25A6ZWZLEL5RBUOPJA7W56G62J5I4",
+        "state": {
+            "app_master": "WLVADO2ZNE7IGUZACDL6PJU2JJHFUYG4PQ6FDZ2FGFNFAEUMKUSD6XTL2E",
+            "app_manager": "VKSDT57E5K65AOTLJVSFSANOFV2J5SKKXIJLMHO6WEKWL5JCVCAMVVBOW4",
+            "app_name": "Test Prediction Updated",
+            "app_master_share": 48000,
+            "app_manager_share": 72000,
+            "app_volume": 1200000,
+            "app_option_1": "One",
+            "app_option_2": "Two",
+            "app_option_3": "Three",
+            "app_tickets_1": 300000,
+            "app_tickets_2": 400000,
+            "app_tickets_3": 500000,
+            "app_timer": 1693919367,
+            "app_status": 3,
+            "app_manager_percentage": 6,
+            "app_winner_percentage": 90,
+            "app_winner": 2
+        }
+    }
+}
