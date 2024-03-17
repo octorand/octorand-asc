@@ -5,26 +5,14 @@ let baseClient = algosdk;
 let algodClient = new algosdk.Algodv2('', process.env.ALGO_SERVER, '');
 let indexerClient = new algosdk.Indexer('', process.env.ALGO_INDEXER, '');
 
-let player1 = algosdk.mnemonicToSecretKey(process.env.PLAYER_MNEMONIC_1);
-let player2 = algosdk.mnemonicToSecretKey(process.env.PLAYER_MNEMONIC_2);
-let player3 = algosdk.mnemonicToSecretKey(process.env.PLAYER_MNEMONIC_3);
-let player4 = algosdk.mnemonicToSecretKey(process.env.PLAYER_MNEMONIC_4);
-let player5 = algosdk.mnemonicToSecretKey(process.env.PLAYER_MNEMONIC_5);
-let player6 = algosdk.mnemonicToSecretKey(process.env.PLAYER_MNEMONIC_6);
-let player7 = algosdk.mnemonicToSecretKey(process.env.PLAYER_MNEMONIC_7);
+let admin = algosdk.mnemonicToSecretKey(process.env.ADMIN_MNEMONIC);
 
 exports.get = async function () {
     return {
         baseClient: baseClient,
         algodClient: algodClient,
         indexerClient: indexerClient,
-        player1: player1,
-        player2: player2,
-        player3: player3,
-        player4: player4,
-        player5: player5,
-        player6: player6,
-        player7: player7
+        admin: admin
     }
 }
 

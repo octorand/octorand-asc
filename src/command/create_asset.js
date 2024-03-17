@@ -6,7 +6,7 @@ const chain = require('./../chain/index');
     try {
         let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.master.addr;
+        let sender = connection.admin.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.master);
 
         let composer = new connection.baseClient.AtomicTransactionComposer();

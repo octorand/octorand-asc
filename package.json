@@ -2,7 +2,7 @@
     "name": "octorand-asc",
     "version": "2.0.0",
     "dependencies": {
-        "algosdk": "^2.1.0",
-        "dotenv": "^16.0.3"
+        "algosdk": "^2.7.0",
+        "dotenv": "^16.4.5"
     }
 }
