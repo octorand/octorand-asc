@@ -54,6 +54,44 @@ def delete_application(app_id, fee):
 
 
 @Subroutine(TealType.none)
+def create_asset(
+    manager, reserve, total, decimals, unit_name, asset_name, asset_url, fee
+):
+    return Seq(
+        InnerTxnBuilder.Execute(
+            {
+                TxnField.type_enum: TxnType.AssetConfig,
+                TxnField.config_asset_manager: manager,
+                TxnField.config_asset_reserve: reserve,
+                TxnField.config_asset_total: total,
+                TxnField.config_asset_decimals: decimals,
+                TxnField.config_asset_unit_name: unit_name,
+                TxnField.config_asset_name: asset_name,
+                TxnField.config_asset_url: asset_url,
+                TxnField.config_asset_default_frozen: Int(0),
+                TxnField.fee: fee,
+            }
+        )
+    )
+
+
+@Subroutine(TealType.none)
+def update_asset(asset_id, manager, reserve, note, fee):
+    return Seq(
+        InnerTxnBuilder.Execute(
+            {
+                TxnField.type_enum: TxnType.AssetConfig,
+                TxnField.config_asset: asset_id,
+                TxnField.config_asset_manager: manager,
+                TxnField.config_asset_reserve: reserve,
+                TxnField.note: note,
+                TxnField.fee: fee,
+            }
+        )
+    )
+
+
+@Subroutine(TealType.none)
 def optin_into_asset(asset_id, fee):
     return Seq(
         If(asset_id > Int(0)).Then(
