@@ -1,0 +1,139 @@
+{
+    "name": "LotteryAlgoGame",
+    "methods": [
+        {
+            "name": "clean",
+            "args": [],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "init",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "master"
+                },
+                {
+                    "type": "address",
+                    "name": "manager"
+                },
+                {
+                    "type": "uint64",
+                    "name": "timer"
+                },
+                {
+                    "type": "uint64",
+                    "name": "manager_percentage"
+                },
+                {
+                    "type": "uint64",
+                    "name": "winner_percentage_1"
+                },
+                {
+                    "type": "uint64",
+                    "name": "winner_percentage_2"
+                },
+                {
+                    "type": "uint64",
+                    "name": "winner_percentage_3"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "name"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "play",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "amount"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "finish",
+            "args": [
+                {
+                    "type": "account",
+                    "name": "winner_1"
+                },
+                {
+                    "type": "account",
+                    "name": "winner_2"
+                },
+                {
+                    "type": "account",
+                    "name": "winner_3"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "share",
+            "args": [
+                {
+                    "type": "account",
+                    "name": "master"
+                },
+                {
+                    "type": "account",
+                    "name": "manager"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "archive",
+            "args": [],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "update_timer",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "timer"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "update_name",
+            "args": [
+                {
+                    "type": "byte[]",
+                    "name": "name"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "power",
+            "args": [],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}
