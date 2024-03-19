@@ -58,6 +58,8 @@ def create_asset(
     manager, reserve, total, decimals, unit_name, asset_name, asset_url, fee
 ):
     return Seq(
+        Assert(manager != Global.zero_address()),
+        Assert(reserve != Global.zero_address()),
         InnerTxnBuilder.Execute(
             {
                 TxnField.type_enum: TxnType.AssetConfig,
@@ -71,13 +73,15 @@ def create_asset(
                 TxnField.config_asset_default_frozen: Int(0),
                 TxnField.fee: fee,
             }
-        )
+        ),
     )
 
 
 @Subroutine(TealType.none)
 def update_asset(asset_id, manager, reserve, note, fee):
     return Seq(
+        Assert(manager != Global.zero_address()),
+        Assert(reserve != Global.zero_address()),
         InnerTxnBuilder.Execute(
             {
                 TxnField.type_enum: TxnType.AssetConfig,
@@ -87,7 +91,7 @@ def update_asset(asset_id, manager, reserve, note, fee):
                 TxnField.note: note,
                 TxnField.fee: fee,
             }
-        )
+        ),
     )
 
 
