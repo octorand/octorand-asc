@@ -14,8 +14,8 @@ app = Application("GenOnePrime")
 @app.create(bare=True)
 def create():
     return Seq(
-        func.init_global(Bytes(global_one)),
-        func.init_global(Bytes(global_two)),
+        func.init_global(global_one),
+        func.init_global(global_two),
     )
 
 

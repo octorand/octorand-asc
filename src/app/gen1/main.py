@@ -126,8 +126,8 @@ def update_prime(application: abi.Application):
         func.assert_is_creator(),
         func.update_application(
             application.application_id(),
-            game_approval_program(),
-            game_clear_program(),
+            prime_approval_program(),
+            prime_clear_program(),
             Int(0),
         ),
     )

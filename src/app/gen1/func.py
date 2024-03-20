@@ -178,7 +178,7 @@ def init_local(account, index):
 @Subroutine(TealType.none)
 def init_box(index, length):
     return Seq(
-        App.box_put(Itob(index), BytesZero(Int(length))),
+        App.box_put(Itob(index), BytesZero(length)),
     )
 
 
