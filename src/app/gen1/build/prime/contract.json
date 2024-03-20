@@ -1,0 +1,22 @@
+{
+    "name": "GenOnePrime",
+    "methods": [
+        {
+            "name": "sync",
+            "args": [
+                {
+                    "type": "byte[]",
+                    "name": "one"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "two"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

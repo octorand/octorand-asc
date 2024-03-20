@@ -1,0 +1,58 @@
+{
+    "name": "GenOneMain",
+    "methods": [
+        {
+            "name": "init",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "platform_asset_id"
+                },
+                {
+                    "type": "address",
+                    "name": "platform_asset_reserve"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "create_prime",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "reserve"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "unit_name"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "asset_name"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "asset_url"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "update_prime",
+            "args": [
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

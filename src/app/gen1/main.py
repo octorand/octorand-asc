@@ -59,13 +59,12 @@ def update():
 
 
 @app.external(name="init")
-def init(asset: abi.Asset):
+def init(platform_asset_id: abi.Uint64, platform_asset_reserve: abi.Address):
     return Seq(
         func.assert_is_creator(),
         func.assert_is_zero(global_primes_count.get()),
-        func.assert_is_zero(global_platform_asset_id.get()),
-        global_platform_asset_id.set(asset.asset_id()),
-        global_platform_asset_reserve.set(asset.params().reserve_address().value()),
+        global_platform_asset_id.set(platform_asset_id.get()),
+        global_platform_asset_reserve.set(platform_asset_reserve.get()),
     )
 
 
@@ -76,11 +75,11 @@ def create_prime(
     asset_name: abi.DynamicBytes,
     asset_url: abi.DynamicBytes,
 ):
-    prime_id = ScratchVar(TealType.uint64)
-    created_asset_id = ScratchVar(TealType.uint64)
-    created_application_id = ScratchVar(TealType.uint64)
+    prime_id = global_primes_count.get()
     return Seq(
-        Assert(global_primes_count.get() < config.max_primes_count),
+        Assert(prime_id < config.max_primes_count),
+        func.init_box(prime_id, Int(480)),
+        box_id.set(prime_id, prime_id),
         func.create_asset(
             Global.current_application_address(),
             reserve.get(),
@@ -91,7 +90,7 @@ def create_prime(
             asset_url.get(),
             Int(0),
         ),
-        created_asset_id.store(InnerTxn.created_asset_id()),
+        box_asset_id.set(prime_id, InnerTxn.created_asset_id()),
         func.create_application(
             prime_approval_program(),
             prime_clear_program(),
@@ -102,21 +101,16 @@ def create_prime(
             Int(0),
             Int(0),
         ),
-        created_application_id.store(InnerTxn.created_application_id()),
-        prime_id.store(global_primes_count.get()),
-        func.init_box(prime_id.load(), Int(480)),
-        box_id.set(prime_id.load(), prime_id.load()),
-        box_application_id.set(prime_id.load(), created_application_id.load()),
-        box_asset_id.set(prime_id.load(), created_asset_id.load()),
-        global_primes_count.increment(Int(1)),
+        box_application_id.set(prime_id, InnerTxn.created_application_id()),
         InnerTxnBuilder.ExecuteMethodCall(
-            app_id=created_application_id.load(),
+            app_id=box_application_id.get(prime_id),
             method_signature=prime.sync.method_signature(),
             args=[
-                func.get_box_bytes(prime_id.load(), Int(0), Int(120)),
-                func.get_box_bytes(prime_id.load(), Int(120), Int(120)),
+                func.get_box_bytes(prime_id, Int(0), Int(120)),
+                func.get_box_bytes(prime_id, Int(120), Int(120)),
             ],
         ),
+        global_primes_count.increment(Int(1)),
     )
 
 
