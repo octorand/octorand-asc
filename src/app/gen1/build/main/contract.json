@@ -21,6 +21,10 @@
             "name": "create_prime",
             "args": [
                 {
+                    "type": "uint64",
+                    "name": "id"
+                },
+                {
                     "type": "address",
                     "name": "reserve"
                 },

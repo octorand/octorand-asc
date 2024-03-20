@@ -10,7 +10,7 @@ pushbytes 0x38adaa22 // "init(uint64,address)void"
 ==
 bnz main_l7
 txna ApplicationArgs 0
-pushbytes 0x6584ce98 // "create_prime(address,byte[],byte[],byte[])void"
+pushbytes 0xa0470fad // "create_prime(uint64,address,byte[],byte[],byte[])void"
 ==
 bnz main_l6
 txna ApplicationArgs 0
@@ -360,32 +360,24 @@ retsub
 
 // create_prime
 createprime_20:
-proto 4 0
-intc_1 // 1
-itob
-intc_0 // 0
-intc_2 // 8
-callsub getglobaluint_6
+proto 5 0
+frame_dig -5
 pushint 1000 // 1000
 <
 assert
+frame_dig -5
 intc_1 // 1
 itob
 intc_0 // 0
 intc_2 // 8
 callsub getglobaluint_6
+==
+assert
+frame_dig -5
 pushint 480 // 480
 callsub initbox_3
-intc_1 // 1
-itob
-intc_0 // 0
-intc_2 // 8
-callsub getglobaluint_6
-intc_1 // 1
-itob
-intc_0 // 0
-intc_2 // 8
-callsub getglobaluint_6
+frame_dig -5
+frame_dig -5
 itob
 intc_0 // 0
 intc_2 // 8
@@ -403,11 +395,7 @@ extract 2 0
 intc_0 // 0
 callsub createasset_2
 itxn CreatedAssetID
-intc_1 // 1
-itob
-intc_0 // 0
-intc_2 // 8
-callsub getglobaluint_6
+frame_dig -5
 itob
 pushint 16 // 16
 intc_2 // 8
@@ -422,11 +410,7 @@ intc_0 // 0
 intc_0 // 0
 callsub createapplication_0
 itxn CreatedApplicationID
-intc_1 // 1
-itob
-intc_0 // 0
-intc_2 // 8
-callsub getglobaluint_6
+frame_dig -5
 itob
 intc_2 // 8
 intc_2 // 8
@@ -434,11 +418,7 @@ callsub setboxuint_11
 itxn_begin
 pushint 6 // appl
 itxn_field TypeEnum
-intc_1 // 1
-itob
-intc_0 // 0
-intc_2 // 8
-callsub getglobaluint_6
+frame_dig -5
 itob
 intc_2 // 8
 intc_2 // 8
@@ -446,20 +426,12 @@ callsub getboxuint_7
 itxn_field ApplicationID
 pushbytes 0x0e956969 // "sync(byte[],byte[])void"
 itxn_field ApplicationArgs
-intc_1 // 1
-itob
-intc_0 // 0
-intc_2 // 8
-callsub getglobaluint_6
+frame_dig -5
 intc_0 // 0
 intc_3 // 120
 callsub getboxbytes_5
 itxn_field ApplicationArgs
-intc_1 // 1
-itob
-intc_0 // 0
-intc_2 // 8
-callsub getglobaluint_6
+frame_dig -5
 intc_3 // 120
 intc_3 // 120
 callsub getboxbytes_5
@@ -509,9 +481,11 @@ retsub
 // create_prime_caster
 createprimecaster_23:
 proto 0 0
+intc_0 // 0
 bytec_0 // ""
 dupn 3
 txna ApplicationArgs 1
+btoi
 frame_bury 0
 txna ApplicationArgs 2
 frame_bury 1
@@ -519,10 +493,13 @@ txna ApplicationArgs 3
 frame_bury 2
 txna ApplicationArgs 4
 frame_bury 3
+txna ApplicationArgs 5
+frame_bury 4
 frame_dig 0
 frame_dig 1
 frame_dig 2
 frame_dig 3
+frame_dig 4
 callsub createprime_20
 retsub
 
