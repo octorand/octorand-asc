@@ -290,6 +290,13 @@ def assert_is_creator():
 
 
 @Subroutine(TealType.none)
+def assert_is_zero(value):
+    return Seq(
+        Assert(value == Int(0)),
+    )
+
+
+@Subroutine(TealType.none)
 def assert_is_valid_length(value, length):
     return Seq(
         Assert(Len(value) == length),
