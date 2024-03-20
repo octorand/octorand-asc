@@ -1,5 +1,7 @@
 from pyteal import *
 
+max_storage_length = Int(120)
+
 
 @Subroutine(TealType.none)
 def create_application(
@@ -162,21 +164,21 @@ def execute_asset_transfer(asset_id, receiver, amount, fee):
 @Subroutine(TealType.none)
 def init_global(index):
     return Seq(
-        App.globalPut(Itob(index), BytesZero(Int(120))),
+        App.globalPut(Itob(index), BytesZero(max_storage_length)),
     )
 
 
 @Subroutine(TealType.none)
 def init_local(account, index):
     return Seq(
-        App.localPut(account, Itob(index), BytesZero(Int(120))),
+        App.localPut(account, Itob(index), BytesZero(max_storage_length)),
     )
 
 
 @Subroutine(TealType.none)
-def init_box(index):
+def init_box(index, length):
     return Seq(
-        App.box_put(Itob(index), BytesZero(Int(480))),
+        App.box_put(Itob(index), BytesZero(Int(length))),
     )
 
 
@@ -226,7 +228,7 @@ def get_box_uint(index, start, length):
 def set_global_bytes(value, index, start, length):
     end = Add(start, length)
     param_1 = get_global_bytes(index, Int(0), start)
-    param_2 = get_global_bytes(index, end, Minus(Int(120), end))
+    param_2 = get_global_bytes(index, end, Minus(max_storage_length, end))
     return Seq(
         assert_is_valid_length(value, length),
         App.globalPut(index, Concat(param_1, value, param_2)),
@@ -237,7 +239,7 @@ def set_global_bytes(value, index, start, length):
 def set_local_bytes(account, value, index, start, length):
     end = Add(start, length)
     param_1 = get_local_bytes(account, index, Int(0), start)
-    param_2 = get_local_bytes(account, index, end, Minus(Int(120), end))
+    param_2 = get_local_bytes(account, index, end, Minus(max_storage_length, end))
     return Seq(
         assert_is_valid_length(value, length),
         App.localPut(account, index, Concat(param_1, value, param_2)),

@@ -1,9 +1,33 @@
 import config
 import func
+import saver
 import prime
 
 from pyteal import *
 from beaker import *
+
+box_id = saver.BoxUint(0, 8)
+box_application_id = saver.BoxUint(8, 8)
+box_asset_id = saver.BoxUint(16, 8)
+box_legacy_id = saver.BoxUint(24, 8)
+box_score = saver.BoxUint(32, 8)
+box_likes = saver.BoxUint(40, 8)
+box_theme = saver.BoxUint(48, 8)
+box_skin = saver.BoxUint(56, 8)
+box_royalties = saver.BoxUint(64, 8)
+box_rewards = saver.BoxUint(72, 8)
+box_transforms = saver.BoxUint(80, 8)
+box_sales = saver.BoxUint(88, 8)
+box_mints = saver.BoxUint(96, 8)
+box_price = saver.BoxUint(104, 8)
+box_is_artifact = saver.BoxUint(112, 2)
+box_is_pioneer = saver.BoxUint(114, 2)
+box_is_founder = saver.BoxUint(116, 2)
+box_is_winner = saver.BoxUint(118, 2)
+box_description = saver.BoxBytes(0, 32)
+box_owner = saver.BoxBytes(32, 32)
+box_name = saver.BoxBytes(64, 8)
+box_parent_id = saver.BoxUint(72, 8)
 
 
 @Subroutine(TealType.bytes)
