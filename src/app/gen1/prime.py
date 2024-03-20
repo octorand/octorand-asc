@@ -1,6 +1,4 @@
-import config
 import func
-import saver
 
 from pyteal import *
 from beaker import *

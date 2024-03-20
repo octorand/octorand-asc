@@ -63,8 +63,10 @@ def init(platform_asset_id: abi.Uint64, platform_asset_reserve: abi.Address):
     return Seq(
         func.assert_is_creator(),
         func.assert_is_zero(global_primes_count.get()),
+        func.assert_is_zero(global_platform_asset_id.get()),
         global_platform_asset_id.set(platform_asset_id.get()),
         global_platform_asset_reserve.set(platform_asset_reserve.get()),
+        func.optin_into_asset(platform_asset_id.get(), Int(0)),
     )
 
 
