@@ -162,14 +162,21 @@ def execute_asset_transfer(asset_id, receiver, amount, fee):
 @Subroutine(TealType.none)
 def init_global(index):
     return Seq(
-        App.globalPut(index, BytesZero(Int(120))),
+        App.globalPut(Itob(index), BytesZero(Int(120))),
     )
 
 
 @Subroutine(TealType.none)
 def init_local(account, index):
     return Seq(
-        App.localPut(account, index, BytesZero(Int(120))),
+        App.localPut(account, Itob(index), BytesZero(Int(120))),
+    )
+
+
+@Subroutine(TealType.none)
+def init_box(index):
+    return Seq(
+        App.box_put(Itob(index), BytesZero(Int(480))),
     )
 
 
@@ -187,6 +194,13 @@ def get_local_bytes(account, index, start, length):
     )
 
 
+@Subroutine(TealType.bytes)
+def get_box_bytes(index, start, length):
+    return Seq(
+        App.box_extract(index, start, length),
+    )
+
+
 @Subroutine(TealType.uint64)
 def get_global_uint(index, start, length):
     return Seq(
@@ -198,6 +212,13 @@ def get_global_uint(index, start, length):
 def get_local_uint(account, index, start, length):
     return Seq(
         Btoi(get_local_bytes(account, index, start, length)),
+    )
+
+
+@Subroutine(TealType.uint64)
+def get_box_uint(index, start, length):
+    return Seq(
+        Btoi(get_box_bytes(index, start, length)),
     )
 
 
@@ -224,6 +245,14 @@ def set_local_bytes(account, value, index, start, length):
 
 
 @Subroutine(TealType.none)
+def set_box_bytes(value, index, start, length):
+    return Seq(
+        assert_is_valid_length(value, length),
+        App.box_replace(index, start, value),
+    )
+
+
+@Subroutine(TealType.none)
 def set_global_uint(value, index, start, length):
     return Seq(
         set_global_bytes(extract_uint(value, length), index, start, length),
@@ -234,6 +263,13 @@ def set_global_uint(value, index, start, length):
 def set_local_uint(account, value, index, start, length):
     return Seq(
         set_local_bytes(account, extract_uint(value, length), index, start, length),
+    )
+
+
+@Subroutine(TealType.none)
+def set_box_uint(value, index, start, length):
+    return Seq(
+        set_box_bytes(extract_uint(value, length), index, start, length),
     )
 
 

@@ -9,7 +9,7 @@ uint = "uint"
 class Global:
     def __init__(self, type, index, start, length):
         self.type = type
-        self.index = Bytes(index)
+        self.index = Itob(index)
         self.start = Int(start)
         self.length = Int(length)
 
@@ -56,7 +56,7 @@ class Global:
 class Local:
     def __init__(self, type, index, start, length):
         self.type = type
-        self.index = Bytes(index)
+        self.index = Itob(index)
         self.start = Int(start)
         self.length = Int(length)
 
@@ -100,6 +100,52 @@ class Local:
                 account,
                 Add(self.get(account), value),
                 self.index,
+                self.start,
+                self.length,
+            )
+
+
+class Box:
+    def __init__(self, type, start, length):
+        self.type = type
+        self.start = Int(start)
+        self.length = Int(length)
+
+    def get(self, index):
+        if self.type == bytes:
+            return func.get_box_bytes(
+                Itob(index),
+                self.start,
+                self.length,
+            )
+        elif self.type == uint:
+            return func.get_box_uint(
+                Itob(index),
+                self.start,
+                self.length,
+            )
+
+    def set(self, index, value):
+        if self.type == bytes:
+            return func.set_box_bytes(
+                value,
+                Itob(index),
+                self.start,
+                self.length,
+            )
+        elif self.type == uint:
+            return func.set_box_uint(
+                value,
+                Itob(index),
+                self.start,
+                self.length,
+            )
+
+    def increment(self, index, value):
+        if self.type == uint:
+            return func.set_box_uint(
+                Add(self.get(index), value),
+                Itob(index),
                 self.start,
                 self.length,
             )
