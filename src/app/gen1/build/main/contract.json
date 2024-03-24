@@ -5,12 +5,8 @@
             "name": "init",
             "args": [
                 {
-                    "type": "uint64",
-                    "name": "platform_asset_id"
-                },
-                {
-                    "type": "address",
-                    "name": "platform_asset_reserve"
+                    "type": "asset",
+                    "name": "asset"
                 }
             ],
             "returns": {

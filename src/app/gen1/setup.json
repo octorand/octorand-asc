@@ -2,5 +2,10 @@
     "platform_asset_id": 628335391,
     "main_application_id": 628335392,
     "main_application_address": "NI257NCBOG4HUPCRHKU5G7AO2FUP4EOPXWFUDD5LEHJQVOYGQOBDUT3S2U",
-    "main_application_creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM"
+    "main_application_creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM",
+    "state": {
+        "primes_count": null,
+        "platform_asset_id": null,
+        "platform_asset_reserve": null
+    }
 }

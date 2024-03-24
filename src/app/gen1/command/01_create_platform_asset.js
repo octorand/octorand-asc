@@ -26,7 +26,9 @@ exports.execute = async function () {
                 unitName: "TEST",
                 assetName: "Test",
                 suggestedParams: {
-                    ...params
+                    ...params,
+                    fee: 1000,
+                    flatFee: true
                 }
             })
         });

@@ -22,6 +22,8 @@ exports.execute = async function () {
                 amount: 1000000,
                 suggestedParams: {
                     ...params,
+                    fee: 1000,
+                    flatFee: true
                 }
             })
         });

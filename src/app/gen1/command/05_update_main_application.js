@@ -26,7 +26,9 @@ exports.execute = async function () {
                 approvalProgram: await chain.compile(approvalProgram, false),
                 clearProgram: await chain.compile(clearProgram, false),
                 suggestedParams: {
-                    ...params
+                    ...params,
+                    fee: 1000,
+                    flatFee: true
                 }
             })
         });

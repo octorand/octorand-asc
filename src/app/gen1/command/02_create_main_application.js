@@ -31,7 +31,9 @@ exports.execute = async function () {
                 extraPages: 0,
                 appArgs: [],
                 suggestedParams: {
-                    ...params
+                    ...params,
+                    fee: 1000,
+                    flatFee: true
                 }
             })
         });

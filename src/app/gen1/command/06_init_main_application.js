@@ -22,11 +22,12 @@ exports.execute = async function () {
             appID: Number(setup['main_application_id']),
             method: chain.method(contract, 'init'),
             methodArgs: [
-                Number(setup['platform_asset_id']),
-                sender
+                Number(setup['platform_asset_id'])
             ],
             suggestedParams: {
                 ...params,
+                fee: 2000,
+                flatFee: true
             }
         });
 

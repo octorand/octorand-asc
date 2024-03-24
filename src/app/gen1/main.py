@@ -73,14 +73,17 @@ def update():
 
 
 @app.external(name="init")
-def init(platform_asset_id: abi.Uint64, platform_asset_reserve: abi.Address):
+def init(asset: abi.Asset):
+    reserve = asset.params().reserve_address()
     return Seq(
         func.assert_is_creator(),
         func.assert_is_zero(global_state.primes_count.get()),
         func.assert_is_zero(global_state.platform_asset_id.get()),
-        global_state.platform_asset_id.set(platform_asset_id.get()),
-        global_state.platform_asset_reserve.set(platform_asset_reserve.get()),
-        func.optin_into_asset(platform_asset_id.get(), Int(0)),
+        func.optin_into_asset(asset.asset_id(), Int(0)),
+        global_state.platform_asset_id.set(asset.asset_id()),
+        reserve,
+        Assert(reserve.hasValue()),
+        global_state.platform_asset_reserve.set(reserve.value()),
     )
 
 
