@@ -6,13 +6,15 @@ let algodClient = new algosdk.Algodv2('', process.env.ALGO_SERVER, '');
 let indexerClient = new algosdk.Indexer('', process.env.ALGO_INDEXER, '');
 
 let admin = algosdk.mnemonicToSecretKey(process.env.ADMIN_MNEMONIC);
+let player = algosdk.mnemonicToSecretKey(process.env.PLAYER_MNEMONIC);
 
 exports.get = async function () {
     return {
         baseClient: baseClient,
         algodClient: algodClient,
         indexerClient: indexerClient,
-        admin: admin
+        admin: admin,
+        player: player
     }
 }
 
