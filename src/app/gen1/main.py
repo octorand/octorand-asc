@@ -90,7 +90,6 @@ def init(asset: abi.Asset):
 @app.external(name="create_prime")
 def create_prime(
     id: abi.Uint64,
-    reserve: abi.Address,
     unit_name: abi.DynamicBytes,
     asset_name: abi.DynamicBytes,
     asset_url: abi.DynamicBytes,
@@ -102,7 +101,7 @@ def create_prime(
         prime_state.id.set(id.get(), id.get()),
         func.create_asset(
             Global.current_application_address(),
-            reserve.get(),
+            Global.current_application_address(),
             Int(1),
             Int(0),
             unit_name.get(),
@@ -133,8 +132,22 @@ def create_prime(
     )
 
 
-@app.external(name="update_prime")
-def update_prime(application: abi.Application):
+@app.external(name="update_prime_asset")
+def update_prime_asset(asset: abi.Asset, reserve: abi.Account):
+    return Seq(
+        func.assert_is_creator(),
+        func.update_asset(
+            asset.asset_id(),
+            Global.current_application_address(),
+            reserve.address(),
+            Txn.note(),
+            Int(0),
+        ),
+    )
+
+
+@app.external(name="update_prime_application")
+def update_prime_application(application: abi.Application):
     return Seq(
         func.assert_is_creator(),
         func.update_application(

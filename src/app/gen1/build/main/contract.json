@@ -21,10 +21,6 @@
                     "name": "id"
                 },
                 {
-                    "type": "address",
-                    "name": "reserve"
-                },
-                {
                     "type": "byte[]",
                     "name": "unit_name"
                 },
@@ -42,7 +38,23 @@
             }
         },
         {
-            "name": "update_prime",
+            "name": "update_prime_asset",
+            "args": [
+                {
+                    "type": "asset",
+                    "name": "asset"
+                },
+                {
+                    "type": "account",
+                    "name": "reserve"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "update_prime_application",
             "args": [
                 {
                     "type": "application",
