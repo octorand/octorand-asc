@@ -1,36 +1,47 @@
 import config
 import func
-import saver
 import prime
 
 from pyteal import *
 from beaker import *
 
-global_one = Int(1)
-global_primes_count = saver.GlobalUint(global_one, 0, 8)
-global_platform_asset_id = saver.GlobalUint(global_one, 8, 8)
-global_platform_asset_reserve = saver.GlobalBytes(global_one, 16, 32)
 
-box_id = saver.BoxUint(0, 8)
-box_application_id = saver.BoxUint(8, 8)
-box_asset_id = saver.BoxUint(16, 8)
-box_legacy_id = saver.BoxUint(24, 8)
-box_score = saver.BoxUint(32, 8)
-box_health = saver.BoxUint(40, 8)
-box_wealth = saver.BoxUint(48, 8)
-box_strength = saver.BoxUint(56, 8)
-box_theme = saver.BoxUint(64, 8)
-box_skin = saver.BoxUint(72, 8)
-box_royalties = saver.BoxUint(80, 8)
-box_rewards = saver.BoxUint(88, 8)
-box_name = saver.BoxBytes(96, 8)
-box_description = saver.BoxBytes(104, 32)
-box_price = saver.BoxUint(136, 8)
-box_owner = saver.BoxBytes(144, 32)
-box_likes = saver.BoxUint(176, 8)
-box_transforms = saver.BoxUint(184, 8)
-box_sales = saver.BoxUint(192, 8)
-box_mints = saver.BoxUint(200, 8)
+class GlobalState:
+    def __init__(self):
+        self.one = Int(1)
+        self.primes_count = func.GlobalUint(self.one, 0, 8)
+        self.platform_asset_id = func.GlobalUint(self.one, 8, 8)
+        self.platform_asset_reserve = func.GlobalBytes(self.one, 16, 32)
+
+
+class PrimeState:
+    def __init__(self):
+        self.id = func.BoxUint(0, 8)
+        self.application_id = func.BoxUint(8, 8)
+        self.asset_id = func.BoxUint(16, 8)
+        self.legacy_id = func.BoxUint(24, 8)
+        self.score = func.BoxUint(32, 8)
+        self.health = func.BoxUint(40, 8)
+        self.wealth = func.BoxUint(48, 8)
+        self.strength = func.BoxUint(56, 8)
+        self.theme = func.BoxUint(64, 8)
+        self.skin = func.BoxUint(72, 8)
+        self.royalties = func.BoxUint(80, 8)
+        self.rewards = func.BoxUint(88, 8)
+        self.name = func.BoxBytes(96, 8)
+        self.description = func.BoxBytes(104, 32)
+        self.price = func.BoxUint(136, 8)
+        self.owner = func.BoxBytes(144, 32)
+        self.likes = func.BoxUint(176, 8)
+        self.renames = func.BoxUint(184, 8)
+        self.sales = func.BoxUint(192, 8)
+        self.mints = func.BoxUint(200, 8)
+
+
+app = Application("GenOneMain")
+
+global_state = GlobalState()
+prime_state = PrimeState()
 
 
 @Subroutine(TealType.bytes)
@@ -47,7 +58,11 @@ def prime_clear_program():
     )
 
 
-app = Application("GenOneMain")
+@app.create(bare=True)
+def create():
+    return Seq(
+        func.init_global(global_state.one),
+    )
 
 
 @app.update(bare=True)
@@ -61,10 +76,10 @@ def update():
 def init(platform_asset_id: abi.Uint64, platform_asset_reserve: abi.Address):
     return Seq(
         func.assert_is_creator(),
-        func.assert_is_zero(global_primes_count.get()),
-        func.assert_is_zero(global_platform_asset_id.get()),
-        global_platform_asset_id.set(platform_asset_id.get()),
-        global_platform_asset_reserve.set(platform_asset_reserve.get()),
+        func.assert_is_zero(global_state.primes_count.get()),
+        func.assert_is_zero(global_state.platform_asset_id.get()),
+        global_state.platform_asset_id.set(platform_asset_id.get()),
+        global_state.platform_asset_reserve.set(platform_asset_reserve.get()),
         func.optin_into_asset(platform_asset_id.get(), Int(0)),
     )
 
@@ -79,9 +94,9 @@ def create_prime(
 ):
     return Seq(
         Assert(id.get() < config.max_primes_count),
-        Assert(id.get() == global_primes_count.get()),
+        Assert(id.get() == global_state.primes_count.get()),
         func.init_box(id.get(), Int(480)),
-        box_id.set(id.get(), id.get()),
+        prime_state.id.set(id.get(), id.get()),
         func.create_asset(
             Global.current_application_address(),
             reserve.get(),
@@ -92,7 +107,7 @@ def create_prime(
             asset_url.get(),
             Int(0),
         ),
-        box_asset_id.set(id.get(), InnerTxn.created_asset_id()),
+        prime_state.asset_id.set(id.get(), InnerTxn.created_asset_id()),
         func.create_application(
             prime_approval_program(),
             prime_clear_program(),
@@ -103,15 +118,15 @@ def create_prime(
             Int(0),
             Int(0),
         ),
-        box_application_id.set(id.get(), InnerTxn.created_application_id()),
+        prime_state.application_id.set(id.get(), InnerTxn.created_application_id()),
         InnerTxnBuilder.ExecuteMethodCall(
-            app_id=box_application_id.get(id.get()),
+            app_id=prime_state.application_id.get(id.get()),
             method_signature=prime.sync.method_signature(),
             args=[
                 func.get_box_bytes(id.get(), Int(0), Int(240)),
             ],
         ),
-        global_primes_count.increment(Int(1)),
+        global_state.primes_count.increment(Int(1)),
     )
 
 

@@ -1,5 +1,5 @@
 #pragma version 8
-intcblock 0 8 1 4
+intcblock 0 1 8 4
 bytecblock 0x
 txn NumAppArgs
 intc_0 // 0
@@ -27,8 +27,8 @@ intc_0 // 0
 !=
 &&
 assert
-callsub updateprimecaster_25
-intc_2 // 1
+callsub updateprimecaster_27
+intc_1 // 1
 return
 main_l6:
 txn OnCompletion
@@ -39,8 +39,8 @@ intc_0 // 0
 !=
 &&
 assert
-callsub createprimecaster_24
-intc_2 // 1
+callsub createprimecaster_26
+intc_1 // 1
 return
 main_l7:
 txn OnCompletion
@@ -51,8 +51,8 @@ intc_0 // 0
 !=
 &&
 assert
-callsub initcaster_23
-intc_2 // 1
+callsub initcaster_25
+intc_1 // 1
 return
 main_l8:
 txn OnCompletion
@@ -69,15 +69,16 @@ txn ApplicationID
 intc_0 // 0
 !=
 assert
-callsub update_19
-intc_2 // 1
+callsub update_21
+intc_1 // 1
 return
 main_l12:
 txn ApplicationID
 intc_0 // 0
 ==
 assert
-intc_2 // 1
+callsub create_20
+intc_1 // 1
 return
 
 // create_application
@@ -183,8 +184,18 @@ itxn_submit
 optinintoasset_3_l2:
 retsub
 
+// init_global
+initglobal_4:
+proto 1 0
+frame_dig -1
+itob
+pushint 120 // 120
+bzero
+app_global_put
+retsub
+
 // init_box
-initbox_4:
+initbox_5:
 proto 2 0
 frame_dig -2
 itob
@@ -194,7 +205,7 @@ box_put
 retsub
 
 // get_global_bytes
-getglobalbytes_5:
+getglobalbytes_6:
 proto 3 1
 frame_dig -3
 app_global_get
@@ -204,7 +215,7 @@ extract3
 retsub
 
 // get_box_bytes
-getboxbytes_6:
+getboxbytes_7:
 proto 3 1
 frame_dig -3
 frame_dig -2
@@ -213,36 +224,36 @@ box_extract
 retsub
 
 // get_global_uint
-getglobaluint_7:
+getglobaluint_8:
 proto 3 1
 frame_dig -3
 frame_dig -2
 frame_dig -1
-callsub getglobalbytes_5
+callsub getglobalbytes_6
 btoi
 retsub
 
 // get_box_uint
-getboxuint_8:
+getboxuint_9:
 proto 3 1
 frame_dig -3
 frame_dig -2
 frame_dig -1
-callsub getboxbytes_6
+callsub getboxbytes_7
 btoi
 retsub
 
 // set_global_bytes
-setglobalbytes_9:
+setglobalbytes_10:
 proto 4 0
 frame_dig -4
 frame_dig -1
-callsub assertisvalidlength_16
+callsub assertisvalidlength_17
 frame_dig -3
 frame_dig -3
 intc_0 // 0
 frame_dig -2
-callsub getglobalbytes_5
+callsub getglobalbytes_6
 frame_dig -4
 concat
 frame_dig -3
@@ -254,17 +265,17 @@ frame_dig -2
 frame_dig -1
 +
 -
-callsub getglobalbytes_5
+callsub getglobalbytes_6
 concat
 app_global_put
 retsub
 
 // set_box_bytes
-setboxbytes_10:
+setboxbytes_11:
 proto 4 0
 frame_dig -4
 frame_dig -1
-callsub assertisvalidlength_16
+callsub assertisvalidlength_17
 frame_dig -3
 frame_dig -2
 frame_dig -4
@@ -272,35 +283,35 @@ box_replace
 retsub
 
 // set_global_uint
-setglobaluint_11:
+setglobaluint_12:
 proto 4 0
 frame_dig -4
 frame_dig -1
-callsub extractuint_13
+callsub extractuint_14
 frame_dig -3
 frame_dig -2
 frame_dig -1
-callsub setglobalbytes_9
+callsub setglobalbytes_10
 retsub
 
 // set_box_uint
-setboxuint_12:
+setboxuint_13:
 proto 4 0
 frame_dig -4
 frame_dig -1
-callsub extractuint_13
+callsub extractuint_14
 frame_dig -3
 frame_dig -2
 frame_dig -1
-callsub setboxbytes_10
+callsub setboxbytes_11
 retsub
 
 // extract_uint
-extractuint_13:
+extractuint_14:
 proto 2 1
 frame_dig -2
 itob
-intc_1 // 8
+intc_2 // 8
 frame_dig -1
 -
 frame_dig -1
@@ -308,7 +319,7 @@ extract3
 retsub
 
 // assert_is_creator
-assertiscreator_14:
+assertiscreator_15:
 proto 0 0
 txn Sender
 global CreatorAddress
@@ -317,7 +328,7 @@ assert
 retsub
 
 // assert_is_zero
-assertiszero_15:
+assertiszero_16:
 proto 1 0
 frame_dig -1
 intc_0 // 0
@@ -326,7 +337,7 @@ assert
 retsub
 
 // assert_is_valid_length
-assertisvalidlength_16:
+assertisvalidlength_17:
 proto 2 0
 frame_dig -2
 len
@@ -336,85 +347,92 @@ assert
 retsub
 
 // prime_approval_program
-primeapprovalprogram_17:
+primeapprovalprogram_18:
 proto 0 1
 bytec_0 // ""
-pushbytes 0x08200400017802311b221240001d361a0080040776b23b1240000100311922123118221310448800ac234331192212400013311981041240000100311822134488006e2343311822124488005823438a01008bff1624af67898a03018bfd648bfe8bff58898a04008bfc8bff88002b8bfd8bfd228bfe88ffe08bfc508bfd8bfe8bff08248bfe8bff080988ffcc5067898a0000310032091244898a02008bfe158bff1244898a00002388ffa32588ff9f898a000088ffd9898a010088ffd28bff57020023222488ff9c8bff57020025242488ff91898a00008000361a018c008b0088ffd489 // 0x08200400017802311b221240001d361a0080040776b23b1240000100311922123118221310448800ac234331192212400013311981041240000100311822134488006e2343311822124488005823438a01008bff1624af67898a03018bfd648bfe8bff58898a04008bfc8bff88002b8bfd8bfd228bfe88ffe08bfc508bfd8bfe8bff08248bfe8bff080988ffcc5067898a0000310032091244898a02008bfe158bff1244898a00002388ffa32588ff9f898a000088ffd9898a010088ffd28bff57020023222488ff9c8bff57020025242488ff91898a00008000361a018c008b0088ffd489
+pushbytes 0x08200400017802311b221240001d361a0080040776b23b1240000100311922123118221310448800b4234331192212400013311981041240000100311822134488006e2343311822124488005823438a01008bff1624af67898a03018bfd648bfe8bff58898a04008bfc8bff88002b8bfd8bfd228bfe88ffe08bfc508bfd8bfe8bff08248bfe8bff080988ffcc5067898a0000310032091244898a02008bfe158bff1244898a00002388ffa32588ff9f898a000088ffd9898a010088ffd28bff5702005700782316222488ff988bff5702005778782516222488ff89898a00008000361a018c008b0088ffcc89 // 0x08200400017802311b221240001d361a0080040776b23b1240000100311922123118221310448800b4234331192212400013311981041240000100311822134488006e2343311822124488005823438a01008bff1624af67898a03018bfd648bfe8bff58898a04008bfc8bff88002b8bfd8bfd228bfe88ffe08bfc508bfd8bfe8bff08248bfe8bff080988ffcc5067898a0000310032091244898a02008bfe158bff1244898a00002388ffa32588ff9f898a000088ffd9898a010088ffd28bff5702005700782316222488ff988bff5702005778782516222488ff89898a00008000361a018c008b0088ffcc89
 frame_bury 0
 retsub
 
 // prime_clear_program
-primeclearprogram_18:
+primeclearprogram_19:
 proto 0 1
 pushbytes 0x08810043 // 0x08810043
 retsub
 
-// update
-update_19:
+// create
+create_20:
 proto 0 0
-callsub assertiscreator_14
+intc_1 // 1
+callsub initglobal_4
+retsub
+
+// update
+update_21:
+proto 0 0
+callsub assertiscreator_15
 retsub
 
 // init
-init_20:
+init_22:
 proto 2 0
-callsub assertiscreator_14
-intc_2 // 1
+callsub assertiscreator_15
+intc_1 // 1
 itob
 intc_0 // 0
-intc_1 // 8
-callsub getglobaluint_7
-callsub assertiszero_15
-intc_2 // 1
+intc_2 // 8
+callsub getglobaluint_8
+callsub assertiszero_16
+intc_1 // 1
 itob
-intc_1 // 8
-intc_1 // 8
-callsub getglobaluint_7
-callsub assertiszero_15
+intc_2 // 8
+intc_2 // 8
+callsub getglobaluint_8
+callsub assertiszero_16
 frame_dig -2
-intc_2 // 1
+intc_1 // 1
 itob
-intc_1 // 8
-intc_1 // 8
-callsub setglobaluint_11
+intc_2 // 8
+intc_2 // 8
+callsub setglobaluint_12
 frame_dig -1
-intc_2 // 1
+intc_1 // 1
 itob
 pushint 16 // 16
 pushint 32 // 32
-callsub setglobalbytes_9
+callsub setglobalbytes_10
 frame_dig -2
 intc_0 // 0
 callsub optinintoasset_3
 retsub
 
 // create_prime
-createprime_21:
+createprime_23:
 proto 5 0
 frame_dig -5
 pushint 1000 // 1000
 <
 assert
 frame_dig -5
-intc_2 // 1
+intc_1 // 1
 itob
 intc_0 // 0
-intc_1 // 8
-callsub getglobaluint_7
+intc_2 // 8
+callsub getglobaluint_8
 ==
 assert
 frame_dig -5
 pushint 480 // 480
-callsub initbox_4
+callsub initbox_5
 frame_dig -5
 frame_dig -5
 itob
 intc_0 // 0
-intc_1 // 8
-callsub setboxuint_12
+intc_2 // 8
+callsub setboxuint_13
 global CurrentApplicationAddress
 frame_dig -4
-intc_2 // 1
+intc_1 // 1
 intc_0 // 0
 frame_dig -3
 extract 2 0
@@ -428,10 +446,10 @@ itxn CreatedAssetID
 frame_dig -5
 itob
 pushint 16 // 16
-intc_1 // 8
-callsub setboxuint_12
-callsub primeapprovalprogram_17
-callsub primeclearprogram_18
+intc_2 // 8
+callsub setboxuint_13
+callsub primeapprovalprogram_18
+callsub primeclearprogram_19
 intc_0 // 0
 pushint 2 // 2
 intc_0 // 0
@@ -442,54 +460,54 @@ callsub createapplication_0
 itxn CreatedApplicationID
 frame_dig -5
 itob
-intc_1 // 8
-intc_1 // 8
-callsub setboxuint_12
+intc_2 // 8
+intc_2 // 8
+callsub setboxuint_13
 itxn_begin
 pushint 6 // appl
 itxn_field TypeEnum
 frame_dig -5
 itob
-intc_1 // 8
-intc_1 // 8
-callsub getboxuint_8
+intc_2 // 8
+intc_2 // 8
+callsub getboxuint_9
 itxn_field ApplicationID
 pushbytes 0x0776b23b // "sync(byte[])void"
 itxn_field ApplicationArgs
 frame_dig -5
 intc_0 // 0
 pushint 240 // 240
-callsub getboxbytes_6
+callsub getboxbytes_7
 itxn_field ApplicationArgs
 itxn_submit
-intc_2 // 1
+intc_1 // 1
 itob
 intc_0 // 0
-intc_1 // 8
-callsub getglobaluint_7
-intc_2 // 1
+intc_2 // 8
+callsub getglobaluint_8
+intc_1 // 1
 +
-intc_2 // 1
+intc_1 // 1
 itob
 intc_0 // 0
-intc_1 // 8
-callsub setglobaluint_11
+intc_2 // 8
+callsub setglobaluint_12
 retsub
 
 // update_prime
-updateprime_22:
+updateprime_24:
 proto 1 0
-callsub assertiscreator_14
+callsub assertiscreator_15
 frame_dig -1
 txnas Applications
-callsub primeapprovalprogram_17
-callsub primeclearprogram_18
+callsub primeapprovalprogram_18
+callsub primeclearprogram_19
 intc_0 // 0
 callsub updateapplication_1
 retsub
 
 // init_caster
-initcaster_23:
+initcaster_25:
 proto 0 0
 intc_0 // 0
 bytec_0 // ""
@@ -500,11 +518,11 @@ txna ApplicationArgs 2
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub init_20
+callsub init_22
 retsub
 
 // create_prime_caster
-createprimecaster_24:
+createprimecaster_26:
 proto 0 0
 intc_0 // 0
 bytec_0 // ""
@@ -525,11 +543,11 @@ frame_dig 1
 frame_dig 2
 frame_dig 3
 frame_dig 4
-callsub createprime_21
+callsub createprime_23
 retsub
 
 // update_prime_caster
-updateprimecaster_25:
+updateprimecaster_27:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
@@ -537,5 +555,5 @@ intc_0 // 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub updateprime_22
+callsub updateprime_24
 retsub

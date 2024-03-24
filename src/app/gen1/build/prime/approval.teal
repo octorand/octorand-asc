@@ -135,14 +135,18 @@ proto 1 0
 callsub assertiscreator_3
 frame_dig -1
 extract 2 0
+extract 0 120
 intc_1 // 1
+itob
 intc_0 // 0
 intc_2 // 120
 callsub setglobalbytes_2
 frame_dig -1
 extract 2 0
+extract 120 120
 intc_3 // 2
-intc_2 // 120
+itob
+intc_0 // 0
 intc_2 // 120
 callsub setglobalbytes_2
 retsub

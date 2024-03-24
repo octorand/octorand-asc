@@ -3,17 +3,25 @@ import func
 from pyteal import *
 from beaker import *
 
-global_one = Int(1)
-global_two = Int(2)
+
+class GlobalState:
+    def __init__(self):
+        self.one = Int(1)
+        self.two = Int(2)
+        self.data_one = func.GlobalBytes(self.one, 0, 120)
+        self.data_two = func.GlobalBytes(self.two, 0, 120)
+
 
 app = Application("GenOnePrime")
+
+global_state = GlobalState()
 
 
 @app.create(bare=True)
 def create():
     return Seq(
-        func.init_global(global_one),
-        func.init_global(global_two),
+        func.init_global(global_state.one),
+        func.init_global(global_state.two),
     )
 
 
@@ -28,6 +36,6 @@ def update():
 def sync(value: abi.DynamicBytes):
     return Seq(
         func.assert_is_creator(),
-        func.set_global_bytes(value.get(), global_one, Int(0), Int(120)),
-        func.set_global_bytes(value.get(), global_two, Int(120), Int(120)),
+        global_state.data_one.set(Extract(value.get(), Int(0), Int(120))),
+        global_state.data_two.set(Extract(value.get(), Int(120), Int(120))),
     )
