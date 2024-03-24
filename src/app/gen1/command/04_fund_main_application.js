@@ -1,16 +1,16 @@
 require('dotenv').config();
 
 const fs = require("fs");
-const chain = require('./../../../../../chain/index');
+const chain = require('./../../../chain/index');
 
 exports.execute = async function () {
     try {
         let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.player1.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player1);
+        let sender = connection.admin.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
-        let setup = JSON.parse(fs.readFileSync('app/play/lottery/algo/setup.json'));
+        let setup = JSON.parse(fs.readFileSync('src/app/gen1/setup.json'));
 
         let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -18,8 +18,8 @@ exports.execute = async function () {
             signer: signer,
             txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                 from: sender,
-                to: setup['main_app_address'],
-                amount: 3000000,
+                to: setup['main_application_address'],
+                amount: 1000000,
                 suggestedParams: {
                     ...params,
                 }
