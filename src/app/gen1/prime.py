@@ -25,9 +25,9 @@ def update():
 
 
 @app.external(name="sync")
-def sync(one: abi.DynamicBytes, two: abi.DynamicBytes):
+def sync(value: abi.DynamicBytes):
     return Seq(
         func.assert_is_creator(),
-        func.set_global_bytes(one.get(), global_one, Int(0), Int(120)),
-        func.set_global_bytes(two.get(), global_two, Int(0), Int(120)),
+        func.set_global_bytes(value.get(), global_one, Int(0), Int(120)),
+        func.set_global_bytes(value.get(), global_two, Int(120), Int(120)),
     )

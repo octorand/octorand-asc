@@ -6,11 +6,7 @@
             "args": [
                 {
                     "type": "byte[]",
-                    "name": "one"
-                },
-                {
-                    "type": "byte[]",
-                    "name": "two"
+                    "name": "value"
                 }
             ],
             "returns": {

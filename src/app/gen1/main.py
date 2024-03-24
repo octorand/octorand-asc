@@ -16,22 +16,21 @@ box_application_id = saver.BoxUint(8, 8)
 box_asset_id = saver.BoxUint(16, 8)
 box_legacy_id = saver.BoxUint(24, 8)
 box_score = saver.BoxUint(32, 8)
-box_likes = saver.BoxUint(40, 8)
-box_theme = saver.BoxUint(48, 8)
-box_skin = saver.BoxUint(56, 8)
-box_royalties = saver.BoxUint(64, 8)
-box_rewards = saver.BoxUint(72, 8)
-box_transforms = saver.BoxUint(80, 8)
-box_sales = saver.BoxUint(88, 8)
-box_mints = saver.BoxUint(96, 8)
-box_price = saver.BoxUint(104, 8)
-box_name = saver.BoxBytes(112, 8)
-box_description = saver.BoxBytes(120, 32)
-box_owner = saver.BoxBytes(152, 32)
-box_is_artifact = saver.BoxUint(184, 2)
-box_is_pioneer = saver.BoxUint(186, 2)
-box_is_founder = saver.BoxUint(188, 2)
-box_is_winner = saver.BoxUint(190, 2)
+box_health = saver.BoxUint(40, 8)
+box_wealth = saver.BoxUint(48, 8)
+box_strength = saver.BoxUint(56, 8)
+box_theme = saver.BoxUint(64, 8)
+box_skin = saver.BoxUint(72, 8)
+box_royalties = saver.BoxUint(80, 8)
+box_rewards = saver.BoxUint(88, 8)
+box_name = saver.BoxBytes(96, 8)
+box_description = saver.BoxBytes(104, 32)
+box_price = saver.BoxUint(136, 8)
+box_owner = saver.BoxBytes(144, 32)
+box_likes = saver.BoxUint(176, 8)
+box_transforms = saver.BoxUint(184, 8)
+box_sales = saver.BoxUint(192, 8)
+box_mints = saver.BoxUint(200, 8)
 
 
 @Subroutine(TealType.bytes)
@@ -109,8 +108,7 @@ def create_prime(
             app_id=box_application_id.get(id.get()),
             method_signature=prime.sync.method_signature(),
             args=[
-                func.get_box_bytes(id.get(), Int(0), Int(120)),
-                func.get_box_bytes(id.get(), Int(120), Int(120)),
+                func.get_box_bytes(id.get(), Int(0), Int(240)),
             ],
         ),
         global_primes_count.increment(Int(1)),
