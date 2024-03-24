@@ -28,15 +28,15 @@ exports.execute = async function () {
         let global = info['application']['params']['global-state'];
 
         for (let i = 0; i < global.length; i++) {
-            let state = global[i];
-            let key = Buffer.from(state.key, 'base64').toString('utf-8');
-            let value = Buffer.from(state.value['bytes'], 'base64');
+            let params = global[i];
+            let key = connection.baseClient.decodeUint64(Buffer.from(params.key, 'base64'));
+            let value = Buffer.from(params.value['bytes'], 'base64');
 
             switch (key) {
-                case '1':
-                    data.primes_count = connection.baseClient.decodeUint64(value.subarray(0, 8));
-                    data.platform_asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
-                    data.platform_asset_reserve = connection.baseClient.encodeAddress(value.subarray(16, 48));
+                case 1:
+                    state.primes_count = connection.baseClient.decodeUint64(value.subarray(0, 8));
+                    state.platform_asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
+                    state.platform_asset_reserve = connection.baseClient.encodeAddress(value.subarray(16, 48));
                     break;
             }
         }
