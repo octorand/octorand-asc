@@ -64,3 +64,7 @@ exports.execute = async function (composer) {
 exports.method = function (contract, name) {
     return contract.methods.find((m) => { return m.name == name });
 }
+
+exports.bytes = function (value) {
+    return new Uint8Array(Buffer.from(value));
+}
