@@ -55,8 +55,8 @@ exports.execute = async function () {
             let value = primeInfo.value;
 
             prime.id = connection.baseClient.decodeUint64(value.subarray(0, 8));
-            prime.asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
-            prime.application_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
+            prime.application_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
+            prime.asset_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
 
             primes.push(prime);
         }

@@ -36,6 +36,6 @@ def update():
 def sync(one: abi.DynamicBytes, two: abi.DynamicBytes):
     return Seq(
         func.assert_is_creator(),
-        # global_state.data_one.set(one.get()),
-        # global_state.data_two.set(two.get()),
+        global_state.data_one.set(one.get()),
+        global_state.data_two.set(two.get()),
     )
