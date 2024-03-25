@@ -43,6 +43,26 @@ exports.execute = async function () {
 
         setup['state'] = state;
 
+        let primes = [];
+        for (let i = 0; i < state.primes_count; i++) {
+            let prime = {
+                id: null,
+                application_id: null,
+                asset_id: null
+            };
+
+            let primeInfo = await connection.indexerClient.lookupApplicationBoxByIDandName(setup['main_application_id'], connection.baseClient.encodeUint64(i)).do();
+            let value = primeInfo.value;
+
+            prime.id = connection.baseClient.decodeUint64(value.subarray(0, 8));
+            prime.asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
+            prime.application_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
+
+            primes.push(prime);
+        }
+
+        setup['primes'] = primes;
+
         fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
 
         console.log('read main application');
