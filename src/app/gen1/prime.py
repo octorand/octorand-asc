@@ -33,9 +33,9 @@ def update():
 
 
 @app.external(name="sync")
-def sync(value: abi.DynamicBytes):
+def sync(one: abi.DynamicBytes, two: abi.DynamicBytes):
     return Seq(
         func.assert_is_creator(),
-        global_state.data_one.set(Extract(value.get(), Int(0), Int(120))),
-        global_state.data_two.set(Extract(value.get(), Int(120), Int(120))),
+        global_state.data_one.set(one.get()),
+        global_state.data_two.set(two.get()),
     )

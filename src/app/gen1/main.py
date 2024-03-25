@@ -58,6 +58,20 @@ def prime_clear_program():
     )
 
 
+@Subroutine(TealType.none)
+def prime_sync(id):
+    return Seq(
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=prime_state.application_id.get(id),
+            method_signature=prime.sync.method_signature(),
+            args=[
+                func.get_box_bytes(Itob(id), Int(0), Int(120)),
+                func.get_box_bytes(Itob(id), Int(120), Int(120)),
+            ],
+        ),
+    )
+
+
 @app.create(bare=True)
 def create():
     return Seq(
@@ -121,14 +135,8 @@ def create_prime(
             Int(0),
         ),
         prime_state.application_id.set(id.get(), InnerTxn.created_application_id()),
-        InnerTxnBuilder.ExecuteMethodCall(
-            app_id=prime_state.application_id.get(id.get()),
-            method_signature=prime.sync.method_signature(),
-            args=[
-                func.get_box_bytes(Itob(id.get()), Int(0), Int(240)),
-            ],
-        ),
         global_state.primes_count.increment(Int(1)),
+        prime_sync(id.get()),
     )
 
 
