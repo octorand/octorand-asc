@@ -41,6 +41,12 @@ exports.execute = async function () {
                 chain.bytes('Test Gen1 #000'),
                 chain.bytes('template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}')
             ],
+            boxes: [
+                {
+                    appIndex: Number(setup['main_application_id']),
+                    name: connection.baseClient.encodeUint64(0)
+                }
+            ],
             suggestedParams: {
                 ...params,
                 fee: 4000,
@@ -58,6 +64,12 @@ exports.execute = async function () {
                 chain.bytes('TG1-001'),
                 chain.bytes('Test Gen1 #001'),
                 chain.bytes('template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}')
+            ],
+            boxes: [
+                {
+                    appIndex: Number(setup['main_application_id']),
+                    name: connection.baseClient.encodeUint64(1)
+                }
             ],
             suggestedParams: {
                 ...params,

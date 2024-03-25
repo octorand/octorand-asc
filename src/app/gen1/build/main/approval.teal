@@ -527,6 +527,7 @@ itxn_field ApplicationID
 pushbytes 0x0776b23b // "sync(byte[])void"
 itxn_field ApplicationArgs
 frame_dig -4
+itob
 intc_0 // 0
 pushint 240 // 240
 callsub getboxbytes_8

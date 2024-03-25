@@ -125,7 +125,7 @@ def create_prime(
             app_id=prime_state.application_id.get(id.get()),
             method_signature=prime.sync.method_signature(),
             args=[
-                func.get_box_bytes(id.get(), Int(0), Int(240)),
+                func.get_box_bytes(Itob(id.get()), Int(0), Int(240)),
             ],
         ),
         global_state.primes_count.increment(Int(1)),
