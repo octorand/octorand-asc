@@ -5,7 +5,7 @@ max_storage_length = Int(120)
 
 class GlobalUint:
     def __init__(self, index, start, length):
-        self.index = Itob(index)
+        self.index = index
         self.start = Int(start)
         self.length = Int(length)
 
@@ -35,7 +35,7 @@ class GlobalUint:
 
 class GlobalBytes:
     def __init__(self, index, start, length):
-        self.index = Itob(index)
+        self.index = index
         self.start = Int(start)
         self.length = Int(length)
 
@@ -57,7 +57,7 @@ class GlobalBytes:
 
 class LocalUint:
     def __init__(self, index, start, length):
-        self.index = Itob(index)
+        self.index = index
         self.start = Int(start)
         self.length = Int(length)
 
@@ -90,7 +90,7 @@ class LocalUint:
 
 class LocalBytes:
     def __init__(self, index, start, length):
-        self.index = Itob(index)
+        self.index = index
         self.start = Int(start)
         self.length = Int(length)
 
@@ -119,7 +119,7 @@ class BoxUint:
 
     def get(self, index):
         return get_box_uint(
-            Itob(index),
+            index,
             self.start,
             self.length,
         )
@@ -127,7 +127,7 @@ class BoxUint:
     def set(self, index, value):
         return set_box_uint(
             value,
-            Itob(index),
+            index,
             self.start,
             self.length,
         )
@@ -135,7 +135,7 @@ class BoxUint:
     def increment(self, index, value):
         return set_box_uint(
             Add(self.get(index), value),
-            Itob(index),
+            index,
             self.start,
             self.length,
         )
@@ -148,7 +148,7 @@ class BoxBytes:
 
     def get(self, index):
         return get_box_bytes(
-            Itob(index),
+            index,
             self.start,
             self.length,
         )
@@ -156,7 +156,7 @@ class BoxBytes:
     def set(self, index, value):
         return set_box_bytes(
             value,
-            Itob(index),
+            index,
             self.start,
             self.length,
         )
@@ -323,21 +323,21 @@ def execute_asset_transfer(asset_id, receiver, amount, fee):
 @Subroutine(TealType.none)
 def init_global(index):
     return Seq(
-        App.globalPut(Itob(index), BytesZero(max_storage_length)),
+        App.globalPut(index, BytesZero(max_storage_length)),
     )
 
 
 @Subroutine(TealType.none)
 def init_local(account, index):
     return Seq(
-        App.localPut(account, Itob(index), BytesZero(max_storage_length)),
+        App.localPut(account, index, BytesZero(max_storage_length)),
     )
 
 
 @Subroutine(TealType.none)
 def init_box(index, length):
     return Seq(
-        App.box_put(Itob(index), BytesZero(length)),
+        App.box_put(index, BytesZero(length)),
     )
 
 

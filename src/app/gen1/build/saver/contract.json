@@ -1,0 +1,42 @@
+{
+    "name": "GenOneSaver",
+    "methods": [
+        {
+            "name": "init",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "starting_prime_id"
+                },
+                {
+                    "type": "uint64",
+                    "name": "ending_prime_id"
+                },
+                {
+                    "type": "uint64",
+                    "name": "master_app_id"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "sync",
+            "args": [
+                {
+                    "type": "uint32",
+                    "name": "prime_id"
+                },
+                {
+                    "type": "byte[120]",
+                    "name": "value"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

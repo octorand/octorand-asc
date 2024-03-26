@@ -1,0 +1,84 @@
+{
+    "hints": {
+        "init(uint64,uint64,uint64)void": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "sync(uint32,byte[120])void": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        }
+    },
+    "source": {
+        "approval": "I3ByYWdtYSB2ZXJzaW9uIDgKaW50Y2Jsb2NrIDAgOCAxIDE2CmJ5dGVjYmxvY2sgMHg0MzZmNmU2NjY5NjcKdHhuIE51bUFwcEFyZ3MKaW50Y18wIC8vIDAKPT0KYm56IG1haW5fbDYKdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMApwdXNoYnl0ZXMgMHg2OTQ0M2RmNyAvLyAiaW5pdCh1aW50NjQsdWludDY0LHVpbnQ2NCl2b2lkIgo9PQpibnogbWFpbl9sNQp0eG5hIEFwcGxpY2F0aW9uQXJncyAwCnB1c2hieXRlcyAweDE3NWFmNjMzIC8vICJzeW5jKHVpbnQzMixieXRlWzEyMF0pdm9pZCIKPT0KYm56IG1haW5fbDQKZXJyCm1haW5fbDQ6CnR4biBPbkNvbXBsZXRpb24KaW50Y18wIC8vIE5vT3AKPT0KdHhuIEFwcGxpY2F0aW9uSUQKaW50Y18wIC8vIDAKIT0KJiYKYXNzZXJ0CmNhbGxzdWIgc3luY2Nhc3Rlcl8xMwppbnRjXzIgLy8gMQpyZXR1cm4KbWFpbl9sNToKdHhuIE9uQ29tcGxldGlvbgppbnRjXzAgLy8gTm9PcAo9PQp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAohPQomJgphc3NlcnQKY2FsbHN1YiBpbml0Y2FzdGVyXzEyCmludGNfMiAvLyAxCnJldHVybgptYWluX2w2Ogp0eG4gT25Db21wbGV0aW9uCmludGNfMCAvLyBOb09wCj09CmJueiBtYWluX2wxMAp0eG4gT25Db21wbGV0aW9uCnB1c2hpbnQgNCAvLyBVcGRhdGVBcHBsaWNhdGlvbgo9PQpibnogbWFpbl9sOQplcnIKbWFpbl9sOToKdHhuIEFwcGxpY2F0aW9uSUQKaW50Y18wIC8vIDAKIT0KYXNzZXJ0CmNhbGxzdWIgdXBkYXRlXzkKaW50Y18yIC8vIDEKcmV0dXJuCm1haW5fbDEwOgp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAo9PQphc3NlcnQKY2FsbHN1YiBjcmVhdGVfOAppbnRjXzIgLy8gMQpyZXR1cm4KCi8vIGluaXRfZ2xvYmFsCmluaXRnbG9iYWxfMDoKcHJvdG8gMSAwCmZyYW1lX2RpZyAtMQpwdXNoaW50IDEyMCAvLyAxMjAKYnplcm8KYXBwX2dsb2JhbF9wdXQKcmV0c3ViCgovLyBnZXRfZ2xvYmFsX2J5dGVzCmdldGdsb2JhbGJ5dGVzXzE6CnByb3RvIDMgMQpmcmFtZV9kaWcgLTMKYXBwX2dsb2JhbF9nZXQKZnJhbWVfZGlnIC0yCmZyYW1lX2RpZyAtMQpleHRyYWN0MwpyZXRzdWIKCi8vIGdldF9nbG9iYWxfdWludApnZXRnbG9iYWx1aW50XzI6CnByb3RvIDMgMQpmcmFtZV9kaWcgLTMKZnJhbWVfZGlnIC0yCmZyYW1lX2RpZyAtMQpjYWxsc3ViIGdldGdsb2JhbGJ5dGVzXzEKYnRvaQpyZXRzdWIKCi8vIHNldF9nbG9iYWxfYnl0ZXMKc2V0Z2xvYmFsYnl0ZXNfMzoKcHJvdG8gNCAwCmZyYW1lX2RpZyAtNApmcmFtZV9kaWcgLTEKY2FsbHN1YiBhc3NlcnRpc3ZhbGlkbGVuZ3RoXzcKZnJhbWVfZGlnIC0zCmZyYW1lX2RpZyAtMwppbnRjXzAgLy8gMApmcmFtZV9kaWcgLTIKY2FsbHN1YiBnZXRnbG9iYWxieXRlc18xCmZyYW1lX2RpZyAtNApjb25jYXQKZnJhbWVfZGlnIC0zCmZyYW1lX2RpZyAtMgpmcmFtZV9kaWcgLTEKKwpwdXNoaW50IDEyMCAvLyAxMjAKZnJhbWVfZGlnIC0yCmZyYW1lX2RpZyAtMQorCi0KY2FsbHN1YiBnZXRnbG9iYWxieXRlc18xCmNvbmNhdAphcHBfZ2xvYmFsX3B1dApyZXRzdWIKCi8vIHNldF9nbG9iYWxfdWludApzZXRnbG9iYWx1aW50XzQ6CnByb3RvIDQgMApmcmFtZV9kaWcgLTQKZnJhbWVfZGlnIC0xCmNhbGxzdWIgZXh0cmFjdHVpbnRfNQpmcmFtZV9kaWcgLTMKZnJhbWVfZGlnIC0yCmZyYW1lX2RpZyAtMQpjYWxsc3ViIHNldGdsb2JhbGJ5dGVzXzMKcmV0c3ViCgovLyBleHRyYWN0X3VpbnQKZXh0cmFjdHVpbnRfNToKcHJvdG8gMiAxCmZyYW1lX2RpZyAtMgppdG9iCmludGNfMSAvLyA4CmZyYW1lX2RpZyAtMQotCmZyYW1lX2RpZyAtMQpleHRyYWN0MwpyZXRzdWIKCi8vIGFzc2VydF9pc19jcmVhdG9yCmFzc2VydGlzY3JlYXRvcl82Ogpwcm90byAwIDAKdHhuIFNlbmRlcgpnbG9iYWwgQ3JlYXRvckFkZHJlc3MKPT0KYXNzZXJ0CnJldHN1YgoKLy8gYXNzZXJ0X2lzX3ZhbGlkX2xlbmd0aAphc3NlcnRpc3ZhbGlkbGVuZ3RoXzc6CnByb3RvIDIgMApmcmFtZV9kaWcgLTIKbGVuCmZyYW1lX2RpZyAtMQo9PQphc3NlcnQKcmV0c3ViCgovLyBjcmVhdGUKY3JlYXRlXzg6CnByb3RvIDAgMApieXRlY18wIC8vICJDb25maWciCmNhbGxzdWIgaW5pdGdsb2JhbF8wCnJldHN1YgoKLy8gdXBkYXRlCnVwZGF0ZV85Ogpwcm90byAwIDAKY2FsbHN1YiBhc3NlcnRpc2NyZWF0b3JfNgpyZXRzdWIKCi8vIGluaXQKaW5pdF8xMDoKcHJvdG8gMyAwCmNhbGxzdWIgYXNzZXJ0aXNjcmVhdG9yXzYKZnJhbWVfZGlnIC0zCmZyYW1lX2RpZyAtMgo8CmFzc2VydApmcmFtZV9kaWcgLTIKZnJhbWVfZGlnIC0zCi0KcHVzaGludCA1MCAvLyA1MAo9PQphc3NlcnQKZnJhbWVfZGlnIC0xCmludGNfMCAvLyAwCj4KYXNzZXJ0CmZyYW1lX2RpZyAtMwpieXRlY18wIC8vICJDb25maWciCmludGNfMyAvLyAxNgppbnRjXzEgLy8gOApjYWxsc3ViIHNldGdsb2JhbHVpbnRfNApmcmFtZV9kaWcgLTIKYnl0ZWNfMCAvLyAiQ29uZmlnIgpwdXNoaW50IDI0IC8vIDI0CmludGNfMSAvLyA4CmNhbGxzdWIgc2V0Z2xvYmFsdWludF80CmZyYW1lX2RpZyAtMQpieXRlY18wIC8vICJDb25maWciCnB1c2hpbnQgMzIgLy8gMzIKaW50Y18xIC8vIDgKY2FsbHN1YiBzZXRnbG9iYWx1aW50XzQKcHVzaGJ5dGVzIDB4NWY1ZjVmNDc2NTZlNWY0ZjZlNjU1ZjUzNjE3NjY1NzIgLy8gIl9fX0dlbl9PbmVfU2F2ZXIiCmJ5dGVjXzAgLy8gIkNvbmZpZyIKaW50Y18wIC8vIDAKaW50Y18zIC8vIDE2CmNhbGxzdWIgc2V0Z2xvYmFsYnl0ZXNfMwpyZXRzdWIKCi8vIHN5bmMKc3luY18xMToKcHJvdG8gMiAwCmdsb2JhbCBDYWxsZXJBcHBsaWNhdGlvbklECmJ5dGVjXzAgLy8gIkNvbmZpZyIKcHVzaGludCAzMiAvLyAzMgppbnRjXzEgLy8gOApjYWxsc3ViIGdldGdsb2JhbHVpbnRfMgo9PQphc3NlcnQKZnJhbWVfZGlnIC0yCmJ5dGVjXzAgLy8gIkNvbmZpZyIKaW50Y18zIC8vIDE2CmludGNfMSAvLyA4CmNhbGxzdWIgZ2V0Z2xvYmFsdWludF8yCj49CmFzc2VydApmcmFtZV9kaWcgLTIKYnl0ZWNfMCAvLyAiQ29uZmlnIgpwdXNoaW50IDI0IC8vIDI0CmludGNfMSAvLyA4CmNhbGxzdWIgZ2V0Z2xvYmFsdWludF8yCjwKYXNzZXJ0CnB1c2hieXRlcyAweDUwMmQgLy8gIlAtIgpmcmFtZV9kaWcgLTIKaXRvYgpjb25jYXQKZnJhbWVfZGlnIC0xCmFwcF9nbG9iYWxfcHV0CnJldHN1YgoKLy8gaW5pdF9jYXN0ZXIKaW5pdGNhc3Rlcl8xMjoKcHJvdG8gMCAwCmludGNfMCAvLyAwCmR1cG4gMgp0eG5hIEFwcGxpY2F0aW9uQXJncyAxCmJ0b2kKZnJhbWVfYnVyeSAwCnR4bmEgQXBwbGljYXRpb25BcmdzIDIKYnRvaQpmcmFtZV9idXJ5IDEKdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMwpidG9pCmZyYW1lX2J1cnkgMgpmcmFtZV9kaWcgMApmcmFtZV9kaWcgMQpmcmFtZV9kaWcgMgpjYWxsc3ViIGluaXRfMTAKcmV0c3ViCgovLyBzeW5jX2Nhc3RlcgpzeW5jY2FzdGVyXzEzOgpwcm90byAwIDAKaW50Y18wIC8vIDAKcHVzaGJ5dGVzIDB4IC8vICIiCnR4bmEgQXBwbGljYXRpb25BcmdzIDEKaW50Y18wIC8vIDAKZXh0cmFjdF91aW50MzIKZnJhbWVfYnVyeSAwCnR4bmEgQXBwbGljYXRpb25BcmdzIDIKZnJhbWVfYnVyeSAxCmZyYW1lX2RpZyAwCmZyYW1lX2RpZyAxCmNhbGxzdWIgc3luY18xMQpyZXRzdWI=",
+        "clear": "I3ByYWdtYSB2ZXJzaW9uIDgKcHVzaGludCAwIC8vIDAKcmV0dXJu"
+    },
+    "state": {
+        "global": {
+            "num_byte_slices": 0,
+            "num_uints": 0
+        },
+        "local": {
+            "num_byte_slices": 0,
+            "num_uints": 0
+        }
+    },
+    "schema": {
+        "global": {
+            "declared": {},
+            "reserved": {}
+        },
+        "local": {
+            "declared": {},
+            "reserved": {}
+        }
+    },
+    "contract": {
+        "name": "GenOneSaver",
+        "methods": [
+            {
+                "name": "init",
+                "args": [
+                    {
+                        "type": "uint64",
+                        "name": "starting_prime_id"
+                    },
+                    {
+                        "type": "uint64",
+                        "name": "ending_prime_id"
+                    },
+                    {
+                        "type": "uint64",
+                        "name": "master_app_id"
+                    }
+                ],
+                "returns": {
+                    "type": "void"
+                }
+            },
+            {
+                "name": "sync",
+                "args": [
+                    {
+                        "type": "uint32",
+                        "name": "prime_id"
+                    },
+                    {
+                        "type": "byte[120]",
+                        "name": "value"
+                    }
+                ],
+                "returns": {
+                    "type": "void"
+                }
+            }
+        ],
+        "networks": {}
+    },
+    "bare_call_config": {
+        "no_op": "CREATE",
+        "update_application": "CALL"
+    }
+}
