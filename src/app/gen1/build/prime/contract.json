@@ -5,11 +5,11 @@
             "name": "sync",
             "args": [
                 {
-                    "type": "byte[]",
+                    "type": "byte[120]",
                     "name": "one"
                 },
                 {
-                    "type": "byte[]",
+                    "type": "byte[120]",
                     "name": "two"
                 }
             ],

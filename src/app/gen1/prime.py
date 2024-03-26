@@ -2,6 +2,7 @@ import func
 
 from pyteal import *
 from beaker import *
+from typing import *
 
 
 class GlobalState:
@@ -33,7 +34,7 @@ def update():
 
 
 @app.external(name="sync")
-def sync(one: abi.DynamicBytes, two: abi.DynamicBytes):
+def sync(one: abi.StaticBytes[Literal[120]], two: abi.StaticBytes[Literal[120]]):
     return Seq(
         func.assert_is_creator(),
         global_state.data_one.set(one.get()),
