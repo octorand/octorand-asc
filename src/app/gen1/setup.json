@@ -12,12 +12,22 @@
         {
             "id": 0,
             "application_id": 628538082,
-            "asset_id": 628538081
+            "asset_id": 628538081,
+            "state": {
+                "id": 0,
+                "application_id": 628538082,
+                "asset_id": 628538081
+            }
         },
         {
             "id": 1,
             "application_id": 628538086,
-            "asset_id": 628538085
+            "asset_id": 628538085,
+            "state": {
+                "id": 1,
+                "application_id": 628538086,
+                "asset_id": 628538085
+            }
         }
     ]
 }

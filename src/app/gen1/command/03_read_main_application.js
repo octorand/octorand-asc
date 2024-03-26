@@ -58,6 +58,31 @@ exports.execute = async function () {
             prime.application_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
             prime.asset_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
 
+            let primeState = {
+                id: null,
+                application_id: null,
+                asset_id: null
+            };
+
+            let primeGlobalInfo = await connection.indexerClient.lookupApplications(prime.application_id).do();
+            let primeGlobal = primeGlobalInfo['application']['params']['global-state'];
+
+            for (let i = 0; i < primeGlobal.length; i++) {
+                let params = primeGlobal[i];
+                let key = connection.baseClient.decodeUint64(Buffer.from(params.key, 'base64'));
+                let value = Buffer.from(params.value['bytes'], 'base64');
+
+                switch (key) {
+                    case 1:
+                        primeState.id = connection.baseClient.decodeUint64(value.subarray(0, 8));
+                        primeState.application_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
+                        primeState.asset_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
+                        break;
+                }
+            }
+
+            prime['state'] = primeState;
+
             primes.push(prime);
         }
 
