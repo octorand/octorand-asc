@@ -12,12 +12,10 @@ exports.execute = async function () {
 
         let setup = JSON.parse(fs.readFileSync('src/app/gen1/setup.json'));
 
+        let composer = new connection.baseClient.AtomicTransactionComposer();
+
         let approvalProgram = fs.readFileSync('src/app/gen1/build/saver/approval.teal', 'utf8');
         let clearProgram = fs.readFileSync('src/app/gen1/build/saver/clear.teal', 'utf8');
-
-        saverApps = [];
-
-        let composer = new connection.baseClient.AtomicTransactionComposer();
 
         composer.addTransaction({
             signer: signer,
@@ -32,7 +30,6 @@ exports.execute = async function () {
                 numGlobalByteSlices: 1,
                 extraPages: 0,
                 appArgs: [],
-                note: chain.bytes('0'),
                 suggestedParams: {
                     ...params,
                     fee: 1000,
@@ -43,41 +40,12 @@ exports.execute = async function () {
 
         let response = await chain.execute(composer);
         let applicationId = response.information['application-index'];
-        saverApps.push(applicationId);
 
-        composer = new connection.baseClient.AtomicTransactionComposer();
-
-        composer.addTransaction({
-            signer: signer,
-            txn: connection.baseClient.makeApplicationCreateTxnFromObject({
-                from: sender,
-                onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
-                approvalProgram: await chain.compile(approvalProgram, false),
-                clearProgram: await chain.compile(clearProgram, false),
-                numLocalInts: 0,
-                numLocalByteSlices: 0,
-                numGlobalInts: 0,
-                numGlobalByteSlices: 1,
-                extraPages: 0,
-                appArgs: [],
-                note: chain.bytes('1'),
-                suggestedParams: {
-                    ...params,
-                    fee: 1000,
-                    flatFee: true
-                }
-            })
-        });
-
-        response = await chain.execute(composer);
-        applicationId = response.information['application-index'];
-        saverApps.push(applicationId);
-
-        setup['saver_apps'] = saverApps;
+        setup['saver_app'] = applicationId;
 
         fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
 
-        console.log('created saver apps');
+        console.log('created saver app');
 
     } catch (error) {
         console.log(error);
