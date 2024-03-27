@@ -12,28 +12,25 @@ exports.execute = async function () {
 
         let setup = JSON.parse(fs.readFileSync('src/app/gen1/setup.json'));
 
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/gen1/build/main/contract.json')));
-
         let composer = new connection.baseClient.AtomicTransactionComposer();
 
-        composer.addMethodCall({
-            sender: sender,
+        composer.addTransaction({
             signer: signer,
-            appID: Number(setup['main_application_id']),
-            method: chain.method(contract, 'init'),
-            methodArgs: [
-                Number(setup['platform_asset_id'])
-            ],
-            suggestedParams: {
-                ...params,
-                fee: 2000,
-                flatFee: true
-            }
+            txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
+                from: sender,
+                to: setup['main_app']['address'],
+                amount: 1000000,
+                suggestedParams: {
+                    ...params,
+                    fee: 1000,
+                    flatFee: true
+                }
+            })
         });
 
         await chain.execute(composer);
 
-        console.log('initiated main application');
+        console.log('funded main app');
 
     } catch (error) {
         console.log(error);

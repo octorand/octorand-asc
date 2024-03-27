@@ -48,7 +48,7 @@ exports.execute = async function () {
             creator: info['application']['params']['creator']
         };
 
-        setup['saver_app'] = data;
+        setup['main_app'] = data;
 
         fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
 

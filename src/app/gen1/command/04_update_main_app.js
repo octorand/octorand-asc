@@ -21,7 +21,7 @@ exports.execute = async function () {
             signer: signer,
             txn: connection.baseClient.makeApplicationUpdateTxnFromObject({
                 from: sender,
-                appIndex: Number(setup['main_application_id']),
+                appIndex: Number(setup['main_app']['id']),
                 onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
                 approvalProgram: await chain.compile(approvalProgram, false),
                 clearProgram: await chain.compile(clearProgram, false),
@@ -35,7 +35,7 @@ exports.execute = async function () {
 
         await chain.execute(composer);
 
-        console.log('updated main application');
+        console.log('updated main app');
 
     } catch (error) {
         console.log(error);

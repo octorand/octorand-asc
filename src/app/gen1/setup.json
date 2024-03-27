@@ -1,7 +1,13 @@
 {
-    "saver_app": {
-        "id": 628696140,
-        "address": "YRBLJOAW7RPPUYCDW4OHK5D6DH2V4HCLD76IDLY6PBOG5JXEGDCYPV5KYY",
-        "creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM"
+    "platform_asset_id": 628698984,
+    "main_app": {
+        "id": 628698999,
+        "address": "OEC3JMQNZCHTFQTCXGZLAZJDBLTCIRRJ3TRAAJZQWUZTWF744ZYMUAKDXA",
+        "creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM",
+        "config": {
+            "primes_count": 0,
+            "platform_asset_id": 628698984,
+            "platform_asset_reserve": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM"
+        }
     }
 }
