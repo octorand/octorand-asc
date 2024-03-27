@@ -432,6 +432,12 @@ retsub
 initsaver_21:
 proto 2 0
 callsub assertiscreator_14
+bytec_2 // "Saver-"
+frame_dig -2
+itob
+concat
+intc_1 // 8
+callsub initbox_4
 frame_dig -1
 txnas Applications
 bytec_2 // "Saver-"

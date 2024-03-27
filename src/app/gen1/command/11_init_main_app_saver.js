@@ -40,7 +40,7 @@ exports.execute = async function () {
 
         await chain.execute(composer);
 
-        console.log('initiated main app');
+        console.log('initiated main app saver');
 
     } catch (error) {
         console.log(error);

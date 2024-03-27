@@ -21,7 +21,7 @@ class BoxSaver:
         self.value = func.BoxUint(0, 8)
 
 
-class PrimeConfig:
+class BoxPrime:
     def __init__(self):
         self.id = func.BoxUint(0, 4)
         self.asset_id = func.BoxUint(4, 8)
@@ -48,7 +48,7 @@ app = Application("GenOneMain")
 
 global_config = GlobalConfig()
 box_saver = BoxSaver()
-prime_config = PrimeConfig()
+box_prime = BoxPrime()
 
 
 @Subroutine(TealType.none)
@@ -102,6 +102,7 @@ def init_saver(index: abi.Uint64, saver_app: abi.Application):
     saver_key = Concat(Bytes("Saver-"), Itob(index.get()))
     return Seq(
         func.assert_is_creator(),
+        func.init_box(saver_key, Int(8)),
         box_saver.value.set(saver_key, saver_app.application_id()),
     )
 
@@ -118,7 +119,7 @@ def create_prime(
         Assert(id.get() < main_config.max_primes_count),
         Assert(id.get() == global_config.primes_count.get()),
         func.init_box(prime_key, Int(500)),
-        prime_config.id.set(prime_key, id.get()),
+        box_prime.id.set(prime_key, id.get()),
         func.create_asset(
             Global.current_application_address(),
             Global.current_application_address(),
@@ -129,7 +130,7 @@ def create_prime(
             asset_url.get(),
             Int(0),
         ),
-        prime_config.asset_id.set(prime_key, InnerTxn.created_asset_id()),
+        box_prime.asset_id.set(prime_key, InnerTxn.created_asset_id()),
         global_config.primes_count.increment(Int(1)),
         prime_sync(id.get()),
     )
