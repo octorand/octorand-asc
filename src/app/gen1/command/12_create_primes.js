@@ -58,61 +58,61 @@ exports.execute = async function () {
             }
         });
 
-        composer.addMethodCall({
-            sender: sender,
-            signer: signer,
-            appID: Number(setup['main_app']['id']),
-            method: chain.method(contract, 'create_prime'),
-            methodArgs: [
-                1,
-                chain.bytes('TG1-001'),
-                chain.bytes('Test Gen1 #001'),
-                chain.bytes('template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}')
-            ],
-            boxes: [
-                {
-                    appIndex: Number(setup['main_app']['id']),
-                    name: chain.reference('Saver', 0)
-                },
-                {
-                    appIndex: Number(setup['main_app']['id']),
-                    name: chain.reference('Prime', 1)
-                }
-            ],
-            suggestedParams: {
-                ...params,
-                fee: 3000,
-                flatFee: true
-            }
-        });
+        // composer.addMethodCall({
+        //     sender: sender,
+        //     signer: signer,
+        //     appID: Number(setup['main_app']['id']),
+        //     method: chain.method(contract, 'create_prime'),
+        //     methodArgs: [
+        //         1,
+        //         chain.bytes('TG1-001'),
+        //         chain.bytes('Test Gen1 #001'),
+        //         chain.bytes('template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}')
+        //     ],
+        //     boxes: [
+        //         {
+        //             appIndex: Number(setup['main_app']['id']),
+        //             name: chain.reference('Saver', 0)
+        //         },
+        //         {
+        //             appIndex: Number(setup['main_app']['id']),
+        //             name: chain.reference('Prime', 1)
+        //         }
+        //     ],
+        //     suggestedParams: {
+        //         ...params,
+        //         fee: 3000,
+        //         flatFee: true
+        //     }
+        // });
 
-        composer.addMethodCall({
-            sender: sender,
-            signer: signer,
-            appID: Number(setup['main_app']['id']),
-            method: chain.method(contract, 'create_prime'),
-            methodArgs: [
-                1,
-                chain.bytes('TG1-003'),
-                chain.bytes('Test Gen1 #003'),
-                chain.bytes('template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}')
-            ],
-            boxes: [
-                {
-                    appIndex: Number(setup['main_app']['id']),
-                    name: chain.reference('Saver', 0)
-                },
-                {
-                    appIndex: Number(setup['main_app']['id']),
-                    name: chain.reference('Prime', 3)
-                }
-            ],
-            suggestedParams: {
-                ...params,
-                fee: 3000,
-                flatFee: true
-            }
-        });
+        // composer.addMethodCall({
+        //     sender: sender,
+        //     signer: signer,
+        //     appID: Number(setup['main_app']['id']),
+        //     method: chain.method(contract, 'create_prime'),
+        //     methodArgs: [
+        //         1,
+        //         chain.bytes('TG1-002'),
+        //         chain.bytes('Test Gen1 #002'),
+        //         chain.bytes('template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}')
+        //     ],
+        //     boxes: [
+        //         {
+        //             appIndex: Number(setup['main_app']['id']),
+        //             name: chain.reference('Saver', 0)
+        //         },
+        //         {
+        //             appIndex: Number(setup['main_app']['id']),
+        //             name: chain.reference('Prime', 2)
+        //         }
+        //     ],
+        //     suggestedParams: {
+        //         ...params,
+        //         fee: 3000,
+        //         flatFee: true
+        //     }
+        // });
 
         await chain.execute(composer);
 

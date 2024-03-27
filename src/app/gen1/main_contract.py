@@ -47,7 +47,7 @@ prime_config = PrimeConfig()
 
 @Subroutine(TealType.none)
 def prime_sync(index):
-    saver_key = Concat(Bytes("Saver-"), Itob(Mod(index, Int(50))))
+    saver_key = Concat(Bytes("Saver-"), Itob(Div(index, main_config.sync_primes_count)))
     saver_app_id = App.box_get(saver_key)
     prime_key = Concat(Bytes("Prime-"), Itob(index))
     return Seq(

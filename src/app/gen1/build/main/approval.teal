@@ -328,7 +328,7 @@ proto 1 0
 bytec_2 // "Saver-"
 frame_dig -1
 pushint 50 // 50
-%
+/
 itob
 concat
 box_get

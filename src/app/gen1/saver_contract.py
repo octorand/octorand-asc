@@ -44,7 +44,7 @@ def init(
     return Seq(
         func.assert_is_creator(),
         Assert(starting_prime_id.get() < ending_prime_id.get()),
-        Assert(id_range == saver_config.max_primes_count),
+        Assert(id_range == saver_config.sync_primes_count),
         Assert(main_app_id.get() > Int(0)),
         global_config.starting_prime_id.set(starting_prime_id.get()),
         global_config.ending_prime_id.set(ending_prime_id.get()),
