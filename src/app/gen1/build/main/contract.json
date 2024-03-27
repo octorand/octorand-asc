@@ -21,8 +21,8 @@
                     "name": "index"
                 },
                 {
-                    "type": "uint64",
-                    "name": "saver_app_id"
+                    "type": "application",
+                    "name": "saver_app"
                 }
             ],
             "returns": {

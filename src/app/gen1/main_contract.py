@@ -16,6 +16,11 @@ class GlobalConfig:
         self.platform_asset_reserve = func.GlobalBytes(self.key, 32, 32)
 
 
+class BoxSaver:
+    def __init__(self):
+        self.value = func.BoxUint(0, 8)
+
+
 class PrimeConfig:
     def __init__(self):
         self.id = func.BoxUint(0, 4)
@@ -42,19 +47,17 @@ class PrimeConfig:
 app = Application("GenOneMain")
 
 global_config = GlobalConfig()
+box_saver = BoxSaver()
 prime_config = PrimeConfig()
 
 
 @Subroutine(TealType.none)
 def prime_sync(index):
     saver_key = Concat(Bytes("Saver-"), Itob(Div(index, main_config.sync_primes_count)))
-    saver_app_id = App.box_get(saver_key)
     prime_key = Concat(Bytes("Prime-"), Itob(index))
     return Seq(
-        saver_app_id,
-        Assert(saver_app_id.hasValue()),
         InnerTxnBuilder.ExecuteMethodCall(
-            app_id=Btoi(saver_app_id.value()),
+            app_id=box_saver.value.get(saver_key),
             method_signature=saver_contract.sync.method_signature(),
             args=[
                 index,
@@ -95,12 +98,11 @@ def init(asset: abi.Asset):
 
 
 @app.external(name="init_saver")
-def init_saver(index: abi.Uint64, saver_app_id: abi.Uint64):
+def init_saver(index: abi.Uint64, saver_app: abi.Application):
     saver_key = Concat(Bytes("Saver-"), Itob(index.get()))
     return Seq(
         func.assert_is_creator(),
-        Assert(saver_app_id.get() > Int(0)),
-        App.box_put(saver_key, Itob(saver_app_id.get())),
+        box_saver.value.set(saver_key, saver_app.application_id()),
     )
 
 
