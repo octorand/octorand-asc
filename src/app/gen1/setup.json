@@ -5,9 +5,21 @@
         "address": "OEC3JMQNZCHTFQTCXGZLAZJDBLTCIRRJ3TRAAJZQWUZTWF744ZYMUAKDXA",
         "creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM",
         "config": {
+            "name": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
             "primes_count": 0,
             "platform_asset_id": 628698984,
             "platform_asset_reserve": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM"
+        }
+    },
+    "saver_app": {
+        "id": 628699435,
+        "address": "XCYAROTO6TMTF4KDTBRIHYNZHFSNFMOOJJEEW4MMDYLWUJVAWVVTPZZFUY",
+        "creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM",
+        "config": {
+            "name": "___Gen_One_Saver",
+            "starting_prime_id": 0,
+            "ending_prime_id": 50,
+            "main_app_id": 628698999
         }
     }
 }

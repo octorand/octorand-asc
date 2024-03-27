@@ -11,12 +11,12 @@ exports.execute = async function () {
 
         let config = {
             name: null,
-            primes_count: null,
-            platform_asset_id: null,
-            platform_asset_reserve: null,
+            starting_prime_id: null,
+            ending_prime_id: null,
+            main_app_id: null,
         };
 
-        let info = await connection.indexerClient.lookupApplications(setup['main_app']['id']).do();
+        let info = await connection.indexerClient.lookupApplications(setup['saver_app']['id']).do();
         let global = info['application']['params']['global-state'];
 
         for (let i = 0; i < global.length; i++) {
@@ -27,18 +27,18 @@ exports.execute = async function () {
             switch (key) {
                 case 'Config':
                     config.name = value.subarray(0, 16).toString('utf-8').trim();
-                    config.primes_count = connection.baseClient.decodeUint64(value.subarray(16, 24));
-                    config.platform_asset_id = connection.baseClient.decodeUint64(value.subarray(24, 32));
-                    config.platform_asset_reserve = connection.baseClient.encodeAddress(value.subarray(32, 64));
+                    config.starting_prime_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
+                    config.ending_prime_id = connection.baseClient.decodeUint64(value.subarray(24, 32));
+                    config.main_app_id = connection.baseClient.decodeUint64(value.subarray(32, 40));
                     break;
             }
         }
 
-        setup['main_app']['config'] = config;
+        setup['saver_app']['config'] = config;
 
         fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
 
-        console.log('read main app config');
+        console.log('read saver app config');
 
     } catch (error) {
         console.log(error);

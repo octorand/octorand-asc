@@ -85,6 +85,7 @@ def init(asset: abi.Asset):
         reserve,
         Assert(reserve.hasValue()),
         global_config.platform_asset_reserve.set(reserve.value()),
+        global_config.name.set(main_config.name),
     )
 
 
