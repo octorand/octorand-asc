@@ -55,7 +55,7 @@ def init(
 
 @app.external(name="sync")
 def sync(index: abi.Uint64, value: abi.StaticBytes[Literal[100]]):
-    prime_key = Concat(Bytes("Prime-"), index.encode())
+    prime_key = Concat(Bytes("Prime-"), Itob(index.get()))
     return Seq(
         Assert(Global.caller_app_id() == global_config.main_app_id.get()),
         Assert(index.get() >= global_config.starting_prime_id.get()),
