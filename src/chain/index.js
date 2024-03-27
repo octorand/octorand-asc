@@ -68,3 +68,7 @@ exports.method = function (contract, name) {
 exports.bytes = function (value) {
     return new Uint8Array(Buffer.from(value));
 }
+
+exports.reference = function (prefix, value) {
+    return new Uint8Array([...exports.bytes(prefix + '-'), ...baseClient.encodeUint64(value)])
+}

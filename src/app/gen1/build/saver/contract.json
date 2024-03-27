@@ -25,11 +25,11 @@
             "name": "sync",
             "args": [
                 {
-                    "type": "uint32",
-                    "name": "prime_id"
+                    "type": "uint64",
+                    "name": "index"
                 },
                 {
-                    "type": "byte[120]",
+                    "type": "byte[100]",
                     "name": "value"
                 }
             ],

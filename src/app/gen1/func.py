@@ -1,6 +1,6 @@
 from pyteal import *
 
-max_storage_length = Int(120)
+max_storage_length = Int(100)
 
 
 class GlobalUint:

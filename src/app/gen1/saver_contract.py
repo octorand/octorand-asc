@@ -54,11 +54,11 @@ def init(
 
 
 @app.external(name="sync")
-def sync(prime_id: abi.Uint32, value: abi.StaticBytes[Literal[120]]):
-    prime_key = Concat(Bytes("P-"), Itob(prime_id.get()))
+def sync(index: abi.Uint64, value: abi.StaticBytes[Literal[100]]):
+    prime_key = Concat(Bytes("Prime-"), index.encode())
     return Seq(
         Assert(Global.caller_app_id() == global_config.main_app_id.get()),
-        Assert(prime_id.get() >= global_config.starting_prime_id.get()),
-        Assert(prime_id.get() < global_config.ending_prime_id.get()),
+        Assert(index.get() >= global_config.starting_prime_id.get()),
+        Assert(index.get() < global_config.ending_prime_id.get()),
         App.globalPut(prime_key, value.get()),
     )

@@ -52,8 +52,8 @@ global_config = GlobalConfig()
 #             app_id=prime_state.application_id.get(id),
 #             method_signature=prime.sync.method_signature(),
 #             args=[
-#                 func.get_box_bytes(Itob(id), Int(0), Int(120)),
-#                 func.get_box_bytes(Itob(id), Int(120), Int(120)),
+#                 func.get_box_bytes(Itob(id), Int(0), Int(100)),
+#                 func.get_box_bytes(Itob(id), Int(100), Int(100)),
 #             ],
 #         ),
 #     )
@@ -86,6 +86,16 @@ def init(asset: abi.Asset):
         Assert(reserve.hasValue()),
         global_config.platform_asset_reserve.set(reserve.value()),
         global_config.name.set(main_config.name),
+    )
+
+
+@app.external(name="init_saver")
+def init_saver(index: abi.Uint64, saver_app_id: abi.Uint64):
+    saver_key = Concat(Bytes("Saver-"), index.encode())
+    return Seq(
+        func.assert_is_creator(),
+        Assert(saver_app_id.get() > Int(0)),
+        App.box_put(saver_key, saver_app_id.encode()),
     )
 
 

@@ -4,28 +4,20 @@ bytecblock 0x436f6e666967
 txn NumAppArgs
 intc_0 // 0
 ==
-bnz main_l6
+bnz main_l8
 txna ApplicationArgs 0
 pushbytes 0x008962b5 // "init(asset)void"
 ==
-bnz main_l5
+bnz main_l7
+txna ApplicationArgs 0
+pushbytes 0x244e1aed // "init_saver(uint64,uint64)void"
+==
+bnz main_l6
 txna ApplicationArgs 0
 pushbytes 0xd224a7cb // "update_prime_asset(asset,account)void"
 ==
-bnz main_l4
+bnz main_l5
 err
-main_l4:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub updateprimeassetcaster_16
-intc_1 // 1
-return
 main_l5:
 txn OnCompletion
 intc_0 // NoOp
@@ -35,20 +27,44 @@ intc_0 // 0
 !=
 &&
 assert
-callsub initcaster_15
+callsub updateprimeassetcaster_18
 intc_1 // 1
 return
 main_l6:
 txn OnCompletion
 intc_0 // NoOp
 ==
-bnz main_l10
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub initsavercaster_17
+intc_1 // 1
+return
+main_l7:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub initcaster_16
+intc_1 // 1
+return
+main_l8:
+txn OnCompletion
+intc_0 // NoOp
+==
+bnz main_l12
 txn OnCompletion
 intc_3 // UpdateApplication
 ==
-bnz main_l9
+bnz main_l11
 err
-main_l9:
+main_l11:
 txn ApplicationID
 intc_0 // 0
 !=
@@ -56,7 +72,7 @@ assert
 callsub update_12
 intc_1 // 1
 return
-main_l10:
+main_l12:
 txn ApplicationID
 intc_0 // 0
 ==
@@ -118,7 +134,7 @@ retsub
 initglobal_2:
 proto 1 0
 frame_dig -1
-pushint 120 // 120
+pushint 100 // 100
 bzero
 app_global_put
 retsub
@@ -160,7 +176,7 @@ frame_dig -3
 frame_dig -2
 frame_dig -1
 +
-pushint 120 // 120
+pushint 100 // 100
 frame_dig -2
 frame_dig -1
 +
@@ -278,8 +294,25 @@ pushint 16 // 16
 callsub setglobalbytes_5
 retsub
 
+// init_saver
+initsaver_14:
+proto 2 0
+callsub assertiscreator_8
+frame_dig -1
+intc_0 // 0
+>
+assert
+pushbytes 0x53617665722d // "Saver-"
+frame_dig -2
+itob
+concat
+frame_dig -1
+itob
+box_put
+retsub
+
 // update_prime_asset
-updateprimeasset_14:
+updateprimeasset_15:
 proto 2 0
 callsub assertiscreator_8
 frame_dig -2
@@ -293,7 +326,7 @@ callsub updateasset_0
 retsub
 
 // init_caster
-initcaster_15:
+initcaster_16:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
@@ -304,8 +337,24 @@ frame_dig 0
 callsub init_13
 retsub
 
+// init_saver_caster
+initsavercaster_17:
+proto 0 0
+intc_0 // 0
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub initsaver_14
+retsub
+
 // update_prime_asset_caster
-updateprimeassetcaster_16:
+updateprimeassetcaster_18:
 proto 0 0
 intc_0 // 0
 dup
@@ -319,5 +368,5 @@ getbyte
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub updateprimeasset_14
+callsub updateprimeasset_15
 retsub

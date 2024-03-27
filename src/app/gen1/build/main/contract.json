@@ -14,6 +14,22 @@
             }
         },
         {
+            "name": "init_saver",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "index"
+                },
+                {
+                    "type": "uint64",
+                    "name": "saver_app_id"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
             "name": "update_prime_asset",
             "args": [
                 {
