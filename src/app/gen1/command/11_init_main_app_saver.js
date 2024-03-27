@@ -28,7 +28,7 @@ exports.execute = async function () {
             boxes: [
                 {
                     appIndex: Number(setup['main_app']['id']),
-                    name: chain.reference('S', 0)
+                    name: chain.reference('Saver', 0)
                 }
             ],
             suggestedParams: {
