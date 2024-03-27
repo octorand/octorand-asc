@@ -14,7 +14,7 @@
                 },
                 {
                     "type": "uint64",
-                    "name": "master_app_id"
+                    "name": "main_app_id"
                 }
             ],
             "returns": {

@@ -271,6 +271,11 @@ bytec_0 // "Config"
 pushint 32 // 32
 pushint 32 // 32
 callsub setglobalbytes_5
+pushbytes 0x5f5f5f5f47656e5f4f6e655f4d61696e // "____Gen_One_Main"
+bytec_0 // "Config"
+intc_0 // 0
+pushint 16 // 16
+callsub setglobalbytes_5
 retsub
 
 // update_prime_asset
