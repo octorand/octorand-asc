@@ -41,10 +41,18 @@ exports.execute = async function () {
         let response = await chain.execute(composer);
         let applicationId = response.information['application-index'];
 
-        setup['main_application_id'] = applicationId;
+        let info = await connection.indexerClient.lookupApplications(applicationId).do();
+        let data = {
+            id: applicationId,
+            address: connection.baseClient.getApplicationAddress(Number(info['application']['id'])),
+            creator: info['application']['params']['creator']
+        };
+
+        setup['saver_app'] = data;
+
         fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
 
-        console.log('created main application');
+        console.log('created main app');
 
     } catch (error) {
         console.log(error);

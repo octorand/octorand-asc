@@ -1,185 +1,72 @@
 #pragma version 8
-intcblock 0 1 8 120
-bytecblock 0x
+intcblock 0 1 8 4
+bytecblock 0x436f6e666967
 txn NumAppArgs
 intc_0 // 0
 ==
-bnz main_l10
+bnz main_l6
 txna ApplicationArgs 0
 pushbytes 0x008962b5 // "init(asset)void"
 ==
-bnz main_l9
-txna ApplicationArgs 0
-pushbytes 0x9d81b6cf // "create_prime(uint64,byte[],byte[],byte[])void"
-==
-bnz main_l8
+bnz main_l5
 txna ApplicationArgs 0
 pushbytes 0xd224a7cb // "update_prime_asset(asset,account)void"
 ==
-bnz main_l7
-txna ApplicationArgs 0
-pushbytes 0xbeb6d16d // "update_prime_application(application)void"
-==
-bnz main_l6
+bnz main_l4
 err
+main_l4:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub updateprimeassetcaster_16
+intc_1 // 1
+return
+main_l5:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub initcaster_15
+intc_1 // 1
+return
 main_l6:
 txn OnCompletion
 intc_0 // NoOp
 ==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub updateprimeapplicationcaster_31
-intc_1 // 1
-return
-main_l7:
+bnz main_l10
 txn OnCompletion
-intc_0 // NoOp
+intc_3 // UpdateApplication
 ==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub updateprimeassetcaster_30
-intc_1 // 1
-return
-main_l8:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub createprimecaster_29
-intc_1 // 1
-return
+bnz main_l9
+err
 main_l9:
-txn OnCompletion
-intc_0 // NoOp
-==
 txn ApplicationID
 intc_0 // 0
 !=
-&&
 assert
-callsub initcaster_28
+callsub update_12
 intc_1 // 1
 return
 main_l10:
-txn OnCompletion
-intc_0 // NoOp
-==
-bnz main_l14
-txn OnCompletion
-pushint 4 // UpdateApplication
-==
-bnz main_l13
-err
-main_l13:
-txn ApplicationID
-intc_0 // 0
-!=
-assert
-callsub update_23
-intc_1 // 1
-return
-main_l14:
 txn ApplicationID
 intc_0 // 0
 ==
 assert
-callsub create_22
+callsub create_11
 intc_1 // 1
 return
-
-// create_application
-createapplication_0:
-proto 8 0
-itxn_begin
-pushint 6 // appl
-itxn_field TypeEnum
-intc_0 // NoOp
-itxn_field OnCompletion
-frame_dig -8
-itxn_field ApprovalProgram
-frame_dig -7
-itxn_field ClearStateProgram
-frame_dig -6
-itxn_field GlobalNumUint
-frame_dig -5
-itxn_field GlobalNumByteSlice
-frame_dig -4
-itxn_field LocalNumUint
-frame_dig -3
-itxn_field LocalNumByteSlice
-frame_dig -2
-itxn_field ExtraProgramPages
-frame_dig -1
-itxn_field Fee
-itxn_submit
-retsub
-
-// update_application
-updateapplication_1:
-proto 4 0
-itxn_begin
-pushint 6 // appl
-itxn_field TypeEnum
-pushint 4 // UpdateApplication
-itxn_field OnCompletion
-frame_dig -4
-itxn_field ApplicationID
-frame_dig -3
-itxn_field ApprovalProgram
-frame_dig -2
-itxn_field ClearStateProgram
-frame_dig -1
-itxn_field Fee
-itxn_submit
-retsub
-
-// create_asset
-createasset_2:
-proto 8 0
-frame_dig -8
-global ZeroAddress
-!=
-assert
-frame_dig -7
-global ZeroAddress
-!=
-assert
-itxn_begin
-pushint 3 // acfg
-itxn_field TypeEnum
-frame_dig -8
-itxn_field ConfigAssetManager
-frame_dig -7
-itxn_field ConfigAssetReserve
-frame_dig -6
-itxn_field ConfigAssetTotal
-frame_dig -5
-itxn_field ConfigAssetDecimals
-frame_dig -4
-itxn_field ConfigAssetUnitName
-frame_dig -3
-itxn_field ConfigAssetName
-frame_dig -2
-itxn_field ConfigAssetURL
-intc_0 // 0
-itxn_field ConfigAssetDefaultFrozen
-frame_dig -1
-itxn_field Fee
-itxn_submit
-retsub
 
 // update_asset
-updateasset_3:
+updateasset_0:
 proto 5 0
 frame_dig -4
 global ZeroAddress
@@ -206,14 +93,14 @@ itxn_submit
 retsub
 
 // optin_into_asset
-optinintoasset_4:
+optinintoasset_1:
 proto 2 0
 frame_dig -2
 intc_0 // 0
 >
-bz optinintoasset_4_l2
+bz optinintoasset_1_l2
 itxn_begin
-pushint 4 // axfer
+intc_3 // axfer
 itxn_field TypeEnum
 frame_dig -2
 itxn_field XferAsset
@@ -224,31 +111,20 @@ itxn_field AssetReceiver
 frame_dig -1
 itxn_field Fee
 itxn_submit
-optinintoasset_4_l2:
+optinintoasset_1_l2:
 retsub
 
 // init_global
-initglobal_5:
+initglobal_2:
 proto 1 0
 frame_dig -1
-itob
-intc_3 // 120
+pushint 120 // 120
 bzero
 app_global_put
 retsub
 
-// init_box
-initbox_6:
-proto 2 0
-frame_dig -2
-itob
-frame_dig -1
-bzero
-box_put
-retsub
-
 // get_global_bytes
-getglobalbytes_7:
+getglobalbytes_3:
 proto 3 1
 frame_dig -3
 app_global_get
@@ -257,100 +133,57 @@ frame_dig -1
 extract3
 retsub
 
-// get_box_bytes
-getboxbytes_8:
-proto 3 1
-frame_dig -3
-frame_dig -2
-frame_dig -1
-box_extract
-retsub
-
 // get_global_uint
-getglobaluint_9:
+getglobaluint_4:
 proto 3 1
 frame_dig -3
 frame_dig -2
 frame_dig -1
-callsub getglobalbytes_7
-btoi
-retsub
-
-// get_box_uint
-getboxuint_10:
-proto 3 1
-frame_dig -3
-frame_dig -2
-frame_dig -1
-callsub getboxbytes_8
+callsub getglobalbytes_3
 btoi
 retsub
 
 // set_global_bytes
-setglobalbytes_11:
+setglobalbytes_5:
 proto 4 0
 frame_dig -4
 frame_dig -1
-callsub assertisvalidlength_18
+callsub assertisvalidlength_10
 frame_dig -3
 frame_dig -3
 intc_0 // 0
 frame_dig -2
-callsub getglobalbytes_7
+callsub getglobalbytes_3
 frame_dig -4
 concat
 frame_dig -3
 frame_dig -2
 frame_dig -1
 +
-intc_3 // 120
+pushint 120 // 120
 frame_dig -2
 frame_dig -1
 +
 -
-callsub getglobalbytes_7
+callsub getglobalbytes_3
 concat
 app_global_put
 retsub
 
-// set_box_bytes
-setboxbytes_12:
-proto 4 0
-frame_dig -4
-frame_dig -1
-callsub assertisvalidlength_18
-frame_dig -3
-frame_dig -2
-frame_dig -4
-box_replace
-retsub
-
 // set_global_uint
-setglobaluint_13:
+setglobaluint_6:
 proto 4 0
 frame_dig -4
 frame_dig -1
-callsub extractuint_15
+callsub extractuint_7
 frame_dig -3
 frame_dig -2
 frame_dig -1
-callsub setglobalbytes_11
-retsub
-
-// set_box_uint
-setboxuint_14:
-proto 4 0
-frame_dig -4
-frame_dig -1
-callsub extractuint_15
-frame_dig -3
-frame_dig -2
-frame_dig -1
-callsub setboxbytes_12
+callsub setglobalbytes_5
 retsub
 
 // extract_uint
-extractuint_15:
+extractuint_7:
 proto 2 1
 frame_dig -2
 itob
@@ -362,7 +195,7 @@ extract3
 retsub
 
 // assert_is_creator
-assertiscreator_16:
+assertiscreator_8:
 proto 0 0
 txn Sender
 global CreatorAddress
@@ -371,7 +204,7 @@ assert
 retsub
 
 // assert_is_zero
-assertiszero_17:
+assertiszero_9:
 proto 1 0
 frame_dig -1
 intc_0 // 0
@@ -380,7 +213,7 @@ assert
 retsub
 
 // assert_is_valid_length
-assertisvalidlength_18:
+assertisvalidlength_10:
 proto 2 0
 frame_dig -2
 len
@@ -389,90 +222,43 @@ frame_dig -1
 assert
 retsub
 
-// prime_approval_program
-primeapprovalprogram_19:
-proto 0 1
-bytec_0 // ""
-dup
-pushbytes 0x08200400017802311b221240001d361a0080046330b5581240000100311922123118221310448800a8234331192212400013311981041240000100311822134488006e2343311822124488005823438a01008bff1624af67898a03018bfd648bfe8bff58898a04008bfc8bff88002b8bfd8bfd228bfe88ffe08bfc508bfd8bfe8bff08248bfe8bff080988ffcc5067898a0000310032091244898a02008bfe158bff1244898a00002388ffa32588ff9f898a000088ffd9898a020088ffd28bfe2316222488ff9e8bff2516222488ff95898a0000800049361a018c00361a028c018b008b0188ffd089 // 0x08200400017802311b221240001d361a0080046330b5581240000100311922123118221310448800a8234331192212400013311981041240000100311822134488006e2343311822124488005823438a01008bff1624af67898a03018bfd648bfe8bff58898a04008bfc8bff88002b8bfd8bfd228bfe88ffe08bfc508bfd8bfe8bff08248bfe8bff080988ffcc5067898a0000310032091244898a02008bfe158bff1244898a00002388ffa32588ff9f898a000088ffd9898a020088ffd28bfe2316222488ff9e8bff2516222488ff95898a0000800049361a018c00361a028c018b008b0188ffd089
-frame_bury 0
-retsub
-
-// prime_clear_program
-primeclearprogram_20:
-proto 0 1
-pushbytes 0x08810043 // 0x08810043
-retsub
-
-// prime_sync
-primesync_21:
-proto 1 0
-itxn_begin
-pushint 6 // appl
-itxn_field TypeEnum
-frame_dig -1
-itob
-intc_2 // 8
-intc_2 // 8
-callsub getboxuint_10
-itxn_field ApplicationID
-pushbytes 0x6330b558 // "sync(byte[120],byte[120])void"
-itxn_field ApplicationArgs
-frame_dig -1
-itob
-intc_0 // 0
-intc_3 // 120
-callsub getboxbytes_8
-itxn_field ApplicationArgs
-frame_dig -1
-itob
-intc_3 // 120
-intc_3 // 120
-callsub getboxbytes_8
-itxn_field ApplicationArgs
-itxn_submit
-retsub
-
 // create
-create_22:
+create_11:
 proto 0 0
-intc_1 // 1
-callsub initglobal_5
+bytec_0 // "Config"
+callsub initglobal_2
 retsub
 
 // update
-update_23:
+update_12:
 proto 0 0
-callsub assertiscreator_16
+callsub assertiscreator_8
 retsub
 
 // init
-init_24:
+init_13:
 proto 1 0
-callsub assertiscreator_16
-intc_1 // 1
-itob
-intc_0 // 0
+callsub assertiscreator_8
+bytec_0 // "Config"
+pushint 16 // 16
 intc_2 // 8
-callsub getglobaluint_9
-callsub assertiszero_17
-intc_1 // 1
-itob
+callsub getglobaluint_4
+callsub assertiszero_9
+bytec_0 // "Config"
+pushint 24 // 24
 intc_2 // 8
-intc_2 // 8
-callsub getglobaluint_9
-callsub assertiszero_17
+callsub getglobaluint_4
+callsub assertiszero_9
 frame_dig -1
 txnas Assets
 intc_0 // 0
-callsub optinintoasset_4
+callsub optinintoasset_1
 frame_dig -1
 txnas Assets
-intc_1 // 1
-itob
+bytec_0 // "Config"
+pushint 24 // 24
 intc_2 // 8
-intc_2 // 8
-callsub setglobaluint_13
+callsub setglobaluint_6
 frame_dig -1
 txnas Assets
 asset_params_get AssetReserve
@@ -481,90 +267,16 @@ store 0
 load 1
 assert
 load 0
-intc_1 // 1
-itob
-pushint 16 // 16
+bytec_0 // "Config"
 pushint 32 // 32
-callsub setglobalbytes_11
-retsub
-
-// create_prime
-createprime_25:
-proto 4 0
-frame_dig -4
-pushint 1000 // 1000
-<
-assert
-frame_dig -4
-intc_1 // 1
-itob
-intc_0 // 0
-intc_2 // 8
-callsub getglobaluint_9
-==
-assert
-frame_dig -4
-pushint 480 // 480
-callsub initbox_6
-frame_dig -4
-frame_dig -4
-itob
-intc_0 // 0
-intc_2 // 8
-callsub setboxuint_14
-global CurrentApplicationAddress
-global CurrentApplicationAddress
-intc_1 // 1
-intc_0 // 0
-frame_dig -3
-extract 2 0
-frame_dig -2
-extract 2 0
-frame_dig -1
-extract 2 0
-intc_0 // 0
-callsub createasset_2
-itxn CreatedAssetID
-frame_dig -4
-itob
-pushint 16 // 16
-intc_2 // 8
-callsub setboxuint_14
-callsub primeapprovalprogram_19
-callsub primeclearprogram_20
-intc_0 // 0
-pushint 2 // 2
-intc_0 // 0
-intc_0 // 0
-intc_0 // 0
-intc_0 // 0
-callsub createapplication_0
-itxn CreatedApplicationID
-frame_dig -4
-itob
-intc_2 // 8
-intc_2 // 8
-callsub setboxuint_14
-intc_1 // 1
-itob
-intc_0 // 0
-intc_2 // 8
-callsub getglobaluint_9
-intc_1 // 1
-+
-intc_1 // 1
-itob
-intc_0 // 0
-intc_2 // 8
-callsub setglobaluint_13
-frame_dig -4
-callsub primesync_21
+pushint 32 // 32
+callsub setglobalbytes_5
 retsub
 
 // update_prime_asset
-updateprimeasset_26:
+updateprimeasset_14:
 proto 2 0
-callsub assertiscreator_16
+callsub assertiscreator_8
 frame_dig -2
 txnas Assets
 global CurrentApplicationAddress
@@ -572,23 +284,11 @@ frame_dig -1
 txnas Accounts
 txn Note
 intc_0 // 0
-callsub updateasset_3
-retsub
-
-// update_prime_application
-updateprimeapplication_27:
-proto 1 0
-callsub assertiscreator_16
-frame_dig -1
-txnas Applications
-callsub primeapprovalprogram_19
-callsub primeclearprogram_20
-intc_0 // 0
-callsub updateapplication_1
+callsub updateasset_0
 retsub
 
 // init_caster
-initcaster_28:
+initcaster_15:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
@@ -596,33 +296,11 @@ intc_0 // 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub init_24
-retsub
-
-// create_prime_caster
-createprimecaster_29:
-proto 0 0
-intc_0 // 0
-bytec_0 // ""
-dupn 2
-txna ApplicationArgs 1
-btoi
-frame_bury 0
-txna ApplicationArgs 2
-frame_bury 1
-txna ApplicationArgs 3
-frame_bury 2
-txna ApplicationArgs 4
-frame_bury 3
-frame_dig 0
-frame_dig 1
-frame_dig 2
-frame_dig 3
-callsub createprime_25
+callsub init_13
 retsub
 
 // update_prime_asset_caster
-updateprimeassetcaster_30:
+updateprimeassetcaster_16:
 proto 0 0
 intc_0 // 0
 dup
@@ -636,17 +314,5 @@ getbyte
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub updateprimeasset_26
-retsub
-
-// update_prime_application_caster
-updateprimeapplicationcaster_31:
-proto 0 0
-intc_0 // 0
-txna ApplicationArgs 1
-intc_0 // 0
-getbyte
-frame_bury 0
-frame_dig 0
-callsub updateprimeapplication_27
+callsub updateprimeasset_14
 retsub

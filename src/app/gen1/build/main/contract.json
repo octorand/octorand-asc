@@ -14,30 +14,6 @@
             }
         },
         {
-            "name": "create_prime",
-            "args": [
-                {
-                    "type": "uint64",
-                    "name": "id"
-                },
-                {
-                    "type": "byte[]",
-                    "name": "unit_name"
-                },
-                {
-                    "type": "byte[]",
-                    "name": "asset_name"
-                },
-                {
-                    "type": "byte[]",
-                    "name": "asset_url"
-                }
-            ],
-            "returns": {
-                "type": "void"
-            }
-        },
-        {
             "name": "update_prime_asset",
             "args": [
                 {
@@ -47,18 +23,6 @@
                 {
                     "type": "account",
                     "name": "reserve"
-                }
-            ],
-            "returns": {
-                "type": "void"
-            }
-        },
-        {
-            "name": "update_prime_application",
-            "args": [
-                {
-                    "type": "application",
-                    "name": "application"
                 }
             ],
             "returns": {
