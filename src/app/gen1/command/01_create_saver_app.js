@@ -27,7 +27,7 @@ exports.execute = async function () {
                 numLocalInts: 0,
                 numLocalByteSlices: 0,
                 numGlobalInts: 0,
-                numGlobalByteSlices: 1,
+                numGlobalByteSlices: 51,
                 extraPages: 0,
                 appArgs: [],
                 suggestedParams: {
@@ -41,7 +41,14 @@ exports.execute = async function () {
         let response = await chain.execute(composer);
         let applicationId = response.information['application-index'];
 
-        setup['saver_app'] = applicationId;
+        let info = await connection.indexerClient.lookupApplications(applicationId).do();
+        let data = {
+            id: applicationId,
+            address: connection.baseClient.getApplicationAddress(Number(info['application']['id'])),
+            creator: info['application']['params']['creator']
+        };
+
+        setup['saver_app'] = data;
 
         fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
 
