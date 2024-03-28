@@ -13,4 +13,8 @@ require('dotenv').config();
     // await require('./command/10_read_saver_app_config').execute();
     // await require('./command/11_init_main_app_saver').execute();
     // await require('./command/12_create_primes').execute();
+    // await require('./command/06_read_main_app_config').execute();
+    // await require('./command/13_read_main_app_primes').execute();
+    // await require('./command/10_read_saver_app_config').execute();
+    await require('./command/14_read_saver_app_primes').execute();
 })();

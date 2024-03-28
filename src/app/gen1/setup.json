@@ -6,10 +6,24 @@
         "creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM",
         "config": {
             "name": "____Gen_One_Main",
-            "primes_count": 0,
+            "primes_count": 3,
             "platform_asset_id": 628829745,
             "platform_asset_reserve": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM"
-        }
+        },
+        "primes": [
+            {
+                "id": 0,
+                "asset_id": 628830190
+            },
+            {
+                "id": 1,
+                "asset_id": 628832213
+            },
+            {
+                "id": 2,
+                "asset_id": 628832216
+            }
+        ]
     },
     "saver_app": {
         "id": 628829799,
@@ -20,6 +34,7 @@
             "starting_prime_id": 0,
             "ending_prime_id": 50,
             "main_app_id": 628829748
-        }
+        },
+        "primes": []
     }
 }
