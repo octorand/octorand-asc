@@ -53,15 +53,17 @@ box_prime = BoxPrime()
 
 
 @Subroutine(TealType.none)
-def prime_sync(index):
-    saver_key = Concat(Bytes("Saver-"), Itob(Div(index, main_config.sync_primes_count)))
-    prime_key = Concat(Bytes("Prime-"), Itob(index))
+def prime_sync(index: abi.Uint64, saver_app: abi.Application):
+    saver_index = Div(index.get(), main_config.sync_primes_count)
+    saver_key = Concat(Bytes("Saver-"), Itob(saver_index))
+    prime_key = Concat(Bytes("Prime-"), Itob(index.get()))
     return Seq(
+        Assert(box_saver.value.get(saver_key) == saver_app.application_id()),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=box_saver.value.get(saver_key),
             method_signature=saver_contract.sync.method_signature(),
             args=[
-                index,
+                index.encode(),
                 box_prime.sync.get(prime_key),
             ],
         ),
@@ -114,6 +116,7 @@ def create_prime(
     unit_name: abi.DynamicBytes,
     asset_name: abi.DynamicBytes,
     asset_url: abi.DynamicBytes,
+    saver_app: abi.Application,
 ):
     prime_key = Concat(Bytes("Prime-"), Itob(id.get()))
     return Seq(
@@ -133,7 +136,7 @@ def create_prime(
         ),
         box_prime.asset_id.set(prime_key, InnerTxn.created_asset_id()),
         global_config.primes_count.increment(Int(1)),
-        prime_sync(id.get()),
+        prime_sync(id, saver_app),
     )
 
 

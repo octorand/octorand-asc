@@ -47,6 +47,10 @@
                 {
                     "type": "byte[]",
                     "name": "asset_url"
+                },
+                {
+                    "type": "application",
+                    "name": "saver_app"
                 }
             ],
             "returns": {

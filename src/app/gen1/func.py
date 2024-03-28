@@ -9,17 +9,17 @@ class GlobalUint:
         self.start = Int(start)
         self.length = Int(length)
 
-    def get(self) -> abi.Uint:
+    def get(self):
         return get_global_uint(self.index, self.start, self.length)
 
-    def set(self, value: abi.Uint):
+    def set(self, value):
         return set_global_uint(value, self.index, self.start, self.length)
 
-    def increment(self, value: abi.Uint):
+    def increment(self, value):
         result = Add(self.get(), value)
         return set_global_uint(result, self.index, self.start, self.length)
 
-    def decrement(self, value: abi.Uint):
+    def decrement(self, value):
         result = Minus(self.get(), value)
         return set_global_uint(result, self.index, self.start, self.length)
 
@@ -30,10 +30,10 @@ class GlobalBytes:
         self.start = Int(start)
         self.length = Int(length)
 
-    def get(self) -> abi.StaticBytes:
+    def get(self):
         return get_global_bytes(self.index, self.start, self.length)
 
-    def set(self, value: abi.StaticBytes):
+    def set(self, value):
         return set_global_bytes(value, self.index, self.start, self.length)
 
 
@@ -42,17 +42,17 @@ class BoxUint:
         self.start = Int(start)
         self.length = Int(length)
 
-    def get(self, index) -> abi.Uint:
+    def get(self, index):
         return get_box_uint(index, self.start, self.length)
 
-    def set(self, index, value: abi.Uint):
+    def set(self, index, value):
         return set_box_uint(value, index, self.start, self.length)
 
-    def increment(self, index, value: abi.Uint):
+    def increment(self, index, value):
         result = Add(self.get(index), value)
         return set_box_uint(result, index, self.start, self.length)
 
-    def decrement(self, index, value: abi.Uint):
+    def decrement(self, index, value):
         result = Minus(self.get(index), value)
         return set_box_uint(result, index, self.start, self.length)
 
@@ -62,10 +62,10 @@ class BoxBytes:
         self.start = Int(start)
         self.length = Int(length)
 
-    def get(self, index) -> abi.StaticBytes:
+    def get(self, index):
         return get_box_bytes(index, self.start, self.length)
 
-    def set(self, index, value: abi.StaticBytes):
+    def set(self, index, value):
         return set_box_bytes(value, index, self.start, self.length)
 
 
@@ -320,6 +320,13 @@ def assert_is_creator():
 def assert_is_zero(value):
     return Seq(
         Assert(value == Int(0)),
+    )
+
+
+@Subroutine(TealType.none)
+def assert_is_positive(value):
+    return Seq(
+        Assert(value > Int(0)),
     )
 
 
