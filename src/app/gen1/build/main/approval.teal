@@ -1,39 +1,31 @@
 #pragma version 8
 intcblock 0 8 1 16
-bytecblock 0x436f6e666967 0x53617665722d 0x5072696d652d
+bytecblock 0x5072696d652d 0x436f6e666967 0x53617665722d 0x
 txn NumAppArgs
 intc_0 // 0
 ==
-bnz main_l10
+bnz main_l12
 txna ApplicationArgs 0
 pushbytes 0x008962b5 // "init(asset)void"
 ==
-bnz main_l9
+bnz main_l11
 txna ApplicationArgs 0
 pushbytes 0x01e52f94 // "init_saver(uint64,application)void"
 ==
-bnz main_l8
+bnz main_l10
 txna ApplicationArgs 0
 pushbytes 0x771b5898 // "create_prime(uint64,byte[],byte[],byte[],application)void"
 ==
-bnz main_l7
+bnz main_l9
+txna ApplicationArgs 0
+pushbytes 0x16a46799 // "update_prime(uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64,byte[8],byte[32],application)void"
+==
+bnz main_l8
 txna ApplicationArgs 0
 pushbytes 0xd224a7cb // "update_prime_asset(asset,account)void"
 ==
-bnz main_l6
+bnz main_l7
 err
-main_l6:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub updateprimeassetcaster_27
-intc_2 // 1
-return
 main_l7:
 txn OnCompletion
 intc_0 // NoOp
@@ -43,7 +35,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub createprimecaster_26
+callsub updateprimeassetcaster_29
 intc_2 // 1
 return
 main_l8:
@@ -55,7 +47,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub initsavercaster_25
+callsub updateprimecaster_28
 intc_2 // 1
 return
 main_l9:
@@ -67,20 +59,44 @@ intc_0 // 0
 !=
 &&
 assert
-callsub initcaster_24
+callsub createprimecaster_27
 intc_2 // 1
 return
 main_l10:
 txn OnCompletion
 intc_0 // NoOp
 ==
-bnz main_l14
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub initsavercaster_26
+intc_2 // 1
+return
+main_l11:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub initcaster_25
+intc_2 // 1
+return
+main_l12:
+txn OnCompletion
+intc_0 // NoOp
+==
+bnz main_l16
 txn OnCompletion
 pushint 4 // UpdateApplication
 ==
-bnz main_l13
+bnz main_l15
 err
-main_l13:
+main_l15:
 txn ApplicationID
 intc_0 // 0
 !=
@@ -88,7 +104,7 @@ assert
 callsub update_19
 intc_2 // 1
 return
-main_l14:
+main_l16:
 txn ApplicationID
 intc_0 // 0
 ==
@@ -344,7 +360,7 @@ retsub
 // prime_sync
 primesync_17:
 proto 2 0
-bytec_1 // "Saver-"
+bytec_2 // "Saver-"
 frame_dig -2
 pushint 50 // 50
 /
@@ -360,7 +376,7 @@ assert
 itxn_begin
 pushint 6 // appl
 itxn_field TypeEnum
-bytec_1 // "Saver-"
+bytec_2 // "Saver-"
 frame_dig -2
 pushint 50 // 50
 /
@@ -375,7 +391,7 @@ itxn_field ApplicationArgs
 frame_dig -2
 itob
 itxn_field ApplicationArgs
-bytec_2 // "Prime-"
+bytec_0 // "Prime-"
 frame_dig -2
 itob
 concat
@@ -389,7 +405,7 @@ retsub
 // create
 create_18:
 proto 0 0
-bytec_0 // "Config"
+bytec_1 // "Config"
 callsub initglobal_0
 retsub
 
@@ -403,12 +419,12 @@ retsub
 init_20:
 proto 1 0
 callsub assertiscreator_14
-bytec_0 // "Config"
+bytec_1 // "Config"
 intc_3 // 16
 intc_1 // 8
 callsub getglobaluint_4
 callsub assertiszero_15
-bytec_0 // "Config"
+bytec_1 // "Config"
 pushint 24 // 24
 intc_1 // 8
 callsub getglobaluint_4
@@ -419,7 +435,7 @@ intc_0 // 0
 callsub optinintoasset_13
 frame_dig -1
 txnas Assets
-bytec_0 // "Config"
+bytec_1 // "Config"
 pushint 24 // 24
 intc_1 // 8
 callsub setglobaluint_8
@@ -431,12 +447,12 @@ store 0
 load 1
 assert
 load 0
-bytec_0 // "Config"
+bytec_1 // "Config"
 pushint 32 // 32
 pushint 32 // 32
 callsub setglobalbytes_6
 pushbytes 0x5f5f5f5f47656e5f4f6e655f4d61696e // "____Gen_One_Main"
-bytec_0 // "Config"
+bytec_1 // "Config"
 intc_0 // 0
 intc_3 // 16
 callsub setglobalbytes_6
@@ -446,7 +462,7 @@ retsub
 initsaver_21:
 proto 2 0
 callsub assertiscreator_14
-bytec_1 // "Saver-"
+bytec_2 // "Saver-"
 frame_dig -2
 itob
 concat
@@ -454,7 +470,7 @@ intc_1 // 8
 callsub initbox_1
 frame_dig -1
 txnas Applications
-bytec_1 // "Saver-"
+bytec_2 // "Saver-"
 frame_dig -2
 itob
 concat
@@ -466,25 +482,26 @@ retsub
 // create_prime
 createprime_22:
 proto 5 0
+callsub assertiscreator_14
 frame_dig -5
 pushint 1000 // 1000
 <
 assert
 frame_dig -5
-bytec_0 // "Config"
+bytec_1 // "Config"
 intc_3 // 16
 intc_1 // 8
 callsub getglobaluint_4
 ==
 assert
-bytec_2 // "Prime-"
+bytec_0 // "Prime-"
 frame_dig -5
 itob
 concat
 pushint 500 // 500
 callsub initbox_1
 frame_dig -5
-bytec_2 // "Prime-"
+bytec_0 // "Prime-"
 frame_dig -5
 itob
 concat
@@ -504,20 +521,20 @@ extract 2 0
 intc_0 // 0
 callsub createasset_11
 itxn CreatedAssetID
-bytec_2 // "Prime-"
+bytec_0 // "Prime-"
 frame_dig -5
 itob
 concat
 pushint 4 // 4
 intc_1 // 8
 callsub setboxuint_9
-bytec_0 // "Config"
+bytec_1 // "Config"
 intc_3 // 16
 intc_1 // 8
 callsub getglobaluint_4
 intc_2 // 1
 +
-bytec_0 // "Config"
+bytec_1 // "Config"
 intc_3 // 16
 intc_1 // 8
 callsub setglobaluint_8
@@ -526,8 +543,89 @@ frame_dig -1
 callsub primesync_17
 retsub
 
+// update_prime
+updateprime_23:
+proto 11 0
+callsub assertiscreator_14
+frame_dig -10
+bytec_0 // "Prime-"
+frame_dig -11
+itob
+concat
+pushint 12 // 12
+intc_1 // 8
+callsub setboxuint_9
+frame_dig -9
+bytec_0 // "Prime-"
+frame_dig -11
+itob
+concat
+pushint 20 // 20
+intc_1 // 8
+callsub setboxuint_9
+frame_dig -8
+bytec_0 // "Prime-"
+frame_dig -11
+itob
+concat
+pushint 28 // 28
+intc_1 // 8
+callsub setboxuint_9
+frame_dig -7
+bytec_0 // "Prime-"
+frame_dig -11
+itob
+concat
+pushint 36 // 36
+intc_1 // 8
+callsub setboxuint_9
+frame_dig -6
+bytec_0 // "Prime-"
+frame_dig -11
+itob
+concat
+pushint 44 // 44
+intc_1 // 8
+callsub setboxuint_9
+frame_dig -5
+bytec_0 // "Prime-"
+frame_dig -11
+itob
+concat
+pushint 76 // 76
+pushint 2 // 2
+callsub setboxuint_9
+frame_dig -4
+bytec_0 // "Prime-"
+frame_dig -11
+itob
+concat
+pushint 78 // 78
+pushint 2 // 2
+callsub setboxuint_9
+frame_dig -3
+bytec_0 // "Prime-"
+frame_dig -11
+itob
+concat
+pushint 80 // 80
+intc_1 // 8
+callsub setboxbytes_7
+frame_dig -2
+bytec_0 // "Prime-"
+frame_dig -11
+itob
+concat
+pushint 120 // 120
+pushint 32 // 32
+callsub setboxbytes_7
+frame_dig -11
+frame_dig -1
+callsub primesync_17
+retsub
+
 // update_prime_asset
-updateprimeasset_23:
+updateprimeasset_24:
 proto 2 0
 callsub assertiscreator_14
 frame_dig -2
@@ -541,7 +639,7 @@ callsub updateasset_12
 retsub
 
 // init_caster
-initcaster_24:
+initcaster_25:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
@@ -553,7 +651,7 @@ callsub init_20
 retsub
 
 // init_saver_caster
-initsavercaster_25:
+initsavercaster_26:
 proto 0 0
 intc_0 // 0
 dup
@@ -570,10 +668,10 @@ callsub initsaver_21
 retsub
 
 // create_prime_caster
-createprimecaster_26:
+createprimecaster_27:
 proto 0 0
 intc_0 // 0
-pushbytes 0x // ""
+bytec_3 // ""
 dupn 2
 intc_0 // 0
 txna ApplicationArgs 1
@@ -597,8 +695,62 @@ frame_dig 4
 callsub createprime_22
 retsub
 
+// update_prime_caster
+updateprimecaster_28:
+proto 0 0
+intc_0 // 0
+dupn 7
+bytec_3 // ""
+dup
+intc_0 // 0
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+btoi
+frame_bury 3
+txna ApplicationArgs 5
+btoi
+frame_bury 4
+txna ApplicationArgs 6
+btoi
+frame_bury 5
+txna ApplicationArgs 7
+btoi
+frame_bury 6
+txna ApplicationArgs 8
+btoi
+frame_bury 7
+txna ApplicationArgs 9
+frame_bury 8
+txna ApplicationArgs 10
+frame_bury 9
+txna ApplicationArgs 11
+intc_0 // 0
+getbyte
+frame_bury 10
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+frame_dig 4
+frame_dig 5
+frame_dig 6
+frame_dig 7
+frame_dig 8
+frame_dig 9
+frame_dig 10
+callsub updateprime_23
+retsub
+
 // update_prime_asset_caster
-updateprimeassetcaster_27:
+updateprimeassetcaster_29:
 proto 0 0
 intc_0 // 0
 dup
@@ -612,5 +764,5 @@ getbyte
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub updateprimeasset_23
+callsub updateprimeasset_24
 retsub

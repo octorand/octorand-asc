@@ -58,6 +58,58 @@
             }
         },
         {
+            "name": "update_prime",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "id"
+                },
+                {
+                    "type": "uint64",
+                    "name": "legacy_id"
+                },
+                {
+                    "type": "uint64",
+                    "name": "score"
+                },
+                {
+                    "type": "uint64",
+                    "name": "health"
+                },
+                {
+                    "type": "uint64",
+                    "name": "wealth"
+                },
+                {
+                    "type": "uint64",
+                    "name": "strength"
+                },
+                {
+                    "type": "uint64",
+                    "name": "theme"
+                },
+                {
+                    "type": "uint64",
+                    "name": "skin"
+                },
+                {
+                    "type": "byte[8]",
+                    "name": "name"
+                },
+                {
+                    "type": "byte[32]",
+                    "name": "description"
+                },
+                {
+                    "type": "application",
+                    "name": "saver_app"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
             "name": "update_prime_asset",
             "args": [
                 {

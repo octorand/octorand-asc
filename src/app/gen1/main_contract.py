@@ -120,6 +120,7 @@ def create_prime(
 ):
     prime_key = Concat(Bytes("Prime-"), Itob(id.get()))
     return Seq(
+        func.assert_is_creator(),
         Assert(id.get() < main_config.max_primes_count),
         Assert(id.get() == global_config.primes_count.get()),
         func.init_box(prime_key, Int(500)),
@@ -136,6 +137,36 @@ def create_prime(
         ),
         box_prime.asset_id.set(prime_key, InnerTxn.created_asset_id()),
         global_config.primes_count.increment(Int(1)),
+        prime_sync(id, saver_app),
+    )
+
+
+@app.external(name="update_prime")
+def update_prime(
+    id: abi.Uint64,
+    legacy_id: abi.Uint64,
+    score: abi.Uint64,
+    health: abi.Uint64,
+    wealth: abi.Uint64,
+    strength: abi.Uint64,
+    theme: abi.Uint64,
+    skin: abi.Uint64,
+    name: abi.StaticBytes[Literal[8]],
+    description: abi.StaticBytes[Literal[32]],
+    saver_app: abi.Application,
+):
+    prime_key = Concat(Bytes("Prime-"), Itob(id.get()))
+    return Seq(
+        func.assert_is_creator(),
+        box_prime.legacy_id.set(prime_key, legacy_id.get()),
+        box_prime.score.set(prime_key, score.get()),
+        box_prime.health.set(prime_key, health.get()),
+        box_prime.wealth.set(prime_key, wealth.get()),
+        box_prime.strength.set(prime_key, strength.get()),
+        box_prime.theme.set(prime_key, theme.get()),
+        box_prime.skin.set(prime_key, skin.get()),
+        box_prime.name.set(prime_key, name.get()),
+        box_prime.description.set(prime_key, description.get()),
         prime_sync(id, saver_app),
     )
 

@@ -65,8 +65,12 @@ exports.method = function (contract, name) {
     return contract.methods.find((m) => { return m.name == name });
 }
 
-exports.bytes = function (value) {
-    return new Uint8Array(Buffer.from(value));
+exports.bytes = function (value, length) {
+    if (length) {
+        return new Uint8Array(Buffer.from((value + ' '.repeat(length)).substring(0, length)));
+    } else {
+        return new Uint8Array(Buffer.from(value));
+    }
 }
 
 exports.reference = function (prefix, value) {
