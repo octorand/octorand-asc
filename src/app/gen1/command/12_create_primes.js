@@ -30,34 +30,34 @@ exports.execute = async function () {
             })
         });
 
-        // composer.addMethodCall({
-        //     sender: sender,
-        //     signer: signer,
-        //     appID: Number(setup['main_app']['id']),
-        //     method: chain.method(contract, 'create_prime'),
-        //     methodArgs: [
-        //         0,
-        //         chain.bytes('TG1-000'),
-        //         chain.bytes('Test Gen1 #000'),
-        //         chain.bytes('template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}'),
-        //         Number(setup['saver_app']['id'])
-        //     ],
-        //     boxes: [
-        //         {
-        //             appIndex: Number(setup['main_app']['id']),
-        //             name: chain.reference('Saver', 0)
-        //         },
-        //         {
-        //             appIndex: Number(setup['main_app']['id']),
-        //             name: chain.reference('Prime', 0)
-        //         }
-        //     ],
-        //     suggestedParams: {
-        //         ...params,
-        //         fee: 3000,
-        //         flatFee: true
-        //     }
-        // });
+        composer.addMethodCall({
+            sender: sender,
+            signer: signer,
+            appID: Number(setup['main_app']['id']),
+            method: chain.method(contract, 'create_prime'),
+            methodArgs: [
+                0,
+                chain.bytes('TG1-000'),
+                chain.bytes('Test Gen1 #000'),
+                chain.bytes('template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}'),
+                Number(setup['saver_app']['id'])
+            ],
+            boxes: [
+                {
+                    appIndex: Number(setup['main_app']['id']),
+                    name: chain.reference('Saver', 0)
+                },
+                {
+                    appIndex: Number(setup['main_app']['id']),
+                    name: chain.reference('Prime', 0)
+                }
+            ],
+            suggestedParams: {
+                ...params,
+                fee: 3000,
+                flatFee: true
+            }
+        });
 
         composer.addMethodCall({
             sender: sender,

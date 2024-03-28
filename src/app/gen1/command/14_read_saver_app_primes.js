@@ -16,12 +16,11 @@ exports.execute = async function () {
 
         for (let i = 0; i < global.length; i++) {
             let params = global[i];
-            let key = Buffer.from(params.key, 'base64').toString('utf-8');
+            let key = Buffer.from(params.key, 'base64').toString('hex');
             let value = Buffer.from(params.value['bytes'], 'base64');
 
             for (let i = setup['saver_app']['config']['starting_prime_id']; i < setup['saver_app']['config']['ending_prime_id']; i++) {
-                let index = chain.reference('Prime', i);
-                console.log(key, index);
+                let index = Buffer.from(chain.reference('Prime', i)).toString('hex');
 
                 if (key == index) {
                     let prime = {
@@ -33,6 +32,8 @@ exports.execute = async function () {
                     prime.asset_id = connection.baseClient.decodeUint64(value.subarray(4, 12));
 
                     primes.push(prime);
+
+                    break;
                 }
             }
         }
