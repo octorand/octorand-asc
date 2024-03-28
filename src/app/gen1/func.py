@@ -70,6 +70,88 @@ class BoxBytes:
 
 
 @Subroutine(TealType.none)
+def init_global(index):
+    return Seq(
+        App.globalPut(index, BytesZero(max_storage_length)),
+    )
+
+
+@Subroutine(TealType.none)
+def init_box(index, length):
+    return Seq(
+        App.box_put(index, BytesZero(length)),
+    )
+
+
+@Subroutine(TealType.bytes)
+def get_global_bytes(index, start, length):
+    return Seq(
+        Extract(App.globalGet(index), start, length),
+    )
+
+
+@Subroutine(TealType.bytes)
+def get_box_bytes(index, start, length):
+    return Seq(
+        App.box_extract(index, start, length),
+    )
+
+
+@Subroutine(TealType.uint64)
+def get_global_uint(index, start, length):
+    return Seq(
+        Btoi(get_global_bytes(index, start, length)),
+    )
+
+
+@Subroutine(TealType.uint64)
+def get_box_uint(index, start, length):
+    return Seq(
+        Btoi(get_box_bytes(index, start, length)),
+    )
+
+
+@Subroutine(TealType.none)
+def set_global_bytes(value, index, start, length):
+    end = Add(start, length)
+    param_1 = get_global_bytes(index, Int(0), start)
+    param_2 = get_global_bytes(index, end, Minus(max_storage_length, end))
+    return Seq(
+        assert_is_valid_length(value, length),
+        App.globalPut(index, Concat(param_1, value, param_2)),
+    )
+
+
+@Subroutine(TealType.none)
+def set_box_bytes(value, index, start, length):
+    return Seq(
+        assert_is_valid_length(value, length),
+        App.box_replace(index, start, value),
+    )
+
+
+@Subroutine(TealType.none)
+def set_global_uint(value, index, start, length):
+    return Seq(
+        set_global_bytes(extract_uint(value, length), index, start, length),
+    )
+
+
+@Subroutine(TealType.none)
+def set_box_uint(value, index, start, length):
+    return Seq(
+        set_box_bytes(extract_uint(value, length), index, start, length),
+    )
+
+
+@Subroutine(TealType.bytes)
+def extract_uint(value, length):
+    return Seq(
+        Extract(Itob(value), Minus(Int(8), length), length),
+    )
+
+
+@Subroutine(TealType.none)
 def create_application(
     approval, clear, global_uints, global_bytes, local_units, local_bytes, pages, fee
 ):
@@ -224,88 +306,6 @@ def execute_asset_transfer(asset_id, receiver, amount, fee):
                 TxnField.fee: fee,
             }
         )
-    )
-
-
-@Subroutine(TealType.none)
-def init_global(index):
-    return Seq(
-        App.globalPut(index, BytesZero(max_storage_length)),
-    )
-
-
-@Subroutine(TealType.none)
-def init_box(index, length):
-    return Seq(
-        App.box_put(index, BytesZero(length)),
-    )
-
-
-@Subroutine(TealType.bytes)
-def get_global_bytes(index, start, length):
-    return Seq(
-        Extract(App.globalGet(index), start, length),
-    )
-
-
-@Subroutine(TealType.bytes)
-def get_box_bytes(index, start, length):
-    return Seq(
-        App.box_extract(index, start, length),
-    )
-
-
-@Subroutine(TealType.uint64)
-def get_global_uint(index, start, length):
-    return Seq(
-        Btoi(get_global_bytes(index, start, length)),
-    )
-
-
-@Subroutine(TealType.uint64)
-def get_box_uint(index, start, length):
-    return Seq(
-        Btoi(get_box_bytes(index, start, length)),
-    )
-
-
-@Subroutine(TealType.none)
-def set_global_bytes(value, index, start, length):
-    end = Add(start, length)
-    param_1 = get_global_bytes(index, Int(0), start)
-    param_2 = get_global_bytes(index, end, Minus(max_storage_length, end))
-    return Seq(
-        assert_is_valid_length(value, length),
-        App.globalPut(index, Concat(param_1, value, param_2)),
-    )
-
-
-@Subroutine(TealType.none)
-def set_box_bytes(value, index, start, length):
-    return Seq(
-        assert_is_valid_length(value, length),
-        App.box_replace(index, start, value),
-    )
-
-
-@Subroutine(TealType.none)
-def set_global_uint(value, index, start, length):
-    return Seq(
-        set_global_bytes(extract_uint(value, length), index, start, length),
-    )
-
-
-@Subroutine(TealType.none)
-def set_box_uint(value, index, start, length):
-    return Seq(
-        set_box_bytes(extract_uint(value, length), index, start, length),
-    )
-
-
-@Subroutine(TealType.bytes)
-def extract_uint(value, length):
-    return Seq(
-        Extract(Itob(value), Minus(Int(8), length), length),
     )
 
 
