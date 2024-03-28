@@ -42,6 +42,7 @@ class BoxPrime:
         self.renames = func.BoxUint(160, 8)
         self.sales = func.BoxUint(168, 8)
         self.mints = func.BoxUint(176, 8)
+        self.sync = func.BoxBytes(0, 100)
 
 
 app = Application("GenOneMain")
@@ -61,7 +62,7 @@ def prime_sync(index):
             method_signature=saver_contract.sync.method_signature(),
             args=[
                 index,
-                App.box_extract(prime_key, Int(0), Int(100)),
+                box_prime.sync.get(prime_key),
             ],
         ),
     )

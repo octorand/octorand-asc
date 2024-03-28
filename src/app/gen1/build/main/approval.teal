@@ -367,7 +367,7 @@ itob
 concat
 intc_0 // 0
 pushint 100 // 100
-box_extract
+callsub getboxbytes_6
 itxn_field ApplicationArgs
 itxn_submit
 retsub
