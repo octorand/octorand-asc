@@ -53,17 +53,17 @@ box_prime = BoxPrime()
 
 
 @Subroutine(TealType.none)
-def prime_sync(index: abi.Uint64, saver_app: abi.Application):
-    saver_index = Div(index.get(), main_config.sync_primes_count)
+def prime_sync(id: abi.Uint64, saver_app: abi.Application):
+    saver_index = Div(id.get(), main_config.sync_primes_count)
     saver_key = Concat(Bytes("Saver-"), Itob(saver_index))
-    prime_key = Concat(Bytes("Prime-"), Itob(index.get()))
+    prime_key = Concat(Bytes("Prime-"), Itob(id.get()))
     return Seq(
         Assert(box_saver.value.get(saver_key) == saver_app.application_id()),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=box_saver.value.get(saver_key),
             method_signature=saver_contract.sync.method_signature(),
             args=[
-                index.encode(),
+                id.encode(),
                 box_prime.sync.get(prime_key),
             ],
         ),

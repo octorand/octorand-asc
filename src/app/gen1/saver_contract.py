@@ -15,15 +15,15 @@ class GlobalConfig:
         self.main_app_id = func.GlobalUint(self.key, 32, 8)
 
 
-class BoxPrime:
-    def __init__(self):
-        self.value = func.BoxBytes(0, 100)
+class GlobalPrime:
+    def __init__(self, key):
+        self.key = key
+        self.value = func.GlobalBytes(self.key, 0, 100)
 
 
 app = Application("GenOneSaver")
 
 global_config = GlobalConfig()
-box_prime = BoxPrime()
 
 
 @app.create(bare=True)
@@ -62,9 +62,10 @@ def init(
 @app.external(name="sync")
 def sync(index: abi.Uint64, value: abi.StaticBytes[Literal[100]]):
     prime_key = Concat(Bytes("Prime-"), Itob(index.get()))
+    global_prime = GlobalPrime(prime_key)
     return Seq(
         Assert(Global.caller_app_id() == global_config.main_app_id.get()),
         Assert(index.get() >= global_config.starting_prime_id.get()),
         Assert(index.get() < global_config.ending_prime_id.get()),
-        box_prime.value.set(prime_key, value.get()),
+        global_prime.value.set(value.get()),
     )
