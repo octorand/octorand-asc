@@ -1,25 +1,25 @@
 {
-    "platform_asset_id": 628823953,
+    "platform_asset_id": 628829745,
     "main_app": {
-        "id": 628823963,
-        "address": "7FF7CCWZ5XRCPZ2YGBQV5AKXD3CFKVRASFOFBY6GL3TFDRTH25FKF347WM",
+        "id": 628829748,
+        "address": "CNNXPCNXQDESTJJONQURFQZLIR6REVPO4MHCXKDGUNTLJNALT3JZ7MPBIA",
         "creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM",
         "config": {
             "name": "____Gen_One_Main",
             "primes_count": 0,
-            "platform_asset_id": 628823953,
+            "platform_asset_id": 628829745,
             "platform_asset_reserve": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM"
         }
     },
     "saver_app": {
-        "id": 628823981,
-        "address": "ACVTALUWJQO2XH4LUL75QCP56MQNYQZEHAIJZ3YDI4VSDTA65CT62LAVNM",
+        "id": 628829799,
+        "address": "V2GIXMCFTBB7NXJHFIUPTE3A73674CKBYXF5S6ARA4PKXOIS63CE7QZKQQ",
         "creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM",
         "config": {
             "name": "___Gen_One_Saver",
             "starting_prime_id": 0,
             "ending_prime_id": 50,
-            "main_app_id": 628823963
+            "main_app_id": 628829748
         }
     }
 }

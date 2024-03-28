@@ -1,6 +1,6 @@
 #pragma version 8
-intcblock 0 8 1 16
-bytecblock 0x436f6e666967
+intcblock 0 8 1 100
+bytecblock 0x436f6e666967 0x5072696d652d
 txn NumAppArgs
 intc_0 // 0
 ==
@@ -69,7 +69,7 @@ return
 initglobal_0:
 proto 1 0
 frame_dig -1
-pushint 100 // 100
+intc_3 // 100
 bzero
 app_global_put
 retsub
@@ -111,7 +111,7 @@ frame_dig -3
 frame_dig -2
 frame_dig -1
 +
-pushint 100 // 100
+intc_3 // 100
 frame_dig -2
 frame_dig -1
 +
@@ -197,7 +197,7 @@ intc_0 // 0
 assert
 frame_dig -3
 bytec_0 // "Config"
-intc_3 // 16
+pushint 16 // 16
 intc_1 // 8
 callsub setglobaluint_4
 frame_dig -2
@@ -213,7 +213,7 @@ callsub setglobaluint_4
 pushbytes 0x5f5f5f47656e5f4f6e655f5361766572 // "___Gen_One_Saver"
 bytec_0 // "Config"
 intc_0 // 0
-intc_3 // 16
+pushint 16 // 16
 callsub setglobalbytes_3
 retsub
 
@@ -229,7 +229,7 @@ callsub getglobaluint_2
 assert
 frame_dig -2
 bytec_0 // "Config"
-intc_3 // 16
+pushint 16 // 16
 intc_1 // 8
 callsub getglobaluint_2
 >=
@@ -241,6 +241,19 @@ intc_1 // 8
 callsub getglobaluint_2
 <
 assert
+bytec_1 // "Prime-"
+frame_dig -2
+itob
+concat
+callsub initglobal_0
+frame_dig -1
+bytec_1 // "Prime-"
+frame_dig -2
+itob
+concat
+intc_0 // 0
+intc_3 // 100
+callsub setglobalbytes_3
 retsub
 
 // init_caster

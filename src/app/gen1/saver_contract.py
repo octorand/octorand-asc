@@ -67,5 +67,6 @@ def sync(index: abi.Uint64, value: abi.StaticBytes[Literal[100]]):
         Assert(Global.caller_app_id() == global_config.main_app_id.get()),
         Assert(index.get() >= global_config.starting_prime_id.get()),
         Assert(index.get() < global_config.ending_prime_id.get()),
-        global_prime.value.set(value.get()),
+        func.init_global(prime_key),
+        global_prime.value.set(value.encode()),
     )
