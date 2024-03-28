@@ -27,7 +27,7 @@ exports.execute = async function () {
             };
 
             let primeInfo = await connection.indexerClient.lookupApplicationBoxByIDandName(setup['main_app']['id'], chain.reference('Prime', i)).do();
-            let value = primeInfo.value;
+            let value = Buffer.from(primeInfo.value, 'base64');
 
             prime.id = connection.baseClient.decodeUint64(value.subarray(0, 4));
             prime.asset_id = connection.baseClient.decodeUint64(value.subarray(4, 12));

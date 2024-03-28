@@ -1,19 +1,19 @@
 {
-    "platform_asset_id": 628833710,
+    "platform_asset_id": 628863136,
     "main_app": {
-        "id": 628833745,
-        "address": "SIHMBLDJKOGXOMIYBK3HLAL62ZD4PIYJYFA25OE732F7TQP7VEWGC4XQYU",
+        "id": 628863178,
+        "address": "4MVXQG56AIHHYTIQZBWBWR7Q6ANJEJAZOALUSTDOAZRHGAC6X75BZI22MA",
         "creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM",
         "config": {
             "name": "____Gen_One_Main",
             "primes_count": 3,
-            "platform_asset_id": 628833710,
+            "platform_asset_id": 628863136,
             "platform_asset_reserve": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM"
         },
         "primes": [
             {
                 "id": 0,
-                "asset_id": 628833784,
+                "asset_id": 628863265,
                 "legacy_id": 1000000,
                 "score": 100,
                 "health": 200,
@@ -21,63 +21,63 @@
                 "strength": 400,
                 "theme": 10,
                 "skin": 1,
-                "name": "65,66,67,68,69,70,71,72",
-                "description": "66,101,115,116,32,111,110,101,32,101,118,101,114,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32"
+                "name": "ABCDEFGH",
+                "description": "Prime #000"
             },
             {
                 "id": 1,
-                "asset_id": 628833787,
-                "legacy_id": 0,
-                "score": 0,
-                "health": 0,
-                "wealth": 0,
-                "strength": 0,
-                "theme": 0,
-                "skin": 0,
-                "name": "0,0,0,0,0,0,0,0",
-                "description": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
+                "asset_id": 628863268,
+                "legacy_id": 2000000,
+                "score": 200,
+                "health": 300,
+                "wealth": 400,
+                "strength": 500,
+                "theme": 20,
+                "skin": 2,
+                "name": "IJKLMNOP",
+                "description": "Prime #001"
             },
             {
                 "id": 2,
-                "asset_id": 628833790,
-                "legacy_id": 0,
-                "score": 0,
-                "health": 0,
-                "wealth": 0,
-                "strength": 0,
-                "theme": 0,
-                "skin": 0,
-                "name": "0,0,0,0,0,0,0,0",
-                "description": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
+                "asset_id": 628863271,
+                "legacy_id": 3000000,
+                "score": 400,
+                "health": 500,
+                "wealth": 600,
+                "strength": 700,
+                "theme": 30,
+                "skin": 3,
+                "name": "QRSTUVWX",
+                "description": "Prime #002"
             }
         ]
     },
     "saver_app": {
-        "id": 628833764,
-        "address": "IYVIW3ES4SZG3LHWZPFC7S6FQS73ABCUQB7XIYLNCRGHEZUVJHFG2LEKGY",
+        "id": 628863205,
+        "address": "MU4P62TUTTZOAGOKOUSED6VA5S42UDS5HHDEQBAKIY4TBJF7MOMIMZJ5BA",
         "creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM",
         "config": {
             "name": "___Gen_One_Saver",
             "starting_prime_id": 0,
             "ending_prime_id": 50,
-            "main_app_id": 628833745
+            "main_app_id": 628863178
         },
         "primes": [
             {
                 "id": 2,
-                "asset_id": 628833790,
-                "legacy_id": 0,
-                "score": 0,
-                "health": 0,
-                "wealth": 0,
-                "strength": 0,
-                "theme": 0,
-                "skin": 0,
-                "name": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
+                "asset_id": 628863271,
+                "legacy_id": 3000000,
+                "score": 400,
+                "health": 500,
+                "wealth": 600,
+                "strength": 700,
+                "theme": 30,
+                "skin": 3,
+                "name": "QRSTUVWX"
             },
             {
                 "id": 0,
-                "asset_id": 628833784,
+                "asset_id": 628863265,
                 "legacy_id": 1000000,
                 "score": 100,
                 "health": 200,
@@ -89,15 +89,15 @@
             },
             {
                 "id": 1,
-                "asset_id": 628833787,
-                "legacy_id": 0,
-                "score": 0,
-                "health": 0,
-                "wealth": 0,
-                "strength": 0,
-                "theme": 0,
-                "skin": 0,
-                "name": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
+                "asset_id": 628863268,
+                "legacy_id": 2000000,
+                "score": 200,
+                "health": 300,
+                "wealth": 400,
+                "strength": 500,
+                "theme": 20,
+                "skin": 2,
+                "name": "IJKLMNOP"
             }
         ]
     }
