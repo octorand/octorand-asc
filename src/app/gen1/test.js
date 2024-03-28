@@ -18,7 +18,7 @@ require('dotenv').config();
     // await require('./command/10_read_saver_app_config').execute();
     // await require('./command/14_read_saver_app_primes').execute();
     // await require('./command/15_update_prime_asset').execute();
-    await require('./command/16_update_prime').execute();
+    // await require('./command/16_update_prime').execute();
     await require('./command/13_read_main_app_primes').execute();
     await require('./command/14_read_saver_app_primes').execute();
 })();

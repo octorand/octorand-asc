@@ -13,15 +13,42 @@
         "primes": [
             {
                 "id": 0,
-                "asset_id": 628833784
+                "asset_id": 628833784,
+                "legacy_id": 1000000,
+                "score": 100,
+                "health": 200,
+                "wealth": 300,
+                "strength": 400,
+                "theme": 10,
+                "skin": 1,
+                "name": "65,66,67,68,69,70,71,72",
+                "description": "66,101,115,116,32,111,110,101,32,101,118,101,114,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32"
             },
             {
                 "id": 1,
-                "asset_id": 628833787
+                "asset_id": 628833787,
+                "legacy_id": 0,
+                "score": 0,
+                "health": 0,
+                "wealth": 0,
+                "strength": 0,
+                "theme": 0,
+                "skin": 0,
+                "name": "0,0,0,0,0,0,0,0",
+                "description": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
             },
             {
                 "id": 2,
-                "asset_id": 628833790
+                "asset_id": 628833790,
+                "legacy_id": 0,
+                "score": 0,
+                "health": 0,
+                "wealth": 0,
+                "strength": 0,
+                "theme": 0,
+                "skin": 0,
+                "name": "0,0,0,0,0,0,0,0",
+                "description": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
             }
         ]
     },
@@ -37,16 +64,40 @@
         },
         "primes": [
             {
-                "id": 1,
-                "asset_id": 628833787
-            },
-            {
                 "id": 2,
-                "asset_id": 628833790
+                "asset_id": 628833790,
+                "legacy_id": 0,
+                "score": 0,
+                "health": 0,
+                "wealth": 0,
+                "strength": 0,
+                "theme": 0,
+                "skin": 0,
+                "name": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
             },
             {
                 "id": 0,
-                "asset_id": 628833784
+                "asset_id": 628833784,
+                "legacy_id": 1000000,
+                "score": 100,
+                "health": 200,
+                "wealth": 300,
+                "strength": 400,
+                "theme": 10,
+                "skin": 1,
+                "name": "ABCDEFGH"
+            },
+            {
+                "id": 1,
+                "asset_id": 628833787,
+                "legacy_id": 0,
+                "score": 0,
+                "health": 0,
+                "wealth": 0,
+                "strength": 0,
+                "theme": 0,
+                "skin": 0,
+                "name": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
             }
         ]
     }

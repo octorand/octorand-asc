@@ -25,11 +25,27 @@ exports.execute = async function () {
                 if (key == index) {
                     let prime = {
                         id: null,
-                        asset_id: null
+                        asset_id: null,
+                        legacy_id: null,
+                        score: null,
+                        health: null,
+                        wealth: null,
+                        strength: null,
+                        theme: null,
+                        skin: null,
+                        name: null
                     };
 
                     prime.id = connection.baseClient.decodeUint64(value.subarray(0, 4));
                     prime.asset_id = connection.baseClient.decodeUint64(value.subarray(4, 12));
+                    prime.legacy_id = connection.baseClient.decodeUint64(value.subarray(12, 20));
+                    prime.score = connection.baseClient.decodeUint64(value.subarray(20, 28));
+                    prime.health = connection.baseClient.decodeUint64(value.subarray(28, 36));
+                    prime.wealth = connection.baseClient.decodeUint64(value.subarray(36, 44));
+                    prime.strength = connection.baseClient.decodeUint64(value.subarray(44, 52));
+                    prime.theme = connection.baseClient.decodeUint64(value.subarray(76, 78));
+                    prime.skin = connection.baseClient.decodeUint64(value.subarray(78, 80));
+                    prime.name = value.subarray(80, 88).toString('utf-8').trim();
 
                     primes.push(prime);
 
