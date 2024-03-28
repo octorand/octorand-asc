@@ -9,28 +9,19 @@ class GlobalUint:
         self.start = Int(start)
         self.length = Int(length)
 
-    def get(self):
-        return get_global_uint(
-            self.index,
-            self.start,
-            self.length,
-        )
+    def get(self) -> abi.Uint:
+        return get_global_uint(self.index, self.start, self.length)
 
-    def set(self, value):
-        return set_global_uint(
-            value,
-            self.index,
-            self.start,
-            self.length,
-        )
+    def set(self, value: abi.Uint):
+        return set_global_uint(value, self.index, self.start, self.length)
 
-    def increment(self, value):
-        return set_global_uint(
-            Add(self.get(), value),
-            self.index,
-            self.start,
-            self.length,
-        )
+    def increment(self, value: abi.Uint):
+        result = Add(self.get(), value)
+        return set_global_uint(result, self.index, self.start, self.length)
+
+    def decrement(self, value: abi.Uint):
+        result = Minus(self.get(), value)
+        return set_global_uint(result, self.index, self.start, self.length)
 
 
 class GlobalBytes:
@@ -39,77 +30,11 @@ class GlobalBytes:
         self.start = Int(start)
         self.length = Int(length)
 
-    def get(self):
-        return get_global_bytes(
-            self.index,
-            self.start,
-            self.length,
-        )
+    def get(self) -> abi.StaticBytes:
+        return get_global_bytes(self.index, self.start, self.length)
 
-    def set(self, value):
-        return set_global_bytes(
-            value,
-            self.index,
-            self.start,
-            self.length,
-        )
-
-
-class LocalUint:
-    def __init__(self, index, start, length):
-        self.index = index
-        self.start = Int(start)
-        self.length = Int(length)
-
-    def get(self, account):
-        return get_local_uint(
-            account,
-            self.index,
-            self.start,
-            self.length,
-        )
-
-    def set(self, account, value):
-        return set_local_uint(
-            account,
-            value,
-            self.index,
-            self.start,
-            self.length,
-        )
-
-    def increment(self, account, value):
-        return set_local_uint(
-            account,
-            Add(self.get(account), value),
-            self.index,
-            self.start,
-            self.length,
-        )
-
-
-class LocalBytes:
-    def __init__(self, index, start, length):
-        self.index = index
-        self.start = Int(start)
-        self.length = Int(length)
-
-    def get(self, account):
-        return get_local_bytes(
-            account,
-            self.index,
-            self.start,
-            self.length,
-        )
-
-    def set(self, account, value):
-        return set_local_bytes(
-            account,
-            value,
-            self.index,
-            self.start,
-            self.length,
-        )
+    def set(self, value: abi.StaticBytes):
+        return set_global_bytes(value, self.index, self.start, self.length)
 
 
 class BoxUint:
@@ -117,28 +42,19 @@ class BoxUint:
         self.start = Int(start)
         self.length = Int(length)
 
-    def get(self, index):
-        return get_box_uint(
-            index,
-            self.start,
-            self.length,
-        )
+    def get(self, index) -> abi.Uint:
+        return get_box_uint(index, self.start, self.length)
 
-    def set(self, index, value):
-        return set_box_uint(
-            value,
-            index,
-            self.start,
-            self.length,
-        )
+    def set(self, index, value: abi.Uint):
+        return set_box_uint(value, index, self.start, self.length)
 
-    def increment(self, index, value):
-        return set_box_uint(
-            Add(self.get(index), value),
-            index,
-            self.start,
-            self.length,
-        )
+    def increment(self, index, value: abi.Uint):
+        result = Add(self.get(index), value)
+        return set_box_uint(result, index, self.start, self.length)
+
+    def decrement(self, index, value: abi.Uint):
+        result = Minus(self.get(index), value)
+        return set_box_uint(result, index, self.start, self.length)
 
 
 class BoxBytes:
@@ -146,20 +62,11 @@ class BoxBytes:
         self.start = Int(start)
         self.length = Int(length)
 
-    def get(self, index):
-        return get_box_bytes(
-            index,
-            self.start,
-            self.length,
-        )
+    def get(self, index) -> abi.StaticBytes:
+        return get_box_bytes(index, self.start, self.length)
 
-    def set(self, index, value):
-        return set_box_bytes(
-            value,
-            index,
-            self.start,
-            self.length,
-        )
+    def set(self, index, value: abi.StaticBytes):
+        return set_box_bytes(value, index, self.start, self.length)
 
 
 @Subroutine(TealType.none)
@@ -328,13 +235,6 @@ def init_global(index):
 
 
 @Subroutine(TealType.none)
-def init_local(account, index):
-    return Seq(
-        App.localPut(account, index, BytesZero(max_storage_length)),
-    )
-
-
-@Subroutine(TealType.none)
 def init_box(index, length):
     return Seq(
         App.box_put(index, BytesZero(length)),
@@ -349,13 +249,6 @@ def get_global_bytes(index, start, length):
 
 
 @Subroutine(TealType.bytes)
-def get_local_bytes(account, index, start, length):
-    return Seq(
-        Extract(App.localGet(account, index), start, length),
-    )
-
-
-@Subroutine(TealType.bytes)
 def get_box_bytes(index, start, length):
     return Seq(
         App.box_extract(index, start, length),
@@ -366,13 +259,6 @@ def get_box_bytes(index, start, length):
 def get_global_uint(index, start, length):
     return Seq(
         Btoi(get_global_bytes(index, start, length)),
-    )
-
-
-@Subroutine(TealType.uint64)
-def get_local_uint(account, index, start, length):
-    return Seq(
-        Btoi(get_local_bytes(account, index, start, length)),
     )
 
 
@@ -395,17 +281,6 @@ def set_global_bytes(value, index, start, length):
 
 
 @Subroutine(TealType.none)
-def set_local_bytes(account, value, index, start, length):
-    end = Add(start, length)
-    param_1 = get_local_bytes(account, index, Int(0), start)
-    param_2 = get_local_bytes(account, index, end, Minus(max_storage_length, end))
-    return Seq(
-        assert_is_valid_length(value, length),
-        App.localPut(account, index, Concat(param_1, value, param_2)),
-    )
-
-
-@Subroutine(TealType.none)
 def set_box_bytes(value, index, start, length):
     return Seq(
         assert_is_valid_length(value, length),
@@ -417,13 +292,6 @@ def set_box_bytes(value, index, start, length):
 def set_global_uint(value, index, start, length):
     return Seq(
         set_global_bytes(extract_uint(value, length), index, start, length),
-    )
-
-
-@Subroutine(TealType.none)
-def set_local_uint(account, value, index, start, length):
-    return Seq(
-        set_local_bytes(account, extract_uint(value, length), index, start, length),
     )
 
 
