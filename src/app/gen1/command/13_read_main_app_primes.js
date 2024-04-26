@@ -14,32 +14,32 @@ exports.execute = async function () {
         for (let i = 0; i < setup['main_app']['config']['primes_count']; i++) {
             let prime = {
                 id: null,
+                parent_id: null,
                 asset_id: null,
                 legacy_id: null,
                 score: null,
-                health: null,
-                wealth: null,
-                strength: null,
+                royalties: null,
+                rewards: null,
+                price: null,
                 theme: null,
                 skin: null,
                 name: null,
-                description: null,
             };
 
             let primeInfo = await connection.indexerClient.lookupApplicationBoxByIDandName(setup['main_app']['id'], chain.reference('Prime', i)).do();
             let value = Buffer.from(primeInfo.value, 'base64');
 
             prime.id = connection.baseClient.decodeUint64(value.subarray(0, 4));
-            prime.asset_id = connection.baseClient.decodeUint64(value.subarray(4, 12));
-            prime.legacy_id = connection.baseClient.decodeUint64(value.subarray(12, 20));
-            prime.score = connection.baseClient.decodeUint64(value.subarray(20, 28));
-            prime.health = connection.baseClient.decodeUint64(value.subarray(28, 36));
-            prime.wealth = connection.baseClient.decodeUint64(value.subarray(36, 44));
-            prime.strength = connection.baseClient.decodeUint64(value.subarray(44, 52));
-            prime.theme = connection.baseClient.decodeUint64(value.subarray(76, 78));
-            prime.skin = connection.baseClient.decodeUint64(value.subarray(78, 80));
-            prime.name = value.subarray(80, 88).toString('utf-8').trim();
-            prime.description = value.subarray(120, 152).toString('utf-8').trim();
+            prime.parent_id = connection.baseClient.decodeUint64(value.subarray(4, 8));
+            prime.asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
+            prime.legacy_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
+            prime.score = connection.baseClient.decodeUint64(value.subarray(24, 32));
+            prime.royalties = connection.baseClient.decodeUint64(value.subarray(32, 40));
+            prime.rewards = connection.baseClient.decodeUint64(value.subarray(40, 48));
+            prime.price = connection.baseClient.decodeUint64(value.subarray(48, 56));
+            prime.theme = connection.baseClient.decodeUint64(value.subarray(56, 58));
+            prime.skin = connection.baseClient.decodeUint64(value.subarray(58, 60));
+            prime.name = value.subarray(60, 68).toString('utf-8').trim();
 
             primes.push(prime);
         }

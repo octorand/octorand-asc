@@ -525,7 +525,7 @@ bytec_0 // "Prime-"
 frame_dig -5
 itob
 concat
-pushint 4 // 4
+intc_1 // 8
 intc_1 // 8
 callsub setboxuint_9
 bytec_1 // "Config"
@@ -552,7 +552,7 @@ bytec_0 // "Prime-"
 frame_dig -11
 itob
 concat
-pushint 12 // 12
+intc_3 // 16
 intc_1 // 8
 callsub setboxuint_9
 frame_dig -9
@@ -560,7 +560,7 @@ bytec_0 // "Prime-"
 frame_dig -11
 itob
 concat
-pushint 20 // 20
+pushint 24 // 24
 intc_1 // 8
 callsub setboxuint_9
 frame_dig -8
@@ -568,7 +568,7 @@ bytec_0 // "Prime-"
 frame_dig -11
 itob
 concat
-pushint 28 // 28
+pushint 164 // 164
 intc_1 // 8
 callsub setboxuint_9
 frame_dig -7
@@ -576,7 +576,7 @@ bytec_0 // "Prime-"
 frame_dig -11
 itob
 concat
-pushint 36 // 36
+pushint 172 // 172
 intc_1 // 8
 callsub setboxuint_9
 frame_dig -6
@@ -584,7 +584,7 @@ bytec_0 // "Prime-"
 frame_dig -11
 itob
 concat
-pushint 44 // 44
+pushint 180 // 180
 intc_1 // 8
 callsub setboxuint_9
 frame_dig -5
@@ -592,7 +592,7 @@ bytec_0 // "Prime-"
 frame_dig -11
 itob
 concat
-pushint 76 // 76
+pushint 56 // 56
 pushint 2 // 2
 callsub setboxuint_9
 frame_dig -4
@@ -600,7 +600,7 @@ bytec_0 // "Prime-"
 frame_dig -11
 itob
 concat
-pushint 78 // 78
+pushint 58 // 58
 pushint 2 // 2
 callsub setboxuint_9
 frame_dig -3
@@ -608,7 +608,7 @@ bytec_0 // "Prime-"
 frame_dig -11
 itob
 concat
-pushint 80 // 80
+pushint 60 // 60
 intc_1 // 8
 callsub setboxbytes_7
 frame_dig -2
@@ -616,7 +616,7 @@ bytec_0 // "Prime-"
 frame_dig -11
 itob
 concat
-pushint 120 // 120
+pushint 132 // 132
 pushint 32 // 32
 callsub setboxbytes_7
 frame_dig -11
