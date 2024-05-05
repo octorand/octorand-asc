@@ -1,5 +1,5 @@
 import main_contract
-import saver_contract
+import prime_contract
 
 from algosdk import v2client
 
@@ -10,8 +10,8 @@ def run():
     main_app_spec = main_contract.app.build(client)
     main_app_spec.export("src/app/gen1/build/main")
 
-    saver_app_spec = saver_contract.app.build(client)
-    saver_app_spec.export("src/app/gen1/build/saver")
+    prime_app_spec = prime_contract.app.build(client)
+    prime_app_spec.export("src/app/gen1/build/prime")
 
 
 if __name__ == "__main__":

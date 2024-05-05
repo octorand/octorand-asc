@@ -1,80 +1,66 @@
 import func
 import main_config
-import saver_contract
+import prime_contract
 
 from pyteal import *
 from beaker import *
-from typing import *
 
 
-class GlobalConfig:
+class GlobalConfig1:
     def __init__(self):
-        self.key = Bytes("Config")
-        self.name = func.GlobalBytes(self.key, 0, 16)
-        self.primes_count = func.GlobalUint(self.key, 16, 8)
-        self.platform_asset_id = func.GlobalUint(self.key, 24, 8)
-        self.platform_asset_reserve = func.GlobalBytes(self.key, 32, 32)
+        self.key = Bytes("C-1")
+        self.primes_count = func.GlobalUint(self.key, 0, 8)
+        self.platform_asset_id = func.GlobalUint(self.key, 8, 8)
+        self.platform_asset_reserve = func.GlobalBytes(self.key, 16, 32)
 
 
-class BoxSaver:
+class GlobalConfig2:
     def __init__(self):
-        self.value = func.BoxUint(0, 8)
+        self.key = Bytes("C-2")
+        self.value = func.GlobalBytes(self.key, 0, 120)
 
 
-class BoxPrime:
+class GlobalConfig3:
     def __init__(self):
-        self.id = func.BoxUint(0, 4)
-        self.parent_id = func.BoxUint(4, 4)
-        self.asset_id = func.BoxUint(8, 8)
-        self.legacy_id = func.BoxUint(16, 8)
-        self.score = func.BoxUint(24, 8)
-        self.royalties = func.BoxUint(32, 8)
-        self.rewards = func.BoxUint(40, 8)
-        self.price = func.BoxUint(48, 8)
-        self.theme = func.BoxUint(56, 2)
-        self.skin = func.BoxUint(58, 2)
-        self.name = func.BoxBytes(60, 8)
-        self.seller = func.BoxBytes(100, 32)
-        self.description = func.BoxBytes(132, 32)
-        self.health = func.BoxUint(164, 8)
-        self.wealth = func.BoxUint(172, 8)
-        self.strength = func.BoxUint(180, 8)
-        self.likes = func.BoxUint(188, 8)
-        self.renames = func.BoxUint(196, 8)
-        self.sales = func.BoxUint(204, 8)
-        self.mints = func.BoxUint(212, 8)
-        self.sync = func.BoxBytes(0, 100)
+        self.key = Bytes("C-3")
+        self.value = func.GlobalBytes(self.key, 0, 120)
+
+
+class GlobalConfig4:
+    def __init__(self):
+        self.key = Bytes("C-4")
+        self.value = func.GlobalBytes(self.key, 0, 120)
 
 
 app = Application("GenOneMain")
 
-global_config = GlobalConfig()
-box_saver = BoxSaver()
-box_prime = BoxPrime()
+global_config_1 = GlobalConfig1()
+global_config_2 = GlobalConfig2()
+global_config_3 = GlobalConfig3()
+global_config_4 = GlobalConfig4()
 
 
-@Subroutine(TealType.none)
-def prime_sync(id: abi.Uint64, saver_app: abi.Application):
-    saver_index = Div(id.get(), main_config.sync_primes_count)
-    saver_key = Concat(Bytes("Saver-"), Itob(saver_index))
-    prime_key = Concat(Bytes("Prime-"), Itob(id.get()))
+@Subroutine(TealType.bytes)
+def prime_approval_program():
     return Seq(
-        Assert(box_saver.value.get(saver_key) == saver_app.application_id()),
-        InnerTxnBuilder.ExecuteMethodCall(
-            app_id=box_saver.value.get(saver_key),
-            method_signature=saver_contract.sync.method_signature(),
-            args=[
-                id.encode(),
-                box_prime.sync.get(prime_key),
-            ],
-        ),
+        precompiled(prime_contract.app).approval_program.binary,
+    )
+
+
+@Subroutine(TealType.bytes)
+def prime_clear_program():
+    return Seq(
+        precompiled(prime_contract.app).clear_program.binary,
     )
 
 
 @app.create(bare=True)
 def create():
     return Seq(
-        func.init_global(global_config.key),
+        func.init_global(global_config_1.key),
+        func.init_global(global_config_2.key),
+        func.init_global(global_config_3.key),
+        func.init_global(global_config_4.key),
     )
 
 
@@ -90,24 +76,13 @@ def init(asset: abi.Asset):
     reserve = asset.params().reserve_address()
     return Seq(
         func.assert_is_creator(),
-        func.assert_is_zero(global_config.primes_count.get()),
-        func.assert_is_zero(global_config.platform_asset_id.get()),
+        func.assert_is_zero(global_config_1.primes_count.get()),
+        func.assert_is_zero(global_config_1.platform_asset_id.get()),
         func.optin_into_asset(asset.asset_id(), Int(0)),
-        global_config.platform_asset_id.set(asset.asset_id()),
+        global_config_1.platform_asset_id.set(asset.asset_id()),
         reserve,
         Assert(reserve.hasValue()),
-        global_config.platform_asset_reserve.set(reserve.value()),
-        global_config.name.set(main_config.name),
-    )
-
-
-@app.external(name="init_saver")
-def init_saver(index: abi.Uint64, saver_app: abi.Application):
-    saver_key = Concat(Bytes("Saver-"), Itob(index.get()))
-    return Seq(
-        func.assert_is_creator(),
-        func.init_box(saver_key, Int(8)),
-        box_saver.value.set(saver_key, saver_app.application_id()),
+        global_config_1.platform_asset_reserve.set(reserve.value()),
     )
 
 
@@ -117,15 +92,10 @@ def create_prime(
     unit_name: abi.DynamicBytes,
     asset_name: abi.DynamicBytes,
     asset_url: abi.DynamicBytes,
-    saver_app: abi.Application,
 ):
-    prime_key = Concat(Bytes("Prime-"), Itob(id.get()))
     return Seq(
-        func.assert_is_creator(),
         Assert(id.get() < main_config.max_primes_count),
-        Assert(id.get() == global_config.primes_count.get()),
-        func.init_box(prime_key, Int(500)),
-        box_prime.id.set(prime_key, id.get()),
+        Assert(id.get() == global_config_1.primes_count.get()),
         func.create_asset(
             Global.current_application_address(),
             Global.current_application_address(),
@@ -136,39 +106,38 @@ def create_prime(
             asset_url.get(),
             Int(0),
         ),
-        box_prime.asset_id.set(prime_key, InnerTxn.created_asset_id()),
-        global_config.primes_count.increment(Int(1)),
-        prime_sync(id, saver_app),
+        func.create_application(
+            prime_approval_program(),
+            prime_clear_program(),
+            Int(0),
+            Int(4),
+            Int(0),
+            Int(0),
+            Int(0),
+            Int(0),
+        ),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=InnerTxn.created_application_id(),
+            method_signature=prime_contract.init.method_signature(),
+            args=[
+                id.get(),
+                InnerTxn.created_asset_id(),
+            ],
+        ),
+        global_config_1.primes_count.increment(Int(1)),
     )
 
 
-@app.external(name="update_prime")
-def update_prime(
-    id: abi.Uint64,
-    legacy_id: abi.Uint64,
-    score: abi.Uint64,
-    health: abi.Uint64,
-    wealth: abi.Uint64,
-    strength: abi.Uint64,
-    theme: abi.Uint64,
-    skin: abi.Uint64,
-    name: abi.StaticBytes[Literal[8]],
-    description: abi.StaticBytes[Literal[32]],
-    saver_app: abi.Application,
-):
-    prime_key = Concat(Bytes("Prime-"), Itob(id.get()))
+@app.external(name="update_prime_app")
+def update_prime(application: abi.Application):
     return Seq(
         func.assert_is_creator(),
-        box_prime.legacy_id.set(prime_key, legacy_id.get()),
-        box_prime.score.set(prime_key, score.get()),
-        box_prime.health.set(prime_key, health.get()),
-        box_prime.wealth.set(prime_key, wealth.get()),
-        box_prime.strength.set(prime_key, strength.get()),
-        box_prime.theme.set(prime_key, theme.get()),
-        box_prime.skin.set(prime_key, skin.get()),
-        box_prime.name.set(prime_key, name.get()),
-        box_prime.description.set(prime_key, description.get()),
-        prime_sync(id, saver_app),
+        func.update_application(
+            application.application_id(),
+            prime_approval_program(),
+            prime_clear_program(),
+            Int(0),
+        ),
     )
 
 
