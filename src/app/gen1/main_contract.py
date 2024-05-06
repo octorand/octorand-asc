@@ -123,11 +123,7 @@ def create_prime(
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=created_application_id.get(),
             method_signature=prime_contract.init.method_signature(),
-            args=[
-                id,
-                created_asset_id,
-                global_config_1.platform_asset_id.get(),
-            ],
+            args=[id, created_asset_id],
         ),
         global_config_1.primes_count.increment(Int(1)),
     )

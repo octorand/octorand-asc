@@ -58,14 +58,9 @@ def update():
 
 
 @app.external(name="init")
-def init(id: abi.Uint64, asset_id: abi.Uint64, platform_asset: abi.Asset):
-    reserve = platform_asset.params().reserve_address()
+def init(id: abi.Uint64, asset_id: abi.Uint64):
     return Seq(
         func.assert_is_creator(),
         global_config_1.id.set(id.get()),
         global_config_1.asset_id.set(asset_id.get()),
-        global_config_1.platform_asset_id.set(platform_asset.asset_id()),
-        reserve,
-        Assert(reserve.hasValue()),
-        global_config_1.platform_asset_reserve.set(reserve.value()),
     )
