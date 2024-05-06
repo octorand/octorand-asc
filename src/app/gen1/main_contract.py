@@ -93,6 +93,8 @@ def create_prime(
     asset_name: abi.DynamicBytes,
     asset_url: abi.DynamicBytes,
 ):
+    created_asset_id = abi.make(abi.Uint64)
+    created_application_id = abi.make(abi.Uint64)
     return Seq(
         Assert(id.get() < main_config.max_primes_count),
         Assert(id.get() == global_config_1.primes_count.get()),
@@ -106,6 +108,7 @@ def create_prime(
             asset_url.get(),
             Int(0),
         ),
+        created_asset_id.set(InnerTxn.created_asset_id()),
         func.create_application(
             prime_approval_program(),
             prime_clear_program(),
@@ -116,12 +119,14 @@ def create_prime(
             Int(0),
             Int(0),
         ),
+        created_application_id.set(InnerTxn.created_application_id()),
         InnerTxnBuilder.ExecuteMethodCall(
-            app_id=InnerTxn.created_application_id(),
+            app_id=created_application_id.get(),
             method_signature=prime_contract.init.method_signature(),
             args=[
-                id.get(),
-                InnerTxn.created_asset_id(),
+                id,
+                created_asset_id,
+                global_config_1.platform_asset_id.get(),
             ],
         ),
         global_config_1.primes_count.increment(Int(1)),

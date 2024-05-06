@@ -11,6 +11,10 @@
                 {
                     "type": "uint64",
                     "name": "asset_id"
+                },
+                {
+                    "type": "asset",
+                    "name": "platform_asset"
                 }
             ],
             "returns": {
