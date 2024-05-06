@@ -1,106 +1,29 @@
 {
-    "platform_asset_id": 650874336,
+    "platform_asset_id": 659189785,
     "main_app": {
-        "id": 650874629,
-        "address": "TWLRWZCUKZBF4XT4FADCM6TEO6UU2RBWMXJQVKY5MQZJNKLU5ZTDVJJHPI",
+        "id": 659190140,
+        "address": "ZQVUUFEWWJLYKXGM2BT6PC2ODMPOFTSQXQD4CVEZMGGUGKVQ4KKE4DJIMM",
         "creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM",
         "config": {
-            "name": "____Gen_One_Main",
             "primes_count": 3,
-            "platform_asset_id": 650874336,
+            "platform_asset_id": 659189785,
             "platform_asset_reserve": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM"
         },
         "primes": [
             {
                 "id": 0,
-                "parent_id": 0,
-                "asset_id": 650875114,
-                "legacy_id": 1000000,
-                "score": 100,
-                "royalties": 0,
-                "rewards": 0,
-                "price": 0,
-                "theme": 10,
-                "skin": 1,
-                "name": "ABCDEFGH"
+                "asset_id": 659193315,
+                "application_id": 659193316
             },
             {
                 "id": 1,
-                "parent_id": 0,
-                "asset_id": 650875117,
-                "legacy_id": 2000000,
-                "score": 200,
-                "royalties": 0,
-                "rewards": 0,
-                "price": 0,
-                "theme": 20,
-                "skin": 2,
-                "name": "IJKLMNOP"
+                "asset_id": 659193319,
+                "application_id": 659193320
             },
             {
                 "id": 2,
-                "parent_id": 0,
-                "asset_id": 650875120,
-                "legacy_id": 3000000,
-                "score": 400,
-                "royalties": 0,
-                "rewards": 0,
-                "price": 0,
-                "theme": 30,
-                "skin": 3,
-                "name": "QRSTUVWX"
-            }
-        ]
-    },
-    "saver_app": {
-        "id": 650874772,
-        "address": "KELTRKTMSSOH5WP5XH3XLEPDPFQWDH7QAK2D354HL26XOFB3S2QXR24BMA",
-        "creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM",
-        "config": {
-            "name": "___Gen_One_Saver",
-            "starting_prime_id": 0,
-            "ending_prime_id": 50,
-            "main_app_id": 650874629
-        },
-        "primes": [
-            {
-                "id": 0,
-                "parent_id": 0,
-                "asset_id": 650875114,
-                "legacy_id": 1000000,
-                "score": 100,
-                "royalties": 0,
-                "rewards": 0,
-                "price": 0,
-                "theme": 10,
-                "skin": 1,
-                "name": "ABCDEFGH"
-            },
-            {
-                "id": 1,
-                "parent_id": 0,
-                "asset_id": 650875117,
-                "legacy_id": 2000000,
-                "score": 200,
-                "royalties": 0,
-                "rewards": 0,
-                "price": 0,
-                "theme": 20,
-                "skin": 2,
-                "name": "IJKLMNOP"
-            },
-            {
-                "id": 2,
-                "parent_id": 0,
-                "asset_id": 650875120,
-                "legacy_id": 3000000,
-                "score": 400,
-                "royalties": 0,
-                "rewards": 0,
-                "price": 0,
-                "theme": 30,
-                "skin": 3,
-                "name": "QRSTUVWX"
+                "asset_id": 659193323,
+                "application_id": 659193324
             }
         ]
     }

@@ -10,7 +10,6 @@ exports.execute = async function () {
         let setup = JSON.parse(fs.readFileSync('src/app/gen1/setup.json'));
 
         let config = {
-            name: null,
             primes_count: null,
             platform_asset_id: null,
             platform_asset_reserve: null,
@@ -25,11 +24,10 @@ exports.execute = async function () {
             let value = Buffer.from(params.value['bytes'], 'base64');
 
             switch (key) {
-                case 'Config':
-                    config.name = value.subarray(0, 16).toString('utf-8').trim();
-                    config.primes_count = connection.baseClient.decodeUint64(value.subarray(16, 24));
-                    config.platform_asset_id = connection.baseClient.decodeUint64(value.subarray(24, 32));
-                    config.platform_asset_reserve = connection.baseClient.encodeAddress(value.subarray(32, 64));
+                case 'C-1':
+                    config.primes_count = connection.baseClient.decodeUint64(value.subarray(0, 8));
+                    config.platform_asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
+                    config.platform_asset_reserve = connection.baseClient.encodeAddress(value.subarray(16, 48));
                     break;
             }
         }

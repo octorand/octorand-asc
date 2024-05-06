@@ -129,8 +129,8 @@ def create_prime(
     )
 
 
-@app.external(name="update_prime_app")
-def update_prime(application: abi.Application):
+@app.external(name="update_prime_application")
+def update_prime_application(application: abi.Application):
     return Seq(
         func.assert_is_creator(),
         func.update_application(

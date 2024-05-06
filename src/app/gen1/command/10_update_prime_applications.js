@@ -16,31 +16,27 @@ exports.execute = async function () {
 
         let composer = new connection.baseClient.AtomicTransactionComposer();
 
-        composer.addMethodCall({
-            sender: sender,
-            signer: signer,
-            appID: Number(setup['main_app']['id']),
-            method: chain.method(contract, 'init_saver'),
-            methodArgs: [
-                0,
-                Number(setup['saver_app']['id'])
-            ],
-            boxes: [
-                {
-                    appIndex: Number(setup['main_app']['id']),
-                    name: chain.reference('Saver', 0)
+        for (let i = 0; i < setup['main_app']['primes'].length; i++) {
+            composer.addMethodCall({
+                sender: sender,
+                signer: signer,
+                appID: Number(setup['main_app']['id']),
+                method: chain.method(contract, 'update_prime_application'),
+                methodArgs: [
+                    Number(setup['main_app']['primes'][i]['application_id']),
+                    sender
+                ],
+                suggestedParams: {
+                    ...params,
+                    fee: 2000,
+                    flatFee: true
                 }
-            ],
-            suggestedParams: {
-                ...params,
-                fee: 1000,
-                flatFee: true
-            }
-        });
+            });
+        }
 
         await chain.execute(composer);
 
-        console.log('initiated main app saver');
+        console.log('updated prime applications');
 
     } catch (error) {
         console.log(error);

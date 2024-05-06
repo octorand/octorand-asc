@@ -12,30 +12,31 @@ exports.execute = async function () {
 
         let setup = JSON.parse(fs.readFileSync('src/app/gen1/setup.json'));
 
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/gen1/build/main/contract.json')));
+
         let composer = new connection.baseClient.AtomicTransactionComposer();
 
-        let approvalProgram = fs.readFileSync('src/app/gen1/build/saver/approval.teal', 'utf8');
-        let clearProgram = fs.readFileSync('src/app/gen1/build/saver/clear.teal', 'utf8');
-
-        composer.addTransaction({
-            signer: signer,
-            txn: connection.baseClient.makeApplicationUpdateTxnFromObject({
-                from: sender,
-                appIndex: Number(setup['saver_app']['id']),
-                onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
-                approvalProgram: await chain.compile(approvalProgram, false),
-                clearProgram: await chain.compile(clearProgram, false),
+        for (let i = 0; i < setup['main_app']['primes'].length; i++) {
+            composer.addMethodCall({
+                sender: sender,
+                signer: signer,
+                appID: Number(setup['main_app']['id']),
+                method: chain.method(contract, 'update_prime_asset'),
+                methodArgs: [
+                    Number(setup['main_app']['primes'][i]['asset_id']),
+                    sender
+                ],
                 suggestedParams: {
                     ...params,
-                    fee: 1000,
+                    fee: 2000,
                     flatFee: true
                 }
-            })
-        });
+            });
+        }
 
         await chain.execute(composer);
 
-        console.log('updated saver app');
+        console.log('updated prime assets');
 
     } catch (error) {
         console.log(error);

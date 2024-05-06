@@ -10,8 +10,6 @@ class GlobalConfig1:
         self.key = Bytes("C-1")
         self.id = func.GlobalUint(self.key, 0, 8)
         self.asset_id = func.GlobalUint(self.key, 8, 8)
-        self.platform_asset_id = func.GlobalUint(self.key, 16, 8)
-        self.platform_asset_reserve = func.GlobalBytes(self.key, 24, 32)
 
 
 class GlobalConfig2:

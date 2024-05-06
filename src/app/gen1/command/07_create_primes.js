@@ -40,21 +40,10 @@ exports.execute = async function () {
                 chain.bytes('TG1-000'),
                 chain.bytes('Test Gen1 #000'),
                 chain.bytes('template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}'),
-                Number(setup['saver_app']['id'])
-            ],
-            boxes: [
-                {
-                    appIndex: Number(setup['main_app']['id']),
-                    name: chain.reference('Saver', 0)
-                },
-                {
-                    appIndex: Number(setup['main_app']['id']),
-                    name: chain.reference('Prime', 0)
-                }
             ],
             suggestedParams: {
                 ...params,
-                fee: 3000,
+                fee: 4000,
                 flatFee: true
             }
         });
@@ -69,21 +58,10 @@ exports.execute = async function () {
                 chain.bytes('TG1-001'),
                 chain.bytes('Test Gen1 #001'),
                 chain.bytes('template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}'),
-                Number(setup['saver_app']['id'])
-            ],
-            boxes: [
-                {
-                    appIndex: Number(setup['main_app']['id']),
-                    name: chain.reference('Saver', 0)
-                },
-                {
-                    appIndex: Number(setup['main_app']['id']),
-                    name: chain.reference('Prime', 1)
-                }
             ],
             suggestedParams: {
                 ...params,
-                fee: 3000,
+                fee: 4000,
                 flatFee: true
             }
         });
@@ -98,21 +76,10 @@ exports.execute = async function () {
                 chain.bytes('TG1-002'),
                 chain.bytes('Test Gen1 #002'),
                 chain.bytes('template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}'),
-                Number(setup['saver_app']['id'])
-            ],
-            boxes: [
-                {
-                    appIndex: Number(setup['main_app']['id']),
-                    name: chain.reference('Saver', 0)
-                },
-                {
-                    appIndex: Number(setup['main_app']['id']),
-                    name: chain.reference('Prime', 2)
-                }
             ],
             suggestedParams: {
                 ...params,
-                fee: 3000,
+                fee: 4000,
                 flatFee: true
             }
         });
