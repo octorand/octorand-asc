@@ -14,7 +14,7 @@ pushbytes 0x9d81b6cf // "create_prime(uint64,byte[],byte[],byte[])void"
 ==
 bnz main_l8
 txna ApplicationArgs 0
-pushbytes 0xb235ce66 // "update_prime_app(application)void"
+pushbytes 0xbeb6d16d // "update_prime_application(application)void"
 ==
 bnz main_l7
 txna ApplicationArgs 0
@@ -43,7 +43,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub updateprimeappcaster_24
+callsub updateprimeapplicationcaster_24
 intc_2 // 1
 return
 main_l8:
@@ -474,8 +474,8 @@ intc_1 // 8
 callsub setglobaluint_4
 retsub
 
-// update_prime_app
-updateprimeapp_20:
+// update_prime_application
+updateprimeapplication_20:
 proto 1 0
 callsub assertiscreator_11
 frame_dig -1
@@ -534,8 +534,8 @@ frame_dig 3
 callsub createprime_19
 retsub
 
-// update_prime_app_caster
-updateprimeappcaster_24:
+// update_prime_application_caster
+updateprimeapplicationcaster_24:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
@@ -543,7 +543,7 @@ intc_0 // 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub updateprimeapp_20
+callsub updateprimeapplication_20
 retsub
 
 // update_prime_asset_caster

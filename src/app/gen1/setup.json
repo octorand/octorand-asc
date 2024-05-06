@@ -1,29 +1,29 @@
 {
-    "platform_asset_id": 659189785,
+    "platform_asset_id": 659207173,
     "main_app": {
-        "id": 659190140,
-        "address": "ZQVUUFEWWJLYKXGM2BT6PC2ODMPOFTSQXQD4CVEZMGGUGKVQ4KKE4DJIMM",
+        "id": 659207188,
+        "address": "APID54SABV524HYSQ3EM4YVY6AXMNH7VTONTSGXSFPVFVWJE3IBOKPQOWM",
         "creator": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM",
         "config": {
             "primes_count": 3,
-            "platform_asset_id": 659189785,
+            "platform_asset_id": 659207173,
             "platform_asset_reserve": "ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM"
         },
         "primes": [
             {
                 "id": 0,
-                "asset_id": 659193315,
-                "application_id": 659193316
+                "asset_id": 659207317,
+                "application_id": 659207318
             },
             {
                 "id": 1,
-                "asset_id": 659193319,
-                "application_id": 659193320
+                "asset_id": 659207321,
+                "application_id": 659207322
             },
             {
                 "id": 2,
-                "asset_id": 659193323,
-                "application_id": 659193324
+                "asset_id": 659207325,
+                "application_id": 659207326
             }
         ]
     }

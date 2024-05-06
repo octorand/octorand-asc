@@ -23,8 +23,7 @@ exports.execute = async function () {
                 appID: Number(setup['main_app']['id']),
                 method: chain.method(contract, 'update_prime_application'),
                 methodArgs: [
-                    Number(setup['main_app']['primes'][i]['application_id']),
-                    sender
+                    Number(setup['main_app']['primes'][i]['application_id'])
                 ],
                 suggestedParams: {
                     ...params,

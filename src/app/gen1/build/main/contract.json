@@ -38,7 +38,7 @@
             }
         },
         {
-            "name": "update_prime_app",
+            "name": "update_prime_application",
             "args": [
                 {
                     "type": "application",
