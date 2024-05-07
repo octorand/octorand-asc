@@ -1,6 +1,6 @@
 #pragma version 8
 intcblock 0 8 1 120
-bytecblock 0x432d31
+bytecblock 0x436f6e666967
 txn NumAppArgs
 intc_0 // 0
 ==
@@ -141,13 +141,7 @@ retsub
 // create
 create_7:
 proto 0 0
-bytec_0 // "C-1"
-callsub initglobal_0
-pushbytes 0x432d32 // "C-2"
-callsub initglobal_0
-pushbytes 0x432d33 // "C-3"
-callsub initglobal_0
-pushbytes 0x432d34 // "C-4"
+bytec_0 // "Config"
 callsub initglobal_0
 retsub
 
@@ -162,12 +156,12 @@ init_9:
 proto 2 0
 callsub assertiscreator_5
 frame_dig -2
-bytec_0 // "C-1"
+bytec_0 // "Config"
 intc_0 // 0
 intc_1 // 8
 callsub setglobaluint_3
 frame_dig -1
-bytec_0 // "C-1"
+bytec_0 // "Config"
 intc_1 // 8
 intc_1 // 8
 callsub setglobaluint_3
