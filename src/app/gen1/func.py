@@ -1,6 +1,6 @@
 from pyteal import *
 
-max_storage_length = Int(100)
+max_storage_length = Int(120)
 
 
 class GlobalUint:
@@ -37,49 +37,10 @@ class GlobalBytes:
         return set_global_bytes(value, self.index, self.start, self.length)
 
 
-class BoxUint:
-    def __init__(self, start, length):
-        self.start = Int(start)
-        self.length = Int(length)
-
-    def get(self, index):
-        return get_box_uint(index, self.start, self.length)
-
-    def set(self, index, value):
-        return set_box_uint(value, index, self.start, self.length)
-
-    def increment(self, index, value):
-        result = Add(self.get(index), value)
-        return set_box_uint(result, index, self.start, self.length)
-
-    def decrement(self, index, value):
-        result = Minus(self.get(index), value)
-        return set_box_uint(result, index, self.start, self.length)
-
-
-class BoxBytes:
-    def __init__(self, start, length):
-        self.start = Int(start)
-        self.length = Int(length)
-
-    def get(self, index):
-        return get_box_bytes(index, self.start, self.length)
-
-    def set(self, index, value):
-        return set_box_bytes(value, index, self.start, self.length)
-
-
 @Subroutine(TealType.none)
 def init_global(index):
     return Seq(
         App.globalPut(index, BytesZero(max_storage_length)),
-    )
-
-
-@Subroutine(TealType.none)
-def init_box(index, length):
-    return Seq(
-        App.box_put(index, BytesZero(length)),
     )
 
 
@@ -90,24 +51,10 @@ def get_global_bytes(index, start, length):
     )
 
 
-@Subroutine(TealType.bytes)
-def get_box_bytes(index, start, length):
-    return Seq(
-        App.box_extract(index, start, length),
-    )
-
-
 @Subroutine(TealType.uint64)
 def get_global_uint(index, start, length):
     return Seq(
         Btoi(get_global_bytes(index, start, length)),
-    )
-
-
-@Subroutine(TealType.uint64)
-def get_box_uint(index, start, length):
-    return Seq(
-        Btoi(get_box_bytes(index, start, length)),
     )
 
 
@@ -123,24 +70,9 @@ def set_global_bytes(value, index, start, length):
 
 
 @Subroutine(TealType.none)
-def set_box_bytes(value, index, start, length):
-    return Seq(
-        assert_is_valid_length(value, length),
-        App.box_replace(index, start, value),
-    )
-
-
-@Subroutine(TealType.none)
 def set_global_uint(value, index, start, length):
     return Seq(
         set_global_bytes(extract_uint(value, length), index, start, length),
-    )
-
-
-@Subroutine(TealType.none)
-def set_box_uint(value, index, start, length):
-    return Seq(
-        set_box_bytes(extract_uint(value, length), index, start, length),
     )
 
 
