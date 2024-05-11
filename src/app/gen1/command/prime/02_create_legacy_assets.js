@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const fs = require("fs");
-const chain = require('./../../../chain/index');
+const chain = require('./../../../../chain/index');
 
 exports.execute = async function () {
     try {
@@ -44,10 +44,12 @@ exports.execute = async function () {
             prime['legacy_id'] = assetId;
 
             primes[i] = prime;
-        }
 
-        setup['primes'] = primes;
-        fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
+            setup['primes'] = primes;
+            fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
+
+            console.log('created legacy asset ' + i);
+        }
 
         console.log('created legacy assets');
 
