@@ -1,0 +1,57 @@
+require('dotenv').config();
+
+const fs = require("fs");
+const chain = require('./../../../chain/index');
+
+exports.execute = async function () {
+    try {
+        let connection = await chain.get();
+        let params = await connection.algodClient.getTransactionParams().do();
+        let sender = connection.admin.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
+
+        let setup = JSON.parse(fs.readFileSync('src/app/gen1/setup.json'));
+
+        let primes = setup['primes'];
+
+        for (let i = 0; i < primes.length; i++) {
+            let prime = primes[i];
+
+            let composer = new connection.baseClient.AtomicTransactionComposer();
+
+            composer.addTransaction({
+                signer: signer,
+                txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
+                    from: sender,
+                    total: 1,
+                    decimals: 0,
+                    defaultFrozen: false,
+                    manager: sender,
+                    reserve: sender,
+                    unitName: "TGL1-" + String(i).padStart(3, '0'),
+                    assetName: "Test Gen1 Legacy #" + String(i).padStart(3, '0'),
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                })
+            });
+
+            let response = await chain.execute(composer);
+            let assetId = response.information['asset-index'];
+
+            prime['legacy_id'] = assetId;
+
+            primes[i] = prime;
+        }
+
+        setup['primes'] = primes;
+        fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
+
+        console.log('created legacy assets');
+
+    } catch (error) {
+        console.log(error);
+    }
+}
