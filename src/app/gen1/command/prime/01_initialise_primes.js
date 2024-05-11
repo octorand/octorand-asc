@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const fs = require("fs");
+const fs = require('fs');
 
 exports.execute = async function () {
     try {

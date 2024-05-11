@@ -46,4 +46,6 @@ def init(id: abi.Uint64, asset_id: abi.Uint64, legacy_id: abi.Uint64):
         global_config_1.id.set(id.get()),
         global_config_1.asset_id.set(asset_id.get()),
         global_config_1.legacy_id.set(legacy_id.get()),
+        func.optin_into_asset(asset_id.get(), Int(0)),
+        func.optin_into_asset(legacy_id.get(), Int(0)),
     )

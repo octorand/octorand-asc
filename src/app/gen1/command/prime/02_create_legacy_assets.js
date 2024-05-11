@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const fs = require("fs");
+const fs = require('fs');
 const chain = require('./../../../../chain/index');
 
 exports.execute = async function () {
@@ -30,8 +30,8 @@ exports.execute = async function () {
                         defaultFrozen: false,
                         manager: sender,
                         reserve: sender,
-                        unitName: "TGL1-" + String(i).padStart(3, '0'),
-                        assetName: "Test Gen1 Legacy #" + String(i).padStart(3, '0'),
+                        unitName: 'TGL1-' + String(i).padStart(3, '0'),
+                        assetName: 'Test Gen1 Legacy #' + String(i).padStart(3, '0'),
                         suggestedParams: {
                             ...params,
                             fee: 1000,

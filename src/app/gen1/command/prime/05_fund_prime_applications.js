@@ -17,22 +17,16 @@ exports.execute = async function () {
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (!prime['asset_id']) {
+            if (!prime['application_funded']) {
 
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
                 composer.addTransaction({
                     signer: signer,
-                    txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
+                    txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                         from: sender,
-                        total: 1,
-                        decimals: 0,
-                        defaultFrozen: false,
-                        manager: sender,
-                        reserve: sender,
-                        unitName: 'TG1-' + String(i).padStart(3, '0'),
-                        assetName: 'Test Gen1 #' + String(i).padStart(3, '0'),
-                        assetURL: 'template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}',
+                        to: prime['application_address'],
+                        amount: 300000,
                         suggestedParams: {
                             ...params,
                             fee: 1000,
@@ -41,21 +35,20 @@ exports.execute = async function () {
                     })
                 });
 
-                let response = await chain.execute(composer);
-                let assetId = response.information['asset-index'];
+                await chain.execute(composer);
 
-                prime['asset_id'] = assetId;
+                prime['application_funded'] = true;
 
                 primes[i] = prime;
 
                 setup['primes'] = primes;
                 fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
 
-                console.log('created prime asset ' + i);
+                console.log('funded prime application ' + i);
             }
         }
 
-        console.log('created prime assets');
+        console.log('funded prime applications');
 
     } catch (error) {
         console.log(error);
