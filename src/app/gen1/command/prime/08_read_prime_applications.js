@@ -16,8 +16,8 @@ exports.execute = async function () {
 
             let config = {
                 id: null,
-                asset_id: null,
-                legacy_id: null,
+                prime_asset_id: null,
+                legacy_asset_id: null,
             };
 
             let info = await connection.indexerClient.lookupApplications(prime['application_id']).do();
@@ -31,8 +31,8 @@ exports.execute = async function () {
                 switch (key) {
                     case 'C1':
                         config.id = connection.baseClient.decodeUint64(value.subarray(0, 8));
-                        config.asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
-                        config.legacy_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
+                        config.prime_asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
+                        config.legacy_asset_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
                         break;
                     case 'C2':
                         break;

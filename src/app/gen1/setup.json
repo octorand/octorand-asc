@@ -1,3 +1,19 @@
 {
-    "primes": []
+    "primes": [
+        {
+            "id": 0,
+            "legacy_asset_id": 661985334,
+            "prime_asset_id": 661985413,
+            "application_id": 661985467,
+            "application_address": "TBIO5BGM7TXLCCZXVBPJAH3F5XYAHNC276FAT3JCVOY65WSMQNNLPGQXBI",
+            "application_version": 1,
+            "application_funded": true,
+            "application_initialised": true,
+            "config": {
+                "id": 0,
+                "prime_asset_id": 661985413,
+                "legacy_asset_id": 661985334
+            }
+        }
+    ]
 }

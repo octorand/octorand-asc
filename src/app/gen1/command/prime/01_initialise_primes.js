@@ -8,7 +8,7 @@ exports.execute = async function () {
 
         let primes = setup['primes'];
 
-        let count = 5;
+        let count = 1;
 
         for (let i = 0; i < count; i++) {
             let prime = primes.find(p => p.id == i);

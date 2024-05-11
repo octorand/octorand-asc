@@ -17,7 +17,7 @@ exports.execute = async function () {
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (!prime['asset_id']) {
+            if (!prime['prime_asset_id']) {
 
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -44,7 +44,7 @@ exports.execute = async function () {
                 let response = await chain.execute(composer);
                 let assetId = response.information['asset-index'];
 
-                prime['asset_id'] = assetId;
+                prime['prime_asset_id'] = assetId;
 
                 primes[i] = prime;
 
