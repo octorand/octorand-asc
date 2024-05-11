@@ -10,7 +10,9 @@ exports.execute = async function () {
         let primes = setup['primes'];
 
         for (let i = 0; i < 3; i++) {
-            primes.push({});
+            primes.push({
+                id: i
+            });
         }
 
         setup['primes'] = primes;

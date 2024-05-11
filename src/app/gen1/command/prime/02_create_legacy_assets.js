@@ -17,38 +17,41 @@ exports.execute = async function () {
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            let composer = new connection.baseClient.AtomicTransactionComposer();
+            if (!prime['legacy_id']) {
 
-            composer.addTransaction({
-                signer: signer,
-                txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
-                    from: sender,
-                    total: 1,
-                    decimals: 0,
-                    defaultFrozen: false,
-                    manager: sender,
-                    reserve: sender,
-                    unitName: "TGL1-" + String(i).padStart(3, '0'),
-                    assetName: "Test Gen1 Legacy #" + String(i).padStart(3, '0'),
-                    suggestedParams: {
-                        ...params,
-                        fee: 1000,
-                        flatFee: true
-                    }
-                })
-            });
+                let composer = new connection.baseClient.AtomicTransactionComposer();
 
-            let response = await chain.execute(composer);
-            let assetId = response.information['asset-index'];
+                composer.addTransaction({
+                    signer: signer,
+                    txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
+                        from: sender,
+                        total: 1,
+                        decimals: 0,
+                        defaultFrozen: false,
+                        manager: sender,
+                        reserve: sender,
+                        unitName: "TGL1-" + String(i).padStart(3, '0'),
+                        assetName: "Test Gen1 Legacy #" + String(i).padStart(3, '0'),
+                        suggestedParams: {
+                            ...params,
+                            fee: 1000,
+                            flatFee: true
+                        }
+                    })
+                });
 
-            prime['legacy_id'] = assetId;
+                let response = await chain.execute(composer);
+                let assetId = response.information['asset-index'];
 
-            primes[i] = prime;
+                prime['legacy_id'] = assetId;
 
-            setup['primes'] = primes;
-            fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
+                primes[i] = prime;
 
-            console.log('created legacy asset ' + i);
+                setup['primes'] = primes;
+                fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
+
+                console.log('created legacy asset ' + i);
+            }
         }
 
         console.log('created legacy assets');

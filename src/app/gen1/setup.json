@@ -1,14 +1,19 @@
 {
     "primes": [
         {
+            "id": 0,
             "legacy_id": 661885553,
-            "asset_id": 661885627
+            "asset_id": 661885627,
+            "application_id": 661952026,
+            "application_address": "UTO4GY6MOZM4CSWRJ53DYEIS573VN7PKQ774NQN25GZ3VXPZHWW3VRE2C4"
         },
         {
+            "id": 1,
             "legacy_id": 661885555,
             "asset_id": 661885659
         },
         {
+            "id": 2,
             "legacy_id": 661885598,
             "asset_id": 661885694
         }

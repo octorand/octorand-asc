@@ -17,22 +17,26 @@ exports.execute = async function () {
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (!prime['asset_id']) {
+            if (!prime['application_id']) {
 
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
+                let approvalProgram = fs.readFileSync('src/app/gen1/build/prime/approval.teal', 'utf8');
+                let clearProgram = fs.readFileSync('src/app/gen1/build/prime/clear.teal', 'utf8');
+
                 composer.addTransaction({
                     signer: signer,
-                    txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
+                    txn: connection.baseClient.makeApplicationCreateTxnFromObject({
                         from: sender,
-                        total: 1,
-                        decimals: 0,
-                        defaultFrozen: false,
-                        manager: sender,
-                        reserve: sender,
-                        unitName: "TG1-" + String(i).padStart(3, '0'),
-                        assetName: "Test Gen1 #" + String(i).padStart(3, '0'),
-                        assetURL: "template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}",
+                        onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
+                        approvalProgram: await chain.compile(approvalProgram, false),
+                        clearProgram: await chain.compile(clearProgram, false),
+                        numLocalInts: 0,
+                        numLocalByteSlices: 0,
+                        numGlobalInts: 0,
+                        numGlobalByteSlices: 2,
+                        extraPages: 0,
+                        appArgs: [],
                         suggestedParams: {
                             ...params,
                             fee: 1000,
@@ -42,20 +46,21 @@ exports.execute = async function () {
                 });
 
                 let response = await chain.execute(composer);
-                let assetId = response.information['asset-index'];
+                let applicationId = response.information['application-index'];
 
-                prime['asset_id'] = assetId;
+                prime['application_id'] = applicationId;
+                prime['application_address'] = connection.baseClient.getApplicationAddress(applicationId);
 
                 primes[i] = prime;
 
                 setup['primes'] = primes;
                 fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
 
-                console.log('created prime asset ' + i);
+                console.log('created prime application ' + i);
             }
         }
 
-        console.log('created prime assets');
+        console.log('created prime applications');
 
     } catch (error) {
         console.log(error);
