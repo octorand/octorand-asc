@@ -1,12 +1,12 @@
 #pragma version 8
 intcblock 0 8 1 120
-bytecblock 0x436f6e666967
+bytecblock 0x4331
 txn NumAppArgs
 intc_0 // 0
 ==
 bnz main_l4
 txna ApplicationArgs 0
-pushbytes 0x695ca160 // "init(uint64,uint64)void"
+pushbytes 0x69443df7 // "init(uint64,uint64,uint64)void"
 ==
 bnz main_l3
 err
@@ -141,7 +141,9 @@ retsub
 // create
 create_7:
 proto 0 0
-bytec_0 // "Config"
+bytec_0 // "C1"
+callsub initglobal_0
+pushbytes 0x4332 // "C2"
 callsub initglobal_0
 retsub
 
@@ -153,16 +155,21 @@ retsub
 
 // init
 init_9:
-proto 2 0
+proto 3 0
 callsub assertiscreator_5
-frame_dig -2
-bytec_0 // "Config"
+frame_dig -3
+bytec_0 // "C1"
 intc_0 // 0
 intc_1 // 8
 callsub setglobaluint_3
-frame_dig -1
-bytec_0 // "Config"
+frame_dig -2
+bytec_0 // "C1"
 intc_1 // 8
+intc_1 // 8
+callsub setglobaluint_3
+frame_dig -1
+bytec_0 // "C1"
+pushint 16 // 16
 intc_1 // 8
 callsub setglobaluint_3
 retsub
@@ -171,14 +178,18 @@ retsub
 initcaster_10:
 proto 0 0
 intc_0 // 0
-dup
+dupn 2
 txna ApplicationArgs 1
 btoi
 frame_bury 0
 txna ApplicationArgs 2
 btoi
 frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
 frame_dig 0
 frame_dig 1
+frame_dig 2
 callsub init_9
 retsub

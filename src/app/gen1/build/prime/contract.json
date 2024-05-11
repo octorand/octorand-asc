@@ -11,6 +11,10 @@
                 {
                     "type": "uint64",
                     "name": "asset_id"
+                },
+                {
+                    "type": "uint64",
+                    "name": "legacy_id"
                 }
             ],
             "returns": {
