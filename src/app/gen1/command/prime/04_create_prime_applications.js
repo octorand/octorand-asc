@@ -50,6 +50,7 @@ exports.execute = async function () {
 
                 prime['application_id'] = applicationId;
                 prime['application_address'] = connection.baseClient.getApplicationAddress(applicationId);
+                prime['application_version'] = 0;
 
                 primes[i] = prime;
 

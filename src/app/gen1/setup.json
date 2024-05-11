@@ -6,6 +6,7 @@
             "asset_id": 661956906,
             "application_id": 661956923,
             "application_address": "7BP7E5JQWF6GRTYD7WPOGNAFYTWOE2FMGXD4BDKVASJUDWXQQOBJ65NLRM",
+            "application_version": 1,
             "application_funded": true,
             "application_initialised": true,
             "config": {
@@ -20,6 +21,7 @@
             "asset_id": 661956918,
             "application_id": 661956996,
             "application_address": "46AVTKAKFM6NZLFHRUQBTK64YUJG73L6WUYNWGVCNBKKZMYKDBI6Q4OPQI",
+            "application_version": 1,
             "application_funded": true,
             "application_initialised": true,
             "config": {
@@ -34,6 +36,7 @@
             "asset_id": 661956920,
             "application_id": 661957030,
             "application_address": "2FDTSO66T43Y4JHCMRGYW64ZX3D4AOIUEECCUFUVNUA4JD5XRF3ANLCBKE",
+            "application_version": 1,
             "application_funded": true,
             "application_initialised": true,
             "config": {
@@ -48,6 +51,7 @@
             "asset_id": 661959047,
             "application_id": 661959084,
             "application_address": "QAYPHEMP2XZ76RGSRTUV4LZ5YOFVZVZR5EJIVHSTSM7PN26A2FXAIPQOGU",
+            "application_version": 1,
             "application_funded": true,
             "application_initialised": true,
             "config": {
@@ -62,6 +66,7 @@
             "asset_id": 661959057,
             "application_id": 661959222,
             "application_address": "JXKUXJAQM5ZWR4A6UO6MUBPSV5SYF3FQPMC4C46SR4NQ7UADFRLLMTBGXU",
+            "application_version": 1,
             "application_funded": true,
             "application_initialised": true,
             "config": {
