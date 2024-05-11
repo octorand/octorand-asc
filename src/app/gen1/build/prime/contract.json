@@ -9,12 +9,12 @@
                     "name": "id"
                 },
                 {
-                    "type": "uint64",
-                    "name": "asset_id"
+                    "type": "asset",
+                    "name": "asset"
                 },
                 {
-                    "type": "uint64",
-                    "name": "legacy_id"
+                    "type": "asset",
+                    "name": "legacy"
                 }
             ],
             "returns": {

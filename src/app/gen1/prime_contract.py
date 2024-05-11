@@ -40,12 +40,12 @@ def update():
 
 
 @app.external(name="init")
-def init(id: abi.Uint64, asset_id: abi.Uint64, legacy_id: abi.Uint64):
+def init(id: abi.Uint64, asset: abi.Asset, legacy: abi.Asset):
     return Seq(
         func.assert_is_creator(),
         global_config_1.id.set(id.get()),
-        global_config_1.asset_id.set(asset_id.get()),
-        global_config_1.legacy_id.set(legacy_id.get()),
-        func.optin_into_asset(asset_id.get(), Int(0)),
-        func.optin_into_asset(legacy_id.get(), Int(0)),
+        global_config_1.asset_id.set(asset.asset_id()),
+        global_config_1.legacy_id.set(legacy.asset_id()),
+        func.optin_into_asset(asset.asset_id(), Int(0)),
+        func.optin_into_asset(legacy.asset_id(), Int(0)),
     )

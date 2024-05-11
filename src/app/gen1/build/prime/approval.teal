@@ -6,7 +6,7 @@ intc_0 // 0
 ==
 bnz main_l4
 txna ApplicationArgs 0
-pushbytes 0x69443df7 // "init(uint64,uint64,uint64)void"
+pushbytes 0x3150e52d // "init(uint64,asset,asset)void"
 ==
 bnz main_l3
 err
@@ -185,19 +185,23 @@ intc_0 // 0
 intc_1 // 8
 callsub setglobaluint_3
 frame_dig -2
+txnas Assets
 bytec_0 // "C1"
 intc_1 // 8
 intc_1 // 8
 callsub setglobaluint_3
 frame_dig -1
+txnas Assets
 bytec_0 // "C1"
 pushint 16 // 16
 intc_1 // 8
 callsub setglobaluint_3
 frame_dig -2
+txnas Assets
 intc_0 // 0
 callsub optinintoasset_5
 frame_dig -1
+txnas Assets
 intc_0 // 0
 callsub optinintoasset_5
 retsub
@@ -211,10 +215,12 @@ txna ApplicationArgs 1
 btoi
 frame_bury 0
 txna ApplicationArgs 2
-btoi
+intc_0 // 0
+getbyte
 frame_bury 1
 txna ApplicationArgs 3
-btoi
+intc_0 // 0
+getbyte
 frame_bury 2
 frame_dig 0
 frame_dig 1

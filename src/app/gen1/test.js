@@ -8,5 +8,6 @@ require('dotenv').config();
     await require('./command/prime/04_create_prime_applications').execute();
     await require('./command/prime/05_fund_prime_applications').execute();
     await require('./command/prime/06_update_prime_applications').execute();
+    await require('./command/prime/07_init_prime_applications').execute();
 
 })();
