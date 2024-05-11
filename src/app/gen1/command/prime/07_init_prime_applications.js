@@ -30,12 +30,13 @@ exports.execute = async function () {
                     method: chain.method(contract, 'init'),
                     methodArgs: [
                         prime['id'],
+                        Number(process.env.PLATFORM_ASSET_ID),
                         prime['asset_id'],
                         prime['legacy_id']
                     ],
                     suggestedParams: {
                         ...params,
-                        fee: 3000,
+                        fee: 4000,
                         flatFee: true
                     }
                 });

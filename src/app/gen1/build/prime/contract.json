@@ -10,11 +10,15 @@
                 },
                 {
                     "type": "asset",
-                    "name": "asset"
+                    "name": "platform_asset"
                 },
                 {
                     "type": "asset",
-                    "name": "legacy"
+                    "name": "prime_asset"
+                },
+                {
+                    "type": "asset",
+                    "name": "legacy_asset"
                 }
             ],
             "returns": {

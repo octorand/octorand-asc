@@ -9,8 +9,8 @@ class GlobalConfig1:
     def __init__(self):
         self.key = Bytes("C1")
         self.id = func.GlobalUint(self.key, 0, 8)
-        self.asset_id = func.GlobalUint(self.key, 8, 8)
-        self.legacy_id = func.GlobalUint(self.key, 16, 8)
+        self.prime_asset_id = func.GlobalUint(self.key, 8, 8)
+        self.legacy_asset_id = func.GlobalUint(self.key, 16, 8)
 
 
 class GlobalConfig2:
@@ -40,12 +40,19 @@ def update():
 
 
 @app.external(name="init")
-def init(id: abi.Uint64, asset: abi.Asset, legacy: abi.Asset):
+def init(
+    id: abi.Uint64,
+    platform_asset: abi.Asset,
+    prime_asset: abi.Asset,
+    legacy_asset: abi.Asset,
+):
     return Seq(
         func.assert_is_creator(),
+        Assert(platform_asset.asset_id() == prime_config.platform_asset_id),
         global_config_1.id.set(id.get()),
-        global_config_1.asset_id.set(asset.asset_id()),
-        global_config_1.legacy_id.set(legacy.asset_id()),
-        func.optin_into_asset(asset.asset_id(), Int(0)),
-        func.optin_into_asset(legacy.asset_id(), Int(0)),
+        global_config_1.prime_asset_id.set(prime_asset.asset_id()),
+        global_config_1.legacy_asset_id.set(legacy_asset.asset_id()),
+        func.optin_into_asset(platform_asset.asset_id(), Int(0)),
+        func.optin_into_asset(prime_asset.asset_id(), Int(0)),
+        func.optin_into_asset(legacy_asset.asset_id(), Int(0)),
     )
