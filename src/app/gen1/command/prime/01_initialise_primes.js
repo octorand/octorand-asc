@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const fs = require("fs");
-const chain = require('./../../../../chain/index');
 
 exports.execute = async function () {
     try {
@@ -9,10 +8,15 @@ exports.execute = async function () {
 
         let primes = setup['primes'];
 
-        for (let i = 0; i < 3; i++) {
-            primes.push({
-                id: i
-            });
+        let count = 5;
+
+        for (let i = 0; i < count; i++) {
+            let prime = primes.find(p => p.id == i);
+            if (!prime) {
+                primes.push({
+                    id: i
+                });
+            }
         }
 
         setup['primes'] = primes;
