@@ -29,12 +29,10 @@ exports.execute = async function () {
                 let value = Buffer.from(params.value['bytes'], 'base64');
 
                 switch (key) {
-                    case 'C1':
+                    case 'Prime':
                         config.id = connection.baseClient.decodeUint64(value.subarray(0, 8));
                         config.prime_asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
                         config.legacy_asset_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
-                        break;
-                    case 'C2':
                         break;
                 }
             }

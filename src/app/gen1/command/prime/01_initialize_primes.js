@@ -22,7 +22,7 @@ exports.execute = async function () {
         setup['primes'] = primes;
         fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
 
-        console.log('initialised primes');
+        console.log('initialized primes');
 
     } catch (error) {
         console.log(error);

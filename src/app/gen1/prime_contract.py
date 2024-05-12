@@ -5,30 +5,34 @@ from pyteal import *
 from beaker import *
 
 
-class GlobalConfig1:
+class Prime:
     def __init__(self):
-        self.key = Bytes("C1")
-        self.id = func.GlobalUint(self.key, 0, 8)
+        self.key = Bytes("Prime")
+        self.id = func.GlobalUint(self.key, 0, 4)
+        self.parent_id = func.GlobalUint(self.key, 4, 4)
         self.prime_asset_id = func.GlobalUint(self.key, 8, 8)
         self.legacy_asset_id = func.GlobalUint(self.key, 16, 8)
-
-
-class GlobalConfig2:
-    def __init__(self):
-        self.key = Bytes("C2")
+        self.theme = func.GlobalUint(self.key, 24, 2)
+        self.skin = func.GlobalUint(self.key, 26, 2)
+        self.is_founder = func.GlobalUint(self.key, 28, 1)
+        self.is_artifact = func.GlobalUint(self.key, 29, 1)
+        self.is_pioneer = func.GlobalUint(self.key, 30, 1)
+        self.is_explorer = func.GlobalUint(self.key, 31, 1)
+        self.score = func.GlobalUint(self.key, 32, 8)
+        self.price = func.GlobalUint(self.key, 40, 8)
+        self.seller = func.GlobalBytes(self.key, 48, 32)
+        self.name = func.GlobalBytes(self.key, 80, 8)
 
 
 app = Application("GenOnePrime")
 
-global_config_1 = GlobalConfig1()
-global_config_2 = GlobalConfig2()
+prime = Prime()
 
 
 @app.create(bare=True)
 def create():
     return Seq(
-        func.init_global(global_config_1.key),
-        func.init_global(global_config_2.key),
+        func.init_global(prime.key),
     )
 
 
@@ -39,8 +43,8 @@ def update():
     )
 
 
-@app.external(name="init")
-def init(
+@app.external(name="initialize")
+def initialize(
     id: abi.Uint64,
     platform_asset: abi.Asset,
     prime_asset: abi.Asset,
@@ -49,9 +53,9 @@ def init(
     return Seq(
         func.assert_is_creator(),
         Assert(platform_asset.asset_id() == prime_config.platform_asset_id),
-        global_config_1.id.set(id.get()),
-        global_config_1.prime_asset_id.set(prime_asset.asset_id()),
-        global_config_1.legacy_asset_id.set(legacy_asset.asset_id()),
+        prime.id.set(id.get()),
+        prime.prime_asset_id.set(prime_asset.asset_id()),
+        prime.legacy_asset_id.set(legacy_asset.asset_id()),
         func.optin_into_asset(platform_asset.asset_id(), Int(0)),
         func.optin_into_asset(prime_asset.asset_id(), Int(0)),
         func.optin_into_asset(legacy_asset.asset_id(), Int(0)),

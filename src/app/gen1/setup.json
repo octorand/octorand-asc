@@ -2,17 +2,17 @@
     "primes": [
         {
             "id": 0,
-            "legacy_asset_id": 661985334,
-            "prime_asset_id": 661985413,
-            "application_id": 661985467,
-            "application_address": "TBIO5BGM7TXLCCZXVBPJAH3F5XYAHNC276FAT3JCVOY65WSMQNNLPGQXBI",
+            "legacy_asset_id": 662599746,
+            "prime_asset_id": 662600052,
+            "application_id": 662600080,
+            "application_address": "4JCKBY54SZMGL6MGRU2E7NJKUJIE2635ZYUAZXYDITFTC2MHDE6K6S4XHE",
             "application_version": 1,
             "application_funded": true,
-            "application_initialised": true,
+            "application_initialized": true,
             "config": {
                 "id": 0,
-                "prime_asset_id": 661985413,
-                "legacy_asset_id": 661985334
+                "prime_asset_id": 662600052,
+                "legacy_asset_id": 662599746
             }
         }
     ]

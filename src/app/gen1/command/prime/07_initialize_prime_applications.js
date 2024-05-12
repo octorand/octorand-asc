@@ -19,7 +19,7 @@ exports.execute = async function () {
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (!prime['application_initialised']) {
+            if (!prime['application_initialized']) {
 
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -27,7 +27,7 @@ exports.execute = async function () {
                     sender: sender,
                     signer: signer,
                     appID: prime['application_id'],
-                    method: chain.method(contract, 'init'),
+                    method: chain.method(contract, 'initialize'),
                     methodArgs: [
                         prime['id'],
                         Number(process.env.PLATFORM_ASSET_ID),
@@ -43,18 +43,18 @@ exports.execute = async function () {
 
                 await chain.execute(composer);
 
-                prime['application_initialised'] = true;
+                prime['application_initialized'] = true;
 
                 primes[i] = prime;
 
                 setup['primes'] = primes;
                 fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
 
-                console.log('init prime application ' + i);
+                console.log('initialized prime application ' + i);
             }
         }
 
-        console.log('init prime applications');
+        console.log('initialized prime applications');
 
     } catch (error) {
         console.log(error);
