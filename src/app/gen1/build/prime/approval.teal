@@ -1,16 +1,20 @@
 #pragma version 8
-intcblock 0 4 8 1
+intcblock 0 1 4 8
 bytecblock 0x5072696d65
 txn NumAppArgs
 intc_0 // 0
 ==
-bnz main_l4
+bnz main_l6
 txna ApplicationArgs 0
 pushbytes 0x58b333da // "initialize(uint64,uint64,asset,asset,asset)void"
 ==
-bnz main_l3
+bnz main_l5
+txna ApplicationArgs 0
+pushbytes 0x624da98b // "populate(uint64,uint64,uint64,uint64,uint64,uint64,uint64)void"
+==
+bnz main_l4
 err
-main_l3:
+main_l4:
 txn OnCompletion
 intc_0 // NoOp
 ==
@@ -19,34 +23,46 @@ intc_0 // 0
 !=
 &&
 assert
-callsub initializecaster_12
-intc_3 // 1
+callsub populatecaster_14
+intc_1 // 1
 return
-main_l4:
+main_l5:
 txn OnCompletion
 intc_0 // NoOp
 ==
-bnz main_l8
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub initializecaster_13
+intc_1 // 1
+return
+main_l6:
 txn OnCompletion
-intc_1 // UpdateApplication
+intc_0 // NoOp
 ==
-bnz main_l7
+bnz main_l10
+txn OnCompletion
+intc_2 // UpdateApplication
+==
+bnz main_l9
 err
-main_l7:
+main_l9:
 txn ApplicationID
 intc_0 // 0
 !=
 assert
 callsub update_10
-intc_3 // 1
+intc_1 // 1
 return
-main_l8:
+main_l10:
 txn ApplicationID
 intc_0 // 0
 ==
 assert
 callsub create_9
-intc_3 // 1
+intc_1 // 1
 return
 
 // init_global
@@ -112,7 +128,7 @@ extractuint_4:
 proto 2 1
 frame_dig -2
 itob
-intc_2 // 8
+intc_3 // 8
 frame_dig -1
 -
 frame_dig -1
@@ -127,7 +143,7 @@ intc_0 // 0
 >
 bz optinintoasset_5_l2
 itxn_begin
-intc_1 // axfer
+intc_2 // axfer
 itxn_field TypeEnum
 frame_dig -2
 itxn_field XferAsset
@@ -193,24 +209,24 @@ callsub assertisequal_7
 frame_dig -5
 bytec_0 // "Prime"
 intc_0 // 0
-intc_1 // 4
+intc_2 // 4
 callsub setglobaluint_3
 frame_dig -4
 bytec_0 // "Prime"
-intc_1 // 4
-intc_1 // 4
+intc_2 // 4
+intc_2 // 4
 callsub setglobaluint_3
 frame_dig -3
 txnas Assets
 bytec_0 // "Prime"
-intc_2 // 8
-intc_2 // 8
+intc_3 // 8
+intc_3 // 8
 callsub setglobaluint_3
 frame_dig -2
 txnas Assets
 bytec_0 // "Prime"
 pushint 16 // 16
-intc_2 // 8
+intc_3 // 8
 callsub setglobaluint_3
 frame_dig -1
 txnas Assets
@@ -226,8 +242,49 @@ intc_0 // 0
 callsub optinintoasset_5
 retsub
 
+// populate
+populate_12:
+proto 7 0
+callsub assertiscreator_6
+frame_dig -7
+bytec_0 // "Prime"
+pushint 24 // 24
+pushint 2 // 2
+callsub setglobaluint_3
+frame_dig -6
+bytec_0 // "Prime"
+pushint 26 // 26
+pushint 2 // 2
+callsub setglobaluint_3
+frame_dig -5
+bytec_0 // "Prime"
+pushint 28 // 28
+intc_1 // 1
+callsub setglobaluint_3
+frame_dig -4
+bytec_0 // "Prime"
+pushint 29 // 29
+intc_1 // 1
+callsub setglobaluint_3
+frame_dig -3
+bytec_0 // "Prime"
+pushint 30 // 30
+intc_1 // 1
+callsub setglobaluint_3
+frame_dig -2
+bytec_0 // "Prime"
+pushint 31 // 31
+intc_1 // 1
+callsub setglobaluint_3
+frame_dig -1
+bytec_0 // "Prime"
+pushint 32 // 32
+intc_3 // 8
+callsub setglobaluint_3
+retsub
+
 // initialize_caster
-initializecaster_12:
+initializecaster_13:
 proto 0 0
 intc_0 // 0
 dupn 4
@@ -255,4 +312,40 @@ frame_dig 2
 frame_dig 3
 frame_dig 4
 callsub initialize_11
+retsub
+
+// populate_caster
+populatecaster_14:
+proto 0 0
+intc_0 // 0
+dupn 6
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+btoi
+frame_bury 3
+txna ApplicationArgs 5
+btoi
+frame_bury 4
+txna ApplicationArgs 6
+btoi
+frame_bury 5
+txna ApplicationArgs 7
+btoi
+frame_bury 6
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+frame_dig 4
+frame_dig 5
+frame_dig 6
+callsub populate_12
 retsub

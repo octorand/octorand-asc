@@ -62,3 +62,25 @@ def initialize(
         func.optin_into_asset(prime_asset.asset_id(), Int(0)),
         func.optin_into_asset(legacy_asset.asset_id(), Int(0)),
     )
+
+
+@app.external(name="populate")
+def populate(
+    theme: abi.Uint64,
+    skin: abi.Uint64,
+    is_founder: abi.Uint64,
+    is_artifact: abi.Uint64,
+    is_pioneer: abi.Uint64,
+    is_explorer: abi.Uint64,
+    score: abi.Uint64,
+):
+    return Seq(
+        func.assert_is_creator(),
+        prime.theme.set(theme.get()),
+        prime.skin.set(skin.get()),
+        prime.is_founder.set(is_founder.get()),
+        prime.is_artifact.set(is_artifact.get()),
+        prime.is_pioneer.set(is_pioneer.get()),
+        prime.is_explorer.set(is_explorer.get()),
+        prime.score.set(score.get()),
+    )
