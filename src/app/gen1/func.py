@@ -256,6 +256,13 @@ def assert_is_zero(value):
 
 
 @Subroutine(TealType.none)
+def assert_is_equal(first, second):
+    return Seq(
+        Assert(first == second),
+    )
+
+
+@Subroutine(TealType.none)
 def assert_is_positive(value):
     return Seq(
         Assert(value > Int(0)),

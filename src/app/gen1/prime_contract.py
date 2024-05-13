@@ -46,14 +46,16 @@ def update():
 @app.external(name="initialize")
 def initialize(
     id: abi.Uint64,
-    platform_asset: abi.Asset,
+    parent_id: abi.Uint64,
     prime_asset: abi.Asset,
     legacy_asset: abi.Asset,
+    platform_asset: abi.Asset,
 ):
     return Seq(
         func.assert_is_creator(),
-        Assert(platform_asset.asset_id() == prime_config.platform_asset_id),
+        func.assert_is_equal(platform_asset.asset_id(), prime_config.platform_asset_id),
         prime.id.set(id.get()),
+        prime.parent_id.set(parent_id.get()),
         prime.prime_asset_id.set(prime_asset.asset_id()),
         prime.legacy_asset_id.set(legacy_asset.asset_id()),
         func.optin_into_asset(platform_asset.asset_id(), Int(0)),

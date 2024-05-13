@@ -2,17 +2,36 @@
     "primes": [
         {
             "id": 0,
-            "legacy_asset_id": 662599746,
-            "prime_asset_id": 662600052,
-            "application_id": 662600080,
-            "application_address": "4JCKBY54SZMGL6MGRU2E7NJKUJIE2635ZYUAZXYDITFTC2MHDE6K6S4XHE",
+            "parent_id": 0,
+            "theme": 2,
+            "skin": 2,
+            "is_founder": 0,
+            "is_artifact": 0,
+            "is_pioneer": 1,
+            "is_explorer": 1,
+            "score": 475,
+            "legacy_asset_id": 662900212,
+            "prime_asset_id": 662900216,
+            "application_id": 662900363,
+            "application_address": "Q65NHCYBWUXDW54CN5JPKMCNDNYWYVFMZ7RWK65XLLZ6MIIWHOS7L64YOM",
             "application_version": 1,
             "application_funded": true,
             "application_initialized": true,
             "config": {
                 "id": 0,
-                "prime_asset_id": 662600052,
-                "legacy_asset_id": 662599746
+                "parent_id": 0,
+                "prime_asset_id": 662900216,
+                "legacy_asset_id": 662900212,
+                "theme": 0,
+                "skin": 0,
+                "is_founder": 0,
+                "is_artifact": 0,
+                "is_pioneer": 0,
+                "is_explorer": 0,
+                "score": 0,
+                "price": 0,
+                "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
+                "name": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
             }
         }
     ]

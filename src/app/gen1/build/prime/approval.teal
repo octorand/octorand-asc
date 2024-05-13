@@ -1,12 +1,12 @@
 #pragma version 8
-intcblock 0 8 1 4
+intcblock 0 4 8 1
 bytecblock 0x5072696d65
 txn NumAppArgs
 intc_0 // 0
 ==
 bnz main_l4
 txna ApplicationArgs 0
-pushbytes 0xe69c033c // "initialize(uint64,asset,asset,asset)void"
+pushbytes 0x58b333da // "initialize(uint64,uint64,asset,asset,asset)void"
 ==
 bnz main_l3
 err
@@ -19,8 +19,8 @@ intc_0 // 0
 !=
 &&
 assert
-callsub initializecaster_11
-intc_2 // 1
+callsub initializecaster_12
+intc_3 // 1
 return
 main_l4:
 txn OnCompletion
@@ -28,7 +28,7 @@ intc_0 // NoOp
 ==
 bnz main_l8
 txn OnCompletion
-intc_3 // UpdateApplication
+intc_1 // UpdateApplication
 ==
 bnz main_l7
 err
@@ -37,16 +37,16 @@ txn ApplicationID
 intc_0 // 0
 !=
 assert
-callsub update_9
-intc_2 // 1
+callsub update_10
+intc_3 // 1
 return
 main_l8:
 txn ApplicationID
 intc_0 // 0
 ==
 assert
-callsub create_8
-intc_2 // 1
+callsub create_9
+intc_3 // 1
 return
 
 // init_global
@@ -73,7 +73,7 @@ setglobalbytes_2:
 proto 4 0
 frame_dig -4
 frame_dig -1
-callsub assertisvalidlength_7
+callsub assertisvalidlength_8
 frame_dig -3
 frame_dig -3
 intc_0 // 0
@@ -112,7 +112,7 @@ extractuint_4:
 proto 2 1
 frame_dig -2
 itob
-intc_1 // 8
+intc_2 // 8
 frame_dig -1
 -
 frame_dig -1
@@ -127,7 +127,7 @@ intc_0 // 0
 >
 bz optinintoasset_5_l2
 itxn_begin
-intc_3 // axfer
+intc_1 // axfer
 itxn_field TypeEnum
 frame_dig -2
 itxn_field XferAsset
@@ -150,8 +150,17 @@ global CreatorAddress
 assert
 retsub
 
+// assert_is_equal
+assertisequal_7:
+proto 2 0
+frame_dig -2
+frame_dig -1
+==
+assert
+retsub
+
 // assert_is_valid_length
-assertisvalidlength_7:
+assertisvalidlength_8:
 proto 2 0
 frame_dig -2
 len
@@ -161,69 +170,72 @@ assert
 retsub
 
 // create
-create_8:
+create_9:
 proto 0 0
 bytec_0 // "Prime"
 callsub initglobal_0
 retsub
 
 // update
-update_9:
+update_10:
 proto 0 0
 callsub assertiscreator_6
 retsub
 
 // initialize
-initialize_10:
-proto 4 0
+initialize_11:
+proto 5 0
 callsub assertiscreator_6
-frame_dig -3
+frame_dig -1
 txnas Assets
 pushint 660757756 // 660757756
-==
-assert
-frame_dig -4
+callsub assertisequal_7
+frame_dig -5
 bytec_0 // "Prime"
 intc_0 // 0
-intc_3 // 4
+intc_1 // 4
 callsub setglobaluint_3
-frame_dig -2
+frame_dig -4
+bytec_0 // "Prime"
+intc_1 // 4
+intc_1 // 4
+callsub setglobaluint_3
+frame_dig -3
 txnas Assets
 bytec_0 // "Prime"
-intc_1 // 8
-intc_1 // 8
+intc_2 // 8
+intc_2 // 8
 callsub setglobaluint_3
-frame_dig -1
+frame_dig -2
 txnas Assets
 bytec_0 // "Prime"
 pushint 16 // 16
-intc_1 // 8
+intc_2 // 8
 callsub setglobaluint_3
+frame_dig -1
+txnas Assets
+intc_0 // 0
+callsub optinintoasset_5
 frame_dig -3
 txnas Assets
 intc_0 // 0
 callsub optinintoasset_5
 frame_dig -2
-txnas Assets
-intc_0 // 0
-callsub optinintoasset_5
-frame_dig -1
 txnas Assets
 intc_0 // 0
 callsub optinintoasset_5
 retsub
 
 // initialize_caster
-initializecaster_11:
+initializecaster_12:
 proto 0 0
 intc_0 // 0
-dupn 3
+dupn 4
 txna ApplicationArgs 1
 btoi
 frame_bury 0
 txna ApplicationArgs 2
-intc_0 // 0
-getbyte
+btoi
 frame_bury 1
 txna ApplicationArgs 3
 intc_0 // 0
@@ -233,9 +245,14 @@ txna ApplicationArgs 4
 intc_0 // 0
 getbyte
 frame_bury 3
+txna ApplicationArgs 5
+intc_0 // 0
+getbyte
+frame_bury 4
 frame_dig 0
 frame_dig 1
 frame_dig 2
 frame_dig 3
-callsub initialize_10
+frame_dig 4
+callsub initialize_11
 retsub

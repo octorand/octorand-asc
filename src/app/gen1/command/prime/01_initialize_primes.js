@@ -14,7 +14,15 @@ exports.execute = async function () {
             let prime = primes.find(p => p.id == i);
             if (!prime) {
                 primes.push({
-                    id: i
+                    id: i,
+                    parent_id: 0,
+                    theme: Math.floor(Math.random() * 4),
+                    skin: Math.floor(Math.random() * 4),
+                    is_founder: Math.floor(Math.random() * 2),
+                    is_artifact: Math.floor(Math.random() * 2),
+                    is_pioneer: Math.floor(Math.random() * 2),
+                    is_explorer: Math.floor(Math.random() * 2),
+                    score: Math.floor(Math.random() * 1000)
                 });
             }
         }
