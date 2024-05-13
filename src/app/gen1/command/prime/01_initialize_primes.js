@@ -22,7 +22,8 @@ exports.execute = async function () {
                     is_artifact: Math.floor(Math.random() * 2),
                     is_pioneer: Math.floor(Math.random() * 2),
                     is_explorer: Math.floor(Math.random() * 2),
-                    score: Math.floor(Math.random() * 1000)
+                    score: Math.floor(Math.random() * 1000),
+                    name: 'ABCDWXYZ'
                 });
             }
         }

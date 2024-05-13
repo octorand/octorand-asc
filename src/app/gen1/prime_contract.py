@@ -3,6 +3,7 @@ import prime_config
 
 from pyteal import *
 from beaker import *
+from typing import *
 
 
 class Prime:
@@ -73,6 +74,7 @@ def populate(
     is_pioneer: abi.Uint64,
     is_explorer: abi.Uint64,
     score: abi.Uint64,
+    name: abi.StaticBytes[Literal[8]],
 ):
     return Seq(
         func.assert_is_creator(),
@@ -83,4 +85,7 @@ def populate(
         prime.is_pioneer.set(is_pioneer.get()),
         prime.is_explorer.set(is_explorer.get()),
         prime.score.set(score.get()),
+        prime.name.set(name.get()),
+        prime.price.set(Int(0)),
+        prime.seller.set(Global.zero_address()),
     )
