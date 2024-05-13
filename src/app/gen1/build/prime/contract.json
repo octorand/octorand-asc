@@ -58,6 +58,10 @@
                 },
                 {
                     "type": "uint64",
+                    "name": "likes"
+                },
+                {
+                    "type": "uint64",
                     "name": "score"
                 },
                 {

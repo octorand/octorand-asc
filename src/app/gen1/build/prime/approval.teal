@@ -10,7 +10,7 @@ pushbytes 0x58b333da // "initialize(uint64,uint64,asset,asset,asset)void"
 ==
 bnz main_l5
 txna ApplicationArgs 0
-pushbytes 0xb2e9369b // "populate(uint64,uint64,uint64,uint64,uint64,uint64,uint64,byte[8])void"
+pushbytes 0xfbce0795 // "populate(uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64,byte[8])void"
 ==
 bnz main_l4
 err
@@ -230,12 +230,12 @@ intc_2 // 8
 callsub setglobaluint_3
 intc_0 // 0
 bytec_0 // "Prime"
-pushint 40 // 40
+pushint 48 // 48
 intc_2 // 8
 callsub setglobaluint_3
 global ZeroAddress
 bytec_0 // "Prime"
-pushint 48 // 48
+pushint 56 // 56
 pushint 32 // 32
 callsub setglobalbytes_2
 frame_dig -1
@@ -254,46 +254,51 @@ retsub
 
 // populate
 populate_12:
-proto 8 0
+proto 9 0
 callsub assertiscreator_6
-frame_dig -8
+frame_dig -9
 bytec_0 // "Prime"
 pushint 24 // 24
 pushint 2 // 2
 callsub setglobaluint_3
-frame_dig -7
+frame_dig -8
 bytec_0 // "Prime"
 pushint 26 // 26
 pushint 2 // 2
 callsub setglobaluint_3
-frame_dig -6
+frame_dig -7
 bytec_0 // "Prime"
 pushint 28 // 28
 intc_1 // 1
 callsub setglobaluint_3
-frame_dig -5
+frame_dig -6
 bytec_0 // "Prime"
 pushint 29 // 29
 intc_1 // 1
 callsub setglobaluint_3
-frame_dig -4
+frame_dig -5
 bytec_0 // "Prime"
 pushint 30 // 30
 intc_1 // 1
 callsub setglobaluint_3
-frame_dig -3
+frame_dig -4
 bytec_0 // "Prime"
 pushint 31 // 31
 intc_1 // 1
 callsub setglobaluint_3
-frame_dig -2
+frame_dig -3
 bytec_0 // "Prime"
 pushint 32 // 32
 intc_2 // 8
 callsub setglobaluint_3
+frame_dig -2
+bytec_0 // "Prime"
+pushint 40 // 40
+intc_2 // 8
+callsub setglobaluint_3
 frame_dig -1
 bytec_0 // "Prime"
-pushint 80 // 80
+pushint 88 // 88
 intc_2 // 8
 callsub setglobalbytes_2
 retsub
@@ -333,7 +338,7 @@ retsub
 populatecaster_14:
 proto 0 0
 intc_0 // 0
-dupn 6
+dupn 7
 pushbytes 0x // ""
 txna ApplicationArgs 1
 btoi
@@ -357,7 +362,10 @@ txna ApplicationArgs 7
 btoi
 frame_bury 6
 txna ApplicationArgs 8
+btoi
 frame_bury 7
+txna ApplicationArgs 9
+frame_bury 8
 frame_dig 0
 frame_dig 1
 frame_dig 2
@@ -366,5 +374,6 @@ frame_dig 4
 frame_dig 5
 frame_dig 6
 frame_dig 7
+frame_dig 8
 callsub populate_12
 retsub
