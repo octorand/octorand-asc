@@ -59,6 +59,8 @@ def initialize(
         prime.parent_id.set(parent_id.get()),
         prime.prime_asset_id.set(prime_asset.asset_id()),
         prime.legacy_asset_id.set(legacy_asset.asset_id()),
+        prime.price.set(Int(0)),
+        prime.seller.set(Global.zero_address()),
         func.optin_into_asset(platform_asset.asset_id(), Int(0)),
         func.optin_into_asset(prime_asset.asset_id(), Int(0)),
         func.optin_into_asset(legacy_asset.asset_id(), Int(0)),
@@ -86,6 +88,4 @@ def populate(
         prime.is_explorer.set(is_explorer.get()),
         prime.score.set(score.get()),
         prime.name.set(name.get()),
-        prime.price.set(Int(0)),
-        prime.seller.set(Global.zero_address()),
     )

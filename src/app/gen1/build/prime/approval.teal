@@ -228,6 +228,16 @@ bytec_0 // "Prime"
 pushint 16 // 16
 intc_2 // 8
 callsub setglobaluint_3
+intc_0 // 0
+bytec_0 // "Prime"
+pushint 40 // 40
+intc_2 // 8
+callsub setglobaluint_3
+global ZeroAddress
+bytec_0 // "Prime"
+pushint 48 // 48
+pushint 32 // 32
+callsub setglobalbytes_2
 frame_dig -1
 txnas Assets
 intc_0 // 0
@@ -285,16 +295,6 @@ frame_dig -1
 bytec_0 // "Prime"
 pushint 80 // 80
 intc_2 // 8
-callsub setglobalbytes_2
-intc_0 // 0
-bytec_0 // "Prime"
-pushint 40 // 40
-intc_2 // 8
-callsub setglobaluint_3
-global ZeroAddress
-bytec_0 // "Prime"
-pushint 48 // 48
-pushint 32 // 32
 callsub setglobalbytes_2
 retsub
 

@@ -53,7 +53,7 @@ exports.execute = async function () {
                         config.is_explorer = connection.baseClient.decodeUint64(value.subarray(31, 32));
                         config.score = connection.baseClient.decodeUint64(value.subarray(32, 40));
                         config.price = connection.baseClient.decodeUint64(value.subarray(40, 48));
-                        config.seller = connection.baseClient.encodeAddress(value.subarray(0, 32));
+                        config.seller = connection.baseClient.encodeAddress(value.subarray(48, 80));
                         config.name = value.subarray(80, 88).toString('utf-8').trim();
 
                         break;
