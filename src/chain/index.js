@@ -6,6 +6,7 @@ let algodClient = new algosdk.Algodv2('', process.env.ALGO_SERVER, '');
 let indexerClient = new algosdk.Indexer('', process.env.ALGO_INDEXER, '');
 
 let admin = algosdk.mnemonicToSecretKey(process.env.ADMIN_MNEMONIC);
+let player = algosdk.mnemonicToSecretKey(process.env.PLAYER_MNEMONIC);
 let gen1 = algosdk.mnemonicToSecretKey(process.env.GEN1_MNEMONIC);
 let gen2 = algosdk.mnemonicToSecretKey(process.env.GEN1_MNEMONIC);
 
@@ -15,6 +16,7 @@ exports.get = async function () {
         algodClient: algodClient,
         indexerClient: indexerClient,
         admin: admin,
+        player: player,
         gen1: gen1,
         gen2: gen2,
     }

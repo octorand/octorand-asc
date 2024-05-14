@@ -30,6 +30,22 @@ app = Application("GenOnePrime")
 prime = Prime()
 
 
+@Subroutine(TealType.none)
+def assert_is_market():
+    return Seq(
+        Assert(Global.caller_app_id() == prime_config.market_application_id),
+        Assert(Txn.sender() == prime_config.market_application_address),
+    )
+
+
+@Subroutine(TealType.none)
+def assert_is_transform():
+    return Seq(
+        Assert(Global.caller_app_id() == prime_config.transform_application_id),
+        Assert(Txn.sender() == prime_config.transform_application_address),
+    )
+
+
 @app.create(bare=True)
 def create():
     return Seq(
@@ -88,4 +104,58 @@ def populate(
         prime.is_explorer.set(is_explorer.get()),
         prime.score.set(score.get()),
         prime.name.set(name.get()),
+    )
+
+
+@app.external(name="rename")
+def rename(
+    name: abi.StaticBytes[Literal[8]],
+):
+    return Seq(
+        assert_is_transform(),
+        prime.name.set(name.get()),
+    )
+
+
+@app.external(name="repaint")
+def repaint(
+    theme: abi.Uint64,
+    skin: abi.Uint64,
+):
+    return Seq(
+        assert_is_transform(),
+        prime.theme.set(theme.get()),
+        prime.skin.set(skin.get()),
+    )
+
+
+@app.external(name="list")
+def list(
+    price: abi.Uint64,
+    seller: abi.Account,
+):
+    return Seq(
+        assert_is_market(),
+        prime.price.set(price.get()),
+        prime.seller.set(seller.address()),
+    )
+
+
+@app.external(name="unlist")
+def unlist():
+    return Seq(
+        assert_is_market(),
+        prime.price.set(Int(0)),
+        prime.seller.set(Global.zero_address()),
+    )
+
+
+@app.external(name="buy")
+def buy(
+    buyer: abi.Account,
+):
+    return Seq(
+        assert_is_market(),
+        prime.price.set(Int(0)),
+        prime.seller.set(Global.zero_address()),
     )
