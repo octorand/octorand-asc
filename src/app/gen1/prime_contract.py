@@ -19,11 +19,10 @@ class Prime:
         self.is_artifact = func.GlobalUint(self.key, 29, 1)
         self.is_pioneer = func.GlobalUint(self.key, 30, 1)
         self.is_explorer = func.GlobalUint(self.key, 31, 1)
-        self.likes = func.GlobalUint(self.key, 32, 8)
-        self.score = func.GlobalUint(self.key, 40, 8)
-        self.price = func.GlobalUint(self.key, 48, 8)
-        self.seller = func.GlobalBytes(self.key, 56, 32)
-        self.name = func.GlobalBytes(self.key, 88, 8)
+        self.score = func.GlobalUint(self.key, 32, 8)
+        self.price = func.GlobalUint(self.key, 40, 8)
+        self.seller = func.GlobalBytes(self.key, 48, 32)
+        self.name = func.GlobalBytes(self.key, 80, 8)
 
 
 app = Application("GenOnePrime")
@@ -76,7 +75,6 @@ def populate(
     is_artifact: abi.Uint64,
     is_pioneer: abi.Uint64,
     is_explorer: abi.Uint64,
-    likes: abi.Uint64,
     score: abi.Uint64,
     name: abi.StaticBytes[Literal[8]],
 ):
@@ -88,7 +86,6 @@ def populate(
         prime.is_artifact.set(is_artifact.get()),
         prime.is_pioneer.set(is_pioneer.get()),
         prime.is_explorer.set(is_explorer.get()),
-        prime.likes.set(likes.get()),
         prime.score.set(score.get()),
         prime.name.set(name.get()),
     )

@@ -25,7 +25,6 @@ exports.execute = async function () {
                 is_artifact: null,
                 is_pioneer: null,
                 is_explorer: null,
-                likes: null,
                 score: null,
                 price: null,
                 seller: null,
@@ -52,11 +51,10 @@ exports.execute = async function () {
                         config.is_artifact = connection.baseClient.decodeUint64(value.subarray(29, 30));
                         config.is_pioneer = connection.baseClient.decodeUint64(value.subarray(30, 31));
                         config.is_explorer = connection.baseClient.decodeUint64(value.subarray(31, 32));
-                        config.likes = connection.baseClient.decodeUint64(value.subarray(32, 40));
-                        config.score = connection.baseClient.decodeUint64(value.subarray(40, 48));
-                        config.price = connection.baseClient.decodeUint64(value.subarray(48, 56));
-                        config.seller = connection.baseClient.encodeAddress(value.subarray(56, 88));
-                        config.name = value.subarray(88, 96).toString('utf-8').trim();
+                        config.score = connection.baseClient.decodeUint64(value.subarray(32, 40));
+                        config.price = connection.baseClient.decodeUint64(value.subarray(40, 48));
+                        config.seller = connection.baseClient.encodeAddress(value.subarray(48, 80));
+                        config.name = value.subarray(80, 88).toString('utf-8').trim();
 
                         break;
                 }
