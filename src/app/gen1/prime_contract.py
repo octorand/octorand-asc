@@ -123,6 +123,7 @@ def rename(
     name: abi.StaticBytes[Literal[8]],
 ):
     return Seq(
+        func.assert_asset_holding(Txn.sender(), config1.prime_asset_id.get()),
         config1.name.set(name.get()),
     )
 
@@ -133,6 +134,7 @@ def repaint(
     skin: abi.Uint64,
 ):
     return Seq(
+        func.assert_asset_holding(Txn.sender(), config1.prime_asset_id.get()),
         config1.theme.set(theme.get()),
         config1.skin.set(skin.get()),
     )
@@ -144,6 +146,7 @@ def list(
     seller: abi.Account,
 ):
     return Seq(
+        func.assert_asset_holding(Txn.sender(), config1.prime_asset_id.get()),
         func.assert_is_zero_int(config1.price.get()),
         func.assert_is_zero_address(config1.seller.get()),
         func.assert_is_positive_int(price.get()),

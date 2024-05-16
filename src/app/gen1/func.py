@@ -86,16 +86,14 @@ def extract_uint(value, length):
 @Subroutine(TealType.none)
 def optin_into_asset(asset_id):
     return Seq(
-        If(asset_id > Int(0)).Then(
-            InnerTxnBuilder.Execute(
-                {
-                    TxnField.type_enum: TxnType.AssetTransfer,
-                    TxnField.xfer_asset: asset_id,
-                    TxnField.asset_amount: Int(0),
-                    TxnField.asset_receiver: Global.current_application_address(),
-                    TxnField.fee: Int(0),
-                }
-            )
+        InnerTxnBuilder.Execute(
+            {
+                TxnField.type_enum: TxnType.AssetTransfer,
+                TxnField.xfer_asset: asset_id,
+                TxnField.asset_amount: Int(0),
+                TxnField.asset_receiver: Global.current_application_address(),
+                TxnField.fee: Int(0),
+            }
         )
     )
 
@@ -103,17 +101,15 @@ def optin_into_asset(asset_id):
 @Subroutine(TealType.none)
 def optout_from_asset(asset_id, receiver):
     return Seq(
-        If(asset_id > Int(0)).Then(
-            InnerTxnBuilder.Execute(
-                {
-                    TxnField.type_enum: TxnType.AssetTransfer,
-                    TxnField.xfer_asset: asset_id,
-                    TxnField.asset_amount: Int(0),
-                    TxnField.asset_receiver: receiver,
-                    TxnField.asset_close_to: receiver,
-                    TxnField.fee: Int(0),
-                }
-            )
+        InnerTxnBuilder.Execute(
+            {
+                TxnField.type_enum: TxnType.AssetTransfer,
+                TxnField.xfer_asset: asset_id,
+                TxnField.asset_amount: Int(0),
+                TxnField.asset_receiver: receiver,
+                TxnField.asset_close_to: receiver,
+                TxnField.fee: Int(0),
+            }
         )
     )
 
@@ -144,6 +140,16 @@ def execute_asset_transfer(asset_id, receiver, amount):
                 TxnField.fee: Int(0),
             }
         )
+    )
+
+
+@Subroutine(TealType.none)
+def assert_asset_holding(holder, asset_id):
+    balance = AssetHolding.balance(holder, asset_id)
+    return Seq(
+        balance,
+        Assert(balance.hasValue()),
+        Assert(balance.value() > Int(0)),
     )
 
 
