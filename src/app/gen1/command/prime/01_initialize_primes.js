@@ -23,6 +23,9 @@ exports.execute = async function () {
                     is_pioneer: Math.floor(Math.random() * 2),
                     is_explorer: Math.floor(Math.random() * 2),
                     score: Math.floor(Math.random() * 1000),
+                    renames: Math.floor(Math.random() * 10),
+                    repaints: Math.floor(Math.random() * 10),
+                    sales: Math.floor(Math.random() * 10),
                     name: 'ABCDWXYZ'
                 });
             }

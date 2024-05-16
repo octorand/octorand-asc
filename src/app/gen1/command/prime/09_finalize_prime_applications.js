@@ -19,7 +19,7 @@ exports.execute = async function () {
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (!prime['application_populated']) {
+            if (!prime['application_finalized']) {
 
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -27,15 +27,12 @@ exports.execute = async function () {
                     sender: sender,
                     signer: signer,
                     appID: prime['application_id'],
-                    method: chain.method(contract, 'populate'),
+                    method: chain.method(contract, 'finalize'),
                     methodArgs: [
-                        prime['theme'],
-                        prime['skin'],
-                        prime['is_founder'],
-                        prime['is_artifact'],
-                        prime['is_pioneer'],
-                        prime['is_explorer'],
-                        chain.bytes(prime['name']),
+                        prime['score'],
+                        prime['renames'],
+                        prime['repaints'],
+                        prime['sales'],
                     ],
                     suggestedParams: {
                         ...params,
@@ -46,18 +43,18 @@ exports.execute = async function () {
 
                 await chain.execute(composer);
 
-                prime['application_populated'] = true;
+                prime['application_finalized'] = true;
 
                 primes[i] = prime;
 
                 setup['primes'] = primes;
                 fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
 
-                console.log('populated prime application ' + i);
+                console.log('finalized prime application ' + i);
             }
         }
 
-        console.log('populated prime applications');
+        console.log('finalized prime applications');
 
     } catch (error) {
         console.log(error);

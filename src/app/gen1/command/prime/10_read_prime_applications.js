@@ -26,9 +26,13 @@ exports.execute = async function () {
                 is_pioneer: null,
                 is_explorer: null,
                 score: null,
+                renames: null,
+                repaints: null,
+                sales: null,
                 price: null,
                 seller: null,
-                name: null
+                name: null,
+                description: null,
             };
 
             let info = await connection.indexerClient.lookupApplications(prime['application_id']).do();
@@ -40,7 +44,7 @@ exports.execute = async function () {
                 let value = Buffer.from(params.value['bytes'], 'base64');
 
                 switch (key) {
-                    case 'Prime':
+                    case 'Config1':
                         config.id = connection.baseClient.decodeUint64(value.subarray(0, 4));
                         config.parent_id = connection.baseClient.decodeUint64(value.subarray(4, 8));
                         config.prime_asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
@@ -52,10 +56,15 @@ exports.execute = async function () {
                         config.is_pioneer = connection.baseClient.decodeUint64(value.subarray(30, 31));
                         config.is_explorer = connection.baseClient.decodeUint64(value.subarray(31, 32));
                         config.score = connection.baseClient.decodeUint64(value.subarray(32, 40));
-                        config.price = connection.baseClient.decodeUint64(value.subarray(40, 48));
-                        config.seller = connection.baseClient.encodeAddress(value.subarray(48, 80));
-                        config.name = value.subarray(80, 88).toString('utf-8').trim();
-
+                        config.renames = connection.baseClient.decodeUint64(value.subarray(40, 48));
+                        config.repaints = connection.baseClient.decodeUint64(value.subarray(48, 56));
+                        config.sales = connection.baseClient.decodeUint64(value.subarray(56, 64));
+                        config.price = connection.baseClient.decodeUint64(value.subarray(64, 72));
+                        config.seller = connection.baseClient.encodeAddress(value.subarray(72, 104));
+                        config.name = value.subarray(104, 112).toString('utf-8').trim();
+                        break;
+                    case 'Config2':
+                        config.description = value.subarray(0, 64).toString('utf-8').trim();
                         break;
                 }
             }

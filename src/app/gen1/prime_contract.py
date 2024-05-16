@@ -6,9 +6,9 @@ from beaker import *
 from typing import *
 
 
-class Prime:
+class Config1:
     def __init__(self):
-        self.key = Bytes("Prime")
+        self.key = Bytes("Config1")
         self.id = func.GlobalUint(self.key, 0, 4)
         self.parent_id = func.GlobalUint(self.key, 4, 4)
         self.prime_asset_id = func.GlobalUint(self.key, 8, 8)
@@ -20,20 +20,31 @@ class Prime:
         self.is_pioneer = func.GlobalUint(self.key, 30, 1)
         self.is_explorer = func.GlobalUint(self.key, 31, 1)
         self.score = func.GlobalUint(self.key, 32, 8)
-        self.price = func.GlobalUint(self.key, 40, 8)
-        self.seller = func.GlobalBytes(self.key, 48, 32)
-        self.name = func.GlobalBytes(self.key, 80, 8)
+        self.renames = func.GlobalUint(self.key, 40, 8)
+        self.repaints = func.GlobalUint(self.key, 48, 8)
+        self.sales = func.GlobalUint(self.key, 56, 8)
+        self.price = func.GlobalUint(self.key, 64, 8)
+        self.seller = func.GlobalBytes(self.key, 72, 32)
+        self.name = func.GlobalBytes(self.key, 104, 8)
+
+
+class Config2:
+    def __init__(self):
+        self.key = Bytes("Config2")
+        self.description = func.GlobalBytes(self.key, 0, 64)
 
 
 app = Application("GenOnePrime")
 
-prime = Prime()
+config1 = Config1()
+config2 = Config2()
 
 
 @app.create(bare=True)
 def create():
     return Seq(
-        func.init_global(prime.key),
+        func.init_global(config1.key),
+        func.init_global(config2.key),
     )
 
 
@@ -55,12 +66,12 @@ def initialize(
     return Seq(
         func.assert_is_creator(),
         func.assert_is_equal(platform_asset.asset_id(), prime_config.platform_asset_id),
-        prime.id.set(id.get()),
-        prime.parent_id.set(parent_id.get()),
-        prime.prime_asset_id.set(prime_asset.asset_id()),
-        prime.legacy_asset_id.set(legacy_asset.asset_id()),
-        prime.price.set(Int(0)),
-        prime.seller.set(Global.zero_address()),
+        config1.id.set(id.get()),
+        config1.parent_id.set(parent_id.get()),
+        config1.prime_asset_id.set(prime_asset.asset_id()),
+        config1.legacy_asset_id.set(legacy_asset.asset_id()),
+        config1.price.set(Int(0)),
+        config1.seller.set(Global.zero_address()),
         func.optin_into_asset(platform_asset.asset_id()),
         func.optin_into_asset(prime_asset.asset_id()),
         func.optin_into_asset(legacy_asset.asset_id()),
@@ -75,19 +86,33 @@ def populate(
     is_artifact: abi.Uint64,
     is_pioneer: abi.Uint64,
     is_explorer: abi.Uint64,
-    score: abi.Uint64,
     name: abi.StaticBytes[Literal[8]],
 ):
     return Seq(
         func.assert_is_creator(),
-        prime.theme.set(theme.get()),
-        prime.skin.set(skin.get()),
-        prime.is_founder.set(is_founder.get()),
-        prime.is_artifact.set(is_artifact.get()),
-        prime.is_pioneer.set(is_pioneer.get()),
-        prime.is_explorer.set(is_explorer.get()),
-        prime.score.set(score.get()),
-        prime.name.set(name.get()),
+        config1.theme.set(theme.get()),
+        config1.skin.set(skin.get()),
+        config1.is_founder.set(is_founder.get()),
+        config1.is_artifact.set(is_artifact.get()),
+        config1.is_pioneer.set(is_pioneer.get()),
+        config1.is_explorer.set(is_explorer.get()),
+        config1.name.set(name.get()),
+    )
+
+
+@app.external(name="finalize")
+def finalize(
+    score: abi.Uint64,
+    renames: abi.Uint64,
+    repaints: abi.Uint64,
+    sales: abi.Uint64,
+):
+    return Seq(
+        func.assert_is_creator(),
+        config1.score.set(score.get()),
+        config1.renames.set(renames.get()),
+        config1.repaints.set(repaints.get()),
+        config1.sales.set(sales.get()),
     )
 
 
@@ -96,7 +121,7 @@ def rename(
     name: abi.StaticBytes[Literal[8]],
 ):
     return Seq(
-        prime.name.set(name.get()),
+        config1.name.set(name.get()),
     )
 
 
@@ -106,8 +131,8 @@ def repaint(
     skin: abi.Uint64,
 ):
     return Seq(
-        prime.theme.set(theme.get()),
-        prime.skin.set(skin.get()),
+        config1.theme.set(theme.get()),
+        config1.skin.set(skin.get()),
     )
 
 
@@ -117,25 +142,25 @@ def list(
     seller: abi.Account,
 ):
     return Seq(
-        func.assert_is_zero_int(prime.price.get()),
-        func.assert_is_zero_address(prime.seller.get()),
+        func.assert_is_zero_int(config1.price.get()),
+        func.assert_is_zero_address(config1.seller.get()),
         func.assert_is_positive_int(price.get()),
         func.assert_is_positive_address(seller.address()),
-        prime.price.set(price.get()),
-        prime.seller.set(seller.address()),
+        config1.price.set(price.get()),
+        config1.seller.set(seller.address()),
     )
 
 
 @app.external(name="unlist")
 def unlist():
     return Seq(
-        func.assert_is_positive_int(prime.price.get()),
-        func.assert_is_positive_address(prime.seller.get()),
+        func.assert_is_positive_int(config1.price.get()),
+        func.assert_is_positive_address(config1.seller.get()),
         func.execute_asset_transfer(
-            prime.prime_asset_id.get(), prime.seller.get(), Int(1)
+            config1.prime_asset_id.get(), config1.seller.get(), Int(1)
         ),
-        prime.price.set(Int(0)),
-        prime.seller.set(Global.zero_address()),
+        config1.price.set(Int(0)),
+        config1.seller.set(Global.zero_address()),
     )
 
 
@@ -144,8 +169,8 @@ def buy(
     buyer: abi.Account,
 ):
     return Seq(
-        func.assert_is_positive_int(prime.price.get()),
-        func.assert_is_positive_address(prime.seller.get()),
-        prime.price.set(Int(0)),
-        prime.seller.set(Global.zero_address()),
+        func.assert_is_positive_int(config1.price.get()),
+        func.assert_is_positive_address(config1.seller.get()),
+        config1.price.set(Int(0)),
+        config1.seller.set(Global.zero_address()),
     )

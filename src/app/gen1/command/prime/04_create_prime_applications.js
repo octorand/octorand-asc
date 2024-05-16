@@ -34,7 +34,7 @@ exports.execute = async function () {
                         numLocalInts: 0,
                         numLocalByteSlices: 0,
                         numGlobalInts: 0,
-                        numGlobalByteSlices: 1,
+                        numGlobalByteSlices: 2,
                         extraPages: 0,
                         note: connection.baseClient.encodeUint64(prime['id']),
                         suggestedParams: {

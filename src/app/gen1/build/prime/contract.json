@@ -57,12 +57,32 @@
                     "name": "is_explorer"
                 },
                 {
+                    "type": "byte[8]",
+                    "name": "name"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "finalize",
+            "args": [
+                {
                     "type": "uint64",
                     "name": "score"
                 },
                 {
-                    "type": "byte[8]",
-                    "name": "name"
+                    "type": "uint64",
+                    "name": "renames"
+                },
+                {
+                    "type": "uint64",
+                    "name": "repaints"
+                },
+                {
+                    "type": "uint64",
+                    "name": "sales"
                 }
             ],
             "returns": {

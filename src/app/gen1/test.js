@@ -10,6 +10,7 @@ require('dotenv').config();
     await require('./command/prime/06_update_prime_applications').execute();
     await require('./command/prime/07_initialize_prime_applications').execute();
     await require('./command/prime/08_populate_prime_applications').execute();
-    await require('./command/prime/09_read_prime_applications').execute();
+    await require('./command/prime/09_finalize_prime_applications').execute();
+    await require('./command/prime/10_read_prime_applications').execute();
 
 })();
