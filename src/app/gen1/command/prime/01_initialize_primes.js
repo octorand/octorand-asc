@@ -26,7 +26,8 @@ exports.execute = async function () {
                     renames: Math.floor(Math.random() * 10),
                     repaints: Math.floor(Math.random() * 10),
                     sales: Math.floor(Math.random() * 10),
-                    name: 'ABCDWXYZ'
+                    name: 'ABCDWXYZ',
+                    description: 'Notes',
                 });
             }
         }

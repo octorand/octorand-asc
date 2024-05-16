@@ -87,6 +87,7 @@ def populate(
     is_pioneer: abi.Uint64,
     is_explorer: abi.Uint64,
     name: abi.StaticBytes[Literal[8]],
+    description: abi.StaticBytes[Literal[64]],
 ):
     return Seq(
         func.assert_is_creator(),
@@ -97,6 +98,7 @@ def populate(
         config1.is_pioneer.set(is_pioneer.get()),
         config1.is_explorer.set(is_explorer.get()),
         config1.name.set(name.get()),
+        config2.description.set(description.get()),
     )
 
 
