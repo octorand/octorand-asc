@@ -61,9 +61,9 @@ def initialize(
         prime.legacy_asset_id.set(legacy_asset.asset_id()),
         prime.price.set(Int(0)),
         prime.seller.set(Global.zero_address()),
-        func.optin_into_asset(platform_asset.asset_id(), Int(0)),
-        func.optin_into_asset(prime_asset.asset_id(), Int(0)),
-        func.optin_into_asset(legacy_asset.asset_id(), Int(0)),
+        func.optin_into_asset(platform_asset.asset_id()),
+        func.optin_into_asset(prime_asset.asset_id()),
+        func.optin_into_asset(legacy_asset.asset_id()),
     )
 
 
@@ -132,7 +132,7 @@ def unlist():
         func.assert_is_positive_int(prime.price.get()),
         func.assert_is_positive_address(prime.seller.get()),
         func.execute_asset_transfer(
-            prime.prime_asset_id.get(), prime.seller.get(), Int(1), Int(0)
+            prime.prime_asset_id.get(), prime.seller.get(), Int(1)
         ),
         prime.price.set(Int(0)),
         prime.seller.set(Global.zero_address()),

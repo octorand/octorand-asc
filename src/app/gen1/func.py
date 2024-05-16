@@ -84,101 +84,7 @@ def extract_uint(value, length):
 
 
 @Subroutine(TealType.none)
-def create_application(
-    approval, clear, global_uints, global_bytes, local_units, local_bytes, pages, fee
-):
-    return Seq(
-        InnerTxnBuilder.Execute(
-            {
-                TxnField.type_enum: TxnType.ApplicationCall,
-                TxnField.on_completion: OnComplete.NoOp,
-                TxnField.approval_program: approval,
-                TxnField.clear_state_program: clear,
-                TxnField.global_num_uints: global_uints,
-                TxnField.global_num_byte_slices: global_bytes,
-                TxnField.local_num_uints: local_units,
-                TxnField.local_num_byte_slices: local_bytes,
-                TxnField.extra_program_pages: pages,
-                TxnField.fee: fee,
-            }
-        )
-    )
-
-
-@Subroutine(TealType.none)
-def update_application(app_id, approval, clear, fee):
-    return Seq(
-        InnerTxnBuilder.Execute(
-            {
-                TxnField.type_enum: TxnType.ApplicationCall,
-                TxnField.on_completion: OnComplete.UpdateApplication,
-                TxnField.application_id: app_id,
-                TxnField.approval_program: approval,
-                TxnField.clear_state_program: clear,
-                TxnField.fee: fee,
-            }
-        )
-    )
-
-
-@Subroutine(TealType.none)
-def delete_application(app_id, fee):
-    return Seq(
-        InnerTxnBuilder.Execute(
-            {
-                TxnField.type_enum: TxnType.ApplicationCall,
-                TxnField.on_completion: OnComplete.DeleteApplication,
-                TxnField.application_id: app_id,
-                TxnField.fee: fee,
-            }
-        )
-    )
-
-
-@Subroutine(TealType.none)
-def create_asset(
-    manager, reserve, total, decimals, unit_name, asset_name, asset_url, fee
-):
-    return Seq(
-        Assert(manager != Global.zero_address()),
-        Assert(reserve != Global.zero_address()),
-        InnerTxnBuilder.Execute(
-            {
-                TxnField.type_enum: TxnType.AssetConfig,
-                TxnField.config_asset_manager: manager,
-                TxnField.config_asset_reserve: reserve,
-                TxnField.config_asset_total: total,
-                TxnField.config_asset_decimals: decimals,
-                TxnField.config_asset_unit_name: unit_name,
-                TxnField.config_asset_name: asset_name,
-                TxnField.config_asset_url: asset_url,
-                TxnField.config_asset_default_frozen: Int(0),
-                TxnField.fee: fee,
-            }
-        ),
-    )
-
-
-@Subroutine(TealType.none)
-def update_asset(asset_id, manager, reserve, note, fee):
-    return Seq(
-        Assert(manager != Global.zero_address()),
-        Assert(reserve != Global.zero_address()),
-        InnerTxnBuilder.Execute(
-            {
-                TxnField.type_enum: TxnType.AssetConfig,
-                TxnField.config_asset: asset_id,
-                TxnField.config_asset_manager: manager,
-                TxnField.config_asset_reserve: reserve,
-                TxnField.note: note,
-                TxnField.fee: fee,
-            }
-        ),
-    )
-
-
-@Subroutine(TealType.none)
-def optin_into_asset(asset_id, fee):
+def optin_into_asset(asset_id):
     return Seq(
         If(asset_id > Int(0)).Then(
             InnerTxnBuilder.Execute(
@@ -187,7 +93,7 @@ def optin_into_asset(asset_id, fee):
                     TxnField.xfer_asset: asset_id,
                     TxnField.asset_amount: Int(0),
                     TxnField.asset_receiver: Global.current_application_address(),
-                    TxnField.fee: fee,
+                    TxnField.fee: Int(0),
                 }
             )
         )
@@ -195,7 +101,7 @@ def optin_into_asset(asset_id, fee):
 
 
 @Subroutine(TealType.none)
-def optout_from_asset(asset_id, receiver, fee):
+def optout_from_asset(asset_id, receiver):
     return Seq(
         If(asset_id > Int(0)).Then(
             InnerTxnBuilder.Execute(
@@ -205,7 +111,7 @@ def optout_from_asset(asset_id, receiver, fee):
                     TxnField.asset_amount: Int(0),
                     TxnField.asset_receiver: receiver,
                     TxnField.asset_close_to: receiver,
-                    TxnField.fee: fee,
+                    TxnField.fee: Int(0),
                 }
             )
         )
@@ -213,21 +119,21 @@ def optout_from_asset(asset_id, receiver, fee):
 
 
 @Subroutine(TealType.none)
-def execute_payment(receiver, amount, fee):
+def execute_payment(receiver, amount):
     return Seq(
         InnerTxnBuilder.Execute(
             {
                 TxnField.type_enum: TxnType.Payment,
                 TxnField.receiver: receiver,
                 TxnField.amount: amount,
-                TxnField.fee: fee,
+                TxnField.fee: Int(0),
             }
         )
     )
 
 
 @Subroutine(TealType.none)
-def execute_asset_transfer(asset_id, receiver, amount, fee):
+def execute_asset_transfer(asset_id, receiver, amount):
     return Seq(
         InnerTxnBuilder.Execute(
             {
@@ -235,30 +141,16 @@ def execute_asset_transfer(asset_id, receiver, amount, fee):
                 TxnField.xfer_asset: asset_id,
                 TxnField.asset_receiver: receiver,
                 TxnField.asset_amount: amount,
-                TxnField.fee: fee,
+                TxnField.fee: Int(0),
             }
         )
     )
 
 
 @Subroutine(TealType.none)
-def assert_is_creator():
+def assert_is_equal(first, second):
     return Seq(
-        Assert(Txn.sender() == Global.creator_address()),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_zero_int(value):
-    return Seq(
-        Assert(value == Int(0)),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_zero_address(value):
-    return Seq(
-        Assert(value == Global.zero_address()),
+        Assert(first == second),
     )
 
 
@@ -277,35 +169,35 @@ def assert_is_positive_address(value):
 
 
 @Subroutine(TealType.none)
-def assert_is_equal(first, second):
+def assert_is_creator():
     return Seq(
-        Assert(first == second),
+        assert_is_equal(Txn.sender(), Global.creator_address()),
+    )
+
+
+@Subroutine(TealType.none)
+def assert_is_zero_int(value):
+    return Seq(
+        assert_is_equal(value, Int(0)),
+    )
+
+
+@Subroutine(TealType.none)
+def assert_is_zero_address(value):
+    return Seq(
+        assert_is_equal(value, Global.zero_address()),
     )
 
 
 @Subroutine(TealType.none)
 def assert_is_valid_length(value, length):
     return Seq(
-        Assert(Len(value) == length),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_future(timestamp):
-    return Seq(
-        Assert(timestamp > Global.latest_timestamp()),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_past(timestamp):
-    return Seq(
-        Assert(timestamp < Global.latest_timestamp()),
+        assert_is_equal(Len(value), length),
     )
 
 
 @Subroutine(TealType.none)
 def assert_is_direct():
     return Seq(
-        Assert(Global.caller_app_id() == Int(0)),
+        assert_is_zero_int(Global.caller_app_id()),
     )

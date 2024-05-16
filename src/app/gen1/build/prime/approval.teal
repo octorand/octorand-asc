@@ -227,21 +227,21 @@ retsub
 
 // optin_into_asset
 optinintoasset_6:
-proto 2 0
-frame_dig -2
+proto 1 0
+frame_dig -1
 intc_0 // 0
 >
 bz optinintoasset_6_l2
 itxn_begin
 pushint 4 // axfer
 itxn_field TypeEnum
-frame_dig -2
+frame_dig -1
 itxn_field XferAsset
 intc_0 // 0
 itxn_field AssetAmount
 global CurrentApplicationAddress
 itxn_field AssetReceiver
-frame_dig -1
+intc_0 // 0
 itxn_field Fee
 itxn_submit
 optinintoasset_6_l2:
@@ -249,50 +249,32 @@ retsub
 
 // execute_asset_transfer
 executeassettransfer_7:
-proto 4 0
+proto 3 0
 itxn_begin
 pushint 4 // axfer
 itxn_field TypeEnum
-frame_dig -4
-itxn_field XferAsset
 frame_dig -3
-itxn_field AssetReceiver
+itxn_field XferAsset
 frame_dig -2
-itxn_field AssetAmount
+itxn_field AssetReceiver
 frame_dig -1
+itxn_field AssetAmount
+intc_0 // 0
 itxn_field Fee
 itxn_submit
 retsub
 
-// assert_is_creator
-assertiscreator_8:
-proto 0 0
-txn Sender
-global CreatorAddress
-==
-assert
-retsub
-
-// assert_is_zero_int
-assertiszeroint_9:
-proto 1 0
+// assert_is_equal
+assertisequal_8:
+proto 2 0
+frame_dig -2
 frame_dig -1
-intc_0 // 0
-==
-assert
-retsub
-
-// assert_is_zero_address
-assertiszeroaddress_10:
-proto 1 0
-frame_dig -1
-global ZeroAddress
 ==
 assert
 retsub
 
 // assert_is_positive_int
-assertispositiveint_11:
+assertispositiveint_9:
 proto 1 0
 frame_dig -1
 intc_0 // 0
@@ -301,7 +283,7 @@ assert
 retsub
 
 // assert_is_positive_address
-assertispositiveaddress_12:
+assertispositiveaddress_10:
 proto 1 0
 frame_dig -1
 global ZeroAddress
@@ -309,13 +291,28 @@ global ZeroAddress
 assert
 retsub
 
-// assert_is_equal
-assertisequal_13:
-proto 2 0
-frame_dig -2
+// assert_is_creator
+assertiscreator_11:
+proto 0 0
+txn Sender
+global CreatorAddress
+callsub assertisequal_8
+retsub
+
+// assert_is_zero_int
+assertiszeroint_12:
+proto 1 0
 frame_dig -1
-==
-assert
+intc_0 // 0
+callsub assertisequal_8
+retsub
+
+// assert_is_zero_address
+assertiszeroaddress_13:
+proto 1 0
+frame_dig -1
+global ZeroAddress
+callsub assertisequal_8
 retsub
 
 // assert_is_valid_length
@@ -324,8 +321,7 @@ proto 2 0
 frame_dig -2
 len
 frame_dig -1
-==
-assert
+callsub assertisequal_8
 retsub
 
 // create
@@ -338,17 +334,17 @@ retsub
 // update
 update_16:
 proto 0 0
-callsub assertiscreator_8
+callsub assertiscreator_11
 retsub
 
 // initialize
 initialize_17:
 proto 5 0
-callsub assertiscreator_8
+callsub assertiscreator_11
 frame_dig -1
 txnas Assets
 pushint 660757756 // 660757756
-callsub assertisequal_13
+callsub assertisequal_8
 frame_dig -5
 bytec_0 // "Prime"
 intc_0 // 0
@@ -383,22 +379,19 @@ intc_3 // 32
 callsub setglobalbytes_3
 frame_dig -1
 txnas Assets
-intc_0 // 0
 callsub optinintoasset_6
 frame_dig -3
 txnas Assets
-intc_0 // 0
 callsub optinintoasset_6
 frame_dig -2
 txnas Assets
-intc_0 // 0
 callsub optinintoasset_6
 retsub
 
 // populate
 populate_18:
 proto 8 0
-callsub assertiscreator_8
+callsub assertiscreator_11
 frame_dig -8
 bytec_0 // "Prime"
 pushint 24 // 24
@@ -473,17 +466,17 @@ bytec_0 // "Prime"
 pushint 40 // 40
 intc_1 // 8
 callsub getglobaluint_2
-callsub assertiszeroint_9
+callsub assertiszeroint_12
 bytec_0 // "Prime"
 pushint 48 // 48
 intc_3 // 32
 callsub getglobalbytes_1
-callsub assertiszeroaddress_10
+callsub assertiszeroaddress_13
 frame_dig -2
-callsub assertispositiveint_11
+callsub assertispositiveint_9
 frame_dig -1
 txnas Accounts
-callsub assertispositiveaddress_12
+callsub assertispositiveaddress_10
 frame_dig -2
 bytec_0 // "Prime"
 pushint 40 // 40
@@ -504,12 +497,12 @@ bytec_0 // "Prime"
 pushint 40 // 40
 intc_1 // 8
 callsub getglobaluint_2
-callsub assertispositiveint_11
+callsub assertispositiveint_9
 bytec_0 // "Prime"
 pushint 48 // 48
 intc_3 // 32
 callsub getglobalbytes_1
-callsub assertispositiveaddress_12
+callsub assertispositiveaddress_10
 bytec_0 // "Prime"
 intc_1 // 8
 intc_1 // 8
@@ -519,7 +512,6 @@ pushint 48 // 48
 intc_3 // 32
 callsub getglobalbytes_1
 intc_2 // 1
-intc_0 // 0
 callsub executeassettransfer_7
 intc_0 // 0
 bytec_0 // "Prime"
@@ -540,12 +532,12 @@ bytec_0 // "Prime"
 pushint 40 // 40
 intc_1 // 8
 callsub getglobaluint_2
-callsub assertispositiveint_11
+callsub assertispositiveint_9
 bytec_0 // "Prime"
 pushint 48 // 48
 intc_3 // 32
 callsub getglobalbytes_1
-callsub assertispositiveaddress_12
+callsub assertispositiveaddress_10
 intc_0 // 0
 bytec_0 // "Prime"
 pushint 40 // 40
