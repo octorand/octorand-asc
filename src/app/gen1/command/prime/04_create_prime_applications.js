@@ -29,8 +29,8 @@ exports.execute = async function () {
                     txn: connection.baseClient.makeApplicationCreateTxnFromObject({
                         from: sender,
                         onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
-                        approvalProgram: await chain.compile(approvalProgram, false),
-                        clearProgram: await chain.compile(clearProgram, false),
+                        approvalProgram: await chain.compile(approvalProgram),
+                        clearProgram: await chain.compile(clearProgram),
                         numLocalInts: 0,
                         numLocalByteSlices: 0,
                         numGlobalInts: 0,

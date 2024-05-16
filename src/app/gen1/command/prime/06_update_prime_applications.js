@@ -31,8 +31,8 @@ exports.execute = async function () {
                         from: sender,
                         appIndex: prime['application_id'],
                         onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
-                        approvalProgram: await chain.compile(approvalProgram, false),
-                        clearProgram: await chain.compile(clearProgram, false),
+                        approvalProgram: await chain.compile(approvalProgram),
+                        clearProgram: await chain.compile(clearProgram),
                         suggestedParams: {
                             ...params,
                             fee: 1000,

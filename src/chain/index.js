@@ -38,16 +38,12 @@ exports.wait = async function (transactionId) {
     }
 };
 
-exports.compile = async function (source, print) {
+exports.compile = async function (source) {
     let encoder = new util.TextEncoder();
     let programBytes = encoder.encode(source);
     let compileResponse = await algodClient.compile(programBytes).do();
     let compileResult = Buffer.from(compileResponse.result, "base64");
     let compiledBytes = new Uint8Array(compileResult);
-
-    if (print) {
-        console.log(compileResponse);
-    }
 
     return compiledBytes;
 }
