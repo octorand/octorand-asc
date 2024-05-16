@@ -30,22 +30,6 @@ app = Application("GenOnePrime")
 prime = Prime()
 
 
-@Subroutine(TealType.none)
-def assert_is_market():
-    return Seq(
-        Assert(Global.caller_app_id() == prime_config.market_application_id),
-        Assert(Txn.sender() == prime_config.market_application_address),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_transform():
-    return Seq(
-        Assert(Global.caller_app_id() == prime_config.transform_application_id),
-        Assert(Txn.sender() == prime_config.transform_application_address),
-    )
-
-
 @app.create(bare=True)
 def create():
     return Seq(
@@ -112,7 +96,6 @@ def rename(
     name: abi.StaticBytes[Literal[8]],
 ):
     return Seq(
-        assert_is_transform(),
         prime.name.set(name.get()),
     )
 
@@ -123,7 +106,6 @@ def repaint(
     skin: abi.Uint64,
 ):
     return Seq(
-        assert_is_transform(),
         prime.theme.set(theme.get()),
         prime.skin.set(skin.get()),
     )
@@ -135,7 +117,10 @@ def list(
     seller: abi.Account,
 ):
     return Seq(
-        assert_is_market(),
+        func.assert_is_zero_int(prime.price.get()),
+        func.assert_is_zero_address(prime.seller.get()),
+        func.assert_is_positive_int(price.get()),
+        func.assert_is_positive_address(seller.address()),
         prime.price.set(price.get()),
         prime.seller.set(seller.address()),
     )
@@ -144,7 +129,11 @@ def list(
 @app.external(name="unlist")
 def unlist():
     return Seq(
-        assert_is_market(),
+        func.assert_is_positive_int(prime.price.get()),
+        func.assert_is_positive_address(prime.seller.get()),
+        func.execute_asset_transfer(
+            prime.prime_asset_id.get(), prime.seller.get(), Int(1), Int(0)
+        ),
         prime.price.set(Int(0)),
         prime.seller.set(Global.zero_address()),
     )
@@ -155,7 +144,8 @@ def buy(
     buyer: abi.Account,
 ):
     return Seq(
-        assert_is_market(),
+        func.assert_is_positive_int(prime.price.get()),
+        func.assert_is_positive_address(prime.seller.get()),
         prime.price.set(Int(0)),
         prime.seller.set(Global.zero_address()),
     )

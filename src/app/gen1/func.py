@@ -249,9 +249,30 @@ def assert_is_creator():
 
 
 @Subroutine(TealType.none)
-def assert_is_zero(value):
+def assert_is_zero_int(value):
     return Seq(
         Assert(value == Int(0)),
+    )
+
+
+@Subroutine(TealType.none)
+def assert_is_zero_address(value):
+    return Seq(
+        Assert(value == Global.zero_address()),
+    )
+
+
+@Subroutine(TealType.none)
+def assert_is_positive_int(value):
+    return Seq(
+        Assert(value > Int(0)),
+    )
+
+
+@Subroutine(TealType.none)
+def assert_is_positive_address(value):
+    return Seq(
+        Assert(value != Global.zero_address()),
     )
 
 
@@ -259,13 +280,6 @@ def assert_is_zero(value):
 def assert_is_equal(first, second):
     return Seq(
         Assert(first == second),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_positive(value):
-    return Seq(
-        Assert(value > Int(0)),
     )
 
 
