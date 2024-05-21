@@ -97,8 +97,12 @@
             "name": "rename",
             "args": [
                 {
-                    "type": "byte[8]",
-                    "name": "name"
+                    "type": "uint64",
+                    "name": "index"
+                },
+                {
+                    "type": "uint64",
+                    "name": "value"
                 }
             ],
             "returns": {

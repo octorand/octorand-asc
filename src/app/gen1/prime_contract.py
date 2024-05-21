@@ -120,11 +120,31 @@ def finalize(
 
 @app.external(name="rename")
 def rename(
-    name: abi.StaticBytes[Literal[8]],
+    index: abi.Uint64,
+    value: abi.Uint64,
 ):
+    previous_value = GetByte(config1.name.get(), index.get())
+    next_value = value.get()
+    value_difference = If(
+        Gt(next_value, previous_value),
+        Minus(next_value, previous_value),
+        Minus(previous_value, next_value),
+    )
+    price = Mul(prime_config.rename_price, value_difference)
     return Seq(
+        Assert(index.get() >= Int(0)),
+        Assert(index.get() <= Int(7)),
+        Assert(value.get() >= Int(65)),
+        Assert(value.get() <= Int(90)),
+        func.assert_group_size(Int(2)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
-        config1.name.set(name.get()),
+        func.assert_sender_asset_transfer(
+            prime_config.platform_asset_id,
+            prime_config.platform_asset_reserve,
+            price,
+            Int(1),
+        ),
+        config1.name.set(SetByte(config1.name.get(), index.get(), value.get())),
     )
 
 

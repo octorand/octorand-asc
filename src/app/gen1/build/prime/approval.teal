@@ -1,6 +1,6 @@
 #pragma version 8
-intcblock 0 8 1 32 660757756
-bytecblock 0x436f6e66696731 0x436f6e66696732 0x
+intcblock 0 8 1 32 660757756 10000000
+bytecblock 0x436f6e66696731 0x436f6e66696732 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af
 txn NumAppArgs
 intc_0 // 0
 ==
@@ -18,7 +18,7 @@ pushbytes 0x893c0cb4 // "finalize(uint64,uint64,uint64,uint64)void"
 ==
 bnz main_l15
 txna ApplicationArgs 0
-pushbytes 0x17086eab // "rename(byte[8])void"
+pushbytes 0x5bff6c91 // "rename(uint64,uint64)void"
 ==
 bnz main_l14
 txna ApplicationArgs 0
@@ -529,13 +529,71 @@ retsub
 
 // rename
 rename_23:
-proto 1 0
+proto 2 0
+frame_dig -2
+intc_0 // 0
+>=
+assert
+frame_dig -2
+pushint 7 // 7
+<=
+assert
+frame_dig -1
+pushint 65 // 65
+>=
+assert
+frame_dig -1
+pushint 90 // 90
+<=
+assert
+pushint 2 // 2
+callsub assertgroupsize_17
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
 callsub getglobaluint_2
 callsub assertsenderassetholding_8
+intc 4 // 660757756
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+intc 5 // 10000000
 frame_dig -1
+bytec_0 // "Config1"
+pushint 104 // 104
+intc_1 // 8
+callsub getglobalbytes_1
+frame_dig -2
+getbyte
+>
+bnz rename_23_l2
+bytec_0 // "Config1"
+pushint 104 // 104
+intc_1 // 8
+callsub getglobalbytes_1
+frame_dig -2
+getbyte
+frame_dig -1
+-
+b rename_23_l3
+rename_23_l2:
+frame_dig -1
+bytec_0 // "Config1"
+pushint 104 // 104
+intc_1 // 8
+callsub getglobalbytes_1
+frame_dig -2
+getbyte
+-
+rename_23_l3:
+*
+intc_2 // 1
+callsub assertsenderassettransfer_9
+bytec_0 // "Config1"
+pushint 104 // 104
+intc_1 // 8
+callsub getglobalbytes_1
+frame_dig -2
+frame_dig -1
+setbyte
 bytec_0 // "Config1"
 pushint 104 // 104
 intc_1 // 8
@@ -553,8 +611,8 @@ intc_1 // 8
 callsub getglobaluint_2
 callsub assertsenderassetholding_8
 intc 4 // 660757756
-pushbytes 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
-pushint 10000000 // 10000000
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+intc 5 // 10000000
 intc_2 // 1
 callsub assertsenderassettransfer_9
 frame_dig -2
@@ -701,7 +759,7 @@ populatecaster_29:
 proto 0 0
 intc_0 // 0
 dupn 5
-bytec_2 // ""
+pushbytes 0x // ""
 dup
 txna ApplicationArgs 1
 btoi
@@ -763,10 +821,16 @@ retsub
 // rename_caster
 renamecaster_31:
 proto 0 0
-bytec_2 // ""
+intc_0 // 0
+dup
 txna ApplicationArgs 1
+btoi
 frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
 frame_dig 0
+frame_dig 1
 callsub rename_23
 retsub
 
