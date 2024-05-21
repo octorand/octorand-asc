@@ -144,12 +144,23 @@ def execute_asset_transfer(asset_id, receiver, amount):
 
 
 @Subroutine(TealType.none)
-def assert_asset_holding(holder, asset_id):
-    balance = AssetHolding.balance(holder, asset_id)
+def assert_sender_asset_holding(asset_id):
+    balance = AssetHolding.balance(Txn.sender(), asset_id)
     return Seq(
         balance,
         Assert(balance.hasValue()),
         Assert(balance.value() > Int(0)),
+    )
+
+
+@Subroutine(TealType.none)
+def assert_sender_asset_transfer(asset_id, receiver, amount, index):
+    return Seq(
+        Assert(Gtxn[index].sender() == Txn.sender()),
+        Assert(Gtxn[index].type_enum() == TxnType.AssetTransfer),
+        Assert(Gtxn[index].xfer_asset() == asset_id),
+        Assert(Gtxn[index].asset_receiver() == receiver),
+        Assert(Gtxn[index].asset_amount() == amount),
     )
 
 
@@ -206,4 +217,11 @@ def assert_is_valid_length(value, length):
 def assert_is_direct():
     return Seq(
         assert_is_zero_int(Global.caller_app_id()),
+    )
+
+
+@Subroutine(TealType.none)
+def assert_group_size(size):
+    return Seq(
+        assert_is_equal(Global.group_size(), size),
     )
