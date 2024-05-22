@@ -603,6 +603,22 @@ retsub
 // repaint
 repaint_24:
 proto 2 0
+frame_dig -2
+intc_0 // 0
+>=
+assert
+frame_dig -2
+pushint 7 // 7
+<=
+assert
+frame_dig -1
+intc_0 // 0
+>=
+assert
+frame_dig -1
+pushint 7 // 7
+<=
+assert
 pushint 2 // 2
 callsub assertgroupsize_17
 bytec_0 // "Config1"

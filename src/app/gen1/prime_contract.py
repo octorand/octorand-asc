@@ -154,6 +154,10 @@ def repaint(
     skin: abi.Uint64,
 ):
     return Seq(
+        Assert(theme.get() >= Int(0)),
+        Assert(theme.get() <= Int(7)),
+        Assert(skin.get() >= Int(0)),
+        Assert(skin.get() <= Int(7)),
         func.assert_group_size(Int(2)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
         func.assert_sender_asset_transfer(
