@@ -177,13 +177,6 @@ def assert_sender_asset_transfer(asset_id, receiver, amount, index):
 
 
 @Subroutine(TealType.none)
-def assert_is_equal(first, second):
-    return Seq(
-        Assert(first == second),
-    )
-
-
-@Subroutine(TealType.none)
 def assert_is_not_equal(first, second):
     return Seq(
         Assert(first != second),
@@ -194,11 +187,4 @@ def assert_is_not_equal(first, second):
 def assert_is_positive_int(value):
     return Seq(
         Assert(value > Int(0)),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_positive_address(value):
-    return Seq(
-        Assert(value != Global.zero_address()),
     )

@@ -159,8 +159,8 @@ def list(
 def unlist():
     return Seq(
         func.assert_is_positive_int(config1.price.get()),
-        func.assert_is_positive_address(config1.seller.get()),
-        func.assert_is_equal(config1.seller.get(), Txn.sender()),
+        Assert(config1.seller.get() != Global.zero_address()),
+        Assert(config1.seller.get() == Txn.sender()),
         func.execute_asset_transfer(
             config1.prime_asset_id.get(),
             config1.seller.get(),
@@ -175,7 +175,7 @@ def unlist():
 def buy():
     return Seq(
         func.assert_is_positive_int(config1.price.get()),
-        func.assert_is_positive_address(config1.seller.get()),
+        Assert(config1.seller.get() != Global.zero_address()),
         func.assert_sender_payment(
             config1.seller.get(),
             Div(Mul(config1.price.get(), prime_config.seller_market_share), Int(100)),
