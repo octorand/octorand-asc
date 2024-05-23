@@ -267,3 +267,60 @@ def mint():
         ),
         config1.mints.increment(Int(1)),
     )
+
+
+@app.external(name="withdraw")
+def withdraw():
+    balance = Minus(
+        Balance(Global.current_application_address()),
+        MinBalance(Global.current_application_address()),
+    )
+    return Seq(
+        func.assert_sender_asset_holding(config1.prime_asset_id.get()),
+        func.assert_is_positive_int(balance),
+        func.execute_payment(
+            Txn.sender(),
+            balance,
+        ),
+    )
+
+
+@app.external(name="optin")
+def optin(
+    asset: abi.Asset,
+):
+    return Seq(
+        func.assert_is_not_equal(asset.asset_id(), prime_config.platform_asset_id),
+        func.assert_is_not_equal(asset.asset_id(), config1.prime_asset_id.get()),
+        func.assert_is_not_equal(asset.asset_id(), config1.legacy_asset_id.get()),
+        func.assert_sender_payment(
+            Global.current_application_address(),
+            prime_config.optin_price,
+            Add(Txn.group_index(), Int(1)),
+        ),
+        func.optin_into_asset(asset.asset_id()),
+    )
+
+
+@app.external(name="optout")
+def optout(
+    asset: abi.Asset,
+):
+    balance = AssetHolding.balance(
+        Global.current_application_address(),
+        asset.asset_id(),
+    )
+    return Seq(
+        func.assert_is_not_equal(asset.asset_id(), prime_config.platform_asset_id),
+        func.assert_is_not_equal(asset.asset_id(), config1.prime_asset_id.get()),
+        func.assert_is_not_equal(asset.asset_id(), config1.legacy_asset_id.get()),
+        func.assert_sender_asset_holding(config1.prime_asset_id.get()),
+        balance,
+        Assert(balance.hasValue()),
+        Assert(balance.value() > Int(0)),
+        func.execute_asset_transfer(
+            asset.asset_id(),
+            Txn.sender(),
+            balance.value(),
+        ),
+    )

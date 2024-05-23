@@ -12,3 +12,4 @@ admin_market_share = Int(10)
 
 rename_price = Int(10000000)
 repaint_price = Int(10000000)
+optin_price = Int(100000)

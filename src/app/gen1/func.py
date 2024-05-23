@@ -184,6 +184,13 @@ def assert_is_equal(first, second):
 
 
 @Subroutine(TealType.none)
+def assert_is_not_equal(first, second):
+    return Seq(
+        Assert(first != second),
+    )
+
+
+@Subroutine(TealType.none)
 def assert_is_positive_int(value):
     return Seq(
         Assert(value > Int(0)),
