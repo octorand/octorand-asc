@@ -19,7 +19,7 @@ exports.execute = async function () {
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (!prime['unlisted']) {
+            if (!prime['relisted']) {
 
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -27,32 +27,47 @@ exports.execute = async function () {
                     sender: sender,
                     signer: signer,
                     appID: prime['application_id'],
-                    method: chain.method(contract, 'unlist'),
-                    methodArgs: [],
-                    appForeignAssets: [
-                        prime['prime_asset_id']
+                    method: chain.method(contract, 'list'),
+                    methodArgs: [
+                        prime['price'],
                     ],
                     suggestedParams: {
                         ...params,
-                        fee: 2000,
+                        fee: 1000,
                         flatFee: true
                     }
                 });
 
+                composer.addTransaction({
+                    sender: sender,
+                    signer: signer,
+                    txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                        from: sender,
+                        to: prime['application_address'],
+                        assetIndex: prime['prime_asset_id'],
+                        amount: 1,
+                        suggestedParams: {
+                            ...params,
+                            fee: 1000,
+                            flatFee: true
+                        }
+                    })
+                });
+
                 await chain.execute(composer);
 
-                prime['unlisted'] = true;
+                prime['relisted'] = true;
 
                 primes[i] = prime;
 
                 setup['primes'] = primes;
                 fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
 
-                console.log('unlisted prime asset ' + i);
+                console.log('relisted prime asset ' + i);
             }
         }
 
-        console.log('unlisted prime assets');
+        console.log('relisted prime assets');
 
     } catch (error) {
         console.log(error);

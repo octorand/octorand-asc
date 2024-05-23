@@ -19,7 +19,7 @@ exports.execute = async function () {
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (prime['listed']) {
+            if (!prime['bought']) {
 
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -87,7 +87,7 @@ exports.execute = async function () {
 
                 await chain.execute(composer);
 
-                prime['listed'] = false;
+                prime['bought'] = true;
 
                 primes[i] = prime;
 
