@@ -54,15 +54,14 @@ def get_global_bytes(index, start, length):
 @Subroutine(TealType.uint64)
 def get_global_uint(index, start, length):
     return Seq(
-        Btoi(get_global_bytes(index, start, length)),
+        Btoi(Extract(App.globalGet(index), start, length)),
     )
 
 
 @Subroutine(TealType.none)
 def set_global_bytes(value, index, start, length):
-    end = Add(start, length)
-    param_1 = get_global_bytes(index, Int(0), start)
-    param_2 = get_global_bytes(index, end, Minus(max_storage_length, end))
+    param_1 = Extract(App.globalGet(index), Int(0), start)
+    param_2 = Substring(App.globalGet(index), Add(start, length), max_storage_length)
     return Seq(
         Assert(Len(value) == length),
         App.globalPut(index, Concat(param_1, value, param_2)),
@@ -71,15 +70,9 @@ def set_global_bytes(value, index, start, length):
 
 @Subroutine(TealType.none)
 def set_global_uint(value, index, start, length):
+    pack = Extract(Itob(value), Minus(Int(8), length), length)
     return Seq(
-        set_global_bytes(extract_uint(value, length), index, start, length),
-    )
-
-
-@Subroutine(TealType.bytes)
-def extract_uint(value, length):
-    return Seq(
-        Extract(Itob(value), Minus(Int(8), length), length),
+        set_global_bytes(pack, index, start, length),
     )
 
 
