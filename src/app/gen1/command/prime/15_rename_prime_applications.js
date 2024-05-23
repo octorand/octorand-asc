@@ -49,7 +49,42 @@ exports.execute = async function () {
                         from: sender,
                         to: connection.admin.addr,
                         assetIndex: Number(process.env.PLATFORM_ASSET_ID),
-                        amount: 10000000,
+                        amount: 20000000,
+                        suggestedParams: {
+                            ...params,
+                            fee: 1000,
+                            flatFee: true
+                        }
+                    })
+                });
+
+                composer.addMethodCall({
+                    sender: sender,
+                    signer: signer,
+                    appID: prime['application_id'],
+                    method: chain.method(contract, 'rename'),
+                    methodArgs: [
+                        6,
+                        86
+                    ],
+                    appForeignAssets: [
+                        prime['prime_asset_id']
+                    ],
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                });
+
+                composer.addTransaction({
+                    sender: sender,
+                    signer: signer,
+                    txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                        from: sender,
+                        to: connection.admin.addr,
+                        assetIndex: Number(process.env.PLATFORM_ASSET_ID),
+                        amount: 30000000,
                         suggestedParams: {
                             ...params,
                             fee: 1000,

@@ -17,7 +17,7 @@ const chain = require('./../chain/index');
                 from: sender,
                 to: connection.player.addr,
                 assetIndex: Number(process.env.PLATFORM_ASSET_ID),
-                total: 10000000000,
+                amount: 10000000000,
                 suggestedParams: {
                     ...params,
                     fee: 1000,
