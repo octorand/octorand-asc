@@ -14,5 +14,8 @@ require('dotenv').config();
     await require('./command/prime/10_read_prime_applications').execute();
     await require('./command/prime/11_list_prime_assets').execute();
     await require('./command/prime/12_unlist_prime_assets').execute();
+    await require('./command/prime/11_list_prime_assets').execute();
+    await require('./command/prime/10_read_prime_applications').execute();
+    await require('./command/prime/13_buy_prime_assets').execute();
 
 })();

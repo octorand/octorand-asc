@@ -126,12 +126,11 @@ def list(
         func.assert_is_zero_int(config1.price.get()),
         func.assert_is_zero_address(config1.seller.get()),
         func.assert_is_positive_int(price.get()),
-        func.assert_group_size(Int(2)),
         func.assert_sender_asset_transfer(
             config1.prime_asset_id.get(),
             Global.current_application_address(),
             Int(1),
-            Int(1),
+            Add(Txn.group_index(), Int(1)),
         ),
         config1.price.set(price.get()),
         config1.seller.set(Txn.sender()),
@@ -159,16 +158,15 @@ def buy():
     return Seq(
         func.assert_is_positive_int(config1.price.get()),
         func.assert_is_positive_address(config1.seller.get()),
-        func.assert_group_size(Int(3)),
         func.assert_sender_payment(
             config1.seller.get(),
             Div(Mul(config1.price.get(), prime_config.seller_market_share), Int(100)),
-            Int(1),
+            Add(Txn.group_index(), Int(1)),
         ),
         func.assert_sender_payment(
             prime_config.admin_address,
             Div(Mul(config1.price.get(), prime_config.admin_market_share), Int(100)),
-            Int(2),
+            Add(Txn.group_index(), Int(2)),
         ),
         func.execute_asset_transfer(
             config1.prime_asset_id.get(),
@@ -197,13 +195,12 @@ def rename(
         func.assert_is_max_int(index.get(), Int(7)),
         func.assert_is_min_int(value.get(), Int(65)),
         func.assert_is_max_int(value.get(), Int(90)),
-        func.assert_group_size(Int(2)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
         func.assert_sender_asset_transfer(
             prime_config.platform_asset_id,
             prime_config.platform_asset_reserve,
             price,
-            Int(1),
+            Add(Txn.group_index(), Int(1)),
         ),
         config1.name.set(SetByte(config1.name.get(), index.get(), value.get())),
     )
@@ -217,13 +214,12 @@ def repaint(
     return Seq(
         func.assert_is_max_int(theme.get(), Int(7)),
         func.assert_is_max_int(skin.get(), Int(7)),
-        func.assert_group_size(Int(2)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
         func.assert_sender_asset_transfer(
             prime_config.platform_asset_id,
             prime_config.platform_asset_reserve,
             prime_config.repaint_price,
-            Int(1),
+            Add(Txn.group_index(), Int(1)),
         ),
         config1.theme.set(theme.get()),
         config1.skin.set(skin.get()),

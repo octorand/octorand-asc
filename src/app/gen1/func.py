@@ -244,10 +244,3 @@ def assert_is_direct():
     return Seq(
         assert_is_zero_int(Global.caller_app_id()),
     )
-
-
-@Subroutine(TealType.none)
-def assert_group_size(size):
-    return Seq(
-        assert_is_equal(Global.group_size(), size),
-    )
