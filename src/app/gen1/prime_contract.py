@@ -118,6 +118,68 @@ def finalize(
     )
 
 
+@app.external(name="list")
+def list(
+    price: abi.Uint64,
+):
+    return Seq(
+        func.assert_is_zero_int(config1.price.get()),
+        func.assert_is_zero_address(config1.seller.get()),
+        func.assert_is_positive_int(price.get()),
+        func.assert_group_size(Int(2)),
+        func.assert_sender_asset_transfer(
+            config1.prime_asset_id.get(),
+            Global.current_application_address(),
+            Int(1),
+            Int(1),
+        ),
+        config1.price.set(price.get()),
+        config1.seller.set(Txn.sender()),
+    )
+
+
+@app.external(name="unlist")
+def unlist():
+    return Seq(
+        func.assert_is_positive_int(config1.price.get()),
+        func.assert_is_positive_address(config1.seller.get()),
+        func.assert_is_equal(config1.seller.get(), Txn.sender()),
+        func.execute_asset_transfer(
+            config1.prime_asset_id.get(),
+            config1.seller.get(),
+            Int(1),
+        ),
+        config1.price.set(Int(0)),
+        config1.seller.set(Global.zero_address()),
+    )
+
+
+@app.external(name="buy")
+def buy():
+    return Seq(
+        func.assert_is_positive_int(config1.price.get()),
+        func.assert_is_positive_address(config1.seller.get()),
+        func.assert_group_size(Int(3)),
+        func.assert_sender_payment(
+            config1.seller.get(),
+            Div(Mul(config1.price.get(), prime_config.seller_market_share), Int(100)),
+            Int(1),
+        ),
+        func.assert_sender_payment(
+            prime_config.admin_address,
+            Div(Mul(config1.price.get(), prime_config.admin_market_share), Int(100)),
+            Int(2),
+        ),
+        func.execute_asset_transfer(
+            config1.prime_asset_id.get(),
+            Txn.sender(),
+            Int(1),
+        ),
+        config1.price.set(Int(0)),
+        config1.seller.set(Global.zero_address()),
+    )
+
+
 @app.external(name="rename")
 def rename(
     index: abi.Uint64,
@@ -132,10 +194,9 @@ def rename(
     )
     price = Mul(prime_config.rename_price, value_difference)
     return Seq(
-        Assert(index.get() >= Int(0)),
-        Assert(index.get() <= Int(7)),
-        Assert(value.get() >= Int(65)),
-        Assert(value.get() <= Int(90)),
+        func.assert_is_max_int(index.get(), Int(7)),
+        func.assert_is_min_int(value.get(), Int(65)),
+        func.assert_is_max_int(value.get(), Int(90)),
         func.assert_group_size(Int(2)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
         func.assert_sender_asset_transfer(
@@ -154,10 +215,8 @@ def repaint(
     skin: abi.Uint64,
 ):
     return Seq(
-        Assert(theme.get() >= Int(0)),
-        Assert(theme.get() <= Int(7)),
-        Assert(skin.get() >= Int(0)),
-        Assert(skin.get() <= Int(7)),
+        func.assert_is_max_int(theme.get(), Int(7)),
+        func.assert_is_max_int(skin.get(), Int(7)),
         func.assert_group_size(Int(2)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
         func.assert_sender_asset_transfer(
@@ -168,45 +227,4 @@ def repaint(
         ),
         config1.theme.set(theme.get()),
         config1.skin.set(skin.get()),
-    )
-
-
-@app.external(name="list")
-def list(
-    price: abi.Uint64,
-    seller: abi.Account,
-):
-    return Seq(
-        func.assert_sender_asset_holding(config1.prime_asset_id.get()),
-        func.assert_is_zero_int(config1.price.get()),
-        func.assert_is_zero_address(config1.seller.get()),
-        func.assert_is_positive_int(price.get()),
-        func.assert_is_positive_address(seller.address()),
-        config1.price.set(price.get()),
-        config1.seller.set(seller.address()),
-    )
-
-
-@app.external(name="unlist")
-def unlist():
-    return Seq(
-        func.assert_is_positive_int(config1.price.get()),
-        func.assert_is_positive_address(config1.seller.get()),
-        func.execute_asset_transfer(
-            config1.prime_asset_id.get(), config1.seller.get(), Int(1)
-        ),
-        config1.price.set(Int(0)),
-        config1.seller.set(Global.zero_address()),
-    )
-
-
-@app.external(name="buy")
-def buy(
-    buyer: abi.Account,
-):
-    return Seq(
-        func.assert_is_positive_int(config1.price.get()),
-        func.assert_is_positive_address(config1.seller.get()),
-        config1.price.set(Int(0)),
-        config1.seller.set(Global.zero_address()),
     )
