@@ -38,7 +38,7 @@
                 "is_explorer": 1,
                 "score": 750,
                 "sales": 16,
-                "mints": 25,
+                "mints": 26,
                 "renames": 7,
                 "repaints": 11,
                 "price": 0,
@@ -53,7 +53,8 @@
             "relisted": true,
             "bought": true,
             "renamed": true,
-            "repainted": true
+            "repainted": true,
+            "minted": true
         }
     ]
 }
