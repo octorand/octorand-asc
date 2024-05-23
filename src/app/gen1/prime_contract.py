@@ -247,37 +247,31 @@ def repaint(
 
 
 @app.external(name="mint")
-def mint():
-    balance = AssetHolding.balance(
-        Global.current_application_address(),
-        prime_config.platform_asset_id,
-    )
+def mint(
+    amount: abi.Uint64,
+):
     return Seq(
+        Assert(amount.get() > Int(0)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
-        balance,
-        Assert(balance.hasValue()),
-        Assert(balance.value() > Int(0)),
         func.execute_asset_transfer(
             prime_config.platform_asset_id,
             Txn.sender(),
-            balance.value(),
+            amount.get(),
         ),
         config1.mints.increment(Int(1)),
     )
 
 
 @app.external(name="withdraw")
-def withdraw():
-    balance = Minus(
-        Balance(Global.current_application_address()),
-        MinBalance(Global.current_application_address()),
-    )
+def withdraw(
+    amount: abi.Uint64,
+):
     return Seq(
+        Assert(amount.get() > Int(0)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
-        Assert(balance > Int(0)),
         func.execute_payment(
             Txn.sender(),
-            balance,
+            amount.get(),
         ),
     )
 
@@ -303,21 +297,10 @@ def optin(
 def optout(
     asset: abi.Asset,
 ):
-    balance = AssetHolding.balance(
-        Global.current_application_address(),
-        asset.asset_id(),
-    )
     return Seq(
         Assert(asset.asset_id() != prime_config.platform_asset_id),
         Assert(asset.asset_id() != config1.prime_asset_id.get()),
         Assert(asset.asset_id() != config1.legacy_asset_id.get()),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
-        balance,
-        Assert(balance.hasValue()),
-        Assert(balance.value() > Int(0)),
-        func.execute_asset_transfer(
-            asset.asset_id(),
-            Txn.sender(),
-            balance.value(),
-        ),
+        func.optout_from_asset(asset.asset_id(), Txn.sender()),
     )
