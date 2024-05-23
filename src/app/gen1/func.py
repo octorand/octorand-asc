@@ -202,24 +202,3 @@ def assert_is_positive_address(value):
     return Seq(
         Assert(value != Global.zero_address()),
     )
-
-
-@Subroutine(TealType.none)
-def assert_is_max_int(value, max):
-    return Seq(
-        Assert(value <= max),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_min_int(value, min):
-    return Seq(
-        Assert(value >= min),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_creator():
-    return Seq(
-        assert_is_equal(Txn.sender(), Global.creator_address()),
-    )

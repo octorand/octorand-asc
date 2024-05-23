@@ -52,7 +52,7 @@ def create():
 @app.update(bare=True)
 def update():
     return Seq(
-        func.assert_is_creator(),
+        Assert(Txn.sender() == Global.creator_address()),
     )
 
 
@@ -63,7 +63,7 @@ def initialize(
     legacy_asset: abi.Asset,
 ):
     return Seq(
-        func.assert_is_creator(),
+        Assert(Txn.sender() == Global.creator_address()),
         config1.id.set(id.get()),
         config1.prime_asset_id.set(prime_asset.asset_id()),
         config1.legacy_asset_id.set(legacy_asset.asset_id()),
@@ -87,7 +87,7 @@ def populate(
     description: abi.StaticBytes[Literal[64]],
 ):
     return Seq(
-        func.assert_is_creator(),
+        Assert(Txn.sender() == Global.creator_address()),
         config1.theme.set(theme.get()),
         config1.skin.set(skin.get()),
         config1.is_founder.set(is_founder.get()),
@@ -108,7 +108,7 @@ def finalize(
     repaints: abi.Uint64,
 ):
     return Seq(
-        func.assert_is_creator(),
+        Assert(Txn.sender() == Global.creator_address()),
         config1.score.set(score.get()),
         config1.sales.set(sales.get()),
         config1.mints.set(mints.get()),
@@ -211,9 +211,9 @@ def rename(
     )
     price = Mul(prime_config.rename_price, value_difference)
     return Seq(
-        func.assert_is_max_int(index.get(), Int(7)),
-        func.assert_is_min_int(value.get(), Int(65)),
-        func.assert_is_max_int(value.get(), Int(90)),
+        Assert(index.get() <= Int(7)),
+        Assert(value.get() >= Int(65)),
+        Assert(value.get() <= Int(90)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
         func.assert_sender_asset_transfer(
             prime_config.platform_asset_id,
@@ -232,8 +232,8 @@ def repaint(
     skin: abi.Uint64,
 ):
     return Seq(
-        func.assert_is_max_int(theme.get(), Int(7)),
-        func.assert_is_max_int(skin.get(), Int(7)),
+        Assert(theme.get() <= Int(7)),
+        Assert(skin.get() <= Int(7)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
         func.assert_sender_asset_transfer(
             prime_config.platform_asset_id,
