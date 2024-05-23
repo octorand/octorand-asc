@@ -264,10 +264,9 @@ retsub
 getglobaluint_2:
 proto 3 1
 frame_dig -3
-app_global_get
 frame_dig -2
 frame_dig -1
-extract3
+callsub getglobalbytes_1
 btoi
 retsub
 

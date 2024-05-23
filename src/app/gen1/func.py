@@ -54,7 +54,7 @@ def get_global_bytes(index, start, length):
 @Subroutine(TealType.uint64)
 def get_global_uint(index, start, length):
     return Seq(
-        Btoi(Extract(App.globalGet(index), start, length)),
+        Btoi(get_global_bytes(index, start, length)),
     )
 
 
