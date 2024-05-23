@@ -16,7 +16,6 @@ exports.execute = async function () {
 
             let config = {
                 id: null,
-                parent_id: null,
                 prime_asset_id: null,
                 legacy_asset_id: null,
                 theme: null,
@@ -45,8 +44,7 @@ exports.execute = async function () {
 
                 switch (key) {
                     case 'Config1':
-                        config.id = connection.baseClient.decodeUint64(value.subarray(0, 4));
-                        config.parent_id = connection.baseClient.decodeUint64(value.subarray(4, 8));
+                        config.id = connection.baseClient.decodeUint64(value.subarray(0, 8));
                         config.prime_asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
                         config.legacy_asset_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
                         config.theme = connection.baseClient.decodeUint64(value.subarray(24, 26));

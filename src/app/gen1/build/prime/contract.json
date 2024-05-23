@@ -9,10 +9,6 @@
                     "name": "id"
                 },
                 {
-                    "type": "uint64",
-                    "name": "parent_id"
-                },
-                {
                     "type": "asset",
                     "name": "prime_asset"
                 },

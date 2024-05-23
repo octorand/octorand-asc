@@ -6,8 +6,8 @@ const chain = require('./../chain/index');
     try {
         let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.admin.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
+        let sender = connection.gen2.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
 
         let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -15,9 +15,9 @@ const chain = require('./../chain/index');
             signer: signer,
             txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                 from: sender,
-                to: connection.player.addr,
+                to: sender,
                 assetIndex: Number(process.env.PLATFORM_ASSET_ID),
-                amount: 10000000000,
+                total: 0,
                 suggestedParams: {
                     ...params,
                     fee: 1000,

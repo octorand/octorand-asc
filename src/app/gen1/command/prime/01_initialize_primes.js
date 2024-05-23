@@ -15,7 +15,6 @@ exports.execute = async function () {
             if (!prime) {
                 primes.push({
                     id: i,
-                    parent_id: 0,
                     theme: Math.floor(Math.random() * 4),
                     skin: Math.floor(Math.random() * 4),
                     is_founder: Math.floor(Math.random() * 2),

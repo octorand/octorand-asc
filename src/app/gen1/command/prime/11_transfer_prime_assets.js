@@ -39,6 +39,37 @@ exports.execute = async function () {
                     })
                 });
 
+                composer.addTransaction({
+                    sender: sender,
+                    signer: signer,
+                    txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                        from: sender,
+                        to: prime['application_address'],
+                        assetIndex: Number(process.env.PLATFORM_ASSET_ID),
+                        amount: 1000000,
+                        suggestedParams: {
+                            ...params,
+                            fee: 1000,
+                            flatFee: true
+                        }
+                    })
+                });
+
+                composer.addTransaction({
+                    sender: sender,
+                    signer: signer,
+                    txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
+                        from: sender,
+                        to: connection.admin.addr,
+                        amount: 1000000,
+                        suggestedParams: {
+                            ...params,
+                            fee: 1000,
+                            flatFee: true
+                        }
+                    })
+                });
+
                 await chain.execute(composer);
 
                 prime['transferred'] = true;

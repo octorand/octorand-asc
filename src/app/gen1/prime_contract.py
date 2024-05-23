@@ -9,8 +9,7 @@ from typing import *
 class Config1:
     def __init__(self):
         self.key = Bytes("Config1")
-        self.id = func.GlobalUint(self.key, 0, 4)
-        self.parent_id = func.GlobalUint(self.key, 4, 4)
+        self.id = func.GlobalUint(self.key, 0, 8)
         self.prime_asset_id = func.GlobalUint(self.key, 8, 8)
         self.legacy_asset_id = func.GlobalUint(self.key, 16, 8)
         self.theme = func.GlobalUint(self.key, 24, 2)
@@ -58,7 +57,6 @@ def update():
 @app.external(name="initialize")
 def initialize(
     id: abi.Uint64,
-    parent_id: abi.Uint64,
     prime_asset: abi.Asset,
     legacy_asset: abi.Asset,
     platform_asset: abi.Asset,
@@ -67,7 +65,6 @@ def initialize(
         func.assert_is_creator(),
         func.assert_is_equal(platform_asset.asset_id(), prime_config.platform_asset_id),
         config1.id.set(id.get()),
-        config1.parent_id.set(parent_id.get()),
         config1.prime_asset_id.set(prime_asset.asset_id()),
         config1.legacy_asset_id.set(legacy_asset.asset_id()),
         config1.price.set(Int(0)),

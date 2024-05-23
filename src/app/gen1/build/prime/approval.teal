@@ -6,7 +6,7 @@ intc_0 // 0
 ==
 bnz main_l20
 txna ApplicationArgs 0
-pushbytes 0x58b333da // "initialize(uint64,uint64,asset,asset,asset)void"
+pushbytes 0xe69c033c // "initialize(uint64,asset,asset,asset)void"
 ==
 bnz main_l19
 txna ApplicationArgs 0
@@ -461,21 +461,16 @@ retsub
 
 // initialize
 initialize_22:
-proto 5 0
+proto 4 0
 callsub assertiscreator_16
 frame_dig -1
 txnas Assets
 intc 4 // 660757756
 callsub assertisequal_11
-frame_dig -5
-bytec_0 // "Config1"
-intc_0 // 0
-pushint 4 // 4
-callsub setglobaluint_4
 frame_dig -4
 bytec_0 // "Config1"
-pushint 4 // 4
-pushint 4 // 4
+intc_0 // 0
+intc_1 // 8
 callsub setglobaluint_4
 frame_dig -3
 txnas Assets
@@ -856,12 +851,13 @@ retsub
 initializecaster_31:
 proto 0 0
 intc_0 // 0
-dupn 4
+dupn 3
 txna ApplicationArgs 1
 btoi
 frame_bury 0
 txna ApplicationArgs 2
-btoi
+intc_0 // 0
+getbyte
 frame_bury 1
 txna ApplicationArgs 3
 intc_0 // 0
@@ -871,15 +867,10 @@ txna ApplicationArgs 4
 intc_0 // 0
 getbyte
 frame_bury 3
-txna ApplicationArgs 5
-intc_0 // 0
-getbyte
-frame_bury 4
 frame_dig 0
 frame_dig 1
 frame_dig 2
 frame_dig 3
-frame_dig 4
 callsub initialize_22
 retsub
 

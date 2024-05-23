@@ -30,7 +30,6 @@ exports.execute = async function () {
                     method: chain.method(contract, 'initialize'),
                     methodArgs: [
                         prime['id'],
-                        prime['parent_id'],
                         prime['prime_asset_id'],
                         prime['legacy_asset_id'],
                         Number(process.env.PLATFORM_ASSET_ID),
