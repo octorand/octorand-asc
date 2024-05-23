@@ -156,7 +156,7 @@ def assert_sender_asset_holding(asset_id):
 @Subroutine(TealType.none)
 def assert_sender_payment(receiver, amount, index):
     return Seq(
-        assert_is_positive_int(amount),
+        Assert(amount > Int(0)),
         Assert(Gtxn[index].sender() == Txn.sender()),
         Assert(Gtxn[index].type_enum() == TxnType.Payment),
         Assert(Gtxn[index].receiver() == receiver),
@@ -167,24 +167,10 @@ def assert_sender_payment(receiver, amount, index):
 @Subroutine(TealType.none)
 def assert_sender_asset_transfer(asset_id, receiver, amount, index):
     return Seq(
-        assert_is_positive_int(amount),
+        Assert(amount > Int(0)),
         Assert(Gtxn[index].sender() == Txn.sender()),
         Assert(Gtxn[index].type_enum() == TxnType.AssetTransfer),
         Assert(Gtxn[index].xfer_asset() == asset_id),
         Assert(Gtxn[index].asset_receiver() == receiver),
         Assert(Gtxn[index].asset_amount() == amount),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_not_equal(first, second):
-    return Seq(
-        Assert(first != second),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_positive_int(value):
-    return Seq(
-        Assert(value > Int(0)),
     )
