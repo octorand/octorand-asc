@@ -30,6 +30,21 @@ const chain = require('./../chain/index');
             signer: signer,
             txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                 from: sender,
+                to: connection.player.addr,
+                assetIndex: Number(process.env.VAULT_ASSET_ID),
+                amount: 10000000000,
+                suggestedParams: {
+                    ...params,
+                    fee: 1000,
+                    flatFee: true
+                }
+            })
+        });
+
+        composer.addTransaction({
+            signer: signer,
+            txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                from: sender,
                 to: connection.gen1.addr,
                 assetIndex: Number(process.env.PLATFORM_ASSET_ID),
                 amount: 10000000000,

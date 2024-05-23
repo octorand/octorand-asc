@@ -26,6 +26,21 @@ const chain = require('./../chain/index');
             })
         });
 
+        composer.addTransaction({
+            signer: signer,
+            txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                from: sender,
+                to: sender,
+                assetIndex: Number(process.env.VAULT_ASSET_ID),
+                total: 0,
+                suggestedParams: {
+                    ...params,
+                    fee: 1000,
+                    flatFee: true
+                }
+            })
+        });
+
         await chain.execute(composer);
 
     } catch (error) {

@@ -30,5 +30,7 @@ require('dotenv').config();
     await require('./command/prime/10_read_prime_applications').execute();
     await require('./command/prime/20_withdraw_prime_applications').execute();
     await require('./command/prime/10_read_prime_applications').execute();
+    await require('./command/prime/21_optin_prime_applications').execute();
+    await require('./command/prime/22_optout_prime_applications').execute();
 
 })();
