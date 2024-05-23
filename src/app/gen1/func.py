@@ -64,7 +64,7 @@ def set_global_bytes(value, index, start, length):
     param_1 = get_global_bytes(index, Int(0), start)
     param_2 = get_global_bytes(index, end, Minus(max_storage_length, end))
     return Seq(
-        assert_is_valid_length(value, length),
+        Assert(Len(value) == length),
         App.globalPut(index, Concat(param_1, value, param_2)),
     )
 
@@ -222,32 +222,4 @@ def assert_is_min_int(value, min):
 def assert_is_creator():
     return Seq(
         assert_is_equal(Txn.sender(), Global.creator_address()),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_zero_int(value):
-    return Seq(
-        assert_is_equal(value, Int(0)),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_zero_address(value):
-    return Seq(
-        assert_is_equal(value, Global.zero_address()),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_valid_length(value, length):
-    return Seq(
-        assert_is_equal(Len(value), length),
-    )
-
-
-@Subroutine(TealType.none)
-def assert_is_direct():
-    return Seq(
-        assert_is_zero_int(Global.caller_app_id()),
     )

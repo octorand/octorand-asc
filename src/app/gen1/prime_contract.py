@@ -120,7 +120,7 @@ def finalize(
 @app.external(name="upgrade")
 def upgrade():
     return Seq(
-        func.assert_is_zero_int(config1.is_explorer.get()),
+        Assert(config1.is_explorer.get() == Int(0)),
         func.assert_sender_asset_transfer(
             config1.legacy_asset_id.get(),
             Global.current_application_address(),
@@ -141,8 +141,8 @@ def list(
     price: abi.Uint64,
 ):
     return Seq(
-        func.assert_is_zero_int(config1.price.get()),
-        func.assert_is_zero_address(config1.seller.get()),
+        Assert(config1.seller.get() == Global.zero_address()),
+        Assert(config1.price.get() == Int(0)),
         func.assert_is_positive_int(price.get()),
         func.assert_sender_asset_transfer(
             config1.prime_asset_id.get(),
