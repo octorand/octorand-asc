@@ -44,7 +44,8 @@
                 "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
                 "name": "ABCDWXYZ",
                 "description": "Notes"
-            }
+            },
+            "listed": false
         }
     ]
 }
