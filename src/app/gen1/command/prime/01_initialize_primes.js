@@ -28,6 +28,7 @@ exports.execute = async function () {
                     sales: Math.floor(Math.random() * 10),
                     name: 'ABCDWXYZ',
                     description: 'Notes',
+                    price: Math.floor(Math.random() * 1000)
                 });
             }
         }
