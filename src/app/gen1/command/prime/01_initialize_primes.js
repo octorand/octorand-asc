@@ -15,19 +15,19 @@ exports.execute = async function () {
             if (!prime) {
                 primes.push({
                     id: i,
-                    theme: Math.floor(Math.random() * 4),
-                    skin: Math.floor(Math.random() * 4),
-                    is_founder: Math.floor(Math.random() * 2),
-                    is_artifact: Math.floor(Math.random() * 2),
-                    is_pioneer: Math.floor(Math.random() * 2),
-                    is_explorer: Math.floor(Math.random() * 2),
-                    score: Math.floor(Math.random() * 1000),
-                    renames: Math.floor(Math.random() * 10),
-                    repaints: Math.floor(Math.random() * 10),
-                    sales: Math.floor(Math.random() * 10),
+                    theme: 1,
+                    skin: 2,
+                    is_founder: 1,
+                    is_artifact: 0,
+                    is_pioneer: 1,
+                    is_explorer: 0,
+                    score: 750,
+                    renames: 5,
+                    repaints: 10,
+                    sales: 15,
                     name: 'ABCDWXYZ',
                     description: 'Notes',
-                    price: Math.floor(Math.random() * 1000)
+                    price: 350
                 });
             }
         }

@@ -1,3 +1,56 @@
 {
-    "primes": []
+    "primes": [
+        {
+            "id": 0,
+            "theme": 1,
+            "skin": 2,
+            "is_founder": 1,
+            "is_artifact": 0,
+            "is_pioneer": 1,
+            "is_explorer": 0,
+            "score": 750,
+            "renames": 5,
+            "repaints": 10,
+            "sales": 15,
+            "name": "ABCDWXYZ",
+            "description": "Notes",
+            "price": 350,
+            "legacy_asset_id": 668998510,
+            "prime_asset_id": 668998542,
+            "application_id": 668998609,
+            "application_address": "KV6FKW4B4NUNS2GMKOXNXQ3KO7HFXVK6GMMTULNODUASIP2YLRCLKUMOFU",
+            "application_version": 1,
+            "application_funded": true,
+            "application_initialized": true,
+            "application_populated": true,
+            "application_finalized": true,
+            "config": {
+                "id": 0,
+                "prime_asset_id": 668998542,
+                "legacy_asset_id": 668998510,
+                "theme": 3,
+                "skin": 4,
+                "is_founder": 1,
+                "is_artifact": 0,
+                "is_pioneer": 1,
+                "is_explorer": 1,
+                "score": 750,
+                "renames": 5,
+                "repaints": 10,
+                "sales": 15,
+                "price": 0,
+                "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
+                "name": "ADCDWXVZ",
+                "description": "Notes"
+            },
+            "transferred": true,
+            "upgraded": true,
+            "listed": true,
+            "unlisted": true,
+            "relisted": true,
+            "bought": true,
+            "renamed": true,
+            "repainted": true
+        }
+    ]
 }
