@@ -27,30 +27,18 @@ exports.execute = async function () {
                     sender: sender,
                     signer: signer,
                     appID: prime['application_id'],
-                    method: chain.method(contract, 'optin'),
+                    method: chain.method(contract, 'optout'),
                     methodArgs: [
                         Number(process.env.VAULT_ASSET_ID),
+                    ],
+                    appForeignAssets: [
+                        prime['prime_asset_id'],
                     ],
                     suggestedParams: {
                         ...params,
                         fee: 2000,
                         flatFee: true
                     }
-                });
-
-                composer.addTransaction({
-                    sender: sender,
-                    signer: signer,
-                    txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
-                        from: sender,
-                        to: prime['application_address'],
-                        amount: 100000,
-                        suggestedParams: {
-                            ...params,
-                            fee: 1000,
-                            flatFee: true
-                        }
-                    })
                 });
 
                 await chain.execute(composer);
