@@ -16,10 +16,10 @@
             "name": "ABCDWXYZ",
             "description": "Notes",
             "price": 350,
-            "legacy_asset_id": 669132329,
-            "prime_asset_id": 669132356,
-            "application_id": 669132367,
-            "application_address": "KX6UK42GRMYHR5F6RGRP7PNSJ3HFOMPDQLLYGLYHE3AXFOPG34BIHQNMSU",
+            "legacy_asset_id": 669146466,
+            "prime_asset_id": 669146570,
+            "application_id": 669146660,
+            "application_address": "EFKL3HZ6Z6USVRK22SI7GMO7PD35QPLJDM6BZ4NVOHP37M3Q7X3VRG5HRQ",
             "application_version": 1,
             "application_funded": true,
             "application_initialized": true,
@@ -27,8 +27,8 @@
             "application_finalized": true,
             "config": {
                 "id": 0,
-                "prime_asset_id": 669132356,
-                "legacy_asset_id": 669132329,
+                "prime_asset_id": 669146570,
+                "legacy_asset_id": 669146466,
                 "parent_application_id": 0,
                 "theme": 3,
                 "skin": 4,
@@ -54,7 +54,9 @@
             "bought": true,
             "renamed": true,
             "repainted": true,
-            "minted": true
+            "minted": true,
+            "optin": true,
+            "optout": true
         }
     ]
 }

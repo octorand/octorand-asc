@@ -53,6 +53,22 @@ exports.execute = async function () {
                     })
                 });
 
+                composer.addTransaction({
+                    sender: sender,
+                    signer: signer,
+                    txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                        from: sender,
+                        to: prime['application_address'],
+                        assetIndex: Number(process.env.VAULT_ASSET_ID),
+                        amount: 300,
+                        suggestedParams: {
+                            ...params,
+                            fee: 1000,
+                            flatFee: true
+                        }
+                    })
+                });
+
                 await chain.execute(composer);
 
                 prime['optin'] = true;
