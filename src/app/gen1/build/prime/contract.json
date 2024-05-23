@@ -94,6 +94,13 @@
             }
         },
         {
+            "name": "upgrade",
+            "args": [],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
             "name": "list",
             "args": [
                 {

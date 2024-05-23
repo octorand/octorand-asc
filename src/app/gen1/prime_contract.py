@@ -118,6 +118,25 @@ def finalize(
     )
 
 
+@app.external(name="upgrade")
+def upgrade():
+    return Seq(
+        func.assert_is_zero_int(config1.is_explorer.get()),
+        func.assert_sender_asset_transfer(
+            config1.legacy_asset_id.get(),
+            Global.current_application_address(),
+            Int(1),
+            Add(Txn.group_index(), Int(1)),
+        ),
+        func.execute_asset_transfer(
+            config1.prime_asset_id.get(),
+            Txn.sender(),
+            Int(1),
+        ),
+        config1.is_explorer.set(Int(1)),
+    )
+
+
 @app.external(name="list")
 def list(
     price: abi.Uint64,
