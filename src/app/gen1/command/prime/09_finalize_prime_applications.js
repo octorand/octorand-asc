@@ -30,9 +30,10 @@ exports.execute = async function () {
                     method: chain.method(contract, 'finalize'),
                     methodArgs: [
                         prime['score'],
+                        prime['sales'],
+                        prime['mints'],
                         prime['renames'],
                         prime['repaints'],
-                        prime['sales'],
                     ],
                     suggestedParams: {
                         ...params,

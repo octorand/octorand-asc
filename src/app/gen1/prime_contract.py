@@ -12,16 +12,18 @@ class Config1:
         self.id = func.GlobalUint(self.key, 0, 8)
         self.prime_asset_id = func.GlobalUint(self.key, 8, 8)
         self.legacy_asset_id = func.GlobalUint(self.key, 16, 8)
-        self.theme = func.GlobalUint(self.key, 24, 2)
-        self.skin = func.GlobalUint(self.key, 26, 2)
-        self.is_founder = func.GlobalUint(self.key, 28, 1)
-        self.is_artifact = func.GlobalUint(self.key, 29, 1)
-        self.is_pioneer = func.GlobalUint(self.key, 30, 1)
-        self.is_explorer = func.GlobalUint(self.key, 31, 1)
-        self.score = func.GlobalUint(self.key, 32, 8)
-        self.renames = func.GlobalUint(self.key, 40, 8)
-        self.repaints = func.GlobalUint(self.key, 48, 8)
-        self.sales = func.GlobalUint(self.key, 56, 8)
+        self.parent_application_id = func.GlobalUint(self.key, 24, 8)
+        self.theme = func.GlobalUint(self.key, 32, 2)
+        self.skin = func.GlobalUint(self.key, 34, 2)
+        self.is_founder = func.GlobalUint(self.key, 36, 1)
+        self.is_artifact = func.GlobalUint(self.key, 37, 1)
+        self.is_pioneer = func.GlobalUint(self.key, 38, 1)
+        self.is_explorer = func.GlobalUint(self.key, 39, 1)
+        self.score = func.GlobalUint(self.key, 40, 8)
+        self.sales = func.GlobalUint(self.key, 48, 4)
+        self.mints = func.GlobalUint(self.key, 52, 4)
+        self.renames = func.GlobalUint(self.key, 56, 4)
+        self.repaints = func.GlobalUint(self.key, 60, 4)
         self.price = func.GlobalUint(self.key, 64, 8)
         self.seller = func.GlobalBytes(self.key, 72, 32)
         self.name = func.GlobalBytes(self.key, 104, 8)
@@ -102,16 +104,18 @@ def populate(
 @app.external(name="finalize")
 def finalize(
     score: abi.Uint64,
+    sales: abi.Uint64,
+    mints: abi.Uint64,
     renames: abi.Uint64,
     repaints: abi.Uint64,
-    sales: abi.Uint64,
 ):
     return Seq(
         func.assert_is_creator(),
         config1.score.set(score.get()),
+        config1.sales.set(sales.get()),
+        config1.mints.set(mints.get()),
         config1.renames.set(renames.get()),
         config1.repaints.set(repaints.get()),
-        config1.sales.set(sales.get()),
     )
 
 
@@ -191,6 +195,7 @@ def buy():
         ),
         config1.price.set(Int(0)),
         config1.seller.set(Global.zero_address()),
+        config1.sales.increment(Int(1)),
     )
 
 
@@ -219,6 +224,7 @@ def rename(
             Add(Txn.group_index(), Int(1)),
         ),
         config1.name.set(SetByte(config1.name.get(), index.get(), value.get())),
+        config1.renames.increment(Int(1)),
     )
 
 
@@ -239,4 +245,25 @@ def repaint(
         ),
         config1.theme.set(theme.get()),
         config1.skin.set(skin.get()),
+        config1.repaints.increment(Int(1)),
+    )
+
+
+@app.external(name="mint")
+def mint():
+    balance = AssetHolding.balance(
+        Global.current_application_address(),
+        prime_config.platform_asset_id,
+    )
+    return Seq(
+        func.assert_sender_asset_holding(config1.prime_asset_id.get()),
+        balance,
+        Assert(balance.hasValue()),
+        Assert(balance.value() > Int(0)),
+        func.execute_asset_transfer(
+            prime_config.platform_asset_id,
+            Txn.sender(),
+            balance.value(),
+        ),
+        config1.mints.increment(Int(1)),
     )

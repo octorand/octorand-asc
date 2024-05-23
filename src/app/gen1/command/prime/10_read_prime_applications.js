@@ -18,6 +18,7 @@ exports.execute = async function () {
                 id: null,
                 prime_asset_id: null,
                 legacy_asset_id: null,
+                parent_application_id: null,
                 theme: null,
                 skin: null,
                 is_founder: null,
@@ -25,9 +26,10 @@ exports.execute = async function () {
                 is_pioneer: null,
                 is_explorer: null,
                 score: null,
+                sales: null,
+                mints: null,
                 renames: null,
                 repaints: null,
-                sales: null,
                 price: null,
                 seller: null,
                 name: null,
@@ -47,16 +49,18 @@ exports.execute = async function () {
                         config.id = connection.baseClient.decodeUint64(value.subarray(0, 8));
                         config.prime_asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
                         config.legacy_asset_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
-                        config.theme = connection.baseClient.decodeUint64(value.subarray(24, 26));
-                        config.skin = connection.baseClient.decodeUint64(value.subarray(26, 28));
-                        config.is_founder = connection.baseClient.decodeUint64(value.subarray(28, 29));
-                        config.is_artifact = connection.baseClient.decodeUint64(value.subarray(29, 30));
-                        config.is_pioneer = connection.baseClient.decodeUint64(value.subarray(30, 31));
-                        config.is_explorer = connection.baseClient.decodeUint64(value.subarray(31, 32));
-                        config.score = connection.baseClient.decodeUint64(value.subarray(32, 40));
-                        config.renames = connection.baseClient.decodeUint64(value.subarray(40, 48));
-                        config.repaints = connection.baseClient.decodeUint64(value.subarray(48, 56));
-                        config.sales = connection.baseClient.decodeUint64(value.subarray(56, 64));
+                        config.parent_application_id = connection.baseClient.decodeUint64(value.subarray(24, 32));
+                        config.theme = connection.baseClient.decodeUint64(value.subarray(32, 34));
+                        config.skin = connection.baseClient.decodeUint64(value.subarray(34, 36));
+                        config.is_founder = connection.baseClient.decodeUint64(value.subarray(36, 37));
+                        config.is_artifact = connection.baseClient.decodeUint64(value.subarray(37, 38));
+                        config.is_pioneer = connection.baseClient.decodeUint64(value.subarray(38, 39));
+                        config.is_explorer = connection.baseClient.decodeUint64(value.subarray(39, 40));
+                        config.score = connection.baseClient.decodeUint64(value.subarray(40, 48));
+                        config.sales = connection.baseClient.decodeUint64(value.subarray(48, 52));
+                        config.mints = connection.baseClient.decodeUint64(value.subarray(52, 56));
+                        config.renames = connection.baseClient.decodeUint64(value.subarray(56, 60));
+                        config.repaints = connection.baseClient.decodeUint64(value.subarray(60, 64));
                         config.price = connection.baseClient.decodeUint64(value.subarray(64, 72));
                         config.seller = connection.baseClient.encodeAddress(value.subarray(72, 104));
                         config.name = value.subarray(104, 112).toString('utf-8').trim();

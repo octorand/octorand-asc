@@ -74,15 +74,19 @@
                 },
                 {
                     "type": "uint64",
+                    "name": "sales"
+                },
+                {
+                    "type": "uint64",
+                    "name": "mints"
+                },
+                {
+                    "type": "uint64",
                     "name": "renames"
                 },
                 {
                     "type": "uint64",
                     "name": "repaints"
-                },
-                {
-                    "type": "uint64",
-                    "name": "sales"
                 }
             ],
             "returns": {
@@ -150,6 +154,13 @@
                     "name": "skin"
                 }
             ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "mint",
+            "args": [],
             "returns": {
                 "type": "void"
             }
