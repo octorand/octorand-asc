@@ -61,17 +61,15 @@ def initialize(
     id: abi.Uint64,
     prime_asset: abi.Asset,
     legacy_asset: abi.Asset,
-    platform_asset: abi.Asset,
 ):
     return Seq(
         func.assert_is_creator(),
-        func.assert_is_equal(platform_asset.asset_id(), prime_config.platform_asset_id),
         config1.id.set(id.get()),
         config1.prime_asset_id.set(prime_asset.asset_id()),
         config1.legacy_asset_id.set(legacy_asset.asset_id()),
         config1.price.set(Int(0)),
         config1.seller.set(Global.zero_address()),
-        func.optin_into_asset(platform_asset.asset_id()),
+        func.optin_into_asset(prime_config.platform_asset_id),
         func.optin_into_asset(prime_asset.asset_id()),
         func.optin_into_asset(legacy_asset.asset_id()),
     )

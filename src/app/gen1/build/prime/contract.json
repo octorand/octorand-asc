@@ -15,10 +15,6 @@
                 {
                     "type": "asset",
                     "name": "legacy_asset"
-                },
-                {
-                    "type": "asset",
-                    "name": "platform_asset"
                 }
             ],
             "returns": {

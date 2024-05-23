@@ -32,6 +32,8 @@ exports.execute = async function () {
                         prime['id'],
                         prime['prime_asset_id'],
                         prime['legacy_asset_id'],
+                    ],
+                    appForeignAssets: [
                         Number(process.env.PLATFORM_ASSET_ID),
                     ],
                     suggestedParams: {
