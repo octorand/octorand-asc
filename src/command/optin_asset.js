@@ -6,22 +6,18 @@ const chain = require('./../chain/index');
     try {
         let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.admin.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.master);
+        let sender = connection.player.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
 
         let composer = new connection.baseClient.AtomicTransactionComposer();
 
         composer.addTransaction({
             signer: signer,
-            txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
+            txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                 from: sender,
-                total: 1000000000000,
-                decimals: 6,
-                defaultFrozen: false,
-                manager: sender,
-                reserve: sender,
-                unitName: "TEST",
-                assetName: "Test",
+                to: sender,
+                assetIndex: Number(process.env.PLATFORM_ASSET_ID),
+                total: 0,
                 suggestedParams: {
                     ...params,
                     fee: 1000,
@@ -30,10 +26,7 @@ const chain = require('./../chain/index');
             })
         });
 
-        let response = await chain.execute(composer);
-
-        let assetId = response.information['asset-index'];
-        console.log(assetId);
+        await chain.execute(composer);
 
     } catch (error) {
         console.log(error);
