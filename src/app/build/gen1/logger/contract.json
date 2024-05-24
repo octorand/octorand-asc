@@ -1,0 +1,34 @@
+{
+    "name": "GenOneLogger",
+    "methods": [
+        {
+            "name": "buy",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "timestamp"
+                },
+                {
+                    "type": "uint64",
+                    "name": "id"
+                },
+                {
+                    "type": "uint64",
+                    "name": "price"
+                },
+                {
+                    "type": "account",
+                    "name": "seller"
+                },
+                {
+                    "type": "account",
+                    "name": "buyer"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

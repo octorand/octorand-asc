@@ -41,7 +41,7 @@
         }
     },
     "contract": {
-        "name": "GenOnePrime",
+        "name": "GenOnePrimeLoader",
         "methods": [
             {
                 "name": "initialize",

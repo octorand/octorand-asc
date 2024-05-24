@@ -81,7 +81,7 @@
         }
     },
     "contract": {
-        "name": "GenOnePrime",
+        "name": "GenOnePrimeWorker",
         "methods": [
             {
                 "name": "upgrade",

@@ -2,6 +2,8 @@ require('dotenv').config();
 
 (async () => {
 
+    await require('./command/gen1/logger/00_compile_contracts').execute();
+
     await require('./command/gen1/prime/loader/00_compile_contracts').execute();
     await require('./command/gen1/prime/loader/01_initialize_primes').execute();
     await require('./command/gen1/prime/loader/02_create_legacy_assets').execute();

@@ -1,0 +1,71 @@
+{
+    "hints": {
+        "buy(uint64,uint64,uint64,account,account)void": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        }
+    },
+    "source": {
+        "approval": "I3ByYWdtYSB2ZXJzaW9uIDgKaW50Y2Jsb2NrIDAgMQp0eG4gTnVtQXBwQXJncwppbnRjXzAgLy8gMAo9PQpibnogbWFpbl9sNAp0eG5hIEFwcGxpY2F0aW9uQXJncyAwCnB1c2hieXRlcyAweDUwOWMxNTI4IC8vICJidXkodWludDY0LHVpbnQ2NCx1aW50NjQsYWNjb3VudCxhY2NvdW50KXZvaWQiCj09CmJueiBtYWluX2wzCmVycgptYWluX2wzOgp0eG4gT25Db21wbGV0aW9uCmludGNfMCAvLyBOb09wCj09CnR4biBBcHBsaWNhdGlvbklECmludGNfMCAvLyAwCiE9CiYmCmFzc2VydApjYWxsc3ViIGJ1eWNhc3Rlcl8yCmludGNfMSAvLyAxCnJldHVybgptYWluX2w0Ogp0eG4gT25Db21wbGV0aW9uCmludGNfMCAvLyBOb09wCj09CmJueiBtYWluX2w4CnR4biBPbkNvbXBsZXRpb24KcHVzaGludCA0IC8vIFVwZGF0ZUFwcGxpY2F0aW9uCj09CmJueiBtYWluX2w3CmVycgptYWluX2w3Ogp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAohPQphc3NlcnQKY2FsbHN1YiB1cGRhdGVfMAppbnRjXzEgLy8gMQpyZXR1cm4KbWFpbl9sODoKdHhuIEFwcGxpY2F0aW9uSUQKaW50Y18wIC8vIDAKPT0KYXNzZXJ0CmludGNfMSAvLyAxCnJldHVybgoKLy8gdXBkYXRlCnVwZGF0ZV8wOgpwcm90byAwIDAKdHhuIFNlbmRlcgpwdXNoYnl0ZXMgMHhjOWZkODYxZGFlMjJhN2JhZDkzOGVhODNkZjFiZWUzNjFkMDZlYzA4YWIzZWY5Yzc0ZDg3ZDVhZDMxZTlmMGFmIC8vIFpINllNSE5PRUtUM1ZXSlk1S0I1Nkc3T0dZT1FOM0FJVk03UFRSMk5RN0syMk1QSjZDWFJVQUlJQU0KPT0KYXNzZXJ0CnJldHN1YgoKLy8gYnV5CmJ1eV8xOgpwcm90byA1IDAKcHVzaGJ5dGVzIDB4NjI3NTc5IC8vICJidXkiCmxvZwpyZXRzdWIKCi8vIGJ1eV9jYXN0ZXIKYnV5Y2FzdGVyXzI6CnByb3RvIDAgMAppbnRjXzAgLy8gMApkdXBuIDQKdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMQpidG9pCmZyYW1lX2J1cnkgMAp0eG5hIEFwcGxpY2F0aW9uQXJncyAyCmJ0b2kKZnJhbWVfYnVyeSAxCnR4bmEgQXBwbGljYXRpb25BcmdzIDMKYnRvaQpmcmFtZV9idXJ5IDIKdHhuYSBBcHBsaWNhdGlvbkFyZ3MgNAppbnRjXzAgLy8gMApnZXRieXRlCmZyYW1lX2J1cnkgMwp0eG5hIEFwcGxpY2F0aW9uQXJncyA1CmludGNfMCAvLyAwCmdldGJ5dGUKZnJhbWVfYnVyeSA0CmZyYW1lX2RpZyAwCmZyYW1lX2RpZyAxCmZyYW1lX2RpZyAyCmZyYW1lX2RpZyAzCmZyYW1lX2RpZyA0CmNhbGxzdWIgYnV5XzEKcmV0c3Vi",
+        "clear": "I3ByYWdtYSB2ZXJzaW9uIDgKcHVzaGludCAwIC8vIDAKcmV0dXJu"
+    },
+    "state": {
+        "global": {
+            "num_byte_slices": 0,
+            "num_uints": 0
+        },
+        "local": {
+            "num_byte_slices": 0,
+            "num_uints": 0
+        }
+    },
+    "schema": {
+        "global": {
+            "declared": {},
+            "reserved": {}
+        },
+        "local": {
+            "declared": {},
+            "reserved": {}
+        }
+    },
+    "contract": {
+        "name": "GenOneLogger",
+        "methods": [
+            {
+                "name": "buy",
+                "args": [
+                    {
+                        "type": "uint64",
+                        "name": "timestamp"
+                    },
+                    {
+                        "type": "uint64",
+                        "name": "id"
+                    },
+                    {
+                        "type": "uint64",
+                        "name": "price"
+                    },
+                    {
+                        "type": "account",
+                        "name": "seller"
+                    },
+                    {
+                        "type": "account",
+                        "name": "buyer"
+                    }
+                ],
+                "returns": {
+                    "type": "void"
+                }
+            }
+        ],
+        "networks": {}
+    },
+    "bare_call_config": {
+        "no_op": "CREATE",
+        "update_application": "CALL"
+    }
+}

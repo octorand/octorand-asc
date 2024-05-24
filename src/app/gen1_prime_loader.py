@@ -6,7 +6,7 @@ from beaker import *
 from typing import *
 
 
-app = Application("GenOnePrime")
+app = Application("GenOnePrimeLoader")
 
 config1 = const.Config1()
 config2 = const.Config2()
