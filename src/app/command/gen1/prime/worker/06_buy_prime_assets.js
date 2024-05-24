@@ -60,8 +60,8 @@ exports.execute = async function () {
                     signer: signer,
                     txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                         from: sender,
-                        to: prime['config']['seller'],
-                        amount: Math.floor(prime['config']['price'] * 0.9),
+                        to: connection.gen1.addr,
+                        amount: Math.floor(prime['price'] * 0.9),
                         suggestedParams: {
                             ...params,
                             fee: 1000,
@@ -76,7 +76,7 @@ exports.execute = async function () {
                     txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                         from: sender,
                         to: connection.admin.addr,
-                        amount: Math.floor(prime['config']['price'] * 0.1),
+                        amount: Math.floor(prime['price'] * 0.1),
                         suggestedParams: {
                             ...params,
                             fee: 1000,

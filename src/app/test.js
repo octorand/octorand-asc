@@ -28,5 +28,6 @@ require('dotenv').config();
     await require('./command/gen1/prime/worker/11_withdraw_prime_applications').execute();
     await require('./command/gen1/prime/worker/12_optin_prime_applications').execute();
     await require('./command/gen1/prime/worker/13_optout_prime_applications').execute();
+    await require('./command/gen1/prime/worker/14_read_prime_applications').execute();
 
 })();
