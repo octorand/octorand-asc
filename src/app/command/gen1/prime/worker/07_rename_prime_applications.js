@@ -12,14 +12,14 @@ exports.execute = async function () {
 
         let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/gen1/build/prime/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/prime/worker/contract.json')));
 
         let primes = setup['gen1']['primes'];
 
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (!prime['repainted']) {
+            if (!prime['renamed']) {
 
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -27,10 +27,10 @@ exports.execute = async function () {
                     sender: sender,
                     signer: signer,
                     appID: prime['application_id'],
-                    method: chain.method(contract, 'repaint'),
+                    method: chain.method(contract, 'rename'),
                     methodArgs: [
-                        3,
-                        4
+                        1,
+                        68
                     ],
                     appForeignAssets: [
                         prime['prime_asset_id']
@@ -49,7 +49,42 @@ exports.execute = async function () {
                         from: sender,
                         to: connection.admin.addr,
                         assetIndex: Number(process.env.PLATFORM_ASSET_ID),
-                        amount: 10000000,
+                        amount: 20000000,
+                        suggestedParams: {
+                            ...params,
+                            fee: 1000,
+                            flatFee: true
+                        }
+                    })
+                });
+
+                composer.addMethodCall({
+                    sender: sender,
+                    signer: signer,
+                    appID: prime['application_id'],
+                    method: chain.method(contract, 'rename'),
+                    methodArgs: [
+                        6,
+                        86
+                    ],
+                    appForeignAssets: [
+                        prime['prime_asset_id']
+                    ],
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                });
+
+                composer.addTransaction({
+                    sender: sender,
+                    signer: signer,
+                    txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                        from: sender,
+                        to: connection.admin.addr,
+                        assetIndex: Number(process.env.PLATFORM_ASSET_ID),
+                        amount: 30000000,
                         suggestedParams: {
                             ...params,
                             fee: 1000,
@@ -60,18 +95,18 @@ exports.execute = async function () {
 
                 await chain.execute(composer);
 
-                prime['repainted'] = true;
+                prime['renamed'] = true;
 
                 primes[i] = prime;
 
                 setup['gen1']['primes'] = primes;
                 fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
 
-                console.log('repainted prime asset ' + i);
+                console.log('renamed prime asset ' + i);
             }
         }
 
-        console.log('repainted prime assets');
+        console.log('renamed prime assets');
 
     } catch (error) {
         console.log(error);

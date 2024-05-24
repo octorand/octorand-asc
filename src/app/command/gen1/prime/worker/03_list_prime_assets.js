@@ -7,19 +7,19 @@ exports.execute = async function () {
     try {
         let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.player.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
+        let sender = connection.gen1.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
         let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/gen1/build/prime/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/prime/worker/contract.json')));
 
         let primes = setup['gen1']['primes'];
 
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (!prime['withdrawn']) {
+            if (!prime['listed']) {
 
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -27,34 +27,47 @@ exports.execute = async function () {
                     sender: sender,
                     signer: signer,
                     appID: prime['application_id'],
-                    method: chain.method(contract, 'withdraw'),
+                    method: chain.method(contract, 'list'),
                     methodArgs: [
-                        200
-                    ],
-                    appForeignAssets: [
-                        prime['prime_asset_id'],
+                        prime['price'],
                     ],
                     suggestedParams: {
                         ...params,
-                        fee: 2000,
+                        fee: 1000,
                         flatFee: true
                     }
                 });
 
+                composer.addTransaction({
+                    sender: sender,
+                    signer: signer,
+                    txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                        from: sender,
+                        to: prime['application_address'],
+                        assetIndex: prime['prime_asset_id'],
+                        amount: 1,
+                        suggestedParams: {
+                            ...params,
+                            fee: 1000,
+                            flatFee: true
+                        }
+                    })
+                });
+
                 await chain.execute(composer);
 
-                prime['minted'] = true;
+                prime['listed'] = true;
 
                 primes[i] = prime;
 
                 setup['gen1']['primes'] = primes;
                 fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
 
-                console.log('withdrawn core currency ' + i);
+                console.log('listed prime asset ' + i);
             }
         }
 
-        console.log('withdrawn core currencies');
+        console.log('listed prime assets');
 
     } catch (error) {
         console.log(error);

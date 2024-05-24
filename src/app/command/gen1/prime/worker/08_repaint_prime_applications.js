@@ -12,14 +12,14 @@ exports.execute = async function () {
 
         let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/gen1/build/prime/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/prime/worker/contract.json')));
 
         let primes = setup['gen1']['primes'];
 
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (!prime['described']) {
+            if (!prime['repainted']) {
 
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -27,9 +27,10 @@ exports.execute = async function () {
                     sender: sender,
                     signer: signer,
                     appID: prime['application_id'],
-                    method: chain.method(contract, 'describe'),
+                    method: chain.method(contract, 'repaint'),
                     methodArgs: [
-                        chain.bytes('Updated ' + prime['description'], 64),
+                        3,
+                        4
                     ],
                     appForeignAssets: [
                         prime['prime_asset_id']
@@ -59,18 +60,18 @@ exports.execute = async function () {
 
                 await chain.execute(composer);
 
-                prime['described'] = true;
+                prime['repainted'] = true;
 
                 primes[i] = prime;
 
                 setup['gen1']['primes'] = primes;
                 fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
 
-                console.log('described prime asset ' + i);
+                console.log('repainted prime asset ' + i);
             }
         }
 
-        console.log('described prime assets');
+        console.log('repainted prime assets');
 
     } catch (error) {
         console.log(error);

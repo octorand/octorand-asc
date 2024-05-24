@@ -12,24 +12,41 @@ exports.execute = async function () {
 
         let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/gen1/build/prime/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/prime/worker/contract.json')));
 
         let primes = setup['gen1']['primes'];
 
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (!prime['optin']) {
+            if (!prime['bought']) {
 
                 let composer = new connection.baseClient.AtomicTransactionComposer();
+
+                composer.addTransaction({
+                    sender: sender,
+                    signer: signer,
+                    txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                        from: sender,
+                        to: sender,
+                        assetIndex: prime['prime_asset_id'],
+                        amount: 0,
+                        suggestedParams: {
+                            ...params,
+                            fee: 1000,
+                            flatFee: true
+                        }
+                    })
+                });
 
                 composer.addMethodCall({
                     sender: sender,
                     signer: signer,
                     appID: prime['application_id'],
-                    method: chain.method(contract, 'optin'),
-                    methodArgs: [
-                        Number(process.env.VAULT_ASSET_ID),
+                    method: chain.method(contract, 'buy'),
+                    methodArgs: [],
+                    appForeignAssets: [
+                        prime['prime_asset_id']
                     ],
                     suggestedParams: {
                         ...params,
@@ -43,8 +60,8 @@ exports.execute = async function () {
                     signer: signer,
                     txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                         from: sender,
-                        to: prime['application_address'],
-                        amount: 100000,
+                        to: prime['config']['seller'],
+                        amount: Math.floor(prime['config']['price'] * 0.9),
                         suggestedParams: {
                             ...params,
                             fee: 1000,
@@ -56,11 +73,10 @@ exports.execute = async function () {
                 composer.addTransaction({
                     sender: sender,
                     signer: signer,
-                    txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                    txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                         from: sender,
-                        to: prime['application_address'],
-                        assetIndex: Number(process.env.VAULT_ASSET_ID),
-                        amount: 300,
+                        to: connection.admin.addr,
+                        amount: Math.floor(prime['config']['price'] * 0.1),
                         suggestedParams: {
                             ...params,
                             fee: 1000,
@@ -71,18 +87,18 @@ exports.execute = async function () {
 
                 await chain.execute(composer);
 
-                prime['optin'] = true;
+                prime['bought'] = true;
 
                 primes[i] = prime;
 
                 setup['gen1']['primes'] = primes;
                 fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
 
-                console.log('opted in vault asset ' + i);
+                console.log('bought prime asset ' + i);
             }
         }
 
-        console.log('opted in vault assets');
+        console.log('bought prime assets');
 
     } catch (error) {
         console.log(error);

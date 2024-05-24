@@ -12,27 +12,40 @@ exports.execute = async function () {
 
         let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let primes = setup['gen1']['primes'];
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/prime/worker/contract.json')));
 
-        let version = 1;
+        let primes = setup['gen1']['primes'];
 
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (prime['application_version'] < version) {
+            if (!prime['relisted']) {
+
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
-                let approvalProgram = fs.readFileSync('src/app/gen1/build/prime/approval.teal', 'utf8');
-                let clearProgram = fs.readFileSync('src/app/gen1/build/prime/clear.teal', 'utf8');
+                composer.addMethodCall({
+                    sender: sender,
+                    signer: signer,
+                    appID: prime['application_id'],
+                    method: chain.method(contract, 'list'),
+                    methodArgs: [
+                        prime['price'],
+                    ],
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                });
 
                 composer.addTransaction({
+                    sender: sender,
                     signer: signer,
-                    txn: connection.baseClient.makeApplicationUpdateTxnFromObject({
+                    txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                         from: sender,
-                        appIndex: prime['application_id'],
-                        onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
-                        approvalProgram: await chain.compile(approvalProgram),
-                        clearProgram: await chain.compile(clearProgram),
+                        to: prime['application_address'],
+                        assetIndex: prime['prime_asset_id'],
+                        amount: 1,
                         suggestedParams: {
                             ...params,
                             fee: 1000,
@@ -43,18 +56,18 @@ exports.execute = async function () {
 
                 await chain.execute(composer);
 
-                prime['application_version'] = version;
+                prime['relisted'] = true;
 
                 primes[i] = prime;
 
                 setup['gen1']['primes'] = primes;
                 fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
 
-                console.log('updated prime application ' + i);
+                console.log('relisted prime asset ' + i);
             }
         }
 
-        console.log('updated prime applications');
+        console.log('relisted prime assets');
 
     } catch (error) {
         console.log(error);
