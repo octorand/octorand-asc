@@ -4,9 +4,9 @@ const fs = require('fs');
 
 exports.execute = async function () {
     try {
-        let setup = JSON.parse(fs.readFileSync('src/app/gen1/setup.json'));
+        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let primes = setup['primes'];
+        let primes = setup['gen1']['primes'];
 
         let count = 1;
 
@@ -33,8 +33,8 @@ exports.execute = async function () {
             }
         }
 
-        setup['primes'] = primes;
-        fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
+        setup['gen1']['primes'] = primes;
+        fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
 
         console.log('initialized primes');
 

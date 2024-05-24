@@ -1,3 +1,8 @@
 {
-    "primes": []
+    "gen1": {
+        "primes": []
+    },
+    "gen2": {
+        "primes": []
+    }
 }

@@ -3,10 +3,21 @@ require('dotenv').config();
 (async () => {
 
     await require('./command/gen1/prime/loader/00_compile_contracts').execute();
-    await require('./command/gen1/prime/worker/00_compile_contracts').execute();
+    await require('./command/gen1/prime/loader/01_initialize_primes').execute();
+    await require('./command/gen1/prime/loader/02_create_legacy_assets').execute();
+    await require('./command/gen1/prime/loader/03_create_prime_assets').execute();
+    await require('./command/gen1/prime/loader/04_create_prime_applications').execute();
+    await require('./command/gen1/prime/loader/05_fund_prime_applications').execute();
+    await require('./command/gen1/prime/loader/06_initialize_prime_applications').execute();
+    await require('./command/gen1/prime/loader/07_populate_prime_applications').execute();
+    await require('./command/gen1/prime/loader/08_finalize_prime_applications').execute();
+    await require('./command/gen1/prime/loader/09_transfer_prime_assets').execute();
+    await require('./command/gen1/prime/loader/10_read_prime_applications').execute();
 
-    // await require('./command/prime/00_compile_contracts').execute();
-    // await require('./command/prime/01_initialize_primes').execute();
+    // await require('./command/gen1/prime/worker/00_compile_contracts').execute();
+
+
+
     // await require('./command/prime/02_create_legacy_assets').execute();
     // await require('./command/prime/03_create_prime_assets').execute();
     // await require('./command/prime/04_create_prime_applications').execute();

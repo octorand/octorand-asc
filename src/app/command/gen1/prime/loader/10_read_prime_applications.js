@@ -1,15 +1,15 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../../chain/index');
+const chain = require('./../../../../../chain/index');
 
 exports.execute = async function () {
     try {
         let connection = await chain.get();
 
-        let setup = JSON.parse(fs.readFileSync('src/app/gen1/setup.json'));
+        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let primes = setup['primes'];
+        let primes = setup['gen1']['primes'];
 
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
@@ -74,8 +74,8 @@ exports.execute = async function () {
             prime['config'] = config;
             primes[i] = prime;
 
-            setup['primes'] = primes;
-            fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
+            setup['gen1']['primes'] = primes;
+            fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
 
             console.log('read prime application ' + i);
         }

@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../../chain/index');
+const chain = require('./../../../../../chain/index');
 
 exports.execute = async function () {
     try {
@@ -10,16 +10,16 @@ exports.execute = async function () {
         let sender = connection.gen1.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/gen1/setup.json'));
+        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
         let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/gen1/build/prime/contract.json')));
 
-        let primes = setup['primes'];
+        let primes = setup['gen1']['primes'];
 
         for (let i = 0; i < primes.length; i++) {
             let prime = primes[i];
 
-            if (!prime['application_finalized']) {
+            if (!prime['application_initialized']) {
 
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -27,35 +27,36 @@ exports.execute = async function () {
                     sender: sender,
                     signer: signer,
                     appID: prime['application_id'],
-                    method: chain.method(contract, 'finalize'),
+                    method: chain.method(contract, 'initialize'),
                     methodArgs: [
-                        prime['score'],
-                        prime['sales'],
-                        prime['mints'],
-                        prime['renames'],
-                        prime['repaints'],
+                        prime['id'],
+                        prime['prime_asset_id'],
+                        prime['legacy_asset_id'],
+                    ],
+                    appForeignAssets: [
+                        Number(process.env.PLATFORM_ASSET_ID),
                     ],
                     suggestedParams: {
                         ...params,
-                        fee: 1000,
+                        fee: 4000,
                         flatFee: true
                     }
                 });
 
                 await chain.execute(composer);
 
-                prime['application_finalized'] = true;
+                prime['application_initialized'] = true;
 
                 primes[i] = prime;
 
-                setup['primes'] = primes;
-                fs.writeFileSync('src/app/gen1/setup.json', JSON.stringify(setup, null, 4));
+                setup['gen1']['primes'] = primes;
+                fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
 
-                console.log('finalized prime application ' + i);
+                console.log('initialized prime application ' + i);
             }
         }
 
-        console.log('finalized prime applications');
+        console.log('initialized prime applications');
 
     } catch (error) {
         console.log(error);
