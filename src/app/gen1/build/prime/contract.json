@@ -155,6 +155,18 @@
             }
         },
         {
+            "name": "describe",
+            "args": [
+                {
+                    "type": "byte[64]",
+                    "name": "description"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
             "name": "mint",
             "args": [
                 {

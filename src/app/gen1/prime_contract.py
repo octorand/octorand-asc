@@ -246,6 +246,22 @@ def repaint(
     )
 
 
+@app.external(name="describe")
+def describe(
+    description: abi.StaticBytes[Literal[64]],
+):
+    return Seq(
+        func.assert_sender_asset_holding(config1.prime_asset_id.get()),
+        func.assert_sender_asset_transfer(
+            prime_config.platform_asset_id,
+            prime_config.platform_asset_reserve,
+            prime_config.describe_price,
+            Add(Txn.group_index(), Int(1)),
+        ),
+        config2.description.set(description.get()),
+    )
+
+
 @app.external(name="mint")
 def mint(
     amount: abi.Uint64,

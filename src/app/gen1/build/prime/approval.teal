@@ -1,75 +1,67 @@
 #pragma version 8
 intcblock 0 8 1 4 660757756 10000000
-bytecblock 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x436f6e66696732
+bytecblock 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x436f6e66696732 0x
 txn NumAppArgs
 intc_0 // 0
 ==
-bnz main_l28
+bnz main_l30
 txna ApplicationArgs 0
 pushbytes 0xbc525b0f // "initialize(uint64,asset,asset)void"
 ==
-bnz main_l27
+bnz main_l29
 txna ApplicationArgs 0
 pushbytes 0x092c7520 // "populate(uint64,uint64,uint64,uint64,uint64,uint64,byte[8],byte[64])void"
 ==
-bnz main_l26
+bnz main_l28
 txna ApplicationArgs 0
 pushbytes 0x9675e058 // "finalize(uint64,uint64,uint64,uint64,uint64)void"
 ==
-bnz main_l25
+bnz main_l27
 txna ApplicationArgs 0
 pushbytes 0x33ac8d6c // "upgrade()void"
 ==
-bnz main_l24
+bnz main_l26
 txna ApplicationArgs 0
 pushbytes 0x4a016bb2 // "list(uint64)void"
 ==
-bnz main_l23
+bnz main_l25
 txna ApplicationArgs 0
 pushbytes 0xbe12be50 // "unlist()void"
 ==
-bnz main_l22
+bnz main_l24
 txna ApplicationArgs 0
 pushbytes 0x48033a08 // "buy()void"
 ==
-bnz main_l21
+bnz main_l23
 txna ApplicationArgs 0
 pushbytes 0x5bff6c91 // "rename(uint64,uint64)void"
 ==
-bnz main_l20
+bnz main_l22
 txna ApplicationArgs 0
 pushbytes 0xac86822b // "repaint(uint64,uint64)void"
 ==
-bnz main_l19
+bnz main_l21
+txna ApplicationArgs 0
+pushbytes 0x698ea56f // "describe(byte[64])void"
+==
+bnz main_l20
 txna ApplicationArgs 0
 pushbytes 0xb98b905f // "mint(uint64)void"
 ==
-bnz main_l18
+bnz main_l19
 txna ApplicationArgs 0
 pushbytes 0x21f1ddff // "withdraw(uint64)void"
 ==
-bnz main_l17
+bnz main_l18
 txna ApplicationArgs 0
 pushbytes 0x7f19f9d4 // "optin(asset)void"
 ==
-bnz main_l16
+bnz main_l17
 txna ApplicationArgs 0
 pushbytes 0x7ccbe726 // "optout(asset)void"
 ==
-bnz main_l15
+bnz main_l16
 err
-main_l15:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub optoutcaster_39
-intc_2 // 1
-return
 main_l16:
 txn OnCompletion
 intc_0 // NoOp
@@ -79,7 +71,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub optincaster_38
+callsub optoutcaster_41
 intc_2 // 1
 return
 main_l17:
@@ -91,7 +83,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub withdrawcaster_37
+callsub optincaster_40
 intc_2 // 1
 return
 main_l18:
@@ -103,7 +95,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub mintcaster_36
+callsub withdrawcaster_39
 intc_2 // 1
 return
 main_l19:
@@ -115,7 +107,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub repaintcaster_35
+callsub mintcaster_38
 intc_2 // 1
 return
 main_l20:
@@ -127,7 +119,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub renamecaster_34
+callsub describecaster_37
 intc_2 // 1
 return
 main_l21:
@@ -139,7 +131,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub buycaster_33
+callsub repaintcaster_36
 intc_2 // 1
 return
 main_l22:
@@ -151,7 +143,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub unlistcaster_32
+callsub renamecaster_35
 intc_2 // 1
 return
 main_l23:
@@ -163,7 +155,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub listcaster_31
+callsub buycaster_34
 intc_2 // 1
 return
 main_l24:
@@ -175,7 +167,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub upgradecaster_30
+callsub unlistcaster_33
 intc_2 // 1
 return
 main_l25:
@@ -187,7 +179,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub finalizecaster_29
+callsub listcaster_32
 intc_2 // 1
 return
 main_l26:
@@ -199,7 +191,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub populatecaster_28
+callsub upgradecaster_31
 intc_2 // 1
 return
 main_l27:
@@ -211,20 +203,44 @@ intc_0 // 0
 !=
 &&
 assert
-callsub initializecaster_27
+callsub finalizecaster_30
 intc_2 // 1
 return
 main_l28:
 txn OnCompletion
 intc_0 // NoOp
 ==
-bnz main_l32
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub populatecaster_29
+intc_2 // 1
+return
+main_l29:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub initializecaster_28
+intc_2 // 1
+return
+main_l30:
+txn OnCompletion
+intc_0 // NoOp
+==
+bnz main_l34
 txn OnCompletion
 intc_3 // UpdateApplication
 ==
-bnz main_l31
+bnz main_l33
 err
-main_l31:
+main_l33:
 txn ApplicationID
 intc_0 // 0
 !=
@@ -232,7 +248,7 @@ assert
 callsub update_13
 intc_2 // 1
 return
-main_l32:
+main_l34:
 txn ApplicationID
 intc_0 // 0
 ==
@@ -920,8 +936,30 @@ intc_3 // 4
 callsub setglobaluint_4
 retsub
 
+// describe
+describe_23:
+proto 1 0
+bytec_0 // "Config1"
+intc_1 // 8
+intc_1 // 8
+callsub getglobaluint_2
+callsub assertsenderassetholding_9
+intc 4 // 660757756
+bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+intc 5 // 10000000
+txn GroupIndex
+intc_2 // 1
++
+callsub assertsenderassettransfer_11
+frame_dig -1
+bytec_2 // "Config2"
+intc_0 // 0
+pushint 64 // 64
+callsub setglobalbytes_3
+retsub
+
 // mint
-mint_23:
+mint_24:
 proto 1 0
 frame_dig -1
 intc_0 // 0
@@ -949,7 +987,7 @@ callsub setglobaluint_4
 retsub
 
 // withdraw
-withdraw_24:
+withdraw_25:
 proto 1 0
 frame_dig -1
 intc_0 // 0
@@ -966,7 +1004,7 @@ callsub executepayment_7
 retsub
 
 // optin
-optin_25:
+optin_26:
 proto 1 0
 frame_dig -1
 txnas Assets
@@ -1001,7 +1039,7 @@ callsub optinintoasset_5
 retsub
 
 // optout
-optout_26:
+optout_27:
 proto 1 0
 frame_dig -1
 txnas Assets
@@ -1036,7 +1074,7 @@ callsub optoutfromasset_6
 retsub
 
 // initialize_caster
-initializecaster_27:
+initializecaster_28:
 proto 0 0
 intc_0 // 0
 dupn 2
@@ -1058,11 +1096,11 @@ callsub initialize_14
 retsub
 
 // populate_caster
-populatecaster_28:
+populatecaster_29:
 proto 0 0
 intc_0 // 0
 dupn 5
-pushbytes 0x // ""
+bytec_3 // ""
 dup
 txna ApplicationArgs 1
 btoi
@@ -1098,7 +1136,7 @@ callsub populate_15
 retsub
 
 // finalize_caster
-finalizecaster_29:
+finalizecaster_30:
 proto 0 0
 intc_0 // 0
 dupn 4
@@ -1126,13 +1164,13 @@ callsub finalize_16
 retsub
 
 // upgrade_caster
-upgradecaster_30:
+upgradecaster_31:
 proto 0 0
 callsub upgrade_17
 retsub
 
 // list_caster
-listcaster_31:
+listcaster_32:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
@@ -1143,19 +1181,19 @@ callsub list_18
 retsub
 
 // unlist_caster
-unlistcaster_32:
+unlistcaster_33:
 proto 0 0
 callsub unlist_19
 retsub
 
 // buy_caster
-buycaster_33:
+buycaster_34:
 proto 0 0
 callsub buy_20
 retsub
 
 // rename_caster
-renamecaster_34:
+renamecaster_35:
 proto 0 0
 intc_0 // 0
 dup
@@ -1171,7 +1209,7 @@ callsub rename_21
 retsub
 
 // repaint_caster
-repaintcaster_35:
+repaintcaster_36:
 proto 0 0
 intc_0 // 0
 dup
@@ -1186,30 +1224,40 @@ frame_dig 1
 callsub repaint_22
 retsub
 
+// describe_caster
+describecaster_37:
+proto 0 0
+bytec_3 // ""
+txna ApplicationArgs 1
+frame_bury 0
+frame_dig 0
+callsub describe_23
+retsub
+
 // mint_caster
-mintcaster_36:
+mintcaster_38:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
 btoi
 frame_bury 0
 frame_dig 0
-callsub mint_23
+callsub mint_24
 retsub
 
 // withdraw_caster
-withdrawcaster_37:
+withdrawcaster_39:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
 btoi
 frame_bury 0
 frame_dig 0
-callsub withdraw_24
+callsub withdraw_25
 retsub
 
 // optin_caster
-optincaster_38:
+optincaster_40:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
@@ -1217,11 +1265,11 @@ intc_0 // 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub optin_25
+callsub optin_26
 retsub
 
 // optout_caster
-optoutcaster_39:
+optoutcaster_41:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
@@ -1229,5 +1277,5 @@ intc_0 // 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub optout_26
+callsub optout_27
 retsub

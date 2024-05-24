@@ -26,11 +26,13 @@ require('dotenv').config();
     await require('./command/prime/10_read_prime_applications').execute();
     await require('./command/prime/18_repaint_prime_applications').execute();
     await require('./command/prime/10_read_prime_applications').execute();
-    await require('./command/prime/19_mint_prime_applications').execute();
+    await require('./command/prime/19_describe_prime_applications').execute();
     await require('./command/prime/10_read_prime_applications').execute();
-    await require('./command/prime/20_withdraw_prime_applications').execute();
+    await require('./command/prime/20_mint_prime_applications').execute();
     await require('./command/prime/10_read_prime_applications').execute();
-    await require('./command/prime/21_optin_prime_applications').execute();
-    await require('./command/prime/22_optout_prime_applications').execute();
+    await require('./command/prime/21_withdraw_prime_applications').execute();
+    await require('./command/prime/10_read_prime_applications').execute();
+    await require('./command/prime/22_optin_prime_applications').execute();
+    await require('./command/prime/23_optout_prime_applications').execute();
 
 })();
