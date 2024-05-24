@@ -88,6 +88,34 @@
             "returns": {
                 "type": "void"
             }
+        },
+        {
+            "name": "upgrade",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "sender"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "list",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "price"
+                },
+                {
+                    "type": "address",
+                    "name": "seller"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
         }
     ],
     "networks": {}

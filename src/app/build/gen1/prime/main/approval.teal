@@ -1,47 +1,31 @@
 #pragma version 8
-intcblock 0 1 6
-bytecblock 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x3ed6145d03fca681550a583628ec7ba151698951ec6980c18552f4ff45fd3dae
+intcblock 0 1 6 8
+bytecblock 0x3ed6145d03fca681550a583628ec7ba151698951ec6980c18552f4ff45fd3dae 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af
 txn NumAppArgs
 intc_0 // 0
 ==
-bnz main_l8
+bnz main_l12
 txna ApplicationArgs 0
 pushbytes 0x6fe73db8 // "initialize(uint64,asset,asset,application)void"
 ==
-bnz main_l7
+bnz main_l11
 txna ApplicationArgs 0
 pushbytes 0x4eecf1ea // "populate(uint64,uint64,uint64,uint64,uint64,uint64,byte[8],byte[64],application)void"
 ==
-bnz main_l6
+bnz main_l10
 txna ApplicationArgs 0
 pushbytes 0x03074ada // "finalize(uint64,uint64,uint64,uint64,uint64,application)void"
 ==
-bnz main_l5
+bnz main_l9
+txna ApplicationArgs 0
+pushbytes 0xa0cba8dd // "upgrade(application)void"
+==
+bnz main_l8
+txna ApplicationArgs 0
+pushbytes 0xb8e23464 // "list(uint64,application)void"
+==
+bnz main_l7
 err
-main_l5:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub finalizecaster_7
-intc_1 // 1
-return
-main_l6:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub populatecaster_6
-intc_1 // 1
-return
 main_l7:
 txn OnCompletion
 intc_0 // NoOp
@@ -51,28 +35,76 @@ intc_0 // 0
 !=
 &&
 assert
-callsub initializecaster_5
+callsub listcaster_15
 intc_1 // 1
 return
 main_l8:
 txn OnCompletion
 intc_0 // NoOp
 ==
-bnz main_l12
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub upgradecaster_14
+intc_1 // 1
+return
+main_l9:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub finalizecaster_13
+intc_1 // 1
+return
+main_l10:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub populatecaster_12
+intc_1 // 1
+return
+main_l11:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub initializecaster_11
+intc_1 // 1
+return
+main_l12:
+txn OnCompletion
+intc_0 // NoOp
+==
+bnz main_l16
 txn OnCompletion
 pushint 4 // UpdateApplication
 ==
-bnz main_l11
+bnz main_l15
 err
-main_l11:
+main_l15:
 txn ApplicationID
 intc_0 // 0
 !=
 assert
-callsub update_1
+callsub update_5
 intc_1 // 1
 return
-main_l12:
+main_l16:
 txn ApplicationID
 intc_0 // 0
 ==
@@ -80,8 +112,81 @@ assert
 intc_1 // 1
 return
 
+// get_global_external_bytes
+getglobalexternalbytes_0:
+proto 4 1
+frame_dig -4
+frame_dig -3
+app_global_get_ex
+store 3
+store 2
+load 3
+assert
+load 2
+frame_dig -2
+frame_dig -1
+extract3
+retsub
+
+// get_global_external_uint
+getglobalexternaluint_1:
+proto 4 1
+frame_dig -4
+frame_dig -3
+frame_dig -2
+frame_dig -1
+callsub getglobalexternalbytes_0
+btoi
+retsub
+
+// get_application_address
+getapplicationaddress_2:
+proto 1 1
+frame_dig -1
+app_params_get AppAddress
+store 5
+store 4
+load 5
+assert
+load 4
+retsub
+
+// assert_sender_asset_transfer
+assertsenderassettransfer_3:
+proto 4 0
+frame_dig -2
+intc_0 // 0
+>
+assert
+frame_dig -1
+gtxns Sender
+txn Sender
+==
+assert
+frame_dig -1
+gtxns TypeEnum
+pushint 4 // axfer
+==
+assert
+frame_dig -1
+gtxns XferAsset
+frame_dig -4
+==
+assert
+frame_dig -1
+gtxns AssetReceiver
+frame_dig -3
+==
+assert
+frame_dig -1
+gtxns AssetAmount
+frame_dig -2
+==
+assert
+retsub
+
 // assert_application_creator
-assertapplicationcreator_0:
+assertapplicationcreator_4:
 proto 2 0
 frame_dig -2
 app_params_get AppCreator
@@ -96,25 +201,25 @@ assert
 retsub
 
 // update
-update_1:
+update_5:
 proto 0 0
 txn Sender
-bytec_0 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 ==
 assert
 retsub
 
 // initialize
-initialize_2:
+initialize_6:
 proto 4 0
-txn Sender
-bytec_0 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
-==
-assert
 frame_dig -1
 txnas Applications
-bytec_1 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_0
+bytec_0 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+callsub assertapplicationcreator_4
+txn Sender
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
 itxn_begin
 intc_2 // appl
 itxn_field TypeEnum
@@ -140,16 +245,16 @@ itxn_submit
 retsub
 
 // populate
-populate_3:
+populate_7:
 proto 9 0
-txn Sender
-bytec_0 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
-==
-assert
 frame_dig -1
 txnas Applications
-bytec_1 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_0
+bytec_0 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+callsub assertapplicationcreator_4
+txn Sender
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
 itxn_begin
 intc_2 // appl
 itxn_field TypeEnum
@@ -184,16 +289,16 @@ itxn_submit
 retsub
 
 // finalize
-finalize_4:
+finalize_8:
 proto 6 0
-txn Sender
-bytec_0 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
-==
-assert
 frame_dig -1
 txnas Applications
-bytec_1 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_0
+bytec_0 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+callsub assertapplicationcreator_4
+txn Sender
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
 itxn_begin
 intc_2 // appl
 itxn_field TypeEnum
@@ -220,8 +325,110 @@ itxn_field ApplicationArgs
 itxn_submit
 retsub
 
+// upgrade
+upgrade_9:
+proto 1 0
+frame_dig -1
+txnas Applications
+bytec_0 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+callsub assertapplicationcreator_4
+frame_dig -1
+txnas Applications
+bytec_1 // "Config1"
+pushint 39 // 39
+intc_1 // 1
+callsub getglobalexternaluint_1
+intc_0 // 0
+==
+assert
+frame_dig -1
+txnas Applications
+bytec_1 // "Config1"
+pushint 16 // 16
+intc_3 // 8
+callsub getglobalexternaluint_1
+frame_dig -1
+txnas Applications
+callsub getapplicationaddress_2
+intc_1 // 1
+txn GroupIndex
+intc_1 // 1
++
+callsub assertsenderassettransfer_3
+itxn_begin
+intc_2 // appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+pushbytes 0x1f565e4f // "upgrade(address)void"
+itxn_field ApplicationArgs
+txn Sender
+itxn_field ApplicationArgs
+itxn_submit
+retsub
+
+// list
+list_10:
+proto 2 0
+frame_dig -1
+txnas Applications
+bytec_0 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+callsub assertapplicationcreator_4
+frame_dig -1
+txnas Applications
+bytec_1 // "Config1"
+pushint 72 // 72
+pushint 32 // 32
+callsub getglobalexternalbytes_0
+global ZeroAddress
+==
+assert
+frame_dig -1
+txnas Applications
+bytec_1 // "Config1"
+pushint 64 // 64
+intc_3 // 8
+callsub getglobalexternaluint_1
+intc_0 // 0
+==
+assert
+frame_dig -2
+intc_0 // 0
+>
+assert
+frame_dig -1
+txnas Applications
+bytec_1 // "Config1"
+intc_3 // 8
+intc_3 // 8
+callsub getglobalexternaluint_1
+frame_dig -1
+txnas Applications
+callsub getapplicationaddress_2
+intc_1 // 1
+txn GroupIndex
+intc_1 // 1
++
+callsub assertsenderassettransfer_3
+itxn_begin
+intc_2 // appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+pushbytes 0xe15a0ebb // "list(uint64,address)void"
+itxn_field ApplicationArgs
+frame_dig -2
+itob
+itxn_field ApplicationArgs
+txn Sender
+itxn_field ApplicationArgs
+itxn_submit
+retsub
+
 // initialize_caster
-initializecaster_5:
+initializecaster_11:
 proto 0 0
 intc_0 // 0
 dupn 3
@@ -244,11 +451,11 @@ frame_dig 0
 frame_dig 1
 frame_dig 2
 frame_dig 3
-callsub initialize_2
+callsub initialize_6
 retsub
 
 // populate_caster
-populatecaster_6:
+populatecaster_12:
 proto 0 0
 intc_0 // 0
 dupn 5
@@ -290,11 +497,11 @@ frame_dig 5
 frame_dig 6
 frame_dig 7
 frame_dig 8
-callsub populate_3
+callsub populate_7
 retsub
 
 // finalize_caster
-finalizecaster_7:
+finalizecaster_13:
 proto 0 0
 intc_0 // 0
 dupn 5
@@ -323,5 +530,34 @@ frame_dig 2
 frame_dig 3
 frame_dig 4
 frame_dig 5
-callsub finalize_4
+callsub finalize_8
+retsub
+
+// upgrade_caster
+upgradecaster_14:
+proto 0 0
+intc_0 // 0
+txna ApplicationArgs 1
+intc_0 // 0
+getbyte
+frame_bury 0
+frame_dig 0
+callsub upgrade_9
+retsub
+
+// list_caster
+listcaster_15:
+proto 0 0
+intc_0 // 0
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+intc_0 // 0
+getbyte
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub list_10
 retsub

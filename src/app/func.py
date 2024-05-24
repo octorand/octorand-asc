@@ -103,6 +103,16 @@ def get_global_external_uint(application, index, start, length):
     )
 
 
+@Subroutine(TealType.bytes)
+def get_application_address(application_id):
+    address = AppParam.address(application_id)
+    return Seq(
+        address,
+        Assert(address.hasValue()),
+        address.value(),
+    )
+
+
 @Subroutine(TealType.none)
 def optin_into_asset(asset_id):
     return Seq(

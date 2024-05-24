@@ -86,3 +86,30 @@ def finalize(
         config1.renames.set(renames.get()),
         config1.repaints.set(repaints.get()),
     )
+
+
+@app.external(name="upgrade")
+def upgrade(
+    sender: abi.Address,
+):
+    return Seq(
+        Assert(Global.caller_app_id() == const.main_application_id),
+        func.execute_asset_transfer(
+            config1.prime_asset_id.get(),
+            sender.get(),
+            Int(1),
+        ),
+        config1.is_explorer.set(Int(1)),
+    )
+
+
+@app.external(name="list")
+def list(
+    price: abi.Uint64,
+    seller: abi.Address,
+):
+    return Seq(
+        Assert(Global.caller_app_id() == const.main_application_id),
+        config1.price.set(price.get()),
+        config1.seller.set(seller.get()),
+    )

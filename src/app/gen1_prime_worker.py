@@ -19,44 +19,6 @@ def update():
     )
 
 
-@app.external(name="upgrade")
-def upgrade():
-    return Seq(
-        Assert(config1.is_explorer.get() == Int(0)),
-        func.assert_sender_asset_transfer(
-            config1.legacy_asset_id.get(),
-            Global.current_application_address(),
-            Int(1),
-            Add(Txn.group_index(), Int(1)),
-        ),
-        func.execute_asset_transfer(
-            config1.prime_asset_id.get(),
-            Txn.sender(),
-            Int(1),
-        ),
-        config1.is_explorer.set(Int(1)),
-    )
-
-
-@app.external(name="list")
-def list(
-    price: abi.Uint64,
-):
-    return Seq(
-        Assert(config1.seller.get() == Global.zero_address()),
-        Assert(config1.price.get() == Int(0)),
-        Assert(price.get() > Int(0)),
-        func.assert_sender_asset_transfer(
-            config1.prime_asset_id.get(),
-            Global.current_application_address(),
-            Int(1),
-            Add(Txn.group_index(), Int(1)),
-        ),
-        config1.price.set(price.get()),
-        config1.seller.set(Txn.sender()),
-    )
-
-
 @app.external(name="unlist")
 def unlist():
     return Seq(

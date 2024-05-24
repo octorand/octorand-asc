@@ -28,10 +28,10 @@ def initialize(
     application: abi.Application,
 ):
     return Seq(
-        Assert(Txn.sender() == const.admin_address),
         func.assert_application_creator(
             application.application_id(), const.manager_address
         ),
+        Assert(Txn.sender() == const.admin_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=application.application_id(),
             method_signature=storage.initialize.method_signature(),
@@ -57,10 +57,10 @@ def populate(
     application: abi.Application,
 ):
     return Seq(
-        Assert(Txn.sender() == const.admin_address),
         func.assert_application_creator(
             application.application_id(), const.manager_address
         ),
+        Assert(Txn.sender() == const.admin_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=application.application_id(),
             method_signature=storage.populate.method_signature(),
@@ -88,10 +88,10 @@ def finalize(
     application: abi.Application,
 ):
     return Seq(
-        Assert(Txn.sender() == const.admin_address),
         func.assert_application_creator(
             application.application_id(), const.manager_address
         ),
+        Assert(Txn.sender() == const.admin_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=application.application_id(),
             method_signature=storage.finalize.method_signature(),
@@ -101,6 +101,63 @@ def finalize(
                 mints,
                 renames,
                 repaints,
+            ],
+        ),
+    )
+
+
+@app.external(name="upgrade")
+def upgrade(
+    application: abi.Application,
+):
+    return Seq(
+        func.assert_application_creator(
+            application.application_id(), const.manager_address
+        ),
+        Assert(config1.is_explorer.external(application.application_id()) == Int(0)),
+        func.assert_sender_asset_transfer(
+            config1.legacy_asset_id.external(application.application_id()),
+            func.get_application_address(application.application_id()),
+            Int(1),
+            Add(Txn.group_index(), Int(1)),
+        ),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=application.application_id(),
+            method_signature=storage.upgrade.method_signature(),
+            args=[
+                Txn.sender(),
+            ],
+        ),
+    )
+
+
+@app.external(name="list")
+def list(
+    price: abi.Uint64,
+    application: abi.Application,
+):
+    return Seq(
+        func.assert_application_creator(
+            application.application_id(), const.manager_address
+        ),
+        Assert(
+            config1.seller.external(application.application_id())
+            == Global.zero_address()
+        ),
+        Assert(config1.price.external(application.application_id()) == Int(0)),
+        Assert(price.get() > Int(0)),
+        func.assert_sender_asset_transfer(
+            config1.prime_asset_id.external(application.application_id()),
+            func.get_application_address(application.application_id()),
+            Int(1),
+            Add(Txn.group_index(), Int(1)),
+        ),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=application.application_id(),
+            method_signature=storage.list.method_signature(),
+            args=[
+                price,
+                Txn.sender(),
             ],
         ),
     )
