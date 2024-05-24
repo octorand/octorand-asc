@@ -1,0 +1,327 @@
+#pragma version 8
+intcblock 0 1 6
+bytecblock 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x3ed6145d03fca681550a583628ec7ba151698951ec6980c18552f4ff45fd3dae
+txn NumAppArgs
+intc_0 // 0
+==
+bnz main_l8
+txna ApplicationArgs 0
+pushbytes 0x6fe73db8 // "initialize(uint64,asset,asset,application)void"
+==
+bnz main_l7
+txna ApplicationArgs 0
+pushbytes 0x4eecf1ea // "populate(uint64,uint64,uint64,uint64,uint64,uint64,byte[8],byte[64],application)void"
+==
+bnz main_l6
+txna ApplicationArgs 0
+pushbytes 0x03074ada // "finalize(uint64,uint64,uint64,uint64,uint64,application)void"
+==
+bnz main_l5
+err
+main_l5:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub finalizecaster_7
+intc_1 // 1
+return
+main_l6:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub populatecaster_6
+intc_1 // 1
+return
+main_l7:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub initializecaster_5
+intc_1 // 1
+return
+main_l8:
+txn OnCompletion
+intc_0 // NoOp
+==
+bnz main_l12
+txn OnCompletion
+pushint 4 // UpdateApplication
+==
+bnz main_l11
+err
+main_l11:
+txn ApplicationID
+intc_0 // 0
+!=
+assert
+callsub update_1
+intc_1 // 1
+return
+main_l12:
+txn ApplicationID
+intc_0 // 0
+==
+assert
+intc_1 // 1
+return
+
+// assert_application_creator
+assertapplicationcreator_0:
+proto 2 0
+frame_dig -2
+app_params_get AppCreator
+store 1
+store 0
+load 1
+assert
+load 0
+frame_dig -1
+==
+assert
+retsub
+
+// update
+update_1:
+proto 0 0
+txn Sender
+bytec_0 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+retsub
+
+// initialize
+initialize_2:
+proto 4 0
+txn Sender
+bytec_0 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+frame_dig -1
+txnas Applications
+bytec_1 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+callsub assertapplicationcreator_0
+itxn_begin
+intc_2 // appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+frame_dig -3
+txnas Assets
+itxn_field Assets
+frame_dig -2
+txnas Assets
+itxn_field Assets
+pushbytes 0xbc525b0f // "initialize(uint64,asset,asset)void"
+itxn_field ApplicationArgs
+frame_dig -4
+itob
+itxn_field ApplicationArgs
+pushbytes 0x00 // 0x00
+itxn_field ApplicationArgs
+pushbytes 0x01 // 0x01
+itxn_field ApplicationArgs
+itxn_submit
+retsub
+
+// populate
+populate_3:
+proto 9 0
+txn Sender
+bytec_0 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+frame_dig -1
+txnas Applications
+bytec_1 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+callsub assertapplicationcreator_0
+itxn_begin
+intc_2 // appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+pushbytes 0x092c7520 // "populate(uint64,uint64,uint64,uint64,uint64,uint64,byte[8],byte[64])void"
+itxn_field ApplicationArgs
+frame_dig -9
+itob
+itxn_field ApplicationArgs
+frame_dig -8
+itob
+itxn_field ApplicationArgs
+frame_dig -7
+itob
+itxn_field ApplicationArgs
+frame_dig -6
+itob
+itxn_field ApplicationArgs
+frame_dig -5
+itob
+itxn_field ApplicationArgs
+frame_dig -4
+itob
+itxn_field ApplicationArgs
+frame_dig -3
+itxn_field ApplicationArgs
+frame_dig -2
+itxn_field ApplicationArgs
+itxn_submit
+retsub
+
+// finalize
+finalize_4:
+proto 6 0
+txn Sender
+bytec_0 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+frame_dig -1
+txnas Applications
+bytec_1 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+callsub assertapplicationcreator_0
+itxn_begin
+intc_2 // appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+pushbytes 0x9675e058 // "finalize(uint64,uint64,uint64,uint64,uint64)void"
+itxn_field ApplicationArgs
+frame_dig -6
+itob
+itxn_field ApplicationArgs
+frame_dig -5
+itob
+itxn_field ApplicationArgs
+frame_dig -4
+itob
+itxn_field ApplicationArgs
+frame_dig -3
+itob
+itxn_field ApplicationArgs
+frame_dig -2
+itob
+itxn_field ApplicationArgs
+itxn_submit
+retsub
+
+// initialize_caster
+initializecaster_5:
+proto 0 0
+intc_0 // 0
+dupn 3
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+intc_0 // 0
+getbyte
+frame_bury 1
+txna ApplicationArgs 3
+intc_0 // 0
+getbyte
+frame_bury 2
+txna ApplicationArgs 4
+intc_0 // 0
+getbyte
+frame_bury 3
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+callsub initialize_2
+retsub
+
+// populate_caster
+populatecaster_6:
+proto 0 0
+intc_0 // 0
+dupn 5
+pushbytes 0x // ""
+dup
+intc_0 // 0
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+btoi
+frame_bury 3
+txna ApplicationArgs 5
+btoi
+frame_bury 4
+txna ApplicationArgs 6
+btoi
+frame_bury 5
+txna ApplicationArgs 7
+frame_bury 6
+txna ApplicationArgs 8
+frame_bury 7
+txna ApplicationArgs 9
+intc_0 // 0
+getbyte
+frame_bury 8
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+frame_dig 4
+frame_dig 5
+frame_dig 6
+frame_dig 7
+frame_dig 8
+callsub populate_3
+retsub
+
+// finalize_caster
+finalizecaster_7:
+proto 0 0
+intc_0 // 0
+dupn 5
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+btoi
+frame_bury 3
+txna ApplicationArgs 5
+btoi
+frame_bury 4
+txna ApplicationArgs 6
+intc_0 // 0
+getbyte
+frame_bury 5
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+frame_dig 4
+frame_dig 5
+callsub finalize_4
+retsub

@@ -1,6 +1,6 @@
 #pragma version 8
-intcblock 0 1 8 4
-bytecblock 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x436f6e66696732
+intcblock 0 1 8 4 660757756
+bytecblock 0x436f6e66696731 0x436f6e66696732
 txn NumAppArgs
 intc_0 // 0
 ==
@@ -155,7 +155,7 @@ create_4:
 proto 0 0
 bytec_0 // "Config1"
 callsub initglobal_0
-bytec_2 // "Config2"
+bytec_1 // "Config2"
 callsub initglobal_0
 retsub
 
@@ -163,7 +163,7 @@ retsub
 update_5:
 proto 0 0
 txn Sender
-bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+pushbytes 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 ==
 assert
 retsub
@@ -171,8 +171,8 @@ retsub
 // initialize
 initialize_6:
 proto 3 0
-txn Sender
-bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+global CallerApplicationID
+intc 4 // 660757756
 ==
 assert
 frame_dig -3
@@ -202,7 +202,7 @@ bytec_0 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
 callsub setglobalbytes_1
-pushint 660757756 // 660757756
+intc 4 // 660757756
 callsub optinintoasset_3
 frame_dig -2
 txnas Assets
@@ -215,8 +215,8 @@ retsub
 // populate
 populate_7:
 proto 8 0
-txn Sender
-bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+global CallerApplicationID
+intc 4 // 660757756
 ==
 assert
 frame_dig -8
@@ -255,7 +255,7 @@ pushint 104 // 104
 intc_2 // 8
 callsub setglobalbytes_1
 frame_dig -1
-bytec_2 // "Config2"
+bytec_1 // "Config2"
 intc_0 // 0
 pushint 64 // 64
 callsub setglobalbytes_1
@@ -264,8 +264,8 @@ retsub
 // finalize
 finalize_8:
 proto 5 0
-txn Sender
-bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+global CallerApplicationID
+intc 4 // 660757756
 ==
 assert
 frame_dig -5

@@ -6,7 +6,7 @@ from beaker import *
 from typing import *
 
 
-app = Application("GenOnePrimeLoader")
+app = Application("GenOnePrimeStorage")
 
 config1 = const.Config1()
 config2 = const.Config2()
@@ -34,7 +34,7 @@ def initialize(
     legacy_asset: abi.Asset,
 ):
     return Seq(
-        Assert(Txn.sender() == const.admin_address),
+        Assert(Global.caller_app_id() == const.main_application_id),
         config1.id.set(id.get()),
         config1.prime_asset_id.set(prime_asset.asset_id()),
         config1.legacy_asset_id.set(legacy_asset.asset_id()),
@@ -58,7 +58,7 @@ def populate(
     description: abi.StaticBytes[Literal[64]],
 ):
     return Seq(
-        Assert(Txn.sender() == const.admin_address),
+        Assert(Global.caller_app_id() == const.main_application_id),
         config1.theme.set(theme.get()),
         config1.skin.set(skin.get()),
         config1.is_founder.set(is_founder.get()),
@@ -79,7 +79,7 @@ def finalize(
     repaints: abi.Uint64,
 ):
     return Seq(
-        Assert(Txn.sender() == const.admin_address),
+        Assert(Global.caller_app_id() == const.main_application_id),
         config1.score.set(score.get()),
         config1.sales.set(sales.get()),
         config1.mints.set(mints.get()),

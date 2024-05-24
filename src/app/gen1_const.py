@@ -4,6 +4,10 @@ import os
 from pyteal import *
 
 admin_address = Addr(os.environ.get("ADMIN_ADDRESS"))
+manager_address = Addr(os.environ.get("GEN1_ADDRESS"))
+
+main_application_id = Int(int(os.environ.get("GEN1_PRIME_MAIN_APPLICATION_ID")))
+
 platform_asset_id = Int(int(os.environ.get("PLATFORM_ASSET_ID")))
 platform_asset_reserve = Addr(os.environ.get("PLATFORM_ASSET_RESERVE"))
 

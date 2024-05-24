@@ -1,5 +1,5 @@
 {
-    "name": "GenOnePrimeLoader",
+    "name": "GenOnePrimeMain",
     "methods": [
         {
             "name": "initialize",
@@ -15,6 +15,10 @@
                 {
                     "type": "asset",
                     "name": "legacy_asset"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
                 }
             ],
             "returns": {
@@ -55,6 +59,10 @@
                 {
                     "type": "byte[64]",
                     "name": "description"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
                 }
             ],
             "returns": {
@@ -83,6 +91,10 @@
                 {
                     "type": "uint64",
                     "name": "repaints"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
                 }
             ],
             "returns": {

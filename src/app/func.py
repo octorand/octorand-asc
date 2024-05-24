@@ -23,6 +23,11 @@ class GlobalUint:
         result = Minus(self.get(), value)
         return set_global_uint(result, self.index, self.start, self.length)
 
+    def external(self, application):
+        return get_global_external_uint(
+            application, self.index, self.start, self.length
+        )
+
 
 class GlobalBytes:
     def __init__(self, index, start, length):
@@ -35,6 +40,11 @@ class GlobalBytes:
 
     def set(self, value):
         return set_global_bytes(value, self.index, self.start, self.length)
+
+    def external(self, application):
+        return get_global_external_bytes(
+            application, self.index, self.start, self.length
+        )
 
 
 @Subroutine(TealType.none)
@@ -73,6 +83,23 @@ def set_global_uint(value, index, start, length):
     pack = Extract(Itob(value), Minus(Int(8), length), length)
     return Seq(
         set_global_bytes(pack, index, start, length),
+    )
+
+
+@Subroutine(TealType.bytes)
+def get_global_external_bytes(application, index, start, length):
+    value = App.globalGetEx(application, index)
+    return Seq(
+        value,
+        Assert(value.hasValue()),
+        Extract(value.value(), start, length),
+    )
+
+
+@Subroutine(TealType.uint64)
+def get_global_external_uint(application, index, start, length):
+    return Seq(
+        Btoi(get_global_external_bytes(application, index, start, length)),
     )
 
 
@@ -166,4 +193,14 @@ def assert_sender_asset_transfer(asset_id, receiver, amount, index):
         Assert(Gtxn[index].xfer_asset() == asset_id),
         Assert(Gtxn[index].asset_receiver() == receiver),
         Assert(Gtxn[index].asset_amount() == amount),
+    )
+
+
+@Subroutine(TealType.none)
+def assert_application_creator(application_id, address):
+    creator = AppParam.creator(application_id)
+    return Seq(
+        creator,
+        Assert(creator.hasValue()),
+        Assert(creator.value() == address),
     )
