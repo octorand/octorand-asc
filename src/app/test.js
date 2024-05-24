@@ -3,11 +3,11 @@ require('dotenv').config();
 (async () => {
 
     await require('./command/gen1/logger/00_compile_contracts').execute();
-    await require('./command/gen1/logger/01_create_logger_application').execute();
-    await require('./command/gen1/logger/02_log_buy_event').execute();
-    await require('./command/gen1/logger/03_read_event_logs').execute();
+    // await require('./command/gen1/logger/01_create_logger_application').execute();
+    // await require('./command/gen1/logger/02_log_buy_event').execute();
+    // await require('./command/gen1/logger/03_read_event_logs').execute();
 
-    // await require('./command/gen1/prime/loader/00_compile_contracts').execute();
+    await require('./command/gen1/prime/loader/00_compile_contracts').execute();
     // await require('./command/gen1/prime/loader/01_initialize_primes').execute();
     // await require('./command/gen1/prime/loader/02_create_legacy_assets').execute();
     // await require('./command/gen1/prime/loader/03_create_prime_assets').execute();
@@ -19,7 +19,7 @@ require('dotenv').config();
     // await require('./command/gen1/prime/loader/09_transfer_prime_assets').execute();
     // await require('./command/gen1/prime/loader/10_read_prime_applications').execute();
 
-    // await require('./command/gen1/prime/worker/00_compile_contracts').execute();
+    await require('./command/gen1/prime/worker/00_compile_contracts').execute();
     // await require('./command/gen1/prime/worker/01_update_prime_applications').execute();
     // await require('./command/gen1/prime/worker/02_upgrade_prime_assets').execute();
     // await require('./command/gen1/prime/worker/03_list_prime_assets').execute();
