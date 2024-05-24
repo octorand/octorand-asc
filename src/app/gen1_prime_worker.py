@@ -1,119 +1,21 @@
 import func
-import prime_config
+import gen1_const as const
 
 from pyteal import *
 from beaker import *
 from typing import *
 
 
-class Config1:
-    def __init__(self):
-        self.key = Bytes("Config1")
-        self.id = func.GlobalUint(self.key, 0, 8)
-        self.prime_asset_id = func.GlobalUint(self.key, 8, 8)
-        self.legacy_asset_id = func.GlobalUint(self.key, 16, 8)
-        self.parent_application_id = func.GlobalUint(self.key, 24, 8)
-        self.theme = func.GlobalUint(self.key, 32, 2)
-        self.skin = func.GlobalUint(self.key, 34, 2)
-        self.is_founder = func.GlobalUint(self.key, 36, 1)
-        self.is_artifact = func.GlobalUint(self.key, 37, 1)
-        self.is_pioneer = func.GlobalUint(self.key, 38, 1)
-        self.is_explorer = func.GlobalUint(self.key, 39, 1)
-        self.score = func.GlobalUint(self.key, 40, 8)
-        self.sales = func.GlobalUint(self.key, 48, 4)
-        self.mints = func.GlobalUint(self.key, 52, 4)
-        self.renames = func.GlobalUint(self.key, 56, 4)
-        self.repaints = func.GlobalUint(self.key, 60, 4)
-        self.price = func.GlobalUint(self.key, 64, 8)
-        self.seller = func.GlobalBytes(self.key, 72, 32)
-        self.name = func.GlobalBytes(self.key, 104, 8)
-
-
-class Config2:
-    def __init__(self):
-        self.key = Bytes("Config2")
-        self.description = func.GlobalBytes(self.key, 0, 64)
-
-
 app = Application("GenOnePrime")
 
-config1 = Config1()
-config2 = Config2()
-
-
-@app.create(bare=True)
-def create():
-    return Seq(
-        func.init_global(config1.key),
-        func.init_global(config2.key),
-    )
+config1 = const.Config1()
+config2 = const.Config2()
 
 
 @app.update(bare=True)
 def update():
     return Seq(
-        Assert(Txn.sender() == Global.creator_address()),
-    )
-
-
-@app.external(name="initialize")
-def initialize(
-    id: abi.Uint64,
-    prime_asset: abi.Asset,
-    legacy_asset: abi.Asset,
-):
-    return Seq(
-        Assert(Txn.sender() == Global.creator_address()),
-        config1.id.set(id.get()),
-        config1.prime_asset_id.set(prime_asset.asset_id()),
-        config1.legacy_asset_id.set(legacy_asset.asset_id()),
-        config1.price.set(Int(0)),
-        config1.seller.set(Global.zero_address()),
-        func.optin_into_asset(prime_config.platform_asset_id),
-        func.optin_into_asset(prime_asset.asset_id()),
-        func.optin_into_asset(legacy_asset.asset_id()),
-    )
-
-
-@app.external(name="populate")
-def populate(
-    theme: abi.Uint64,
-    skin: abi.Uint64,
-    is_founder: abi.Uint64,
-    is_artifact: abi.Uint64,
-    is_pioneer: abi.Uint64,
-    is_explorer: abi.Uint64,
-    name: abi.StaticBytes[Literal[8]],
-    description: abi.StaticBytes[Literal[64]],
-):
-    return Seq(
-        Assert(Txn.sender() == Global.creator_address()),
-        config1.theme.set(theme.get()),
-        config1.skin.set(skin.get()),
-        config1.is_founder.set(is_founder.get()),
-        config1.is_artifact.set(is_artifact.get()),
-        config1.is_pioneer.set(is_pioneer.get()),
-        config1.is_explorer.set(is_explorer.get()),
-        config1.name.set(name.get()),
-        config2.description.set(description.get()),
-    )
-
-
-@app.external(name="finalize")
-def finalize(
-    score: abi.Uint64,
-    sales: abi.Uint64,
-    mints: abi.Uint64,
-    renames: abi.Uint64,
-    repaints: abi.Uint64,
-):
-    return Seq(
-        Assert(Txn.sender() == Global.creator_address()),
-        config1.score.set(score.get()),
-        config1.sales.set(sales.get()),
-        config1.mints.set(mints.get()),
-        config1.renames.set(renames.get()),
-        config1.repaints.set(repaints.get()),
+        Assert(Txn.sender() == const.admin_address),
     )
 
 
@@ -177,12 +79,12 @@ def buy():
         Assert(config1.seller.get() != Global.zero_address()),
         func.assert_sender_payment(
             config1.seller.get(),
-            Div(Mul(config1.price.get(), prime_config.seller_market_share), Int(100)),
+            Div(Mul(config1.price.get(), const.seller_market_share), Int(100)),
             Add(Txn.group_index(), Int(1)),
         ),
         func.assert_sender_payment(
-            prime_config.admin_address,
-            Div(Mul(config1.price.get(), prime_config.admin_market_share), Int(100)),
+            const.admin_address,
+            Div(Mul(config1.price.get(), const.admin_market_share), Int(100)),
             Add(Txn.group_index(), Int(2)),
         ),
         func.execute_asset_transfer(
@@ -208,15 +110,15 @@ def rename(
         Minus(next_value, previous_value),
         Minus(previous_value, next_value),
     )
-    price = Mul(prime_config.rename_price, value_difference)
+    price = Mul(const.rename_price, value_difference)
     return Seq(
         Assert(index.get() <= Int(7)),
         Assert(value.get() >= Int(65)),
         Assert(value.get() <= Int(90)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
         func.assert_sender_asset_transfer(
-            prime_config.platform_asset_id,
-            prime_config.platform_asset_reserve,
+            const.platform_asset_id,
+            const.platform_asset_reserve,
             price,
             Add(Txn.group_index(), Int(1)),
         ),
@@ -235,9 +137,9 @@ def repaint(
         Assert(skin.get() <= Int(7)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
         func.assert_sender_asset_transfer(
-            prime_config.platform_asset_id,
-            prime_config.platform_asset_reserve,
-            prime_config.repaint_price,
+            const.platform_asset_id,
+            const.platform_asset_reserve,
+            const.repaint_price,
             Add(Txn.group_index(), Int(1)),
         ),
         config1.theme.set(theme.get()),
@@ -253,9 +155,9 @@ def describe(
     return Seq(
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
         func.assert_sender_asset_transfer(
-            prime_config.platform_asset_id,
-            prime_config.platform_asset_reserve,
-            prime_config.describe_price,
+            const.platform_asset_id,
+            const.platform_asset_reserve,
+            const.describe_price,
             Add(Txn.group_index(), Int(1)),
         ),
         config2.description.set(description.get()),
@@ -270,7 +172,7 @@ def mint(
         Assert(amount.get() > Int(0)),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),
         func.execute_asset_transfer(
-            prime_config.platform_asset_id,
+            const.platform_asset_id,
             Txn.sender(),
             amount.get(),
         ),
@@ -297,12 +199,12 @@ def optin(
     asset: abi.Asset,
 ):
     return Seq(
-        Assert(asset.asset_id() != prime_config.platform_asset_id),
+        Assert(asset.asset_id() != const.platform_asset_id),
         Assert(asset.asset_id() != config1.prime_asset_id.get()),
         Assert(asset.asset_id() != config1.legacy_asset_id.get()),
         func.assert_sender_payment(
             Global.current_application_address(),
-            prime_config.optin_price,
+            const.optin_price,
             Add(Txn.group_index(), Int(1)),
         ),
         func.optin_into_asset(asset.asset_id()),
@@ -314,7 +216,7 @@ def optout(
     asset: abi.Asset,
 ):
     return Seq(
-        Assert(asset.asset_id() != prime_config.platform_asset_id),
+        Assert(asset.asset_id() != const.platform_asset_id),
         Assert(asset.asset_id() != config1.prime_asset_id.get()),
         Assert(asset.asset_id() != config1.legacy_asset_id.get()),
         func.assert_sender_asset_holding(config1.prime_asset_id.get()),

@@ -1,0 +1,386 @@
+#pragma version 8
+intcblock 0 1 8 4
+bytecblock 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x436f6e66696732
+txn NumAppArgs
+intc_0 // 0
+==
+bnz main_l8
+txna ApplicationArgs 0
+pushbytes 0xbc525b0f // "initialize(uint64,asset,asset)void"
+==
+bnz main_l7
+txna ApplicationArgs 0
+pushbytes 0x092c7520 // "populate(uint64,uint64,uint64,uint64,uint64,uint64,byte[8],byte[64])void"
+==
+bnz main_l6
+txna ApplicationArgs 0
+pushbytes 0x9675e058 // "finalize(uint64,uint64,uint64,uint64,uint64)void"
+==
+bnz main_l5
+err
+main_l5:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub finalizecaster_11
+intc_1 // 1
+return
+main_l6:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub populatecaster_10
+intc_1 // 1
+return
+main_l7:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub initializecaster_9
+intc_1 // 1
+return
+main_l8:
+txn OnCompletion
+intc_0 // NoOp
+==
+bnz main_l12
+txn OnCompletion
+intc_3 // UpdateApplication
+==
+bnz main_l11
+err
+main_l11:
+txn ApplicationID
+intc_0 // 0
+!=
+assert
+callsub update_5
+intc_1 // 1
+return
+main_l12:
+txn ApplicationID
+intc_0 // 0
+==
+assert
+callsub create_4
+intc_1 // 1
+return
+
+// init_global
+initglobal_0:
+proto 1 0
+frame_dig -1
+pushint 120 // 120
+bzero
+app_global_put
+retsub
+
+// set_global_bytes
+setglobalbytes_1:
+proto 4 0
+frame_dig -4
+len
+frame_dig -1
+==
+assert
+frame_dig -3
+frame_dig -3
+app_global_get
+intc_0 // 0
+frame_dig -2
+extract3
+frame_dig -4
+concat
+frame_dig -3
+app_global_get
+frame_dig -2
+frame_dig -1
++
+pushint 120 // 120
+substring3
+concat
+app_global_put
+retsub
+
+// set_global_uint
+setglobaluint_2:
+proto 4 0
+frame_dig -4
+itob
+intc_2 // 8
+frame_dig -1
+-
+frame_dig -1
+extract3
+frame_dig -3
+frame_dig -2
+frame_dig -1
+callsub setglobalbytes_1
+retsub
+
+// optin_into_asset
+optinintoasset_3:
+proto 1 0
+itxn_begin
+intc_3 // axfer
+itxn_field TypeEnum
+frame_dig -1
+itxn_field XferAsset
+intc_0 // 0
+itxn_field AssetAmount
+global CurrentApplicationAddress
+itxn_field AssetReceiver
+intc_0 // 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// create
+create_4:
+proto 0 0
+bytec_0 // "Config1"
+callsub initglobal_0
+bytec_2 // "Config2"
+callsub initglobal_0
+retsub
+
+// update
+update_5:
+proto 0 0
+txn Sender
+bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+retsub
+
+// initialize
+initialize_6:
+proto 3 0
+txn Sender
+bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+frame_dig -3
+bytec_0 // "Config1"
+intc_0 // 0
+intc_2 // 8
+callsub setglobaluint_2
+frame_dig -2
+txnas Assets
+bytec_0 // "Config1"
+intc_2 // 8
+intc_2 // 8
+callsub setglobaluint_2
+frame_dig -1
+txnas Assets
+bytec_0 // "Config1"
+pushint 16 // 16
+intc_2 // 8
+callsub setglobaluint_2
+intc_0 // 0
+bytec_0 // "Config1"
+pushint 64 // 64
+intc_2 // 8
+callsub setglobaluint_2
+global ZeroAddress
+bytec_0 // "Config1"
+pushint 72 // 72
+pushint 32 // 32
+callsub setglobalbytes_1
+pushint 660757756 // 660757756
+callsub optinintoasset_3
+frame_dig -2
+txnas Assets
+callsub optinintoasset_3
+frame_dig -1
+txnas Assets
+callsub optinintoasset_3
+retsub
+
+// populate
+populate_7:
+proto 8 0
+txn Sender
+bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+frame_dig -8
+bytec_0 // "Config1"
+pushint 32 // 32
+pushint 2 // 2
+callsub setglobaluint_2
+frame_dig -7
+bytec_0 // "Config1"
+pushint 34 // 34
+pushint 2 // 2
+callsub setglobaluint_2
+frame_dig -6
+bytec_0 // "Config1"
+pushint 36 // 36
+intc_1 // 1
+callsub setglobaluint_2
+frame_dig -5
+bytec_0 // "Config1"
+pushint 37 // 37
+intc_1 // 1
+callsub setglobaluint_2
+frame_dig -4
+bytec_0 // "Config1"
+pushint 38 // 38
+intc_1 // 1
+callsub setglobaluint_2
+frame_dig -3
+bytec_0 // "Config1"
+pushint 39 // 39
+intc_1 // 1
+callsub setglobaluint_2
+frame_dig -2
+bytec_0 // "Config1"
+pushint 104 // 104
+intc_2 // 8
+callsub setglobalbytes_1
+frame_dig -1
+bytec_2 // "Config2"
+intc_0 // 0
+pushint 64 // 64
+callsub setglobalbytes_1
+retsub
+
+// finalize
+finalize_8:
+proto 5 0
+txn Sender
+bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+frame_dig -5
+bytec_0 // "Config1"
+pushint 40 // 40
+intc_2 // 8
+callsub setglobaluint_2
+frame_dig -4
+bytec_0 // "Config1"
+pushint 48 // 48
+intc_3 // 4
+callsub setglobaluint_2
+frame_dig -3
+bytec_0 // "Config1"
+pushint 52 // 52
+intc_3 // 4
+callsub setglobaluint_2
+frame_dig -2
+bytec_0 // "Config1"
+pushint 56 // 56
+intc_3 // 4
+callsub setglobaluint_2
+frame_dig -1
+bytec_0 // "Config1"
+pushint 60 // 60
+intc_3 // 4
+callsub setglobaluint_2
+retsub
+
+// initialize_caster
+initializecaster_9:
+proto 0 0
+intc_0 // 0
+dupn 2
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+intc_0 // 0
+getbyte
+frame_bury 1
+txna ApplicationArgs 3
+intc_0 // 0
+getbyte
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub initialize_6
+retsub
+
+// populate_caster
+populatecaster_10:
+proto 0 0
+intc_0 // 0
+dupn 5
+pushbytes 0x // ""
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+btoi
+frame_bury 3
+txna ApplicationArgs 5
+btoi
+frame_bury 4
+txna ApplicationArgs 6
+btoi
+frame_bury 5
+txna ApplicationArgs 7
+frame_bury 6
+txna ApplicationArgs 8
+frame_bury 7
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+frame_dig 4
+frame_dig 5
+frame_dig 6
+frame_dig 7
+callsub populate_7
+retsub
+
+// finalize_caster
+finalizecaster_11:
+proto 0 0
+intc_0 // 0
+dupn 4
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+btoi
+frame_bury 3
+txna ApplicationArgs 5
+btoi
+frame_bury 4
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+frame_dig 4
+callsub finalize_8
+retsub

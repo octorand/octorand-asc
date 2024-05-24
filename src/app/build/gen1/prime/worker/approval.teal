@@ -1,67 +1,91 @@
 #pragma version 8
 intcblock 0 8 1 4 660757756 10000000
-bytecblock 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x436f6e66696732 0x
+bytecblock 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af
 txn NumAppArgs
 intc_0 // 0
 ==
-bnz main_l30
-txna ApplicationArgs 0
-pushbytes 0xbc525b0f // "initialize(uint64,asset,asset)void"
-==
-bnz main_l29
-txna ApplicationArgs 0
-pushbytes 0x092c7520 // "populate(uint64,uint64,uint64,uint64,uint64,uint64,byte[8],byte[64])void"
-==
-bnz main_l28
-txna ApplicationArgs 0
-pushbytes 0x9675e058 // "finalize(uint64,uint64,uint64,uint64,uint64)void"
-==
-bnz main_l27
+bnz main_l24
 txna ApplicationArgs 0
 pushbytes 0x33ac8d6c // "upgrade()void"
 ==
-bnz main_l26
+bnz main_l23
 txna ApplicationArgs 0
 pushbytes 0x4a016bb2 // "list(uint64)void"
 ==
-bnz main_l25
+bnz main_l22
 txna ApplicationArgs 0
 pushbytes 0xbe12be50 // "unlist()void"
 ==
-bnz main_l24
+bnz main_l21
 txna ApplicationArgs 0
 pushbytes 0x48033a08 // "buy()void"
 ==
-bnz main_l23
+bnz main_l20
 txna ApplicationArgs 0
 pushbytes 0x5bff6c91 // "rename(uint64,uint64)void"
 ==
-bnz main_l22
+bnz main_l19
 txna ApplicationArgs 0
 pushbytes 0xac86822b // "repaint(uint64,uint64)void"
 ==
-bnz main_l21
+bnz main_l18
 txna ApplicationArgs 0
 pushbytes 0x698ea56f // "describe(byte[64])void"
 ==
-bnz main_l20
+bnz main_l17
 txna ApplicationArgs 0
 pushbytes 0xb98b905f // "mint(uint64)void"
 ==
-bnz main_l19
+bnz main_l16
 txna ApplicationArgs 0
 pushbytes 0x21f1ddff // "withdraw(uint64)void"
 ==
-bnz main_l18
+bnz main_l15
 txna ApplicationArgs 0
 pushbytes 0x7f19f9d4 // "optin(asset)void"
 ==
-bnz main_l17
+bnz main_l14
 txna ApplicationArgs 0
 pushbytes 0x7ccbe726 // "optout(asset)void"
 ==
-bnz main_l16
+bnz main_l13
 err
+main_l13:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub optoutcaster_33
+intc_2 // 1
+return
+main_l14:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub optincaster_32
+intc_2 // 1
+return
+main_l15:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub withdrawcaster_31
+intc_2 // 1
+return
 main_l16:
 txn OnCompletion
 intc_0 // NoOp
@@ -71,7 +95,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub optoutcaster_41
+callsub mintcaster_30
 intc_2 // 1
 return
 main_l17:
@@ -83,7 +107,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub optincaster_40
+callsub describecaster_29
 intc_2 // 1
 return
 main_l18:
@@ -95,7 +119,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub withdrawcaster_39
+callsub repaintcaster_28
 intc_2 // 1
 return
 main_l19:
@@ -107,7 +131,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub mintcaster_38
+callsub renamecaster_27
 intc_2 // 1
 return
 main_l20:
@@ -119,7 +143,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub describecaster_37
+callsub buycaster_26
 intc_2 // 1
 return
 main_l21:
@@ -131,7 +155,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub repaintcaster_36
+callsub unlistcaster_25
 intc_2 // 1
 return
 main_l22:
@@ -143,7 +167,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub renamecaster_35
+callsub listcaster_24
 intc_2 // 1
 return
 main_l23:
@@ -155,119 +179,37 @@ intc_0 // 0
 !=
 &&
 assert
-callsub buycaster_34
+callsub upgradecaster_23
 intc_2 // 1
 return
 main_l24:
 txn OnCompletion
 intc_0 // NoOp
 ==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub unlistcaster_33
-intc_2 // 1
-return
-main_l25:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub listcaster_32
-intc_2 // 1
-return
-main_l26:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub upgradecaster_31
-intc_2 // 1
-return
-main_l27:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub finalizecaster_30
-intc_2 // 1
-return
-main_l28:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub populatecaster_29
-intc_2 // 1
-return
-main_l29:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub initializecaster_28
-intc_2 // 1
-return
-main_l30:
-txn OnCompletion
-intc_0 // NoOp
-==
-bnz main_l34
+bnz main_l28
 txn OnCompletion
 intc_3 // UpdateApplication
 ==
-bnz main_l33
+bnz main_l27
 err
-main_l33:
+main_l27:
 txn ApplicationID
 intc_0 // 0
 !=
 assert
-callsub update_13
+callsub update_11
 intc_2 // 1
 return
-main_l34:
+main_l28:
 txn ApplicationID
 intc_0 // 0
 ==
 assert
-callsub create_12
 intc_2 // 1
 return
 
-// init_global
-initglobal_0:
-proto 1 0
-frame_dig -1
-pushint 120 // 120
-bzero
-app_global_put
-retsub
-
 // get_global_bytes
-getglobalbytes_1:
+getglobalbytes_0:
 proto 3 1
 frame_dig -3
 app_global_get
@@ -277,17 +219,17 @@ extract3
 retsub
 
 // get_global_uint
-getglobaluint_2:
+getglobaluint_1:
 proto 3 1
 frame_dig -3
 frame_dig -2
 frame_dig -1
-callsub getglobalbytes_1
+callsub getglobalbytes_0
 btoi
 retsub
 
 // set_global_bytes
-setglobalbytes_3:
+setglobalbytes_2:
 proto 4 0
 frame_dig -4
 len
@@ -314,7 +256,7 @@ app_global_put
 retsub
 
 // set_global_uint
-setglobaluint_4:
+setglobaluint_3:
 proto 4 0
 frame_dig -4
 itob
@@ -326,11 +268,11 @@ extract3
 frame_dig -3
 frame_dig -2
 frame_dig -1
-callsub setglobalbytes_3
+callsub setglobalbytes_2
 retsub
 
 // optin_into_asset
-optinintoasset_5:
+optinintoasset_4:
 proto 1 0
 itxn_begin
 intc_3 // axfer
@@ -347,7 +289,7 @@ itxn_submit
 retsub
 
 // optout_from_asset
-optoutfromasset_6:
+optoutfromasset_5:
 proto 2 0
 itxn_begin
 intc_3 // axfer
@@ -366,7 +308,7 @@ itxn_submit
 retsub
 
 // execute_payment
-executepayment_7:
+executepayment_6:
 proto 2 0
 itxn_begin
 intc_2 // pay
@@ -381,7 +323,7 @@ itxn_submit
 retsub
 
 // execute_asset_transfer
-executeassettransfer_8:
+executeassettransfer_7:
 proto 3 0
 itxn_begin
 intc_3 // axfer
@@ -398,7 +340,7 @@ itxn_submit
 retsub
 
 // assert_sender_asset_holding
-assertsenderassetholding_9:
+assertsenderassetholding_8:
 proto 1 0
 txn Sender
 frame_dig -1
@@ -414,7 +356,7 @@ assert
 retsub
 
 // assert_sender_payment
-assertsenderpayment_10:
+assertsenderpayment_9:
 proto 3 0
 frame_dig -2
 intc_0 // 0
@@ -443,7 +385,7 @@ assert
 retsub
 
 // assert_sender_asset_transfer
-assertsenderassettransfer_11:
+assertsenderassettransfer_10:
 proto 4 0
 frame_dig -2
 intc_0 // 0
@@ -476,199 +418,63 @@ frame_dig -2
 assert
 retsub
 
-// create
-create_12:
-proto 0 0
-bytec_0 // "Config1"
-callsub initglobal_0
-bytec_2 // "Config2"
-callsub initglobal_0
-retsub
-
 // update
-update_13:
+update_11:
 proto 0 0
 txn Sender
-global CreatorAddress
+bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 ==
 assert
-retsub
-
-// initialize
-initialize_14:
-proto 3 0
-txn Sender
-global CreatorAddress
-==
-assert
-frame_dig -3
-bytec_0 // "Config1"
-intc_0 // 0
-intc_1 // 8
-callsub setglobaluint_4
-frame_dig -2
-txnas Assets
-bytec_0 // "Config1"
-intc_1 // 8
-intc_1 // 8
-callsub setglobaluint_4
-frame_dig -1
-txnas Assets
-bytec_0 // "Config1"
-pushint 16 // 16
-intc_1 // 8
-callsub setglobaluint_4
-intc_0 // 0
-bytec_0 // "Config1"
-pushint 64 // 64
-intc_1 // 8
-callsub setglobaluint_4
-global ZeroAddress
-bytec_0 // "Config1"
-pushint 72 // 72
-pushint 32 // 32
-callsub setglobalbytes_3
-intc 4 // 660757756
-callsub optinintoasset_5
-frame_dig -2
-txnas Assets
-callsub optinintoasset_5
-frame_dig -1
-txnas Assets
-callsub optinintoasset_5
-retsub
-
-// populate
-populate_15:
-proto 8 0
-txn Sender
-global CreatorAddress
-==
-assert
-frame_dig -8
-bytec_0 // "Config1"
-pushint 32 // 32
-pushint 2 // 2
-callsub setglobaluint_4
-frame_dig -7
-bytec_0 // "Config1"
-pushint 34 // 34
-pushint 2 // 2
-callsub setglobaluint_4
-frame_dig -6
-bytec_0 // "Config1"
-pushint 36 // 36
-intc_2 // 1
-callsub setglobaluint_4
-frame_dig -5
-bytec_0 // "Config1"
-pushint 37 // 37
-intc_2 // 1
-callsub setglobaluint_4
-frame_dig -4
-bytec_0 // "Config1"
-pushint 38 // 38
-intc_2 // 1
-callsub setglobaluint_4
-frame_dig -3
-bytec_0 // "Config1"
-pushint 39 // 39
-intc_2 // 1
-callsub setglobaluint_4
-frame_dig -2
-bytec_0 // "Config1"
-pushint 104 // 104
-intc_1 // 8
-callsub setglobalbytes_3
-frame_dig -1
-bytec_2 // "Config2"
-intc_0 // 0
-pushint 64 // 64
-callsub setglobalbytes_3
-retsub
-
-// finalize
-finalize_16:
-proto 5 0
-txn Sender
-global CreatorAddress
-==
-assert
-frame_dig -5
-bytec_0 // "Config1"
-pushint 40 // 40
-intc_1 // 8
-callsub setglobaluint_4
-frame_dig -4
-bytec_0 // "Config1"
-pushint 48 // 48
-intc_3 // 4
-callsub setglobaluint_4
-frame_dig -3
-bytec_0 // "Config1"
-pushint 52 // 52
-intc_3 // 4
-callsub setglobaluint_4
-frame_dig -2
-bytec_0 // "Config1"
-pushint 56 // 56
-intc_3 // 4
-callsub setglobaluint_4
-frame_dig -1
-bytec_0 // "Config1"
-pushint 60 // 60
-intc_3 // 4
-callsub setglobaluint_4
 retsub
 
 // upgrade
-upgrade_17:
+upgrade_12:
 proto 0 0
 bytec_0 // "Config1"
 pushint 39 // 39
 intc_2 // 1
-callsub getglobaluint_2
+callsub getglobaluint_1
 intc_0 // 0
 ==
 assert
 bytec_0 // "Config1"
 pushint 16 // 16
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 global CurrentApplicationAddress
 intc_2 // 1
 txn GroupIndex
 intc_2 // 1
 +
-callsub assertsenderassettransfer_11
+callsub assertsenderassettransfer_10
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 txn Sender
 intc_2 // 1
-callsub executeassettransfer_8
+callsub executeassettransfer_7
 intc_2 // 1
 bytec_0 // "Config1"
 pushint 39 // 39
 intc_2 // 1
-callsub setglobaluint_4
+callsub setglobaluint_3
 retsub
 
 // list
-list_18:
+list_13:
 proto 1 0
 bytec_0 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
-callsub getglobalbytes_1
+callsub getglobalbytes_0
 global ZeroAddress
 ==
 assert
 bytec_0 // "Config1"
 pushint 64 // 64
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 intc_0 // 0
 ==
 assert
@@ -679,89 +485,89 @@ assert
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 global CurrentApplicationAddress
 intc_2 // 1
 txn GroupIndex
 intc_2 // 1
 +
-callsub assertsenderassettransfer_11
+callsub assertsenderassettransfer_10
 frame_dig -1
 bytec_0 // "Config1"
 pushint 64 // 64
 intc_1 // 8
-callsub setglobaluint_4
+callsub setglobaluint_3
 txn Sender
 bytec_0 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
-callsub setglobalbytes_3
+callsub setglobalbytes_2
 retsub
 
 // unlist
-unlist_19:
+unlist_14:
 proto 0 0
 bytec_0 // "Config1"
 pushint 64 // 64
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 intc_0 // 0
 >
 assert
 bytec_0 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
-callsub getglobalbytes_1
+callsub getglobalbytes_0
 txn Sender
 ==
 assert
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 bytec_0 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
-callsub getglobalbytes_1
+callsub getglobalbytes_0
 intc_2 // 1
-callsub executeassettransfer_8
+callsub executeassettransfer_7
 intc_0 // 0
 bytec_0 // "Config1"
 pushint 64 // 64
 intc_1 // 8
-callsub setglobaluint_4
+callsub setglobaluint_3
 global ZeroAddress
 bytec_0 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
-callsub setglobalbytes_3
+callsub setglobalbytes_2
 retsub
 
 // buy
-buy_20:
+buy_15:
 proto 0 0
 bytec_0 // "Config1"
 pushint 64 // 64
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 intc_0 // 0
 >
 assert
 bytec_0 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
-callsub getglobalbytes_1
+callsub getglobalbytes_0
 global ZeroAddress
 !=
 assert
 bytec_0 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
-callsub getglobalbytes_1
+callsub getglobalbytes_0
 bytec_0 // "Config1"
 pushint 64 // 64
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 pushint 90 // 90
 *
 pushint 100 // 100
@@ -769,12 +575,12 @@ pushint 100 // 100
 txn GroupIndex
 intc_2 // 1
 +
-callsub assertsenderpayment_10
+callsub assertsenderpayment_9
 bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 bytec_0 // "Config1"
 pushint 64 // 64
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 pushint 10 // 10
 *
 pushint 100 // 100
@@ -782,38 +588,38 @@ pushint 100 // 100
 txn GroupIndex
 pushint 2 // 2
 +
-callsub assertsenderpayment_10
+callsub assertsenderpayment_9
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 txn Sender
 intc_2 // 1
-callsub executeassettransfer_8
+callsub executeassettransfer_7
 intc_0 // 0
 bytec_0 // "Config1"
 pushint 64 // 64
 intc_1 // 8
-callsub setglobaluint_4
+callsub setglobaluint_3
 global ZeroAddress
 bytec_0 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
-callsub setglobalbytes_3
+callsub setglobalbytes_2
 bytec_0 // "Config1"
 pushint 48 // 48
 intc_3 // 4
-callsub getglobaluint_2
+callsub getglobaluint_1
 intc_2 // 1
 +
 bytec_0 // "Config1"
 pushint 48 // 48
 intc_3 // 4
-callsub setglobaluint_4
+callsub setglobaluint_3
 retsub
 
 // rename
-rename_21:
+rename_16:
 proto 2 0
 frame_dig -2
 pushint 7 // 7
@@ -830,8 +636,8 @@ assert
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
-callsub getglobaluint_2
-callsub assertsenderassetholding_9
+callsub getglobaluint_1
+callsub assertsenderassetholding_8
 intc 4 // 660757756
 bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 intc 5 // 10000000
@@ -839,60 +645,60 @@ frame_dig -1
 bytec_0 // "Config1"
 pushint 104 // 104
 intc_1 // 8
-callsub getglobalbytes_1
+callsub getglobalbytes_0
 frame_dig -2
 getbyte
 >
-bnz rename_21_l2
+bnz rename_16_l2
 bytec_0 // "Config1"
 pushint 104 // 104
 intc_1 // 8
-callsub getglobalbytes_1
+callsub getglobalbytes_0
 frame_dig -2
 getbyte
 frame_dig -1
 -
-b rename_21_l3
-rename_21_l2:
+b rename_16_l3
+rename_16_l2:
 frame_dig -1
 bytec_0 // "Config1"
 pushint 104 // 104
 intc_1 // 8
-callsub getglobalbytes_1
+callsub getglobalbytes_0
 frame_dig -2
 getbyte
 -
-rename_21_l3:
+rename_16_l3:
 *
 txn GroupIndex
 intc_2 // 1
 +
-callsub assertsenderassettransfer_11
+callsub assertsenderassettransfer_10
 bytec_0 // "Config1"
 pushint 104 // 104
 intc_1 // 8
-callsub getglobalbytes_1
+callsub getglobalbytes_0
 frame_dig -2
 frame_dig -1
 setbyte
 bytec_0 // "Config1"
 pushint 104 // 104
 intc_1 // 8
-callsub setglobalbytes_3
+callsub setglobalbytes_2
 bytec_0 // "Config1"
 pushint 56 // 56
 intc_3 // 4
-callsub getglobaluint_2
+callsub getglobaluint_1
 intc_2 // 1
 +
 bytec_0 // "Config1"
 pushint 56 // 56
 intc_3 // 4
-callsub setglobaluint_4
+callsub setglobaluint_3
 retsub
 
 // repaint
-repaint_22:
+repaint_17:
 proto 2 0
 frame_dig -2
 pushint 7 // 7
@@ -905,61 +711,61 @@ assert
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
-callsub getglobaluint_2
-callsub assertsenderassetholding_9
+callsub getglobaluint_1
+callsub assertsenderassetholding_8
 intc 4 // 660757756
 bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 intc 5 // 10000000
 txn GroupIndex
 intc_2 // 1
 +
-callsub assertsenderassettransfer_11
+callsub assertsenderassettransfer_10
 frame_dig -2
 bytec_0 // "Config1"
 pushint 32 // 32
 pushint 2 // 2
-callsub setglobaluint_4
+callsub setglobaluint_3
 frame_dig -1
 bytec_0 // "Config1"
 pushint 34 // 34
 pushint 2 // 2
-callsub setglobaluint_4
+callsub setglobaluint_3
 bytec_0 // "Config1"
 pushint 60 // 60
 intc_3 // 4
-callsub getglobaluint_2
+callsub getglobaluint_1
 intc_2 // 1
 +
 bytec_0 // "Config1"
 pushint 60 // 60
 intc_3 // 4
-callsub setglobaluint_4
+callsub setglobaluint_3
 retsub
 
 // describe
-describe_23:
+describe_18:
 proto 1 0
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
-callsub getglobaluint_2
-callsub assertsenderassetholding_9
+callsub getglobaluint_1
+callsub assertsenderassetholding_8
 intc 4 // 660757756
 bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 intc 5 // 10000000
 txn GroupIndex
 intc_2 // 1
 +
-callsub assertsenderassettransfer_11
+callsub assertsenderassettransfer_10
 frame_dig -1
-bytec_2 // "Config2"
+pushbytes 0x436f6e66696732 // "Config2"
 intc_0 // 0
 pushint 64 // 64
-callsub setglobalbytes_3
+callsub setglobalbytes_2
 retsub
 
 // mint
-mint_24:
+mint_19:
 proto 1 0
 frame_dig -1
 intc_0 // 0
@@ -968,26 +774,26 @@ assert
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
-callsub getglobaluint_2
-callsub assertsenderassetholding_9
+callsub getglobaluint_1
+callsub assertsenderassetholding_8
 intc 4 // 660757756
 txn Sender
 frame_dig -1
-callsub executeassettransfer_8
+callsub executeassettransfer_7
 bytec_0 // "Config1"
 pushint 52 // 52
 intc_3 // 4
-callsub getglobaluint_2
+callsub getglobaluint_1
 intc_2 // 1
 +
 bytec_0 // "Config1"
 pushint 52 // 52
 intc_3 // 4
-callsub setglobaluint_4
+callsub setglobaluint_3
 retsub
 
 // withdraw
-withdraw_25:
+withdraw_20:
 proto 1 0
 frame_dig -1
 intc_0 // 0
@@ -996,15 +802,15 @@ assert
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
-callsub getglobaluint_2
-callsub assertsenderassetholding_9
+callsub getglobaluint_1
+callsub assertsenderassetholding_8
 txn Sender
 frame_dig -1
-callsub executepayment_7
+callsub executepayment_6
 retsub
 
 // optin
-optin_26:
+optin_21:
 proto 1 0
 frame_dig -1
 txnas Assets
@@ -1016,7 +822,7 @@ txnas Assets
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 !=
 assert
 frame_dig -1
@@ -1024,7 +830,7 @@ txnas Assets
 bytec_0 // "Config1"
 pushint 16 // 16
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 !=
 assert
 global CurrentApplicationAddress
@@ -1032,14 +838,14 @@ pushint 100000 // 100000
 txn GroupIndex
 intc_2 // 1
 +
-callsub assertsenderpayment_10
+callsub assertsenderpayment_9
 frame_dig -1
 txnas Assets
-callsub optinintoasset_5
+callsub optinintoasset_4
 retsub
 
 // optout
-optout_27:
+optout_22:
 proto 1 0
 frame_dig -1
 txnas Assets
@@ -1051,7 +857,7 @@ txnas Assets
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 !=
 assert
 frame_dig -1
@@ -1059,141 +865,51 @@ txnas Assets
 bytec_0 // "Config1"
 pushint 16 // 16
 intc_1 // 8
-callsub getglobaluint_2
+callsub getglobaluint_1
 !=
 assert
 bytec_0 // "Config1"
 intc_1 // 8
 intc_1 // 8
-callsub getglobaluint_2
-callsub assertsenderassetholding_9
+callsub getglobaluint_1
+callsub assertsenderassetholding_8
 frame_dig -1
 txnas Assets
 txn Sender
-callsub optoutfromasset_6
-retsub
-
-// initialize_caster
-initializecaster_28:
-proto 0 0
-intc_0 // 0
-dupn 2
-txna ApplicationArgs 1
-btoi
-frame_bury 0
-txna ApplicationArgs 2
-intc_0 // 0
-getbyte
-frame_bury 1
-txna ApplicationArgs 3
-intc_0 // 0
-getbyte
-frame_bury 2
-frame_dig 0
-frame_dig 1
-frame_dig 2
-callsub initialize_14
-retsub
-
-// populate_caster
-populatecaster_29:
-proto 0 0
-intc_0 // 0
-dupn 5
-bytec_3 // ""
-dup
-txna ApplicationArgs 1
-btoi
-frame_bury 0
-txna ApplicationArgs 2
-btoi
-frame_bury 1
-txna ApplicationArgs 3
-btoi
-frame_bury 2
-txna ApplicationArgs 4
-btoi
-frame_bury 3
-txna ApplicationArgs 5
-btoi
-frame_bury 4
-txna ApplicationArgs 6
-btoi
-frame_bury 5
-txna ApplicationArgs 7
-frame_bury 6
-txna ApplicationArgs 8
-frame_bury 7
-frame_dig 0
-frame_dig 1
-frame_dig 2
-frame_dig 3
-frame_dig 4
-frame_dig 5
-frame_dig 6
-frame_dig 7
-callsub populate_15
-retsub
-
-// finalize_caster
-finalizecaster_30:
-proto 0 0
-intc_0 // 0
-dupn 4
-txna ApplicationArgs 1
-btoi
-frame_bury 0
-txna ApplicationArgs 2
-btoi
-frame_bury 1
-txna ApplicationArgs 3
-btoi
-frame_bury 2
-txna ApplicationArgs 4
-btoi
-frame_bury 3
-txna ApplicationArgs 5
-btoi
-frame_bury 4
-frame_dig 0
-frame_dig 1
-frame_dig 2
-frame_dig 3
-frame_dig 4
-callsub finalize_16
+callsub optoutfromasset_5
 retsub
 
 // upgrade_caster
-upgradecaster_31:
+upgradecaster_23:
 proto 0 0
-callsub upgrade_17
+callsub upgrade_12
 retsub
 
 // list_caster
-listcaster_32:
+listcaster_24:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
 btoi
 frame_bury 0
 frame_dig 0
-callsub list_18
+callsub list_13
 retsub
 
 // unlist_caster
-unlistcaster_33:
+unlistcaster_25:
 proto 0 0
-callsub unlist_19
+callsub unlist_14
 retsub
 
 // buy_caster
-buycaster_34:
+buycaster_26:
 proto 0 0
-callsub buy_20
+callsub buy_15
 retsub
 
 // rename_caster
-renamecaster_35:
+renamecaster_27:
 proto 0 0
 intc_0 // 0
 dup
@@ -1205,11 +921,11 @@ btoi
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub rename_21
+callsub rename_16
 retsub
 
 // repaint_caster
-repaintcaster_36:
+repaintcaster_28:
 proto 0 0
 intc_0 // 0
 dup
@@ -1221,43 +937,43 @@ btoi
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub repaint_22
+callsub repaint_17
 retsub
 
 // describe_caster
-describecaster_37:
+describecaster_29:
 proto 0 0
-bytec_3 // ""
+pushbytes 0x // ""
 txna ApplicationArgs 1
 frame_bury 0
 frame_dig 0
-callsub describe_23
+callsub describe_18
 retsub
 
 // mint_caster
-mintcaster_38:
+mintcaster_30:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
 btoi
 frame_bury 0
 frame_dig 0
-callsub mint_24
+callsub mint_19
 retsub
 
 // withdraw_caster
-withdrawcaster_39:
+withdrawcaster_31:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
 btoi
 frame_bury 0
 frame_dig 0
-callsub withdraw_25
+callsub withdraw_20
 retsub
 
 // optin_caster
-optincaster_40:
+optincaster_32:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
@@ -1265,11 +981,11 @@ intc_0 // 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub optin_26
+callsub optin_21
 retsub
 
 // optout_caster
-optoutcaster_41:
+optoutcaster_33:
 proto 0 0
 intc_0 // 0
 txna ApplicationArgs 1
@@ -1277,5 +993,5 @@ intc_0 // 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub optout_27
+callsub optout_22
 retsub
