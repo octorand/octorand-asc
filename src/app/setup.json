@@ -1,6 +1,51 @@
 {
     "gen1": {
-        "primes": []
+        "primes": [
+            {
+                "id": 0,
+                "theme": 1,
+                "skin": 2,
+                "is_founder": 1,
+                "is_artifact": 0,
+                "is_pioneer": 1,
+                "is_explorer": 0,
+                "score": 750,
+                "sales": 15,
+                "mints": 25,
+                "renames": 5,
+                "repaints": 10,
+                "name": "ABCDWXYZ",
+                "description": "Notes",
+                "price": 350,
+                "legacy_asset_id": 669595661,
+                "prime_asset_id": 669595695,
+                "application_id": 669595788,
+                "application_address": "NETEWMMK4NLG5QNXNSCH7CTC6TT4ALPP2X7YCWYHXMT4ASMLH2LB2VV7XA",
+                "application_version": 0,
+                "application_funded": true,
+                "config": {
+                    "id": 0,
+                    "prime_asset_id": 0,
+                    "legacy_asset_id": 0,
+                    "parent_application_id": 0,
+                    "theme": 0,
+                    "skin": 0,
+                    "is_founder": 0,
+                    "is_artifact": 0,
+                    "is_pioneer": 0,
+                    "is_explorer": 0,
+                    "score": 0,
+                    "sales": 0,
+                    "mints": 0,
+                    "renames": 0,
+                    "repaints": 0,
+                    "price": 0,
+                    "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
+                    "name": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+                    "description": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
+                }
+            }
+        ]
     },
     "gen2": {
         "primes": []

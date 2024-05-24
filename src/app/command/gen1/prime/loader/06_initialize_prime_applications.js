@@ -12,7 +12,7 @@ exports.execute = async function () {
 
         let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/gen1/build/prime/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/prime/loader/contract.json')));
 
         let primes = setup['gen1']['primes'];
 
