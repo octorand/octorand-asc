@@ -1,5 +1,11 @@
 {
     "gen1": {
+        "logger": {
+            "application_id": 669838661,
+            "application_address": "LOBO3BQHWNR7B3FK2XS55MHB7342W3TS6S2EPWU7OJ2DB46OTSLZ37MPVY",
+            "application_version": 0,
+            "event_buy": true
+        },
         "primes": [
             {
                 "id": 0,
