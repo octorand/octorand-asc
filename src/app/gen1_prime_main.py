@@ -38,7 +38,17 @@ def initialize(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "initialize(uint64,uint64,uint64,address,uint64,uint64)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(id.get()),
+        Txn.sender(),
+        Itob(prime_asset.asset_id()),
+        Itob(legacy_asset.asset_id()),
+    )
     return Seq(
         Assert(Txn.sender() == const.admin_address),
         assert_application_creator(app_id),
@@ -69,7 +79,23 @@ def populate(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "populate(uint64,uint64,uint64,address,uint64,uint64,uint64,uint64,uint64,uint64,byte[8],byte[64])",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+        Itob(theme.get()),
+        Itob(skin.get()),
+        Itob(is_founder.get()),
+        Itob(is_artifact.get()),
+        Itob(is_pioneer.get()),
+        Itob(is_explorer.get()),
+        name.get(),
+        description.get(),
+    )
     return Seq(
         Assert(Txn.sender() == const.admin_address),
         assert_application_creator(app_id),
@@ -102,7 +128,20 @@ def finalize(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "finalize(uint64,uint64,uint64,address,uint64,uint64,uint64,uint64,uint64)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+        Itob(score.get()),
+        Itob(sales.get()),
+        Itob(mints.get()),
+        Itob(renames.get()),
+        Itob(repaints.get()),
+    )
     return Seq(
         Assert(Txn.sender() == const.admin_address),
         assert_application_creator(app_id),
@@ -127,7 +166,15 @@ def upgrade(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "upgrade(uint64,uint64,uint64,address)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+    )
     return Seq(
         func.assert_sender_asset_transfer(
             config1.legacy_asset_id.external(app_id),
@@ -154,7 +201,16 @@ def list(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "list(uint64,uint64,uint64,address,uint64)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+        Itob(price.get()),
+    )
     return Seq(
         Assert(price.get() > Int(0)),
         func.assert_sender_asset_transfer(
@@ -182,7 +238,15 @@ def unlist(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "unlist(uint64,uint64,uint64,address)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+    )
     return Seq(
         assert_application_creator(app_id),
         InnerTxnBuilder.ExecuteMethodCall(
@@ -204,7 +268,17 @@ def buy(
     app_id = application.application_id()
     seller_share = Mul(config1.price.external(app_id), const.seller_market_share)
     admin_share = Mul(config1.price.external(app_id), const.admin_market_share)
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "buy(uint64,uint64,uint64,address,address,uint64)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+        config1.seller.external(app_id),
+        Itob(config1.price.external(app_id)),
+    )
     return Seq(
         func.assert_sender_payment(
             config1.seller.external(app_id),
@@ -244,7 +318,18 @@ def rename(
         Minus(previous_value, next_value),
     )
     price = Mul(const.rename_price, value_difference)
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "rename(uint64,uint64,uint64,address,uint64,uint64,uint64)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+        Itob(index.get()),
+        Itob(value.get()),
+        Itob(price),
+    )
     return Seq(
         Assert(index.get() <= Int(7)),
         Assert(value.get() >= Int(65)),
@@ -277,7 +362,18 @@ def repaint(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "repaint(uint64,uint64,uint64,address,uint64,uint64,uint64)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+        Itob(theme.get()),
+        Itob(skin.get()),
+        Itob(const.repaint_price),
+    )
     return Seq(
         Assert(theme.get() <= Int(7)),
         Assert(skin.get() <= Int(7)),
@@ -308,7 +404,17 @@ def describe(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "describe(uint64,uint64,uint64,address,byte[64],uint64)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+        description.get(),
+        Itob(const.describe_price),
+    )
     return Seq(
         func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
         func.assert_sender_asset_transfer(
@@ -336,7 +442,16 @@ def mint(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "mint(uint64,uint64,uint64,address,uint64)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+        Itob(amount.get()),
+    )
     return Seq(
         Assert(amount.get() > Int(0)),
         func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
@@ -360,7 +475,16 @@ def withdraw(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "withdraw(uint64,uint64,uint64,address,uint64)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+        Itob(amount.get()),
+    )
     return Seq(
         Assert(amount.get() > Int(0)),
         func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
@@ -384,7 +508,16 @@ def optin(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "optin(uint64,uint64,uint64,address,uint64)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+        Itob(asset.asset_id()),
+    )
     return Seq(
         func.assert_sender_payment(
             func.get_application_address(app_id),
@@ -410,7 +543,16 @@ def optout(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    log = Bytes("")
+    log = Concat(
+        MethodSignature(
+            "optout(uint64,uint64,uint64,address,uint64)",
+        ),
+        Itob(Int(1)),
+        Itob(Global.latest_timestamp()),
+        Itob(config1.id.external(app_id)),
+        Txn.sender(),
+        Itob(asset.asset_id()),
+    )
     return Seq(
         func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
         assert_application_creator(app_id),
