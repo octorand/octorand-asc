@@ -1,74 +1,10 @@
 {
     "gen1": {
-        "logger": {
-            "application_id": 669838661,
-            "application_address": "LOBO3BQHWNR7B3FK2XS55MHB7342W3TS6S2EPWU7OJ2DB46OTSLZ37MPVY",
-            "application_version": 0,
-            "event_buy": true
-        },
-        "primes": [
-            {
-                "id": 0,
-                "theme": 1,
-                "skin": 2,
-                "is_founder": 1,
-                "is_artifact": 0,
-                "is_pioneer": 1,
-                "is_explorer": 0,
-                "score": 750,
-                "sales": 15,
-                "mints": 25,
-                "renames": 5,
-                "repaints": 10,
-                "name": "ABCDWXYZ",
-                "description": "Notes",
-                "price": 350,
-                "legacy_asset_id": 669609319,
-                "prime_asset_id": 669609394,
-                "application_id": 669609459,
-                "application_address": "67CVOOZQP2VOGVS47OU3V4BD76PEJBOSWPKEQXCKPWFBMIIYBGQTRXMUFA",
-                "application_version": 1,
-                "application_funded": true,
-                "application_initialized": true,
-                "application_populated": true,
-                "application_finalized": true,
-                "transferred": true,
-                "config": {
-                    "id": 0,
-                    "prime_asset_id": 669609394,
-                    "legacy_asset_id": 669609319,
-                    "parent_application_id": 0,
-                    "theme": 3,
-                    "skin": 4,
-                    "is_founder": 1,
-                    "is_artifact": 0,
-                    "is_pioneer": 1,
-                    "is_explorer": 1,
-                    "score": 750,
-                    "sales": 16,
-                    "mints": 26,
-                    "renames": 7,
-                    "repaints": 11,
-                    "price": 0,
-                    "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
-                    "name": "ADCDWXVZ",
-                    "description": "Updated Notes"
-                },
-                "upgraded": true,
-                "listed": true,
-                "unlisted": true,
-                "relisted": true,
-                "bought": true,
-                "renamed": true,
-                "repainted": true,
-                "described": true,
-                "minted": true,
-                "optin": true,
-                "optout": true
-            }
-        ]
+        "main": {},
+        "primes": []
     },
     "gen2": {
+        "main": {},
         "primes": []
     }
 }

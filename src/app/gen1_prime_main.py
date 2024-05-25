@@ -9,8 +9,7 @@ from typing import *
 
 app = Application("GenOnePrimeMain")
 
-config1 = const.Config1()
-config2 = const.Config2()
+prime = const.Prime()
 
 
 @Subroutine(TealType.none)
@@ -85,7 +84,7 @@ def populate(
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
         Itob(theme.get()),
         Itob(skin.get()),
@@ -134,7 +133,7 @@ def finalize(
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
         Itob(score.get()),
         Itob(sales.get()),
@@ -172,12 +171,12 @@ def upgrade(
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
     )
     return Seq(
         func.assert_sender_asset_transfer(
-            config1.legacy_asset_id.external(app_id),
+            prime.legacy_asset_id.external(app_id),
             func.get_application_address(app_id),
             Int(1),
             Add(Txn.group_index(), Int(1)),
@@ -207,14 +206,14 @@ def list(
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
         Itob(price.get()),
     )
     return Seq(
         Assert(price.get() > Int(0)),
         func.assert_sender_asset_transfer(
-            config1.prime_asset_id.external(app_id),
+            prime.prime_asset_id.external(app_id),
             func.get_application_address(app_id),
             Int(1),
             Add(Txn.group_index(), Int(1)),
@@ -244,7 +243,7 @@ def unlist(
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
     )
     return Seq(
@@ -266,22 +265,22 @@ def buy(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    seller_share = Mul(config1.price.external(app_id), const.seller_market_share)
-    admin_share = Mul(config1.price.external(app_id), const.admin_market_share)
+    seller_share = Mul(prime.price.external(app_id), const.seller_market_share)
+    admin_share = Mul(prime.price.external(app_id), const.admin_market_share)
     log = Concat(
         MethodSignature(
             "buy(uint64,uint64,uint64,address,address,uint64)",
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
-        config1.seller.external(app_id),
-        Itob(config1.price.external(app_id)),
+        prime.seller.external(app_id),
+        Itob(prime.price.external(app_id)),
     )
     return Seq(
         func.assert_sender_payment(
-            config1.seller.external(app_id),
+            prime.seller.external(app_id),
             Div(seller_share, Int(100)),
             Add(Txn.group_index(), Int(1)),
         ),
@@ -310,7 +309,7 @@ def rename(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    previous_value = GetByte(config1.name.external(app_id), index.get())
+    previous_value = GetByte(prime.name.external(app_id), index.get())
     next_value = value.get()
     value_difference = If(
         Gt(next_value, previous_value),
@@ -324,7 +323,7 @@ def rename(
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
         Itob(index.get()),
         Itob(value.get()),
@@ -334,7 +333,7 @@ def rename(
         Assert(index.get() <= Int(7)),
         Assert(value.get() >= Int(65)),
         Assert(value.get() <= Int(90)),
-        func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
+        func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         func.assert_sender_asset_transfer(
             const.platform_asset_id,
             const.platform_asset_reserve,
@@ -368,7 +367,7 @@ def repaint(
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
         Itob(theme.get()),
         Itob(skin.get()),
@@ -377,7 +376,7 @@ def repaint(
     return Seq(
         Assert(theme.get() <= Int(7)),
         Assert(skin.get() <= Int(7)),
-        func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
+        func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         func.assert_sender_asset_transfer(
             const.platform_asset_id,
             const.platform_asset_reserve,
@@ -410,13 +409,13 @@ def describe(
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
         description.get(),
         Itob(const.describe_price),
     )
     return Seq(
-        func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
+        func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         func.assert_sender_asset_transfer(
             const.platform_asset_id,
             const.platform_asset_reserve,
@@ -448,13 +447,13 @@ def mint(
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
         Itob(amount.get()),
     )
     return Seq(
         Assert(amount.get() > Int(0)),
-        func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
+        func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         assert_application_creator(app_id),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
@@ -481,13 +480,13 @@ def withdraw(
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
         Itob(amount.get()),
     )
     return Seq(
         Assert(amount.get() > Int(0)),
-        func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
+        func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         assert_application_creator(app_id),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
@@ -514,7 +513,7 @@ def optin(
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
         Itob(asset.asset_id()),
     )
@@ -549,12 +548,12 @@ def optout(
         ),
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(config1.id.external(app_id)),
+        Itob(prime.id.external(app_id)),
         Txn.sender(),
         Itob(asset.asset_id()),
     )
     return Seq(
-        func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
+        func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         assert_application_creator(app_id),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,

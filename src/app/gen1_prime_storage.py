@@ -8,8 +8,7 @@ from typing import *
 
 app = Application("GenOnePrimeStorage")
 
-config1 = const.Config1()
-config2 = const.Config2()
+prime = const.Prime()
 
 
 @Subroutine(TealType.none)
@@ -22,8 +21,8 @@ def assert_application_caller():
 @app.create(bare=True)
 def create():
     return Seq(
-        func.init_global(config1.key),
-        func.init_global(config2.key),
+        func.init_global(prime.key_1),
+        func.init_global(prime.key_2),
     )
 
 
@@ -43,11 +42,11 @@ def initialize(
 ):
     return Seq(
         assert_application_caller(),
-        config1.id.set(id.get()),
-        config1.prime_asset_id.set(prime_asset.asset_id()),
-        config1.legacy_asset_id.set(legacy_asset.asset_id()),
-        config1.price.set(Int(0)),
-        config1.seller.set(Global.zero_address()),
+        prime.id.set(id.get()),
+        prime.prime_asset_id.set(prime_asset.asset_id()),
+        prime.legacy_asset_id.set(legacy_asset.asset_id()),
+        prime.price.set(Int(0)),
+        prime.seller.set(Global.zero_address()),
         func.optin_into_asset(const.platform_asset_id),
         func.optin_into_asset(prime_asset.asset_id()),
         func.optin_into_asset(legacy_asset.asset_id()),
@@ -69,14 +68,14 @@ def populate(
 ):
     return Seq(
         assert_application_caller(),
-        config1.theme.set(theme.get()),
-        config1.skin.set(skin.get()),
-        config1.is_founder.set(is_founder.get()),
-        config1.is_artifact.set(is_artifact.get()),
-        config1.is_pioneer.set(is_pioneer.get()),
-        config1.is_explorer.set(is_explorer.get()),
-        config1.name.set(name.get()),
-        config2.description.set(description.get()),
+        prime.theme.set(theme.get()),
+        prime.skin.set(skin.get()),
+        prime.is_founder.set(is_founder.get()),
+        prime.is_artifact.set(is_artifact.get()),
+        prime.is_pioneer.set(is_pioneer.get()),
+        prime.is_explorer.set(is_explorer.get()),
+        prime.name.set(name.get()),
+        prime.description.set(description.get()),
         Log(log.get()),
     )
 
@@ -92,11 +91,11 @@ def finalize(
 ):
     return Seq(
         assert_application_caller(),
-        config1.score.set(score.get()),
-        config1.sales.set(sales.get()),
-        config1.mints.set(mints.get()),
-        config1.renames.set(renames.get()),
-        config1.repaints.set(repaints.get()),
+        prime.score.set(score.get()),
+        prime.sales.set(sales.get()),
+        prime.mints.set(mints.get()),
+        prime.renames.set(renames.get()),
+        prime.repaints.set(repaints.get()),
         Log(log.get()),
     )
 
@@ -108,13 +107,13 @@ def upgrade(
 ):
     return Seq(
         assert_application_caller(),
-        Assert(config1.is_explorer.get() == Int(0)),
+        Assert(prime.is_explorer.get() == Int(0)),
         func.execute_asset_transfer(
-            config1.prime_asset_id.get(),
+            prime.prime_asset_id.get(),
             owner.get(),
             Int(1),
         ),
-        config1.is_explorer.set(Int(1)),
+        prime.is_explorer.set(Int(1)),
         Log(log.get()),
     )
 
@@ -127,10 +126,10 @@ def list(
 ):
     return Seq(
         assert_application_caller(),
-        Assert(config1.seller.get() == Global.zero_address()),
-        Assert(config1.price.get() == Int(0)),
-        config1.price.set(price.get()),
-        config1.seller.set(seller.get()),
+        Assert(prime.seller.get() == Global.zero_address()),
+        Assert(prime.price.get() == Int(0)),
+        prime.price.set(price.get()),
+        prime.seller.set(seller.get()),
         Log(log.get()),
     )
 
@@ -142,15 +141,15 @@ def unlist(
 ):
     return Seq(
         assert_application_caller(),
-        Assert(config1.price.get() > Int(0)),
-        Assert(config1.seller.get() == seller.get()),
+        Assert(prime.price.get() > Int(0)),
+        Assert(prime.seller.get() == seller.get()),
         func.execute_asset_transfer(
-            config1.prime_asset_id.get(),
+            prime.prime_asset_id.get(),
             seller.get(),
             Int(1),
         ),
-        config1.price.set(Int(0)),
-        config1.seller.set(Global.zero_address()),
+        prime.price.set(Int(0)),
+        prime.seller.set(Global.zero_address()),
         Log(log.get()),
     )
 
@@ -162,16 +161,16 @@ def buy(
 ):
     return Seq(
         assert_application_caller(),
-        Assert(config1.price.get() > Int(0)),
-        Assert(config1.seller.get() != Global.zero_address()),
+        Assert(prime.price.get() > Int(0)),
+        Assert(prime.seller.get() != Global.zero_address()),
         func.execute_asset_transfer(
-            config1.prime_asset_id.get(),
+            prime.prime_asset_id.get(),
             buyer.get(),
             Int(1),
         ),
-        config1.price.set(Int(0)),
-        config1.seller.set(Global.zero_address()),
-        config1.sales.increment(Int(1)),
+        prime.price.set(Int(0)),
+        prime.seller.set(Global.zero_address()),
+        prime.sales.increment(Int(1)),
         Log(log.get()),
     )
 
@@ -184,8 +183,8 @@ def rename(
 ):
     return Seq(
         assert_application_caller(),
-        config1.name.set(SetByte(config1.name.get(), index.get(), value.get())),
-        config1.renames.increment(Int(1)),
+        prime.name.set(SetByte(prime.name.get(), index.get(), value.get())),
+        prime.renames.increment(Int(1)),
         Log(log.get()),
     )
 
@@ -198,9 +197,9 @@ def repaint(
 ):
     return Seq(
         assert_application_caller(),
-        config1.theme.set(theme.get()),
-        config1.skin.set(skin.get()),
-        config1.repaints.increment(Int(1)),
+        prime.theme.set(theme.get()),
+        prime.skin.set(skin.get()),
+        prime.repaints.increment(Int(1)),
         Log(log.get()),
     )
 
@@ -212,7 +211,7 @@ def describe(
 ):
     return Seq(
         assert_application_caller(),
-        config2.description.set(description.get()),
+        prime.description.set(description.get()),
         Log(log.get()),
     )
 
@@ -230,7 +229,7 @@ def mint(
             owner.get(),
             amount.get(),
         ),
-        config1.mints.increment(Int(1)),
+        prime.mints.increment(Int(1)),
         Log(log.get()),
     )
 
@@ -259,8 +258,8 @@ def optin(
     return Seq(
         assert_application_caller(),
         Assert(asset.asset_id() != const.platform_asset_id),
-        Assert(asset.asset_id() != config1.prime_asset_id.get()),
-        Assert(asset.asset_id() != config1.legacy_asset_id.get()),
+        Assert(asset.asset_id() != prime.prime_asset_id.get()),
+        Assert(asset.asset_id() != prime.legacy_asset_id.get()),
         func.optin_into_asset(asset.asset_id()),
         Log(log.get()),
     )
@@ -275,8 +274,8 @@ def optout(
     return Seq(
         assert_application_caller(),
         Assert(asset.asset_id() != const.platform_asset_id),
-        Assert(asset.asset_id() != config1.prime_asset_id.get()),
-        Assert(asset.asset_id() != config1.legacy_asset_id.get()),
+        Assert(asset.asset_id() != prime.prime_asset_id.get()),
+        Assert(asset.asset_id() != prime.legacy_asset_id.get()),
         func.optout_from_asset(asset.asset_id(), owner.get()),
         Log(log.get()),
     )

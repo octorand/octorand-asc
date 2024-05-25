@@ -1,6 +1,6 @@
 #pragma version 8
 intcblock 0 1 8 6 10000000 660757756
-bytecblock 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x00 0x511733cd 0x190138a7 0xd396a5eb 0x0b9ec76b 0x2be88ad0 0x4b9a354a 0x4ec69d55 0x27877500 0x21b0f4f6 0x46344961 0xf917154c 0x8b83cf9c 0x8fd0e7b9 0x41157dea 0x
+bytecblock 0x5031 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x00 0x511733cd 0x190138a7 0xd396a5eb 0x0b9ec76b 0x2be88ad0 0x4b9a354a 0x4ec69d55 0x27877500 0x21b0f4f6 0x46344961 0xf917154c 0x8b83cf9c 0x8fd0e7b9 0x41157dea 0x
 txn NumAppArgs
 intc_0 // 0
 ==
@@ -523,7 +523,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -564,7 +564,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -639,7 +639,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -673,7 +673,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -704,7 +704,7 @@ upgrade_11:
 proto 1 0
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 16 // 16
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -738,7 +738,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -757,7 +757,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -777,7 +777,7 @@ intc_0 // 0
 assert
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -814,7 +814,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -836,7 +836,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -875,7 +875,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -894,7 +894,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -910,13 +910,13 @@ buy_14:
 proto 1 0
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 72 // 72
 pushint 32 // 32
 callsub getglobalexternalbytes_0
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 64 // 64
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -931,7 +931,7 @@ callsub assertsenderpayment_4
 bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 64 // 64
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -965,7 +965,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -975,14 +975,14 @@ txn Sender
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 72 // 72
 pushint 32 // 32
 callsub getglobalexternalbytes_0
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 64 // 64
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -999,7 +999,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1009,14 +1009,14 @@ txn Sender
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 72 // 72
 pushint 32 // 32
 callsub getglobalexternalbytes_0
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 64 // 64
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1042,7 +1042,7 @@ pushint 90 // 90
 assert
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1053,7 +1053,7 @@ intc 4 // 10000000
 frame_dig -2
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalexternalbytes_0
@@ -1063,7 +1063,7 @@ getbyte
 bnz rename_15_l8
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalexternalbytes_0
@@ -1103,7 +1103,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1121,7 +1121,7 @@ intc 4 // 10000000
 frame_dig -2
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalexternalbytes_0
@@ -1131,7 +1131,7 @@ getbyte
 bnz rename_15_l7
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalexternalbytes_0
@@ -1154,7 +1154,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1172,7 +1172,7 @@ intc 4 // 10000000
 frame_dig -2
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalexternalbytes_0
@@ -1182,7 +1182,7 @@ getbyte
 bnz rename_15_l6
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalexternalbytes_0
@@ -1195,7 +1195,7 @@ rename_15_l6:
 frame_dig -2
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalexternalbytes_0
@@ -1207,7 +1207,7 @@ rename_15_l7:
 frame_dig -2
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalexternalbytes_0
@@ -1219,7 +1219,7 @@ rename_15_l8:
 frame_dig -2
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalexternalbytes_0
@@ -1247,7 +1247,7 @@ pushint 7 // 7
 assert
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1285,7 +1285,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1313,7 +1313,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1338,7 +1338,7 @@ describe_17:
 proto 2 0
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1372,7 +1372,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1396,7 +1396,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1421,7 +1421,7 @@ intc_0 // 0
 assert
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1451,7 +1451,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1473,7 +1473,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1496,7 +1496,7 @@ intc_0 // 0
 assert
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1526,7 +1526,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1548,7 +1548,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1598,7 +1598,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1621,7 +1621,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1641,7 +1641,7 @@ optout_21:
 proto 2 0
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1673,7 +1673,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -1696,7 +1696,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub getglobalexternaluint_1

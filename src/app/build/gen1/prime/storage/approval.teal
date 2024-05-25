@@ -1,6 +1,6 @@
 #pragma version 8
 intcblock 0 1 8 4 660757756
-bytecblock 0x436f6e66696731 0x 0x436f6e66696732
+bytecblock 0x5031 0x 0x5032
 txn NumAppArgs
 intc_0 // 0
 ==
@@ -409,9 +409,9 @@ retsub
 // create
 create_10:
 proto 0 0
-bytec_0 // "Config1"
+bytec_0 // "P1"
 callsub initglobal_0
-bytec_2 // "Config2"
+bytec_2 // "P2"
 callsub initglobal_0
 retsub
 
@@ -429,29 +429,29 @@ initialize_12:
 proto 4 0
 callsub assertapplicationcaller_9
 frame_dig -4
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_0 // 0
 intc_2 // 8
 callsub setglobaluint_4
 frame_dig -3
 txnas Assets
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub setglobaluint_4
 frame_dig -2
 txnas Assets
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 16 // 16
 intc_2 // 8
 callsub setglobaluint_4
 intc_0 // 0
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 64 // 64
 intc_2 // 8
 callsub setglobaluint_4
 global ZeroAddress
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 72 // 72
 pushint 32 // 32
 callsub setglobalbytes_3
@@ -473,42 +473,42 @@ populate_13:
 proto 9 0
 callsub assertapplicationcaller_9
 frame_dig -9
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 32 // 32
 pushint 2 // 2
 callsub setglobaluint_4
 frame_dig -8
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 34 // 34
 pushint 2 // 2
 callsub setglobaluint_4
 frame_dig -7
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 36 // 36
 intc_1 // 1
 callsub setglobaluint_4
 frame_dig -6
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 37 // 37
 intc_1 // 1
 callsub setglobaluint_4
 frame_dig -5
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 38 // 38
 intc_1 // 1
 callsub setglobaluint_4
 frame_dig -4
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 39 // 39
 intc_1 // 1
 callsub setglobaluint_4
 frame_dig -3
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 104 // 104
 intc_2 // 8
 callsub setglobalbytes_3
 frame_dig -2
-bytec_2 // "Config2"
+bytec_2 // "P2"
 intc_0 // 0
 pushint 64 // 64
 callsub setglobalbytes_3
@@ -522,27 +522,27 @@ finalize_14:
 proto 6 0
 callsub assertapplicationcaller_9
 frame_dig -6
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 40 // 40
 intc_2 // 8
 callsub setglobaluint_4
 frame_dig -5
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 48 // 48
 intc_3 // 4
 callsub setglobaluint_4
 frame_dig -4
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 52 // 52
 intc_3 // 4
 callsub setglobaluint_4
 frame_dig -3
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 56 // 56
 intc_3 // 4
 callsub setglobaluint_4
 frame_dig -2
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 60 // 60
 intc_3 // 4
 callsub setglobaluint_4
@@ -555,14 +555,14 @@ retsub
 upgrade_15:
 proto 2 0
 callsub assertapplicationcaller_9
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 39 // 39
 intc_1 // 1
 callsub getglobaluint_2
 intc_0 // 0
 ==
 assert
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobaluint_2
@@ -570,7 +570,7 @@ frame_dig -2
 intc_1 // 1
 callsub executeassettransfer_8
 intc_1 // 1
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 39 // 39
 intc_1 // 1
 callsub setglobaluint_4
@@ -583,14 +583,14 @@ retsub
 list_16:
 proto 3 0
 callsub assertapplicationcaller_9
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 72 // 72
 pushint 32 // 32
 callsub getglobalbytes_1
 global ZeroAddress
 ==
 assert
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 64 // 64
 intc_2 // 8
 callsub getglobaluint_2
@@ -598,12 +598,12 @@ intc_0 // 0
 ==
 assert
 frame_dig -3
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 64 // 64
 intc_2 // 8
 callsub setglobaluint_4
 frame_dig -2
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 72 // 72
 pushint 32 // 32
 callsub setglobalbytes_3
@@ -616,21 +616,21 @@ retsub
 unlist_17:
 proto 2 0
 callsub assertapplicationcaller_9
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 64 // 64
 intc_2 // 8
 callsub getglobaluint_2
 intc_0 // 0
 >
 assert
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 72 // 72
 pushint 32 // 32
 callsub getglobalbytes_1
 frame_dig -2
 ==
 assert
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobaluint_2
@@ -638,12 +638,12 @@ frame_dig -2
 intc_1 // 1
 callsub executeassettransfer_8
 intc_0 // 0
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 64 // 64
 intc_2 // 8
 callsub setglobaluint_4
 global ZeroAddress
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 72 // 72
 pushint 32 // 32
 callsub setglobalbytes_3
@@ -656,21 +656,21 @@ retsub
 buy_18:
 proto 2 0
 callsub assertapplicationcaller_9
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 64 // 64
 intc_2 // 8
 callsub getglobaluint_2
 intc_0 // 0
 >
 assert
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 72 // 72
 pushint 32 // 32
 callsub getglobalbytes_1
 global ZeroAddress
 !=
 assert
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobaluint_2
@@ -678,22 +678,22 @@ frame_dig -2
 intc_1 // 1
 callsub executeassettransfer_8
 intc_0 // 0
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 64 // 64
 intc_2 // 8
 callsub setglobaluint_4
 global ZeroAddress
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 72 // 72
 pushint 32 // 32
 callsub setglobalbytes_3
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 48 // 48
 intc_3 // 4
 callsub getglobaluint_2
 intc_1 // 1
 +
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 48 // 48
 intc_3 // 4
 callsub setglobaluint_4
@@ -706,24 +706,24 @@ retsub
 rename_19:
 proto 3 0
 callsub assertapplicationcaller_9
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalbytes_1
 frame_dig -3
 frame_dig -2
 setbyte
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 104 // 104
 intc_2 // 8
 callsub setglobalbytes_3
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 56 // 56
 intc_3 // 4
 callsub getglobaluint_2
 intc_1 // 1
 +
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 56 // 56
 intc_3 // 4
 callsub setglobaluint_4
@@ -737,22 +737,22 @@ repaint_20:
 proto 3 0
 callsub assertapplicationcaller_9
 frame_dig -3
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 32 // 32
 pushint 2 // 2
 callsub setglobaluint_4
 frame_dig -2
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 34 // 34
 pushint 2 // 2
 callsub setglobaluint_4
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 60 // 60
 intc_3 // 4
 callsub getglobaluint_2
 intc_1 // 1
 +
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 60 // 60
 intc_3 // 4
 callsub setglobaluint_4
@@ -766,7 +766,7 @@ describe_21:
 proto 2 0
 callsub assertapplicationcaller_9
 frame_dig -2
-bytec_2 // "Config2"
+bytec_2 // "P2"
 intc_0 // 0
 pushint 64 // 64
 callsub setglobalbytes_3
@@ -783,13 +783,13 @@ intc 4 // 660757756
 frame_dig -2
 frame_dig -3
 callsub executeassettransfer_8
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 52 // 52
 intc_3 // 4
 callsub getglobaluint_2
 intc_1 // 1
 +
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 52 // 52
 intc_3 // 4
 callsub setglobaluint_4
@@ -821,7 +821,7 @@ intc 4 // 660757756
 assert
 frame_dig -2
 txnas Assets
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobaluint_2
@@ -829,7 +829,7 @@ callsub getglobaluint_2
 assert
 frame_dig -2
 txnas Assets
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 16 // 16
 intc_2 // 8
 callsub getglobaluint_2
@@ -854,7 +854,7 @@ intc 4 // 660757756
 assert
 frame_dig -3
 txnas Assets
-bytec_0 // "Config1"
+bytec_0 // "P1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobaluint_2
@@ -862,7 +862,7 @@ callsub getglobaluint_2
 assert
 frame_dig -3
 txnas Assets
-bytec_0 // "Config1"
+bytec_0 // "P1"
 pushint 16 // 16
 intc_2 // 8
 callsub getglobaluint_2
