@@ -119,7 +119,12 @@
         },
         {
             "name": "unlist",
-            "args": [],
+            "args": [
+                {
+                    "type": "address",
+                    "name": "seller"
+                }
+            ],
             "returns": {
                 "type": "void"
             }

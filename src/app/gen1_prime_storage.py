@@ -101,6 +101,7 @@ def upgrade(
 ):
     return Seq(
         assert_application_caller(),
+        Assert(config1.is_explorer.get() == Int(0)),
         func.execute_asset_transfer(
             config1.prime_asset_id.get(),
             owner.get(),
@@ -117,18 +118,24 @@ def list(
 ):
     return Seq(
         assert_application_caller(),
+        Assert(config1.seller.get() == Global.zero_address()),
+        Assert(config1.price.get() == Int(0)),
         config1.price.set(price.get()),
         config1.seller.set(seller.get()),
     )
 
 
 @app.external(name="unlist")
-def unlist():
+def unlist(
+    seller: abi.Address,
+):
     return Seq(
         assert_application_caller(),
+        Assert(config1.price.get() > Int(0)),
+        Assert(config1.seller.get() == seller.get()),
         func.execute_asset_transfer(
             config1.prime_asset_id.get(),
-            config1.seller.get(),
+            seller.get(),
             Int(1),
         ),
         config1.price.set(Int(0)),
@@ -142,6 +149,8 @@ def buy(
 ):
     return Seq(
         assert_application_caller(),
+        Assert(config1.price.get() > Int(0)),
+        Assert(config1.seller.get() != Global.zero_address()),
         func.execute_asset_transfer(
             config1.prime_asset_id.get(),
             buyer.get(),
@@ -224,6 +233,9 @@ def optin(
 ):
     return Seq(
         assert_application_caller(),
+        Assert(asset.asset_id() != const.platform_asset_id),
+        Assert(asset.asset_id() != config1.prime_asset_id.get()),
+        Assert(asset.asset_id() != config1.legacy_asset_id.get()),
         func.optin_into_asset(asset.asset_id()),
     )
 
@@ -235,5 +247,8 @@ def optout(
 ):
     return Seq(
         assert_application_caller(),
+        Assert(asset.asset_id() != const.platform_asset_id),
+        Assert(asset.asset_id() != config1.prime_asset_id.get()),
+        Assert(asset.asset_id() != config1.legacy_asset_id.get()),
         func.optout_from_asset(asset.asset_id(), owner.get()),
     )

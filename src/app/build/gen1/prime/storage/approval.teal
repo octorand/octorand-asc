@@ -26,7 +26,7 @@ pushbytes 0xe15a0ebb // "list(uint64,address)void"
 ==
 bnz main_l25
 txna ApplicationArgs 0
-pushbytes 0xbe12be50 // "unlist()void"
+pushbytes 0x5720726a // "unlist(address)void"
 ==
 bnz main_l24
 txna ApplicationArgs 0
@@ -547,6 +547,13 @@ upgrade_15:
 proto 1 0
 callsub assertapplicationcaller_9
 bytec_0 // "Config1"
+pushint 39 // 39
+intc_1 // 1
+callsub getglobaluint_2
+intc_0 // 0
+==
+assert
+bytec_0 // "Config1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobaluint_2
@@ -564,6 +571,20 @@ retsub
 list_16:
 proto 2 0
 callsub assertapplicationcaller_9
+bytec_0 // "Config1"
+pushint 72 // 72
+pushint 32 // 32
+callsub getglobalbytes_1
+global ZeroAddress
+==
+assert
+bytec_0 // "Config1"
+pushint 64 // 64
+intc_2 // 8
+callsub getglobaluint_2
+intc_0 // 0
+==
+assert
 frame_dig -2
 bytec_0 // "Config1"
 pushint 64 // 64
@@ -578,16 +599,27 @@ retsub
 
 // unlist
 unlist_17:
-proto 0 0
+proto 1 0
 callsub assertapplicationcaller_9
 bytec_0 // "Config1"
-intc_2 // 8
+pushint 64 // 64
 intc_2 // 8
 callsub getglobaluint_2
+intc_0 // 0
+>
+assert
 bytec_0 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
 callsub getglobalbytes_1
+frame_dig -1
+==
+assert
+bytec_0 // "Config1"
+intc_2 // 8
+intc_2 // 8
+callsub getglobaluint_2
+frame_dig -1
 intc_1 // 1
 callsub executeassettransfer_8
 intc_0 // 0
@@ -606,6 +638,20 @@ retsub
 buy_18:
 proto 1 0
 callsub assertapplicationcaller_9
+bytec_0 // "Config1"
+pushint 64 // 64
+intc_2 // 8
+callsub getglobaluint_2
+intc_0 // 0
+>
+assert
+bytec_0 // "Config1"
+pushint 72 // 72
+pushint 32 // 32
+callsub getglobalbytes_1
+global ZeroAddress
+!=
+assert
 bytec_0 // "Config1"
 intc_2 // 8
 intc_2 // 8
@@ -734,6 +780,27 @@ proto 1 0
 callsub assertapplicationcaller_9
 frame_dig -1
 txnas Assets
+intc 4 // 660757756
+!=
+assert
+frame_dig -1
+txnas Assets
+bytec_0 // "Config1"
+intc_2 // 8
+intc_2 // 8
+callsub getglobaluint_2
+!=
+assert
+frame_dig -1
+txnas Assets
+bytec_0 // "Config1"
+pushint 16 // 16
+intc_2 // 8
+callsub getglobaluint_2
+!=
+assert
+frame_dig -1
+txnas Assets
 callsub optinintoasset_5
 retsub
 
@@ -741,6 +808,27 @@ retsub
 optout_25:
 proto 2 0
 callsub assertapplicationcaller_9
+frame_dig -2
+txnas Assets
+intc 4 // 660757756
+!=
+assert
+frame_dig -2
+txnas Assets
+bytec_0 // "Config1"
+intc_2 // 8
+intc_2 // 8
+callsub getglobaluint_2
+!=
+assert
+frame_dig -2
+txnas Assets
+bytec_0 // "Config1"
+pushint 16 // 16
+intc_2 // 8
+callsub getglobaluint_2
+!=
+assert
 frame_dig -2
 txnas Assets
 frame_dig -1
@@ -865,6 +953,10 @@ retsub
 // unlist_caster
 unlistcaster_31:
 proto 0 0
+bytec_1 // ""
+txna ApplicationArgs 1
+frame_bury 0
+frame_dig 0
 callsub unlist_17
 retsub
 

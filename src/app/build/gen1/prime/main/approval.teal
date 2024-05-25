@@ -1,5 +1,5 @@
 #pragma version 8
-intcblock 0 8 1 6 660757756 10000000
+intcblock 0 1 8 6 660757756 10000000
 bytecblock 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x00 0x
 txn NumAppArgs
 intc_0 // 0
@@ -72,7 +72,7 @@ intc_0 // 0
 &&
 assert
 callsub optoutcaster_35
-intc_2 // 1
+intc_1 // 1
 return
 main_l17:
 txn OnCompletion
@@ -84,7 +84,7 @@ intc_0 // 0
 &&
 assert
 callsub optincaster_34
-intc_2 // 1
+intc_1 // 1
 return
 main_l18:
 txn OnCompletion
@@ -96,7 +96,7 @@ intc_0 // 0
 &&
 assert
 callsub withdrawcaster_33
-intc_2 // 1
+intc_1 // 1
 return
 main_l19:
 txn OnCompletion
@@ -108,7 +108,7 @@ intc_0 // 0
 &&
 assert
 callsub mintcaster_32
-intc_2 // 1
+intc_1 // 1
 return
 main_l20:
 txn OnCompletion
@@ -120,7 +120,7 @@ intc_0 // 0
 &&
 assert
 callsub describecaster_31
-intc_2 // 1
+intc_1 // 1
 return
 main_l21:
 txn OnCompletion
@@ -132,7 +132,7 @@ intc_0 // 0
 &&
 assert
 callsub repaintcaster_30
-intc_2 // 1
+intc_1 // 1
 return
 main_l22:
 txn OnCompletion
@@ -144,7 +144,7 @@ intc_0 // 0
 &&
 assert
 callsub renamecaster_29
-intc_2 // 1
+intc_1 // 1
 return
 main_l23:
 txn OnCompletion
@@ -156,7 +156,7 @@ intc_0 // 0
 &&
 assert
 callsub buycaster_28
-intc_2 // 1
+intc_1 // 1
 return
 main_l24:
 txn OnCompletion
@@ -168,7 +168,7 @@ intc_0 // 0
 &&
 assert
 callsub unlistcaster_27
-intc_2 // 1
+intc_1 // 1
 return
 main_l25:
 txn OnCompletion
@@ -180,7 +180,7 @@ intc_0 // 0
 &&
 assert
 callsub listcaster_26
-intc_2 // 1
+intc_1 // 1
 return
 main_l26:
 txn OnCompletion
@@ -192,7 +192,7 @@ intc_0 // 0
 &&
 assert
 callsub upgradecaster_25
-intc_2 // 1
+intc_1 // 1
 return
 main_l27:
 txn OnCompletion
@@ -204,7 +204,7 @@ intc_0 // 0
 &&
 assert
 callsub finalizecaster_24
-intc_2 // 1
+intc_1 // 1
 return
 main_l28:
 txn OnCompletion
@@ -216,7 +216,7 @@ intc_0 // 0
 &&
 assert
 callsub populatecaster_23
-intc_2 // 1
+intc_1 // 1
 return
 main_l29:
 txn OnCompletion
@@ -228,7 +228,7 @@ intc_0 // 0
 &&
 assert
 callsub initializecaster_22
-intc_2 // 1
+intc_1 // 1
 return
 main_l30:
 txn OnCompletion
@@ -246,14 +246,14 @@ intc_0 // 0
 !=
 assert
 callsub update_7
-intc_2 // 1
+intc_1 // 1
 return
 main_l34:
 txn ApplicationID
 intc_0 // 0
 ==
 assert
-intc_2 // 1
+intc_1 // 1
 return
 
 // get_global_external_bytes
@@ -325,7 +325,7 @@ txn Sender
 assert
 frame_dig -1
 gtxns TypeEnum
-intc_2 // pay
+intc_1 // pay
 ==
 assert
 frame_dig -1
@@ -517,24 +517,15 @@ proto 1 0
 frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
-pushint 39 // 39
-intc_2 // 1
-callsub getglobalexternaluint_1
-intc_0 // 0
-==
-assert
-frame_dig -1
-txnas Applications
-bytec_0 // "Config1"
 pushint 16 // 16
-intc_1 // 8
+intc_2 // 8
 callsub getglobalexternaluint_1
 frame_dig -1
 txnas Applications
 callsub getapplicationaddress_2
-intc_2 // 1
+intc_1 // 1
 txn GroupIndex
-intc_2 // 1
+intc_1 // 1
 +
 callsub assertsenderassettransfer_5
 frame_dig -1
@@ -556,24 +547,6 @@ retsub
 // list
 list_12:
 proto 2 0
-frame_dig -1
-txnas Applications
-bytec_0 // "Config1"
-pushint 72 // 72
-pushint 32 // 32
-callsub getglobalexternalbytes_0
-global ZeroAddress
-==
-assert
-frame_dig -1
-txnas Applications
-bytec_0 // "Config1"
-pushint 64 // 64
-intc_1 // 8
-callsub getglobalexternaluint_1
-intc_0 // 0
-==
-assert
 frame_dig -2
 intc_0 // 0
 >
@@ -581,15 +554,15 @@ assert
 frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
-intc_1 // 8
-intc_1 // 8
+intc_2 // 8
+intc_2 // 8
 callsub getglobalexternaluint_1
 frame_dig -1
 txnas Applications
 callsub getapplicationaddress_2
-intc_2 // 1
+intc_1 // 1
 txn GroupIndex
-intc_2 // 1
+intc_1 // 1
 +
 callsub assertsenderassettransfer_5
 frame_dig -1
@@ -616,24 +589,6 @@ unlist_13:
 proto 1 0
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
-pushint 64 // 64
-intc_1 // 8
-callsub getglobalexternaluint_1
-intc_0 // 0
->
-assert
-frame_dig -1
-txnas Applications
-bytec_0 // "Config1"
-pushint 72 // 72
-pushint 32 // 32
-callsub getglobalexternalbytes_0
-txn Sender
-==
-assert
-frame_dig -1
-txnas Applications
 callsub assertapplicationcreator_6
 itxn_begin
 intc_3 // appl
@@ -641,7 +596,9 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-pushbytes 0xbe12be50 // "unlist()void"
+pushbytes 0x5720726a // "unlist(address)void"
+itxn_field ApplicationArgs
+txn Sender
 itxn_field ApplicationArgs
 itxn_submit
 retsub
@@ -652,24 +609,6 @@ proto 1 0
 frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
-pushint 64 // 64
-intc_1 // 8
-callsub getglobalexternaluint_1
-intc_0 // 0
->
-assert
-frame_dig -1
-txnas Applications
-bytec_0 // "Config1"
-pushint 72 // 72
-pushint 32 // 32
-callsub getglobalexternalbytes_0
-global ZeroAddress
-!=
-assert
-frame_dig -1
-txnas Applications
-bytec_0 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
 callsub getglobalexternalbytes_0
@@ -677,14 +616,14 @@ frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
 pushint 64 // 64
-intc_1 // 8
+intc_2 // 8
 callsub getglobalexternaluint_1
 pushint 90 // 90
 *
 pushint 100 // 100
 /
 txn GroupIndex
-intc_2 // 1
+intc_1 // 1
 +
 callsub assertsenderpayment_4
 bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
@@ -692,7 +631,7 @@ frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
 pushint 64 // 64
-intc_1 // 8
+intc_2 // 8
 callsub getglobalexternaluint_1
 pushint 10 // 10
 *
@@ -736,8 +675,8 @@ assert
 frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
-intc_1 // 8
-intc_1 // 8
+intc_2 // 8
+intc_2 // 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
 intc 4 // 660757756
@@ -748,7 +687,7 @@ frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
 pushint 104 // 104
-intc_1 // 8
+intc_2 // 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
@@ -758,7 +697,7 @@ frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
 pushint 104 // 104
-intc_1 // 8
+intc_2 // 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
@@ -771,7 +710,7 @@ frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
 pushint 104 // 104
-intc_1 // 8
+intc_2 // 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
@@ -779,7 +718,7 @@ getbyte
 rename_15_l3:
 *
 txn GroupIndex
-intc_2 // 1
+intc_1 // 1
 +
 callsub assertsenderassettransfer_5
 frame_dig -1
@@ -816,15 +755,15 @@ assert
 frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
-intc_1 // 8
-intc_1 // 8
+intc_2 // 8
+intc_2 // 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
 intc 4 // 660757756
 bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 intc 5 // 10000000
 txn GroupIndex
-intc_2 // 1
+intc_1 // 1
 +
 callsub assertsenderassettransfer_5
 frame_dig -1
@@ -853,15 +792,15 @@ proto 2 0
 frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
-intc_1 // 8
-intc_1 // 8
+intc_2 // 8
+intc_2 // 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
 intc 4 // 660757756
 bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 intc 5 // 10000000
 txn GroupIndex
-intc_2 // 1
+intc_1 // 1
 +
 callsub assertsenderassettransfer_5
 frame_dig -1
@@ -890,8 +829,8 @@ assert
 frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
-intc_1 // 8
-intc_1 // 8
+intc_2 // 8
+intc_2 // 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
 frame_dig -1
@@ -923,8 +862,8 @@ assert
 frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
-intc_1 // 8
-intc_1 // 8
+intc_2 // 8
+intc_2 // 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
 frame_dig -1
@@ -949,37 +888,12 @@ retsub
 // optin
 optin_20:
 proto 2 0
-frame_dig -2
-txnas Assets
-intc 4 // 660757756
-!=
-assert
-frame_dig -2
-txnas Assets
-frame_dig -1
-txnas Applications
-bytec_0 // "Config1"
-intc_1 // 8
-intc_1 // 8
-callsub getglobalexternaluint_1
-!=
-assert
-frame_dig -2
-txnas Assets
-frame_dig -1
-txnas Applications
-bytec_0 // "Config1"
-pushint 16 // 16
-intc_1 // 8
-callsub getglobalexternaluint_1
-!=
-assert
 frame_dig -1
 txnas Applications
 callsub getapplicationaddress_2
 pushint 100000 // 100000
 txn GroupIndex
-intc_2 // 1
+intc_1 // 1
 +
 callsub assertsenderpayment_4
 frame_dig -1
@@ -1004,36 +918,11 @@ retsub
 // optout
 optout_21:
 proto 2 0
-frame_dig -2
-txnas Assets
-intc 4 // 660757756
-!=
-assert
-frame_dig -2
-txnas Assets
 frame_dig -1
 txnas Applications
 bytec_0 // "Config1"
-intc_1 // 8
-intc_1 // 8
-callsub getglobalexternaluint_1
-!=
-assert
-frame_dig -2
-txnas Assets
-frame_dig -1
-txnas Applications
-bytec_0 // "Config1"
-pushint 16 // 16
-intc_1 // 8
-callsub getglobalexternaluint_1
-!=
-assert
-frame_dig -1
-txnas Applications
-bytec_0 // "Config1"
-intc_1 // 8
-intc_1 // 8
+intc_2 // 8
+intc_2 // 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
 frame_dig -1

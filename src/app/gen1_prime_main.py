@@ -119,7 +119,6 @@ def upgrade(
 ):
     app_id = application.application_id()
     return Seq(
-        Assert(config1.is_explorer.external(app_id) == Int(0)),
         func.assert_sender_asset_transfer(
             config1.legacy_asset_id.external(app_id),
             func.get_application_address(app_id),
@@ -144,8 +143,6 @@ def list(
 ):
     app_id = application.application_id()
     return Seq(
-        Assert(config1.seller.external(app_id) == Global.zero_address()),
-        Assert(config1.price.external(app_id) == Int(0)),
         Assert(price.get() > Int(0)),
         func.assert_sender_asset_transfer(
             config1.prime_asset_id.external(app_id),
@@ -171,13 +168,13 @@ def unlist(
 ):
     app_id = application.application_id()
     return Seq(
-        Assert(config1.price.external(app_id) > Int(0)),
-        Assert(config1.seller.external(app_id) == Txn.sender()),
         assert_application_creator(app_id),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
             method_signature=storage.unlist.method_signature(),
-            args=[],
+            args=[
+                Txn.sender(),
+            ],
         ),
     )
 
@@ -190,8 +187,6 @@ def buy(
     seller_share = Mul(config1.price.external(app_id), const.seller_market_share)
     admin_share = Mul(config1.price.external(app_id), const.admin_market_share)
     return Seq(
-        Assert(config1.price.external(app_id) > Int(0)),
-        Assert(config1.seller.external(app_id) != Global.zero_address()),
         func.assert_sender_payment(
             config1.seller.external(app_id),
             Div(seller_share, Int(100)),
@@ -354,9 +349,6 @@ def optin(
 ):
     app_id = application.application_id()
     return Seq(
-        Assert(asset.asset_id() != const.platform_asset_id),
-        Assert(asset.asset_id() != config1.prime_asset_id.external(app_id)),
-        Assert(asset.asset_id() != config1.legacy_asset_id.external(app_id)),
         func.assert_sender_payment(
             func.get_application_address(app_id),
             const.optin_price,
@@ -380,9 +372,6 @@ def optout(
 ):
     app_id = application.application_id()
     return Seq(
-        Assert(asset.asset_id() != const.platform_asset_id),
-        Assert(asset.asset_id() != config1.prime_asset_id.external(app_id)),
-        Assert(asset.asset_id() != config1.legacy_asset_id.external(app_id)),
         func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
         assert_application_creator(app_id),
         InnerTxnBuilder.ExecuteMethodCall(
