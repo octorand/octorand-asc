@@ -135,6 +135,50 @@
             "returns": {
                 "type": "void"
             }
+        },
+        {
+            "name": "rename",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "index"
+                },
+                {
+                    "type": "uint64",
+                    "name": "value"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "repaint",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "theme"
+                },
+                {
+                    "type": "uint64",
+                    "name": "skin"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "describe",
+            "args": [
+                {
+                    "type": "byte[64]",
+                    "name": "description"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
         }
     ],
     "networks": {}

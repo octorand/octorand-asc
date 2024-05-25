@@ -213,3 +213,95 @@ def buy(
             ],
         ),
     )
+
+
+@app.external(name="rename")
+def rename(
+    index: abi.Uint64,
+    value: abi.Uint64,
+    application: abi.Application,
+):
+    app_id = application.application_id()
+    previous_value = GetByte(config1.name.external(app_id), index.get())
+    next_value = value.get()
+    value_difference = If(
+        Gt(next_value, previous_value),
+        Minus(next_value, previous_value),
+        Minus(previous_value, next_value),
+    )
+    price = Mul(const.rename_price, value_difference)
+    return Seq(
+        Assert(index.get() <= Int(7)),
+        Assert(value.get() >= Int(65)),
+        Assert(value.get() <= Int(90)),
+        func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
+        func.assert_sender_asset_transfer(
+            const.platform_asset_id,
+            const.platform_asset_reserve,
+            price,
+            Add(Txn.group_index(), Int(1)),
+        ),
+        assert_application_creator(app_id),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
+            method_signature=storage.rename.method_signature(),
+            args=[
+                index,
+                value,
+            ],
+        ),
+    )
+
+
+@app.external(name="repaint")
+def repaint(
+    theme: abi.Uint64,
+    skin: abi.Uint64,
+    application: abi.Application,
+):
+    app_id = application.application_id()
+    return Seq(
+        Assert(theme.get() <= Int(7)),
+        Assert(skin.get() <= Int(7)),
+        func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
+        func.assert_sender_asset_transfer(
+            const.platform_asset_id,
+            const.platform_asset_reserve,
+            const.repaint_price,
+            Add(Txn.group_index(), Int(1)),
+        ),
+        assert_application_creator(app_id),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
+            method_signature=storage.repaint.method_signature(),
+            args=[
+                theme,
+                skin,
+            ],
+        ),
+    )
+
+
+@app.external(name="describe")
+def describe(
+    description: abi.StaticBytes[Literal[64]],
+    application: abi.Application,
+):
+    app_id = application.application_id()
+    return Seq(
+        func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
+        func.assert_sender_asset_transfer(
+            const.platform_asset_id,
+            const.platform_asset_reserve,
+            const.describe_price,
+            Add(Txn.group_index(), Int(1)),
+        ),
+        assert_application_creator(app_id),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
+            method_signature=storage.describe.method_signature(),
+            args=[
+                description,
+            ],
+        ),
+    )

@@ -151,3 +151,38 @@ def buy(
         config1.seller.set(Global.zero_address()),
         config1.sales.increment(Int(1)),
     )
+
+
+@app.external(name="rename")
+def rename(
+    index: abi.Uint64,
+    value: abi.Uint64,
+):
+    return Seq(
+        assert_application_caller(),
+        config1.name.set(SetByte(config1.name.get(), index.get(), value.get())),
+        config1.renames.increment(Int(1)),
+    )
+
+
+@app.external(name="repaint")
+def repaint(
+    theme: abi.Uint64,
+    skin: abi.Uint64,
+):
+    return Seq(
+        assert_application_caller(),
+        config1.theme.set(theme.get()),
+        config1.skin.set(skin.get()),
+        config1.repaints.increment(Int(1)),
+    )
+
+
+@app.external(name="describe")
+def describe(
+    description: abi.StaticBytes[Literal[64]],
+):
+    return Seq(
+        assert_application_caller(),
+        config2.description.set(description.get()),
+    )

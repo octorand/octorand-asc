@@ -4,72 +4,48 @@ bytecblock 0x436f6e66696731 0x 0x436f6e66696732
 txn NumAppArgs
 intc_0 // 0
 ==
-bnz main_l16
+bnz main_l22
 txna ApplicationArgs 0
 pushbytes 0xbc525b0f // "initialize(uint64,asset,asset)void"
 ==
-bnz main_l15
+bnz main_l21
 txna ApplicationArgs 0
 pushbytes 0x092c7520 // "populate(uint64,uint64,uint64,uint64,uint64,uint64,byte[8],byte[64])void"
 ==
-bnz main_l14
+bnz main_l20
 txna ApplicationArgs 0
 pushbytes 0x9675e058 // "finalize(uint64,uint64,uint64,uint64,uint64)void"
 ==
-bnz main_l13
+bnz main_l19
 txna ApplicationArgs 0
 pushbytes 0x1f565e4f // "upgrade(address)void"
 ==
-bnz main_l12
+bnz main_l18
 txna ApplicationArgs 0
 pushbytes 0xe15a0ebb // "list(uint64,address)void"
 ==
-bnz main_l11
+bnz main_l17
 txna ApplicationArgs 0
 pushbytes 0xbe12be50 // "unlist()void"
 ==
-bnz main_l10
+bnz main_l16
 txna ApplicationArgs 0
 pushbytes 0x9f5f5101 // "buy(address)void"
 ==
-bnz main_l9
+bnz main_l15
+txna ApplicationArgs 0
+pushbytes 0x5bff6c91 // "rename(uint64,uint64)void"
+==
+bnz main_l14
+txna ApplicationArgs 0
+pushbytes 0xac86822b // "repaint(uint64,uint64)void"
+==
+bnz main_l13
+txna ApplicationArgs 0
+pushbytes 0x698ea56f // "describe(byte[64])void"
+==
+bnz main_l12
 err
-main_l9:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub buycaster_23
-intc_1 // 1
-return
-main_l10:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub unlistcaster_22
-intc_1 // 1
-return
-main_l11:
-txn OnCompletion
-intc_0 // NoOp
-==
-txn ApplicationID
-intc_0 // 0
-!=
-&&
-assert
-callsub listcaster_21
-intc_1 // 1
-return
 main_l12:
 txn OnCompletion
 intc_0 // NoOp
@@ -79,7 +55,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub upgradecaster_20
+callsub describecaster_29
 intc_1 // 1
 return
 main_l13:
@@ -91,7 +67,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub finalizecaster_19
+callsub repaintcaster_28
 intc_1 // 1
 return
 main_l14:
@@ -103,7 +79,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub populatecaster_18
+callsub renamecaster_27
 intc_1 // 1
 return
 main_l15:
@@ -115,20 +91,92 @@ intc_0 // 0
 !=
 &&
 assert
-callsub initializecaster_17
+callsub buycaster_26
 intc_1 // 1
 return
 main_l16:
 txn OnCompletion
 intc_0 // NoOp
 ==
-bnz main_l20
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub unlistcaster_25
+intc_1 // 1
+return
+main_l17:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub listcaster_24
+intc_1 // 1
+return
+main_l18:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub upgradecaster_23
+intc_1 // 1
+return
+main_l19:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub finalizecaster_22
+intc_1 // 1
+return
+main_l20:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub populatecaster_21
+intc_1 // 1
+return
+main_l21:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub initializecaster_20
+intc_1 // 1
+return
+main_l22:
+txn OnCompletion
+intc_0 // NoOp
+==
+bnz main_l26
 txn OnCompletion
 intc_3 // UpdateApplication
 ==
-bnz main_l19
+bnz main_l25
 err
-main_l19:
+main_l25:
 txn ApplicationID
 intc_0 // 0
 !=
@@ -136,7 +184,7 @@ assert
 callsub update_9
 intc_1 // 1
 return
-main_l20:
+main_l26:
 txn ApplicationID
 intc_0 // 0
 ==
@@ -489,8 +537,72 @@ intc_3 // 4
 callsub setglobaluint_4
 retsub
 
+// rename
+rename_17:
+proto 2 0
+callsub assertapplicationcaller_7
+bytec_0 // "Config1"
+pushint 104 // 104
+intc_2 // 8
+callsub getglobalbytes_1
+frame_dig -2
+frame_dig -1
+setbyte
+bytec_0 // "Config1"
+pushint 104 // 104
+intc_2 // 8
+callsub setglobalbytes_3
+bytec_0 // "Config1"
+pushint 56 // 56
+intc_3 // 4
+callsub getglobaluint_2
+intc_1 // 1
++
+bytec_0 // "Config1"
+pushint 56 // 56
+intc_3 // 4
+callsub setglobaluint_4
+retsub
+
+// repaint
+repaint_18:
+proto 2 0
+callsub assertapplicationcaller_7
+frame_dig -2
+bytec_0 // "Config1"
+pushint 32 // 32
+pushint 2 // 2
+callsub setglobaluint_4
+frame_dig -1
+bytec_0 // "Config1"
+pushint 34 // 34
+pushint 2 // 2
+callsub setglobaluint_4
+bytec_0 // "Config1"
+pushint 60 // 60
+intc_3 // 4
+callsub getglobaluint_2
+intc_1 // 1
++
+bytec_0 // "Config1"
+pushint 60 // 60
+intc_3 // 4
+callsub setglobaluint_4
+retsub
+
+// describe
+describe_19:
+proto 1 0
+callsub assertapplicationcaller_7
+frame_dig -1
+bytec_2 // "Config2"
+intc_0 // 0
+pushint 64 // 64
+callsub setglobalbytes_3
+retsub
+
 // initialize_caster
-initializecaster_17:
+initializecaster_20:
 proto 0 0
 intc_0 // 0
 dupn 2
@@ -512,7 +624,7 @@ callsub initialize_10
 retsub
 
 // populate_caster
-populatecaster_18:
+populatecaster_21:
 proto 0 0
 intc_0 // 0
 dupn 5
@@ -552,7 +664,7 @@ callsub populate_11
 retsub
 
 // finalize_caster
-finalizecaster_19:
+finalizecaster_22:
 proto 0 0
 intc_0 // 0
 dupn 4
@@ -580,7 +692,7 @@ callsub finalize_12
 retsub
 
 // upgrade_caster
-upgradecaster_20:
+upgradecaster_23:
 proto 0 0
 bytec_1 // ""
 txna ApplicationArgs 1
@@ -590,7 +702,7 @@ callsub upgrade_13
 retsub
 
 // list_caster
-listcaster_21:
+listcaster_24:
 proto 0 0
 intc_0 // 0
 bytec_1 // ""
@@ -605,17 +717,59 @@ callsub list_14
 retsub
 
 // unlist_caster
-unlistcaster_22:
+unlistcaster_25:
 proto 0 0
 callsub unlist_15
 retsub
 
 // buy_caster
-buycaster_23:
+buycaster_26:
 proto 0 0
 bytec_1 // ""
 txna ApplicationArgs 1
 frame_bury 0
 frame_dig 0
 callsub buy_16
+retsub
+
+// rename_caster
+renamecaster_27:
+proto 0 0
+intc_0 // 0
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub rename_17
+retsub
+
+// repaint_caster
+repaintcaster_28:
+proto 0 0
+intc_0 // 0
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub repaint_18
+retsub
+
+// describe_caster
+describecaster_29:
+proto 0 0
+bytec_1 // ""
+txna ApplicationArgs 1
+frame_bury 0
+frame_dig 0
+callsub describe_19
 retsub
