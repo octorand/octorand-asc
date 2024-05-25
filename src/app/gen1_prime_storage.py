@@ -97,13 +97,13 @@ def finalize(
 
 @app.external(name="upgrade")
 def upgrade(
-    sender: abi.Address,
+    owner: abi.Address,
 ):
     return Seq(
         assert_application_caller(),
         func.execute_asset_transfer(
             config1.prime_asset_id.get(),
-            sender.get(),
+            owner.get(),
             Int(1),
         ),
         config1.is_explorer.set(Int(1)),

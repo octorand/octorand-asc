@@ -191,7 +191,7 @@
                 "args": [
                     {
                         "type": "address",
-                        "name": "sender"
+                        "name": "owner"
                     }
                 ],
                 "returns": {
