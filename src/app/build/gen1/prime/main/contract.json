@@ -140,6 +140,18 @@
             "returns": {
                 "type": "void"
             }
+        },
+        {
+            "name": "buy",
+            "args": [
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
         }
     ],
     "networks": {}

@@ -134,3 +134,20 @@ def unlist():
         config1.price.set(Int(0)),
         config1.seller.set(Global.zero_address()),
     )
+
+
+@app.external(name="buy")
+def buy(
+    buyer: abi.Address,
+):
+    return Seq(
+        assert_application_caller(),
+        func.execute_asset_transfer(
+            config1.prime_asset_id.get(),
+            buyer.get(),
+            Int(1),
+        ),
+        config1.price.set(Int(0)),
+        config1.seller.set(Global.zero_address()),
+        config1.sales.increment(Int(1)),
+    )

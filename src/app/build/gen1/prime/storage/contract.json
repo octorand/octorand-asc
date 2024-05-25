@@ -123,6 +123,18 @@
             "returns": {
                 "type": "void"
             }
+        },
+        {
+            "name": "buy",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "buyer"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
         }
     ],
     "networks": {}

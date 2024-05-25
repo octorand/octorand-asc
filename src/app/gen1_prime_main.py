@@ -180,3 +180,36 @@ def unlist(
             args=[],
         ),
     )
+
+
+@app.external(name="buy")
+def buy(
+    application: abi.Application,
+):
+    app_id = application.application_id()
+    return Seq(
+        Assert(config1.price.external(app_id) > Int(0)),
+        Assert(config1.seller.external(app_id) != Global.zero_address()),
+        func.assert_sender_payment(
+            config1.seller.external(app_id),
+            Div(
+                Mul(config1.price.external(app_id), const.seller_market_share), Int(100)
+            ),
+            Add(Txn.group_index(), Int(1)),
+        ),
+        func.assert_sender_payment(
+            const.admin_address,
+            Div(
+                Mul(config1.price.external(app_id), const.admin_market_share), Int(100)
+            ),
+            Add(Txn.group_index(), Int(2)),
+        ),
+        assert_application_creator(app_id),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
+            method_signature=storage.buy.method_signature(),
+            args=[
+                Txn.sender(),
+            ],
+        ),
+    )
