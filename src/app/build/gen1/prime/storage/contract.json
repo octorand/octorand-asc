@@ -116,6 +116,13 @@
             "returns": {
                 "type": "void"
             }
+        },
+        {
+            "name": "unlist",
+            "args": [],
+            "returns": {
+                "type": "void"
+            }
         }
     ],
     "networks": {}

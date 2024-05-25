@@ -120,3 +120,17 @@ def list(
         config1.price.set(price.get()),
         config1.seller.set(seller.get()),
     )
+
+
+@app.external(name="unlist")
+def unlist():
+    return Seq(
+        assert_application_caller(),
+        func.execute_asset_transfer(
+            config1.prime_asset_id.get(),
+            config1.seller.get(),
+            Int(1),
+        ),
+        config1.price.set(Int(0)),
+        config1.seller.set(Global.zero_address()),
+    )

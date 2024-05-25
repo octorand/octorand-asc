@@ -19,21 +19,6 @@ def update():
     )
 
 
-@app.external(name="unlist")
-def unlist():
-    return Seq(
-        Assert(config1.price.get() > Int(0)),
-        Assert(config1.seller.get() == Txn.sender()),
-        func.execute_asset_transfer(
-            config1.prime_asset_id.get(),
-            config1.seller.get(),
-            Int(1),
-        ),
-        config1.price.set(Int(0)),
-        config1.seller.set(Global.zero_address()),
-    )
-
-
 @app.external(name="buy")
 def buy():
     return Seq(

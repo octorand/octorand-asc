@@ -163,3 +163,20 @@ def list(
             ],
         ),
     )
+
+
+@app.external(name="unlist")
+def unlist(
+    application: abi.Application,
+):
+    app_id = application.application_id()
+    return Seq(
+        Assert(config1.price.external(app_id) > Int(0)),
+        Assert(config1.seller.external(app_id) == Txn.sender()),
+        assert_application_creator(app_id),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
+            method_signature=storage.unlist.method_signature(),
+            args=[],
+        ),
+    )

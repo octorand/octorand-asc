@@ -128,6 +128,18 @@
             "returns": {
                 "type": "void"
             }
+        },
+        {
+            "name": "unlist",
+            "args": [
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
         }
     ],
     "networks": {}
