@@ -1,25 +1,25 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../../chain/index');
+const chain = require('./../../../../../chain/index');
 
 exports.execute = async function () {
     try {
         let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen1.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
+        let sender = connection.admin.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let logger = setup['gen1']['logger'];
+        let main = setup['gen1']['prime']['main'];
 
-        if (!logger['application_id']) {
+        if (!main['application_id']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
-            let approvalProgram = fs.readFileSync('src/app/build/gen1/logger/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/app/build/gen1/logger/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/app/build/gen1/prime/main/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/app/build/gen1/prime/main/clear.teal', 'utf8');
 
             composer.addTransaction({
                 signer: signer,
@@ -32,7 +32,7 @@ exports.execute = async function () {
                     numLocalByteSlices: 0,
                     numGlobalInts: 0,
                     numGlobalByteSlices: 0,
-                    extraPages: 0,
+                    extraPages: 1,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -44,15 +44,15 @@ exports.execute = async function () {
             let response = await chain.execute(composer);
             let applicationId = response.information['application-index'];
 
-            logger['application_id'] = applicationId;
-            logger['application_address'] = connection.baseClient.getApplicationAddress(applicationId);
-            logger['application_version'] = 0;
+            main['application_id'] = applicationId;
+            main['application_address'] = connection.baseClient.getApplicationAddress(applicationId);
+            main['application_version'] = 0;
 
-            setup['gen1']['logger'] = logger;
+            setup['gen1']['prime']['main'] = main;
             fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
         }
 
-        console.log('created logger application');
+        console.log('created prime main application');
 
     } catch (error) {
         console.log(error);

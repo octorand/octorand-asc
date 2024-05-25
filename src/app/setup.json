@@ -1,10 +1,20 @@
 {
     "gen1": {
-        "main": {},
-        "primes": []
+        "input": {},
+        "prime": {
+            "main": {
+                "application_id": 670911415,
+                "application_address": "HHL2RIRVTCEKNSLMNYX2HFTP7DZCRCS65F4HXFTZ3DQYU5T4TRASJFE4IE",
+                "application_version": 0
+            },
+            "storage": {}
+        }
     },
     "gen2": {
-        "main": {},
-        "primes": []
+        "input": {},
+        "prime": {
+            "main": {},
+            "storage": {}
+        }
     }
 }

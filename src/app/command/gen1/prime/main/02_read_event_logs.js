@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../../chain/index');
+const chain = require('./../../../../../chain/index');
 
 exports.execute = async function () {
     try {
@@ -9,9 +9,9 @@ exports.execute = async function () {
 
         let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let logger = setup['gen1']['logger'];
+        let main = setup['gen1']['prime']['main'];
 
-        let info = await connection.indexerClient.lookupApplicationLogs(logger['application_id']).do();
+        let info = await connection.indexerClient.lookupApplicationLogs(main['application_id']).do();
         let logs = info['log-data'];
 
         if (logs) {

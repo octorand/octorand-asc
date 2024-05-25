@@ -3,8 +3,11 @@ require('dotenv').config();
 (async () => {
 
     await require('./command/gen1/prime/main/00_compile_contracts').execute();
-
     await require('./command/gen1/prime/storage/00_compile_contracts').execute();
+
+    await require('./command/gen1/prime/main/01_create_application').execute();
+    await require('./command/gen1/prime/main/02_read_event_logs').execute();
+
 
     // await require('./command/gen1/logger/00_compile_contracts').execute();
     // await require('./command/gen1/logger/01_create_logger_application').execute();
