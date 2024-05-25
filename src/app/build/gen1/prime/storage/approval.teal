@@ -35,7 +35,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub listcaster_18
+callsub listcaster_19
 intc_1 // 1
 return
 main_l8:
@@ -47,7 +47,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub upgradecaster_17
+callsub upgradecaster_18
 intc_1 // 1
 return
 main_l9:
@@ -59,7 +59,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub finalizecaster_16
+callsub finalizecaster_17
 intc_1 // 1
 return
 main_l10:
@@ -71,7 +71,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub populatecaster_15
+callsub populatecaster_16
 intc_1 // 1
 return
 main_l11:
@@ -83,7 +83,7 @@ intc_0 // 0
 !=
 &&
 assert
-callsub initializecaster_14
+callsub initializecaster_15
 intc_1 // 1
 return
 main_l12:
@@ -101,7 +101,7 @@ txn ApplicationID
 intc_0 // 0
 !=
 assert
-callsub update_8
+callsub update_9
 intc_1 // 1
 return
 main_l16:
@@ -109,7 +109,7 @@ txn ApplicationID
 intc_0 // 0
 ==
 assert
-callsub create_7
+callsub create_8
 intc_1 // 1
 return
 
@@ -219,8 +219,17 @@ itxn_field Fee
 itxn_submit
 retsub
 
+// assert_application_caller
+assertapplicationcaller_7:
+proto 0 0
+global CallerApplicationID
+intc 4 // 660757756
+==
+assert
+retsub
+
 // create
-create_7:
+create_8:
 proto 0 0
 bytec_0 // "Config1"
 callsub initglobal_0
@@ -229,7 +238,7 @@ callsub initglobal_0
 retsub
 
 // update
-update_8:
+update_9:
 proto 0 0
 txn Sender
 pushbytes 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
@@ -238,12 +247,9 @@ assert
 retsub
 
 // initialize
-initialize_9:
+initialize_10:
 proto 3 0
-global CallerApplicationID
-intc 4 // 660757756
-==
-assert
+callsub assertapplicationcaller_7
 frame_dig -3
 bytec_0 // "Config1"
 intc_0 // 0
@@ -282,12 +288,9 @@ callsub optinintoasset_5
 retsub
 
 // populate
-populate_10:
+populate_11:
 proto 8 0
-global CallerApplicationID
-intc 4 // 660757756
-==
-assert
+callsub assertapplicationcaller_7
 frame_dig -8
 bytec_0 // "Config1"
 pushint 32 // 32
@@ -331,12 +334,9 @@ callsub setglobalbytes_3
 retsub
 
 // finalize
-finalize_11:
+finalize_12:
 proto 5 0
-global CallerApplicationID
-intc 4 // 660757756
-==
-assert
+callsub assertapplicationcaller_7
 frame_dig -5
 bytec_0 // "Config1"
 pushint 40 // 40
@@ -365,12 +365,9 @@ callsub setglobaluint_4
 retsub
 
 // upgrade
-upgrade_12:
+upgrade_13:
 proto 1 0
-global CallerApplicationID
-intc 4 // 660757756
-==
-assert
+callsub assertapplicationcaller_7
 bytec_0 // "Config1"
 intc_2 // 8
 intc_2 // 8
@@ -386,12 +383,9 @@ callsub setglobaluint_4
 retsub
 
 // list
-list_13:
+list_14:
 proto 2 0
-global CallerApplicationID
-intc 4 // 660757756
-==
-assert
+callsub assertapplicationcaller_7
 frame_dig -2
 bytec_0 // "Config1"
 pushint 64 // 64
@@ -405,7 +399,7 @@ callsub setglobalbytes_3
 retsub
 
 // initialize_caster
-initializecaster_14:
+initializecaster_15:
 proto 0 0
 intc_0 // 0
 dupn 2
@@ -423,11 +417,11 @@ frame_bury 2
 frame_dig 0
 frame_dig 1
 frame_dig 2
-callsub initialize_9
+callsub initialize_10
 retsub
 
 // populate_caster
-populatecaster_15:
+populatecaster_16:
 proto 0 0
 intc_0 // 0
 dupn 5
@@ -463,11 +457,11 @@ frame_dig 4
 frame_dig 5
 frame_dig 6
 frame_dig 7
-callsub populate_10
+callsub populate_11
 retsub
 
 // finalize_caster
-finalizecaster_16:
+finalizecaster_17:
 proto 0 0
 intc_0 // 0
 dupn 4
@@ -491,21 +485,21 @@ frame_dig 1
 frame_dig 2
 frame_dig 3
 frame_dig 4
-callsub finalize_11
+callsub finalize_12
 retsub
 
 // upgrade_caster
-upgradecaster_17:
+upgradecaster_18:
 proto 0 0
 bytec_1 // ""
 txna ApplicationArgs 1
 frame_bury 0
 frame_dig 0
-callsub upgrade_12
+callsub upgrade_13
 retsub
 
 // list_caster
-listcaster_18:
+listcaster_19:
 proto 0 0
 intc_0 // 0
 bytec_1 // ""
@@ -516,5 +510,5 @@ txna ApplicationArgs 2
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub list_13
+callsub list_14
 retsub

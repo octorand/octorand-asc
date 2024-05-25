@@ -1,6 +1,6 @@
 #pragma version 8
 intcblock 0 1 6 8
-bytecblock 0x3ed6145d03fca681550a583628ec7ba151698951ec6980c18552f4ff45fd3dae 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af
+bytecblock 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af
 txn NumAppArgs
 intc_0 // 0
 ==
@@ -187,15 +187,15 @@ retsub
 
 // assert_application_creator
 assertapplicationcreator_4:
-proto 2 0
-frame_dig -2
+proto 1 0
+frame_dig -1
 app_params_get AppCreator
 store 1
 store 0
 load 1
 assert
 load 0
-frame_dig -1
+pushbytes 0x3ed6145d03fca681550a583628ec7ba151698951ec6980c18552f4ff45fd3dae // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
 ==
 assert
 retsub
@@ -204,7 +204,7 @@ retsub
 update_5:
 proto 0 0
 txn Sender
-bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 ==
 assert
 retsub
@@ -212,14 +212,13 @@ retsub
 // initialize
 initialize_6:
 proto 4 0
-frame_dig -1
-txnas Applications
-bytec_0 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_4
 txn Sender
-bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 ==
 assert
+frame_dig -1
+txnas Applications
+callsub assertapplicationcreator_4
 itxn_begin
 intc_2 // appl
 itxn_field TypeEnum
@@ -247,14 +246,13 @@ retsub
 // populate
 populate_7:
 proto 9 0
-frame_dig -1
-txnas Applications
-bytec_0 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_4
 txn Sender
-bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 ==
 assert
+frame_dig -1
+txnas Applications
+callsub assertapplicationcreator_4
 itxn_begin
 intc_2 // appl
 itxn_field TypeEnum
@@ -291,14 +289,13 @@ retsub
 // finalize
 finalize_8:
 proto 6 0
-frame_dig -1
-txnas Applications
-bytec_0 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_4
 txn Sender
-bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 ==
 assert
+frame_dig -1
+txnas Applications
+callsub assertapplicationcreator_4
 itxn_begin
 intc_2 // appl
 itxn_field TypeEnum
@@ -330,11 +327,7 @@ upgrade_9:
 proto 1 0
 frame_dig -1
 txnas Applications
-bytec_0 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_4
-frame_dig -1
-txnas Applications
-bytec_1 // "Config1"
+bytec_0 // "Config1"
 pushint 39 // 39
 intc_1 // 1
 callsub getglobalexternaluint_1
@@ -343,7 +336,7 @@ intc_0 // 0
 assert
 frame_dig -1
 txnas Applications
-bytec_1 // "Config1"
+bytec_0 // "Config1"
 pushint 16 // 16
 intc_3 // 8
 callsub getglobalexternaluint_1
@@ -355,6 +348,9 @@ txn GroupIndex
 intc_1 // 1
 +
 callsub assertsenderassettransfer_3
+frame_dig -1
+txnas Applications
+callsub assertapplicationcreator_4
 itxn_begin
 intc_2 // appl
 itxn_field TypeEnum
@@ -373,11 +369,7 @@ list_10:
 proto 2 0
 frame_dig -1
 txnas Applications
-bytec_0 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_4
-frame_dig -1
-txnas Applications
-bytec_1 // "Config1"
+bytec_0 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
 callsub getglobalexternalbytes_0
@@ -386,7 +378,7 @@ global ZeroAddress
 assert
 frame_dig -1
 txnas Applications
-bytec_1 // "Config1"
+bytec_0 // "Config1"
 pushint 64 // 64
 intc_3 // 8
 callsub getglobalexternaluint_1
@@ -399,7 +391,7 @@ intc_0 // 0
 assert
 frame_dig -1
 txnas Applications
-bytec_1 // "Config1"
+bytec_0 // "Config1"
 intc_3 // 8
 intc_3 // 8
 callsub getglobalexternaluint_1
@@ -411,6 +403,9 @@ txn GroupIndex
 intc_1 // 1
 +
 callsub assertsenderassettransfer_3
+frame_dig -1
+txnas Applications
+callsub assertapplicationcreator_4
 itxn_begin
 intc_2 // appl
 itxn_field TypeEnum

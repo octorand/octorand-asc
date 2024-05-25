@@ -12,6 +12,13 @@ config1 = const.Config1()
 config2 = const.Config2()
 
 
+@Subroutine(TealType.none)
+def assert_application_caller():
+    return Seq(
+        Assert(Global.caller_app_id() == const.main_application_id),
+    )
+
+
 @app.create(bare=True)
 def create():
     return Seq(
@@ -34,7 +41,7 @@ def initialize(
     legacy_asset: abi.Asset,
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.main_application_id),
+        assert_application_caller(),
         config1.id.set(id.get()),
         config1.prime_asset_id.set(prime_asset.asset_id()),
         config1.legacy_asset_id.set(legacy_asset.asset_id()),
@@ -58,7 +65,7 @@ def populate(
     description: abi.StaticBytes[Literal[64]],
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.main_application_id),
+        assert_application_caller(),
         config1.theme.set(theme.get()),
         config1.skin.set(skin.get()),
         config1.is_founder.set(is_founder.get()),
@@ -79,7 +86,7 @@ def finalize(
     repaints: abi.Uint64,
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.main_application_id),
+        assert_application_caller(),
         config1.score.set(score.get()),
         config1.sales.set(sales.get()),
         config1.mints.set(mints.get()),
@@ -93,7 +100,7 @@ def upgrade(
     sender: abi.Address,
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.main_application_id),
+        assert_application_caller(),
         func.execute_asset_transfer(
             config1.prime_asset_id.get(),
             sender.get(),
@@ -109,7 +116,7 @@ def list(
     seller: abi.Address,
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.main_application_id),
+        assert_application_caller(),
         config1.price.set(price.get()),
         config1.seller.set(seller.get()),
     )
