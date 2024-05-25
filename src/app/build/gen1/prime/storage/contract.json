@@ -179,6 +179,66 @@
             "returns": {
                 "type": "void"
             }
+        },
+        {
+            "name": "mint",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "amount"
+                },
+                {
+                    "type": "address",
+                    "name": "owner"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "withdraw",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "amount"
+                },
+                {
+                    "type": "address",
+                    "name": "owner"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "optin",
+            "args": [
+                {
+                    "type": "asset",
+                    "name": "asset"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "optout",
+            "args": [
+                {
+                    "type": "asset",
+                    "name": "asset"
+                },
+                {
+                    "type": "address",
+                    "name": "owner"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
         }
     ],
     "networks": {}

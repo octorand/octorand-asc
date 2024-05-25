@@ -208,6 +208,70 @@
             "returns": {
                 "type": "void"
             }
+        },
+        {
+            "name": "mint",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "amount"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "withdraw",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "amount"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "optin",
+            "args": [
+                {
+                    "type": "asset",
+                    "name": "asset"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "optout",
+            "args": [
+                {
+                    "type": "asset",
+                    "name": "asset"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
         }
     ],
     "networks": {}

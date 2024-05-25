@@ -186,3 +186,54 @@ def describe(
         assert_application_caller(),
         config2.description.set(description.get()),
     )
+
+
+@app.external(name="mint")
+def mint(
+    amount: abi.Uint64,
+    owner: abi.Address,
+):
+    return Seq(
+        assert_application_caller(),
+        func.execute_asset_transfer(
+            const.platform_asset_id,
+            owner.get(),
+            amount.get(),
+        ),
+        config1.mints.increment(Int(1)),
+    )
+
+
+@app.external(name="withdraw")
+def withdraw(
+    amount: abi.Uint64,
+    owner: abi.Address,
+):
+    return Seq(
+        assert_application_caller(),
+        func.execute_payment(
+            owner.get(),
+            amount.get(),
+        ),
+    )
+
+
+@app.external(name="optin")
+def optin(
+    asset: abi.Asset,
+):
+    return Seq(
+        assert_application_caller(),
+        func.optin_into_asset(asset.asset_id()),
+    )
+
+
+@app.external(name="optout")
+def optout(
+    asset: abi.Asset,
+    owner: abi.Address,
+):
+    return Seq(
+        assert_application_caller(),
+        func.optout_from_asset(asset.asset_id(), owner.get()),
+    )

@@ -187,21 +187,19 @@ def buy(
     application: abi.Application,
 ):
     app_id = application.application_id()
+    seller_share = Mul(config1.price.external(app_id), const.seller_market_share)
+    admin_share = Mul(config1.price.external(app_id), const.admin_market_share)
     return Seq(
         Assert(config1.price.external(app_id) > Int(0)),
         Assert(config1.seller.external(app_id) != Global.zero_address()),
         func.assert_sender_payment(
             config1.seller.external(app_id),
-            Div(
-                Mul(config1.price.external(app_id), const.seller_market_share), Int(100)
-            ),
+            Div(seller_share, Int(100)),
             Add(Txn.group_index(), Int(1)),
         ),
         func.assert_sender_payment(
             const.admin_address,
-            Div(
-                Mul(config1.price.external(app_id), const.admin_market_share), Int(100)
-            ),
+            Div(admin_share, Int(100)),
             Add(Txn.group_index(), Int(2)),
         ),
         assert_application_creator(app_id),
@@ -302,6 +300,97 @@ def describe(
             method_signature=storage.describe.method_signature(),
             args=[
                 description,
+            ],
+        ),
+    )
+
+
+@app.external(name="mint")
+def mint(
+    amount: abi.Uint64,
+    application: abi.Application,
+):
+    app_id = application.application_id()
+    return Seq(
+        Assert(amount.get() > Int(0)),
+        func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
+        assert_application_creator(app_id),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
+            method_signature=storage.mint.method_signature(),
+            args=[
+                amount,
+                Txn.sender(),
+            ],
+        ),
+    )
+
+
+@app.external(name="withdraw")
+def withdraw(
+    amount: abi.Uint64,
+    application: abi.Application,
+):
+    app_id = application.application_id()
+    return Seq(
+        Assert(amount.get() > Int(0)),
+        func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
+        assert_application_creator(app_id),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
+            method_signature=storage.withdraw.method_signature(),
+            args=[
+                amount,
+                Txn.sender(),
+            ],
+        ),
+    )
+
+
+@app.external(name="optin")
+def optin(
+    asset: abi.Asset,
+    application: abi.Application,
+):
+    app_id = application.application_id()
+    return Seq(
+        Assert(asset.asset_id() != const.platform_asset_id),
+        Assert(asset.asset_id() != config1.prime_asset_id.external(app_id)),
+        Assert(asset.asset_id() != config1.legacy_asset_id.external(app_id)),
+        func.assert_sender_payment(
+            func.get_application_address(app_id),
+            const.optin_price,
+            Add(Txn.group_index(), Int(1)),
+        ),
+        assert_application_creator(app_id),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
+            method_signature=storage.optin.method_signature(),
+            args=[
+                asset,
+            ],
+        ),
+    )
+
+
+@app.external(name="optout")
+def optout(
+    asset: abi.Asset,
+    application: abi.Application,
+):
+    app_id = application.application_id()
+    return Seq(
+        Assert(asset.asset_id() != const.platform_asset_id),
+        Assert(asset.asset_id() != config1.prime_asset_id.external(app_id)),
+        Assert(asset.asset_id() != config1.legacy_asset_id.external(app_id)),
+        func.assert_sender_asset_holding(config1.prime_asset_id.external(app_id)),
+        assert_application_creator(app_id),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
+            method_signature=storage.optout.method_signature(),
+            args=[
+                asset,
+                Txn.sender(),
             ],
         ),
     )
