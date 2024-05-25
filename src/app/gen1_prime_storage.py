@@ -39,6 +39,7 @@ def initialize(
     id: abi.Uint64,
     prime_asset: abi.Asset,
     legacy_asset: abi.Asset,
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
@@ -50,6 +51,7 @@ def initialize(
         func.optin_into_asset(const.platform_asset_id),
         func.optin_into_asset(prime_asset.asset_id()),
         func.optin_into_asset(legacy_asset.asset_id()),
+        Log(log.get()),
     )
 
 
@@ -63,6 +65,7 @@ def populate(
     is_explorer: abi.Uint64,
     name: abi.StaticBytes[Literal[8]],
     description: abi.StaticBytes[Literal[64]],
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
@@ -74,6 +77,7 @@ def populate(
         config1.is_explorer.set(is_explorer.get()),
         config1.name.set(name.get()),
         config2.description.set(description.get()),
+        Log(log.get()),
     )
 
 
@@ -84,6 +88,7 @@ def finalize(
     mints: abi.Uint64,
     renames: abi.Uint64,
     repaints: abi.Uint64,
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
@@ -92,12 +97,14 @@ def finalize(
         config1.mints.set(mints.get()),
         config1.renames.set(renames.get()),
         config1.repaints.set(repaints.get()),
+        Log(log.get()),
     )
 
 
 @app.external(name="upgrade")
 def upgrade(
     owner: abi.Address,
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
@@ -108,6 +115,7 @@ def upgrade(
             Int(1),
         ),
         config1.is_explorer.set(Int(1)),
+        Log(log.get()),
     )
 
 
@@ -115,6 +123,7 @@ def upgrade(
 def list(
     price: abi.Uint64,
     seller: abi.Address,
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
@@ -122,12 +131,14 @@ def list(
         Assert(config1.price.get() == Int(0)),
         config1.price.set(price.get()),
         config1.seller.set(seller.get()),
+        Log(log.get()),
     )
 
 
 @app.external(name="unlist")
 def unlist(
     seller: abi.Address,
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
@@ -140,12 +151,14 @@ def unlist(
         ),
         config1.price.set(Int(0)),
         config1.seller.set(Global.zero_address()),
+        Log(log.get()),
     )
 
 
 @app.external(name="buy")
 def buy(
     buyer: abi.Address,
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
@@ -159,6 +172,7 @@ def buy(
         config1.price.set(Int(0)),
         config1.seller.set(Global.zero_address()),
         config1.sales.increment(Int(1)),
+        Log(log.get()),
     )
 
 
@@ -166,11 +180,13 @@ def buy(
 def rename(
     index: abi.Uint64,
     value: abi.Uint64,
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
         config1.name.set(SetByte(config1.name.get(), index.get(), value.get())),
         config1.renames.increment(Int(1)),
+        Log(log.get()),
     )
 
 
@@ -178,22 +194,26 @@ def rename(
 def repaint(
     theme: abi.Uint64,
     skin: abi.Uint64,
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
         config1.theme.set(theme.get()),
         config1.skin.set(skin.get()),
         config1.repaints.increment(Int(1)),
+        Log(log.get()),
     )
 
 
 @app.external(name="describe")
 def describe(
     description: abi.StaticBytes[Literal[64]],
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
         config2.description.set(description.get()),
+        Log(log.get()),
     )
 
 
@@ -201,6 +221,7 @@ def describe(
 def mint(
     amount: abi.Uint64,
     owner: abi.Address,
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
@@ -210,6 +231,7 @@ def mint(
             amount.get(),
         ),
         config1.mints.increment(Int(1)),
+        Log(log.get()),
     )
 
 
@@ -217,6 +239,7 @@ def mint(
 def withdraw(
     amount: abi.Uint64,
     owner: abi.Address,
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
@@ -224,12 +247,14 @@ def withdraw(
             owner.get(),
             amount.get(),
         ),
+        Log(log.get()),
     )
 
 
 @app.external(name="optin")
 def optin(
     asset: abi.Asset,
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
@@ -237,6 +262,7 @@ def optin(
         Assert(asset.asset_id() != config1.prime_asset_id.get()),
         Assert(asset.asset_id() != config1.legacy_asset_id.get()),
         func.optin_into_asset(asset.asset_id()),
+        Log(log.get()),
     )
 
 
@@ -244,6 +270,7 @@ def optin(
 def optout(
     asset: abi.Asset,
     owner: abi.Address,
+    log: abi.DynamicBytes,
 ):
     return Seq(
         assert_application_caller(),
@@ -251,4 +278,5 @@ def optout(
         Assert(asset.asset_id() != config1.prime_asset_id.get()),
         Assert(asset.asset_id() != config1.legacy_asset_id.get()),
         func.optout_from_asset(asset.asset_id(), owner.get()),
+        Log(log.get()),
     )

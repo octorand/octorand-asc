@@ -1,6 +1,6 @@
 #pragma version 8
 intcblock 0 1 8 6 660757756 10000000
-bytecblock 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x00 0x
+bytecblock 0x 0x436f6e66696731 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x00
 txn NumAppArgs
 intc_0 // 0
 ==
@@ -393,7 +393,7 @@ retsub
 update_7:
 proto 0 0
 txn Sender
-bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 ==
 assert
 retsub
@@ -402,7 +402,7 @@ retsub
 initialize_8:
 proto 4 0
 txn Sender
-bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 ==
 assert
 frame_dig -1
@@ -420,23 +420,27 @@ itxn_field Assets
 frame_dig -2
 txnas Assets
 itxn_field Assets
-pushbytes 0xbc525b0f // "initialize(uint64,asset,asset)void"
+pushbytes 0x879a3618 // "initialize(uint64,asset,asset,byte[])void"
 itxn_field ApplicationArgs
 frame_dig -4
 itob
 itxn_field ApplicationArgs
-bytec_2 // 0x00
+bytec_3 // 0x00
 itxn_field ApplicationArgs
 pushbytes 0x01 // 0x01
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // populate
 populate_9:
 proto 9 0
 txn Sender
-bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 ==
 assert
 frame_dig -1
@@ -448,7 +452,7 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-pushbytes 0x092c7520 // "populate(uint64,uint64,uint64,uint64,uint64,uint64,byte[8],byte[64])void"
+pushbytes 0x6e026c49 // "populate(uint64,uint64,uint64,uint64,uint64,uint64,byte[8],byte[64],byte[])void"
 itxn_field ApplicationArgs
 frame_dig -9
 itob
@@ -472,14 +476,18 @@ frame_dig -3
 itxn_field ApplicationArgs
 frame_dig -2
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // finalize
 finalize_10:
 proto 6 0
 txn Sender
-bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 ==
 assert
 frame_dig -1
@@ -491,7 +499,7 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-pushbytes 0x9675e058 // "finalize(uint64,uint64,uint64,uint64,uint64)void"
+pushbytes 0xe8b33d40 // "finalize(uint64,uint64,uint64,uint64,uint64,byte[])void"
 itxn_field ApplicationArgs
 frame_dig -6
 itob
@@ -508,7 +516,11 @@ itxn_field ApplicationArgs
 frame_dig -2
 itob
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // upgrade
@@ -516,7 +528,7 @@ upgrade_11:
 proto 1 0
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 pushint 16 // 16
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -537,11 +549,15 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-pushbytes 0x1f565e4f // "upgrade(address)void"
+pushbytes 0x99478afe // "upgrade(address,byte[])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // list
@@ -553,7 +569,7 @@ intc_0 // 0
 assert
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -574,14 +590,18 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-pushbytes 0xe15a0ebb // "list(uint64,address)void"
+pushbytes 0x1f7b62d1 // "list(uint64,address,byte[])void"
 itxn_field ApplicationArgs
 frame_dig -2
 itob
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // unlist
@@ -596,11 +616,15 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-pushbytes 0x5720726a // "unlist(address)void"
+pushbytes 0xd2eb4945 // "unlist(address,byte[])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // buy
@@ -608,13 +632,13 @@ buy_14:
 proto 1 0
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 pushint 72 // 72
 pushint 32 // 32
 callsub getglobalexternalbytes_0
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 pushint 64 // 64
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -626,10 +650,10 @@ txn GroupIndex
 intc_1 // 1
 +
 callsub assertsenderpayment_4
-bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 pushint 64 // 64
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -650,11 +674,15 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-pushbytes 0x9f5f5101 // "buy(address)void"
+pushbytes 0x08d14498 // "buy(address,byte[])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // rename
@@ -674,18 +702,18 @@ pushint 90 // 90
 assert
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
 intc 4 // 660757756
-bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 intc 5 // 10000000
 frame_dig -2
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalexternalbytes_0
@@ -695,7 +723,7 @@ getbyte
 bnz rename_15_l2
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalexternalbytes_0
@@ -708,7 +736,7 @@ rename_15_l2:
 frame_dig -2
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 pushint 104 // 104
 intc_2 // 8
 callsub getglobalexternalbytes_0
@@ -730,7 +758,7 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-pushbytes 0x5bff6c91 // "rename(uint64,uint64)void"
+pushbytes 0x7a06a274 // "rename(uint64,uint64,byte[])void"
 itxn_field ApplicationArgs
 frame_dig -3
 itob
@@ -738,7 +766,11 @@ itxn_field ApplicationArgs
 frame_dig -2
 itob
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // repaint
@@ -754,13 +786,13 @@ pushint 7 // 7
 assert
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
 intc 4 // 660757756
-bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 intc 5 // 10000000
 txn GroupIndex
 intc_1 // 1
@@ -775,7 +807,7 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-pushbytes 0xac86822b // "repaint(uint64,uint64)void"
+pushbytes 0x12086743 // "repaint(uint64,uint64,byte[])void"
 itxn_field ApplicationArgs
 frame_dig -3
 itob
@@ -783,7 +815,11 @@ itxn_field ApplicationArgs
 frame_dig -2
 itob
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // describe
@@ -791,13 +827,13 @@ describe_17:
 proto 2 0
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
 intc 4 // 660757756
-bytec_1 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 intc 5 // 10000000
 txn GroupIndex
 intc_1 // 1
@@ -812,11 +848,15 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-pushbytes 0x698ea56f // "describe(byte[64])void"
+pushbytes 0x4712243d // "describe(byte[64],byte[])void"
 itxn_field ApplicationArgs
 frame_dig -2
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // mint
@@ -828,7 +868,7 @@ intc_0 // 0
 assert
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -842,14 +882,18 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-pushbytes 0x0095d2e7 // "mint(uint64,address)void"
+pushbytes 0xc1552c0d // "mint(uint64,address,byte[])void"
 itxn_field ApplicationArgs
 frame_dig -2
 itob
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // withdraw
@@ -861,7 +905,7 @@ intc_0 // 0
 assert
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -875,14 +919,18 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-pushbytes 0xa381297a // "withdraw(uint64,address)void"
+pushbytes 0x525cd048 // "withdraw(uint64,address,byte[])void"
 itxn_field ApplicationArgs
 frame_dig -2
 itob
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // optin
@@ -908,11 +956,15 @@ itxn_field ApplicationID
 frame_dig -2
 txnas Assets
 itxn_field Assets
-pushbytes 0x7f19f9d4 // "optin(asset)void"
+pushbytes 0x60907821 // "optin(asset,byte[])void"
 itxn_field ApplicationArgs
-bytec_2 // 0x00
+bytec_3 // 0x00
+itxn_field ApplicationArgs
+bytec_0 // ""
 itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // optout
@@ -920,7 +972,7 @@ optout_21:
 proto 2 0
 frame_dig -1
 txnas Applications
-bytec_0 // "Config1"
+bytec_1 // "Config1"
 intc_2 // 8
 intc_2 // 8
 callsub getglobalexternaluint_1
@@ -937,13 +989,17 @@ itxn_field ApplicationID
 frame_dig -2
 txnas Assets
 itxn_field Assets
-pushbytes 0xecd39519 // "optout(asset,address)void"
+pushbytes 0x2e0ddd79 // "optout(asset,address,byte[])void"
 itxn_field ApplicationArgs
-bytec_2 // 0x00
+bytec_3 // 0x00
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
+bytec_0 // ""
+itxn_field ApplicationArgs
 itxn_submit
+bytec_0 // ""
+log
 retsub
 
 // initialize_caster
@@ -978,7 +1034,7 @@ populatecaster_23:
 proto 0 0
 intc_0 // 0
 dupn 5
-bytec_3 // ""
+bytec_0 // ""
 dup
 intc_0 // 0
 txna ApplicationArgs 1
@@ -1150,7 +1206,7 @@ retsub
 // describe_caster
 describecaster_31:
 proto 0 0
-bytec_3 // ""
+bytec_0 // ""
 intc_0 // 0
 txna ApplicationArgs 1
 frame_bury 0

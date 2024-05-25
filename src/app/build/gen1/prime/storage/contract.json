@@ -15,6 +15,10 @@
                 {
                     "type": "asset",
                     "name": "legacy_asset"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -55,6 +59,10 @@
                 {
                     "type": "byte[64]",
                     "name": "description"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -83,6 +91,10 @@
                 {
                     "type": "uint64",
                     "name": "repaints"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -95,6 +107,10 @@
                 {
                     "type": "address",
                     "name": "owner"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -111,6 +127,10 @@
                 {
                     "type": "address",
                     "name": "seller"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -123,6 +143,10 @@
                 {
                     "type": "address",
                     "name": "seller"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -135,6 +159,10 @@
                 {
                     "type": "address",
                     "name": "buyer"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -151,6 +179,10 @@
                 {
                     "type": "uint64",
                     "name": "value"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -167,6 +199,10 @@
                 {
                     "type": "uint64",
                     "name": "skin"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -179,6 +215,10 @@
                 {
                     "type": "byte[64]",
                     "name": "description"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -195,6 +235,10 @@
                 {
                     "type": "address",
                     "name": "owner"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -211,6 +255,10 @@
                 {
                     "type": "address",
                     "name": "owner"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -223,6 +271,10 @@
                 {
                     "type": "asset",
                     "name": "asset"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
@@ -239,6 +291,10 @@
                 {
                     "type": "address",
                     "name": "owner"
+                },
+                {
+                    "type": "byte[]",
+                    "name": "log"
                 }
             ],
             "returns": {
