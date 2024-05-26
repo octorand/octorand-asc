@@ -1,0 +1,1181 @@
+#pragma version 8
+intcblock 0 1 8 4 660757756
+bytecblock 0x5031 0x 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x5032
+txn NumAppArgs
+intc_0 // 0
+==
+bnz main_l30
+txna ApplicationArgs 0
+pushbytes 0xbc525b0f // "initialize(uint64,asset,asset)void"
+==
+bnz main_l29
+txna ApplicationArgs 0
+pushbytes 0x092c7520 // "populate(uint64,uint64,uint64,uint64,uint64,uint64,byte[8],byte[64])void"
+==
+bnz main_l28
+txna ApplicationArgs 0
+pushbytes 0x9675e058 // "finalize(uint64,uint64,uint64,uint64,uint64)void"
+==
+bnz main_l27
+txna ApplicationArgs 0
+pushbytes 0x1f7b62d1 // "list(uint64,address,byte[])void"
+==
+bnz main_l26
+txna ApplicationArgs 0
+pushbytes 0xd2eb4945 // "unlist(address,byte[])void"
+==
+bnz main_l25
+txna ApplicationArgs 0
+pushbytes 0x08d14498 // "buy(address,byte[])void"
+==
+bnz main_l24
+txna ApplicationArgs 0
+pushbytes 0x7a06a274 // "rename(uint64,uint64,byte[])void"
+==
+bnz main_l23
+txna ApplicationArgs 0
+pushbytes 0x12086743 // "repaint(uint64,uint64,byte[])void"
+==
+bnz main_l22
+txna ApplicationArgs 0
+pushbytes 0x4712243d // "describe(byte[64],byte[])void"
+==
+bnz main_l21
+txna ApplicationArgs 0
+pushbytes 0x99478afe // "upgrade(address,byte[])void"
+==
+bnz main_l20
+txna ApplicationArgs 0
+pushbytes 0xc1552c0d // "mint(uint64,address,byte[])void"
+==
+bnz main_l19
+txna ApplicationArgs 0
+pushbytes 0x525cd048 // "withdraw(uint64,address,byte[])void"
+==
+bnz main_l18
+txna ApplicationArgs 0
+pushbytes 0x60907821 // "optin(asset,byte[])void"
+==
+bnz main_l17
+txna ApplicationArgs 0
+pushbytes 0x2e0ddd79 // "optout(asset,address,byte[])void"
+==
+bnz main_l16
+err
+main_l16:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub optoutcaster_38
+intc_1 // 1
+return
+main_l17:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub optincaster_37
+intc_1 // 1
+return
+main_l18:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub withdrawcaster_36
+intc_1 // 1
+return
+main_l19:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub mintcaster_35
+intc_1 // 1
+return
+main_l20:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub upgradecaster_34
+intc_1 // 1
+return
+main_l21:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub describecaster_33
+intc_1 // 1
+return
+main_l22:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub repaintcaster_32
+intc_1 // 1
+return
+main_l23:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub renamecaster_31
+intc_1 // 1
+return
+main_l24:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub buycaster_30
+intc_1 // 1
+return
+main_l25:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub unlistcaster_29
+intc_1 // 1
+return
+main_l26:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub listcaster_28
+intc_1 // 1
+return
+main_l27:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub finalizecaster_27
+intc_1 // 1
+return
+main_l28:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub populatecaster_26
+intc_1 // 1
+return
+main_l29:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub initializecaster_25
+intc_1 // 1
+return
+main_l30:
+txn OnCompletion
+intc_0 // NoOp
+==
+bnz main_l34
+txn OnCompletion
+intc_3 // UpdateApplication
+==
+bnz main_l33
+err
+main_l33:
+txn ApplicationID
+intc_0 // 0
+!=
+assert
+callsub update_10
+intc_1 // 1
+return
+main_l34:
+txn ApplicationID
+intc_0 // 0
+==
+assert
+callsub create_9
+intc_1 // 1
+return
+
+// init_global
+initglobal_0:
+proto 1 0
+frame_dig -1
+pushint 120 // 120
+bzero
+app_global_put
+retsub
+
+// get_global_bytes
+getglobalbytes_1:
+proto 3 1
+frame_dig -3
+app_global_get
+frame_dig -2
+frame_dig -1
+extract3
+retsub
+
+// get_global_uint
+getglobaluint_2:
+proto 3 1
+frame_dig -3
+frame_dig -2
+frame_dig -1
+callsub getglobalbytes_1
+btoi
+retsub
+
+// set_global_bytes
+setglobalbytes_3:
+proto 4 0
+frame_dig -4
+len
+frame_dig -1
+==
+assert
+frame_dig -3
+frame_dig -3
+app_global_get
+intc_0 // 0
+frame_dig -2
+extract3
+frame_dig -4
+concat
+frame_dig -3
+app_global_get
+frame_dig -2
+frame_dig -1
++
+pushint 120 // 120
+substring3
+concat
+app_global_put
+retsub
+
+// set_global_uint
+setglobaluint_4:
+proto 4 0
+frame_dig -4
+itob
+intc_2 // 8
+frame_dig -1
+-
+frame_dig -1
+extract3
+frame_dig -3
+frame_dig -2
+frame_dig -1
+callsub setglobalbytes_3
+retsub
+
+// optin_into_asset
+optinintoasset_5:
+proto 1 0
+itxn_begin
+intc_3 // axfer
+itxn_field TypeEnum
+frame_dig -1
+itxn_field XferAsset
+intc_0 // 0
+itxn_field AssetAmount
+global CurrentApplicationAddress
+itxn_field AssetReceiver
+intc_0 // 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// optout_from_asset
+optoutfromasset_6:
+proto 2 0
+itxn_begin
+intc_3 // axfer
+itxn_field TypeEnum
+frame_dig -2
+itxn_field XferAsset
+intc_0 // 0
+itxn_field AssetAmount
+frame_dig -1
+itxn_field AssetReceiver
+frame_dig -1
+itxn_field AssetCloseTo
+intc_0 // 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// execute_payment
+executepayment_7:
+proto 2 0
+itxn_begin
+intc_1 // pay
+itxn_field TypeEnum
+frame_dig -2
+itxn_field Receiver
+frame_dig -1
+itxn_field Amount
+intc_0 // 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// execute_asset_transfer
+executeassettransfer_8:
+proto 3 0
+itxn_begin
+intc_3 // axfer
+itxn_field TypeEnum
+frame_dig -3
+itxn_field XferAsset
+frame_dig -2
+itxn_field AssetReceiver
+frame_dig -1
+itxn_field AssetAmount
+intc_0 // 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// create
+create_9:
+proto 0 0
+bytec_0 // "P1"
+callsub initglobal_0
+bytec_3 // "P2"
+callsub initglobal_0
+retsub
+
+// update
+update_10:
+proto 0 0
+txn Sender
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+retsub
+
+// initialize
+initialize_11:
+proto 3 0
+txn Sender
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+frame_dig -3
+bytec_0 // "P1"
+intc_0 // 0
+intc_2 // 8
+callsub setglobaluint_4
+frame_dig -2
+txnas Assets
+bytec_0 // "P1"
+intc_2 // 8
+intc_2 // 8
+callsub setglobaluint_4
+frame_dig -1
+txnas Assets
+bytec_0 // "P1"
+pushint 16 // 16
+intc_2 // 8
+callsub setglobaluint_4
+intc_0 // 0
+bytec_0 // "P1"
+pushint 64 // 64
+intc_2 // 8
+callsub setglobaluint_4
+global ZeroAddress
+bytec_0 // "P1"
+pushint 72 // 72
+pushint 32 // 32
+callsub setglobalbytes_3
+intc 4 // 660757756
+callsub optinintoasset_5
+frame_dig -2
+txnas Assets
+callsub optinintoasset_5
+frame_dig -1
+txnas Assets
+callsub optinintoasset_5
+retsub
+
+// populate
+populate_12:
+proto 8 0
+txn Sender
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+frame_dig -8
+bytec_0 // "P1"
+pushint 32 // 32
+pushint 2 // 2
+callsub setglobaluint_4
+frame_dig -7
+bytec_0 // "P1"
+pushint 34 // 34
+pushint 2 // 2
+callsub setglobaluint_4
+frame_dig -6
+bytec_0 // "P1"
+pushint 36 // 36
+intc_1 // 1
+callsub setglobaluint_4
+frame_dig -5
+bytec_0 // "P1"
+pushint 37 // 37
+intc_1 // 1
+callsub setglobaluint_4
+frame_dig -4
+bytec_0 // "P1"
+pushint 38 // 38
+intc_1 // 1
+callsub setglobaluint_4
+frame_dig -3
+bytec_0 // "P1"
+pushint 39 // 39
+intc_1 // 1
+callsub setglobaluint_4
+frame_dig -2
+bytec_0 // "P1"
+pushint 104 // 104
+intc_2 // 8
+callsub setglobalbytes_3
+frame_dig -1
+bytec_3 // "P2"
+intc_0 // 0
+pushint 64 // 64
+callsub setglobalbytes_3
+retsub
+
+// finalize
+finalize_13:
+proto 5 0
+txn Sender
+bytec_2 // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+frame_dig -5
+bytec_0 // "P1"
+pushint 40 // 40
+intc_2 // 8
+callsub setglobaluint_4
+frame_dig -4
+bytec_0 // "P1"
+pushint 48 // 48
+intc_3 // 4
+callsub setglobaluint_4
+frame_dig -3
+bytec_0 // "P1"
+pushint 52 // 52
+intc_3 // 4
+callsub setglobaluint_4
+frame_dig -2
+bytec_0 // "P1"
+pushint 56 // 56
+intc_3 // 4
+callsub setglobaluint_4
+frame_dig -1
+bytec_0 // "P1"
+pushint 60 // 60
+intc_3 // 4
+callsub setglobaluint_4
+retsub
+
+// list
+list_14:
+proto 3 0
+global CallerApplicationID
+intc_0 // 0
+==
+assert
+bytec_0 // "P1"
+pushint 72 // 72
+pushint 32 // 32
+callsub getglobalbytes_1
+global ZeroAddress
+==
+assert
+bytec_0 // "P1"
+pushint 64 // 64
+intc_2 // 8
+callsub getglobaluint_2
+intc_0 // 0
+==
+assert
+frame_dig -3
+bytec_0 // "P1"
+pushint 64 // 64
+intc_2 // 8
+callsub setglobaluint_4
+frame_dig -2
+bytec_0 // "P1"
+pushint 72 // 72
+pushint 32 // 32
+callsub setglobalbytes_3
+frame_dig -1
+extract 2 0
+log
+retsub
+
+// unlist
+unlist_15:
+proto 2 0
+global CallerApplicationID
+intc_0 // 0
+==
+assert
+bytec_0 // "P1"
+pushint 64 // 64
+intc_2 // 8
+callsub getglobaluint_2
+intc_0 // 0
+>
+assert
+bytec_0 // "P1"
+pushint 72 // 72
+pushint 32 // 32
+callsub getglobalbytes_1
+frame_dig -2
+==
+assert
+bytec_0 // "P1"
+intc_2 // 8
+intc_2 // 8
+callsub getglobaluint_2
+frame_dig -2
+intc_1 // 1
+callsub executeassettransfer_8
+intc_0 // 0
+bytec_0 // "P1"
+pushint 64 // 64
+intc_2 // 8
+callsub setglobaluint_4
+global ZeroAddress
+bytec_0 // "P1"
+pushint 72 // 72
+pushint 32 // 32
+callsub setglobalbytes_3
+frame_dig -1
+extract 2 0
+log
+retsub
+
+// buy
+buy_16:
+proto 2 0
+global CallerApplicationID
+intc_0 // 0
+==
+assert
+bytec_0 // "P1"
+pushint 64 // 64
+intc_2 // 8
+callsub getglobaluint_2
+intc_0 // 0
+>
+assert
+bytec_0 // "P1"
+pushint 72 // 72
+pushint 32 // 32
+callsub getglobalbytes_1
+global ZeroAddress
+!=
+assert
+bytec_0 // "P1"
+intc_2 // 8
+intc_2 // 8
+callsub getglobaluint_2
+frame_dig -2
+intc_1 // 1
+callsub executeassettransfer_8
+intc_0 // 0
+bytec_0 // "P1"
+pushint 64 // 64
+intc_2 // 8
+callsub setglobaluint_4
+global ZeroAddress
+bytec_0 // "P1"
+pushint 72 // 72
+pushint 32 // 32
+callsub setglobalbytes_3
+bytec_0 // "P1"
+pushint 48 // 48
+intc_3 // 4
+callsub getglobaluint_2
+intc_1 // 1
++
+bytec_0 // "P1"
+pushint 48 // 48
+intc_3 // 4
+callsub setglobaluint_4
+frame_dig -1
+extract 2 0
+log
+retsub
+
+// rename
+rename_17:
+proto 3 0
+global CallerApplicationID
+intc_0 // 0
+==
+assert
+bytec_0 // "P1"
+pushint 104 // 104
+intc_2 // 8
+callsub getglobalbytes_1
+frame_dig -3
+frame_dig -2
+setbyte
+bytec_0 // "P1"
+pushint 104 // 104
+intc_2 // 8
+callsub setglobalbytes_3
+bytec_0 // "P1"
+pushint 56 // 56
+intc_3 // 4
+callsub getglobaluint_2
+intc_1 // 1
++
+bytec_0 // "P1"
+pushint 56 // 56
+intc_3 // 4
+callsub setglobaluint_4
+frame_dig -1
+extract 2 0
+log
+retsub
+
+// repaint
+repaint_18:
+proto 3 0
+global CallerApplicationID
+intc_0 // 0
+==
+assert
+frame_dig -3
+bytec_0 // "P1"
+pushint 32 // 32
+pushint 2 // 2
+callsub setglobaluint_4
+frame_dig -2
+bytec_0 // "P1"
+pushint 34 // 34
+pushint 2 // 2
+callsub setglobaluint_4
+bytec_0 // "P1"
+pushint 60 // 60
+intc_3 // 4
+callsub getglobaluint_2
+intc_1 // 1
++
+bytec_0 // "P1"
+pushint 60 // 60
+intc_3 // 4
+callsub setglobaluint_4
+frame_dig -1
+extract 2 0
+log
+retsub
+
+// describe
+describe_19:
+proto 2 0
+global CallerApplicationID
+intc_0 // 0
+==
+assert
+frame_dig -2
+bytec_3 // "P2"
+intc_0 // 0
+pushint 64 // 64
+callsub setglobalbytes_3
+frame_dig -1
+extract 2 0
+log
+retsub
+
+// upgrade
+upgrade_20:
+proto 2 0
+global CallerApplicationID
+intc_0 // 0
+==
+assert
+bytec_0 // "P1"
+pushint 39 // 39
+intc_1 // 1
+callsub getglobaluint_2
+intc_0 // 0
+==
+assert
+bytec_0 // "P1"
+intc_2 // 8
+intc_2 // 8
+callsub getglobaluint_2
+frame_dig -2
+intc_1 // 1
+callsub executeassettransfer_8
+intc_1 // 1
+bytec_0 // "P1"
+pushint 39 // 39
+intc_1 // 1
+callsub setglobaluint_4
+frame_dig -1
+extract 2 0
+log
+retsub
+
+// mint
+mint_21:
+proto 3 0
+global CallerApplicationID
+intc_0 // 0
+==
+assert
+intc 4 // 660757756
+frame_dig -2
+frame_dig -3
+callsub executeassettransfer_8
+bytec_0 // "P1"
+pushint 52 // 52
+intc_3 // 4
+callsub getglobaluint_2
+intc_1 // 1
++
+bytec_0 // "P1"
+pushint 52 // 52
+intc_3 // 4
+callsub setglobaluint_4
+frame_dig -1
+extract 2 0
+log
+retsub
+
+// withdraw
+withdraw_22:
+proto 3 0
+global CallerApplicationID
+intc_0 // 0
+==
+assert
+frame_dig -2
+frame_dig -3
+callsub executepayment_7
+frame_dig -1
+extract 2 0
+log
+retsub
+
+// optin
+optin_23:
+proto 2 0
+global CallerApplicationID
+intc_0 // 0
+==
+assert
+frame_dig -2
+txnas Assets
+intc 4 // 660757756
+!=
+assert
+frame_dig -2
+txnas Assets
+bytec_0 // "P1"
+intc_2 // 8
+intc_2 // 8
+callsub getglobaluint_2
+!=
+assert
+frame_dig -2
+txnas Assets
+bytec_0 // "P1"
+pushint 16 // 16
+intc_2 // 8
+callsub getglobaluint_2
+!=
+assert
+frame_dig -2
+txnas Assets
+callsub optinintoasset_5
+frame_dig -1
+extract 2 0
+log
+retsub
+
+// optout
+optout_24:
+proto 3 0
+global CallerApplicationID
+intc_0 // 0
+==
+assert
+frame_dig -3
+txnas Assets
+intc 4 // 660757756
+!=
+assert
+frame_dig -3
+txnas Assets
+bytec_0 // "P1"
+intc_2 // 8
+intc_2 // 8
+callsub getglobaluint_2
+!=
+assert
+frame_dig -3
+txnas Assets
+bytec_0 // "P1"
+pushint 16 // 16
+intc_2 // 8
+callsub getglobaluint_2
+!=
+assert
+frame_dig -3
+txnas Assets
+frame_dig -2
+callsub optoutfromasset_6
+frame_dig -1
+extract 2 0
+log
+retsub
+
+// initialize_caster
+initializecaster_25:
+proto 0 0
+intc_0 // 0
+dupn 2
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+intc_0 // 0
+getbyte
+frame_bury 1
+txna ApplicationArgs 3
+intc_0 // 0
+getbyte
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub initialize_11
+retsub
+
+// populate_caster
+populatecaster_26:
+proto 0 0
+intc_0 // 0
+dupn 5
+bytec_1 // ""
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+btoi
+frame_bury 3
+txna ApplicationArgs 5
+btoi
+frame_bury 4
+txna ApplicationArgs 6
+btoi
+frame_bury 5
+txna ApplicationArgs 7
+frame_bury 6
+txna ApplicationArgs 8
+frame_bury 7
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+frame_dig 4
+frame_dig 5
+frame_dig 6
+frame_dig 7
+callsub populate_12
+retsub
+
+// finalize_caster
+finalizecaster_27:
+proto 0 0
+intc_0 // 0
+dupn 4
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+btoi
+frame_bury 3
+txna ApplicationArgs 5
+btoi
+frame_bury 4
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+frame_dig 4
+callsub finalize_13
+retsub
+
+// list_caster
+listcaster_28:
+proto 0 0
+intc_0 // 0
+bytec_1 // ""
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+txna ApplicationArgs 3
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub list_14
+retsub
+
+// unlist_caster
+unlistcaster_29:
+proto 0 0
+bytec_1 // ""
+dup
+txna ApplicationArgs 1
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub unlist_15
+retsub
+
+// buy_caster
+buycaster_30:
+proto 0 0
+bytec_1 // ""
+dup
+txna ApplicationArgs 1
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub buy_16
+retsub
+
+// rename_caster
+renamecaster_31:
+proto 0 0
+intc_0 // 0
+dup
+bytec_1 // ""
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub rename_17
+retsub
+
+// repaint_caster
+repaintcaster_32:
+proto 0 0
+intc_0 // 0
+dup
+bytec_1 // ""
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub repaint_18
+retsub
+
+// describe_caster
+describecaster_33:
+proto 0 0
+bytec_1 // ""
+dup
+txna ApplicationArgs 1
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub describe_19
+retsub
+
+// upgrade_caster
+upgradecaster_34:
+proto 0 0
+bytec_1 // ""
+dup
+txna ApplicationArgs 1
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub upgrade_20
+retsub
+
+// mint_caster
+mintcaster_35:
+proto 0 0
+intc_0 // 0
+bytec_1 // ""
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+txna ApplicationArgs 3
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub mint_21
+retsub
+
+// withdraw_caster
+withdrawcaster_36:
+proto 0 0
+intc_0 // 0
+bytec_1 // ""
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+txna ApplicationArgs 3
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub withdraw_22
+retsub
+
+// optin_caster
+optincaster_37:
+proto 0 0
+intc_0 // 0
+bytec_1 // ""
+txna ApplicationArgs 1
+intc_0 // 0
+getbyte
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub optin_23
+retsub
+
+// optout_caster
+optoutcaster_38:
+proto 0 0
+intc_0 // 0
+bytec_1 // ""
+dup
+txna ApplicationArgs 1
+intc_0 // 0
+getbyte
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+txna ApplicationArgs 3
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub optout_24
+retsub

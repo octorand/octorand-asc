@@ -204,3 +204,13 @@ def assert_sender_asset_transfer(asset_id, receiver, amount, index):
         Assert(Gtxn[index].asset_receiver() == receiver),
         Assert(Gtxn[index].asset_amount() == amount),
     )
+
+
+@Subroutine(TealType.none)
+def assert_application_creator(application_id, address):
+    creator = AppParam.creator(application_id)
+    return Seq(
+        creator,
+        Assert(creator.hasValue()),
+        Assert(creator.value() == address),
+    )

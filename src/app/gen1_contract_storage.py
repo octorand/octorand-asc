@@ -6,16 +6,9 @@ from beaker import *
 from typing import *
 
 
-app = Application("GenOnePrimeStorage")
+app = Application("GenOneStorage")
 
 prime = const.Prime()
-
-
-@Subroutine(TealType.none)
-def assert_application_caller():
-    return Seq(
-        Assert(Global.caller_app_id() == const.main_application_id),
-    )
 
 
 @app.create(bare=True)
@@ -38,10 +31,9 @@ def initialize(
     id: abi.Uint64,
     prime_asset: abi.Asset,
     legacy_asset: abi.Asset,
-    log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Txn.sender() == const.admin_address),
         prime.id.set(id.get()),
         prime.prime_asset_id.set(prime_asset.asset_id()),
         prime.legacy_asset_id.set(legacy_asset.asset_id()),
@@ -50,7 +42,6 @@ def initialize(
         func.optin_into_asset(const.platform_asset_id),
         func.optin_into_asset(prime_asset.asset_id()),
         func.optin_into_asset(legacy_asset.asset_id()),
-        Log(log.get()),
     )
 
 
@@ -64,10 +55,9 @@ def populate(
     is_explorer: abi.Uint64,
     name: abi.StaticBytes[Literal[8]],
     description: abi.StaticBytes[Literal[64]],
-    log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Txn.sender() == const.admin_address),
         prime.theme.set(theme.get()),
         prime.skin.set(skin.get()),
         prime.is_founder.set(is_founder.get()),
@@ -76,7 +66,6 @@ def populate(
         prime.is_explorer.set(is_explorer.get()),
         prime.name.set(name.get()),
         prime.description.set(description.get()),
-        Log(log.get()),
     )
 
 
@@ -87,34 +76,14 @@ def finalize(
     mints: abi.Uint64,
     renames: abi.Uint64,
     repaints: abi.Uint64,
-    log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Txn.sender() == const.admin_address),
         prime.score.set(score.get()),
         prime.sales.set(sales.get()),
         prime.mints.set(mints.get()),
         prime.renames.set(renames.get()),
         prime.repaints.set(repaints.get()),
-        Log(log.get()),
-    )
-
-
-@app.external(name="upgrade")
-def upgrade(
-    owner: abi.Address,
-    log: abi.DynamicBytes,
-):
-    return Seq(
-        assert_application_caller(),
-        Assert(prime.is_explorer.get() == Int(0)),
-        func.execute_asset_transfer(
-            prime.prime_asset_id.get(),
-            owner.get(),
-            Int(1),
-        ),
-        prime.is_explorer.set(Int(1)),
-        Log(log.get()),
     )
 
 
@@ -125,7 +94,7 @@ def list(
     log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Global.caller_app_id() == const.market_application_id),
         Assert(prime.seller.get() == Global.zero_address()),
         Assert(prime.price.get() == Int(0)),
         prime.price.set(price.get()),
@@ -140,7 +109,7 @@ def unlist(
     log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Global.caller_app_id() == const.market_application_id),
         Assert(prime.price.get() > Int(0)),
         Assert(prime.seller.get() == seller.get()),
         func.execute_asset_transfer(
@@ -160,7 +129,7 @@ def buy(
     log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Global.caller_app_id() == const.market_application_id),
         Assert(prime.price.get() > Int(0)),
         Assert(prime.seller.get() != Global.zero_address()),
         func.execute_asset_transfer(
@@ -182,7 +151,7 @@ def rename(
     log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Global.caller_app_id() == const.design_application_id),
         prime.name.set(SetByte(prime.name.get(), index.get(), value.get())),
         prime.renames.increment(Int(1)),
         Log(log.get()),
@@ -196,7 +165,7 @@ def repaint(
     log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Global.caller_app_id() == const.design_application_id),
         prime.theme.set(theme.get()),
         prime.skin.set(skin.get()),
         prime.repaints.increment(Int(1)),
@@ -210,8 +179,26 @@ def describe(
     log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Global.caller_app_id() == const.design_application_id),
         prime.description.set(description.get()),
+        Log(log.get()),
+    )
+
+
+@app.external(name="upgrade")
+def upgrade(
+    owner: abi.Address,
+    log: abi.DynamicBytes,
+):
+    return Seq(
+        Assert(Global.caller_app_id() == const.wallet_application_id),
+        Assert(prime.is_explorer.get() == Int(0)),
+        func.execute_asset_transfer(
+            prime.prime_asset_id.get(),
+            owner.get(),
+            Int(1),
+        ),
+        prime.is_explorer.set(Int(1)),
         Log(log.get()),
     )
 
@@ -223,7 +210,7 @@ def mint(
     log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Global.caller_app_id() == const.wallet_application_id),
         func.execute_asset_transfer(
             const.platform_asset_id,
             owner.get(),
@@ -241,7 +228,7 @@ def withdraw(
     log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Global.caller_app_id() == const.wallet_application_id),
         func.execute_payment(
             owner.get(),
             amount.get(),
@@ -256,7 +243,7 @@ def optin(
     log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Global.caller_app_id() == const.vault_application_id),
         Assert(asset.asset_id() != const.platform_asset_id),
         Assert(asset.asset_id() != prime.prime_asset_id.get()),
         Assert(asset.asset_id() != prime.legacy_asset_id.get()),
@@ -272,7 +259,7 @@ def optout(
     log: abi.DynamicBytes,
 ):
     return Seq(
-        assert_application_caller(),
+        Assert(Global.caller_app_id() == const.vault_application_id),
         Assert(asset.asset_id() != const.platform_asset_id),
         Assert(asset.asset_id() != prime.prime_asset_id.get()),
         Assert(asset.asset_id() != prime.legacy_asset_id.get()),
