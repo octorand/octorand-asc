@@ -6,6 +6,8 @@ const chain = require('./../../../../chain/index');
 exports.execute = async function () {
     try {
 
+        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
+
         let vault = setup['gen1']['contracts']['vault'];
 
         if (!vault['application_id']) {

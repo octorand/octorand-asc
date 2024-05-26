@@ -40,12 +40,12 @@ exports.execute = async function () {
             let assetId = response.information['asset-index'];
 
             prime['legacy_asset_id'] = assetId;
+
+            setup['gen1']['inputs']['prime'] = prime;
+            fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
+
+            console.log('create legacy asset');
         };
-
-        setup['gen1']['inputs']['prime'] = prime;
-        fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
-
-        console.log('create legacy asset');
 
     } catch (error) {
         console.log(error);

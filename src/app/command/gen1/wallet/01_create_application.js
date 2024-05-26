@@ -50,9 +50,9 @@ exports.execute = async function () {
 
             setup['gen1']['contracts']['wallet'] = wallet;
             fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
-        }
 
-        console.log('created wallet application');
+            console.log('created wallet application');
+        }
 
     } catch (error) {
         console.log(error);

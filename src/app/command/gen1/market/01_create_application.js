@@ -50,9 +50,9 @@ exports.execute = async function () {
 
             setup['gen1']['contracts']['market'] = market;
             fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
-        }
 
-        console.log('created market application');
+            console.log('created market application');
+        }
 
     } catch (error) {
         console.log(error);

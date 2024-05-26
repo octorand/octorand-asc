@@ -1,13 +1,47 @@
 {
     "gen1": {
         "inputs": {
-            "prime": {}
+            "prime": {
+                "id": 1,
+                "theme": 1,
+                "skin": 2,
+                "is_founder": 1,
+                "is_artifact": 0,
+                "is_pioneer": 1,
+                "is_explorer": 0,
+                "score": 750,
+                "sales": 15,
+                "mints": 25,
+                "renames": 5,
+                "repaints": 10,
+                "name": "ABCDWXYZ",
+                "description": "Notes",
+                "price": 350,
+                "legacy_asset_id": 671720185,
+                "prime_asset_id": 671720221
+            }
         },
         "contracts": {
-            "design": {},
-            "market": {},
-            "vault": {},
-            "wallet": {},
+            "design": {
+                "application_id": 671716952,
+                "application_address": "BM67GI5JCBTMD5OI7OF6FYRYG5KLSDMZIYWH6OCNZYDYC4S3TBIFQY6ICY",
+                "application_version": 0
+            },
+            "market": {
+                "application_id": 671717045,
+                "application_address": "WKTMKK35VDWIPVQ546C6WCZPU2JIKROET4ONK3RTLLVUWDKDQ5M6Y65MIY",
+                "application_version": 0
+            },
+            "vault": {
+                "application_id": 671717077,
+                "application_address": "GKT2Y24V5L33IVNHM3ZZDJQJMKO3755WLUTU2IIAI3A4P5OQT5JD5KVNCU",
+                "application_version": 0
+            },
+            "wallet": {
+                "application_id": 671717170,
+                "application_address": "D6EG3ZODGVE72T7DR55VMNXLVHWVKBX5GGETMCQVCKEKEKOTA5ZZ6Z74IU",
+                "application_version": 0
+            },
             "storage": {}
         }
     }

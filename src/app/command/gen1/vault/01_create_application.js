@@ -50,9 +50,9 @@ exports.execute = async function () {
 
             setup['gen1']['contracts']['vault'] = vault;
             fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
-        }
 
-        console.log('created vault application');
+            console.log('created vault application');
+        }
 
     } catch (error) {
         console.log(error);
