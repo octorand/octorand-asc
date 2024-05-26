@@ -1,0 +1,56 @@
+require('dotenv').config();
+
+const fs = require('fs');
+const chain = require('./../../../../chain/index');
+
+exports.execute = async function () {
+    try {
+        let connection = await chain.get();
+        let params = await connection.algodClient.getTransactionParams().do();
+        let sender = connection.admin.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
+
+        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/storage/contract.json')));
+
+        let storage = setup['gen1']['contracts']['storage'];
+        let prime = setup['gen1']['inputs']['prime'];
+
+        if (!storage['initialized']) {
+
+            let composer = new connection.baseClient.AtomicTransactionComposer();
+
+            composer.addMethodCall({
+                sender: sender,
+                signer: signer,
+                appID: storage['application_id'],
+                method: chain.method(contract, 'initialize'),
+                methodArgs: [
+                    prime['id'],
+                    prime['prime_asset_id'],
+                    prime['legacy_asset_id'],
+                ],
+                appForeignAssets: [
+                    Number(process.env.PLATFORM_ASSET_ID),
+                ],
+                suggestedParams: {
+                    ...params,
+                    fee: 4000,
+                    flatFee: true
+                }
+            });
+
+            await chain.execute(composer);
+
+            storage['initialized'] = true;
+
+            setup['gen1']['contracts']['storage'] = storage;
+            fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
+
+            console.log('initialized storage application');
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+}

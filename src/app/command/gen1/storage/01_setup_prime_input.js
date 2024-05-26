@@ -26,12 +26,12 @@ exports.execute = async function () {
                 description: 'Notes',
                 price: 350
             }
+
+            setup['gen1']['inputs']['prime'] = prime;
+            fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
+
+            console.log('setup prime input');
         };
-
-        setup['gen1']['inputs']['prime'] = prime;
-        fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
-
-        console.log('setup prime input');
 
     } catch (error) {
         console.log(error);

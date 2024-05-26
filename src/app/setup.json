@@ -42,7 +42,38 @@
                 "application_address": "D6EG3ZODGVE72T7DR55VMNXLVHWVKBX5GGETMCQVCKEKEKOTA5ZZ6Z74IU",
                 "application_version": 0
             },
-            "storage": {}
+            "storage": {
+                "application_id": 671725023,
+                "application_address": "SIY7HMDKFPFZCT4ODZCA3IIMU7ZYJJRI7EVCZIE6JKXOZH2OCVOS4QIAEQ",
+                "application_version": 0,
+                "funded": true,
+                "initialized": true,
+                "populated": true,
+                "finalized": true,
+                "transferred": true,
+                "locked": true,
+                "state": {
+                    "id": 1,
+                    "prime_asset_id": 671720221,
+                    "legacy_asset_id": 671720185,
+                    "parent_application_id": 0,
+                    "theme": 1,
+                    "skin": 2,
+                    "is_founder": 1,
+                    "is_artifact": 0,
+                    "is_pioneer": 1,
+                    "is_explorer": 0,
+                    "score": 750,
+                    "sales": 15,
+                    "mints": 25,
+                    "renames": 5,
+                    "repaints": 10,
+                    "price": 0,
+                    "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
+                    "name": "ABCDWXYZ",
+                    "description": "Notes"
+                }
+            }
         }
     }
 }
