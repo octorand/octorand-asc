@@ -46,7 +46,7 @@ exports.execute = async function () {
             setup['gen1']['contracts']['storage'] = storage;
             fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
 
-            console.log('finalized storage application');
+            console.log('called finalize method');
         }
 
     } catch (error) {

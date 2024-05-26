@@ -16,7 +16,7 @@ exports.execute = async function () {
         let storage = setup['gen1']['contracts']['storage'];
         let prime = setup['gen1']['inputs']['prime'];
 
-        if (!storage['initialized']) {
+        if (!storage['populated']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -24,30 +24,32 @@ exports.execute = async function () {
                 sender: sender,
                 signer: signer,
                 appID: storage['application_id'],
-                method: chain.method(contract, 'initialize'),
+                method: chain.method(contract, 'populate'),
                 methodArgs: [
-                    prime['id'],
-                    prime['prime_asset_id'],
-                    prime['legacy_asset_id'],
-                ],
-                appForeignAssets: [
-                    Number(process.env.PLATFORM_ASSET_ID),
+                    prime['theme'],
+                    prime['skin'],
+                    prime['is_founder'],
+                    prime['is_artifact'],
+                    prime['is_pioneer'],
+                    prime['is_explorer'],
+                    chain.bytes(prime['name'], 8),
+                    chain.bytes(prime['description'], 64),
                 ],
                 suggestedParams: {
                     ...params,
-                    fee: 4000,
+                    fee: 1000,
                     flatFee: true
                 }
             });
 
             await chain.execute(composer);
 
-            storage['initialized'] = true;
+            storage['populated'] = true;
 
             setup['gen1']['contracts']['storage'] = storage;
             fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
 
-            console.log('initialized storage application');
+            console.log('called populate method');
         }
 
     } catch (error) {

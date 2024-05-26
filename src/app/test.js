@@ -24,12 +24,14 @@ require('dotenv').config();
     await require('./command/gen1/storage/03_create_prime_asset').execute();
     await require('./command/gen1/storage/04_create_application').execute();
     await require('./command/gen1/storage/05_fund_application').execute();
-    await require('./command/gen1/storage/06_initialize_application').execute();
-    await require('./command/gen1/storage/07_populate_application').execute();
-    await require('./command/gen1/storage/08_finalize_application').execute();
+    await require('./command/gen1/storage/06_call_initialize').execute();
+    await require('./command/gen1/storage/07_call_populate').execute();
+    await require('./command/gen1/storage/08_call_finalize').execute();
     await require('./command/gen1/storage/09_transfer_assets').execute();
     await require('./command/gen1/storage/10_lock_prime_asset').execute();
     await require('./command/gen1/storage/11_update_application').execute();
     await require('./command/gen1/storage/12_read_application_state').execute();
+
+    await require('./command/gen1/wallet/03_call_upgrade').execute();
 
 })();
