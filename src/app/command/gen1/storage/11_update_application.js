@@ -7,14 +7,16 @@ exports.execute = async function () {
     try {
         let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen1.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
+        let sender = connection.admin.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
         let storage = setup['gen1']['contracts']['storage'];
 
-        if (!storage['application_id']) {
+        let version = 1;
+
+        if (storage['application_version'] < version) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -23,16 +25,12 @@ exports.execute = async function () {
 
             composer.addTransaction({
                 signer: signer,
-                txn: connection.baseClient.makeApplicationCreateTxnFromObject({
+                txn: connection.baseClient.makeApplicationUpdateTxnFromObject({
                     from: sender,
+                    appIndex: storage['application_id'],
                     onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
                     approvalProgram: await chain.compile(approvalProgram),
                     clearProgram: await chain.compile(clearProgram),
-                    numLocalInts: 0,
-                    numLocalByteSlices: 0,
-                    numGlobalInts: 0,
-                    numGlobalByteSlices: 2,
-                    extraPages: 0,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -41,17 +39,14 @@ exports.execute = async function () {
                 })
             });
 
-            let response = await chain.execute(composer);
-            let applicationId = response.information['application-index'];
+            await chain.execute(composer);
 
-            storage['application_id'] = applicationId;
-            storage['application_address'] = connection.baseClient.getApplicationAddress(applicationId);
-            storage['application_version'] = 0;
+            storage['application_version'] = version;
 
             setup['gen1']['contracts']['storage'] = storage;
             fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
 
-            console.log('created storage application');
+            console.log('updated storage application');
         }
 
     } catch (error) {
