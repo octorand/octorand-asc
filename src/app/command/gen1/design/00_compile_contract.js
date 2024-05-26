@@ -6,11 +6,17 @@ const chain = require('./../../../../chain/index');
 exports.execute = async function () {
     try {
 
-        let approvalProgram = fs.readFileSync('src/app/build/gen1/design/approval.teal', 'utf8');
-        let clearProgram = fs.readFileSync('src/app/build/gen1/design/clear.teal', 'utf8');
+        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        console.log('gen1 design approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
-        console.log('gen1 design clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
+        let design = setup['gen1']['contracts']['design'];
+
+        if (!design['application_id']) {
+            let approvalProgram = fs.readFileSync('src/app/build/gen1/design/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/app/build/gen1/design/clear.teal', 'utf8');
+
+            console.log('gen1 design approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
+            console.log('gen1 design clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
+        }
 
     } catch (error) {
         console.log(error);

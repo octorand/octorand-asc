@@ -12,7 +12,7 @@ exports.execute = async function () {
 
         let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let design = setup['gen1']['design'];
+        let design = setup['gen1']['contracts']['design'];
 
         if (!design['application_id']) {
 
@@ -48,7 +48,7 @@ exports.execute = async function () {
             design['application_address'] = connection.baseClient.getApplicationAddress(applicationId);
             design['application_version'] = 0;
 
-            setup['gen1']['design'] = design;
+            setup['gen1']['contracts']['design'] = design;
             fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
         }
 

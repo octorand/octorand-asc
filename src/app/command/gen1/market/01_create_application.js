@@ -12,7 +12,7 @@ exports.execute = async function () {
 
         let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let market = setup['gen1']['market'];
+        let market = setup['gen1']['contracts']['market'];
 
         if (!market['application_id']) {
 
@@ -48,7 +48,7 @@ exports.execute = async function () {
             market['application_address'] = connection.baseClient.getApplicationAddress(applicationId);
             market['application_version'] = 0;
 
-            setup['gen1']['market'] = market;
+            setup['gen1']['contracts']['market'] = market;
             fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
         }
 

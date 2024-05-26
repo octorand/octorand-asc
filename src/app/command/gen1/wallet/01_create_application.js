@@ -12,7 +12,7 @@ exports.execute = async function () {
 
         let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
 
-        let wallet = setup['gen1']['wallet'];
+        let wallet = setup['gen1']['contracts']['wallet'];
 
         if (!wallet['application_id']) {
 
@@ -48,7 +48,7 @@ exports.execute = async function () {
             wallet['application_address'] = connection.baseClient.getApplicationAddress(applicationId);
             wallet['application_version'] = 0;
 
-            setup['gen1']['wallet'] = wallet;
+            setup['gen1']['contracts']['wallet'] = wallet;
             fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
         }
 

@@ -6,11 +6,15 @@ const chain = require('./../../../../chain/index');
 exports.execute = async function () {
     try {
 
-        let approvalProgram = fs.readFileSync('src/app/build/gen1/market/approval.teal', 'utf8');
-        let clearProgram = fs.readFileSync('src/app/build/gen1/market/clear.teal', 'utf8');
+        let market = setup['gen1']['contracts']['market'];
 
-        console.log('gen1 market approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
-        console.log('gen1 market clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
+        if (!market['application_id']) {
+            let approvalProgram = fs.readFileSync('src/app/build/gen1/market/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/app/build/gen1/market/clear.teal', 'utf8');
+
+            console.log('gen1 market approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
+            console.log('gen1 market clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
+        }
 
     } catch (error) {
         console.log(error);

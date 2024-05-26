@@ -1,24 +1,14 @@
 {
     "gen1": {
-        "design": {
-            "application_id": 671649584,
-            "application_address": "CFLCNVZQLI57YKN3ZJWFLLC4MTP7WU7OZFTBU5HK2QAODCKNGVOHUHEBSE",
-            "application_version": 0
+        "inputs": {
+            "prime": {}
         },
-        "market": {
-            "application_id": 671649659,
-            "application_address": "YIDXCCZ2QUMDFCG6IW6W6ULPAD4IXBL442CNZFQEJC7JCIZEPPURLWRHWM",
-            "application_version": 0
-        },
-        "vault": {
-            "application_id": 671649746,
-            "application_address": "3SZ36G6LDB3KQ3T2BSBIRXPOPZFI2MZLFA5FUE6VRIE2XFYQAML3EHKHQA",
-            "application_version": 0
-        },
-        "wallet": {
-            "application_id": 671650032,
-            "application_address": "5BUKJRMMG6DFFETL2VA2X43WZGCWYOG7RN6QJ4QYJ7TQ72VBBBAKKV7JSA",
-            "application_version": 0
+        "contracts": {
+            "design": {},
+            "market": {},
+            "vault": {},
+            "wallet": {},
+            "storage": {}
         }
     }
 }
