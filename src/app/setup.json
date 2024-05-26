@@ -17,8 +17,8 @@
                 "name": "ABCDWXYZ",
                 "description": "Notes",
                 "price": 350,
-                "legacy_asset_id": 671720185,
-                "prime_asset_id": 671720221
+                "legacy_asset_id": 671756407,
+                "prime_asset_id": 671756523
             }
         },
         "contracts": {
@@ -43,8 +43,8 @@
                 "application_version": 1
             },
             "storage": {
-                "application_id": 671725023,
-                "application_address": "SIY7HMDKFPFZCT4ODZCA3IIMU7ZYJJRI7EVCZIE6JKXOZH2OCVOS4QIAEQ",
+                "application_id": 671756560,
+                "application_address": "QSX5LYTQLANDNCBVBBCKXPDP3XBDY3CKPOMER7DQUDLBKJ7GJHUK2S4A64",
                 "application_version": 1,
                 "funded": true,
                 "initialized": true,
@@ -54,8 +54,8 @@
                 "locked": true,
                 "state": {
                     "id": 1,
-                    "prime_asset_id": 671720221,
-                    "legacy_asset_id": 671720185,
+                    "prime_asset_id": 671756523,
+                    "legacy_asset_id": 671756407,
                     "parent_application_id": 0,
                     "theme": 1,
                     "skin": 2,
