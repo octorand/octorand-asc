@@ -1,5 +1,5 @@
 #pragma version 8
-intcblock 0 1 8 4 660757756
+intcblock 0 1 8 4 660757756 671649659 671649584 671650032 671649746
 bytecblock 0x5031 0x 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af 0x5032
 txn NumAppArgs
 intc_0 // 0
@@ -546,7 +546,7 @@ retsub
 list_14:
 proto 3 0
 global CallerApplicationID
-intc_0 // 0
+intc 5 // 671649659
 ==
 assert
 bytec_0 // "P1"
@@ -582,7 +582,7 @@ retsub
 unlist_15:
 proto 2 0
 global CallerApplicationID
-intc_0 // 0
+intc 5 // 671649659
 ==
 assert
 bytec_0 // "P1"
@@ -625,7 +625,7 @@ retsub
 buy_16:
 proto 2 0
 global CallerApplicationID
-intc_0 // 0
+intc 5 // 671649659
 ==
 assert
 bytec_0 // "P1"
@@ -678,7 +678,7 @@ retsub
 rename_17:
 proto 3 0
 global CallerApplicationID
-intc_0 // 0
+intc 6 // 671649584
 ==
 assert
 bytec_0 // "P1"
@@ -711,7 +711,7 @@ retsub
 repaint_18:
 proto 3 0
 global CallerApplicationID
-intc_0 // 0
+intc 6 // 671649584
 ==
 assert
 frame_dig -3
@@ -743,7 +743,7 @@ retsub
 describe_19:
 proto 2 0
 global CallerApplicationID
-intc_0 // 0
+intc 6 // 671649584
 ==
 assert
 frame_dig -2
@@ -760,7 +760,7 @@ retsub
 upgrade_20:
 proto 2 0
 global CallerApplicationID
-intc_0 // 0
+intc 7 // 671650032
 ==
 assert
 bytec_0 // "P1"
@@ -791,7 +791,7 @@ retsub
 mint_21:
 proto 3 0
 global CallerApplicationID
-intc_0 // 0
+intc 7 // 671650032
 ==
 assert
 intc 4 // 660757756
@@ -817,7 +817,7 @@ retsub
 withdraw_22:
 proto 3 0
 global CallerApplicationID
-intc_0 // 0
+intc 7 // 671650032
 ==
 assert
 frame_dig -2
@@ -832,7 +832,7 @@ retsub
 optin_23:
 proto 2 0
 global CallerApplicationID
-intc_0 // 0
+intc 8 // 671649746
 ==
 assert
 frame_dig -2
@@ -868,7 +868,7 @@ retsub
 optout_24:
 proto 3 0
 global CallerApplicationID
-intc_0 // 0
+intc 8 // 671649746
 ==
 assert
 frame_dig -3
