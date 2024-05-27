@@ -25,7 +25,55 @@
             "design": {
                 "application_id": 672416205,
                 "application_address": "WXPTAOUYISCQLMULKUR3V44QL7R4DI3E5JYP4GLKNUO4VWTEKNAALVHGEA",
-                "application_version": 1
+                "application_version": 1,
+                "renamed": true,
+                "repainted": true,
+                "described": true,
+                "logs": [
+                    {
+                        "code": 100,
+                        "version": 1,
+                        "timestamp": 1716808136,
+                        "prime": 1,
+                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
+                        "name": "design_rename",
+                        "index": 1,
+                        "value": 68,
+                        "price": 0
+                    },
+                    {
+                        "code": 100,
+                        "version": 1,
+                        "timestamp": 1716808136,
+                        "prime": 1,
+                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
+                        "name": "design_rename",
+                        "index": 6,
+                        "value": 86,
+                        "price": 0
+                    },
+                    {
+                        "code": 102,
+                        "version": 1,
+                        "timestamp": 1716808288,
+                        "prime": 1,
+                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
+                        "name": "design_describe",
+                        "description": "Updated Notes",
+                        "price": 10000000
+                    },
+                    {
+                        "code": 101,
+                        "version": 1,
+                        "timestamp": 1716808411,
+                        "prime": 1,
+                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
+                        "name": "design_repaint",
+                        "theme": 3,
+                        "skin": 4,
+                        "price": 10000000
+                    }
+                ]
             },
             "market": {
                 "application_id": 672416345,

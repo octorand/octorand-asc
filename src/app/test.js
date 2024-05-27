@@ -42,7 +42,10 @@ require('dotenv').config();
     // await require('./command/gen1/market/06_call_buy').execute();
     // await require('./command/gen1/market/07_read_application_logs').execute();
 
-    // await require('./command/gen1/design/03_read_application_logs').execute();
+    // await require('./command/gen1/design/03_call_rename').execute();
+    // await require('./command/gen1/design/04_call_repaint').execute();
+    // await require('./command/gen1/design/05_call_describe').execute();
+    // await require('./command/gen1/design/06_read_application_logs').execute();
 
     // await require('./command/gen1/vault/03_read_application_logs').execute();
 
