@@ -30,7 +30,49 @@
             "market": {
                 "application_id": 672416345,
                 "application_address": "JSBVMKAGAFU63I3CVN7NK6NAVGDTIKJ5IP2UNJB6BW2JV774SCJPQ3GY4A",
-                "application_version": 1
+                "application_version": 1,
+                "listed": true,
+                "unlisted": true,
+                "relisted": true,
+                "bought": true,
+                "logs": [
+                    {
+                        "code": 110,
+                        "version": 1,
+                        "timestamp": 1716806405,
+                        "prime": 1,
+                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
+                        "name": "market_list",
+                        "price": 350
+                    },
+                    {
+                        "code": 111,
+                        "version": 1,
+                        "timestamp": 1716806562,
+                        "prime": 1,
+                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
+                        "name": "market_unlist"
+                    },
+                    {
+                        "code": 110,
+                        "version": 1,
+                        "timestamp": 1716806636,
+                        "prime": 1,
+                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
+                        "name": "market_list",
+                        "price": 350
+                    },
+                    {
+                        "code": 112,
+                        "version": 1,
+                        "timestamp": 1716807101,
+                        "prime": 1,
+                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
+                        "name": "market_buy",
+                        "buyer": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
+                        "price": 0
+                    }
+                ]
             },
             "vault": {
                 "application_id": 672416402,

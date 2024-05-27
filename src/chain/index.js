@@ -113,7 +113,7 @@ exports.event = function (value) {
             break;
         case 112:
             data.name = 'market_buy';
-            data['buyer'] = baseClient.encodeAddress(value.subarray(64, 96));
+            data['seller'] = baseClient.encodeAddress(value.subarray(64, 96));
             data['price'] = baseClient.decodeUint64(value.subarray(96, 104));
             break;
         case 120:
