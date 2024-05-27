@@ -14,15 +14,15 @@ exports.execute = async function () {
         let logs = [];
 
         let limit = 1000;
-        let nextToken = '';
-        while (nextToken !== undefined) {
+        let next = '';
+        while (next !== undefined) {
             let response = await connection.indexerClient
                 .lookupApplicationLogs(market['application_id'])
                 .limit(limit)
-                .nextToken(nextToken)
+                .next(next)
                 .do();
 
-            nextToken = response['next-token'];
+            next = response['next-token'];
 
             let data = response['log-data'];
             if (data) {
