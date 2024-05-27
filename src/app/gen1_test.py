@@ -1,15 +1,30 @@
 from pyteal import *
 
 
+@Subroutine(TealType.none)
+def create():
+    return Seq(
+        Approve(),
+    )
+
+
+@Subroutine(TealType.none)
+def update():
+    return Seq(
+        Approve(),
+    )
+
+
 router = Router(
     name="GenOneTest",
     bare_calls=BareCallActions(
-        no_op=OnCompleteAction(action=Approve(), call_config=CallConfig.CREATE),
-        update_application=OnCompleteAction(
-            action=Approve(), call_config=CallConfig.CALL
+        no_op=OnCompleteAction(
+            action=create,
+            call_config=CallConfig.CREATE,
         ),
-        delete_application=OnCompleteAction(
-            action=Approve(), call_config=CallConfig.CALL
+        update_application=OnCompleteAction(
+            action=update,
+            call_config=CallConfig.CALL,
         ),
     ),
     clear_state=Approve(),

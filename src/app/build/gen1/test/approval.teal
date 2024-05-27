@@ -17,47 +17,50 @@ int 0
 !=
 &&
 assert
-callsub executecaster_1
+callsub executecaster_3
 int 1
 return
 main_l4:
 txn OnCompletion
 int NoOp
 ==
-bnz main_l10
+bnz main_l8
 txn OnCompletion
 int UpdateApplication
 ==
-bnz main_l9
-txn OnCompletion
-int DeleteApplication
-==
-bnz main_l8
+bnz main_l7
 err
+main_l7:
+txn ApplicationID
+int 0
+!=
+assert
+callsub update_1
+int 1
+return
 main_l8:
 txn ApplicationID
 int 0
-!=
-assert
-int 1
-return
-main_l9:
-txn ApplicationID
-int 0
-!=
-assert
-int 1
-return
-main_l10:
-txn ApplicationID
-int 0
 ==
 assert
+callsub create_0
+int 1
+return
+
+// create
+create_0:
+proto 0 0
+int 1
+return
+
+// update
+update_1:
+proto 0 0
 int 1
 return
 
 // execute
-execute_0:
+execute_2:
 proto 1 0
 frame_dig -1
 int 0
@@ -66,12 +69,12 @@ assert
 retsub
 
 // execute_caster
-executecaster_1:
+executecaster_3:
 proto 0 0
 int 0
 txna ApplicationArgs 1
 btoi
 frame_bury 0
 frame_dig 0
-callsub execute_0
+callsub execute_2
 retsub
