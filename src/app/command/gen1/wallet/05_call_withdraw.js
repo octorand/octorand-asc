@@ -16,7 +16,7 @@ exports.execute = async function () {
         let wallet = setup['gen1']['contracts']['wallet'];
         let prime = setup['gen1']['inputs']['prime'];
 
-        if (!wallet['upgraded']) {
+        if (!wallet['withdrawn']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -24,12 +24,13 @@ exports.execute = async function () {
                 sender: sender,
                 signer: signer,
                 appID: wallet['application_id'],
-                method: chain.method(contract, 'upgrade'),
+                method: chain.method(contract, 'withdraw'),
                 methodArgs: [
+                    200,
                     setup['gen1']['contracts']['storage']['application_id'],
                 ],
                 appForeignAssets: [
-                    prime['prime_asset_id']
+                    prime['prime_asset_id'],
                 ],
                 suggestedParams: {
                     ...params,
@@ -38,30 +39,14 @@ exports.execute = async function () {
                 }
             });
 
-            composer.addTransaction({
-                sender: sender,
-                signer: signer,
-                txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
-                    from: sender,
-                    to: setup['gen1']['contracts']['storage']['application_address'],
-                    assetIndex: prime['legacy_asset_id'],
-                    amount: 1,
-                    suggestedParams: {
-                        ...params,
-                        fee: 1000,
-                        flatFee: true
-                    }
-                })
-            });
-
             await chain.execute(composer);
 
-            wallet['upgraded'] = true;
+            wallet['withdrawn'] = true;
 
             setup['gen1']['contracts']['wallet'] = wallet;
             fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
 
-            console.log('called upgrade method');
+            console.log('called withdraw method');
         }
 
     } catch (error) {

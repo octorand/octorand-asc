@@ -40,7 +40,10 @@
             "wallet": {
                 "application_id": 672181998,
                 "application_address": "AIQXHL6DKTGAD2REAT4ERRCJVVSCNFYFLGIKII4DHZF76CEMJDAVKKJCKQ",
-                "application_version": 1
+                "application_version": 1,
+                "upgraded": true,
+                "minted": true,
+                "withdrawn": true
             },
             "storage": {
                 "application_id": 672187273,
@@ -62,7 +65,7 @@
                     "is_founder": 1,
                     "is_artifact": 0,
                     "is_pioneer": 1,
-                    "is_explorer": 0,
+                    "is_explorer": 1,
                     "score": 750,
                     "sales": 15,
                     "mints": 25,
