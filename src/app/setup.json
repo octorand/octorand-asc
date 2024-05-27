@@ -45,15 +45,9 @@
                 "minted": true,
                 "withdrawn": true,
                 "logs": [
-                    [
-                        "C57HawAAAAAAAAABAAAAAGZUA/AAAAAAAAAAAT7WFF0D/KaBVQpYNijse6FRaYlR7GmAwYVS9P9F/T2u"
-                    ],
-                    [
-                        "+RcVTAAAAAAAAAABAAAAAGZUBUMAAAAAAAAAAT7WFF0D/KaBVQpYNijse6FRaYlR7GmAwYVS9P9F/T2uAAAAAAAAAGQ="
-                    ],
-                    [
-                        "i4PPnAAAAAAAAAABAAAAAGZUBUkAAAAAAAAAAT7WFF0D/KaBVQpYNijse6FRaYlR7GmAwYVS9P9F/T2uAAAAAAAAAMg="
-                    ]
+                    "0000000000000001",
+                    "0000000000000001",
+                    "0000000000000001"
                 ]
             },
             "storage": {

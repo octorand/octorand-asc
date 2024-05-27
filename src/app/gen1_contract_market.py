@@ -7,6 +7,7 @@ from typing import *
 
 
 prime = const.Prime()
+event = const.Event()
 
 
 @Subroutine(TealType.none)
@@ -46,9 +47,7 @@ def list(
 ):
     app_id = application.application_id()
     log = Concat(
-        MethodSignature(
-            "list(uint64,uint64,uint64,address,uint64)",
-        ),
+        event.market_list,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(prime.id.external(app_id)),
@@ -83,9 +82,7 @@ def unlist(
 ):
     app_id = application.application_id()
     log = Concat(
-        MethodSignature(
-            "unlist(uint64,uint64,uint64,address)",
-        ),
+        event.market_unlist,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(prime.id.external(app_id)),
@@ -113,9 +110,7 @@ def buy(
     seller_share = Mul(prime.price.external(app_id), const.seller_market_share)
     admin_share = Mul(prime.price.external(app_id), const.admin_market_share)
     log = Concat(
-        MethodSignature(
-            "buy(uint64,uint64,uint64,address,address,uint64)",
-        ),
+        event.market_buy,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(prime.id.external(app_id)),

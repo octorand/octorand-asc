@@ -7,6 +7,7 @@ from typing import *
 
 
 prime = const.Prime()
+event = const.Event()
 
 
 @Subroutine(TealType.none)
@@ -46,9 +47,7 @@ def optin(
 ):
     app_id = application.application_id()
     log = Concat(
-        MethodSignature(
-            "optin(uint64,uint64,uint64,address,uint64)",
-        ),
+        event.vault_optin,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(prime.id.external(app_id)),
@@ -81,9 +80,7 @@ def optout(
 ):
     app_id = application.application_id()
     log = Concat(
-        MethodSignature(
-            "optout(uint64,uint64,uint64,address,uint64)",
-        ),
+        event.vault_optout,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(prime.id.external(app_id)),

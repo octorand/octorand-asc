@@ -259,7 +259,8 @@ itxn_field ApplicationArgs
 frame_dig -2
 itob
 itxn_field ApplicationArgs
-method "rename(uint64,uint64,uint64,address,uint64,uint64,uint64)"
+int 100
+itob
 int 1
 itob
 concat
@@ -310,7 +311,8 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-method "rename(uint64,uint64,uint64,address,uint64,uint64,uint64)"
+int 100
+itob
 int 1
 itob
 concat
@@ -442,7 +444,8 @@ itxn_field ApplicationArgs
 frame_dig -2
 itob
 itxn_field ApplicationArgs
-method "repaint(uint64,uint64,uint64,address,uint64,uint64,uint64)"
+int 101
+itob
 int 1
 itob
 concat
@@ -470,7 +473,8 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-method "repaint(uint64,uint64,uint64,address,uint64,uint64,uint64)"
+int 101
+itob
 int 1
 itob
 concat
@@ -530,7 +534,8 @@ method "describe(byte[64],byte[])void"
 itxn_field ApplicationArgs
 frame_dig -2
 itxn_field ApplicationArgs
-method "describe(uint64,uint64,uint64,address,byte[64],uint64)"
+int 102
+itob
 int 1
 itob
 concat
@@ -554,7 +559,8 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-method "describe(uint64,uint64,uint64,address,byte[64],uint64)"
+int 102
+itob
 int 1
 itob
 concat

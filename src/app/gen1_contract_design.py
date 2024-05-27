@@ -6,6 +6,7 @@ from pyteal import *
 from typing import *
 
 prime = const.Prime()
+event = const.Event()
 
 
 @Subroutine(TealType.none)
@@ -54,9 +55,7 @@ def rename(
     )
     price = Mul(const.rename_price, value_difference)
     log = Concat(
-        MethodSignature(
-            "rename(uint64,uint64,uint64,address,uint64,uint64,uint64)",
-        ),
+        event.design_rename,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(prime.id.external(app_id)),
@@ -98,9 +97,7 @@ def repaint(
 ):
     app_id = application.application_id()
     log = Concat(
-        MethodSignature(
-            "repaint(uint64,uint64,uint64,address,uint64,uint64,uint64)",
-        ),
+        event.design_repaint,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(prime.id.external(app_id)),
@@ -140,9 +137,7 @@ def describe(
 ):
     app_id = application.application_id()
     log = Concat(
-        MethodSignature(
-            "describe(uint64,uint64,uint64,address,byte[64],uint64)",
-        ),
+        event.design_describe,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(prime.id.external(app_id)),

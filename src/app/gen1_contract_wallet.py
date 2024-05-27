@@ -7,6 +7,7 @@ from typing import *
 
 
 prime = const.Prime()
+event = const.Event()
 
 
 @Subroutine(TealType.none)
@@ -45,9 +46,7 @@ def upgrade(
 ):
     app_id = application.application_id()
     log = Concat(
-        MethodSignature(
-            "upgrade(uint64,uint64,uint64,address)",
-        ),
+        event.wallet_upgrade,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(prime.id.external(app_id)),
@@ -80,9 +79,7 @@ def mint(
 ):
     app_id = application.application_id()
     log = Concat(
-        MethodSignature(
-            "mint(uint64,uint64,uint64,address,uint64)",
-        ),
+        event.wallet_mint,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(prime.id.external(app_id)),
@@ -113,9 +110,7 @@ def withdraw(
 ):
     app_id = application.application_id()
     log = Concat(
-        MethodSignature(
-            "withdraw(uint64,uint64,uint64,address,uint64)",
-        ),
+        event.wallet_withdraw,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(prime.id.external(app_id)),

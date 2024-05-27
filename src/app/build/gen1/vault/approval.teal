@@ -208,7 +208,8 @@ method "optin(asset,byte[])void"
 itxn_field ApplicationArgs
 byte 0x00
 itxn_field ApplicationArgs
-method "optin(uint64,uint64,uint64,address,uint64)"
+int 120
+itob
 int 1
 itob
 concat
@@ -231,7 +232,8 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-method "optin(uint64,uint64,uint64,address,uint64)"
+int 120
+itob
 int 1
 itob
 concat
@@ -284,7 +286,8 @@ byte 0x00
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
-method "optout(uint64,uint64,uint64,address,uint64)"
+int 121
+itob
 int 1
 itob
 concat
@@ -307,7 +310,8 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-method "optout(uint64,uint64,uint64,address,uint64)"
+int 121
+itob
 int 1
 itob
 concat

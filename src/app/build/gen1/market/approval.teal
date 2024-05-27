@@ -252,7 +252,8 @@ itob
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
-method "list(uint64,uint64,uint64,address,uint64)"
+int 110
+itob
 int 1
 itob
 concat
@@ -274,7 +275,8 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-method "list(uint64,uint64,uint64,address,uint64)"
+int 110
+itob
 int 1
 itob
 concat
@@ -314,7 +316,8 @@ method "unlist(address,byte[])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
-method "unlist(uint64,uint64,uint64,address)"
+int 111
+itob
 int 1
 itob
 concat
@@ -333,7 +336,8 @@ txn Sender
 concat
 itxn_field ApplicationArgs
 itxn_submit
-method "unlist(uint64,uint64,uint64,address)"
+int 111
+itob
 int 1
 itob
 concat
@@ -405,7 +409,8 @@ method "buy(address,byte[])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
-method "buy(uint64,uint64,uint64,address,address,uint64)"
+int 112
+itob
 int 1
 itob
 concat
@@ -439,7 +444,8 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-method "buy(uint64,uint64,uint64,address,address,uint64)"
+int 112
+itob
 int 1
 itob
 concat

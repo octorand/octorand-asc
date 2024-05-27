@@ -232,7 +232,8 @@ method "upgrade(address,byte[])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
-method "upgrade(uint64,uint64,uint64,address)"
+int 130
+itob
 int 1
 itob
 concat
@@ -251,7 +252,8 @@ txn Sender
 concat
 itxn_field ApplicationArgs
 itxn_submit
-method "upgrade(uint64,uint64,uint64,address)"
+int 130
+itob
 int 1
 itob
 concat
@@ -302,7 +304,8 @@ itob
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
-method "mint(uint64,uint64,uint64,address,uint64)"
+int 131
+itob
 int 1
 itob
 concat
@@ -324,7 +327,8 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-method "mint(uint64,uint64,uint64,address,uint64)"
+int 131
+itob
 int 1
 itob
 concat
@@ -378,7 +382,8 @@ itob
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
-method "withdraw(uint64,uint64,uint64,address,uint64)"
+int 132
+itob
 int 1
 itob
 concat
@@ -400,7 +405,8 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-method "withdraw(uint64,uint64,uint64,address,uint64)"
+int 132
+itob
 int 1
 itob
 concat

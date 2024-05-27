@@ -46,3 +46,18 @@ class Prime:
         self.seller = func.GlobalBytes(self.key_1, 72, 32)
         self.name = func.GlobalBytes(self.key_1, 104, 8)
         self.description = func.GlobalBytes(self.key_2, 0, 64)
+
+
+class Event:
+    def __init__(self):
+        self.design_rename = Itob(Int(100))
+        self.design_repaint = Itob(Int(101))
+        self.design_describe = Itob(Int(102))
+        self.market_list = Itob(Int(110))
+        self.market_unlist = Itob(Int(111))
+        self.market_buy = Itob(Int(112))
+        self.vault_optin = Itob(Int(120))
+        self.vault_optout = Itob(Int(121))
+        self.wallet_upgrade = Itob(Int(130))
+        self.wallet_mint = Itob(Int(131))
+        self.wallet_withdraw = Itob(Int(132))

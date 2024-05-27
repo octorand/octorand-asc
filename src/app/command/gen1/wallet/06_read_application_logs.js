@@ -27,7 +27,9 @@ exports.execute = async function () {
             let data = response['log-data'];
             if (data) {
                 for (let i = 0; i < data.length; i++) {
-                    logs.push(data[i]['logs']);
+                    let log = data[i]['logs'][0];
+                    let value = Buffer.from(log, 'base64');
+                    logs.push(exports.process(value));
                 }
             }
         }
@@ -40,4 +42,8 @@ exports.execute = async function () {
     } catch (error) {
         console.log(error);
     }
+}
+
+exports.process = function (value) {
+    return value.slice(4, 12).toString('hex');
 }
