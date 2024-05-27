@@ -2,25 +2,25 @@ require('dotenv').config();
 
 (async () => {
 
-    // console.log('deploy design application');
-    // await require('./command/gen1/design/00_compile_contract').execute();
-    // await require('./command/gen1/design/01_create_application').execute();
-    // await require('./command/gen1/design/02_update_application').execute();
+    console.log('deploy design application');
+    await require('./command/gen1/design/00_compile_contract').execute();
+    await require('./command/gen1/design/01_create_application').execute();
+    await require('./command/gen1/design/02_update_application').execute();
 
-    // console.log('deploy market application');
-    // await require('./command/gen1/market/00_compile_contract').execute();
-    // await require('./command/gen1/market/01_create_application').execute();
-    // await require('./command/gen1/market/02_update_application').execute();
+    console.log('deploy market application');
+    await require('./command/gen1/market/00_compile_contract').execute();
+    await require('./command/gen1/market/01_create_application').execute();
+    await require('./command/gen1/market/02_update_application').execute();
 
-    // console.log('deploy vault application');
-    // await require('./command/gen1/vault/00_compile_contract').execute();
-    // await require('./command/gen1/vault/01_create_application').execute();
-    // await require('./command/gen1/vault/02_update_application').execute();
+    console.log('deploy vault application');
+    await require('./command/gen1/vault/00_compile_contract').execute();
+    await require('./command/gen1/vault/01_create_application').execute();
+    await require('./command/gen1/vault/02_update_application').execute();
 
-    // console.log('deploy wallet application');
-    // await require('./command/gen1/wallet/00_compile_contract').execute();
-    // await require('./command/gen1/wallet/01_create_application').execute();
-    // await require('./command/gen1/wallet/02_update_application').execute();
+    console.log('deploy wallet application');
+    await require('./command/gen1/wallet/00_compile_contract').execute();
+    await require('./command/gen1/wallet/01_create_application').execute();
+    await require('./command/gen1/wallet/02_update_application').execute();
 
     // console.log('setup storage application');
     // await require('./command/gen1/storage/00_compile_contract').execute();
@@ -60,8 +60,8 @@ require('dotenv').config();
     // await require('./command/gen1/vault/04_call_optout').execute();
     // await require('./command/gen1/vault/05_read_application_logs').execute();
 
-    console.log('read storage application');
-    await require('./command/gen1/storage/12_read_application_logs').execute();
-    await require('./command/gen1/storage/13_read_application_state').execute();
+    // console.log('read storage application');
+    // await require('./command/gen1/storage/12_read_application_logs').execute();
+    // await require('./command/gen1/storage/13_read_application_state').execute();
 
 })();
