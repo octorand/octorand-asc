@@ -17,34 +17,34 @@
                 "name": "ABCDWXYZ",
                 "description": "Notes",
                 "price": 350,
-                "legacy_asset_id": 671756407,
-                "prime_asset_id": 671756523
+                "legacy_asset_id": 672182991,
+                "prime_asset_id": 672183028
             }
         },
         "contracts": {
             "design": {
-                "application_id": 671716952,
-                "application_address": "BM67GI5JCBTMD5OI7OF6FYRYG5KLSDMZIYWH6OCNZYDYC4S3TBIFQY6ICY",
+                "application_id": 672181102,
+                "application_address": "UTNTWK55OQKHNLZYDB33VHHH2KAPWHLHSIXNXYISPKKTWCYF3GHPOD3GEA",
                 "application_version": 1
             },
             "market": {
-                "application_id": 671717045,
-                "application_address": "WKTMKK35VDWIPVQ546C6WCZPU2JIKROET4ONK3RTLLVUWDKDQ5M6Y65MIY",
+                "application_id": 672181337,
+                "application_address": "QU6BGDZE7NI6WRGX6ECBNYPOWZOAKT5EVFBMDX45XQHB43677HOMVI64JU",
                 "application_version": 1
             },
             "vault": {
-                "application_id": 671717077,
-                "application_address": "GKT2Y24V5L33IVNHM3ZZDJQJMKO3755WLUTU2IIAI3A4P5OQT5JD5KVNCU",
+                "application_id": 672181753,
+                "application_address": "HFFN654CA5L5UKR2AZLZCQRRRLRPSYPLJYFUWYDBCVJRND2HQ74HTMI55M",
                 "application_version": 1
             },
             "wallet": {
-                "application_id": 671717170,
-                "application_address": "D6EG3ZODGVE72T7DR55VMNXLVHWVKBX5GGETMCQVCKEKEKOTA5ZZ6Z74IU",
+                "application_id": 672181998,
+                "application_address": "AIQXHL6DKTGAD2REAT4ERRCJVVSCNFYFLGIKII4DHZF76CEMJDAVKKJCKQ",
                 "application_version": 1
             },
             "storage": {
-                "application_id": 671756560,
-                "application_address": "QSX5LYTQLANDNCBVBBCKXPDP3XBDY3CKPOMER7DQUDLBKJ7GJHUK2S4A64",
+                "application_id": 672187273,
+                "application_address": "66QUDB5VD3T4ZTICMIGTN3WFSY4725OUO33JF62ER6XPELX3OV77UG7IUM",
                 "application_version": 1,
                 "funded": true,
                 "initialized": true,
@@ -54,8 +54,8 @@
                 "locked": true,
                 "state": {
                     "id": 1,
-                    "prime_asset_id": 671756523,
-                    "legacy_asset_id": 671756407,
+                    "prime_asset_id": 672183028,
+                    "legacy_asset_id": 672182991,
                     "parent_application_id": 0,
                     "theme": 1,
                     "skin": 2,

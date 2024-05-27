@@ -10,7 +10,7 @@ prime = const.Prime()
 @Subroutine(TealType.none)
 def create():
     return Seq(
-        Assert(Txn.sender() == const.admin_address),
+        Assert(Txn.sender() == const.manager_address),
         func.init_global(prime.key_1),
         func.init_global(prime.key_2),
     )
