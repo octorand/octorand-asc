@@ -117,7 +117,7 @@
                         "prime": 1,
                         "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
                         "name": "market_buy",
-                        "buyer": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
+                        "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
                         "price": 0
                     }
                 ]
@@ -125,7 +125,29 @@
             "vault": {
                 "application_id": 672416402,
                 "application_address": "SJOAK65HHSORDIHEA54MGZ6QTJ2RHVJ2YWKWFQAAAYJDDR3TGX5QJ5JAYY",
-                "application_version": 1
+                "application_version": 1,
+                "optin": true,
+                "optout": true,
+                "logs": [
+                    {
+                        "code": 120,
+                        "version": 1,
+                        "timestamp": 1716808760,
+                        "prime": 1,
+                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
+                        "name": "vault_optin",
+                        "asset_id": 669142881
+                    },
+                    {
+                        "code": 121,
+                        "version": 1,
+                        "timestamp": 1716808951,
+                        "prime": 1,
+                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
+                        "name": "vault_optout",
+                        "asset_id": 669142881
+                    }
+                ]
             },
             "wallet": {
                 "application_id": 672416478,
