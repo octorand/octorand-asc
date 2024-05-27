@@ -1,21 +1,34 @@
 import os
 import json
 
-import gen1_test
+import gen1_contract_design
+import gen1_contract_market
+import gen1_contract_storage
+import gen1_contract_vault
+import gen1_contract_wallet
 
 
 def run():
+    write(*gen1_contract_design.router.compile_program(version=10), "design")
+    write(*gen1_contract_market.router.compile_program(version=10), "market")
+    write(*gen1_contract_storage.router.compile_program(version=10), "storage")
+    write(*gen1_contract_vault.router.compile_program(version=10), "vault")
+    write(*gen1_contract_wallet.router.compile_program(version=10), "wallet")
 
-    version = 10
-    indent = 4
 
-    approval, clear, contract = gen1_test.router.compile_program(version=version)
-    with open("src/app/build/gen1/test/approval.teal", "w") as f:
-        f.write(approval)
-    with open("src/app/build/gen1/test/clear.teal", "w") as f:
-        f.write(clear)
-    with open("src/app/build/gen1/test/contract.json", "w") as f:
-        f.write(json.dumps(contract.dictify(), indent=indent))
+def write(
+    approval,
+    clear,
+    contract,
+    name,
+):
+    folder = "src/app/build/gen1/" + name + "/"
+    with open(folder + "approval.teal", "w") as file:
+        file.write(approval)
+    with open(folder + "clear.teal", "w") as file:
+        file.write(clear)
+    with open(folder + "contract.json", "w") as file:
+        file.write(json.dumps(contract.dictify(), indent=4))
 
 
 if __name__ == "__main__":

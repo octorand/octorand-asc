@@ -3,23 +3,43 @@ import gen1_const as const
 import gen1_contract_storage as storage
 
 from pyteal import *
-from beaker import *
 from typing import *
 
-
-app = Application("GenOneMarket")
 
 prime = const.Prime()
 
 
-@app.update(bare=True)
+@Subroutine(TealType.none)
+def create():
+    return Seq(
+        Assert(Txn.sender() == const.admin_address),
+    )
+
+
+@Subroutine(TealType.none)
 def update():
     return Seq(
         Assert(Txn.sender() == const.admin_address),
     )
 
 
-@app.external(name="list")
+router = Router(
+    name="GenOneMarket",
+    bare_calls=BareCallActions(
+        no_op=OnCompleteAction(
+            action=create,
+            call_config=CallConfig.CREATE,
+        ),
+        update_application=OnCompleteAction(
+            action=update,
+            call_config=CallConfig.CALL,
+        ),
+    ),
+    clear_state=Approve(),
+)
+
+
+@router.method
 def list(
     price: abi.Uint64,
     application: abi.Application,
@@ -57,7 +77,7 @@ def list(
     )
 
 
-@app.external(name="unlist")
+@router.method
 def unlist(
     application: abi.Application,
 ):
@@ -85,7 +105,7 @@ def unlist(
     )
 
 
-@app.external(name="buy")
+@router.method
 def buy(
     application: abi.Application,
 ):

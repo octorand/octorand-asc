@@ -2,31 +2,44 @@ import func
 import gen1_const as const
 
 from pyteal import *
-from beaker import *
 from typing import *
-
-
-app = Application("GenOneStorage")
 
 prime = const.Prime()
 
 
-@app.create(bare=True)
+@Subroutine(TealType.none)
 def create():
     return Seq(
+        Assert(Txn.sender() == const.admin_address),
         func.init_global(prime.key_1),
         func.init_global(prime.key_2),
     )
 
 
-@app.update(bare=True)
+@Subroutine(TealType.none)
 def update():
     return Seq(
         Assert(Txn.sender() == const.admin_address),
     )
 
 
-@app.external(name="initialize")
+router = Router(
+    name="GenOneStorage",
+    bare_calls=BareCallActions(
+        no_op=OnCompleteAction(
+            action=create,
+            call_config=CallConfig.CREATE,
+        ),
+        update_application=OnCompleteAction(
+            action=update,
+            call_config=CallConfig.CALL,
+        ),
+    ),
+    clear_state=Approve(),
+)
+
+
+@router.method
 def initialize(
     id: abi.Uint64,
     prime_asset: abi.Asset,
@@ -45,7 +58,7 @@ def initialize(
     )
 
 
-@app.external(name="populate")
+@router.method
 def populate(
     theme: abi.Uint64,
     skin: abi.Uint64,
@@ -69,7 +82,7 @@ def populate(
     )
 
 
-@app.external(name="finalize")
+@router.method
 def finalize(
     score: abi.Uint64,
     sales: abi.Uint64,
@@ -87,7 +100,7 @@ def finalize(
     )
 
 
-@app.external(name="list")
+@router.method
 def list(
     price: abi.Uint64,
     seller: abi.Address,
@@ -103,7 +116,7 @@ def list(
     )
 
 
-@app.external(name="unlist")
+@router.method
 def unlist(
     seller: abi.Address,
     log: abi.DynamicBytes,
@@ -123,7 +136,7 @@ def unlist(
     )
 
 
-@app.external(name="buy")
+@router.method
 def buy(
     buyer: abi.Address,
     log: abi.DynamicBytes,
@@ -144,7 +157,7 @@ def buy(
     )
 
 
-@app.external(name="rename")
+@router.method
 def rename(
     index: abi.Uint64,
     value: abi.Uint64,
@@ -158,7 +171,7 @@ def rename(
     )
 
 
-@app.external(name="repaint")
+@router.method
 def repaint(
     theme: abi.Uint64,
     skin: abi.Uint64,
@@ -173,7 +186,7 @@ def repaint(
     )
 
 
-@app.external(name="describe")
+@router.method
 def describe(
     description: abi.StaticBytes[Literal[64]],
     log: abi.DynamicBytes,
@@ -185,7 +198,7 @@ def describe(
     )
 
 
-@app.external(name="upgrade")
+@router.method
 def upgrade(
     owner: abi.Address,
     log: abi.DynamicBytes,
@@ -203,7 +216,7 @@ def upgrade(
     )
 
 
-@app.external(name="mint")
+@router.method
 def mint(
     amount: abi.Uint64,
     owner: abi.Address,
@@ -221,7 +234,7 @@ def mint(
     )
 
 
-@app.external(name="withdraw")
+@router.method
 def withdraw(
     amount: abi.Uint64,
     owner: abi.Address,
@@ -237,7 +250,7 @@ def withdraw(
     )
 
 
-@app.external(name="optin")
+@router.method
 def optin(
     asset: abi.Asset,
     log: abi.DynamicBytes,
@@ -252,7 +265,7 @@ def optin(
     )
 
 
-@app.external(name="optout")
+@router.method
 def optout(
     asset: abi.Asset,
     owner: abi.Address,

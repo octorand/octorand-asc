@@ -3,23 +3,42 @@ import gen1_const as const
 import gen1_contract_storage as storage
 
 from pyteal import *
-from beaker import *
 from typing import *
-
-
-app = Application("GenOneDesign")
 
 prime = const.Prime()
 
 
-@app.update(bare=True)
+@Subroutine(TealType.none)
+def create():
+    return Seq(
+        Assert(Txn.sender() == const.admin_address),
+    )
+
+
+@Subroutine(TealType.none)
 def update():
     return Seq(
         Assert(Txn.sender() == const.admin_address),
     )
 
 
-@app.external(name="rename")
+router = Router(
+    name="GenOneDesign",
+    bare_calls=BareCallActions(
+        no_op=OnCompleteAction(
+            action=create,
+            call_config=CallConfig.CREATE,
+        ),
+        update_application=OnCompleteAction(
+            action=update,
+            call_config=CallConfig.CALL,
+        ),
+    ),
+    clear_state=Approve(),
+)
+
+
+@router.method
 def rename(
     index: abi.Uint64,
     value: abi.Uint64,
@@ -71,7 +90,7 @@ def rename(
     )
 
 
-@app.external(name="repaint")
+@router.method
 def repaint(
     theme: abi.Uint64,
     skin: abi.Uint64,
@@ -114,7 +133,7 @@ def repaint(
     )
 
 
-@app.external(name="describe")
+@router.method
 def describe(
     description: abi.StaticBytes[Literal[64]],
     application: abi.Application,

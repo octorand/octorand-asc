@@ -3,23 +3,43 @@ import gen1_const as const
 import gen1_contract_storage as storage
 
 from pyteal import *
-from beaker import *
 from typing import *
 
-
-app = Application("GenOneWallet")
 
 prime = const.Prime()
 
 
-@app.update(bare=True)
+@Subroutine(TealType.none)
+def create():
+    return Seq(
+        Assert(Txn.sender() == const.admin_address),
+    )
+
+
+@Subroutine(TealType.none)
 def update():
     return Seq(
         Assert(Txn.sender() == const.admin_address),
     )
 
 
-@app.external(name="upgrade")
+router = Router(
+    name="GenOneWallet",
+    bare_calls=BareCallActions(
+        no_op=OnCompleteAction(
+            action=create,
+            call_config=CallConfig.CREATE,
+        ),
+        update_application=OnCompleteAction(
+            action=update,
+            call_config=CallConfig.CALL,
+        ),
+    ),
+    clear_state=Approve(),
+)
+
+
+@router.method
 def upgrade(
     application: abi.Application,
 ):
@@ -53,7 +73,7 @@ def upgrade(
     )
 
 
-@app.external(name="mint")
+@router.method
 def mint(
     amount: abi.Uint64,
     application: abi.Application,
@@ -86,7 +106,7 @@ def mint(
     )
 
 
-@app.external(name="withdraw")
+@router.method
 def withdraw(
     amount: abi.Uint64,
     application: abi.Application,

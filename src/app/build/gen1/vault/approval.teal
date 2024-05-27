@@ -1,67 +1,66 @@
-#pragma version 8
-intcblock 0 1 8 6
-bytecblock 0x5031 0x3ed6145d03fca681550a583628ec7ba151698951ec6980c18552f4ff45fd3dae 0x00 0x8fd0e7b9 0x41157dea
+#pragma version 10
 txn NumAppArgs
-intc_0 // 0
+int 0
 ==
 bnz main_l6
 txna ApplicationArgs 0
-pushbytes 0x463756e8 // "optin(asset,application)void"
+method "optin(asset,application)void"
 ==
 bnz main_l5
 txna ApplicationArgs 0
-pushbytes 0xf79ff952 // "optout(asset,application)void"
+method "optout(asset,application)void"
 ==
 bnz main_l4
 err
 main_l4:
 txn OnCompletion
-intc_0 // NoOp
+int NoOp
 ==
 txn ApplicationID
-intc_0 // 0
+int 0
 !=
 &&
 assert
-callsub optoutcaster_10
-intc_1 // 1
+callsub optoutcaster_11
+int 1
 return
 main_l5:
 txn OnCompletion
-intc_0 // NoOp
+int NoOp
 ==
 txn ApplicationID
-intc_0 // 0
+int 0
 !=
 &&
 assert
-callsub optincaster_9
-intc_1 // 1
+callsub optincaster_10
+int 1
 return
 main_l6:
 txn OnCompletion
-intc_0 // NoOp
+int NoOp
 ==
 bnz main_l10
 txn OnCompletion
-pushint 4 // UpdateApplication
+int UpdateApplication
 ==
 bnz main_l9
 err
 main_l9:
 txn ApplicationID
-intc_0 // 0
+int 0
 !=
 assert
-callsub update_6
-intc_1 // 1
+callsub update_7
+int 1
 return
 main_l10:
 txn ApplicationID
-intc_0 // 0
+int 0
 ==
 assert
-intc_1 // 1
+callsub create_6
+int 1
 return
 
 // get_global_external_bytes
@@ -114,7 +113,7 @@ store 4
 load 5
 assert
 load 4
-intc_0 // 0
+int 0
 >
 assert
 retsub
@@ -123,7 +122,7 @@ retsub
 assertsenderpayment_4:
 proto 3 0
 frame_dig -2
-intc_0 // 0
+int 0
 >
 assert
 frame_dig -1
@@ -133,7 +132,7 @@ txn Sender
 assert
 frame_dig -1
 gtxns TypeEnum
-intc_1 // pay
+int pay
 ==
 assert
 frame_dig -1
@@ -163,32 +162,41 @@ frame_dig -1
 assert
 retsub
 
-// update
-update_6:
+// create
+create_6:
 proto 0 0
 txn Sender
-pushbytes 0xc9fd861dae22a7bad938ea83df1bee361d06ec08ab3ef9c74d87d5ad31e9f0af // ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+addr ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+==
+assert
+retsub
+
+// update
+update_7:
+proto 0 0
+txn Sender
+addr ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 ==
 assert
 retsub
 
 // optin
-optin_7:
+optin_8:
 proto 2 0
 frame_dig -1
 txnas Applications
 callsub getapplicationaddress_2
-pushint 100000 // 100000
+int 100000
 txn GroupIndex
-intc_1 // 1
+int 1
 +
 callsub assertsenderpayment_4
 frame_dig -1
 txnas Applications
-bytec_1 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+addr H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
 callsub assertapplicationcreator_5
 itxn_begin
-intc_3 // appl
+int appl
 itxn_field TypeEnum
 frame_dig -1
 txnas Applications
@@ -196,12 +204,12 @@ itxn_field ApplicationID
 frame_dig -2
 txnas Assets
 itxn_field Assets
-pushbytes 0x60907821 // "optin(asset,byte[])void"
+method "optin(asset,byte[])void"
 itxn_field ApplicationArgs
-bytec_2 // 0x00
+byte 0x00
 itxn_field ApplicationArgs
-bytec_3 // "optin(uint64,uint64,uint64,address,uint64)"
-intc_1 // 1
+method "optin(uint64,uint64,uint64,address,uint64)"
+int 1
 itob
 concat
 global LatestTimestamp
@@ -209,9 +217,9 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "P1"
-intc_0 // 0
-intc_2 // 8
+byte "P1"
+int 0
+int 8
 callsub getglobalexternaluint_1
 itob
 concat
@@ -223,8 +231,8 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-bytec_3 // "optin(uint64,uint64,uint64,address,uint64)"
-intc_1 // 1
+method "optin(uint64,uint64,uint64,address,uint64)"
+int 1
 itob
 concat
 global LatestTimestamp
@@ -232,9 +240,9 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "P1"
-intc_0 // 0
-intc_2 // 8
+byte "P1"
+int 0
+int 8
 callsub getglobalexternaluint_1
 itob
 concat
@@ -248,21 +256,21 @@ log
 retsub
 
 // optout
-optout_8:
+optout_9:
 proto 2 0
 frame_dig -1
 txnas Applications
-bytec_0 // "P1"
-intc_2 // 8
-intc_2 // 8
+byte "P1"
+int 8
+int 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
 frame_dig -1
 txnas Applications
-bytec_1 // H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+addr H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
 callsub assertapplicationcreator_5
 itxn_begin
-intc_3 // appl
+int appl
 itxn_field TypeEnum
 frame_dig -1
 txnas Applications
@@ -270,14 +278,14 @@ itxn_field ApplicationID
 frame_dig -2
 txnas Assets
 itxn_field Assets
-pushbytes 0x2e0ddd79 // "optout(asset,address,byte[])void"
+method "optout(asset,address,byte[])void"
 itxn_field ApplicationArgs
-bytec_2 // 0x00
+byte 0x00
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
-bytec 4 // "optout(uint64,uint64,uint64,address,uint64)"
-intc_1 // 1
+method "optout(uint64,uint64,uint64,address,uint64)"
+int 1
 itob
 concat
 global LatestTimestamp
@@ -285,9 +293,9 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "P1"
-intc_0 // 0
-intc_2 // 8
+byte "P1"
+int 0
+int 8
 callsub getglobalexternaluint_1
 itob
 concat
@@ -299,8 +307,8 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-bytec 4 // "optout(uint64,uint64,uint64,address,uint64)"
-intc_1 // 1
+method "optout(uint64,uint64,uint64,address,uint64)"
+int 1
 itob
 concat
 global LatestTimestamp
@@ -308,9 +316,9 @@ itob
 concat
 frame_dig -1
 txnas Applications
-bytec_0 // "P1"
-intc_0 // 0
-intc_2 // 8
+byte "P1"
+int 0
+int 8
 callsub getglobalexternaluint_1
 itob
 concat
@@ -324,37 +332,37 @@ log
 retsub
 
 // optin_caster
-optincaster_9:
+optincaster_10:
 proto 0 0
-intc_0 // 0
+int 0
 dup
 txna ApplicationArgs 1
-intc_0 // 0
+int 0
 getbyte
 frame_bury 0
 txna ApplicationArgs 2
-intc_0 // 0
+int 0
 getbyte
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub optin_7
+callsub optin_8
 retsub
 
 // optout_caster
-optoutcaster_10:
+optoutcaster_11:
 proto 0 0
-intc_0 // 0
+int 0
 dup
 txna ApplicationArgs 1
-intc_0 // 0
+int 0
 getbyte
 frame_bury 0
 txna ApplicationArgs 2
-intc_0 // 0
+int 0
 getbyte
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub optout_8
+callsub optout_9
 retsub
