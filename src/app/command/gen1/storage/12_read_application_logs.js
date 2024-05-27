@@ -19,7 +19,7 @@ exports.execute = async function () {
             let response = await connection.indexerClient
                 .lookupApplicationLogs(storage['application_id'])
                 .limit(limit)
-                .next(next)
+                .nextToken(next)
                 .do();
 
             next = response['next-token'];

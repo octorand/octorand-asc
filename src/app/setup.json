@@ -194,7 +194,28 @@
                 "populated": true,
                 "finalized": true,
                 "transferred": true,
-                "locked": true
+                "locked": true,
+                "state": {
+                    "id": 1,
+                    "prime_asset_id": 672417747,
+                    "legacy_asset_id": 672417681,
+                    "parent_application_id": 0,
+                    "theme": 3,
+                    "skin": 4,
+                    "is_founder": 1,
+                    "is_artifact": 0,
+                    "is_pioneer": 1,
+                    "is_explorer": 1,
+                    "score": 750,
+                    "sales": 16,
+                    "mints": 26,
+                    "renames": 7,
+                    "repaints": 11,
+                    "price": 0,
+                    "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
+                    "name": "ADCDWXVZ",
+                    "description": "Updated Notes"
+                }
             }
         }
     }
