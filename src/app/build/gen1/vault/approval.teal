@@ -21,7 +21,7 @@ int 0
 !=
 &&
 assert
-callsub optoutcaster_11
+callsub optoutcaster_12
 int 1
 return
 main_l5:
@@ -33,7 +33,7 @@ int 0
 !=
 &&
 assert
-callsub optincaster_10
+callsub optincaster_11
 int 1
 return
 main_l6:
@@ -51,7 +51,7 @@ txn ApplicationID
 int 0
 !=
 assert
-callsub update_7
+callsub update_8
 int 1
 return
 main_l10:
@@ -59,7 +59,7 @@ txn ApplicationID
 int 0
 ==
 assert
-callsub create_6
+callsub create_7
 int 1
 return
 
@@ -102,8 +102,20 @@ assert
 load 0
 retsub
 
+// prepare_log
+preparelog_3:
+proto 1 1
+frame_dig -1
+int 240
+frame_dig -1
+len
+-
+bzero
+concat
+retsub
+
 // assert_sender_asset_holding
-assertsenderassetholding_3:
+assertsenderassetholding_4:
 proto 1 0
 txn Sender
 frame_dig -1
@@ -119,7 +131,7 @@ assert
 retsub
 
 // assert_sender_payment
-assertsenderpayment_4:
+assertsenderpayment_5:
 proto 3 0
 frame_dig -2
 int 0
@@ -148,7 +160,7 @@ assert
 retsub
 
 // assert_application_creator
-assertapplicationcreator_5:
+assertapplicationcreator_6:
 proto 2 0
 frame_dig -2
 app_params_get AppCreator
@@ -163,7 +175,7 @@ assert
 retsub
 
 // create
-create_6:
+create_7:
 proto 0 0
 txn Sender
 addr ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
@@ -172,7 +184,7 @@ assert
 retsub
 
 // update
-update_7:
+update_8:
 proto 0 0
 txn Sender
 addr ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
@@ -181,7 +193,7 @@ assert
 retsub
 
 // optin
-optin_8:
+optin_9:
 proto 2 0
 int 120
 itob
@@ -205,6 +217,7 @@ frame_dig -2
 txnas Assets
 itob
 concat
+callsub preparelog_3
 log
 frame_dig -1
 txnas Applications
@@ -213,11 +226,11 @@ int 100000
 txn GroupIndex
 int 1
 +
-callsub assertsenderpayment_4
+callsub assertsenderpayment_5
 frame_dig -1
 txnas Applications
 addr H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_5
+callsub assertapplicationcreator_6
 itxn_begin
 int appl
 itxn_field TypeEnum
@@ -227,7 +240,7 @@ itxn_field ApplicationID
 frame_dig -2
 txnas Assets
 itxn_field Assets
-method "optin(asset,byte[256])void"
+method "optin(asset,byte[240])void"
 itxn_field ApplicationArgs
 byte 0x00
 itxn_field ApplicationArgs
@@ -258,7 +271,7 @@ itxn_submit
 retsub
 
 // optout
-optout_9:
+optout_10:
 proto 2 0
 int 121
 itob
@@ -282,6 +295,7 @@ frame_dig -2
 txnas Assets
 itob
 concat
+callsub preparelog_3
 log
 frame_dig -1
 txnas Applications
@@ -289,11 +303,11 @@ byte "P1"
 int 8
 int 8
 callsub getglobalexternaluint_1
-callsub assertsenderassetholding_3
+callsub assertsenderassetholding_4
 frame_dig -1
 txnas Applications
 addr H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_5
+callsub assertapplicationcreator_6
 itxn_begin
 int appl
 itxn_field TypeEnum
@@ -303,7 +317,7 @@ itxn_field ApplicationID
 frame_dig -2
 txnas Assets
 itxn_field Assets
-method "optout(asset,address,byte[256])void"
+method "optout(asset,address,byte[240])void"
 itxn_field ApplicationArgs
 byte 0x00
 itxn_field ApplicationArgs
@@ -336,7 +350,7 @@ itxn_submit
 retsub
 
 // optin_caster
-optincaster_10:
+optincaster_11:
 proto 0 0
 int 0
 dup
@@ -350,11 +364,11 @@ getbyte
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub optin_8
+callsub optin_9
 retsub
 
 // optout_caster
-optoutcaster_11:
+optoutcaster_12:
 proto 0 0
 int 0
 dup
@@ -368,5 +382,5 @@ getbyte
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub optout_9
+callsub optout_10
 retsub

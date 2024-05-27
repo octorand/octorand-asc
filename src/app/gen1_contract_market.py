@@ -55,7 +55,7 @@ def list(
         Itob(price.get()),
     )
     return Seq(
-        Log(log),
+        Log(func.prepare_log(log)),
         Assert(price.get() > Int(0)),
         func.assert_sender_asset_transfer(
             prime.prime_asset_id.external(app_id),
@@ -89,7 +89,7 @@ def unlist(
         Txn.sender(),
     )
     return Seq(
-        Log(log),
+        Log(func.prepare_log(log)),
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
@@ -119,7 +119,7 @@ def buy(
         Itob(prime.price.external(app_id)),
     )
     return Seq(
-        Log(log),
+        Log(func.prepare_log(log)),
         func.assert_sender_payment(
             prime.seller.external(app_id),
             Div(seller_share, Int(100)),

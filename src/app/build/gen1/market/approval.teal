@@ -25,7 +25,7 @@ int 0
 !=
 &&
 assert
-callsub buycaster_13
+callsub buycaster_14
 int 1
 return
 main_l6:
@@ -37,7 +37,7 @@ int 0
 !=
 &&
 assert
-callsub unlistcaster_12
+callsub unlistcaster_13
 int 1
 return
 main_l7:
@@ -49,7 +49,7 @@ int 0
 !=
 &&
 assert
-callsub listcaster_11
+callsub listcaster_12
 int 1
 return
 main_l8:
@@ -67,7 +67,7 @@ txn ApplicationID
 int 0
 !=
 assert
-callsub update_7
+callsub update_8
 int 1
 return
 main_l12:
@@ -75,7 +75,7 @@ txn ApplicationID
 int 0
 ==
 assert
-callsub create_6
+callsub create_7
 int 1
 return
 
@@ -118,8 +118,20 @@ assert
 load 0
 retsub
 
+// prepare_log
+preparelog_3:
+proto 1 1
+frame_dig -1
+int 240
+frame_dig -1
+len
+-
+bzero
+concat
+retsub
+
 // assert_sender_payment
-assertsenderpayment_3:
+assertsenderpayment_4:
 proto 3 0
 frame_dig -2
 int 0
@@ -148,7 +160,7 @@ assert
 retsub
 
 // assert_sender_asset_transfer
-assertsenderassettransfer_4:
+assertsenderassettransfer_5:
 proto 4 0
 frame_dig -2
 int 0
@@ -182,7 +194,7 @@ assert
 retsub
 
 // assert_application_creator
-assertapplicationcreator_5:
+assertapplicationcreator_6:
 proto 2 0
 frame_dig -2
 app_params_get AppCreator
@@ -197,7 +209,7 @@ assert
 retsub
 
 // create
-create_6:
+create_7:
 proto 0 0
 txn Sender
 addr ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
@@ -206,7 +218,7 @@ assert
 retsub
 
 // update
-update_7:
+update_8:
 proto 0 0
 txn Sender
 addr ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
@@ -215,7 +227,7 @@ assert
 retsub
 
 // list
-list_8:
+list_9:
 proto 2 0
 int 110
 itob
@@ -238,6 +250,7 @@ concat
 frame_dig -2
 itob
 concat
+callsub preparelog_3
 log
 frame_dig -2
 int 0
@@ -256,18 +269,18 @@ int 1
 txn GroupIndex
 int 1
 +
-callsub assertsenderassettransfer_4
+callsub assertsenderassettransfer_5
 frame_dig -1
 txnas Applications
 addr H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_5
+callsub assertapplicationcreator_6
 itxn_begin
 int appl
 itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "list(uint64,address,byte[256])void"
+method "list(uint64,address,byte[240])void"
 itxn_field ApplicationArgs
 frame_dig -2
 itob
@@ -300,7 +313,7 @@ itxn_submit
 retsub
 
 // unlist
-unlist_9:
+unlist_10:
 proto 1 0
 int 111
 itob
@@ -320,18 +333,19 @@ itob
 concat
 txn Sender
 concat
+callsub preparelog_3
 log
 frame_dig -1
 txnas Applications
 addr H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_5
+callsub assertapplicationcreator_6
 itxn_begin
 int appl
 itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "unlist(address,byte[256])void"
+method "unlist(address,byte[240])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
@@ -358,7 +372,7 @@ itxn_submit
 retsub
 
 // buy
-buy_10:
+buy_11:
 proto 1 0
 int 112
 itob
@@ -393,6 +407,7 @@ int 8
 callsub getglobalexternaluint_1
 itob
 concat
+callsub preparelog_3
 log
 frame_dig -1
 txnas Applications
@@ -413,7 +428,7 @@ int 100
 txn GroupIndex
 int 1
 +
-callsub assertsenderpayment_3
+callsub assertsenderpayment_4
 addr ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
 frame_dig -1
 txnas Applications
@@ -428,18 +443,18 @@ int 100
 txn GroupIndex
 int 2
 +
-callsub assertsenderpayment_3
+callsub assertsenderpayment_4
 frame_dig -1
 txnas Applications
 addr H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_5
+callsub assertapplicationcreator_6
 itxn_begin
 int appl
 itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "buy(address,byte[256])void"
+method "buy(address,byte[240])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
@@ -481,7 +496,7 @@ itxn_submit
 retsub
 
 // list_caster
-listcaster_11:
+listcaster_12:
 proto 0 0
 int 0
 dup
@@ -494,11 +509,11 @@ getbyte
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub list_8
+callsub list_9
 retsub
 
 // unlist_caster
-unlistcaster_12:
+unlistcaster_13:
 proto 0 0
 int 0
 txna ApplicationArgs 1
@@ -506,11 +521,11 @@ int 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub unlist_9
+callsub unlist_10
 retsub
 
 // buy_caster
-buycaster_13:
+buycaster_14:
 proto 0 0
 int 0
 txna ApplicationArgs 1
@@ -518,5 +533,5 @@ int 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub buy_10
+callsub buy_11
 retsub

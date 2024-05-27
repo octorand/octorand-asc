@@ -1,6 +1,7 @@
 from pyteal import *
 
 max_storage_length = Int(120)
+max_logs_length = Int(240)
 
 
 class GlobalUint:
@@ -110,6 +111,16 @@ def get_application_address(application_id):
         address,
         Assert(address.hasValue()),
         address.value(),
+    )
+
+
+@Subroutine(TealType.bytes)
+def prepare_log(log):
+    return Seq(
+        Concat(
+            log,
+            BytesZero(Minus(max_logs_length, Len(log))),
+        ),
     )
 
 

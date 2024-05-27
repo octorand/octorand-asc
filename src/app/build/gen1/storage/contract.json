@@ -101,7 +101,7 @@
                     "name": "seller"
                 },
                 {
-                    "type": "byte[256]",
+                    "type": "byte[240]",
                     "name": "log"
                 }
             ],
@@ -117,7 +117,7 @@
                     "name": "seller"
                 },
                 {
-                    "type": "byte[256]",
+                    "type": "byte[240]",
                     "name": "log"
                 }
             ],
@@ -133,7 +133,7 @@
                     "name": "buyer"
                 },
                 {
-                    "type": "byte[256]",
+                    "type": "byte[240]",
                     "name": "log"
                 }
             ],
@@ -153,7 +153,7 @@
                     "name": "value"
                 },
                 {
-                    "type": "byte[256]",
+                    "type": "byte[240]",
                     "name": "log"
                 }
             ],
@@ -173,7 +173,7 @@
                     "name": "skin"
                 },
                 {
-                    "type": "byte[256]",
+                    "type": "byte[240]",
                     "name": "log"
                 }
             ],
@@ -189,7 +189,7 @@
                     "name": "description"
                 },
                 {
-                    "type": "byte[256]",
+                    "type": "byte[240]",
                     "name": "log"
                 }
             ],
@@ -205,7 +205,7 @@
                     "name": "owner"
                 },
                 {
-                    "type": "byte[256]",
+                    "type": "byte[240]",
                     "name": "log"
                 }
             ],
@@ -225,7 +225,7 @@
                     "name": "owner"
                 },
                 {
-                    "type": "byte[256]",
+                    "type": "byte[240]",
                     "name": "log"
                 }
             ],
@@ -245,7 +245,7 @@
                     "name": "owner"
                 },
                 {
-                    "type": "byte[256]",
+                    "type": "byte[240]",
                     "name": "log"
                 }
             ],
@@ -261,7 +261,7 @@
                     "name": "asset"
                 },
                 {
-                    "type": "byte[256]",
+                    "type": "byte[240]",
                     "name": "log"
                 }
             ],
@@ -281,7 +281,7 @@
                     "name": "owner"
                 },
                 {
-                    "type": "byte[256]",
+                    "type": "byte[240]",
                     "name": "log"
                 }
             ],

@@ -4,10 +4,26 @@
             "prime": {}
         },
         "contracts": {
-            "design": {},
-            "market": {},
-            "vault": {},
-            "wallet": {},
+            "design": {
+                "application_id": 672519098,
+                "application_address": "CGU6YJ2LJ6FWWSYRH4IGLWLU3NXBB2PNA4OQD57ZT5XQRD3H2JGDMJEBJE",
+                "application_version": 1
+            },
+            "market": {
+                "application_id": 672519275,
+                "application_address": "EEEO7PEHCBII2HXL2B3OBQSJQNWPHOM3SURGIMTHWJRKDX6VB4IL4YIZDQ",
+                "application_version": 1
+            },
+            "vault": {
+                "application_id": 672519584,
+                "application_address": "X4EFDG54UMVZ433PG7SPAWAY2DSDUYWRNFGNUKRERBQHPTX3ZJGTLJZUQU",
+                "application_version": 1
+            },
+            "wallet": {
+                "application_id": 672519820,
+                "application_address": "HQCFL3XVQ5HZOB7NW7FD5H3Q6G7GV6RTXC5HMG2AOWYOLHWDACQGKFJ3AU",
+                "application_version": 1
+            },
             "storage": {}
         }
     }

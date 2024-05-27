@@ -16,47 +16,47 @@ method "finalize(uint64,uint64,uint64,uint64,uint64)void"
 ==
 bnz main_l27
 txna ApplicationArgs 0
-method "list(uint64,address,byte[256])void"
+method "list(uint64,address,byte[240])void"
 ==
 bnz main_l26
 txna ApplicationArgs 0
-method "unlist(address,byte[256])void"
+method "unlist(address,byte[240])void"
 ==
 bnz main_l25
 txna ApplicationArgs 0
-method "buy(address,byte[256])void"
+method "buy(address,byte[240])void"
 ==
 bnz main_l24
 txna ApplicationArgs 0
-method "rename(uint64,uint64,byte[256])void"
+method "rename(uint64,uint64,byte[240])void"
 ==
 bnz main_l23
 txna ApplicationArgs 0
-method "repaint(uint64,uint64,byte[256])void"
+method "repaint(uint64,uint64,byte[240])void"
 ==
 bnz main_l22
 txna ApplicationArgs 0
-method "describe(byte[64],byte[256])void"
+method "describe(byte[64],byte[240])void"
 ==
 bnz main_l21
 txna ApplicationArgs 0
-method "upgrade(address,byte[256])void"
+method "upgrade(address,byte[240])void"
 ==
 bnz main_l20
 txna ApplicationArgs 0
-method "mint(uint64,address,byte[256])void"
+method "mint(uint64,address,byte[240])void"
 ==
 bnz main_l19
 txna ApplicationArgs 0
-method "withdraw(uint64,address,byte[256])void"
+method "withdraw(uint64,address,byte[240])void"
 ==
 bnz main_l18
 txna ApplicationArgs 0
-method "optin(asset,byte[256])void"
+method "optin(asset,byte[240])void"
 ==
 bnz main_l17
 txna ApplicationArgs 0
-method "optout(asset,address,byte[256])void"
+method "optout(asset,address,byte[240])void"
 ==
 bnz main_l16
 err
@@ -548,7 +548,7 @@ retsub
 list_14:
 proto 3 0
 global CallerApplicationID
-int 672416345
+int 672519275
 ==
 assert
 byte "P1"
@@ -583,7 +583,7 @@ retsub
 unlist_15:
 proto 2 0
 global CallerApplicationID
-int 672416345
+int 672519275
 ==
 assert
 byte "P1"
@@ -625,7 +625,7 @@ retsub
 buy_16:
 proto 2 0
 global CallerApplicationID
-int 672416345
+int 672519275
 ==
 assert
 byte "P1"
@@ -677,7 +677,7 @@ retsub
 rename_17:
 proto 3 0
 global CallerApplicationID
-int 672416205
+int 672519098
 ==
 assert
 byte "P1"
@@ -709,7 +709,7 @@ retsub
 repaint_18:
 proto 3 0
 global CallerApplicationID
-int 672416205
+int 672519098
 ==
 assert
 frame_dig -3
@@ -740,7 +740,7 @@ retsub
 describe_19:
 proto 2 0
 global CallerApplicationID
-int 672416205
+int 672519098
 ==
 assert
 frame_dig -2
@@ -756,7 +756,7 @@ retsub
 upgrade_20:
 proto 2 0
 global CallerApplicationID
-int 672416478
+int 672519820
 ==
 assert
 byte "P1"
@@ -786,7 +786,7 @@ retsub
 mint_21:
 proto 3 0
 global CallerApplicationID
-int 672416478
+int 672519820
 ==
 assert
 int 660757756
@@ -811,7 +811,7 @@ retsub
 withdraw_22:
 proto 3 0
 global CallerApplicationID
-int 672416478
+int 672519820
 ==
 assert
 frame_dig -2
@@ -825,7 +825,7 @@ retsub
 optin_23:
 proto 2 0
 global CallerApplicationID
-int 672416402
+int 672519584
 ==
 assert
 frame_dig -2
@@ -860,7 +860,7 @@ retsub
 optout_24:
 proto 3 0
 global CallerApplicationID
-int 672416402
+int 672519584
 ==
 assert
 frame_dig -3

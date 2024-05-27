@@ -104,7 +104,7 @@ def finalize(
 def list(
     price: abi.Uint64,
     seller: abi.Address,
-    log: abi.StaticBytes[Literal[256]],
+    log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         Assert(Global.caller_app_id() == const.market_application_id),
@@ -119,7 +119,7 @@ def list(
 @router.method
 def unlist(
     seller: abi.Address,
-    log: abi.StaticBytes[Literal[256]],
+    log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         Assert(Global.caller_app_id() == const.market_application_id),
@@ -139,7 +139,7 @@ def unlist(
 @router.method
 def buy(
     buyer: abi.Address,
-    log: abi.StaticBytes[Literal[256]],
+    log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         Assert(Global.caller_app_id() == const.market_application_id),
@@ -161,7 +161,7 @@ def buy(
 def rename(
     index: abi.Uint64,
     value: abi.Uint64,
-    log: abi.StaticBytes[Literal[256]],
+    log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         Assert(Global.caller_app_id() == const.design_application_id),
@@ -175,7 +175,7 @@ def rename(
 def repaint(
     theme: abi.Uint64,
     skin: abi.Uint64,
-    log: abi.StaticBytes[Literal[256]],
+    log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         Assert(Global.caller_app_id() == const.design_application_id),
@@ -189,7 +189,7 @@ def repaint(
 @router.method
 def describe(
     description: abi.StaticBytes[Literal[64]],
-    log: abi.StaticBytes[Literal[256]],
+    log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         Assert(Global.caller_app_id() == const.design_application_id),
@@ -201,7 +201,7 @@ def describe(
 @router.method
 def upgrade(
     owner: abi.Address,
-    log: abi.StaticBytes[Literal[256]],
+    log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         Assert(Global.caller_app_id() == const.wallet_application_id),
@@ -220,7 +220,7 @@ def upgrade(
 def mint(
     amount: abi.Uint64,
     owner: abi.Address,
-    log: abi.StaticBytes[Literal[256]],
+    log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         Assert(Global.caller_app_id() == const.wallet_application_id),
@@ -238,7 +238,7 @@ def mint(
 def withdraw(
     amount: abi.Uint64,
     owner: abi.Address,
-    log: abi.StaticBytes[Literal[256]],
+    log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         Assert(Global.caller_app_id() == const.wallet_application_id),
@@ -253,7 +253,7 @@ def withdraw(
 @router.method
 def optin(
     asset: abi.Asset,
-    log: abi.StaticBytes[Literal[256]],
+    log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         Assert(Global.caller_app_id() == const.vault_application_id),
@@ -269,7 +269,7 @@ def optin(
 def optout(
     asset: abi.Asset,
     owner: abi.Address,
-    log: abi.StaticBytes[Literal[256]],
+    log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         Assert(Global.caller_app_id() == const.vault_application_id),

@@ -53,7 +53,7 @@ def upgrade(
         Txn.sender(),
     )
     return Seq(
-        Log(log),
+        Log(func.prepare_log(log)),
         func.assert_sender_asset_transfer(
             prime.legacy_asset_id.external(app_id),
             func.get_application_address(app_id),
@@ -87,7 +87,7 @@ def mint(
         Itob(amount.get()),
     )
     return Seq(
-        Log(log),
+        Log(func.prepare_log(log)),
         Assert(amount.get() > Int(0)),
         func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         func.assert_application_creator(app_id, const.manager_address),
@@ -118,7 +118,7 @@ def withdraw(
         Itob(amount.get()),
     )
     return Seq(
-        Log(log),
+        Log(func.prepare_log(log)),
         Assert(amount.get() > Int(0)),
         func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         func.assert_application_creator(app_id, const.manager_address),
