@@ -76,3 +76,50 @@ exports.bytes = function (value, length) {
 exports.reference = function (prefix, value) {
     return new Uint8Array([...exports.bytes(prefix + '-'), ...baseClient.encodeUint64(value)])
 }
+
+exports.event = function (value) {
+    let data = {
+        code: baseClient.decodeUint64(value.subarray(0, 8)),
+        version: baseClient.decodeUint64(value.subarray(8, 16)),
+        timestamp: baseClient.decodeUint64(value.subarray(16, 24)),
+        prime: baseClient.decodeUint64(value.subarray(24, 32)),
+    };
+
+    switch (data.code) {
+        case 100:
+            data.name = 'design_rename';
+            break;
+        case 101:
+            data.name = 'design_repaint';
+            break;
+        case 102:
+            data.name = 'design_describe';
+            break;
+        case 110:
+            data.name = 'market_list';
+            break;
+        case 111:
+            data.name = 'market_unlist';
+            break;
+        case 112:
+            data.name = 'market_buy';
+            break;
+        case 120:
+            data.name = 'vault_optin';
+            break;
+        case 121:
+            data.name = 'vault_optout';
+            break;
+        case 130:
+            data.name = 'wallet_upgrade';
+            break;
+        case 131:
+            data.name = 'wallet_mint';
+            break;
+        case 132:
+            data.name = 'wallet_withdraw';
+            break;
+    }
+
+    return data;
+}

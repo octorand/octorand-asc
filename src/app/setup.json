@@ -45,9 +45,27 @@
                 "minted": true,
                 "withdrawn": true,
                 "logs": [
-                    "0000008200000000",
-                    "0000008300000000",
-                    "0000008400000000"
+                    {
+                        "code": 130,
+                        "version": 1,
+                        "timestamp": 1716803383,
+                        "prime": 1,
+                        "name": "wallet_upgrade"
+                    },
+                    {
+                        "code": 131,
+                        "version": 1,
+                        "timestamp": 1716803389,
+                        "prime": 1,
+                        "name": "wallet_mint"
+                    },
+                    {
+                        "code": 132,
+                        "version": 1,
+                        "timestamp": 1716803394,
+                        "prime": 1,
+                        "name": "wallet_withdraw"
+                    }
                 ]
             },
             "storage": {
