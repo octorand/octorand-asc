@@ -50,6 +50,7 @@
                         "version": 1,
                         "timestamp": 1716803383,
                         "prime": 1,
+                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
                         "name": "wallet_upgrade"
                     },
                     {
@@ -57,14 +58,18 @@
                         "version": 1,
                         "timestamp": 1716803389,
                         "prime": 1,
-                        "name": "wallet_mint"
+                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
+                        "name": "wallet_mint",
+                        "amount": 100
                     },
                     {
                         "code": 132,
                         "version": 1,
                         "timestamp": 1716803394,
                         "prime": 1,
-                        "name": "wallet_withdraw"
+                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
+                        "name": "wallet_withdraw",
+                        "amount": 200
                     }
                 ]
             },
