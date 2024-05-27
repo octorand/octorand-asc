@@ -35,5 +35,6 @@ require('dotenv').config();
     await require('./command/gen1/wallet/03_call_upgrade').execute();
     await require('./command/gen1/wallet/04_call_mint').execute();
     await require('./command/gen1/wallet/05_call_withdraw').execute();
+    await require('./command/gen1/wallet/06_read_application_logs').execute();
 
 })();

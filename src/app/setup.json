@@ -43,7 +43,18 @@
                 "application_version": 1,
                 "upgraded": true,
                 "minted": true,
-                "withdrawn": true
+                "withdrawn": true,
+                "logs": [
+                    [
+                        "C57HawAAAAAAAAABAAAAAGZUA/AAAAAAAAAAAT7WFF0D/KaBVQpYNijse6FRaYlR7GmAwYVS9P9F/T2u"
+                    ],
+                    [
+                        "+RcVTAAAAAAAAAABAAAAAGZUBUMAAAAAAAAAAT7WFF0D/KaBVQpYNijse6FRaYlR7GmAwYVS9P9F/T2uAAAAAAAAAGQ="
+                    ],
+                    [
+                        "i4PPnAAAAAAAAAABAAAAAGZUBUkAAAAAAAAAAT7WFF0D/KaBVQpYNijse6FRaYlR7GmAwYVS9P9F/T2uAAAAAAAAAMg="
+                    ]
+                ]
             },
             "storage": {
                 "application_id": 672187273,
@@ -68,7 +79,7 @@
                     "is_explorer": 1,
                     "score": 750,
                     "sales": 15,
-                    "mints": 25,
+                    "mints": 26,
                     "renames": 5,
                     "repaints": 10,
                     "price": 0,
