@@ -1,14 +1,66 @@
 {
     "gen1": {
         "inputs": {
-            "prime": {}
+            "prime": {
+                "id": 1,
+                "theme": 1,
+                "skin": 2,
+                "is_founder": 1,
+                "is_artifact": 0,
+                "is_pioneer": 1,
+                "is_explorer": 0,
+                "score": 750,
+                "sales": 15,
+                "mints": 25,
+                "renames": 5,
+                "repaints": 10,
+                "name": "ABCDWXYZ",
+                "description": "Notes",
+                "price": 350,
+                "legacy_asset_id": 672417681,
+                "prime_asset_id": 672417747
+            }
         },
         "contracts": {
-            "design": {},
-            "market": {},
-            "vault": {},
-            "wallet": {},
-            "storage": {}
+            "design": {
+                "application_id": 672416205,
+                "application_address": "WXPTAOUYISCQLMULKUR3V44QL7R4DI3E5JYP4GLKNUO4VWTEKNAALVHGEA",
+                "application_version": 1
+            },
+            "market": {
+                "application_id": 672416345,
+                "application_address": "JSBVMKAGAFU63I3CVN7NK6NAVGDTIKJ5IP2UNJB6BW2JV774SCJPQ3GY4A",
+                "application_version": 1
+            },
+            "vault": {
+                "application_id": 672416402,
+                "application_address": "SJOAK65HHSORDIHEA54MGZ6QTJ2RHVJ2YWKWFQAAAYJDDR3TGX5QJ5JAYY",
+                "application_version": 1
+            },
+            "wallet": {
+                "application_id": 672416478,
+                "application_address": "B63SQBZSUTCLQIRJVN4UNTBECTCEV7TNGAMT6DMROE5DMDJZ22QMDWOEII",
+                "application_version": 1,
+                "upgraded": true,
+                "minted": true,
+                "withdrawn": true,
+                "logs": [
+                    "0000008200000000",
+                    "0000008300000000",
+                    "0000008400000000"
+                ]
+            },
+            "storage": {
+                "application_id": 672417872,
+                "application_address": "3HZFPBYTTPZZ7WXGIN6X2VS7DR5BMKQPV3OXJDLEIKOHEITAW7I7RBJ5QA",
+                "application_version": 1,
+                "funded": true,
+                "initialized": true,
+                "populated": true,
+                "finalized": true,
+                "transferred": true,
+                "locked": true
+            }
         }
     }
 }
