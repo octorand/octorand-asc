@@ -192,73 +192,6 @@ retsub
 // rename
 rename_7:
 proto 3 0
-frame_dig -3
-int 7
-<=
-assert
-frame_dig -2
-int 65
->=
-assert
-frame_dig -2
-int 90
-<=
-assert
-frame_dig -1
-txnas Applications
-byte "P1"
-int 8
-int 8
-callsub getglobalexternaluint_1
-callsub assertsenderassetholding_2
-int 660757756
-addr ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
-int 10000000
-frame_dig -2
-frame_dig -1
-txnas Applications
-byte "P1"
-int 104
-int 8
-callsub getglobalexternalbytes_0
-frame_dig -3
-getbyte
->
-bnz rename_7_l8
-frame_dig -1
-txnas Applications
-byte "P1"
-int 104
-int 8
-callsub getglobalexternalbytes_0
-frame_dig -3
-getbyte
-frame_dig -2
--
-rename_7_l2:
-*
-txn GroupIndex
-int 1
-+
-callsub assertsenderassettransfer_3
-frame_dig -1
-txnas Applications
-addr H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
-callsub assertapplicationcreator_4
-itxn_begin
-int appl
-itxn_field TypeEnum
-frame_dig -1
-txnas Applications
-itxn_field ApplicationID
-method "rename(uint64,uint64,byte[])void"
-itxn_field ApplicationArgs
-frame_dig -3
-itob
-itxn_field ApplicationArgs
-frame_dig -2
-itob
-itxn_field ApplicationArgs
 int 100
 itob
 int 1
@@ -294,6 +227,54 @@ callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
+bnz rename_7_l8
+frame_dig -1
+txnas Applications
+byte "P1"
+int 104
+int 8
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+frame_dig -2
+-
+rename_7_l2:
+*
+itob
+concat
+log
+frame_dig -3
+int 7
+<=
+assert
+frame_dig -2
+int 65
+>=
+assert
+frame_dig -2
+int 90
+<=
+assert
+frame_dig -1
+txnas Applications
+byte "P1"
+int 8
+int 8
+callsub getglobalexternaluint_1
+callsub assertsenderassetholding_2
+int 660757756
+addr ZH6YMHNOEKT3VWJY5KB56G7OGYOQN3AIVM7PTR2NQ7K22MPJ6CXRUAIIAM
+int 10000000
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "P1"
+int 104
+int 8
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+>
 bnz rename_7_l7
 frame_dig -1
 txnas Applications
@@ -307,10 +288,28 @@ frame_dig -2
 -
 rename_7_l4:
 *
-itob
-concat
+txn GroupIndex
+int 1
++
+callsub assertsenderassettransfer_3
+frame_dig -1
+txnas Applications
+addr H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+callsub assertapplicationcreator_4
+itxn_begin
+int appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+method "rename(uint64,uint64,byte[256])void"
 itxn_field ApplicationArgs
-itxn_submit
+frame_dig -3
+itob
+itxn_field ApplicationArgs
+frame_dig -2
+itob
+itxn_field ApplicationArgs
 int 100
 itob
 int 1
@@ -398,12 +397,41 @@ rename_7_l9:
 *
 itob
 concat
-log
+itxn_field ApplicationArgs
+itxn_submit
 retsub
 
 // repaint
 repaint_8:
 proto 3 0
+int 101
+itob
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -3
+itob
+concat
+frame_dig -2
+itob
+concat
+int 10000000
+itob
+concat
+log
 frame_dig -3
 int 7
 <=
@@ -436,7 +464,7 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "repaint(uint64,uint64,byte[])void"
+method "repaint(uint64,uint64,byte[256])void"
 itxn_field ApplicationArgs
 frame_dig -3
 itob
@@ -473,39 +501,35 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-int 101
-itob
-int 1
-itob
-concat
-global LatestTimestamp
-itob
-concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 0
-int 8
-callsub getglobalexternaluint_1
-itob
-concat
-txn Sender
-concat
-frame_dig -3
-itob
-concat
-frame_dig -2
-itob
-concat
-int 10000000
-itob
-concat
-log
 retsub
 
 // describe
 describe_9:
 proto 2 0
+int 102
+itob
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -2
+concat
+int 10000000
+itob
+concat
+log
 frame_dig -1
 txnas Applications
 byte "P1"
@@ -530,7 +554,7 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "describe(byte[64],byte[])void"
+method "describe(byte[64],byte[256])void"
 itxn_field ApplicationArgs
 frame_dig -2
 itxn_field ApplicationArgs
@@ -559,30 +583,6 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-int 102
-itob
-int 1
-itob
-concat
-global LatestTimestamp
-itob
-concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 0
-int 8
-callsub getglobalexternaluint_1
-itob
-concat
-txn Sender
-concat
-frame_dig -2
-concat
-int 10000000
-itob
-concat
-log
 retsub
 
 // rename_caster

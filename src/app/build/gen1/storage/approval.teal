@@ -16,47 +16,47 @@ method "finalize(uint64,uint64,uint64,uint64,uint64)void"
 ==
 bnz main_l27
 txna ApplicationArgs 0
-method "list(uint64,address,byte[])void"
+method "list(uint64,address,byte[256])void"
 ==
 bnz main_l26
 txna ApplicationArgs 0
-method "unlist(address,byte[])void"
+method "unlist(address,byte[256])void"
 ==
 bnz main_l25
 txna ApplicationArgs 0
-method "buy(address,byte[])void"
+method "buy(address,byte[256])void"
 ==
 bnz main_l24
 txna ApplicationArgs 0
-method "rename(uint64,uint64,byte[])void"
+method "rename(uint64,uint64,byte[256])void"
 ==
 bnz main_l23
 txna ApplicationArgs 0
-method "repaint(uint64,uint64,byte[])void"
+method "repaint(uint64,uint64,byte[256])void"
 ==
 bnz main_l22
 txna ApplicationArgs 0
-method "describe(byte[64],byte[])void"
+method "describe(byte[64],byte[256])void"
 ==
 bnz main_l21
 txna ApplicationArgs 0
-method "upgrade(address,byte[])void"
+method "upgrade(address,byte[256])void"
 ==
 bnz main_l20
 txna ApplicationArgs 0
-method "mint(uint64,address,byte[])void"
+method "mint(uint64,address,byte[256])void"
 ==
 bnz main_l19
 txna ApplicationArgs 0
-method "withdraw(uint64,address,byte[])void"
+method "withdraw(uint64,address,byte[256])void"
 ==
 bnz main_l18
 txna ApplicationArgs 0
-method "optin(asset,byte[])void"
+method "optin(asset,byte[256])void"
 ==
 bnz main_l17
 txna ApplicationArgs 0
-method "optout(asset,address,byte[])void"
+method "optout(asset,address,byte[256])void"
 ==
 bnz main_l16
 err
@@ -576,7 +576,6 @@ int 72
 int 32
 callsub setglobalbytes_3
 frame_dig -1
-extract 2 0
 log
 retsub
 
@@ -619,7 +618,6 @@ int 72
 int 32
 callsub setglobalbytes_3
 frame_dig -1
-extract 2 0
 log
 retsub
 
@@ -672,7 +670,6 @@ int 48
 int 4
 callsub setglobaluint_4
 frame_dig -1
-extract 2 0
 log
 retsub
 
@@ -705,7 +702,6 @@ int 56
 int 4
 callsub setglobaluint_4
 frame_dig -1
-extract 2 0
 log
 retsub
 
@@ -737,7 +733,6 @@ int 60
 int 4
 callsub setglobaluint_4
 frame_dig -1
-extract 2 0
 log
 retsub
 
@@ -754,7 +749,6 @@ int 0
 int 64
 callsub setglobalbytes_3
 frame_dig -1
-extract 2 0
 log
 retsub
 
@@ -785,7 +779,6 @@ int 39
 int 1
 callsub setglobaluint_4
 frame_dig -1
-extract 2 0
 log
 retsub
 
@@ -811,7 +804,6 @@ int 52
 int 4
 callsub setglobaluint_4
 frame_dig -1
-extract 2 0
 log
 retsub
 
@@ -826,7 +818,6 @@ frame_dig -2
 frame_dig -3
 callsub executepayment_7
 frame_dig -1
-extract 2 0
 log
 retsub
 
@@ -862,7 +853,6 @@ frame_dig -2
 txnas Assets
 callsub optinintoasset_5
 frame_dig -1
-extract 2 0
 log
 retsub
 
@@ -899,7 +889,6 @@ txnas Assets
 frame_dig -2
 callsub optoutfromasset_6
 frame_dig -1
-extract 2 0
 log
 retsub
 

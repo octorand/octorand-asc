@@ -217,6 +217,28 @@ retsub
 // list
 list_8:
 proto 2 0
+int 110
+itob
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -2
+itob
+concat
+log
 frame_dig -2
 int 0
 >
@@ -245,7 +267,7 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "list(uint64,address,byte[])void"
+method "list(uint64,address,byte[256])void"
 itxn_field ApplicationArgs
 frame_dig -2
 itob
@@ -275,7 +297,12 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-int 110
+retsub
+
+// unlist
+unlist_9:
+proto 1 0
+int 111
 itob
 int 1
 itob
@@ -293,15 +320,7 @@ itob
 concat
 txn Sender
 concat
-frame_dig -2
-itob
-concat
 log
-retsub
-
-// unlist
-unlist_9:
-proto 1 0
 frame_dig -1
 txnas Applications
 addr H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
@@ -312,7 +331,7 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "unlist(address,byte[])void"
+method "unlist(address,byte[256])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
@@ -336,7 +355,12 @@ txn Sender
 concat
 itxn_field ApplicationArgs
 itxn_submit
-int 111
+retsub
+
+// buy
+buy_10:
+proto 1 0
+int 112
 itob
 int 1
 itob
@@ -354,12 +378,22 @@ itob
 concat
 txn Sender
 concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 72
+int 32
+callsub getglobalexternalbytes_0
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 64
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
 log
-retsub
-
-// buy
-buy_10:
-proto 1 0
 frame_dig -1
 txnas Applications
 byte "P1"
@@ -405,7 +439,7 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "buy(address,byte[])void"
+method "buy(address,byte[256])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
@@ -444,40 +478,6 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-int 112
-itob
-int 1
-itob
-concat
-global LatestTimestamp
-itob
-concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 0
-int 8
-callsub getglobalexternaluint_1
-itob
-concat
-txn Sender
-concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 72
-int 32
-callsub getglobalexternalbytes_0
-concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 64
-int 8
-callsub getglobalexternaluint_1
-itob
-concat
-log
 retsub
 
 // list_caster

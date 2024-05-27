@@ -65,6 +65,7 @@ def rename(
         Itob(price),
     )
     return Seq(
+        Log(log),
         Assert(index.get() <= Int(7)),
         Assert(value.get() >= Int(65)),
         Assert(value.get() <= Int(90)),
@@ -85,7 +86,6 @@ def rename(
                 log,
             ],
         ),
-        Log(log),
     )
 
 
@@ -107,6 +107,7 @@ def repaint(
         Itob(const.repaint_price),
     )
     return Seq(
+        Log(log),
         Assert(theme.get() <= Int(7)),
         Assert(skin.get() <= Int(7)),
         func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
@@ -126,7 +127,6 @@ def repaint(
                 log,
             ],
         ),
-        Log(log),
     )
 
 
@@ -146,6 +146,7 @@ def describe(
         Itob(const.describe_price),
     )
     return Seq(
+        Log(log),
         func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         func.assert_sender_asset_transfer(
             const.platform_asset_id,
@@ -162,5 +163,4 @@ def describe(
                 log,
             ],
         ),
-        Log(log),
     )

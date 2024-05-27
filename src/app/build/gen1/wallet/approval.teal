@@ -204,6 +204,25 @@ retsub
 // upgrade
 upgrade_8:
 proto 1 0
+int 130
+itob
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+log
 frame_dig -1
 txnas Applications
 byte "P1"
@@ -228,7 +247,7 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "upgrade(address,byte[])void"
+method "upgrade(address,byte[256])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
@@ -252,30 +271,33 @@ txn Sender
 concat
 itxn_field ApplicationArgs
 itxn_submit
-int 130
-itob
-int 1
-itob
-concat
-global LatestTimestamp
-itob
-concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 0
-int 8
-callsub getglobalexternaluint_1
-itob
-concat
-txn Sender
-concat
-log
 retsub
 
 // mint
 mint_9:
 proto 2 0
+int 131
+itob
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -2
+itob
+concat
+log
 frame_dig -2
 int 0
 >
@@ -297,7 +319,7 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "mint(uint64,address,byte[])void"
+method "mint(uint64,address,byte[256])void"
 itxn_field ApplicationArgs
 frame_dig -2
 itob
@@ -327,33 +349,33 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-int 131
-itob
-int 1
-itob
-concat
-global LatestTimestamp
-itob
-concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 0
-int 8
-callsub getglobalexternaluint_1
-itob
-concat
-txn Sender
-concat
-frame_dig -2
-itob
-concat
-log
 retsub
 
 // withdraw
 withdraw_10:
 proto 2 0
+int 132
+itob
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -2
+itob
+concat
+log
 frame_dig -2
 int 0
 >
@@ -375,7 +397,7 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "withdraw(uint64,address,byte[])void"
+method "withdraw(uint64,address,byte[256])void"
 itxn_field ApplicationArgs
 frame_dig -2
 itob
@@ -405,28 +427,6 @@ itob
 concat
 itxn_field ApplicationArgs
 itxn_submit
-int 132
-itob
-int 1
-itob
-concat
-global LatestTimestamp
-itob
-concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 0
-int 8
-callsub getglobalexternaluint_1
-itob
-concat
-txn Sender
-concat
-frame_dig -2
-itob
-concat
-log
 retsub
 
 // upgrade_caster

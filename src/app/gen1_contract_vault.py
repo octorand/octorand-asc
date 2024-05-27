@@ -55,6 +55,7 @@ def optin(
         Itob(asset.asset_id()),
     )
     return Seq(
+        Log(log),
         func.assert_sender_payment(
             func.get_application_address(app_id),
             const.optin_price,
@@ -69,7 +70,6 @@ def optin(
                 log,
             ],
         ),
-        Log(log),
     )
 
 
@@ -88,6 +88,7 @@ def optout(
         Itob(asset.asset_id()),
     )
     return Seq(
+        Log(log),
         func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
@@ -99,5 +100,4 @@ def optout(
                 log,
             ],
         ),
-        Log(log),
     )
