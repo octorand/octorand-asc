@@ -10,7 +10,7 @@ exports.execute = async function () {
         let sender = connection.gen1.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
+        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
 
         let prime = setup['gen1']['inputs']['prime'];
 
@@ -43,7 +43,7 @@ exports.execute = async function () {
             prime['prime_asset_id'] = assetId;
 
             setup['gen1']['inputs']['prime'] = prime;
-            fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
+            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
 
             console.log('create prime asset');
         };

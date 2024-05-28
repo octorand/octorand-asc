@@ -10,7 +10,7 @@ exports.execute = async function () {
         let sender = connection.player.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
+        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
         let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/vault/contract.json')));
 
         let vault = setup['gen1']['contracts']['vault'];
@@ -44,7 +44,7 @@ exports.execute = async function () {
             vault['optout'] = true;
 
             setup['gen1']['contracts']['vault'] = vault;
-            fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
+            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
 
             console.log('called optout method');
         }

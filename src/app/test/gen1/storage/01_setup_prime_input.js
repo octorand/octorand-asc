@@ -4,7 +4,7 @@ const fs = require('fs');
 
 exports.execute = async function () {
     try {
-        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
+        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
 
         let prime = setup['gen1']['inputs']['prime'];
 
@@ -28,7 +28,7 @@ exports.execute = async function () {
             }
 
             setup['gen1']['inputs']['prime'] = prime;
-            fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
+            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
 
             console.log('setup prime input');
         };

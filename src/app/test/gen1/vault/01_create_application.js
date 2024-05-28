@@ -10,7 +10,7 @@ exports.execute = async function () {
         let sender = connection.admin.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
+        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
 
         let vault = setup['gen1']['contracts']['vault'];
 
@@ -49,7 +49,7 @@ exports.execute = async function () {
             vault['application_version'] = 0;
 
             setup['gen1']['contracts']['vault'] = vault;
-            fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
+            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
 
             console.log('created vault application');
         }

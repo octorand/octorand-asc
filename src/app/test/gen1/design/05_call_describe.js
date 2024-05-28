@@ -10,7 +10,7 @@ exports.execute = async function () {
         let sender = connection.player.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
+        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
         let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/design/contract.json')));
 
         let design = setup['gen1']['contracts']['design'];
@@ -60,7 +60,7 @@ exports.execute = async function () {
             design['described'] = true;
 
             setup['gen1']['contracts']['design'] = design;
-            fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
+            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
 
             console.log('called describe method');
         }

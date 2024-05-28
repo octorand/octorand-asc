@@ -7,7 +7,7 @@ exports.execute = async function () {
     try {
         let connection = await chain.get();
 
-        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
+        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
 
         let design = setup['gen1']['contracts']['design'];
 
@@ -23,7 +23,7 @@ exports.execute = async function () {
         design['logs'] = logs;
 
         setup['gen1']['contracts']['design'] = design;
-        fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
+        fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
 
     } catch (error) {
         console.log(error);

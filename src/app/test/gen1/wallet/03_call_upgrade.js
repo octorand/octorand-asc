@@ -10,7 +10,7 @@ exports.execute = async function () {
         let sender = connection.gen1.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/setup.json'));
+        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
         let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/wallet/contract.json')));
 
         let wallet = setup['gen1']['contracts']['wallet'];
@@ -59,7 +59,7 @@ exports.execute = async function () {
             wallet['upgraded'] = true;
 
             setup['gen1']['contracts']['wallet'] = wallet;
-            fs.writeFileSync('src/app/setup.json', JSON.stringify(setup, null, 4));
+            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
 
             console.log('called upgrade method');
         }
