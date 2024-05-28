@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../../lib/chain');
+const chain = require('./../../../chain/index');
 
 exports.execute = async function () {
     try {
@@ -10,7 +10,7 @@ exports.execute = async function () {
         let sender = connection.admin.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
-        let config = JSON.parse(fs.readFileSync('src/app/test/config.json'));
+        let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
         let market = config['gen1']['contracts']['market'];
 
@@ -20,8 +20,8 @@ exports.execute = async function () {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
-            let approvalProgram = fs.readFileSync('src/app/build/gen1/market/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/app/build/gen1/market/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/gen1/market/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/gen1/market/clear.teal', 'utf8');
 
             composer.addTransaction({
                 signer: signer,
@@ -44,7 +44,7 @@ exports.execute = async function () {
             market['application_version'] = version;
 
             config['gen1']['contracts']['market'] = market;
-            fs.writeFileSync('src/app/test/config.json', JSON.stringify(config, null, 4));
+            fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('updated market application');
         }

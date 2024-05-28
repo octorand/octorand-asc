@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../../lib/chain');
+const chain = require('./../../../chain/index');
 
 exports.execute = async function () {
     try {
@@ -10,8 +10,8 @@ exports.execute = async function () {
         let sender = connection.player.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
 
-        let config = JSON.parse(fs.readFileSync('src/app/test/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/vault/contract.json')));
+        let config = JSON.parse(fs.readFileSync('src/test/config.json'));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/gen1/vault/contract.json')));
 
         let vault = config['gen1']['contracts']['vault'];
 
@@ -71,7 +71,7 @@ exports.execute = async function () {
             vault['optin'] = true;
 
             config['gen1']['contracts']['vault'] = vault;
-            fs.writeFileSync('src/app/test/config.json', JSON.stringify(config, null, 4));
+            fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('called optin method');
         }
