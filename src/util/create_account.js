@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const chain = require('./../lib/chain');
+const chain = require('./../chain/index');
 
 (async () => {
     try {
