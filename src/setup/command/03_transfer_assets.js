@@ -1,9 +1,10 @@
 require('dotenv').config();
 
-const chain = require('./../lib/chain');
+const chain = require('./../../chain/index');
 
-(async () => {
+exports.execute = async function () {
     try {
+
         let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.admin.addr;
@@ -73,7 +74,9 @@ const chain = require('./../lib/chain');
 
         await chain.execute(composer);
 
+        console.log('transfer assets from admin');
+
     } catch (error) {
         console.log(error);
     }
-})();
+}

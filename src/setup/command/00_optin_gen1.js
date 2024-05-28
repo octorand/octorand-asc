@@ -1,13 +1,14 @@
 require('dotenv').config();
 
-const chain = require('./../lib/chain');
+const chain = require('./../../chain/index');
 
-(async () => {
+exports.execute = async function () {
     try {
+
         let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen2.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
+        let sender = connection.gen1.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
         let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -28,7 +29,9 @@ const chain = require('./../lib/chain');
 
         await chain.execute(composer);
 
+        console.log('opted in gen1');
+
     } catch (error) {
         console.log(error);
     }
-})();
+}
