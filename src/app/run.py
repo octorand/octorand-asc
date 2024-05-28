@@ -22,7 +22,7 @@ def write(
     contract,
     name,
 ):
-    folder = "src/app/build/gen1/" + name + "/"
+    folder = "src/build/gen1/" + name + "/"
     with open(folder + "approval.teal", "w") as file:
         file.write(approval)
     with open(folder + "clear.teal", "w") as file:
