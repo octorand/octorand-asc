@@ -548,7 +548,7 @@ retsub
 list_14:
 proto 3 0
 global CallerApplicationID
-int 672519275
+int 673260641
 ==
 assert
 byte "P1"
@@ -583,7 +583,7 @@ retsub
 unlist_15:
 proto 2 0
 global CallerApplicationID
-int 672519275
+int 673260641
 ==
 assert
 byte "P1"
@@ -625,7 +625,7 @@ retsub
 buy_16:
 proto 2 0
 global CallerApplicationID
-int 672519275
+int 673260641
 ==
 assert
 byte "P1"
@@ -677,7 +677,7 @@ retsub
 rename_17:
 proto 3 0
 global CallerApplicationID
-int 672519098
+int 673260598
 ==
 assert
 byte "P1"
@@ -709,7 +709,7 @@ retsub
 repaint_18:
 proto 3 0
 global CallerApplicationID
-int 672519098
+int 673260598
 ==
 assert
 frame_dig -3
@@ -740,7 +740,7 @@ retsub
 describe_19:
 proto 2 0
 global CallerApplicationID
-int 672519098
+int 673260598
 ==
 assert
 frame_dig -2
@@ -756,7 +756,7 @@ retsub
 upgrade_20:
 proto 2 0
 global CallerApplicationID
-int 672519820
+int 673260847
 ==
 assert
 byte "P1"
@@ -786,7 +786,7 @@ retsub
 mint_21:
 proto 3 0
 global CallerApplicationID
-int 672519820
+int 673260847
 ==
 assert
 int 660757756
@@ -811,7 +811,7 @@ retsub
 withdraw_22:
 proto 3 0
 global CallerApplicationID
-int 672519820
+int 673260847
 ==
 assert
 frame_dig -2
@@ -825,7 +825,7 @@ retsub
 optin_23:
 proto 2 0
 global CallerApplicationID
-int 672519584
+int 673260772
 ==
 assert
 frame_dig -2
@@ -860,7 +860,7 @@ retsub
 optout_24:
 proto 3 0
 global CallerApplicationID
-int 672519584
+int 673260772
 ==
 assert
 frame_dig -3
