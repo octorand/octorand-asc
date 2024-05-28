@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../../chain/index');
+const chain = require('./../../../../lib/chain');
 
 exports.execute = async function () {
     try {
