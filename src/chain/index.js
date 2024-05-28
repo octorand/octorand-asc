@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const algosdk = require("algosdk");
 const util = require('util');
 
@@ -75,6 +76,39 @@ exports.bytes = function (value, length) {
 
 exports.reference = function (prefix, value) {
     return new Uint8Array([...exports.bytes(prefix + '-'), ...baseClient.encodeUint64(value)])
+}
+
+exports.pager = async function (callback, limit, key) {
+    let entries = [];
+    let pages = [];
+    let hashes = [];
+
+    let next = '';
+    while (next !== undefined) {
+        let response = await callback.limit(limit).nextToken(next).do();
+        let data = response[key];
+        next = response['next-token'];
+
+        if (pages.includes(next)) {
+            break;
+        } else {
+            pages.push(next);
+        }
+
+        if (data) {
+            for (let i = 0; i < data.length; i++) {
+                let entry = data[i];
+                let hash = crypto.createHash('md5').update(JSON.stringify(entry)).digest("hex");
+
+                if (!hashes.includes(hash)) {
+                    entries.push(entry);
+                    hashes.push(hash);
+                }
+            }
+        }
+    }
+
+    return entries;
 }
 
 exports.event = function (value) {

@@ -13,25 +13,11 @@ exports.execute = async function () {
 
         let logs = [];
 
-        let limit = 1000;
-        let next = '';
-        while (next !== undefined) {
-            let response = await connection.indexerClient
-                .lookupApplicationLogs(design['application_id'])
-                .limit(limit)
-                .nextToken(next)
-                .do();
-
-            next = response['next-token'];
-
-            let data = response['log-data'];
-            if (data) {
-                for (let i = 0; i < data.length; i++) {
-                    let log = data[i]['logs'][0];
-                    let value = Buffer.from(log, 'base64');
-                    logs.push(chain.event(value));
-                }
-            }
+        let pager = await chain.pager(connection.indexerClient.lookupApplicationLogs(design['application_id']), 1000, 'log-data');
+        for (let i = 0; i < pager.length; i++) {
+            let log = pager[i]['logs'][0];
+            let value = Buffer.from(log, 'base64');
+            logs.push(chain.event(value));
         }
 
         design['logs'] = logs;

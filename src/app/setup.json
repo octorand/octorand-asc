@@ -29,51 +29,7 @@
                 "renamed": true,
                 "repainted": true,
                 "described": true,
-                "logs": [
-                    {
-                        "code": 100,
-                        "version": 1,
-                        "timestamp": 1716812966,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "design_rename",
-                        "index": 1,
-                        "value": 68,
-                        "price": 20000000
-                    },
-                    {
-                        "code": 100,
-                        "version": 1,
-                        "timestamp": 1716812966,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "design_rename",
-                        "index": 6,
-                        "value": 86,
-                        "price": 30000000
-                    },
-                    {
-                        "code": 101,
-                        "version": 1,
-                        "timestamp": 1716812971,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "design_repaint",
-                        "theme": 3,
-                        "skin": 4,
-                        "price": 10000000
-                    },
-                    {
-                        "code": 102,
-                        "version": 1,
-                        "timestamp": 1716812977,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "design_describe",
-                        "description": "Updated Notes",
-                        "price": 10000000
-                    }
-                ]
+                "logs": []
             },
             "market": {
                 "application_id": 672519275,
@@ -83,44 +39,7 @@
                 "unlisted": true,
                 "relisted": true,
                 "bought": true,
-                "logs": [
-                    {
-                        "code": 110,
-                        "version": 1,
-                        "timestamp": 1716812941,
-                        "prime": 1,
-                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "name": "market_list",
-                        "price": 350
-                    },
-                    {
-                        "code": 111,
-                        "version": 1,
-                        "timestamp": 1716812947,
-                        "prime": 1,
-                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "name": "market_unlist"
-                    },
-                    {
-                        "code": 110,
-                        "version": 1,
-                        "timestamp": 1716812952,
-                        "prime": 1,
-                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "name": "market_list",
-                        "price": 350
-                    },
-                    {
-                        "code": 112,
-                        "version": 1,
-                        "timestamp": 1716812958,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "market_buy",
-                        "seller": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "price": 350
-                    }
-                ]
+                "logs": []
             },
             "vault": {
                 "application_id": 672519584,
@@ -128,26 +47,7 @@
                 "application_version": 1,
                 "optin": true,
                 "optout": true,
-                "logs": [
-                    {
-                        "code": 120,
-                        "version": 1,
-                        "timestamp": 1716812985,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "vault_optin",
-                        "asset_id": 669142881
-                    },
-                    {
-                        "code": 121,
-                        "version": 1,
-                        "timestamp": 1716812990,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "vault_optout",
-                        "asset_id": 669142881
-                    }
-                ]
+                "logs": []
             },
             "wallet": {
                 "application_id": 672519820,
@@ -156,34 +56,7 @@
                 "upgraded": true,
                 "minted": true,
                 "withdrawn": true,
-                "logs": [
-                    {
-                        "code": 130,
-                        "version": 1,
-                        "timestamp": 1716812922,
-                        "prime": 1,
-                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "name": "wallet_upgrade"
-                    },
-                    {
-                        "code": 131,
-                        "version": 1,
-                        "timestamp": 1716812928,
-                        "prime": 1,
-                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "name": "wallet_mint",
-                        "amount": 100
-                    },
-                    {
-                        "code": 132,
-                        "version": 1,
-                        "timestamp": 1716812933,
-                        "prime": 1,
-                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "name": "wallet_withdraw",
-                        "amount": 200
-                    }
-                ]
+                "logs": []
             },
             "storage": {
                 "application_id": 672521347,
@@ -195,131 +68,7 @@
                 "finalized": true,
                 "transferred": true,
                 "locked": true,
-                "logs": [
-                    {
-                        "code": 130,
-                        "version": 1,
-                        "timestamp": 1716812922,
-                        "prime": 1,
-                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "name": "wallet_upgrade"
-                    },
-                    {
-                        "code": 131,
-                        "version": 1,
-                        "timestamp": 1716812928,
-                        "prime": 1,
-                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "name": "wallet_mint",
-                        "amount": 100
-                    },
-                    {
-                        "code": 132,
-                        "version": 1,
-                        "timestamp": 1716812933,
-                        "prime": 1,
-                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "name": "wallet_withdraw",
-                        "amount": 200
-                    },
-                    {
-                        "code": 110,
-                        "version": 1,
-                        "timestamp": 1716812941,
-                        "prime": 1,
-                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "name": "market_list",
-                        "price": 350
-                    },
-                    {
-                        "code": 111,
-                        "version": 1,
-                        "timestamp": 1716812947,
-                        "prime": 1,
-                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "name": "market_unlist"
-                    },
-                    {
-                        "code": 110,
-                        "version": 1,
-                        "timestamp": 1716812952,
-                        "prime": 1,
-                        "sender": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "name": "market_list",
-                        "price": 350
-                    },
-                    {
-                        "code": 112,
-                        "version": 1,
-                        "timestamp": 1716812958,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "market_buy",
-                        "seller": "H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U",
-                        "price": 350
-                    },
-                    {
-                        "code": 100,
-                        "version": 1,
-                        "timestamp": 1716812966,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "design_rename",
-                        "index": 1,
-                        "value": 68,
-                        "price": 20000000
-                    },
-                    {
-                        "code": 100,
-                        "version": 1,
-                        "timestamp": 1716812966,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "design_rename",
-                        "index": 6,
-                        "value": 86,
-                        "price": 30000000
-                    },
-                    {
-                        "code": 101,
-                        "version": 1,
-                        "timestamp": 1716812971,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "design_repaint",
-                        "theme": 3,
-                        "skin": 4,
-                        "price": 10000000
-                    },
-                    {
-                        "code": 102,
-                        "version": 1,
-                        "timestamp": 1716812977,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "design_describe",
-                        "description": "Updated Notes",
-                        "price": 10000000
-                    },
-                    {
-                        "code": 120,
-                        "version": 1,
-                        "timestamp": 1716812985,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "vault_optin",
-                        "asset_id": 669142881
-                    },
-                    {
-                        "code": 121,
-                        "version": 1,
-                        "timestamp": 1716812990,
-                        "prime": 1,
-                        "sender": "V6JA2O5XS7OG5N2VIVZOHB35WPU465ZTKH4THFKCP4IZO2I4LHPXNGDXN4",
-                        "name": "vault_optout",
-                        "asset_id": 669142881
-                    }
-                ],
+                "logs": [],
                 "state": {
                     "id": 1,
                     "prime_asset_id": 672521280,
