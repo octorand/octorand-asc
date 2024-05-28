@@ -10,9 +10,9 @@ exports.execute = async function () {
         let sender = connection.gen1.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
+        let config = JSON.parse(fs.readFileSync('src/app/test/config.json'));
 
-        let prime = setup['gen1']['inputs']['prime'];
+        let prime = config['gen1']['inputs']['prime'];
 
         if (!prime['legacy_asset_id']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
@@ -41,8 +41,8 @@ exports.execute = async function () {
 
             prime['legacy_asset_id'] = assetId;
 
-            setup['gen1']['inputs']['prime'] = prime;
-            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
+            config['gen1']['inputs']['prime'] = prime;
+            fs.writeFileSync('src/app/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('create legacy asset');
         };

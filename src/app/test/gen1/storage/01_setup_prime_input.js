@@ -4,9 +4,9 @@ const fs = require('fs');
 
 exports.execute = async function () {
     try {
-        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
+        let config = JSON.parse(fs.readFileSync('src/app/test/config.json'));
 
-        let prime = setup['gen1']['inputs']['prime'];
+        let prime = config['gen1']['inputs']['prime'];
 
         if (!prime['id']) {
             prime = {
@@ -27,10 +27,10 @@ exports.execute = async function () {
                 price: 350
             }
 
-            setup['gen1']['inputs']['prime'] = prime;
-            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
+            config['gen1']['inputs']['prime'] = prime;
+            fs.writeFileSync('src/app/test/config.json', JSON.stringify(config, null, 4));
 
-            console.log('setup prime input');
+            console.log('config prime input');
         };
 
     } catch (error) {

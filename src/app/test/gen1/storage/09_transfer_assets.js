@@ -10,9 +10,9 @@ exports.execute = async function () {
         let sender = connection.admin.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
+        let config = JSON.parse(fs.readFileSync('src/app/test/config.json'));
 
-        let storage = setup['gen1']['contracts']['storage'];
+        let storage = config['gen1']['contracts']['storage'];
 
         if (!storage['transferred']) {
 
@@ -53,8 +53,8 @@ exports.execute = async function () {
 
             storage['transferred'] = true;
 
-            setup['gen1']['contracts']['storage'] = storage;
-            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
+            config['gen1']['contracts']['storage'] = storage;
+            fs.writeFileSync('src/app/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('transferred storage assets');
         }

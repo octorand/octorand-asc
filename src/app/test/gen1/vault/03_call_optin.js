@@ -10,10 +10,10 @@ exports.execute = async function () {
         let sender = connection.player.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
+        let config = JSON.parse(fs.readFileSync('src/app/test/config.json'));
         let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/vault/contract.json')));
 
-        let vault = setup['gen1']['contracts']['vault'];
+        let vault = config['gen1']['contracts']['vault'];
 
         if (!vault['optin']) {
 
@@ -26,7 +26,7 @@ exports.execute = async function () {
                 method: chain.method(contract, 'optin'),
                 methodArgs: [
                     Number(process.env.VAULT_ASSET_ID),
-                    setup['gen1']['contracts']['storage']['application_id'],
+                    config['gen1']['contracts']['storage']['application_id'],
                 ],
                 suggestedParams: {
                     ...params,
@@ -40,7 +40,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: setup['gen1']['contracts']['storage']['application_address'],
+                    to: config['gen1']['contracts']['storage']['application_address'],
                     amount: 100000,
                     suggestedParams: {
                         ...params,
@@ -55,7 +55,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: setup['gen1']['contracts']['storage']['application_address'],
+                    to: config['gen1']['contracts']['storage']['application_address'],
                     assetIndex: Number(process.env.VAULT_ASSET_ID),
                     amount: 300,
                     suggestedParams: {
@@ -70,8 +70,8 @@ exports.execute = async function () {
 
             vault['optin'] = true;
 
-            setup['gen1']['contracts']['vault'] = vault;
-            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
+            config['gen1']['contracts']['vault'] = vault;
+            fs.writeFileSync('src/app/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('called optin method');
         }

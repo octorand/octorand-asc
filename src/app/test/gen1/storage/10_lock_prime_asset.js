@@ -10,10 +10,10 @@ exports.execute = async function () {
         let sender = connection.gen1.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
+        let config = JSON.parse(fs.readFileSync('src/app/test/config.json'));
 
-        let storage = setup['gen1']['contracts']['storage'];
-        let prime = setup['gen1']['inputs']['prime'];
+        let storage = config['gen1']['contracts']['storage'];
+        let prime = config['gen1']['inputs']['prime'];
 
         if (!storage['locked']) {
 
@@ -39,8 +39,8 @@ exports.execute = async function () {
 
             storage['locked'] = true;
 
-            setup['gen1']['contracts']['storage'] = storage;
-            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
+            config['gen1']['contracts']['storage'] = storage;
+            fs.writeFileSync('src/app/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('locked prime asset');
         }

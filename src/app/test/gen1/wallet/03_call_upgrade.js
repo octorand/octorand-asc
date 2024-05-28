@@ -10,11 +10,11 @@ exports.execute = async function () {
         let sender = connection.gen1.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
+        let config = JSON.parse(fs.readFileSync('src/app/test/config.json'));
         let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/wallet/contract.json')));
 
-        let wallet = setup['gen1']['contracts']['wallet'];
-        let prime = setup['gen1']['inputs']['prime'];
+        let wallet = config['gen1']['contracts']['wallet'];
+        let prime = config['gen1']['inputs']['prime'];
 
         if (!wallet['upgraded']) {
 
@@ -26,7 +26,7 @@ exports.execute = async function () {
                 appID: wallet['application_id'],
                 method: chain.method(contract, 'upgrade'),
                 methodArgs: [
-                    setup['gen1']['contracts']['storage']['application_id'],
+                    config['gen1']['contracts']['storage']['application_id'],
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id']
@@ -43,7 +43,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: setup['gen1']['contracts']['storage']['application_address'],
+                    to: config['gen1']['contracts']['storage']['application_address'],
                     assetIndex: prime['legacy_asset_id'],
                     amount: 1,
                     suggestedParams: {
@@ -58,8 +58,8 @@ exports.execute = async function () {
 
             wallet['upgraded'] = true;
 
-            setup['gen1']['contracts']['wallet'] = wallet;
-            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
+            config['gen1']['contracts']['wallet'] = wallet;
+            fs.writeFileSync('src/app/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('called upgrade method');
         }

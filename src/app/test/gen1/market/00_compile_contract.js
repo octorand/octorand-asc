@@ -6,9 +6,9 @@ const chain = require('./../../../../lib/chain');
 exports.execute = async function () {
     try {
 
-        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
+        let config = JSON.parse(fs.readFileSync('src/app/test/config.json'));
 
-        let market = setup['gen1']['contracts']['market'];
+        let market = config['gen1']['contracts']['market'];
 
         if (!market['application_id']) {
             let approvalProgram = fs.readFileSync('src/app/build/gen1/market/approval.teal', 'utf8');

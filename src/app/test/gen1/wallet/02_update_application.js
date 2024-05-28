@@ -10,9 +10,9 @@ exports.execute = async function () {
         let sender = connection.admin.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
+        let config = JSON.parse(fs.readFileSync('src/app/test/config.json'));
 
-        let wallet = setup['gen1']['contracts']['wallet'];
+        let wallet = config['gen1']['contracts']['wallet'];
 
         let version = 1;
 
@@ -43,8 +43,8 @@ exports.execute = async function () {
 
             wallet['application_version'] = version;
 
-            setup['gen1']['contracts']['wallet'] = wallet;
-            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
+            config['gen1']['contracts']['wallet'] = wallet;
+            fs.writeFileSync('src/app/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('updated wallet application');
         }

@@ -10,11 +10,11 @@ exports.execute = async function () {
         let sender = connection.gen1.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
-        let setup = JSON.parse(fs.readFileSync('src/app/test/setup.json'));
+        let config = JSON.parse(fs.readFileSync('src/app/test/config.json'));
         let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/app/build/gen1/market/contract.json')));
 
-        let market = setup['gen1']['contracts']['market'];
-        let prime = setup['gen1']['inputs']['prime'];
+        let market = config['gen1']['contracts']['market'];
+        let prime = config['gen1']['inputs']['prime'];
 
         if (!market['relisted']) {
 
@@ -27,7 +27,7 @@ exports.execute = async function () {
                 method: chain.method(contract, 'list'),
                 methodArgs: [
                     prime['price'],
-                    setup['gen1']['contracts']['storage']['application_id'],
+                    config['gen1']['contracts']['storage']['application_id'],
                 ],
                 suggestedParams: {
                     ...params,
@@ -41,7 +41,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: setup['gen1']['contracts']['storage']['application_address'],
+                    to: config['gen1']['contracts']['storage']['application_address'],
                     assetIndex: prime['prime_asset_id'],
                     amount: 1,
                     suggestedParams: {
@@ -56,8 +56,8 @@ exports.execute = async function () {
 
             market['relisted'] = true;
 
-            setup['gen1']['contracts']['market'] = market;
-            fs.writeFileSync('src/app/test/setup.json', JSON.stringify(setup, null, 4));
+            config['gen1']['contracts']['market'] = market;
+            fs.writeFileSync('src/app/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('called list method');
         }
