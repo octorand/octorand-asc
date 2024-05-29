@@ -60,7 +60,7 @@ exports.execute = async function () {
                     state.repaints = connection.baseClient.decodeUint64(value.subarray(60, 64));
                     state.price = connection.baseClient.decodeUint64(value.subarray(64, 72));
                     state.seller = connection.baseClient.encodeAddress(value.subarray(72, 104));
-                    state.name = value.subarray(104, 112).toString('utf-8').trim();
+                    state.name = value.subarray(104, 120).toString('utf-8').trim();
                     break;
                 case 'P2':
                     state.description = value.subarray(0, 64).toString('utf-8').trim();

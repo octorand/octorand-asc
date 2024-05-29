@@ -74,8 +74,23 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
+                    to: connection.baseClient.getApplicationAddress(prime['parent_application_id']),
+                    amount: Math.floor(prime['price'] * 0.05),
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                })
+            });
+
+            composer.addTransaction({
+                sender: sender,
+                signer: signer,
+                txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
+                    from: sender,
                     to: connection.admin.addr,
-                    amount: Math.floor(prime['price'] * 0.1),
+                    amount: Math.floor(prime['price'] * 0.05),
                     suggestedParams: {
                         ...params,
                         fee: 1000,

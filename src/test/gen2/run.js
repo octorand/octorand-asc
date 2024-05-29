@@ -22,32 +22,32 @@ exports.execute = async function () {
     await require('./wallet/01_create_application').execute();
     await require('./wallet/02_update_application').execute();
 
-    // console.log('config gen2 storage application');
-    // await require('./storage/00_compile_contract').execute();
-    // await require('./storage/01_setup_prime_input').execute();
-    // await require('./storage/02_create_legacy_asset').execute();
-    // await require('./storage/03_create_prime_asset').execute();
-    // await require('./storage/04_create_application').execute();
-    // await require('./storage/05_fund_application').execute();
-    // await require('./storage/06_call_initialize').execute();
-    // await require('./storage/07_call_populate').execute();
-    // await require('./storage/08_call_finalize').execute();
-    // await require('./storage/09_transfer_assets').execute();
-    // await require('./storage/10_lock_prime_asset').execute();
-    // await require('./storage/11_update_application').execute();
+    console.log('config gen2 storage application');
+    await require('./storage/00_compile_contract').execute();
+    await require('./storage/01_setup_prime_input').execute();
+    await require('./storage/02_create_legacy_asset').execute();
+    await require('./storage/03_create_prime_asset').execute();
+    await require('./storage/04_create_application').execute();
+    await require('./storage/05_fund_application').execute();
+    await require('./storage/06_call_initialize').execute();
+    await require('./storage/07_call_populate').execute();
+    await require('./storage/08_call_finalize').execute();
+    await require('./storage/09_transfer_assets').execute();
+    await require('./storage/10_lock_prime_asset').execute();
+    await require('./storage/11_update_application').execute();
 
-    // console.log('config gen2 wallet application');
-    // await require('./wallet/03_call_upgrade').execute();
-    // await require('./wallet/04_call_mint').execute();
-    // await require('./wallet/05_call_withdraw').execute();
-    // await require('./wallet/06_read_application_logs').execute();
+    console.log('config gen2 wallet application');
+    await require('./wallet/03_call_upgrade').execute();
+    await require('./wallet/04_call_mint').execute();
+    await require('./wallet/05_call_withdraw').execute();
+    await require('./wallet/06_read_application_logs').execute();
 
-    // console.log('config gen2 market application');
-    // await require('./market/03_call_list').execute();
-    // await require('./market/04_call_unlist').execute();
-    // await require('./market/05_call_list').execute();
-    // await require('./market/06_call_buy').execute();
-    // await require('./market/07_read_application_logs').execute();
+    console.log('config gen2 market application');
+    await require('./market/03_call_list').execute();
+    await require('./market/04_call_unlist').execute();
+    await require('./market/05_call_list').execute();
+    await require('./market/06_call_buy').execute();
+    await require('./market/07_read_application_logs').execute();
 
     // console.log('config gen2 design application');
     // await require('./design/03_call_rename').execute();

@@ -22,7 +22,7 @@ exports.execute = async function () {
                 mints: 25,
                 renames: 5,
                 repaints: 10,
-                name: 'ABCDWXYZ',
+                name: 'ABCDEFGHSTUVWXYZ',
                 description: 'Notes',
                 price: 350
             }
