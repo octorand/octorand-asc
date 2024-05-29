@@ -343,5 +343,17 @@
                 }
             }
         }
+    },
+    "gen2": {
+        "inputs": {
+            "prime": {}
+        },
+        "contracts": {
+            "design": {},
+            "market": {},
+            "vault": {},
+            "wallet": {},
+            "storage": {}
+        }
     }
 }
