@@ -49,19 +49,19 @@ exports.execute = async function () {
     await require('./market/06_call_buy').execute();
     await require('./market/07_read_application_logs').execute();
 
-    // console.log('config gen2 design application');
-    // await require('./design/03_call_rename').execute();
-    // await require('./design/04_call_repaint').execute();
-    // await require('./design/05_call_describe').execute();
-    // await require('./design/06_read_application_logs').execute();
+    console.log('config gen2 design application');
+    await require('./design/03_call_rename').execute();
+    await require('./design/04_call_repaint').execute();
+    await require('./design/05_call_describe').execute();
+    await require('./design/06_read_application_logs').execute();
 
-    // console.log('config gen2 vault application');
-    // await require('./vault/03_call_optin').execute();
-    // await require('./vault/04_call_optout').execute();
-    // await require('./vault/05_read_application_logs').execute();
+    console.log('config gen2 vault application');
+    await require('./vault/03_call_optin').execute();
+    await require('./vault/04_call_optout').execute();
+    await require('./vault/05_read_application_logs').execute();
 
-    // console.log('read gen2 storage application');
-    // await require('./storage/12_read_application_logs').execute();
-    // await require('./storage/13_read_application_state').execute();
+    console.log('read gen2 storage application');
+    await require('./storage/12_read_application_logs').execute();
+    await require('./storage/13_read_application_state').execute();
 
 }

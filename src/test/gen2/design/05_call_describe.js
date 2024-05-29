@@ -46,7 +46,7 @@ exports.execute = async function () {
                     from: sender,
                     to: connection.admin.addr,
                     assetIndex: Number(process.env.PLATFORM_ASSET_ID),
-                    amount: 10000000,
+                    amount: 1000000,
                     suggestedParams: {
                         ...params,
                         fee: 1000,

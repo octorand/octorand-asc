@@ -47,7 +47,7 @@ exports.execute = async function () {
                     from: sender,
                     to: connection.admin.addr,
                     assetIndex: Number(process.env.PLATFORM_ASSET_ID),
-                    amount: 20000000,
+                    amount: 2000000,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -62,8 +62,8 @@ exports.execute = async function () {
                 appID: design['application_id'],
                 method: chain.method(contract, 'rename'),
                 methodArgs: [
-                    6,
-                    86,
+                    15,
+                    89,
                     config['gen2']['contracts']['storage']['application_id'],
                 ],
                 appForeignAssets: [
@@ -83,7 +83,7 @@ exports.execute = async function () {
                     from: sender,
                     to: connection.admin.addr,
                     assetIndex: Number(process.env.PLATFORM_ASSET_ID),
-                    amount: 30000000,
+                    amount: 1000000,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
