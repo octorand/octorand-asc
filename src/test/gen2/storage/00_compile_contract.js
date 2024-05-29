@@ -8,14 +8,14 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
-        let storage = config['gen1']['contracts']['storage'];
+        let storage = config['gen2']['contracts']['storage'];
 
         if (!storage['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/gen1/storage/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/gen1/storage/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/gen2/storage/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/gen2/storage/clear.teal', 'utf8');
 
-            console.log('gen1 storage approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
-            console.log('gen1 storage clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
+            console.log('gen2 storage approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
+            console.log('gen2 storage clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
         }
 
     } catch (error) {

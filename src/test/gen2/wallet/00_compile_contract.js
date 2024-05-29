@@ -8,14 +8,14 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
-        let wallet = config['gen1']['contracts']['wallet'];
+        let wallet = config['gen2']['contracts']['wallet'];
 
         if (!wallet['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/gen1/wallet/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/gen1/wallet/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/gen2/wallet/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/gen2/wallet/clear.teal', 'utf8');
 
-            console.log('gen1 wallet approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
-            console.log('gen1 wallet clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
+            console.log('gen2 wallet approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
+            console.log('gen2 wallet clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
         }
 
     } catch (error) {

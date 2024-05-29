@@ -12,7 +12,7 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
-        let market = config['gen1']['contracts']['market'];
+        let market = config['gen2']['contracts']['market'];
 
         let version = 1;
 
@@ -20,8 +20,8 @@ exports.execute = async function () {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
-            let approvalProgram = fs.readFileSync('src/build/gen1/market/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/gen1/market/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/gen2/market/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/gen2/market/clear.teal', 'utf8');
 
             composer.addTransaction({
                 signer: signer,
@@ -43,7 +43,7 @@ exports.execute = async function () {
 
             market['application_version'] = version;
 
-            config['gen1']['contracts']['market'] = market;
+            config['gen2']['contracts']['market'] = market;
             fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('updated market application');

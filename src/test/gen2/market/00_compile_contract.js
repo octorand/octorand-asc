@@ -8,14 +8,14 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
-        let market = config['gen1']['contracts']['market'];
+        let market = config['gen2']['contracts']['market'];
 
         if (!market['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/gen1/market/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/gen1/market/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/gen2/market/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/gen2/market/clear.teal', 'utf8');
 
-            console.log('gen1 market approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
-            console.log('gen1 market clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
+            console.log('gen2 market approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
+            console.log('gen2 market clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
         }
 
     } catch (error) {

@@ -11,10 +11,10 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/gen1/design/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/gen2/design/contract.json')));
 
-        let design = config['gen1']['contracts']['design'];
-        let prime = config['gen1']['inputs']['prime'];
+        let design = config['gen2']['contracts']['design'];
+        let prime = config['gen2']['inputs']['prime'];
 
         if (!design['described']) {
 
@@ -27,7 +27,7 @@ exports.execute = async function () {
                 method: chain.method(contract, 'describe'),
                 methodArgs: [
                     chain.bytes('Updated ' + prime['description'], 64),
-                    config['gen1']['contracts']['storage']['application_id'],
+                    config['gen2']['contracts']['storage']['application_id'],
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id']
@@ -59,7 +59,7 @@ exports.execute = async function () {
 
             design['described'] = true;
 
-            config['gen1']['contracts']['design'] = design;
+            config['gen2']['contracts']['design'] = design;
             fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('called describe method');

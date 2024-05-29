@@ -11,10 +11,10 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/gen1/vault/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/gen2/vault/contract.json')));
 
-        let vault = config['gen1']['contracts']['vault'];
-        let prime = config['gen1']['inputs']['prime'];
+        let vault = config['gen2']['contracts']['vault'];
+        let prime = config['gen2']['inputs']['prime'];
 
         if (!vault['optout']) {
 
@@ -27,7 +27,7 @@ exports.execute = async function () {
                 method: chain.method(contract, 'optout'),
                 methodArgs: [
                     Number(process.env.VAULT_ASSET_ID),
-                    config['gen1']['contracts']['storage']['application_id'],
+                    config['gen2']['contracts']['storage']['application_id'],
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id'],
@@ -43,7 +43,7 @@ exports.execute = async function () {
 
             vault['optout'] = true;
 
-            config['gen1']['contracts']['vault'] = vault;
+            config['gen2']['contracts']['vault'] = vault;
             fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('called optout method');

@@ -9,7 +9,7 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
-        let wallet = config['gen1']['contracts']['wallet'];
+        let wallet = config['gen2']['contracts']['wallet'];
 
         let logs = [];
 
@@ -22,7 +22,7 @@ exports.execute = async function () {
 
         wallet['logs'] = logs;
 
-        config['gen1']['contracts']['wallet'] = wallet;
+        config['gen2']['contracts']['wallet'] = wallet;
         fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
     } catch (error) {

@@ -8,14 +8,14 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
-        let design = config['gen1']['contracts']['design'];
+        let design = config['gen2']['contracts']['design'];
 
         if (!design['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/gen1/design/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/gen1/design/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/gen2/design/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/gen2/design/clear.teal', 'utf8');
 
-            console.log('gen1 design approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
-            console.log('gen1 design clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
+            console.log('gen2 design approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
+            console.log('gen2 design clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
         }
 
     } catch (error) {

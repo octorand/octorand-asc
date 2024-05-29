@@ -12,14 +12,14 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
-        let vault = config['gen1']['contracts']['vault'];
+        let vault = config['gen2']['contracts']['vault'];
 
         if (!vault['application_id']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
-            let approvalProgram = fs.readFileSync('src/build/gen1/vault/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/gen1/vault/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/gen2/vault/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/gen2/vault/clear.teal', 'utf8');
 
             composer.addTransaction({
                 signer: signer,
@@ -48,7 +48,7 @@ exports.execute = async function () {
             vault['application_address'] = connection.baseClient.getApplicationAddress(applicationId);
             vault['application_version'] = 0;
 
-            config['gen1']['contracts']['vault'] = vault;
+            config['gen2']['contracts']['vault'] = vault;
             fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('created vault application');

@@ -11,10 +11,10 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/gen1/storage/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/gen2/storage/contract.json')));
 
-        let storage = config['gen1']['contracts']['storage'];
-        let prime = config['gen1']['inputs']['prime'];
+        let storage = config['gen2']['contracts']['storage'];
+        let prime = config['gen2']['inputs']['prime'];
 
         if (!storage['initialized']) {
 
@@ -44,7 +44,7 @@ exports.execute = async function () {
 
             storage['initialized'] = true;
 
-            config['gen1']['contracts']['storage'] = storage;
+            config['gen2']['contracts']['storage'] = storage;
             fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('called initialize method');

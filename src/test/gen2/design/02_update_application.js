@@ -12,7 +12,7 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
-        let design = config['gen1']['contracts']['design'];
+        let design = config['gen2']['contracts']['design'];
 
         let version = 1;
 
@@ -20,8 +20,8 @@ exports.execute = async function () {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
-            let approvalProgram = fs.readFileSync('src/build/gen1/design/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/gen1/design/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/gen2/design/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/gen2/design/clear.teal', 'utf8');
 
             composer.addTransaction({
                 signer: signer,
@@ -43,7 +43,7 @@ exports.execute = async function () {
 
             design['application_version'] = version;
 
-            config['gen1']['contracts']['design'] = design;
+            config['gen2']['contracts']['design'] = design;
             fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('updated design application');

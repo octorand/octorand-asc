@@ -7,14 +7,14 @@ exports.execute = async function () {
     try {
         let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen1.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
+        let sender = connection.gen2.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/gen1/wallet/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/gen2/wallet/contract.json')));
 
-        let wallet = config['gen1']['contracts']['wallet'];
-        let prime = config['gen1']['inputs']['prime'];
+        let wallet = config['gen2']['contracts']['wallet'];
+        let prime = config['gen2']['inputs']['prime'];
 
         if (!wallet['withdrawn']) {
 
@@ -27,7 +27,7 @@ exports.execute = async function () {
                 method: chain.method(contract, 'withdraw'),
                 methodArgs: [
                     200,
-                    config['gen1']['contracts']['storage']['application_id'],
+                    config['gen2']['contracts']['storage']['application_id'],
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id'],
@@ -43,7 +43,7 @@ exports.execute = async function () {
 
             wallet['withdrawn'] = true;
 
-            config['gen1']['contracts']['wallet'] = wallet;
+            config['gen2']['contracts']['wallet'] = wallet;
             fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('called withdraw method');

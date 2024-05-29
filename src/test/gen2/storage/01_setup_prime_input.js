@@ -6,7 +6,7 @@ exports.execute = async function () {
     try {
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
-        let prime = config['gen1']['inputs']['prime'];
+        let prime = config['gen2']['inputs']['prime'];
 
         if (!prime['id']) {
             prime = {
@@ -27,7 +27,7 @@ exports.execute = async function () {
                 price: 350
             }
 
-            config['gen1']['inputs']['prime'] = prime;
+            config['gen2']['inputs']['prime'] = prime;
             fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('config prime input');

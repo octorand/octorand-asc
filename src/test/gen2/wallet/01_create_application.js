@@ -12,14 +12,14 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
-        let wallet = config['gen1']['contracts']['wallet'];
+        let wallet = config['gen2']['contracts']['wallet'];
 
         if (!wallet['application_id']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
-            let approvalProgram = fs.readFileSync('src/build/gen1/wallet/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/gen1/wallet/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/gen2/wallet/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/gen2/wallet/clear.teal', 'utf8');
 
             composer.addTransaction({
                 signer: signer,
@@ -48,7 +48,7 @@ exports.execute = async function () {
             wallet['application_address'] = connection.baseClient.getApplicationAddress(applicationId);
             wallet['application_version'] = 0;
 
-            config['gen1']['contracts']['wallet'] = wallet;
+            config['gen2']['contracts']['wallet'] = wallet;
             fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('created wallet application');

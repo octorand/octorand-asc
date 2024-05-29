@@ -7,13 +7,13 @@ exports.execute = async function () {
     try {
         let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen1.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
+        let sender = connection.gen2.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
-        let storage = config['gen1']['contracts']['storage'];
-        let prime = config['gen1']['inputs']['prime'];
+        let storage = config['gen2']['contracts']['storage'];
+        let prime = config['gen2']['inputs']['prime'];
 
         if (!storage['locked']) {
 
@@ -39,7 +39,7 @@ exports.execute = async function () {
 
             storage['locked'] = true;
 
-            config['gen1']['contracts']['storage'] = storage;
+            config['gen2']['contracts']['storage'] = storage;
             fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('locked prime asset');

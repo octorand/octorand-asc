@@ -7,19 +7,19 @@ exports.execute = async function () {
     try {
         let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen1.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
+        let sender = connection.gen2.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
 
         let config = JSON.parse(fs.readFileSync('src/test/config.json'));
 
-        let storage = config['gen1']['contracts']['storage'];
+        let storage = config['gen2']['contracts']['storage'];
 
         if (!storage['application_id']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
-            let approvalProgram = fs.readFileSync('src/build/gen1/storage/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/gen1/storage/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/gen2/storage/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/gen2/storage/clear.teal', 'utf8');
 
             composer.addTransaction({
                 signer: signer,
@@ -48,7 +48,7 @@ exports.execute = async function () {
             storage['application_address'] = connection.baseClient.getApplicationAddress(applicationId);
             storage['application_version'] = 0;
 
-            config['gen1']['contracts']['storage'] = storage;
+            config['gen2']['contracts']['storage'] = storage;
             fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
 
             console.log('created storage application');
