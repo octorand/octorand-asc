@@ -229,7 +229,7 @@ int 1
 callsub assertsenderpayment_5
 frame_dig -1
 txnas Applications
-addr H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+addr TVNY5WIHJB73VWNTRS5JO5UIH2BMKLJEM72KDL4DPUJY3TGWX5OAJ6ZFVI
 callsub assertapplicationcreator_6
 itxn_begin
 int appl
@@ -306,7 +306,7 @@ callsub getglobalexternaluint_1
 callsub assertsenderassetholding_4
 frame_dig -1
 txnas Applications
-addr H3LBIXID7STICVIKLA3CR3D3UFIWTCKR5RUYBQMFKL2P6RP5HWXBJI2C3U
+addr TVNY5WIHJB73VWNTRS5JO5UIH2BMKLJEM72KDL4DPUJY3TGWX5OAJ6ZFVI
 callsub assertapplicationcreator_6
 itxn_begin
 int appl

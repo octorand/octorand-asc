@@ -4,12 +4,12 @@ import os
 from pyteal import *
 
 admin_address = Addr(os.environ.get("ADMIN_ADDRESS"))
-manager_address = Addr(os.environ.get("GEN1_MANAGER_ADDRESS"))
+manager_address = Addr(os.environ.get("GEN2_MANAGER_ADDRESS"))
 
-market_application_id = Int(int(os.environ.get("GEN1_MARKET_APPLICATION_ID")))
-design_application_id = Int(int(os.environ.get("GEN1_DESIGN_APPLICATION_ID")))
-vault_application_id = Int(int(os.environ.get("GEN1_VAULT_APPLICATION_ID")))
-wallet_application_id = Int(int(os.environ.get("GEN1_WALLET_APPLICATION_ID")))
+market_application_id = Int(int(os.environ.get("GEN2_MARKET_APPLICATION_ID")))
+design_application_id = Int(int(os.environ.get("GEN2_DESIGN_APPLICATION_ID")))
+vault_application_id = Int(int(os.environ.get("GEN2_VAULT_APPLICATION_ID")))
+wallet_application_id = Int(int(os.environ.get("GEN2_WALLET_APPLICATION_ID")))
 
 platform_asset_id = Int(int(os.environ.get("PLATFORM_ASSET_ID")))
 platform_asset_reserve = Addr(os.environ.get("PLATFORM_ASSET_RESERVE"))
