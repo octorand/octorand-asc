@@ -4,7 +4,7 @@ const chain = require('./../chain/index');
 
 (async () => {
     try {
-        let connection = await chain.get();
+        let connection = await chain.get('DEVNET');
 
         let account = connection.baseClient.generateAccount();
         let passphrase = connection.baseClient.secretKeyToMnemonic(account.sk);

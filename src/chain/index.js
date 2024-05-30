@@ -3,15 +3,19 @@ const algosdk = require("algosdk");
 const util = require('util');
 
 let baseClient = algosdk;
-let algodClient = new algosdk.Algodv2('', process.env.ALGO_SERVER, '');
-let indexerClient = new algosdk.Indexer('', process.env.ALGO_INDEXER, '');
+let algodClient = null;
+let indexerClient = null;
 
-let admin = algosdk.mnemonicToSecretKey(process.env.ADMIN_MNEMONIC);
-let player = algosdk.mnemonicToSecretKey(process.env.PLAYER_MNEMONIC);
-let gen1 = algosdk.mnemonicToSecretKey(process.env.GEN1_MANAGER_MNEMONIC);
-let gen2 = algosdk.mnemonicToSecretKey(process.env.GEN2_MANAGER_MNEMONIC);
+exports.get = async function (environment) {
 
-exports.get = async function () {
+    algodClient = new algosdk.Algodv2('', process.env[environment + '_ALGO_SERVER'], '');
+    indexerClient = new algosdk.Indexer('', process.env[environment + '_ALGO_INDEXER'], '');
+
+    let admin = algosdk.mnemonicToSecretKey(process.env[environment + '_ADMIN_MNEMONIC']);
+    let player = algosdk.mnemonicToSecretKey(process.env[environment + '_PLAYER_MNEMONIC']);
+    let gen1 = algosdk.mnemonicToSecretKey(process.env[environment + '_GEN1_MANAGER_MNEMONIC']);
+    let gen2 = algosdk.mnemonicToSecretKey(process.env[environment + '_GEN2_MANAGER_MNEMONIC']);
+
     return {
         baseClient: baseClient,
         algodClient: algodClient,

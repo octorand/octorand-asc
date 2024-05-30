@@ -1,10 +1,11 @@
 require('dotenv').config();
 
-const chain = require('./../chain/index');
+const chain = require('./../../chain/index');
 
-(async () => {
+exports.execute = async function () {
     try {
-        let connection = await chain.get();
+
+        let connection = await chain.get('DEVNET');
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.admin.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
@@ -13,12 +14,15 @@ const chain = require('./../chain/index');
 
         composer.addTransaction({
             signer: signer,
-            txn: connection.baseClient.makeAssetConfigTxnWithSuggestedParamsFromObject({
+            txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
                 from: sender,
-                assetIndex: Number(process.env.PLATFORM_ASSET_ID),
+                total: 1000000000000,
+                decimals: 6,
+                defaultFrozen: false,
                 manager: sender,
-                reserve: process.env.PLATFORM_ASSET_RESERVE,
-                strictEmptyAddressChecking: false,
+                reserve: sender,
+                unitName: "OCTO",
+                assetName: "Octorand",
                 suggestedParams: {
                     ...params,
                     fee: 1000,
@@ -27,9 +31,12 @@ const chain = require('./../chain/index');
             })
         });
 
-        await chain.execute(composer);
+        let response = await chain.execute(composer);
+
+        let assetId = response.information['asset-index'];
+        console.log('Created platform asset: ' + assetId);
 
     } catch (error) {
         console.log(error);
     }
-})();
+}
