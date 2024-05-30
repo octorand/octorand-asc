@@ -13,15 +13,12 @@ const chain = require('./../chain/index');
 
         composer.addTransaction({
             signer: signer,
-            txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
+            txn: connection.baseClient.makeAssetConfigTxnWithSuggestedParamsFromObject({
                 from: sender,
-                total: 1000000000000,
-                decimals: 6,
-                defaultFrozen: false,
+                assetIndex: Number(process.env.PLATFORM_ASSET_ID),
                 manager: sender,
-                reserve: sender,
-                unitName: "OCTO",
-                assetName: "Octorand",
+                reserve: process.env.PLATFORM_ASSET_RESERVE,
+                strictEmptyAddressChecking: false,
                 suggestedParams: {
                     ...params,
                     fee: 1000,
@@ -30,10 +27,7 @@ const chain = require('./../chain/index');
             })
         });
 
-        let response = await chain.execute(composer);
-
-        let assetId = response.information['asset-index'];
-        console.log(assetId);
+        await chain.execute(composer);
 
     } catch (error) {
         console.log(error);
