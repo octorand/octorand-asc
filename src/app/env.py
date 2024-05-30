@@ -8,9 +8,7 @@ load_dotenv()
 
 
 def env():
-    with open("src/app/config.json") as file:
-        data = json.load(file)
-        return data["environment"]
+    return os.environ.get("ENVIRONMENT")
 
 
 def uint(key):
