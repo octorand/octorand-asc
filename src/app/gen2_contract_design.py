@@ -1,12 +1,14 @@
 import func
-import gen2_const as const
+import gen2_const
 import gen2_contract_storage as storage
 
 from pyteal import *
 from typing import *
 
-prime = const.Prime()
-event = const.Event()
+
+const = gen2_const.Config()
+prime = gen2_const.Prime()
+event = gen2_const.Event()
 
 
 @Subroutine(TealType.none)

@@ -1,26 +1,25 @@
+import env
 import func
-import os
 
 from pyteal import *
 
-admin_address = Addr(os.environ.get("ADMIN_ADDRESS"))
-manager_address = Addr(os.environ.get("GEN1_MANAGER_ADDRESS"))
 
-market_application_id = Int(int(os.environ.get("GEN1_MARKET_APPLICATION_ID")))
-design_application_id = Int(int(os.environ.get("GEN1_DESIGN_APPLICATION_ID")))
-vault_application_id = Int(int(os.environ.get("GEN1_VAULT_APPLICATION_ID")))
-wallet_application_id = Int(int(os.environ.get("GEN1_WALLET_APPLICATION_ID")))
-
-platform_asset_id = Int(int(os.environ.get("PLATFORM_ASSET_ID")))
-platform_asset_reserve = Addr(os.environ.get("PLATFORM_ASSET_RESERVE"))
-
-seller_market_share = Int(90)
-admin_market_share = Int(10)
-
-rename_price = Int(10000000)
-repaint_price = Int(10000000)
-describe_price = Int(10000000)
-optin_price = Int(100000)
+class Config:
+    def __init__(self):
+        self.seller_market_share = Int(90)
+        self.admin_market_share = Int(10)
+        self.rename_price = Int(10000000)
+        self.repaint_price = Int(10000000)
+        self.describe_price = Int(10000000)
+        self.optin_price = Int(100000)
+        self.admin_address = env.addr("ADMIN_ADDRESS")
+        self.platform_asset_id = env.uint("PLATFORM_ASSET_ID")
+        self.platform_asset_reserve = env.addr("PLATFORM_ASSET_RESERVE")
+        self.manager_address = env.addr("GEN1_MANAGER_ADDRESS")
+        self.market_application_id = env.uint("GEN1_MARKET_APPLICATION_ID")
+        self.design_application_id = env.uint("GEN1_DESIGN_APPLICATION_ID")
+        self.vault_application_id = env.uint("GEN1_VAULT_APPLICATION_ID")
+        self.wallet_application_id = env.uint("GEN1_WALLET_APPLICATION_ID")
 
 
 class Prime:
