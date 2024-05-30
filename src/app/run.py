@@ -1,3 +1,4 @@
+import os
 import json
 
 import env
@@ -30,7 +31,8 @@ def run():
 
 
 def write(approval, clear, contract, name):
-    folder = "src/build/" + name + "/"
+    folder = "src/build/" + env.env() + "/" + name + "/"
+    os.makedirs(os.path.dirname(folder), exist_ok=True)
     with open(folder + "approval.teal", "w") as file:
         file.write(approval)
     with open(folder + "clear.teal", "w") as file:

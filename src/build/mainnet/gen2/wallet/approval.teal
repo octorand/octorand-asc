@@ -1,0 +1,491 @@
+#pragma version 10
+txn NumAppArgs
+int 0
+==
+bnz main_l8
+txna ApplicationArgs 0
+method "upgrade(application)void"
+==
+bnz main_l7
+txna ApplicationArgs 0
+method "mint(uint64,application)void"
+==
+bnz main_l6
+txna ApplicationArgs 0
+method "withdraw(uint64,application)void"
+==
+bnz main_l5
+err
+main_l5:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub withdrawcaster_14
+int 1
+return
+main_l6:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub mintcaster_13
+int 1
+return
+main_l7:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub upgradecaster_12
+int 1
+return
+main_l8:
+txn OnCompletion
+int NoOp
+==
+bnz main_l12
+txn OnCompletion
+int UpdateApplication
+==
+bnz main_l11
+err
+main_l11:
+txn ApplicationID
+int 0
+!=
+assert
+callsub update_8
+int 1
+return
+main_l12:
+txn ApplicationID
+int 0
+==
+assert
+callsub create_7
+int 1
+return
+
+// get_global_external_bytes
+getglobalexternalbytes_0:
+proto 4 1
+frame_dig -4
+frame_dig -3
+app_global_get_ex
+store 3
+store 2
+load 3
+assert
+load 2
+frame_dig -2
+frame_dig -1
+extract3
+retsub
+
+// get_global_external_uint
+getglobalexternaluint_1:
+proto 4 1
+frame_dig -4
+frame_dig -3
+frame_dig -2
+frame_dig -1
+callsub getglobalexternalbytes_0
+btoi
+retsub
+
+// get_application_address
+getapplicationaddress_2:
+proto 1 1
+frame_dig -1
+app_params_get AppAddress
+store 1
+store 0
+load 1
+assert
+load 0
+retsub
+
+// prepare_log
+preparelog_3:
+proto 1 1
+frame_dig -1
+int 240
+frame_dig -1
+len
+-
+bzero
+concat
+retsub
+
+// assert_sender_asset_holding
+assertsenderassetholding_4:
+proto 1 0
+txn Sender
+frame_dig -1
+asset_holding_get AssetBalance
+store 5
+store 4
+load 5
+assert
+load 4
+int 0
+>
+assert
+retsub
+
+// assert_sender_asset_transfer
+assertsenderassettransfer_5:
+proto 4 0
+frame_dig -2
+int 0
+>
+assert
+frame_dig -1
+gtxns Sender
+txn Sender
+==
+assert
+frame_dig -1
+gtxns TypeEnum
+int axfer
+==
+assert
+frame_dig -1
+gtxns XferAsset
+frame_dig -4
+==
+assert
+frame_dig -1
+gtxns AssetReceiver
+frame_dig -3
+==
+assert
+frame_dig -1
+gtxns AssetAmount
+frame_dig -2
+==
+assert
+retsub
+
+// assert_application_creator
+assertapplicationcreator_6:
+proto 2 0
+frame_dig -2
+app_params_get AppCreator
+store 7
+store 6
+load 7
+assert
+load 6
+frame_dig -1
+==
+assert
+retsub
+
+// create
+create_7:
+proto 0 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+retsub
+
+// update
+update_8:
+proto 0 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+retsub
+
+// upgrade
+upgrade_9:
+proto 1 0
+int 130
+itob
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+callsub preparelog_3
+log
+frame_dig -1
+txnas Applications
+byte "P1"
+int 16
+int 8
+callsub getglobalexternaluint_1
+frame_dig -1
+txnas Applications
+callsub getapplicationaddress_2
+int 1
+txn GroupIndex
+int 1
++
+callsub assertsenderassettransfer_5
+frame_dig -1
+txnas Applications
+addr SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ
+callsub assertapplicationcreator_6
+itxn_begin
+int appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+method "upgrade(address,byte[240])void"
+itxn_field ApplicationArgs
+txn Sender
+itxn_field ApplicationArgs
+int 130
+itob
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+itxn_field ApplicationArgs
+itxn_submit
+retsub
+
+// mint
+mint_10:
+proto 2 0
+int 131
+itob
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -2
+itob
+concat
+callsub preparelog_3
+log
+frame_dig -2
+int 0
+>
+assert
+frame_dig -1
+txnas Applications
+byte "P1"
+int 8
+int 8
+callsub getglobalexternaluint_1
+callsub assertsenderassetholding_4
+frame_dig -1
+txnas Applications
+addr SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ
+callsub assertapplicationcreator_6
+itxn_begin
+int appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+method "mint(uint64,address,byte[240])void"
+itxn_field ApplicationArgs
+frame_dig -2
+itob
+itxn_field ApplicationArgs
+txn Sender
+itxn_field ApplicationArgs
+int 131
+itob
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -2
+itob
+concat
+itxn_field ApplicationArgs
+itxn_submit
+retsub
+
+// withdraw
+withdraw_11:
+proto 2 0
+int 132
+itob
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -2
+itob
+concat
+callsub preparelog_3
+log
+frame_dig -2
+int 0
+>
+assert
+frame_dig -1
+txnas Applications
+byte "P1"
+int 8
+int 8
+callsub getglobalexternaluint_1
+callsub assertsenderassetholding_4
+frame_dig -1
+txnas Applications
+addr SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ
+callsub assertapplicationcreator_6
+itxn_begin
+int appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+method "withdraw(uint64,address,byte[240])void"
+itxn_field ApplicationArgs
+frame_dig -2
+itob
+itxn_field ApplicationArgs
+txn Sender
+itxn_field ApplicationArgs
+int 132
+itob
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -2
+itob
+concat
+itxn_field ApplicationArgs
+itxn_submit
+retsub
+
+// upgrade_caster
+upgradecaster_12:
+proto 0 0
+int 0
+txna ApplicationArgs 1
+int 0
+getbyte
+frame_bury 0
+frame_dig 0
+callsub upgrade_9
+retsub
+
+// mint_caster
+mintcaster_13:
+proto 0 0
+int 0
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+int 0
+getbyte
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub mint_10
+retsub
+
+// withdraw_caster
+withdrawcaster_14:
+proto 0 0
+int 0
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+int 0
+getbyte
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub withdraw_11
+retsub
