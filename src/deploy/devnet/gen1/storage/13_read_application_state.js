@@ -5,7 +5,7 @@ const devnet = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {
-        let connection = await chain.get();
+        let connection = await devnet.get();
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
