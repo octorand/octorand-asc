@@ -1,11 +1,11 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../../chain/index');
+const chain = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {
-        let connection = await chain.devnet();
+        let connection = await chain.get();
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 

@@ -1,12 +1,12 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../../chain/index');
+const chain = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {
 
-        let connection = await chain.devnet();
+        let connection = await chain.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.admin.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
