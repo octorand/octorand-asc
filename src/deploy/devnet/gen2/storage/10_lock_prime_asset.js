@@ -5,7 +5,7 @@ const devnet = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {
-        let connection = await chain.get();
+        let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.gen2.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
@@ -35,7 +35,7 @@ exports.execute = async function () {
                 })
             });
 
-            await chain.execute(composer);
+            await devnet.execute(composer);
 
             storage['locked'] = true;
 

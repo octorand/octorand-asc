@@ -5,7 +5,7 @@ const devnet = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {
-        let connection = await chain.get();
+        let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.admin.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
@@ -24,7 +24,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: storage['application_address'],
-                    assetIndex: Number(process.env.PLATFORM_ASSET_ID),
+                    assetIndex: config['setup']['platform']['asset_id'],
                     amount: 1000000,
                     suggestedParams: {
                         ...params,
@@ -49,7 +49,7 @@ exports.execute = async function () {
                 })
             });
 
-            await chain.execute(composer);
+            await devnet.execute(composer);
 
             storage['transferred'] = true;
 

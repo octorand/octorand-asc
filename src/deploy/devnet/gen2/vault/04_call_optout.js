@@ -27,7 +27,7 @@ exports.execute = async function () {
                 appID: vault['application_id'],
                 method: helpers.method(contract, 'optout'),
                 methodArgs: [
-                    Number(process.env.VAULT_ASSET_ID),
+                    config['setup']['vault']['asset_id'],
                     config['gen2']['contracts']['storage']['application_id'],
                 ],
                 appForeignAssets: [

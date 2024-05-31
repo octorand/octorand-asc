@@ -61,8 +61,13 @@
             "storage": {
                 "application_id": 674889245,
                 "application_address": "F3IWUJKTO4DYTAJQ6C4BYAIH5TAITGQ67JIGCZ4TKMMUV7ORCOIT5KN2HY",
-                "application_version": 0,
-                "funded": true
+                "application_version": 1,
+                "funded": true,
+                "initialized": true,
+                "populated": true,
+                "finalized": true,
+                "transferred": true,
+                "locked": true
             }
         }
     },
@@ -112,8 +117,13 @@
             "storage": {
                 "application_id": 674889477,
                 "application_address": "DMS3CR2QEZIA3CM32GIUJ7SR36UEBZT527ZVTSRKKB3IASNKKUIUUM2X5U",
-                "application_version": 0,
-                "funded": true
+                "application_version": 1,
+                "funded": true,
+                "initialized": true,
+                "populated": true,
+                "finalized": true,
+                "transferred": true,
+                "locked": true
             }
         }
     }

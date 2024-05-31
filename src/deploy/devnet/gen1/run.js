@@ -29,12 +29,12 @@ exports.execute = async function () {
     await require('./storage/03_create_prime_asset').execute();
     await require('./storage/04_create_application').execute();
     await require('./storage/05_fund_application').execute();
-    // await require('./storage/06_call_initialize').execute();
-    // await require('./storage/07_call_populate').execute();
-    // await require('./storage/08_call_finalize').execute();
-    // await require('./storage/09_transfer_assets').execute();
-    // await require('./storage/10_lock_prime_asset').execute();
-    // await require('./storage/11_update_application').execute();
+    await require('./storage/06_call_initialize').execute();
+    await require('./storage/07_call_populate').execute();
+    await require('./storage/08_call_finalize').execute();
+    await require('./storage/09_transfer_assets').execute();
+    await require('./storage/10_lock_prime_asset').execute();
+    await require('./storage/11_update_application').execute();
 
     // console.log('config gen1 wallet application');
     // await require('./wallet/03_call_upgrade').execute();

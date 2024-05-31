@@ -33,7 +33,7 @@ exports.execute = async function () {
                     config['gen1']['contracts']['storage']['application_id'],
                 ],
                 appForeignAssets: [
-                    Number(process.env.PLATFORM_ASSET_ID),
+                    config['setup']['platform']['asset_id'],
                 ],
                 suggestedParams: {
                     ...params,

@@ -26,7 +26,7 @@ exports.execute = async function () {
                 appID: vault['application_id'],
                 method: helpers.method(contract, 'optin'),
                 methodArgs: [
-                    Number(process.env.VAULT_ASSET_ID),
+                    config['setup']['vault']['asset_id'],
                     config['gen1']['contracts']['storage']['application_id'],
                 ],
                 suggestedParams: {
@@ -57,7 +57,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: config['gen1']['contracts']['storage']['application_address'],
-                    assetIndex: Number(process.env.VAULT_ASSET_ID),
+                    assetIndex: config['setup']['vault']['asset_id'],
                     amount: 300,
                     suggestedParams: {
                         ...params,

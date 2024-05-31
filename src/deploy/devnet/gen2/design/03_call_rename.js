@@ -47,7 +47,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: connection.admin.addr,
-                    assetIndex: Number(process.env.PLATFORM_ASSET_ID),
+                    assetIndex: config['setup']['platform']['asset_id'],
                     amount: 2000000,
                     suggestedParams: {
                         ...params,
@@ -83,7 +83,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: connection.admin.addr,
-                    assetIndex: Number(process.env.PLATFORM_ASSET_ID),
+                    assetIndex: config['setup']['platform']['asset_id'],
                     amount: 1000000,
                     suggestedParams: {
                         ...params,

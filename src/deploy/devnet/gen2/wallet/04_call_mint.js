@@ -32,7 +32,7 @@ exports.execute = async function () {
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id'],
-                    Number(process.env.PLATFORM_ASSET_ID)
+                    config['setup']['platform']['asset_id']
                 ],
                 suggestedParams: {
                     ...params,
