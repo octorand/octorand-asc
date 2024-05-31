@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../../chain/devnet');
+const devnet = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {

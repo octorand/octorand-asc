@@ -1,12 +1,12 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../../chain/devnet');
+const devnet = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {
 
-        let connection = await chain.get();
+        let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.gen2.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
@@ -34,7 +34,7 @@ exports.execute = async function () {
                 })
             });
 
-            await chain.execute(composer);
+            await devnet.execute(composer);
 
             config['setup']['optin_gen2'] = true;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
