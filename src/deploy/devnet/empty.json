@@ -1,4 +1,8 @@
 {
+    "setup": {
+        "platform": {},
+        "vault": {}
+    },
     "gen1": {
         "inputs": {
             "prime": {}

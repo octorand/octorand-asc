@@ -2,7 +2,10 @@ require('dotenv').config();
 
 (async () => {
 
-    await require('./gen1/run').execute();
-    await require('./gen2/run').execute();
+    let environment = "DEVNET";
+
+    await require('./setup/run').execute(environment);
+    // await require('./gen1/run').execute();
+    // await require('./gen2/run').execute();
 
 })();
