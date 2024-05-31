@@ -1,13 +1,13 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../chain/index');
+const chain = require('./../../../../chain/index');
 
-exports.execute = async function () {
+exports.execute = async function (environment) {
     try {
-        let connection = await chain.get();
+        let connection = await chain.get(environment);
 
-        let config = JSON.parse(fs.readFileSync('src/test/config.json'));
+        let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
         let storage = config['gen1']['contracts']['storage'];
 
@@ -23,7 +23,7 @@ exports.execute = async function () {
         storage['logs'] = logs;
 
         config['gen1']['contracts']['storage'] = storage;
-        fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
+        fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
     } catch (error) {
         console.log(error);

@@ -1,16 +1,16 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const chain = require('./../../../chain/index');
+const chain = require('./../../../../chain/index');
 
-exports.execute = async function () {
+exports.execute = async function (environment) {
     try {
-        let connection = await chain.get();
+        let connection = await chain.get(environment);
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.gen1.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
-        let config = JSON.parse(fs.readFileSync('src/test/config.json'));
+        let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
         let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/gen1/wallet/contract.json')));
 
         let wallet = config['gen1']['contracts']['wallet'];
@@ -45,7 +45,7 @@ exports.execute = async function () {
             wallet['minted'] = true;
 
             config['gen1']['contracts']['wallet'] = wallet;
-            fs.writeFileSync('src/test/config.json', JSON.stringify(config, null, 4));
+            fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('called mint method');
         }
