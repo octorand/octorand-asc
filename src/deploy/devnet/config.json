@@ -20,10 +20,26 @@
             "prime": {}
         },
         "contracts": {
-            "design": {},
-            "market": {},
-            "vault": {},
-            "wallet": {},
+            "design": {
+                "application_id": 674860645,
+                "application_address": "DVR4CQNQ3NTEXATW2SJUMX74NMOR6PGXA3IHMYFGZVOGOFQ4Y6PQUHDUTI",
+                "application_version": 1
+            },
+            "market": {
+                "application_id": 674861374,
+                "application_address": "R27JAZAG6KRMTSDWLKV5SCCAFKBPNHFG5LVX5AOVVZSGFSEHSNENIY2XVM",
+                "application_version": 1
+            },
+            "vault": {
+                "application_id": 674861426,
+                "application_address": "XYCWRMDHKZWCFZFGGQ6CENZISHDA2WRULCN2YTUIB7S562SDLOBW5YPPLM",
+                "application_version": 1
+            },
+            "wallet": {
+                "application_id": 674862674,
+                "application_address": "7ILOCKKVQGZKNIKVJRUZMMJHVEOXMRAHTXL2QZ2NJ5M5CUSHDCNCJOCPDE",
+                "application_version": 1
+            },
             "storage": {}
         }
     },

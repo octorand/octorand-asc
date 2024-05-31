@@ -4,23 +4,23 @@ exports.execute = async function () {
 
     console.log('deploy gen1 design application');
     await require('./design/00_compile_contract').execute();
-    // await require('./design/01_create_application').execute();
-    // await require('./design/02_update_application').execute();
+    await require('./design/01_create_application').execute();
+    await require('./design/02_update_application').execute();
 
-    // console.log('deploy gen1 market application');
-    // await require('./market/00_compile_contract').execute();
-    // await require('./market/01_create_application').execute();
-    // await require('./market/02_update_application').execute();
+    console.log('deploy gen1 market application');
+    await require('./market/00_compile_contract').execute();
+    await require('./market/01_create_application').execute();
+    await require('./market/02_update_application').execute();
 
-    // console.log('deploy gen1 vault application');
-    // await require('./vault/00_compile_contract').execute();
-    // await require('./vault/01_create_application').execute();
-    // await require('./vault/02_update_application').execute();
+    console.log('deploy gen1 vault application');
+    await require('./vault/00_compile_contract').execute();
+    await require('./vault/01_create_application').execute();
+    await require('./vault/02_update_application').execute();
 
-    // console.log('deploy gen1 wallet application');
-    // await require('./wallet/00_compile_contract').execute();
-    // await require('./wallet/01_create_application').execute();
-    // await require('./wallet/02_update_application').execute();
+    console.log('deploy gen1 wallet application');
+    await require('./wallet/00_compile_contract').execute();
+    await require('./wallet/01_create_application').execute();
+    await require('./wallet/02_update_application').execute();
 
     // console.log('config gen1 storage application');
     // await require('./storage/00_compile_contract').execute();

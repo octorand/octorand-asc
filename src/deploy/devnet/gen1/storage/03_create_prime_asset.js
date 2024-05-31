@@ -5,7 +5,7 @@ const devnet = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {
-        let connection = await chain.get();
+        let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.gen1.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
@@ -37,7 +37,7 @@ exports.execute = async function () {
                 })
             });
 
-            let response = await chain.execute(composer);
+            let response = await devnet.execute(composer);
             let assetId = response.information['asset-index'];
 
             prime['prime_asset_id'] = assetId;
