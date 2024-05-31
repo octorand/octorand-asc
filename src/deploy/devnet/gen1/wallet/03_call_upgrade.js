@@ -3,15 +3,15 @@ require('dotenv').config();
 const fs = require('fs');
 const chain = require('./../../../../chain/index');
 
-exports.execute = async function (environment) {
+exports.execute = async function () {
     try {
-        let connection = await chain.get(environment);
+        let connection = await chain.devnet();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.gen1.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/gen1/wallet/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/wallet/contract.json')));
 
         let wallet = config['gen1']['contracts']['wallet'];
         let prime = config['gen1']['inputs']['prime'];

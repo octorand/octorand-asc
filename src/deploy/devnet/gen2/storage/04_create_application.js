@@ -3,9 +3,9 @@ require('dotenv').config();
 const fs = require('fs');
 const chain = require('./../../../../chain/index');
 
-exports.execute = async function (environment) {
+exports.execute = async function () {
     try {
-        let connection = await chain.get(environment);
+        let connection = await chain.devnet();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.gen2.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
@@ -18,8 +18,8 @@ exports.execute = async function (environment) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
-            let approvalProgram = fs.readFileSync('src/build/gen2/storage/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/gen2/storage/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/devnet/gen2/storage/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/devnet/gen2/storage/clear.teal', 'utf8');
 
             composer.addTransaction({
                 signer: signer,

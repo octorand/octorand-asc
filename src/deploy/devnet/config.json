@@ -1,12 +1,12 @@
 {
     "setup": {
         "platform": {
-            "asset_id": 674755207,
+            "asset_id": 674778571,
             "manager": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
             "reserve": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM"
         },
         "vault": {
-            "asset_id": 674755806,
+            "asset_id": 674778614,
             "manager": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
             "reserve": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM"
         },

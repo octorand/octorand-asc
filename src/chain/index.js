@@ -6,6 +6,18 @@ let baseClient = algosdk;
 let algodClient = null;
 let indexerClient = null;
 
+exports.devnet = async function () {
+    return exports.get('DEVNET');
+}
+
+exports.testnet = async function () {
+    return exports.get('TESTNET');
+}
+
+exports.mainnet = async function () {
+    return exports.get('MAINNET');
+}
+
 exports.get = async function (environment) {
 
     algodClient = new algosdk.Algodv2('', process.env[environment + '_ALGO_SERVER'], '');

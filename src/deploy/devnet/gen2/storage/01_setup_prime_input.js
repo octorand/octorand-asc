@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const fs = require('fs');
 
-exports.execute = async function (environment) {
+exports.execute = async function () {
     try {
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
