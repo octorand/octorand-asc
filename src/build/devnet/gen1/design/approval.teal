@@ -275,7 +275,7 @@ int 8
 int 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
-int 674084374
+int 674875249
 addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
 int 10000000
 frame_dig -2
@@ -461,7 +461,7 @@ int 8
 int 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
-int 674084374
+int 674875249
 addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
 int 10000000
 txn GroupIndex
@@ -552,7 +552,7 @@ int 8
 int 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_3
-int 674084374
+int 674875249
 addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
 int 10000000
 txn GroupIndex

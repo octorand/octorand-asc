@@ -5,7 +5,7 @@ const devnet = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {
-        let connection = await chain.get();
+        let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.gen2.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
@@ -26,8 +26,8 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeApplicationCreateTxnFromObject({
                     from: sender,
                     onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
-                    approvalProgram: await chain.compile(approvalProgram),
-                    clearProgram: await chain.compile(clearProgram),
+                    approvalProgram: await devnet.compile(approvalProgram),
+                    clearProgram: await devnet.compile(clearProgram),
                     numLocalInts: 0,
                     numLocalByteSlices: 0,
                     numGlobalInts: 0,
@@ -41,7 +41,7 @@ exports.execute = async function () {
                 })
             });
 
-            let response = await chain.execute(composer);
+            let response = await devnet.execute(composer);
             let applicationId = response.information['application-index'];
 
             storage['application_id'] = applicationId;

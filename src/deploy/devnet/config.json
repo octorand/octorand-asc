@@ -1,12 +1,12 @@
 {
     "setup": {
         "platform": {
-            "asset_id": 674858410,
+            "asset_id": 674875249,
             "manager": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
             "reserve": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM"
         },
         "vault": {
-            "asset_id": 674858447,
+            "asset_id": 674875262,
             "manager": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
             "reserve": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM"
         },
@@ -21,23 +21,23 @@
         },
         "contracts": {
             "design": {
-                "application_id": 674860645,
-                "application_address": "DVR4CQNQ3NTEXATW2SJUMX74NMOR6PGXA3IHMYFGZVOGOFQ4Y6PQUHDUTI",
+                "application_id": 674879605,
+                "application_address": "TCO572NAQCIAIRG7LFKEOAOH5KPGHV6YFAJQNAC3Q6MYQNMMIMK7ELGHYQ",
                 "application_version": 1
             },
             "market": {
-                "application_id": 674861374,
-                "application_address": "R27JAZAG6KRMTSDWLKV5SCCAFKBPNHFG5LVX5AOVVZSGFSEHSNENIY2XVM",
+                "application_id": 674879804,
+                "application_address": "GM2B7OJXI5ZKOIBWILNSHF2D4OGK76YXLWR3VZST45BYFL2MASDYNSRETM",
                 "application_version": 1
             },
             "vault": {
-                "application_id": 674861426,
-                "application_address": "XYCWRMDHKZWCFZFGGQ6CENZISHDA2WRULCN2YTUIB7S562SDLOBW5YPPLM",
+                "application_id": 674880029,
+                "application_address": "AMXEKUMVJQFHCSDEGVQW2JLVQ4YQZYE7LOD4PT4BFMHW7LFIBDRT6ZQFQQ",
                 "application_version": 1
             },
             "wallet": {
-                "application_id": 674862674,
-                "application_address": "7ILOCKKVQGZKNIKVJRUZMMJHVEOXMRAHTXL2QZ2NJ5M5CUSHDCNCJOCPDE",
+                "application_id": 674880132,
+                "application_address": "VLELUYGAIEH2Y744XBTFQKDJSHZQ4J43BIOC6CFJ2BRCS3S5SGIDM2DROY",
                 "application_version": 1
             },
             "storage": {}
@@ -48,10 +48,26 @@
             "prime": {}
         },
         "contracts": {
-            "design": {},
-            "market": {},
-            "vault": {},
-            "wallet": {},
+            "design": {
+                "application_id": 674881316,
+                "application_address": "TWJQECKG3KXP43ZW6XHA34QXEORN4VS2ZIITONFFUIOY35C7SPBEZEU3WQ",
+                "application_version": 1
+            },
+            "market": {
+                "application_id": 674881427,
+                "application_address": "PGFBYZCIJEMPVEH27BSLZXDVD7XPJH3EF6MRSOEKYR7OC23IALZOZZEQTI",
+                "application_version": 1
+            },
+            "vault": {
+                "application_id": 674881524,
+                "application_address": "B5TYWVORSAFYSPXQJPVL7EF44PBGH6BSEJQRLQTU7F2CQUW5DIFSIJSZ74",
+                "application_version": 1
+            },
+            "wallet": {
+                "application_id": 674882069,
+                "application_address": "XPFAJQYOFOT54BUUCWVAN77F2IXEI7HPI6T3WRO2MMKOUSYF7TI7QJM5YY",
+                "application_version": 1
+            },
             "storage": {}
         }
     }

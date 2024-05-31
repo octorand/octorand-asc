@@ -14,8 +14,8 @@ exports.execute = async function () {
             let approvalProgram = fs.readFileSync('src/build/devnet/gen2/market/approval.teal', 'utf8');
             let clearProgram = fs.readFileSync('src/build/devnet/gen2/market/clear.teal', 'utf8');
 
-            console.log('gen2 market approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
-            console.log('gen2 market clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
+            console.log('gen2 market approval program length is ' + (await devnet.compile(approvalProgram)).length + ' bytes');
+            console.log('gen2 market clear program length is ' + (await devnet.compile(clearProgram)).length + ' bytes');
         }
 
     } catch (error) {

@@ -457,7 +457,7 @@ byte "P1"
 int 72
 int 32
 callsub setglobalbytes_3
-int 674084374
+int 674875249
 callsub optinintoasset_5
 frame_dig -3
 txnas Assets
@@ -795,7 +795,7 @@ global CallerApplicationID
 int 0
 ==
 assert
-int 674084374
+int 674875249
 frame_dig -2
 frame_dig -3
 callsub executeassettransfer_8
@@ -836,7 +836,7 @@ int 0
 assert
 frame_dig -2
 txnas Assets
-int 674084374
+int 674875249
 !=
 assert
 frame_dig -2
@@ -871,7 +871,7 @@ int 0
 assert
 frame_dig -3
 txnas Assets
-int 674084374
+int 674875249
 !=
 assert
 frame_dig -3

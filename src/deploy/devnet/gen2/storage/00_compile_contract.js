@@ -14,8 +14,8 @@ exports.execute = async function () {
             let approvalProgram = fs.readFileSync('src/build/devnet/gen2/storage/approval.teal', 'utf8');
             let clearProgram = fs.readFileSync('src/build/devnet/gen2/storage/clear.teal', 'utf8');
 
-            console.log('gen2 storage approval program length is ' + (await chain.compile(approvalProgram)).length + ' bytes');
-            console.log('gen2 storage clear program length is ' + (await chain.compile(clearProgram)).length + ' bytes');
+            console.log('gen2 storage approval program length is ' + (await devnet.compile(approvalProgram)).length + ' bytes');
+            console.log('gen2 storage clear program length is ' + (await devnet.compile(clearProgram)).length + ' bytes');
         }
 
     } catch (error) {
