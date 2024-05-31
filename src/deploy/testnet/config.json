@@ -1,0 +1,30 @@
+{
+    "setup": {
+        "platform": {},
+        "vault": {}
+    },
+    "gen1": {
+        "inputs": {
+            "prime": {}
+        },
+        "contracts": {
+            "design": {},
+            "market": {},
+            "vault": {},
+            "wallet": {},
+            "storage": {}
+        }
+    },
+    "gen2": {
+        "inputs": {
+            "prime": {}
+        },
+        "contracts": {
+            "design": {},
+            "market": {},
+            "vault": {},
+            "wallet": {},
+            "storage": {}
+        }
+    }
+}
