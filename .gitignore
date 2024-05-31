@@ -1,7 +1,4 @@
 __pycache__
 node_modules
 .vscode
-.env.devnet
-.env.testnet
-.env.mainnet
 .env

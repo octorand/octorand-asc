@@ -8,7 +8,7 @@ load_dotenv()
 
 
 def env():
-    return os.environ.get("ENVIRONMENT")
+    return "DEVNET"
 
 
 def uint(key):
