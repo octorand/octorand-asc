@@ -2,10 +2,11 @@ require('dotenv').config();
 
 const fs = require('fs');
 const devnet = require('./../../../../chain/devnet');
+const helpers = require('./../../../../chain/util/helpers');
 
 exports.execute = async function () {
     try {
-        let connection = await chain.get();
+        let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.gen1.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
@@ -24,7 +25,7 @@ exports.execute = async function () {
                 sender: sender,
                 signer: signer,
                 appID: wallet['application_id'],
-                method: chain.method(contract, 'mint'),
+                method: helpers.method(contract, 'mint'),
                 methodArgs: [
                     100,
                     config['gen1']['contracts']['storage']['application_id'],
@@ -40,7 +41,7 @@ exports.execute = async function () {
                 }
             });
 
-            await chain.execute(composer);
+            await devnet.execute(composer);
 
             wallet['minted'] = true;
 

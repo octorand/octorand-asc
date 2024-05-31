@@ -2,10 +2,11 @@ require('dotenv').config();
 
 const fs = require('fs');
 const devnet = require('./../../../../chain/devnet');
+const helpers = require('./../../../../chain/util/helpers');
 
 exports.execute = async function () {
     try {
-        let connection = await chain.get();
+        let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.admin.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
@@ -24,7 +25,7 @@ exports.execute = async function () {
                 sender: sender,
                 signer: signer,
                 appID: storage['application_id'],
-                method: chain.method(contract, 'populate'),
+                method: helpers.method(contract, 'populate'),
                 methodArgs: [
                     prime['theme'],
                     prime['skin'],
@@ -32,8 +33,8 @@ exports.execute = async function () {
                     prime['is_artifact'],
                     prime['is_pioneer'],
                     prime['is_explorer'],
-                    chain.bytes(prime['name'], 16),
-                    chain.bytes(prime['description'], 64),
+                    helpers.bytes(prime['name'], 16),
+                    helpers.bytes(prime['description'], 64),
                 ],
                 suggestedParams: {
                     ...params,
@@ -42,7 +43,7 @@ exports.execute = async function () {
                 }
             });
 
-            await chain.execute(composer);
+            await devnet.execute(composer);
 
             storage['populated'] = true;
 

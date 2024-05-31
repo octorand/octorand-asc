@@ -17,7 +17,25 @@
     },
     "gen1": {
         "inputs": {
-            "prime": {}
+            "prime": {
+                "id": 1,
+                "theme": 1,
+                "skin": 2,
+                "is_founder": 1,
+                "is_artifact": 0,
+                "is_pioneer": 1,
+                "is_explorer": 0,
+                "score": 750,
+                "sales": 15,
+                "mints": 25,
+                "renames": 5,
+                "repaints": 10,
+                "name": "ABCDWXYZ",
+                "description": "Notes",
+                "price": 350,
+                "legacy_asset_id": 674889147,
+                "prime_asset_id": 674889239
+            }
         },
         "contracts": {
             "design": {
@@ -40,12 +58,35 @@
                 "application_address": "VLELUYGAIEH2Y744XBTFQKDJSHZQ4J43BIOC6CFJ2BRCS3S5SGIDM2DROY",
                 "application_version": 1
             },
-            "storage": {}
+            "storage": {
+                "application_id": 674889245,
+                "application_address": "F3IWUJKTO4DYTAJQ6C4BYAIH5TAITGQ67JIGCZ4TKMMUV7ORCOIT5KN2HY",
+                "application_version": 0,
+                "funded": true
+            }
         }
     },
     "gen2": {
         "inputs": {
-            "prime": {}
+            "prime": {
+                "id": 1,
+                "theme": 1,
+                "skin": 2,
+                "is_founder": 1,
+                "is_artifact": 0,
+                "is_pioneer": 1,
+                "is_explorer": 0,
+                "score": 750,
+                "sales": 15,
+                "mints": 25,
+                "renames": 5,
+                "repaints": 10,
+                "name": "ABCDEFGHSTUVWXYZ",
+                "description": "Notes",
+                "price": 350,
+                "legacy_asset_id": 674889436,
+                "prime_asset_id": 674889472
+            }
         },
         "contracts": {
             "design": {
@@ -68,7 +109,12 @@
                 "application_address": "XPFAJQYOFOT54BUUCWVAN77F2IXEI7HPI6T3WRO2MMKOUSYF7TI7QJM5YY",
                 "application_version": 1
             },
-            "storage": {}
+            "storage": {
+                "application_id": 674889477,
+                "application_address": "DMS3CR2QEZIA3CM32GIUJ7SR36UEBZT527ZVTSRKKB3IASNKKUIUUM2X5U",
+                "application_version": 0,
+                "funded": true
+            }
         }
     }
 }

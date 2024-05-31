@@ -2,10 +2,11 @@ require('dotenv').config();
 
 const fs = require('fs');
 const devnet = require('./../../../../chain/devnet');
+const helpers = require('./../../../../chain/util/helpers');
 
 exports.execute = async function () {
     try {
-        let connection = await chain.get();
+        let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.player.addr;
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
@@ -24,9 +25,9 @@ exports.execute = async function () {
                 sender: sender,
                 signer: signer,
                 appID: design['application_id'],
-                method: chain.method(contract, 'describe'),
+                method: helpers.method(contract, 'describe'),
                 methodArgs: [
-                    chain.bytes('Updated ' + prime['description'], 64),
+                    helpers.bytes('Updated ' + prime['description'], 64),
                     config['gen1']['contracts']['storage']['application_id'],
                 ],
                 appForeignAssets: [
@@ -55,7 +56,7 @@ exports.execute = async function () {
                 })
             });
 
-            await chain.execute(composer);
+            await devnet.execute(composer);
 
             design['described'] = true;
 
