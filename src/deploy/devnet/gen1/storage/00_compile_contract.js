@@ -11,6 +11,14 @@ exports.execute = async function () {
         let storage = config['gen1']['contracts']['storage'];
 
         if (!storage['application_id']) {
+            let approvalProgram = fs.readFileSync('src/build/devnet/gen1/setup/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/devnet/gen1/setup/clear.teal', 'utf8');
+
+            console.log('gen1 setup approval program length is ' + (await devnet.compile(approvalProgram)).length + ' bytes');
+            console.log('gen1 setup clear program length is ' + (await devnet.compile(clearProgram)).length + ' bytes');
+        }
+
+        if (!storage['application_id']) {
             let approvalProgram = fs.readFileSync('src/build/devnet/gen1/storage/approval.teal', 'utf8');
             let clearProgram = fs.readFileSync('src/build/devnet/gen1/storage/clear.teal', 'utf8');
 

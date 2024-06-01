@@ -17,7 +17,25 @@
     },
     "gen1": {
         "inputs": {
-            "prime": {}
+            "prime": {
+                "id": 1,
+                "theme": 1,
+                "skin": 2,
+                "is_founder": 1,
+                "is_artifact": 0,
+                "is_pioneer": 1,
+                "is_explorer": 0,
+                "score": 750,
+                "sales": 15,
+                "mints": 25,
+                "renames": 5,
+                "repaints": 10,
+                "name": "ABCDWXYZ",
+                "description": "Notes",
+                "price": 350,
+                "legacy_asset_id": 675616007,
+                "prime_asset_id": 675616011
+            }
         },
         "contracts": {
             "design": {
@@ -40,12 +58,40 @@
                 "application_address": "V3HN2G6S3XZMVMXRCMDJH66KDVFPTECIXDWJAFAMAO3W2OQTVDUK2CWC74",
                 "application_version": 1
             },
-            "storage": {}
+            "storage": {
+                "application_id": 675616026,
+                "application_address": "SL3LJMXNRGBGPZ2TIQE6LENZSM6ZFDLMOQPRJUF6DT63TB7SIF7CZ47FFU",
+                "application_version": 1,
+                "funded": true,
+                "initialized": true,
+                "populated": true,
+                "finalized": true,
+                "transferred": true,
+                "locked": true
+            }
         }
     },
     "gen2": {
         "inputs": {
-            "prime": {}
+            "prime": {
+                "id": 1,
+                "theme": 1,
+                "skin": 2,
+                "is_founder": 1,
+                "is_artifact": 0,
+                "is_pioneer": 1,
+                "is_explorer": 0,
+                "score": 750,
+                "sales": 15,
+                "mints": 25,
+                "renames": 5,
+                "repaints": 10,
+                "name": "ABCDEFGHSTUVWXYZ",
+                "description": "Notes",
+                "price": 350,
+                "legacy_asset_id": 675616090,
+                "prime_asset_id": 675616134
+            }
         },
         "contracts": {
             "design": {
@@ -68,7 +114,17 @@
                 "application_address": "RSK6BQGCAC6ZGX2DVDOIE7KKZYWQWCK4E6CD6AIFFSPUL3VMMGMMEINN3Q",
                 "application_version": 1
             },
-            "storage": {}
+            "storage": {
+                "application_id": 675616138,
+                "application_address": "NORTSWZXKR3USIA4A4SF3F6JTAWZVJBAK4P2DQYL53DZW6S5LIVZ2KRRGE",
+                "application_version": 1,
+                "funded": true,
+                "initialized": true,
+                "populated": true,
+                "finalized": true,
+                "transferred": true,
+                "locked": true
+            }
         }
     }
 }

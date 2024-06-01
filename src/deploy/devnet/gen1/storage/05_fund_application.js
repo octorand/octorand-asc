@@ -39,7 +39,7 @@ exports.execute = async function () {
             config['gen1']['contracts']['storage'] = storage;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('funded storage application');
+            console.log('funded setup application');
         }
 
     } catch (error) {

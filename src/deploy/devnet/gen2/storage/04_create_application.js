@@ -18,8 +18,8 @@ exports.execute = async function () {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
-            let approvalProgram = fs.readFileSync('src/build/devnet/gen2/storage/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/devnet/gen2/storage/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/devnet/gen2/setup/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/devnet/gen2/setup/clear.teal', 'utf8');
 
             composer.addTransaction({
                 signer: signer,
@@ -51,7 +51,7 @@ exports.execute = async function () {
             config['gen2']['contracts']['storage'] = storage;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('created storage application');
+            console.log('created setup application');
         }
 
     } catch (error) {
