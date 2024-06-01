@@ -12,7 +12,7 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen2/setup/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen2/storage/contract.json')));
 
         let storage = config['gen2']['contracts']['storage'];
         let prime = config['gen2']['inputs']['prime'];
@@ -33,8 +33,8 @@ exports.execute = async function () {
                     prime['is_artifact'],
                     prime['is_pioneer'],
                     prime['is_explorer'],
+                    prime['score'],
                     helpers.bytes(prime['name'], 16),
-                    helpers.bytes(prime['description'], 64),
                 ],
                 suggestedParams: {
                     ...params,

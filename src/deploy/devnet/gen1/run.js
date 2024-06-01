@@ -31,10 +31,9 @@ exports.execute = async function () {
     await require('./storage/05_fund_application').execute();
     await require('./storage/06_call_initialize').execute();
     await require('./storage/07_call_populate').execute();
-    await require('./storage/08_call_finalize').execute();
-    await require('./storage/09_transfer_assets').execute();
-    await require('./storage/10_lock_prime_asset').execute();
-    await require('./storage/11_update_application').execute();
+    await require('./storage/08_transfer_assets').execute();
+    await require('./storage/09_lock_prime_asset').execute();
+    await require('./storage/10_update_application').execute();
 
     console.log('config gen1 wallet application');
     await require('./wallet/03_call_upgrade').execute();
@@ -52,8 +51,7 @@ exports.execute = async function () {
     console.log('config gen1 design application');
     await require('./design/03_call_rename').execute();
     await require('./design/04_call_repaint').execute();
-    await require('./design/05_call_describe').execute();
-    await require('./design/06_read_application_logs').execute();
+    await require('./design/05_read_application_logs').execute();
 
     console.log('config gen1 vault application');
     await require('./vault/03_call_optin').execute();
@@ -61,7 +59,7 @@ exports.execute = async function () {
     await require('./vault/05_read_application_logs').execute();
 
     console.log('read gen1 storage application');
-    await require('./storage/12_read_application_logs').execute();
-    await require('./storage/13_read_application_state').execute();
+    await require('./storage/11_read_application_logs').execute();
+    await require('./storage/12_read_application_state').execute();
 
 }

@@ -18,12 +18,7 @@ exports.execute = async function () {
                 is_pioneer: 1,
                 is_explorer: 0,
                 score: 750,
-                sales: 15,
-                mints: 25,
-                renames: 5,
-                repaints: 10,
                 name: 'ABCDEFGHSTUVWXYZ',
-                description: 'Notes',
                 price: 350
             }
 
