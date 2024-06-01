@@ -41,22 +41,165 @@
             "design": {
                 "application_id": 675594956,
                 "application_address": "HW4JWUMSB2JVEMUQE7PVUCVGPQFJAVHHJ75H23ILFLDEQKVS626I3ZC5FQ",
-                "application_version": 1
+                "application_version": 1,
+                "renamed": true,
+                "repainted": true,
+                "described": true,
+                "logs": [
+                    {
+                        "code": 100,
+                        "version": 1,
+                        "timestamp": 1717241585,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_rename",
+                        "index": 1,
+                        "value": 68,
+                        "price": 20000000
+                    },
+                    {
+                        "code": 100,
+                        "version": 1,
+                        "timestamp": 1717241585,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_rename",
+                        "index": 6,
+                        "value": 86,
+                        "price": 30000000
+                    },
+                    {
+                        "code": 101,
+                        "version": 1,
+                        "timestamp": 1717241590,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_repaint",
+                        "theme": 3,
+                        "skin": 4,
+                        "price": 10000000
+                    },
+                    {
+                        "code": 102,
+                        "version": 1,
+                        "timestamp": 1717241595,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_describe",
+                        "description": "Updated Notes",
+                        "price": 10000000
+                    }
+                ]
             },
             "market": {
                 "application_id": 675595073,
                 "application_address": "2ZIIISBITA5S6ZDJHMN2Z47WPLQHF6NJNAXR7NK2EVHBT3YVOAFPOLXVWM",
-                "application_version": 1
+                "application_version": 1,
+                "listed": true,
+                "unlisted": true,
+                "relisted": true,
+                "bought": true,
+                "logs": [
+                    {
+                        "code": 110,
+                        "version": 1,
+                        "timestamp": 1717241479,
+                        "prime": 1,
+                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "name": "market_list",
+                        "price": 350
+                    },
+                    {
+                        "code": 111,
+                        "version": 1,
+                        "timestamp": 1717241484,
+                        "prime": 1,
+                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "name": "market_unlist"
+                    },
+                    {
+                        "code": 110,
+                        "version": 1,
+                        "timestamp": 1717241490,
+                        "prime": 1,
+                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "name": "market_list",
+                        "price": 350
+                    },
+                    {
+                        "code": 112,
+                        "version": 1,
+                        "timestamp": 1717241495,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "market_buy",
+                        "seller": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "price": 350
+                    }
+                ]
             },
             "vault": {
                 "application_id": 675595121,
                 "application_address": "UIYEO72OZSVD6YZUJKXZ7OEMODIGRCTI2TU4PGJJVZXRDYY6PQVTB465KE",
-                "application_version": 1
+                "application_version": 1,
+                "optin": true,
+                "optout": true,
+                "logs": [
+                    {
+                        "code": 120,
+                        "version": 1,
+                        "timestamp": 1717241604,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "vault_optin",
+                        "asset_id": 675594495
+                    },
+                    {
+                        "code": 121,
+                        "version": 1,
+                        "timestamp": 1717241609,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "vault_optout",
+                        "asset_id": 675594495
+                    }
+                ]
             },
             "wallet": {
                 "application_id": 675595173,
                 "application_address": "V3HN2G6S3XZMVMXRCMDJH66KDVFPTECIXDWJAFAMAO3W2OQTVDUK2CWC74",
-                "application_version": 1
+                "application_version": 1,
+                "upgraded": true,
+                "minted": true,
+                "withdrawn": true,
+                "logs": [
+                    {
+                        "code": 130,
+                        "version": 1,
+                        "timestamp": 1717241457,
+                        "prime": 1,
+                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "name": "wallet_upgrade"
+                    },
+                    {
+                        "code": 131,
+                        "version": 1,
+                        "timestamp": 1717241463,
+                        "prime": 1,
+                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "name": "wallet_mint",
+                        "amount": 100
+                    },
+                    {
+                        "code": 132,
+                        "version": 1,
+                        "timestamp": 1717241468,
+                        "prime": 1,
+                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "name": "wallet_withdraw",
+                        "amount": 200
+                    }
+                ]
             },
             "storage": {
                 "application_id": 675616026,
@@ -67,7 +210,153 @@
                 "populated": true,
                 "finalized": true,
                 "transferred": true,
-                "locked": true
+                "locked": true,
+                "logs": [
+                    {
+                        "code": 130,
+                        "version": 1,
+                        "timestamp": 1717241457,
+                        "prime": 1,
+                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "name": "wallet_upgrade"
+                    },
+                    {
+                        "code": 131,
+                        "version": 1,
+                        "timestamp": 1717241463,
+                        "prime": 1,
+                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "name": "wallet_mint",
+                        "amount": 100
+                    },
+                    {
+                        "code": 132,
+                        "version": 1,
+                        "timestamp": 1717241468,
+                        "prime": 1,
+                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "name": "wallet_withdraw",
+                        "amount": 200
+                    },
+                    {
+                        "code": 110,
+                        "version": 1,
+                        "timestamp": 1717241479,
+                        "prime": 1,
+                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "name": "market_list",
+                        "price": 350
+                    },
+                    {
+                        "code": 111,
+                        "version": 1,
+                        "timestamp": 1717241484,
+                        "prime": 1,
+                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "name": "market_unlist"
+                    },
+                    {
+                        "code": 110,
+                        "version": 1,
+                        "timestamp": 1717241490,
+                        "prime": 1,
+                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "name": "market_list",
+                        "price": 350
+                    },
+                    {
+                        "code": 112,
+                        "version": 1,
+                        "timestamp": 1717241495,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "market_buy",
+                        "seller": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                        "price": 350
+                    },
+                    {
+                        "code": 100,
+                        "version": 1,
+                        "timestamp": 1717241585,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_rename",
+                        "index": 1,
+                        "value": 68,
+                        "price": 20000000
+                    },
+                    {
+                        "code": 100,
+                        "version": 1,
+                        "timestamp": 1717241585,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_rename",
+                        "index": 6,
+                        "value": 86,
+                        "price": 30000000
+                    },
+                    {
+                        "code": 101,
+                        "version": 1,
+                        "timestamp": 1717241590,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_repaint",
+                        "theme": 3,
+                        "skin": 4,
+                        "price": 10000000
+                    },
+                    {
+                        "code": 102,
+                        "version": 1,
+                        "timestamp": 1717241595,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_describe",
+                        "description": "Updated Notes",
+                        "price": 10000000
+                    },
+                    {
+                        "code": 120,
+                        "version": 1,
+                        "timestamp": 1717241604,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "vault_optin",
+                        "asset_id": 675594495
+                    },
+                    {
+                        "code": 121,
+                        "version": 1,
+                        "timestamp": 1717241609,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "vault_optout",
+                        "asset_id": 675594495
+                    }
+                ],
+                "state": {
+                    "id": 1,
+                    "prime_asset_id": 675616011,
+                    "legacy_asset_id": 675616007,
+                    "parent_application_id": 0,
+                    "theme": 3,
+                    "skin": 4,
+                    "is_founder": 1,
+                    "is_artifact": 0,
+                    "is_pioneer": 1,
+                    "is_explorer": 1,
+                    "score": 70000750,
+                    "sales": 16,
+                    "mints": 26,
+                    "renames": 7,
+                    "repaints": 11,
+                    "price": 0,
+                    "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
+                    "name": "ADCDWXVZ",
+                    "description": "Updated Notes"
+                }
             }
         }
     },
@@ -97,22 +386,142 @@
             "design": {
                 "application_id": 675595210,
                 "application_address": "V4VLA4PXK2N64UBHNTXSSMNGROWC7J4HSMI4QVYAXF76H372BYHFQCBJZU",
-                "application_version": 1
+                "application_version": 1,
+                "repainted": true,
+                "described": true,
+                "logs": [
+                    {
+                        "code": 101,
+                        "version": 1,
+                        "timestamp": 1717241634,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_repaint",
+                        "theme": 3,
+                        "skin": 4,
+                        "price": 1000000
+                    },
+                    {
+                        "code": 102,
+                        "version": 1,
+                        "timestamp": 1717241639,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_describe",
+                        "description": "Updated Notes",
+                        "price": 1000000
+                    }
+                ]
             },
             "market": {
                 "application_id": 675595291,
                 "application_address": "TLSF5GD2IYL73QTBVNYGHIQILIACVP4Q7GWSSDUQMZKY454S7C65CMANGY",
-                "application_version": 1
+                "application_version": 1,
+                "listed": true,
+                "unlisted": true,
+                "relisted": true,
+                "bought": true,
+                "logs": [
+                    {
+                        "code": 110,
+                        "version": 1,
+                        "timestamp": 1717241533,
+                        "prime": 1,
+                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "name": "market_list",
+                        "price": 350
+                    },
+                    {
+                        "code": 111,
+                        "version": 1,
+                        "timestamp": 1717241538,
+                        "prime": 1,
+                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "name": "market_unlist"
+                    },
+                    {
+                        "code": 110,
+                        "version": 1,
+                        "timestamp": 1717241544,
+                        "prime": 1,
+                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "name": "market_list",
+                        "price": 350
+                    },
+                    {
+                        "code": 112,
+                        "version": 1,
+                        "timestamp": 1717241549,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "market_buy",
+                        "seller": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "price": 350
+                    }
+                ]
             },
             "vault": {
                 "application_id": 675595427,
                 "application_address": "UOTZBIWMTENZ3RZ4ZTIVJWXERWHOZGSVXUVBNJIVGDFSMTPNL7PII5VMLM",
-                "application_version": 1
+                "application_version": 1,
+                "optin": true,
+                "optout": true,
+                "logs": [
+                    {
+                        "code": 120,
+                        "version": 1,
+                        "timestamp": 1717241647,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "vault_optin",
+                        "asset_id": 675594495
+                    },
+                    {
+                        "code": 121,
+                        "version": 1,
+                        "timestamp": 1717241653,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "vault_optout",
+                        "asset_id": 675594495
+                    }
+                ]
             },
             "wallet": {
                 "application_id": 675595509,
                 "application_address": "RSK6BQGCAC6ZGX2DVDOIE7KKZYWQWCK4E6CD6AIFFSPUL3VMMGMMEINN3Q",
-                "application_version": 1
+                "application_version": 1,
+                "upgraded": true,
+                "minted": true,
+                "withdrawn": true,
+                "logs": [
+                    {
+                        "code": 130,
+                        "version": 1,
+                        "timestamp": 1717241514,
+                        "prime": 1,
+                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "name": "wallet_upgrade"
+                    },
+                    {
+                        "code": 131,
+                        "version": 1,
+                        "timestamp": 1717241519,
+                        "prime": 1,
+                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "name": "wallet_mint",
+                        "amount": 100
+                    },
+                    {
+                        "code": 132,
+                        "version": 1,
+                        "timestamp": 1717241525,
+                        "prime": 1,
+                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "name": "wallet_withdraw",
+                        "amount": 200
+                    }
+                ]
             },
             "storage": {
                 "application_id": 675616138,
@@ -123,7 +532,131 @@
                 "populated": true,
                 "finalized": true,
                 "transferred": true,
-                "locked": true
+                "locked": true,
+                "logs": [
+                    {
+                        "code": 130,
+                        "version": 1,
+                        "timestamp": 1717241514,
+                        "prime": 1,
+                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "name": "wallet_upgrade"
+                    },
+                    {
+                        "code": 131,
+                        "version": 1,
+                        "timestamp": 1717241519,
+                        "prime": 1,
+                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "name": "wallet_mint",
+                        "amount": 100
+                    },
+                    {
+                        "code": 132,
+                        "version": 1,
+                        "timestamp": 1717241525,
+                        "prime": 1,
+                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "name": "wallet_withdraw",
+                        "amount": 200
+                    },
+                    {
+                        "code": 110,
+                        "version": 1,
+                        "timestamp": 1717241533,
+                        "prime": 1,
+                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "name": "market_list",
+                        "price": 350
+                    },
+                    {
+                        "code": 111,
+                        "version": 1,
+                        "timestamp": 1717241538,
+                        "prime": 1,
+                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "name": "market_unlist"
+                    },
+                    {
+                        "code": 110,
+                        "version": 1,
+                        "timestamp": 1717241544,
+                        "prime": 1,
+                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "name": "market_list",
+                        "price": 350
+                    },
+                    {
+                        "code": 112,
+                        "version": 1,
+                        "timestamp": 1717241549,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "market_buy",
+                        "seller": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                        "price": 350
+                    },
+                    {
+                        "code": 101,
+                        "version": 1,
+                        "timestamp": 1717241634,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_repaint",
+                        "theme": 3,
+                        "skin": 4,
+                        "price": 1000000
+                    },
+                    {
+                        "code": 102,
+                        "version": 1,
+                        "timestamp": 1717241639,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_describe",
+                        "description": "Updated Notes",
+                        "price": 1000000
+                    },
+                    {
+                        "code": 120,
+                        "version": 1,
+                        "timestamp": 1717241647,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "vault_optin",
+                        "asset_id": 675594495
+                    },
+                    {
+                        "code": 121,
+                        "version": 1,
+                        "timestamp": 1717241653,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "vault_optout",
+                        "asset_id": 675594495
+                    }
+                ],
+                "state": {
+                    "id": 1,
+                    "prime_asset_id": 675616134,
+                    "legacy_asset_id": 675616090,
+                    "parent_application_id": 675616026,
+                    "theme": 3,
+                    "skin": 4,
+                    "is_founder": 1,
+                    "is_artifact": 0,
+                    "is_pioneer": 1,
+                    "is_explorer": 1,
+                    "score": 2000750,
+                    "sales": 16,
+                    "mints": 26,
+                    "renames": 5,
+                    "repaints": 11,
+                    "price": 0,
+                    "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
+                    "name": "ABCDEFGHSTUVWXYZ",
+                    "description": "Updated Notes"
+                }
             }
         }
     }
