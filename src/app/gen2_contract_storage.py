@@ -69,8 +69,8 @@ def populate(
     is_artifact: abi.Uint64,
     is_pioneer: abi.Uint64,
     is_explorer: abi.Uint64,
+    score: abi.Uint64,
     name: abi.StaticBytes[Literal[16]],
-    description: abi.StaticBytes[Literal[64]],
 ):
     return Seq(
         Assert(Txn.sender() == const.admin_address),
@@ -80,26 +80,8 @@ def populate(
         prime.is_artifact.set(is_artifact.get()),
         prime.is_pioneer.set(is_pioneer.get()),
         prime.is_explorer.set(is_explorer.get()),
-        prime.name.set(name.get()),
-        prime.description.set(description.get()),
-    )
-
-
-@router.method
-def finalize(
-    score: abi.Uint64,
-    sales: abi.Uint64,
-    mints: abi.Uint64,
-    renames: abi.Uint64,
-    repaints: abi.Uint64,
-):
-    return Seq(
-        Assert(Txn.sender() == const.admin_address),
         prime.score.set(score.get()),
-        prime.sales.set(sales.get()),
-        prime.mints.set(mints.get()),
-        prime.renames.set(renames.get()),
-        prime.repaints.set(repaints.get()),
+        prime.name.set(name.get()),
     )
 
 
@@ -155,7 +137,6 @@ def buy(
         ),
         prime.price.set(Int(0)),
         prime.seller.set(Global.zero_address()),
-        prime.sales.increment(Int(1)),
         Log(log.get()),
     )
 
@@ -169,7 +150,6 @@ def rename(
     return Seq(
         Assert(Global.caller_app_id() == const.design_application_id),
         prime.name.set(SetByte(prime.name.get(), index.get(), value.get())),
-        prime.renames.increment(Int(1)),
         Log(log.get()),
     )
 
@@ -184,19 +164,6 @@ def repaint(
         Assert(Global.caller_app_id() == const.design_application_id),
         prime.theme.set(theme.get()),
         prime.skin.set(skin.get()),
-        prime.repaints.increment(Int(1)),
-        Log(log.get()),
-    )
-
-
-@router.method
-def describe(
-    description: abi.StaticBytes[Literal[64]],
-    log: abi.StaticBytes[Literal[240]],
-):
-    return Seq(
-        Assert(Global.caller_app_id() == const.design_application_id),
-        prime.description.set(description.get()),
         Log(log.get()),
     )
 
@@ -232,7 +199,6 @@ def mint(
             owner.get(),
             amount.get(),
         ),
-        prime.mints.increment(Int(1)),
         Log(log.get()),
     )
 
