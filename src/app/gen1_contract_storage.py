@@ -43,17 +43,19 @@ router = Router(
 @router.method
 def initialize(
     id: abi.Uint64,
+    platform_asset: abi.Asset,
     prime_asset: abi.Asset,
     legacy_asset: abi.Asset,
 ):
     return Seq(
         Assert(Txn.sender() == const.admin_address),
         prime.id.set(id.get()),
+        prime.platform_asset_id.set(platform_asset.asset_id()),
         prime.prime_asset_id.set(prime_asset.asset_id()),
         prime.legacy_asset_id.set(legacy_asset.asset_id()),
         prime.price.set(Int(0)),
         prime.seller.set(Global.zero_address()),
-        func.optin_into_asset(const.platform_asset_id),
+        func.optin_into_asset(platform_asset.asset_id()),
         func.optin_into_asset(prime_asset.asset_id()),
         func.optin_into_asset(legacy_asset.asset_id()),
     )
@@ -193,7 +195,7 @@ def mint(
     return Seq(
         func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         func.execute_asset_transfer(
-            const.platform_asset_id,
+            prime.platform_asset_id.get(),
             owner.get(),
             amount.get(),
         ),
@@ -223,7 +225,7 @@ def optin(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(asset.asset_id() != const.platform_asset_id),
+        Assert(asset.asset_id() != prime.platform_asset_id.get()),
         Assert(asset.asset_id() != prime.prime_asset_id.get()),
         Assert(asset.asset_id() != prime.legacy_asset_id.get()),
         func.assert_application_creator(Global.caller_app_id(), const.admin_address),
@@ -239,7 +241,7 @@ def optout(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(asset.asset_id() != const.platform_asset_id),
+        Assert(asset.asset_id() != prime.platform_asset_id.get()),
         Assert(asset.asset_id() != prime.prime_asset_id.get()),
         Assert(asset.asset_id() != prime.legacy_asset_id.get()),
         func.assert_application_creator(Global.caller_app_id(), const.admin_address),
