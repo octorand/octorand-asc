@@ -31,7 +31,7 @@ exports.execute = async function () {
                     numLocalInts: 0,
                     numLocalByteSlices: 0,
                     numGlobalInts: 0,
-                    numGlobalByteSlices: 2,
+                    numGlobalByteSlices: 1,
                     extraPages: 0,
                     suggestedParams: {
                         ...params,
