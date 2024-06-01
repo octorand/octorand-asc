@@ -76,7 +76,7 @@ def rename(
         func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         func.assert_sender_asset_transfer(
             prime.platform_asset_id.external(app_id),
-            const.platform_asset_reserve,
+            func.get_asset_reserve(prime.platform_asset_id.external(app_id)),
             price,
             Add(Txn.group_index(), Int(1)),
         ),
@@ -127,7 +127,7 @@ def repaint(
         func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         func.assert_sender_asset_transfer(
             prime.platform_asset_id.external(app_id),
-            const.platform_asset_reserve,
+            func.get_asset_reserve(prime.platform_asset_id.external(app_id)),
             const.repaint_price,
             Add(Txn.group_index(), Int(1)),
         ),

@@ -115,6 +115,16 @@ def get_application_address(application_id):
 
 
 @Subroutine(TealType.bytes)
+def get_asset_reserve(asset_id):
+    asset = AssetParam.reserve(asset_id)
+    return Seq(
+        asset,
+        Assert(asset.hasValue()),
+        asset.value(),
+    )
+
+
+@Subroutine(TealType.bytes)
 def prepare_log(log):
     return Seq(
         Concat(
