@@ -410,8 +410,31 @@
                         "name": "design_describe",
                         "description": "Updated Notes",
                         "price": 1000000
+                    },
+                    {
+                        "code": 100,
+                        "version": 1,
+                        "timestamp": 1717241816,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_rename",
+                        "index": 1,
+                        "value": 68,
+                        "price": 2000000
+                    },
+                    {
+                        "code": 100,
+                        "version": 1,
+                        "timestamp": 1717241816,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_rename",
+                        "index": 15,
+                        "value": 89,
+                        "price": 1000000
                     }
-                ]
+                ],
+                "renamed": true
             },
             "market": {
                 "application_id": 675595291,
@@ -634,6 +657,28 @@
                         "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
                         "name": "vault_optout",
                         "asset_id": 675594495
+                    },
+                    {
+                        "code": 100,
+                        "version": 1,
+                        "timestamp": 1717241816,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_rename",
+                        "index": 1,
+                        "value": 68,
+                        "price": 2000000
+                    },
+                    {
+                        "code": 100,
+                        "version": 1,
+                        "timestamp": 1717241816,
+                        "prime": 1,
+                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                        "name": "design_rename",
+                        "index": 15,
+                        "value": 89,
+                        "price": 1000000
                     }
                 ],
                 "state": {
@@ -647,14 +692,14 @@
                     "is_artifact": 0,
                     "is_pioneer": 1,
                     "is_explorer": 1,
-                    "score": 2000750,
+                    "score": 5000750,
                     "sales": 16,
                     "mints": 26,
-                    "renames": 5,
+                    "renames": 7,
                     "repaints": 11,
                     "price": 0,
                     "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
-                    "name": "ABCDEFGHSTUVWXYZ",
+                    "name": "ADCDEFGHSTUVWXYY",
                     "description": "Updated Notes"
                 }
             }
