@@ -288,6 +288,18 @@
             "returns": {
                 "type": "void"
             }
+        },
+        {
+            "name": "score",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "value"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
         }
     ],
     "networks": {}

@@ -284,3 +284,13 @@ def optout(
         func.optout_from_asset(asset.asset_id(), owner.get()),
         Log(log.get()),
     )
+
+
+@router.method
+def score(
+    value: abi.Uint64,
+):
+    return Seq(
+        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+        prime.score.increment(value.get()),
+    )
