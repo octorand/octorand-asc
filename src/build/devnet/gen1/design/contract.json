@@ -40,22 +40,6 @@
             "returns": {
                 "type": "void"
             }
-        },
-        {
-            "name": "describe",
-            "args": [
-                {
-                    "type": "byte[64]",
-                    "name": "description"
-                },
-                {
-                    "type": "application",
-                    "name": "application"
-                }
-            ],
-            "returns": {
-                "type": "void"
-            }
         }
     ],
     "networks": {}

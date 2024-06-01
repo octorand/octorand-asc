@@ -2,33 +2,17 @@
 txn NumAppArgs
 int 0
 ==
-bnz main_l8
+bnz main_l6
 txna ApplicationArgs 0
 method "rename(uint64,uint64,application)void"
 ==
-bnz main_l7
+bnz main_l5
 txna ApplicationArgs 0
 method "repaint(uint64,uint64,application)void"
 ==
-bnz main_l6
-txna ApplicationArgs 0
-method "describe(byte[64],application)void"
-==
-bnz main_l5
+bnz main_l4
 err
-main_l5:
-txn OnCompletion
-int NoOp
-==
-txn ApplicationID
-int 0
-!=
-&&
-assert
-callsub describecaster_13
-int 1
-return
-main_l6:
+main_l4:
 txn OnCompletion
 int NoOp
 ==
@@ -40,7 +24,7 @@ assert
 callsub repaintcaster_12
 int 1
 return
-main_l7:
+main_l5:
 txn OnCompletion
 int NoOp
 ==
@@ -52,30 +36,30 @@ assert
 callsub renamecaster_11
 int 1
 return
-main_l8:
+main_l6:
 txn OnCompletion
 int NoOp
 ==
-bnz main_l12
+bnz main_l10
 txn OnCompletion
 int UpdateApplication
 ==
-bnz main_l11
+bnz main_l9
 err
-main_l11:
+main_l9:
 txn ApplicationID
 int 0
 !=
 assert
-callsub update_7
+callsub update_8
 int 1
 return
-main_l12:
+main_l10:
 txn ApplicationID
 int 0
 ==
 assert
-callsub create_6
+callsub create_7
 int 1
 return
 
@@ -106,8 +90,20 @@ callsub getglobalexternalbytes_0
 btoi
 retsub
 
+// get_asset_reserve
+getassetreserve_2:
+proto 1 1
+frame_dig -1
+asset_params_get AssetReserve
+store 3
+store 2
+load 3
+assert
+load 2
+retsub
+
 // prepare_log
-preparelog_2:
+preparelog_3:
 proto 1 1
 frame_dig -1
 int 240
@@ -119,23 +115,23 @@ concat
 retsub
 
 // assert_sender_asset_holding
-assertsenderassetholding_3:
+assertsenderassetholding_4:
 proto 1 0
 txn Sender
 frame_dig -1
 asset_holding_get AssetBalance
-store 3
-store 2
-load 3
+store 5
+store 4
+load 5
 assert
-load 2
+load 4
 int 0
 >
 assert
 retsub
 
 // assert_sender_asset_transfer
-assertsenderassettransfer_4:
+assertsenderassettransfer_5:
 proto 4 0
 frame_dig -2
 int 0
@@ -169,22 +165,22 @@ assert
 retsub
 
 // assert_application_creator
-assertapplicationcreator_5:
+assertapplicationcreator_6:
 proto 2 0
 frame_dig -2
 app_params_get AppCreator
-store 5
-store 4
-load 5
+store 7
+store 6
+load 7
 assert
-load 4
+load 6
 frame_dig -1
 ==
 assert
 retsub
 
 // create
-create_6:
+create_7:
 proto 0 0
 txn Sender
 addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
@@ -193,7 +189,7 @@ assert
 retsub
 
 // update
-update_7:
+update_8:
 proto 0 0
 txn Sender
 addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
@@ -202,7 +198,7 @@ assert
 retsub
 
 // rename
-rename_8:
+rename_9:
 proto 3 0
 int 0
 int 100
@@ -215,7 +211,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -233,29 +229,29 @@ int 10000000
 frame_dig -2
 frame_dig -1
 txnas Applications
-byte "P1"
-int 104
+byte "Prime"
+int 96
 int 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_8_l11
+bnz rename_9_l11
 frame_dig -1
 txnas Applications
-byte "P1"
-int 104
+byte "Prime"
+int 96
 int 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 frame_dig -2
 -
-rename_8_l2:
+rename_9_l2:
 *
 itob
 concat
-callsub preparelog_2
+callsub preparelog_3
 log
 frame_dig -3
 int 7
@@ -271,68 +267,79 @@ int 90
 assert
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
+int 16
+int 8
+callsub getglobalexternaluint_1
+callsub assertsenderassetholding_4
+frame_dig -1
+txnas Applications
+byte "Prime"
 int 8
 int 8
 callsub getglobalexternaluint_1
-callsub assertsenderassetholding_3
-int 675594490
-addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 8
+int 8
+callsub getglobalexternaluint_1
+callsub getassetreserve_2
 int 10000000
 frame_dig -2
 frame_dig -1
 txnas Applications
-byte "P1"
-int 104
+byte "Prime"
+int 96
 int 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_8_l10
+bnz rename_9_l10
 frame_dig -1
 txnas Applications
-byte "P1"
-int 104
+byte "Prime"
+int 96
 int 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 frame_dig -2
 -
-rename_8_l4:
+rename_9_l4:
 *
 txn GroupIndex
 int 1
 +
-callsub assertsenderassettransfer_4
+callsub assertsenderassettransfer_5
 frame_dig -1
 txnas Applications
 addr DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY
-callsub assertapplicationcreator_5
+callsub assertapplicationcreator_6
 int 10
 frame_dig -2
 frame_dig -1
 txnas Applications
-byte "P1"
-int 104
+byte "Prime"
+int 96
 int 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_8_l9
+bnz rename_9_l9
 frame_dig -1
 txnas Applications
-byte "P1"
-int 104
+byte "Prime"
+int 96
 int 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 frame_dig -2
 -
-rename_8_l6:
+rename_9_l6:
 *
 frame_bury 0
 itxn_begin
@@ -371,7 +378,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -389,74 +396,74 @@ int 10000000
 frame_dig -2
 frame_dig -1
 txnas Applications
-byte "P1"
-int 104
+byte "Prime"
+int 96
 int 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_8_l8
+bnz rename_9_l8
 frame_dig -1
 txnas Applications
-byte "P1"
-int 104
+byte "Prime"
+int 96
 int 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 frame_dig -2
 -
-b rename_8_l12
-rename_8_l8:
+b rename_9_l12
+rename_9_l8:
 frame_dig -2
 frame_dig -1
 txnas Applications
-byte "P1"
-int 104
+byte "Prime"
+int 96
 int 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 -
-b rename_8_l12
-rename_8_l9:
+b rename_9_l12
+rename_9_l9:
 frame_dig -2
 frame_dig -1
 txnas Applications
-byte "P1"
-int 104
+byte "Prime"
+int 96
 int 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 -
-b rename_8_l6
-rename_8_l10:
+b rename_9_l6
+rename_9_l10:
 frame_dig -2
 frame_dig -1
 txnas Applications
-byte "P1"
-int 104
+byte "Prime"
+int 96
 int 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 -
-b rename_8_l4
-rename_8_l11:
+b rename_9_l4
+rename_9_l11:
 frame_dig -2
 frame_dig -1
 txnas Applications
-byte "P1"
-int 104
+byte "Prime"
+int 96
 int 8
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 -
-b rename_8_l2
-rename_8_l12:
+b rename_9_l2
+rename_9_l12:
 *
 itob
 concat
@@ -465,7 +472,7 @@ itxn_submit
 retsub
 
 // repaint
-repaint_9:
+repaint_10:
 proto 3 0
 int 0
 int 101
@@ -478,7 +485,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -495,7 +502,7 @@ concat
 int 10000000
 itob
 concat
-callsub preparelog_2
+callsub preparelog_3
 log
 frame_dig -3
 int 7
@@ -507,22 +514,33 @@ int 7
 assert
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
+int 16
+int 8
+callsub getglobalexternaluint_1
+callsub assertsenderassetholding_4
+frame_dig -1
+txnas Applications
+byte "Prime"
 int 8
 int 8
 callsub getglobalexternaluint_1
-callsub assertsenderassetholding_3
-int 675594490
-addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 8
+int 8
+callsub getglobalexternaluint_1
+callsub getassetreserve_2
 int 10000000
 txn GroupIndex
 int 1
 +
-callsub assertsenderassettransfer_4
+callsub assertsenderassettransfer_5
 frame_dig -1
 txnas Applications
 addr DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY
-callsub assertapplicationcreator_5
+callsub assertapplicationcreator_6
 int 10
 frame_bury 0
 itxn_begin
@@ -561,7 +579,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -574,104 +592,6 @@ itob
 concat
 frame_dig -2
 itob
-concat
-int 10000000
-itob
-concat
-itxn_field ApplicationArgs
-itxn_submit
-retsub
-
-// describe
-describe_10:
-proto 2 0
-int 0
-int 102
-itob
-int 1
-itob
-concat
-global LatestTimestamp
-itob
-concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 0
-int 8
-callsub getglobalexternaluint_1
-itob
-concat
-txn Sender
-concat
-frame_dig -2
-concat
-int 10000000
-itob
-concat
-callsub preparelog_2
-log
-frame_dig -1
-txnas Applications
-byte "P1"
-int 8
-int 8
-callsub getglobalexternaluint_1
-callsub assertsenderassetholding_3
-int 675594490
-addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
-int 10000000
-txn GroupIndex
-int 1
-+
-callsub assertsenderassettransfer_4
-frame_dig -1
-txnas Applications
-addr DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY
-callsub assertapplicationcreator_5
-int 10
-frame_bury 0
-itxn_begin
-int appl
-itxn_field TypeEnum
-frame_dig -1
-txnas Applications
-itxn_field ApplicationID
-method "score(uint64)void"
-itxn_field ApplicationArgs
-frame_dig 0
-itob
-itxn_field ApplicationArgs
-itxn_submit
-itxn_begin
-int appl
-itxn_field TypeEnum
-frame_dig -1
-txnas Applications
-itxn_field ApplicationID
-method "describe(byte[64],byte[240])void"
-itxn_field ApplicationArgs
-frame_dig -2
-itxn_field ApplicationArgs
-int 102
-itob
-int 1
-itob
-concat
-global LatestTimestamp
-itob
-concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 0
-int 8
-callsub getglobalexternaluint_1
-itob
-concat
-txn Sender
-concat
-frame_dig -2
 concat
 int 10000000
 itob
@@ -698,7 +618,7 @@ frame_bury 2
 frame_dig 0
 frame_dig 1
 frame_dig 2
-callsub rename_8
+callsub rename_9
 retsub
 
 // repaint_caster
@@ -719,21 +639,5 @@ frame_bury 2
 frame_dig 0
 frame_dig 1
 frame_dig 2
-callsub repaint_9
-retsub
-
-// describe_caster
-describecaster_13:
-proto 0 0
-byte ""
-int 0
-txna ApplicationArgs 1
-frame_bury 0
-txna ApplicationArgs 2
-int 0
-getbyte
-frame_bury 1
-frame_dig 0
-frame_dig 1
-callsub describe_10
+callsub repaint_10
 retsub

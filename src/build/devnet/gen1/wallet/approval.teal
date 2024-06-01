@@ -226,7 +226,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -238,8 +238,8 @@ callsub preparelog_3
 log
 frame_dig -1
 txnas Applications
-byte "P1"
-int 16
+byte "Prime"
+int 24
 int 8
 callsub getglobalexternaluint_1
 frame_dig -1
@@ -274,7 +274,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -299,7 +299,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -318,8 +318,8 @@ int 0
 assert
 frame_dig -1
 txnas Applications
-byte "P1"
-int 8
+byte "Prime"
+int 16
 int 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_4
@@ -350,7 +350,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -378,7 +378,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -397,8 +397,8 @@ int 0
 assert
 frame_dig -1
 txnas Applications
-byte "P1"
-int 8
+byte "Prime"
+int 16
 int 8
 callsub getglobalexternaluint_1
 callsub assertsenderassetholding_4
@@ -429,7 +429,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1

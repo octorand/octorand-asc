@@ -239,7 +239,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -258,8 +258,8 @@ int 0
 assert
 frame_dig -1
 txnas Applications
-byte "P1"
-int 8
+byte "Prime"
+int 16
 int 8
 callsub getglobalexternaluint_1
 frame_dig -1
@@ -297,7 +297,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -325,7 +325,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -359,7 +359,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -384,7 +384,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -394,15 +394,15 @@ txn Sender
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
-int 72
+byte "Prime"
+int 64
 int 32
 callsub getglobalexternalbytes_0
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
-int 64
+byte "Prime"
+int 56
 int 8
 callsub getglobalexternaluint_1
 itob
@@ -411,14 +411,14 @@ callsub preparelog_3
 log
 frame_dig -1
 txnas Applications
-byte "P1"
-int 72
+byte "Prime"
+int 64
 int 32
 callsub getglobalexternalbytes_0
 frame_dig -1
 txnas Applications
-byte "P1"
-int 64
+byte "Prime"
+int 56
 int 8
 callsub getglobalexternaluint_1
 int 90
@@ -432,8 +432,8 @@ callsub assertsenderpayment_4
 addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
 frame_dig -1
 txnas Applications
-byte "P1"
-int 64
+byte "Prime"
+int 56
 int 8
 callsub getglobalexternaluint_1
 int 10
@@ -468,7 +468,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "Prime"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -478,15 +478,15 @@ txn Sender
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
-int 72
+byte "Prime"
+int 64
 int 32
 callsub getglobalexternalbytes_0
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
-int 64
+byte "Prime"
+int 56
 int 8
 callsub getglobalexternaluint_1
 itob

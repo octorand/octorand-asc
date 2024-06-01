@@ -2,6 +2,74 @@
     "name": "GenOneStorage",
     "methods": [
         {
+            "name": "initialize",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "id"
+                },
+                {
+                    "type": "asset",
+                    "name": "platform_asset"
+                },
+                {
+                    "type": "asset",
+                    "name": "prime_asset"
+                },
+                {
+                    "type": "asset",
+                    "name": "legacy_asset"
+                },
+                {
+                    "type": "application",
+                    "name": "parent_application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "populate",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "theme"
+                },
+                {
+                    "type": "uint64",
+                    "name": "skin"
+                },
+                {
+                    "type": "uint64",
+                    "name": "is_founder"
+                },
+                {
+                    "type": "uint64",
+                    "name": "is_artifact"
+                },
+                {
+                    "type": "uint64",
+                    "name": "is_pioneer"
+                },
+                {
+                    "type": "uint64",
+                    "name": "is_explorer"
+                },
+                {
+                    "type": "uint64",
+                    "name": "score"
+                },
+                {
+                    "type": "byte[16]",
+                    "name": "name"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
             "name": "list",
             "args": [
                 {
@@ -83,22 +151,6 @@
                 {
                     "type": "uint64",
                     "name": "skin"
-                },
-                {
-                    "type": "byte[240]",
-                    "name": "log"
-                }
-            ],
-            "returns": {
-                "type": "void"
-            }
-        },
-        {
-            "name": "describe",
-            "args": [
-                {
-                    "type": "byte[64]",
-                    "name": "description"
                 },
                 {
                     "type": "byte[240]",
