@@ -204,7 +204,7 @@ byte "P1"
 int 72
 int 32
 callsub setglobalbytes_1
-int 674875249
+int 675594490
 callsub optinintoasset_3
 frame_dig -2
 txnas Assets

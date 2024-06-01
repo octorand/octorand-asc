@@ -81,6 +81,13 @@ def rename(
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
+            method_signature=storage.score.method_signature(),
+            args=[
+                price,
+            ],
+        ),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
             method_signature=storage.rename.method_signature(),
             args=[
                 index,
@@ -122,6 +129,13 @@ def repaint(
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
+            method_signature=storage.score.method_signature(),
+            args=[
+                const.repaint_price,
+            ],
+        ),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
             method_signature=storage.repaint.method_signature(),
             args=[
                 theme,
@@ -157,6 +171,13 @@ def describe(
             Add(Txn.group_index(), Int(1)),
         ),
         func.assert_application_creator(app_id, const.manager_address),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
+            method_signature=storage.score.method_signature(),
+            args=[
+                const.describe_price,
+            ],
+        ),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
             method_signature=storage.describe.method_signature(),

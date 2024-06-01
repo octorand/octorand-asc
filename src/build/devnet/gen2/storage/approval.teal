@@ -388,7 +388,7 @@ retsub
 list_11:
 proto 3 0
 global CallerApplicationID
-int 674881427
+int 675595291
 ==
 assert
 byte "P1"
@@ -423,7 +423,7 @@ retsub
 unlist_12:
 proto 2 0
 global CallerApplicationID
-int 674881427
+int 675595291
 ==
 assert
 byte "P1"
@@ -465,7 +465,7 @@ retsub
 buy_13:
 proto 2 0
 global CallerApplicationID
-int 674881427
+int 675595291
 ==
 assert
 byte "P1"
@@ -517,7 +517,7 @@ retsub
 rename_14:
 proto 3 0
 global CallerApplicationID
-int 674881316
+int 675595210
 ==
 assert
 byte "P1"
@@ -549,7 +549,7 @@ retsub
 repaint_15:
 proto 3 0
 global CallerApplicationID
-int 674881316
+int 675595210
 ==
 assert
 frame_dig -3
@@ -580,7 +580,7 @@ retsub
 describe_16:
 proto 2 0
 global CallerApplicationID
-int 674881316
+int 675595210
 ==
 assert
 frame_dig -2
@@ -596,7 +596,7 @@ retsub
 upgrade_17:
 proto 2 0
 global CallerApplicationID
-int 674882069
+int 675595509
 ==
 assert
 byte "P1"
@@ -626,10 +626,10 @@ retsub
 mint_18:
 proto 3 0
 global CallerApplicationID
-int 674882069
+int 675595509
 ==
 assert
-int 674875249
+int 675594490
 frame_dig -2
 frame_dig -3
 callsub executeassettransfer_7
@@ -651,7 +651,7 @@ retsub
 withdraw_19:
 proto 3 0
 global CallerApplicationID
-int 674882069
+int 675595509
 ==
 assert
 frame_dig -2
@@ -665,12 +665,12 @@ retsub
 optin_20:
 proto 2 0
 global CallerApplicationID
-int 674881524
+int 675595427
 ==
 assert
 frame_dig -2
 txnas Assets
-int 674875249
+int 675594490
 !=
 assert
 frame_dig -2
@@ -700,12 +700,12 @@ retsub
 optout_21:
 proto 3 0
 global CallerApplicationID
-int 674881524
+int 675595427
 ==
 assert
 frame_dig -3
 txnas Assets
-int 674875249
+int 675594490
 !=
 assert
 frame_dig -3
