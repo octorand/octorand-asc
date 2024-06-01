@@ -56,6 +56,7 @@ def rename(
         Minus(previous_value, next_value),
     )
     price = Mul(const.rename_price, value_difference)
+    score = abi.make(abi.Uint64)
     log = Concat(
         event.design_rename,
         Itob(Int(1)),
@@ -79,11 +80,12 @@ def rename(
             Add(Txn.group_index(), Int(1)),
         ),
         func.assert_application_creator(app_id, const.manager_address),
+        score.set(price),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
             method_signature=storage.score.method_signature(),
             args=[
-                price,
+                score,
             ],
         ),
         InnerTxnBuilder.ExecuteMethodCall(
@@ -105,6 +107,7 @@ def repaint(
     application: abi.Application,
 ):
     app_id = application.application_id()
+    score = abi.make(abi.Uint64)
     log = Concat(
         event.design_repaint,
         Itob(Int(1)),
@@ -127,11 +130,12 @@ def repaint(
             Add(Txn.group_index(), Int(1)),
         ),
         func.assert_application_creator(app_id, const.manager_address),
+        score.set(const.repaint_price),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
             method_signature=storage.score.method_signature(),
             args=[
-                const.repaint_price,
+                score,
             ],
         ),
         InnerTxnBuilder.ExecuteMethodCall(
@@ -152,6 +156,7 @@ def describe(
     application: abi.Application,
 ):
     app_id = application.application_id()
+    score = abi.make(abi.Uint64)
     log = Concat(
         event.design_describe,
         Itob(Int(1)),
@@ -171,11 +176,12 @@ def describe(
             Add(Txn.group_index(), Int(1)),
         ),
         func.assert_application_creator(app_id, const.manager_address),
+        score.set(const.describe_price),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
             method_signature=storage.score.method_signature(),
             args=[
-                const.describe_price,
+                score,
             ],
         ),
         InnerTxnBuilder.ExecuteMethodCall(
