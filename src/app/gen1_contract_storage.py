@@ -90,9 +90,9 @@ def list(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.market_application_id),
         Assert(prime.seller.get() == Global.zero_address()),
         Assert(prime.price.get() == Int(0)),
+        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         prime.price.set(price.get()),
         prime.seller.set(seller.get()),
         Log(log.get()),
@@ -105,9 +105,9 @@ def unlist(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.market_application_id),
         Assert(prime.price.get() > Int(0)),
         Assert(prime.seller.get() == seller.get()),
+        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         func.execute_asset_transfer(
             prime.prime_asset_id.get(),
             seller.get(),
@@ -125,9 +125,9 @@ def buy(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.market_application_id),
         Assert(prime.price.get() > Int(0)),
         Assert(prime.seller.get() != Global.zero_address()),
+        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         func.execute_asset_transfer(
             prime.prime_asset_id.get(),
             buyer.get(),
@@ -146,7 +146,7 @@ def rename(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.design_application_id),
+        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         prime.name.set(SetByte(prime.name.get(), index.get(), value.get())),
         Log(log.get()),
     )
@@ -159,7 +159,7 @@ def repaint(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.design_application_id),
+        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         prime.theme.set(theme.get()),
         prime.skin.set(skin.get()),
         Log(log.get()),
@@ -172,8 +172,8 @@ def upgrade(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.wallet_application_id),
         Assert(prime.is_explorer.get() == Int(0)),
+        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         func.execute_asset_transfer(
             prime.prime_asset_id.get(),
             owner.get(),
@@ -191,7 +191,7 @@ def mint(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.wallet_application_id),
+        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         func.execute_asset_transfer(
             const.platform_asset_id,
             owner.get(),
@@ -208,7 +208,7 @@ def withdraw(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.wallet_application_id),
+        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         func.execute_payment(
             owner.get(),
             amount.get(),
@@ -223,10 +223,10 @@ def optin(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.vault_application_id),
         Assert(asset.asset_id() != const.platform_asset_id),
         Assert(asset.asset_id() != prime.prime_asset_id.get()),
         Assert(asset.asset_id() != prime.legacy_asset_id.get()),
+        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         func.optin_into_asset(asset.asset_id()),
         Log(log.get()),
     )
@@ -239,10 +239,10 @@ def optout(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(Global.caller_app_id() == const.vault_application_id),
         Assert(asset.asset_id() != const.platform_asset_id),
         Assert(asset.asset_id() != prime.prime_asset_id.get()),
         Assert(asset.asset_id() != prime.legacy_asset_id.get()),
+        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         func.optout_from_asset(asset.asset_id(), owner.get()),
         Log(log.get()),
     )
