@@ -56,6 +56,7 @@ def rename(
         Minus(previous_value, next_value),
     )
     price = Mul(const.rename_price, value_difference)
+    score_value = Mul(const.rename_score, value_difference)
     score = abi.make(abi.Uint64)
     log = Concat(
         event.design_rename,
@@ -80,7 +81,7 @@ def rename(
             Add(Txn.group_index(), Int(1)),
         ),
         func.assert_application_creator(app_id, const.manager_address),
-        score.set(price),
+        score.set(score_value),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
             method_signature=storage.score.method_signature(),
@@ -107,6 +108,7 @@ def repaint(
     application: abi.Application,
 ):
     app_id = application.application_id()
+    score_value = const.repaint_score
     score = abi.make(abi.Uint64)
     log = Concat(
         event.design_repaint,
@@ -130,7 +132,7 @@ def repaint(
             Add(Txn.group_index(), Int(1)),
         ),
         func.assert_application_creator(app_id, const.manager_address),
-        score.set(const.repaint_price),
+        score.set(score_value),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
             method_signature=storage.score.method_signature(),
@@ -156,6 +158,7 @@ def describe(
     application: abi.Application,
 ):
     app_id = application.application_id()
+    score_value = const.describe_score
     score = abi.make(abi.Uint64)
     log = Concat(
         event.design_describe,
@@ -176,7 +179,7 @@ def describe(
             Add(Txn.group_index(), Int(1)),
         ),
         func.assert_application_creator(app_id, const.manager_address),
-        score.set(const.describe_price),
+        score.set(score_value),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
             method_signature=storage.score.method_signature(),

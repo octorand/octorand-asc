@@ -310,7 +310,7 @@ frame_dig -1
 txnas Applications
 addr SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ
 callsub assertapplicationcreator_5
-int 1000000
+int 10
 frame_dig -2
 frame_dig -1
 txnas Applications
@@ -523,7 +523,7 @@ frame_dig -1
 txnas Applications
 addr SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ
 callsub assertapplicationcreator_5
-int 1000000
+int 10
 frame_bury 0
 itxn_begin
 int appl
@@ -629,7 +629,7 @@ frame_dig -1
 txnas Applications
 addr SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ
 callsub assertapplicationcreator_5
-int 1000000
+int 10
 frame_bury 0
 itxn_begin
 int appl

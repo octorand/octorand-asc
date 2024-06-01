@@ -310,7 +310,7 @@ frame_dig -1
 txnas Applications
 addr DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY
 callsub assertapplicationcreator_5
-int 10000000
+int 10
 frame_dig -2
 frame_dig -1
 txnas Applications
@@ -523,7 +523,7 @@ frame_dig -1
 txnas Applications
 addr DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY
 callsub assertapplicationcreator_5
-int 10000000
+int 10
 frame_bury 0
 itxn_begin
 int appl
@@ -629,7 +629,7 @@ frame_dig -1
 txnas Applications
 addr DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY
 callsub assertapplicationcreator_5
-int 10000000
+int 10
 frame_bury 0
 itxn_begin
 int appl
