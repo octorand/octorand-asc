@@ -1,0 +1,399 @@
+#pragma version 10
+txn NumAppArgs
+int 0
+==
+bnz main_l8
+txna ApplicationArgs 0
+method "initialize(uint64,asset,asset,application)void"
+==
+bnz main_l7
+txna ApplicationArgs 0
+method "populate(uint64,uint64,uint64,uint64,uint64,uint64,byte[16],byte[64])void"
+==
+bnz main_l6
+txna ApplicationArgs 0
+method "finalize(uint64,uint64,uint64,uint64,uint64)void"
+==
+bnz main_l5
+err
+main_l5:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub finalizecaster_11
+int 1
+return
+main_l6:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub populatecaster_10
+int 1
+return
+main_l7:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub initializecaster_9
+int 1
+return
+main_l8:
+txn OnCompletion
+int NoOp
+==
+bnz main_l12
+txn OnCompletion
+int UpdateApplication
+==
+bnz main_l11
+err
+main_l11:
+txn ApplicationID
+int 0
+!=
+assert
+callsub update_5
+int 1
+return
+main_l12:
+txn ApplicationID
+int 0
+==
+assert
+callsub create_4
+int 1
+return
+
+// init_global
+initglobal_0:
+proto 1 0
+frame_dig -1
+int 120
+bzero
+app_global_put
+retsub
+
+// set_global_bytes
+setglobalbytes_1:
+proto 4 0
+frame_dig -4
+len
+frame_dig -1
+==
+assert
+frame_dig -3
+frame_dig -3
+app_global_get
+int 0
+frame_dig -2
+extract3
+frame_dig -4
+concat
+frame_dig -3
+app_global_get
+frame_dig -2
+frame_dig -1
++
+int 120
+substring3
+concat
+app_global_put
+retsub
+
+// set_global_uint
+setglobaluint_2:
+proto 4 0
+frame_dig -4
+itob
+int 8
+frame_dig -1
+-
+frame_dig -1
+extract3
+frame_dig -3
+frame_dig -2
+frame_dig -1
+callsub setglobalbytes_1
+retsub
+
+// optin_into_asset
+optinintoasset_3:
+proto 1 0
+itxn_begin
+int axfer
+itxn_field TypeEnum
+frame_dig -1
+itxn_field XferAsset
+int 0
+itxn_field AssetAmount
+global CurrentApplicationAddress
+itxn_field AssetReceiver
+int 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// create
+create_4:
+proto 0 0
+txn Sender
+addr SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ
+==
+assert
+byte "P1"
+callsub initglobal_0
+byte "P2"
+callsub initglobal_0
+retsub
+
+// update
+update_5:
+proto 0 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+retsub
+
+// initialize
+initialize_6:
+proto 4 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+frame_dig -4
+byte "P1"
+int 0
+int 8
+callsub setglobaluint_2
+frame_dig -3
+txnas Assets
+byte "P1"
+int 8
+int 8
+callsub setglobaluint_2
+frame_dig -2
+txnas Assets
+byte "P1"
+int 16
+int 8
+callsub setglobaluint_2
+frame_dig -1
+txnas Applications
+byte "P1"
+int 24
+int 8
+callsub setglobaluint_2
+int 0
+byte "P1"
+int 64
+int 8
+callsub setglobaluint_2
+global ZeroAddress
+byte "P1"
+int 72
+int 32
+callsub setglobalbytes_1
+int 674875249
+callsub optinintoasset_3
+frame_dig -3
+txnas Assets
+callsub optinintoasset_3
+frame_dig -2
+txnas Assets
+callsub optinintoasset_3
+retsub
+
+// populate
+populate_7:
+proto 8 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+frame_dig -8
+byte "P1"
+int 32
+int 2
+callsub setglobaluint_2
+frame_dig -7
+byte "P1"
+int 34
+int 2
+callsub setglobaluint_2
+frame_dig -6
+byte "P1"
+int 36
+int 1
+callsub setglobaluint_2
+frame_dig -5
+byte "P1"
+int 37
+int 1
+callsub setglobaluint_2
+frame_dig -4
+byte "P1"
+int 38
+int 1
+callsub setglobaluint_2
+frame_dig -3
+byte "P1"
+int 39
+int 1
+callsub setglobaluint_2
+frame_dig -2
+byte "P1"
+int 104
+int 16
+callsub setglobalbytes_1
+frame_dig -1
+byte "P2"
+int 0
+int 64
+callsub setglobalbytes_1
+retsub
+
+// finalize
+finalize_8:
+proto 5 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+frame_dig -5
+byte "P1"
+int 40
+int 8
+callsub setglobaluint_2
+frame_dig -4
+byte "P1"
+int 48
+int 4
+callsub setglobaluint_2
+frame_dig -3
+byte "P1"
+int 52
+int 4
+callsub setglobaluint_2
+frame_dig -2
+byte "P1"
+int 56
+int 4
+callsub setglobaluint_2
+frame_dig -1
+byte "P1"
+int 60
+int 4
+callsub setglobaluint_2
+retsub
+
+// initialize_caster
+initializecaster_9:
+proto 0 0
+int 0
+dupn 3
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+int 0
+getbyte
+frame_bury 1
+txna ApplicationArgs 3
+int 0
+getbyte
+frame_bury 2
+txna ApplicationArgs 4
+int 0
+getbyte
+frame_bury 3
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+callsub initialize_6
+retsub
+
+// populate_caster
+populatecaster_10:
+proto 0 0
+int 0
+dupn 5
+byte ""
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+btoi
+frame_bury 3
+txna ApplicationArgs 5
+btoi
+frame_bury 4
+txna ApplicationArgs 6
+btoi
+frame_bury 5
+txna ApplicationArgs 7
+frame_bury 6
+txna ApplicationArgs 8
+frame_bury 7
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+frame_dig 4
+frame_dig 5
+frame_dig 6
+frame_dig 7
+callsub populate_7
+retsub
+
+// finalize_caster
+finalizecaster_11:
+proto 0 0
+int 0
+dupn 4
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+btoi
+frame_bury 3
+txna ApplicationArgs 5
+btoi
+frame_bury 4
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+frame_dig 4
+callsub finalize_8
+retsub
