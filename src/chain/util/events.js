@@ -22,11 +22,6 @@ exports.event = function (value) {
             data['skin'] = algosdk.decodeUint64(value.subarray(72, 80));
             data['price'] = algosdk.decodeUint64(value.subarray(80, 88));
             break;
-        case 102:
-            data.name = 'design_describe';
-            data['description'] = value.subarray(64, 128).toString('utf-8').trim();
-            data['price'] = algosdk.decodeUint64(value.subarray(128, 136));
-            break;
         case 110:
             data.name = 'market_list';
             data['price'] = algosdk.decodeUint64(value.subarray(64, 72));
