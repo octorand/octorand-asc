@@ -25,7 +25,7 @@ exports.execute = async function () {
                 sender: sender,
                 signer: signer,
                 appID: storage['application_id'],
-                method: helpers.method(contract, 'populate'),
+                method: helpers.method(contract, 'finalize'),
                 methodArgs: [
                     prime['sales'],
                     prime['drains'],
