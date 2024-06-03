@@ -19,7 +19,11 @@ exports.execute = async function () {
                 is_explorer: 0,
                 score: 750,
                 name: 'ABCDEFGHSTUVWXYZ',
-                price: 350
+                price: 350,
+                sales: 10,
+                drains: 20,
+                transforms: 30,
+                vaults: 1
             }
 
             config['gen2']['inputs']['prime'] = prime;

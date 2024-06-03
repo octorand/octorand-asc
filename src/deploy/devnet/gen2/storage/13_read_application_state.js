@@ -26,6 +26,10 @@ exports.execute = async function () {
             score: null,
             price: null,
             seller: null,
+            sales: null,
+            drains: null,
+            transforms: null,
+            vaults: null,
             name: null,
         };
 
@@ -53,7 +57,11 @@ exports.execute = async function () {
                     state.score = connection.baseClient.decodeUint64(value.subarray(48, 56));
                     state.price = connection.baseClient.decodeUint64(value.subarray(56, 64));
                     state.seller = connection.baseClient.encodeAddress(value.subarray(64, 96));
-                    state.name = value.subarray(96, 112).toString('utf-8').trim();
+                    state.sales = connection.baseClient.decodeUint64(value.subarray(96, 98));
+                    state.drains = connection.baseClient.decodeUint64(value.subarray(98, 100));
+                    state.transforms = connection.baseClient.decodeUint64(value.subarray(100, 102));
+                    state.vaults = connection.baseClient.decodeUint64(value.subarray(102, 104));
+                    state.name = value.subarray(104, 120).toString('utf-8').trim();
                     break;
             }
         }
