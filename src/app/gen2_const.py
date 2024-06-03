@@ -35,7 +35,11 @@ class Prime:
         self.score = func.GlobalUint(self.key, 48, 8)
         self.price = func.GlobalUint(self.key, 56, 8)
         self.seller = func.GlobalBytes(self.key, 64, 32)
-        self.name = func.GlobalBytes(self.key, 96, 16)
+        self.sales = func.GlobalUint(self.key, 96, 2)
+        self.drains = func.GlobalUint(self.key, 98, 2)
+        self.transforms = func.GlobalUint(self.key, 100, 2)
+        self.vaults = func.GlobalUint(self.key, 102, 2)
+        self.name = func.GlobalBytes(self.key, 104, 16)
 
 
 class Event:
