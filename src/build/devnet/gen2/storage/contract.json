@@ -83,10 +83,6 @@
                 {
                     "type": "uint64",
                     "name": "transforms"
-                },
-                {
-                    "type": "uint64",
-                    "name": "vaults"
                 }
             ],
             "returns": {

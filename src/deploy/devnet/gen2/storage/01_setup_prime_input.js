@@ -22,8 +22,7 @@ exports.execute = async function () {
                 price: 350,
                 sales: 10,
                 drains: 20,
-                transforms: 30,
-                vaults: 1
+                transforms: 30
             }
 
             config['gen2']['inputs']['prime'] = prime;

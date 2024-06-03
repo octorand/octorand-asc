@@ -10,6 +10,13 @@ prime = gen1_const.Prime()
 
 
 @Subroutine(TealType.none)
+def assert_caller():
+    return Seq(
+        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+    )
+
+
+@Subroutine(TealType.none)
 def create():
     return Seq(
         Assert(Txn.sender() == const.manager_address),
@@ -90,14 +97,12 @@ def finalize(
     sales: abi.Uint64,
     drains: abi.Uint64,
     transforms: abi.Uint64,
-    vaults: abi.Uint64,
 ):
     return Seq(
         Assert(Txn.sender() == const.admin_address),
         prime.sales.set(sales.get()),
         prime.drains.set(drains.get()),
         prime.transforms.set(transforms.get()),
-        prime.vaults.set(vaults.get()),
     )
 
 
@@ -110,7 +115,7 @@ def list(
     return Seq(
         Assert(prime.seller.get() == Global.zero_address()),
         Assert(prime.price.get() == Int(0)),
-        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+        assert_caller(),
         prime.price.set(price.get()),
         prime.seller.set(seller.get()),
         Log(log.get()),
@@ -125,7 +130,7 @@ def unlist(
     return Seq(
         Assert(prime.price.get() > Int(0)),
         Assert(prime.seller.get() == seller.get()),
-        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+        assert_caller(),
         func.execute_asset_transfer(
             prime.prime_asset_id.get(),
             seller.get(),
@@ -145,7 +150,7 @@ def buy(
     return Seq(
         Assert(prime.price.get() > Int(0)),
         Assert(prime.seller.get() != Global.zero_address()),
-        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+        assert_caller(),
         func.execute_asset_transfer(
             prime.prime_asset_id.get(),
             buyer.get(),
@@ -166,7 +171,7 @@ def rename(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+        assert_caller(),
         prime.name.set(SetByte(prime.name.get(), index.get(), value.get())),
         prime.transforms.increment(transforms.get()),
         Log(log.get()),
@@ -181,7 +186,7 @@ def repaint(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+        assert_caller(),
         prime.theme.set(theme.get()),
         prime.skin.set(skin.get()),
         prime.transforms.increment(transforms.get()),
@@ -196,7 +201,7 @@ def upgrade(
 ):
     return Seq(
         Assert(prime.is_explorer.get() == Int(0)),
-        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+        assert_caller(),
         func.execute_asset_transfer(
             prime.prime_asset_id.get(),
             owner.get(),
@@ -214,7 +219,7 @@ def mint(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+        assert_caller(),
         func.execute_asset_transfer(
             prime.platform_asset_id.get(),
             owner.get(),
@@ -232,7 +237,7 @@ def withdraw(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+        assert_caller(),
         func.execute_payment(
             owner.get(),
             amount.get(),
@@ -250,7 +255,7 @@ def optin(
         Assert(asset.asset_id() != prime.platform_asset_id.get()),
         Assert(asset.asset_id() != prime.prime_asset_id.get()),
         Assert(asset.asset_id() != prime.legacy_asset_id.get()),
-        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+        assert_caller(),
         func.optin_into_asset(asset.asset_id()),
         prime.vaults.increment(Int(1)),
         Log(log.get()),
@@ -267,7 +272,7 @@ def optout(
         Assert(asset.asset_id() != prime.platform_asset_id.get()),
         Assert(asset.asset_id() != prime.prime_asset_id.get()),
         Assert(asset.asset_id() != prime.legacy_asset_id.get()),
-        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+        assert_caller(),
         func.optout_from_asset(asset.asset_id(), owner.get()),
         prime.vaults.decrement(Int(1)),
         Log(log.get()),
@@ -279,6 +284,6 @@ def score(
     value: abi.Uint64,
 ):
     return Seq(
-        func.assert_application_creator(Global.caller_app_id(), const.admin_address),
+        assert_caller(),
         prime.score.increment(value.get()),
     )

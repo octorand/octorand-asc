@@ -30,7 +30,6 @@ exports.execute = async function () {
                     prime['sales'],
                     prime['drains'],
                     prime['transforms'],
-                    prime['vaults'],
                 ],
                 suggestedParams: {
                     ...params,
