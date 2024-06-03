@@ -8,27 +8,27 @@ exports.execute = async function () {
     try {
         let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen1.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
+        let sender = connection.player.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/wallet/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/optout/contract.json')));
 
-        let wallet = config['gen1']['contracts']['wallet'];
+        let application = config['gen1']['contracts']['prime']['optout'];
         let prime = config['gen1']['inputs']['prime'];
 
-        if (!wallet['withdrawn']) {
+        if (!application['optout']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
                 sender: sender,
                 signer: signer,
-                appID: wallet['application_id'],
-                method: helpers.method(contract, 'withdraw'),
+                appID: application['application_id'],
+                method: helpers.method(contract, 'optout'),
                 methodArgs: [
-                    200,
-                    config['gen1']['contracts']['storage']['application_id'],
+                    config['setup']['vault']['asset_id'],
+                    config['gen1']['contracts']['prime']['core']['application_id'],
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id'],
@@ -42,12 +42,12 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            wallet['withdrawn'] = true;
+            application['optout'] = true;
 
-            config['gen1']['contracts']['wallet'] = wallet;
+            config['gen1']['contracts']['prime']['optout'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('called withdraw method');
+            console.log('called optout method');
         }
 
     } catch (error) {

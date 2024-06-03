@@ -12,43 +12,23 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/design/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/buy/contract.json')));
 
-        let design = config['gen1']['contracts']['design'];
+        let application = config['gen1']['contracts']['prime']['buy'];
         let prime = config['gen1']['inputs']['prime'];
 
-        if (!design['renamed']) {
+        if (!application['bought']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
-
-            composer.addMethodCall({
-                sender: sender,
-                signer: signer,
-                appID: design['application_id'],
-                method: helpers.method(contract, 'rename'),
-                methodArgs: [
-                    1,
-                    68,
-                    config['gen1']['contracts']['storage']['application_id'],
-                ],
-                appForeignAssets: [
-                    prime['prime_asset_id']
-                ],
-                suggestedParams: {
-                    ...params,
-                    fee: 3000,
-                    flatFee: true
-                }
-            });
 
             composer.addTransaction({
                 sender: sender,
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: connection.admin.addr,
-                    assetIndex: config['setup']['platform']['asset_id'],
-                    amount: 20000000,
+                    to: sender,
+                    assetIndex: prime['prime_asset_id'],
+                    amount: 0,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -60,12 +40,10 @@ exports.execute = async function () {
             composer.addMethodCall({
                 sender: sender,
                 signer: signer,
-                appID: design['application_id'],
-                method: helpers.method(contract, 'rename'),
+                appID: application['application_id'],
+                method: helpers.method(contract, 'buy'),
                 methodArgs: [
-                    6,
-                    86,
-                    config['gen1']['contracts']['storage']['application_id'],
+                    config['gen1']['contracts']['prime']['core']['application_id'],
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id']
@@ -80,11 +58,25 @@ exports.execute = async function () {
             composer.addTransaction({
                 sender: sender,
                 signer: signer,
-                txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
+                    from: sender,
+                    to: connection.gen1.addr,
+                    amount: Math.floor(prime['price'] * 0.9),
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                })
+            });
+
+            composer.addTransaction({
+                sender: sender,
+                signer: signer,
+                txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: connection.admin.addr,
-                    assetIndex: config['setup']['platform']['asset_id'],
-                    amount: 30000000,
+                    amount: Math.floor(prime['price'] * 0.1),
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -95,12 +87,12 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            design['renamed'] = true;
+            application['bought'] = true;
 
-            config['gen1']['contracts']['design'] = design;
+            config['gen1']['contracts']['prime']['buy'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('called rename method');
+            console.log('called buy method');
         }
 
     } catch (error) {

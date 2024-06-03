@@ -51,52 +51,63 @@
                 "buy": {
                     "application_id": 676409633,
                     "application_address": "JUVI4RNFLZMHHSAHHRVAMXEQY4KISOSPC66ZLC2KXC46WUDG3F64IXR25I",
-                    "application_version": 1
+                    "application_version": 1,
+                    "bought": true
                 },
                 "list": {
                     "application_id": 676409719,
                     "application_address": "2K76NH5TSZ5KBWFTALDHFQPP3WTM6UTOUZG3VPIAAEQDPTIN33GHB3TDQE",
-                    "application_version": 1
+                    "application_version": 1,
+                    "listed": true,
+                    "relisted": true
                 },
                 "mint": {
                     "application_id": 676409761,
                     "application_address": "4YUKEU2QFXPF3MZXIXIV5VSTYO6XEQVWBVS5N7O3STJCXGLC45ODVPLO2I",
-                    "application_version": 1
+                    "application_version": 1,
+                    "minted": true
                 },
                 "optin": {
                     "application_id": 676409821,
                     "application_address": "UQLJQHQVBKI6SA63O2UFXYW5NEENINX4NUBK7RUMD3QNOCKSD3OAGUN7GA",
-                    "application_version": 1
+                    "application_version": 1,
+                    "optin": true
                 },
                 "optout": {
                     "application_id": 676409830,
                     "application_address": "QEHBC7UBRT2E4MKNVC7OHZ6THIVJ3E5FMG6DBCPWLTH3DRODOT56NQOY6Q",
-                    "application_version": 1
+                    "application_version": 1,
+                    "optout": true
                 },
                 "rename": {
                     "application_id": 676409901,
                     "application_address": "V2POUKHMA5HJ5WT2ZPAHOKQUB6XGGN7BMY7M7CVNE7MMGLLS24F2E2NUB4",
-                    "application_version": 1
+                    "application_version": 1,
+                    "renamed": true
                 },
                 "repaint": {
                     "application_id": 676409934,
                     "application_address": "LVLUDRFTBUOBKYIJBX5QLTHKFE7JKLGKOTTKS4Q42VE7JDGHJKIPMSDBUY",
-                    "application_version": 1
+                    "application_version": 1,
+                    "repainted": true
                 },
                 "unlist": {
                     "application_id": 676409949,
                     "application_address": "IUDORO54B2N66ADQYG2VGPW22LIYM5X5JHLKO57U42LH6W2PFROKDR7N2A",
-                    "application_version": 1
+                    "application_version": 1,
+                    "unlisted": true
                 },
                 "upgrade": {
                     "application_id": 676409980,
                     "application_address": "ZSGHI4DVVMW63LN4ACBN5ADE5GKFMTTGN7UE72FXF7HJ5676LUPMGYZU4A",
-                    "application_version": 1
+                    "application_version": 1,
+                    "upgraded": true
                 },
                 "withdraw": {
                     "application_id": 676409987,
                     "application_address": "4FDMDDNPCAIZUXZBGJ2J6EELPOM2EWUG7JUDJ3B2KBNFZSSB4AJ5DSIXE4",
-                    "application_version": 1
+                    "application_version": 1,
+                    "withdrawn": true
                 }
             }
         }

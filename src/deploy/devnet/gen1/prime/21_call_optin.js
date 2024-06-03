@@ -12,22 +12,22 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/vault/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/optin/contract.json')));
 
-        let vault = config['gen1']['contracts']['vault'];
+        let application = config['gen1']['contracts']['prime']['optin'];
 
-        if (!vault['optin']) {
+        if (!application['optin']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
                 sender: sender,
                 signer: signer,
-                appID: vault['application_id'],
+                appID: application['application_id'],
                 method: helpers.method(contract, 'optin'),
                 methodArgs: [
                     config['setup']['vault']['asset_id'],
-                    config['gen1']['contracts']['storage']['application_id'],
+                    config['gen1']['contracts']['prime']['core']['application_id'],
                 ],
                 suggestedParams: {
                     ...params,
@@ -41,7 +41,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: config['gen1']['contracts']['storage']['application_address'],
+                    to: config['gen1']['contracts']['prime']['core']['application_address'],
                     amount: 100000,
                     suggestedParams: {
                         ...params,
@@ -56,7 +56,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: config['gen1']['contracts']['storage']['application_address'],
+                    to: config['gen1']['contracts']['prime']['core']['application_address'],
                     assetIndex: config['setup']['vault']['asset_id'],
                     amount: 300,
                     suggestedParams: {
@@ -69,9 +69,9 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            vault['optin'] = true;
+            application['optin'] = true;
 
-            config['gen1']['contracts']['vault'] = vault;
+            config['gen1']['contracts']['prime']['optin'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('called optin method');

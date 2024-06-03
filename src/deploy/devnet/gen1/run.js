@@ -18,6 +18,19 @@ exports.execute = async function () {
     await require('./prime/10_transfer_assets').execute();
     await require('./prime/11_lock_prime_asset').execute();
 
+    console.log('call gen1 prime functions');
+    await require('./prime/12_call_upgrade').execute();
+    await require('./prime/13_call_mint').execute();
+    await require('./prime/14_call_withdraw').execute();
+    await require('./prime/15_call_list').execute();
+    await require('./prime/16_call_unlist').execute();
+    await require('./prime/17_call_list').execute();
+    await require('./prime/18_call_buy').execute();
+    await require('./prime/19_call_rename').execute();
+    await require('./prime/20_call_repaint').execute();
+    await require('./prime/21_call_optin').execute();
+    await require('./prime/22_call_optout').execute();
+
 
 
 

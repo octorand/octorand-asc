@@ -12,23 +12,23 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/market/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/list/contract.json')));
 
-        let market = config['gen1']['contracts']['market'];
+        let application = config['gen1']['contracts']['prime']['list'];
         let prime = config['gen1']['inputs']['prime'];
 
-        if (!market['relisted']) {
+        if (!application['listed']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
                 sender: sender,
                 signer: signer,
-                appID: market['application_id'],
+                appID: application['application_id'],
                 method: helpers.method(contract, 'list'),
                 methodArgs: [
                     prime['price'],
-                    config['gen1']['contracts']['storage']['application_id'],
+                    config['gen1']['contracts']['prime']['core']['application_id'],
                 ],
                 suggestedParams: {
                     ...params,
@@ -42,7 +42,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: config['gen1']['contracts']['storage']['application_address'],
+                    to: config['gen1']['contracts']['prime']['core']['application_address'],
                     assetIndex: prime['prime_asset_id'],
                     amount: 1,
                     suggestedParams: {
@@ -55,9 +55,9 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            market['relisted'] = true;
+            application['listed'] = true;
 
-            config['gen1']['contracts']['market'] = market;
+            config['gen1']['contracts']['prime']['list'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('called list method');

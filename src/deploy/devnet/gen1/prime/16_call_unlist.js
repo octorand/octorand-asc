@@ -12,22 +12,22 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/market/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/unlist/contract.json')));
 
-        let market = config['gen1']['contracts']['market'];
+        let application = config['gen1']['contracts']['prime']['unlist'];
         let prime = config['gen1']['inputs']['prime'];
 
-        if (!market['unlisted']) {
+        if (!application['unlisted']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
                 sender: sender,
                 signer: signer,
-                appID: market['application_id'],
+                appID: application['application_id'],
                 method: helpers.method(contract, 'unlist'),
                 methodArgs: [
-                    config['gen1']['contracts']['storage']['application_id'],
+                    config['gen1']['contracts']['prime']['core']['application_id'],
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id']
@@ -41,9 +41,9 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            market['unlisted'] = true;
+            application['unlisted'] = true;
 
-            config['gen1']['contracts']['market'] = market;
+            config['gen1']['contracts']['prime']['unlist'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('called unlist method');
