@@ -86,6 +86,22 @@ def populate(
 
 
 @router.method
+def finalize(
+    sales: abi.Uint64,
+    drains: abi.Uint64,
+    transforms: abi.Uint64,
+    vaults: abi.Uint64,
+):
+    return Seq(
+        Assert(Txn.sender() == const.admin_address),
+        prime.sales.set(sales.get()),
+        prime.drains.set(drains.get()),
+        prime.transforms.set(transforms.get()),
+        prime.vaults.set(vaults.get()),
+    )
+
+
+@router.method
 def list(
     price: abi.Uint64,
     seller: abi.Address,
@@ -137,6 +153,7 @@ def buy(
         ),
         prime.price.set(Int(0)),
         prime.seller.set(Global.zero_address()),
+        prime.sales.increment(Int(1)),
         Log(log.get()),
     )
 
@@ -145,11 +162,13 @@ def buy(
 def rename(
     index: abi.Uint64,
     value: abi.Uint64,
+    transforms: abi.Uint64,
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         prime.name.set(SetByte(prime.name.get(), index.get(), value.get())),
+        prime.transforms.increment(transforms.get()),
         Log(log.get()),
     )
 
@@ -158,12 +177,14 @@ def rename(
 def repaint(
     theme: abi.Uint64,
     skin: abi.Uint64,
+    transforms: abi.Uint64,
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         prime.theme.set(theme.get()),
         prime.skin.set(skin.get()),
+        prime.transforms.increment(transforms.get()),
         Log(log.get()),
     )
 
@@ -199,6 +220,7 @@ def mint(
             owner.get(),
             amount.get(),
         ),
+        prime.drains.increment(Int(1)),
         Log(log.get()),
     )
 
@@ -230,6 +252,7 @@ def optin(
         Assert(asset.asset_id() != prime.legacy_asset_id.get()),
         func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         func.optin_into_asset(asset.asset_id()),
+        prime.vaults.increment(Int(1)),
         Log(log.get()),
     )
 
@@ -246,6 +269,7 @@ def optout(
         Assert(asset.asset_id() != prime.legacy_asset_id.get()),
         func.assert_application_creator(Global.caller_app_id(), const.admin_address),
         func.optout_from_asset(asset.asset_id(), owner.get()),
+        prime.vaults.decrement(Int(1)),
         Log(log.get()),
     )
 

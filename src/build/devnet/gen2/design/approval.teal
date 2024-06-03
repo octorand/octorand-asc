@@ -201,6 +201,7 @@ retsub
 rename_9:
 proto 3 0
 int 0
+dup
 int 100
 itob
 int 1
@@ -230,17 +231,17 @@ frame_dig -2
 frame_dig -1
 txnas Applications
 byte "Prime"
-int 96
+int 104
 int 16
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_9_l11
+bnz rename_9_l14
 frame_dig -1
 txnas Applications
 byte "Prime"
-int 96
+int 104
 int 16
 callsub getglobalexternalbytes_0
 frame_dig -3
@@ -290,17 +291,17 @@ frame_dig -2
 frame_dig -1
 txnas Applications
 byte "Prime"
-int 96
+int 104
 int 16
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_9_l10
+bnz rename_9_l13
 frame_dig -1
 txnas Applications
 byte "Prime"
-int 96
+int 104
 int 16
 callsub getglobalexternalbytes_0
 frame_dig -3
@@ -322,17 +323,17 @@ frame_dig -2
 frame_dig -1
 txnas Applications
 byte "Prime"
-int 96
+int 104
 int 16
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_9_l9
+bnz rename_9_l12
 frame_dig -1
 txnas Applications
 byte "Prime"
-int 96
+int 104
 int 16
 callsub getglobalexternalbytes_0
 frame_dig -3
@@ -354,18 +355,44 @@ frame_dig 0
 itob
 itxn_field ApplicationArgs
 itxn_submit
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+>
+bnz rename_9_l11
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+frame_dig -2
+-
+rename_9_l8:
+frame_bury 1
 itxn_begin
 int appl
 itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "rename(uint64,uint64,byte[240])void"
+method "rename(uint64,uint64,uint64,byte[240])void"
 itxn_field ApplicationArgs
 frame_dig -3
 itob
 itxn_field ApplicationArgs
 frame_dig -2
+itob
+itxn_field ApplicationArgs
+frame_dig 1
 itob
 itxn_field ApplicationArgs
 int 100
@@ -397,73 +424,85 @@ frame_dig -2
 frame_dig -1
 txnas Applications
 byte "Prime"
-int 96
+int 104
 int 16
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_9_l8
+bnz rename_9_l10
 frame_dig -1
 txnas Applications
 byte "Prime"
-int 96
+int 104
 int 16
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 frame_dig -2
 -
-b rename_9_l12
-rename_9_l8:
+b rename_9_l15
+rename_9_l10:
 frame_dig -2
 frame_dig -1
 txnas Applications
 byte "Prime"
-int 96
+int 104
 int 16
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 -
-b rename_9_l12
-rename_9_l9:
+b rename_9_l15
+rename_9_l11:
 frame_dig -2
 frame_dig -1
 txnas Applications
 byte "Prime"
-int 96
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+-
+b rename_9_l8
+rename_9_l12:
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
 int 16
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 -
 b rename_9_l6
-rename_9_l10:
+rename_9_l13:
 frame_dig -2
 frame_dig -1
 txnas Applications
 byte "Prime"
-int 96
+int 104
 int 16
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 -
 b rename_9_l4
-rename_9_l11:
+rename_9_l14:
 frame_dig -2
 frame_dig -1
 txnas Applications
 byte "Prime"
-int 96
+int 104
 int 16
 callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 -
 b rename_9_l2
-rename_9_l12:
+rename_9_l15:
 *
 itob
 concat
@@ -475,6 +514,7 @@ retsub
 repaint_10:
 proto 3 0
 int 0
+dup
 int 101
 itob
 int 1
@@ -555,18 +595,23 @@ frame_dig 0
 itob
 itxn_field ApplicationArgs
 itxn_submit
+int 1
+frame_bury 1
 itxn_begin
 int appl
 itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "repaint(uint64,uint64,byte[240])void"
+method "repaint(uint64,uint64,uint64,byte[240])void"
 itxn_field ApplicationArgs
 frame_dig -3
 itob
 itxn_field ApplicationArgs
 frame_dig -2
+itob
+itxn_field ApplicationArgs
+frame_dig 1
 itob
 itxn_field ApplicationArgs
 int 101

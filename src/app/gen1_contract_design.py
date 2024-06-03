@@ -58,6 +58,8 @@ def rename(
     price = Mul(const.rename_price, value_difference)
     score_value = Mul(const.rename_score, value_difference)
     score = abi.make(abi.Uint64)
+    transforms_value = value_difference
+    transforms = abi.make(abi.Uint64)
     log = Concat(
         event.design_rename,
         Itob(Int(1)),
@@ -89,12 +91,14 @@ def rename(
                 score,
             ],
         ),
+        transforms.set(transforms_value),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
             method_signature=storage.rename.method_signature(),
             args=[
                 index,
                 value,
+                transforms,
                 log,
             ],
         ),
@@ -110,6 +114,8 @@ def repaint(
     app_id = application.application_id()
     score_value = const.repaint_score
     score = abi.make(abi.Uint64)
+    transforms_value = Int(1)
+    transforms = abi.make(abi.Uint64)
     log = Concat(
         event.design_repaint,
         Itob(Int(1)),
@@ -140,12 +146,14 @@ def repaint(
                 score,
             ],
         ),
+        transforms.set(transforms_value),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
             method_signature=storage.repaint.method_signature(),
             args=[
                 theme,
                 skin,
+                transforms,
                 log,
             ],
         ),

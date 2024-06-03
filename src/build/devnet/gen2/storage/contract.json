@@ -70,6 +70,30 @@
             }
         },
         {
+            "name": "finalize",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "sales"
+                },
+                {
+                    "type": "uint64",
+                    "name": "drains"
+                },
+                {
+                    "type": "uint64",
+                    "name": "transforms"
+                },
+                {
+                    "type": "uint64",
+                    "name": "vaults"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
             "name": "list",
             "args": [
                 {
@@ -133,6 +157,10 @@
                     "name": "value"
                 },
                 {
+                    "type": "uint64",
+                    "name": "transforms"
+                },
+                {
                     "type": "byte[240]",
                     "name": "log"
                 }
@@ -151,6 +179,10 @@
                 {
                     "type": "uint64",
                     "name": "skin"
+                },
+                {
+                    "type": "uint64",
+                    "name": "transforms"
                 },
                 {
                     "type": "byte[240]",
