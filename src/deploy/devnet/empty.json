@@ -8,11 +8,19 @@
             "prime": {}
         },
         "contracts": {
-            "design": {},
-            "market": {},
-            "vault": {},
-            "wallet": {},
-            "storage": {}
+            "prime": {
+                "core": {},
+                "buy": {},
+                "list": {},
+                "mint": {},
+                "optin": {},
+                "optout": {},
+                "rename": {},
+                "repaint": {},
+                "unlist": {},
+                "upgrade": {},
+                "withdraw": {}
+            }
         }
     },
     "gen2": {
@@ -20,11 +28,19 @@
             "prime": {}
         },
         "contracts": {
-            "design": {},
-            "market": {},
-            "vault": {},
-            "wallet": {},
-            "storage": {}
+            "prime": {
+                "core": {},
+                "buy": {},
+                "list": {},
+                "mint": {},
+                "optin": {},
+                "optout": {},
+                "rename": {},
+                "repaint": {},
+                "unlist": {},
+                "upgrade": {},
+                "withdraw": {}
+            }
         }
     }
 }

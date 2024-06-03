@@ -1,12 +1,12 @@
 {
     "setup": {
         "platform": {
-            "asset_id": 676324304,
+            "asset_id": 676403140,
             "manager": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
             "reserve": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM"
         },
         "vault": {
-            "asset_id": 676324339,
+            "asset_id": 676403169,
             "manager": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
             "reserve": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM"
         },
@@ -17,645 +17,85 @@
     },
     "gen1": {
         "inputs": {
-            "prime": {
-                "id": 1,
-                "theme": 1,
-                "skin": 2,
-                "is_founder": 1,
-                "is_artifact": 0,
-                "is_pioneer": 1,
-                "is_explorer": 0,
-                "score": 750,
-                "name": "ABCDWXYZ",
-                "price": 350,
-                "sales": 10,
-                "drains": 20,
-                "transforms": 30,
-                "legacy_asset_id": 676324860,
-                "prime_asset_id": 676324864
-            }
+            "prime": {}
         },
         "contracts": {
-            "design": {
-                "application_id": 676324625,
-                "application_address": "YOULFMI2DIVT7HY2WC5CLRE56PYMMZE3FWBHL5VFNWF652KCOZSUO7EUWY",
-                "application_version": 1,
-                "renamed": true,
-                "repainted": true,
-                "logs": [
-                    {
-                        "code": 100,
-                        "version": 1,
-                        "timestamp": 1717386434,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "design_rename",
-                        "index": 1,
-                        "value": 68,
-                        "price": 20000000
-                    },
-                    {
-                        "code": 100,
-                        "version": 1,
-                        "timestamp": 1717386434,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "design_rename",
-                        "index": 6,
-                        "value": 86,
-                        "price": 30000000
-                    },
-                    {
-                        "code": 101,
-                        "version": 1,
-                        "timestamp": 1717386439,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "design_repaint",
-                        "theme": 3,
-                        "skin": 4,
-                        "price": 10000000
-                    }
-                ]
-            },
-            "market": {
-                "application_id": 676324638,
-                "application_address": "U6URKMLJNQ2KH3HA3H4L6YAJRXXKJ5ELB7Q4QFK7PJFVCTGUZDV3HPED7A",
-                "application_version": 1,
-                "listed": true,
-                "unlisted": true,
-                "relisted": true,
-                "bought": true,
-                "logs": [
-                    {
-                        "code": 110,
-                        "version": 1,
-                        "timestamp": 1717386409,
-                        "prime": 1,
-                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "name": "market_list",
-                        "price": 350
-                    },
-                    {
-                        "code": 111,
-                        "version": 1,
-                        "timestamp": 1717386414,
-                        "prime": 1,
-                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "name": "market_unlist"
-                    },
-                    {
-                        "code": 110,
-                        "version": 1,
-                        "timestamp": 1717386420,
-                        "prime": 1,
-                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "name": "market_list",
-                        "price": 350
-                    },
-                    {
-                        "code": 112,
-                        "version": 1,
-                        "timestamp": 1717386425,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "market_buy",
-                        "seller": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "price": 350
-                    }
-                ]
-            },
-            "vault": {
-                "application_id": 676324740,
-                "application_address": "GXUVK4KSM76YBLDRWHUBNH64VHTV2KWF4UKUKPFPT4Z7EEE2U7BIYQFAXY",
-                "application_version": 1,
-                "optin": true,
-                "optout": true,
-                "logs": [
-                    {
-                        "code": 120,
-                        "version": 1,
-                        "timestamp": 1717386447,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "vault_optin",
-                        "asset_id": 676324339
-                    },
-                    {
-                        "code": 121,
-                        "version": 1,
-                        "timestamp": 1717386453,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "vault_optout",
-                        "asset_id": 676324339
-                    }
-                ]
-            },
-            "wallet": {
-                "application_id": 676324813,
-                "application_address": "4DG4OAHQFEEYIESUZWZBU354JQX6G6QPEYSPDR2AZ5NZGIG3ETCSLDFSHA",
-                "application_version": 1,
-                "upgraded": true,
-                "minted": true,
-                "withdrawn": true,
-                "logs": [
-                    {
-                        "code": 130,
-                        "version": 1,
-                        "timestamp": 1717386390,
-                        "prime": 1,
-                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "name": "wallet_upgrade"
-                    },
-                    {
-                        "code": 131,
-                        "version": 1,
-                        "timestamp": 1717386395,
-                        "prime": 1,
-                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "name": "wallet_mint",
-                        "amount": 100
-                    },
-                    {
-                        "code": 132,
-                        "version": 1,
-                        "timestamp": 1717386401,
-                        "prime": 1,
-                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "name": "wallet_withdraw",
-                        "amount": 200
-                    }
-                ]
-            },
-            "storage": {
-                "application_id": 676324896,
-                "application_address": "YVOV4L7FW2NMWG6WY5F5BE2ZFGQ2MFNNX55UT5W5DVP2AZMU77TORF6S3Q",
-                "application_version": 1,
-                "funded": true,
-                "initialized": true,
-                "populated": true,
-                "transferred": true,
-                "locked": true,
-                "logs": [
-                    {
-                        "code": 130,
-                        "version": 1,
-                        "timestamp": 1717386390,
-                        "prime": 1,
-                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "name": "wallet_upgrade"
-                    },
-                    {
-                        "code": 131,
-                        "version": 1,
-                        "timestamp": 1717386395,
-                        "prime": 1,
-                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "name": "wallet_mint",
-                        "amount": 100
-                    },
-                    {
-                        "code": 132,
-                        "version": 1,
-                        "timestamp": 1717386401,
-                        "prime": 1,
-                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "name": "wallet_withdraw",
-                        "amount": 200
-                    },
-                    {
-                        "code": 110,
-                        "version": 1,
-                        "timestamp": 1717386409,
-                        "prime": 1,
-                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "name": "market_list",
-                        "price": 350
-                    },
-                    {
-                        "code": 111,
-                        "version": 1,
-                        "timestamp": 1717386414,
-                        "prime": 1,
-                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "name": "market_unlist"
-                    },
-                    {
-                        "code": 110,
-                        "version": 1,
-                        "timestamp": 1717386420,
-                        "prime": 1,
-                        "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "name": "market_list",
-                        "price": 350
-                    },
-                    {
-                        "code": 112,
-                        "version": 1,
-                        "timestamp": 1717386425,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "market_buy",
-                        "seller": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                        "price": 350
-                    },
-                    {
-                        "code": 100,
-                        "version": 1,
-                        "timestamp": 1717386434,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "design_rename",
-                        "index": 1,
-                        "value": 68,
-                        "price": 20000000
-                    },
-                    {
-                        "code": 100,
-                        "version": 1,
-                        "timestamp": 1717386434,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "design_rename",
-                        "index": 6,
-                        "value": 86,
-                        "price": 30000000
-                    },
-                    {
-                        "code": 101,
-                        "version": 1,
-                        "timestamp": 1717386439,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "design_repaint",
-                        "theme": 3,
-                        "skin": 4,
-                        "price": 10000000
-                    },
-                    {
-                        "code": 120,
-                        "version": 1,
-                        "timestamp": 1717386447,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "vault_optin",
-                        "asset_id": 676324339
-                    },
-                    {
-                        "code": 121,
-                        "version": 1,
-                        "timestamp": 1717386453,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "vault_optout",
-                        "asset_id": 676324339
-                    }
-                ],
-                "state": {
-                    "id": 1,
-                    "platform_asset_id": 676324304,
-                    "prime_asset_id": 676324864,
-                    "legacy_asset_id": 676324860,
-                    "parent_application_id": 0,
-                    "theme": 3,
-                    "skin": 4,
-                    "is_founder": 1,
-                    "is_artifact": 0,
-                    "is_pioneer": 1,
-                    "is_explorer": 1,
-                    "score": 810,
-                    "price": 0,
-                    "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
-                    "sales": 10,
-                    "drains": 20,
-                    "transforms": 30,
-                    "vaults": 0,
-                    "name": "ADCDWXVZ"
+            "prime": {
+                "core": {
+                    "application_id": 676409627,
+                    "application_address": "BYOPDCKVRABKXNAMPMX3MEVIK7K5KAVYT47LLFYFWVVV4DFY6KEMVKSYT4",
+                    "application_version": 1
                 },
-                "finalized": true
+                "buy": {
+                    "application_id": 676409633,
+                    "application_address": "JUVI4RNFLZMHHSAHHRVAMXEQY4KISOSPC66ZLC2KXC46WUDG3F64IXR25I",
+                    "application_version": 1
+                },
+                "list": {
+                    "application_id": 676409719,
+                    "application_address": "2K76NH5TSZ5KBWFTALDHFQPP3WTM6UTOUZG3VPIAAEQDPTIN33GHB3TDQE",
+                    "application_version": 1
+                },
+                "mint": {
+                    "application_id": 676409761,
+                    "application_address": "4YUKEU2QFXPF3MZXIXIV5VSTYO6XEQVWBVS5N7O3STJCXGLC45ODVPLO2I",
+                    "application_version": 1
+                },
+                "optin": {
+                    "application_id": 676409821,
+                    "application_address": "UQLJQHQVBKI6SA63O2UFXYW5NEENINX4NUBK7RUMD3QNOCKSD3OAGUN7GA",
+                    "application_version": 1
+                },
+                "optout": {
+                    "application_id": 676409830,
+                    "application_address": "QEHBC7UBRT2E4MKNVC7OHZ6THIVJ3E5FMG6DBCPWLTH3DRODOT56NQOY6Q",
+                    "application_version": 1
+                },
+                "rename": {
+                    "application_id": 676409901,
+                    "application_address": "V2POUKHMA5HJ5WT2ZPAHOKQUB6XGGN7BMY7M7CVNE7MMGLLS24F2E2NUB4",
+                    "application_version": 1
+                },
+                "repaint": {
+                    "application_id": 676409934,
+                    "application_address": "LVLUDRFTBUOBKYIJBX5QLTHKFE7JKLGKOTTKS4Q42VE7JDGHJKIPMSDBUY",
+                    "application_version": 1
+                },
+                "unlist": {
+                    "application_id": 676409949,
+                    "application_address": "IUDORO54B2N66ADQYG2VGPW22LIYM5X5JHLKO57U42LH6W2PFROKDR7N2A",
+                    "application_version": 1
+                },
+                "upgrade": {
+                    "application_id": 676409980,
+                    "application_address": "ZSGHI4DVVMW63LN4ACBN5ADE5GKFMTTGN7UE72FXF7HJ5676LUPMGYZU4A",
+                    "application_version": 1
+                },
+                "withdraw": {
+                    "application_id": 676409987,
+                    "application_address": "4FDMDDNPCAIZUXZBGJ2J6EELPOM2EWUG7JUDJ3B2KBNFZSSB4AJ5DSIXE4",
+                    "application_version": 1
+                }
             }
         }
     },
     "gen2": {
         "inputs": {
-            "prime": {
-                "id": 1,
-                "theme": 1,
-                "skin": 2,
-                "is_founder": 1,
-                "is_artifact": 0,
-                "is_pioneer": 1,
-                "is_explorer": 0,
-                "score": 750,
-                "name": "ABCDEFGHSTUVWXYZ",
-                "price": 350,
-                "sales": 10,
-                "drains": 20,
-                "transforms": 30,
-                "legacy_asset_id": 676325841,
-                "prime_asset_id": 676325876
-            }
+            "prime": {}
         },
         "contracts": {
-            "design": {
-                "application_id": 676325627,
-                "application_address": "CALFMA5SB4UUL62GWFHCVSEYNIJNKV5FGTSVG5M5PYQU5UP7XJENJI5W7I",
-                "application_version": 1,
-                "renamed": true,
-                "repainted": true,
-                "logs": [
-                    {
-                        "code": 100,
-                        "version": 1,
-                        "timestamp": 1717386636,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "design_rename",
-                        "index": 1,
-                        "value": 68,
-                        "price": 2000000
-                    },
-                    {
-                        "code": 100,
-                        "version": 1,
-                        "timestamp": 1717386636,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "design_rename",
-                        "index": 15,
-                        "value": 89,
-                        "price": 1000000
-                    },
-                    {
-                        "code": 101,
-                        "version": 1,
-                        "timestamp": 1717386642,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "design_repaint",
-                        "theme": 3,
-                        "skin": 4,
-                        "price": 1000000
-                    }
-                ]
-            },
-            "market": {
-                "application_id": 676325722,
-                "application_address": "BYEGBDVFU2VQXM4IVYYXB7D5LN2IHHEPCCE7IMY4OO3XSBBK7XJHMUXN2Q",
-                "application_version": 1,
-                "listed": true,
-                "unlisted": true,
-                "relisted": true,
-                "bought": true,
-                "logs": [
-                    {
-                        "code": 110,
-                        "version": 1,
-                        "timestamp": 1717386611,
-                        "prime": 1,
-                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "name": "market_list",
-                        "price": 350
-                    },
-                    {
-                        "code": 111,
-                        "version": 1,
-                        "timestamp": 1717386617,
-                        "prime": 1,
-                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "name": "market_unlist"
-                    },
-                    {
-                        "code": 110,
-                        "version": 1,
-                        "timestamp": 1717386622,
-                        "prime": 1,
-                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "name": "market_list",
-                        "price": 350
-                    },
-                    {
-                        "code": 112,
-                        "version": 1,
-                        "timestamp": 1717386628,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "market_buy",
-                        "seller": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "price": 350
-                    }
-                ]
-            },
-            "vault": {
-                "application_id": 676325742,
-                "application_address": "3A3PJLLT5ACEJUMNS7G6N5YA3ZH3E56JOGGT7E3VTWTYFLY3CF4ZLQO2II",
-                "application_version": 1,
-                "optin": true,
-                "optout": true,
-                "logs": [
-                    {
-                        "code": 120,
-                        "version": 1,
-                        "timestamp": 1717386650,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "vault_optin",
-                        "asset_id": 676324339
-                    },
-                    {
-                        "code": 121,
-                        "version": 1,
-                        "timestamp": 1717386656,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "vault_optout",
-                        "asset_id": 676324339
-                    }
-                ]
-            },
-            "wallet": {
-                "application_id": 676325817,
-                "application_address": "RWG6ONULLBWGWWZ4GG7W6SIA2ZOIPIUA7OK3PWO4QSZ5IUHYWDZVRVQ3WI",
-                "application_version": 1,
-                "upgraded": true,
-                "minted": true,
-                "withdrawn": true,
-                "logs": [
-                    {
-                        "code": 130,
-                        "version": 1,
-                        "timestamp": 1717386592,
-                        "prime": 1,
-                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "name": "wallet_upgrade"
-                    },
-                    {
-                        "code": 131,
-                        "version": 1,
-                        "timestamp": 1717386597,
-                        "prime": 1,
-                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "name": "wallet_mint",
-                        "amount": 100
-                    },
-                    {
-                        "code": 132,
-                        "version": 1,
-                        "timestamp": 1717386603,
-                        "prime": 1,
-                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "name": "wallet_withdraw",
-                        "amount": 200
-                    }
-                ]
-            },
-            "storage": {
-                "application_id": 676325883,
-                "application_address": "HCL63CUHDRE3VFCLRBVYCSOBWMTZOYJGZPEPTOKQYUNBHEKN5W5YST7FWE",
-                "application_version": 1,
-                "funded": true,
-                "initialized": true,
-                "populated": true,
-                "finalized": true,
-                "transferred": true,
-                "locked": true,
-                "logs": [
-                    {
-                        "code": 130,
-                        "version": 1,
-                        "timestamp": 1717386592,
-                        "prime": 1,
-                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "name": "wallet_upgrade"
-                    },
-                    {
-                        "code": 131,
-                        "version": 1,
-                        "timestamp": 1717386597,
-                        "prime": 1,
-                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "name": "wallet_mint",
-                        "amount": 100
-                    },
-                    {
-                        "code": 132,
-                        "version": 1,
-                        "timestamp": 1717386603,
-                        "prime": 1,
-                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "name": "wallet_withdraw",
-                        "amount": 200
-                    },
-                    {
-                        "code": 110,
-                        "version": 1,
-                        "timestamp": 1717386611,
-                        "prime": 1,
-                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "name": "market_list",
-                        "price": 350
-                    },
-                    {
-                        "code": 111,
-                        "version": 1,
-                        "timestamp": 1717386617,
-                        "prime": 1,
-                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "name": "market_unlist"
-                    },
-                    {
-                        "code": 110,
-                        "version": 1,
-                        "timestamp": 1717386622,
-                        "prime": 1,
-                        "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "name": "market_list",
-                        "price": 350
-                    },
-                    {
-                        "code": 112,
-                        "version": 1,
-                        "timestamp": 1717386628,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "market_buy",
-                        "seller": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                        "price": 350
-                    },
-                    {
-                        "code": 100,
-                        "version": 1,
-                        "timestamp": 1717386636,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "design_rename",
-                        "index": 1,
-                        "value": 68,
-                        "price": 2000000
-                    },
-                    {
-                        "code": 100,
-                        "version": 1,
-                        "timestamp": 1717386636,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "design_rename",
-                        "index": 15,
-                        "value": 89,
-                        "price": 1000000
-                    },
-                    {
-                        "code": 101,
-                        "version": 1,
-                        "timestamp": 1717386642,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "design_repaint",
-                        "theme": 3,
-                        "skin": 4,
-                        "price": 1000000
-                    },
-                    {
-                        "code": 120,
-                        "version": 1,
-                        "timestamp": 1717386650,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "vault_optin",
-                        "asset_id": 676324339
-                    },
-                    {
-                        "code": 121,
-                        "version": 1,
-                        "timestamp": 1717386656,
-                        "prime": 1,
-                        "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
-                        "name": "vault_optout",
-                        "asset_id": 676324339
-                    }
-                ],
-                "state": {
-                    "id": 1,
-                    "platform_asset_id": 676324304,
-                    "prime_asset_id": 676325876,
-                    "legacy_asset_id": 676325841,
-                    "parent_application_id": 676324896,
-                    "theme": 3,
-                    "skin": 4,
-                    "is_founder": 1,
-                    "is_artifact": 0,
-                    "is_pioneer": 1,
-                    "is_explorer": 1,
-                    "score": 790,
-                    "price": 0,
-                    "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
-                    "sales": 11,
-                    "drains": 21,
-                    "transforms": 34,
-                    "vaults": 0,
-                    "name": "ADCDEFGHSTUVWXYY"
-                }
+            "prime": {
+                "core": {},
+                "buy": {},
+                "list": {},
+                "mint": {},
+                "optin": {},
+                "optout": {},
+                "rename": {},
+                "repaint": {},
+                "unlist": {},
+                "upgrade": {},
+                "withdraw": {}
             }
         }
     }
