@@ -17,14 +17,36 @@
     },
     "gen1": {
         "inputs": {
-            "prime": {}
+            "prime": {
+                "id": 1,
+                "theme": 1,
+                "skin": 2,
+                "is_founder": 1,
+                "is_artifact": 0,
+                "is_pioneer": 1,
+                "is_explorer": 0,
+                "score": 750,
+                "name": "ABCDWXYZ",
+                "price": 350,
+                "sales": 10,
+                "drains": 20,
+                "transforms": 30,
+                "prime_asset_id": 676416615,
+                "legacy_asset_id": 676416618
+            }
         },
         "contracts": {
             "prime": {
                 "core": {
                     "application_id": 676409627,
                     "application_address": "BYOPDCKVRABKXNAMPMX3MEVIK7K5KAVYT47LLFYFWVVV4DFY6KEMVKSYT4",
-                    "application_version": 1
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "finalized": true,
+                    "transferred": true,
+                    "locked": true
                 },
                 "buy": {
                     "application_id": 676409633,

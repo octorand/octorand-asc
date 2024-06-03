@@ -12,45 +12,41 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/storage/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/contract.json')));
 
-        let storage = config['gen1']['contracts']['storage'];
+        let core = config['gen1']['contracts']['prime']['core'];
         let prime = config['gen1']['inputs']['prime'];
 
-        if (!storage['populated']) {
+        if (!core['initialized']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
                 sender: sender,
                 signer: signer,
-                appID: storage['application_id'],
-                method: helpers.method(contract, 'populate'),
+                appID: core['application_id'],
+                method: helpers.method(contract, 'initialize'),
                 methodArgs: [
-                    prime['theme'],
-                    prime['skin'],
-                    prime['is_founder'],
-                    prime['is_artifact'],
-                    prime['is_pioneer'],
-                    prime['is_explorer'],
-                    prime['score'],
-                    helpers.bytes(prime['name'], 8),
+                    prime['id'],
+                    config['setup']['platform']['asset_id'],
+                    prime['prime_asset_id'],
+                    prime['legacy_asset_id'],
                 ],
                 suggestedParams: {
                     ...params,
-                    fee: 1000,
+                    fee: 4000,
                     flatFee: true
                 }
             });
 
             await devnet.execute(composer);
 
-            storage['populated'] = true;
+            core['initialized'] = true;
 
-            config['gen1']['contracts']['storage'] = storage;
+            config['gen1']['contracts']['prime']['core'] = core;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('called populate method');
+            console.log('called initialize method');
         }
 
     } catch (error) {

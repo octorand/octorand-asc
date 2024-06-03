@@ -12,41 +12,40 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/storage/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/contract.json')));
 
-        let storage = config['gen1']['contracts']['storage'];
+        let core = config['gen1']['contracts']['prime']['core'];
         let prime = config['gen1']['inputs']['prime'];
 
-        if (!storage['initialized']) {
+        if (!core['finalized']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
                 sender: sender,
                 signer: signer,
-                appID: storage['application_id'],
-                method: helpers.method(contract, 'initialize'),
+                appID: core['application_id'],
+                method: helpers.method(contract, 'finalize'),
                 methodArgs: [
-                    prime['id'],
-                    config['setup']['platform']['asset_id'],
-                    prime['prime_asset_id'],
-                    prime['legacy_asset_id'],
+                    prime['sales'],
+                    prime['drains'],
+                    prime['transforms'],
                 ],
                 suggestedParams: {
                     ...params,
-                    fee: 4000,
+                    fee: 1000,
                     flatFee: true
                 }
             });
 
             await devnet.execute(composer);
 
-            storage['initialized'] = true;
+            core['finalized'] = true;
 
-            config['gen1']['contracts']['storage'] = storage;
+            config['gen1']['contracts']['prime']['core'] = core;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('called initialize method');
+            console.log('called finalize method');
         }
 
     } catch (error) {

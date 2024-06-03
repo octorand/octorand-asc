@@ -7,15 +7,14 @@ exports.execute = async function () {
     try {
         let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen1.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
+        let sender = connection.admin.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
-        let storage = config['gen1']['contracts']['storage'];
-        let prime = config['gen1']['inputs']['prime'];
+        let core = config['gen1']['contracts']['prime']['core'];
 
-        if (!storage['locked']) {
+        if (!core['transferred']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -24,9 +23,24 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: storage['application_address'],
-                    assetIndex: prime['prime_asset_id'],
-                    amount: 1,
+                    to: core['application_address'],
+                    assetIndex: config['setup']['platform']['asset_id'],
+                    amount: 1000000,
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                })
+            });
+
+            composer.addTransaction({
+                sender: sender,
+                signer: signer,
+                txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
+                    from: sender,
+                    to: core['application_address'],
+                    amount: 1000000,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -37,12 +51,12 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            storage['locked'] = true;
+            core['transferred'] = true;
 
-            config['gen1']['contracts']['storage'] = storage;
+            config['gen1']['contracts']['prime']['core'] = core;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('locked prime asset');
+            console.log('transferred core assets');
         }
 
     } catch (error) {

@@ -12,24 +12,29 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/storage/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/contract.json')));
 
-        let storage = config['gen1']['contracts']['storage'];
+        let core = config['gen1']['contracts']['prime']['core'];
         let prime = config['gen1']['inputs']['prime'];
 
-        if (!storage['finalized']) {
+        if (!core['populated']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
                 sender: sender,
                 signer: signer,
-                appID: storage['application_id'],
-                method: helpers.method(contract, 'finalize'),
+                appID: core['application_id'],
+                method: helpers.method(contract, 'populate'),
                 methodArgs: [
-                    prime['sales'],
-                    prime['drains'],
-                    prime['transforms'],
+                    prime['theme'],
+                    prime['skin'],
+                    prime['is_founder'],
+                    prime['is_artifact'],
+                    prime['is_pioneer'],
+                    prime['is_explorer'],
+                    prime['score'],
+                    helpers.bytes(prime['name'], 8),
                 ],
                 suggestedParams: {
                     ...params,
@@ -40,12 +45,12 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            storage['finalized'] = true;
+            core['populated'] = true;
 
-            config['gen1']['contracts']['storage'] = storage;
+            config['gen1']['contracts']['prime']['core'] = core;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('called finalize method');
+            console.log('called populate method');
         }
 
     } catch (error) {

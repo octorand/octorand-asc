@@ -2,30 +2,24 @@ require('dotenv').config();
 
 exports.execute = async function () {
 
-    console.log('compile gen1 prime contracts');
+    console.log('setup gen1 prime contracts');
     await require('./prime/00_compile_contracts').execute();
-
-    console.log('create gen1 prime applications');
     await require('./prime/01_create_applications').execute();
-
-    console.log('update gen1 prime applications');
     await require('./prime/02_update_applications').execute();
 
+    console.log('setup gen1 prime resources');
+    await require('./prime/03_setup_prime_input').execute();
+    await require('./prime/04_create_prime_asset').execute();
+    await require('./prime/05_create_legacy_asset').execute();
+    await require('./prime/06_fund_application').execute();
+    await require('./prime/07_call_initialize').execute();
+    await require('./prime/08_call_populate').execute();
+    await require('./prime/09_call_finalize').execute();
+    await require('./prime/10_transfer_assets').execute();
+    await require('./prime/11_lock_prime_asset').execute();
 
 
-    // console.log('config gen1 storage application');
-    // await require('./storage/00_compile_contract').execute();
-    // await require('./storage/01_setup_prime_input').execute();
-    // await require('./storage/02_create_legacy_asset').execute();
-    // await require('./storage/03_create_prime_asset').execute();
-    // await require('./storage/04_create_application').execute();
-    // await require('./storage/05_fund_application').execute();
-    // await require('./storage/06_call_initialize').execute();
-    // await require('./storage/07_call_populate').execute();
-    // await require('./storage/08_call_finalize').execute();
-    // await require('./storage/09_transfer_assets').execute();
-    // await require('./storage/10_lock_prime_asset').execute();
-    // await require('./storage/11_update_application').execute();
+
 
     // console.log('config gen1 wallet application');
     // await require('./wallet/03_call_upgrade').execute();
