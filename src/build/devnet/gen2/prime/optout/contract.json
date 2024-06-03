@@ -1,0 +1,22 @@
+{
+    "name": "GenTwoPrimeOptout",
+    "methods": [
+        {
+            "name": "optout",
+            "args": [
+                {
+                    "type": "asset",
+                    "name": "asset"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

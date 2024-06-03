@@ -3,31 +3,60 @@ import json
 
 import env
 
-import gen1_contract_design
-import gen1_contract_market
-import gen1_contract_storage
-import gen1_contract_vault
-import gen1_contract_wallet
+# import gen1_contract_prime
+# import gen1_contract_prime_buy
+# import gen1_contract_prime_list
+# import gen1_contract_prime_mint
+# import gen1_contract_prime_optin
+# import gen1_contract_prime_optout
+# import gen1_contract_prime_rename
+# import gen1_contract_prime_repaint
+# import gen1_contract_prime_unlist
+# import gen1_contract_prime_upgrade
+# import gen1_contract_prime_withdraw
 
-import gen2_contract_design
-import gen2_contract_market
-import gen2_contract_storage
-import gen2_contract_vault
-import gen2_contract_wallet
+# import gen2_contract_prime
+# import gen2_contract_prime_buy
+# import gen2_contract_prime_list
+# import gen2_contract_prime_mint
+# import gen2_contract_prime_optin
+# import gen2_contract_prime_optout
+# import gen2_contract_prime_rename
+# import gen2_contract_prime_repaint
+# import gen2_contract_prime_unlist
+# import gen2_contract_prime_upgrade
+# import gen2_contract_prime_withdraw
 
 
 def run():
-    write(*gen1_contract_design.router.compile_program(version=10), "gen1/design")
-    write(*gen1_contract_market.router.compile_program(version=10), "gen1/market")
-    write(*gen1_contract_storage.router.compile_program(version=10), "gen1/storage")
-    write(*gen1_contract_vault.router.compile_program(version=10), "gen1/vault")
-    write(*gen1_contract_wallet.router.compile_program(version=10), "gen1/wallet")
+    compile("gen1_contract_prime", "gen1/prime")
+    compile("gen1_contract_prime_buy", "gen1/prime/buy")
+    compile("gen1_contract_prime_list", "gen1/prime/list")
+    compile("gen1_contract_prime_mint", "gen1/prime/mint")
+    compile("gen1_contract_prime_optin", "gen1/prime/optin")
+    compile("gen1_contract_prime_optout", "gen1/prime/optout")
+    compile("gen1_contract_prime_rename", "gen1/prime/rename")
+    compile("gen1_contract_prime_repaint", "gen1/prime/repaint")
+    compile("gen1_contract_prime_unlist", "gen1/prime/unlist")
+    compile("gen1_contract_prime_upgrade", "gen1/prime/upgrade")
+    compile("gen1_contract_prime_withdraw", "gen1/prime/withdraw")
 
-    write(*gen2_contract_design.router.compile_program(version=10), "gen2/design")
-    write(*gen2_contract_market.router.compile_program(version=10), "gen2/market")
-    write(*gen2_contract_storage.router.compile_program(version=10), "gen2/storage")
-    write(*gen2_contract_vault.router.compile_program(version=10), "gen2/vault")
-    write(*gen2_contract_wallet.router.compile_program(version=10), "gen2/wallet")
+    compile("gen2_contract_prime", "gen2/prime")
+    compile("gen2_contract_prime_buy", "gen2/prime/buy")
+    compile("gen2_contract_prime_list", "gen2/prime/list")
+    compile("gen2_contract_prime_mint", "gen2/prime/mint")
+    compile("gen2_contract_prime_optin", "gen2/prime/optin")
+    compile("gen2_contract_prime_optout", "gen2/prime/optout")
+    compile("gen2_contract_prime_rename", "gen2/prime/rename")
+    compile("gen2_contract_prime_repaint", "gen2/prime/repaint")
+    compile("gen2_contract_prime_unlist", "gen2/prime/unlist")
+    compile("gen2_contract_prime_upgrade", "gen2/prime/upgrade")
+    compile("gen2_contract_prime_withdraw", "gen2/prime/withdraw")
+
+
+def compile(script, folder):
+    contract = __import__(script)
+    write(*contract.router.compile_program(version=10), folder)
 
 
 def write(approval, clear, contract, name):

@@ -43,13 +43,13 @@ class Prime:
 
 class Event:
     def __init__(self):
-        self.design_rename = Itob(Int(100))
-        self.design_repaint = Itob(Int(101))
-        self.market_list = Itob(Int(110))
-        self.market_unlist = Itob(Int(111))
-        self.market_buy = Itob(Int(112))
-        self.vault_optin = Itob(Int(120))
-        self.vault_optout = Itob(Int(121))
-        self.wallet_upgrade = Itob(Int(130))
-        self.wallet_mint = Itob(Int(131))
-        self.wallet_withdraw = Itob(Int(132))
+        self.prime_buy = Bytes("prby")
+        self.prime_list = Bytes("prls")
+        self.prime_mint = Bytes("prmt")
+        self.prime_optin = Bytes("proi")
+        self.prime_optout = Bytes("proo")
+        self.prime_rename = Bytes("prrn")
+        self.prime_repaint = Bytes("prrp")
+        self.prime_unlist = Bytes("prul")
+        self.prime_upgrade = Bytes("prug")
+        self.prime_withdraw = Bytes("prwd")

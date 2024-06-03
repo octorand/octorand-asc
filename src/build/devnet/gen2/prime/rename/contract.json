@@ -1,0 +1,26 @@
+{
+    "name": "GenTwoPrimeRename",
+    "methods": [
+        {
+            "name": "rename",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "index"
+                },
+                {
+                    "type": "uint64",
+                    "name": "value"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}
