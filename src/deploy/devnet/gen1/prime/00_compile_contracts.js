@@ -8,27 +8,18 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
-        let core = config['gen1']['contracts']['prime']['core'];
-        if (!core['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/devnet/gen1/prime/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/devnet/gen1/prime/clear.teal', 'utf8');
+        let contracts = ['', 'buy', 'list', 'mint', 'optin', 'optout', 'rename', 'repaint', 'unlist', 'upgrade', 'withdraw'];
 
-            console.log('gen1 prime approval program length is ' + (await devnet.compile(approvalProgram)).length + ' bytes');
-            console.log('gen1 prime clear program length is ' + (await devnet.compile(clearProgram)).length + ' bytes');
-        }
+        for (let i = 0; i < contracts.length; i++) {
+            let contract = contracts[i];
 
-        let options = ['buy', 'list', 'mint', 'optin', 'optout', 'rename', 'repaint', 'unlist', 'upgrade', 'withdraw'];
+            let application = config['gen1']['contracts']['prime'][contract];
+            if (!application['application_id']) {
+                let approvalProgram = fs.readFileSync('src/build/devnet/gen1/prime/' + contract + '/approval.teal', 'utf8');
+                let clearProgram = fs.readFileSync('src/build/devnet/gen1/prime/' + contract + '/clear.teal', 'utf8');
 
-        for (let i = 0; i < options.length; i++) {
-            let option = options[i];
-
-            let contract = config['gen1']['contracts']['prime'][option];
-            if (!contract['application_id']) {
-                let approvalProgram = fs.readFileSync('src/build/devnet/gen1/prime/' + option + '/approval.teal', 'utf8');
-                let clearProgram = fs.readFileSync('src/build/devnet/gen1/prime/' + option + '/clear.teal', 'utf8');
-
-                console.log('gen1 prime ' + option + ' approval program length is ' + (await devnet.compile(approvalProgram)).length + ' bytes');
-                console.log('gen1 prime ' + option + ' clear program length is ' + (await devnet.compile(clearProgram)).length + ' bytes');
+                console.log('gen1 prime ' + contract + ' approval program length is ' + (await devnet.compile(approvalProgram)).length + ' bytes');
+                console.log('gen1 prime ' + contract + ' clear program length is ' + (await devnet.compile(clearProgram)).length + ' bytes');
             }
         }
 

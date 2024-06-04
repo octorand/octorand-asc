@@ -3,33 +3,9 @@ import json
 
 import env
 
-# import gen1_contract_prime
-# import gen1_contract_prime_buy
-# import gen1_contract_prime_list
-# import gen1_contract_prime_mint
-# import gen1_contract_prime_optin
-# import gen1_contract_prime_optout
-# import gen1_contract_prime_rename
-# import gen1_contract_prime_repaint
-# import gen1_contract_prime_unlist
-# import gen1_contract_prime_upgrade
-# import gen1_contract_prime_withdraw
-
-# import gen2_contract_prime
-# import gen2_contract_prime_buy
-# import gen2_contract_prime_list
-# import gen2_contract_prime_mint
-# import gen2_contract_prime_optin
-# import gen2_contract_prime_optout
-# import gen2_contract_prime_rename
-# import gen2_contract_prime_repaint
-# import gen2_contract_prime_unlist
-# import gen2_contract_prime_upgrade
-# import gen2_contract_prime_withdraw
-
 
 def run():
-    compile("gen1_contract_prime", "gen1/prime")
+    compile("gen1_contract_prime_app", "gen1/prime/app")
     compile("gen1_contract_prime_buy", "gen1/prime/buy")
     compile("gen1_contract_prime_list", "gen1/prime/list")
     compile("gen1_contract_prime_mint", "gen1/prime/mint")
@@ -41,7 +17,7 @@ def run():
     compile("gen1_contract_prime_upgrade", "gen1/prime/upgrade")
     compile("gen1_contract_prime_withdraw", "gen1/prime/withdraw")
 
-    compile("gen2_contract_prime", "gen2/prime")
+    compile("gen2_contract_prime_app", "gen2/prime/app")
     compile("gen2_contract_prime_buy", "gen2/prime/buy")
     compile("gen2_contract_prime_list", "gen2/prime/list")
     compile("gen2_contract_prime_mint", "gen2/prime/mint")

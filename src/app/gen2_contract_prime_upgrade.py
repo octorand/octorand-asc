@@ -1,6 +1,6 @@
 import func
 import gen2_const
-import gen2_contract_prime
+import gen2_contract_prime_app
 
 from pyteal import *
 from typing import *
@@ -64,7 +64,7 @@ def upgrade(
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=gen2_contract_prime.upgrade.method_signature(),
+            method_signature=gen2_contract_prime_app.upgrade.method_signature(),
             args=[
                 Txn.sender(),
                 log,

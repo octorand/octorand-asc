@@ -1,6 +1,6 @@
 import func
 import gen1_const
-import gen1_contract_prime
+import gen1_contract_prime_app
 
 from pyteal import *
 from typing import *
@@ -58,7 +58,7 @@ def unlist(
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=gen1_contract_prime.unlist.method_signature(),
+            method_signature=gen1_contract_prime_app.unlist.method_signature(),
             args=[
                 Txn.sender(),
                 log,

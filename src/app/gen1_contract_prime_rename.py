@@ -1,6 +1,6 @@
 import func
 import gen1_const
-import gen1_contract_prime
+import gen1_contract_prime_app
 
 from pyteal import *
 from typing import *
@@ -86,7 +86,7 @@ def rename(
         score.set(score_value),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=gen1_contract_prime.score.method_signature(),
+            method_signature=gen1_contract_prime_app.score.method_signature(),
             args=[
                 score,
             ],
@@ -94,7 +94,7 @@ def rename(
         transforms.set(transforms_value),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=gen1_contract_prime.rename.method_signature(),
+            method_signature=gen1_contract_prime_app.rename.method_signature(),
             args=[
                 index,
                 value,

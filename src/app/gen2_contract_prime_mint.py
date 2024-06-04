@@ -1,6 +1,6 @@
 import func
 import gen2_const
-import gen2_contract_prime
+import gen2_contract_prime_app
 
 from pyteal import *
 from typing import *
@@ -62,7 +62,7 @@ def mint(
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=gen2_contract_prime.mint.method_signature(),
+            method_signature=gen2_contract_prime_app.mint.method_signature(),
             args=[
                 amount,
                 Txn.sender(),
