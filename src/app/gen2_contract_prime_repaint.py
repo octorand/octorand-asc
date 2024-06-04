@@ -1,6 +1,7 @@
 import func
 import gen2_const
 import gen2_contract_prime_app
+import gen1_contract_prime_app
 
 from pyteal import *
 from typing import *
@@ -50,6 +51,8 @@ def repaint(
     app_id = application.application_id()
     score_value = const.repaint_score
     score = abi.make(abi.Uint64)
+    parent_score_value = Div(score_value, const.parent_score_share)
+    parent_score = abi.make(abi.Uint64)
     transforms_value = Int(1)
     transforms = abi.make(abi.Uint64)
     log = Concat(
@@ -80,6 +83,14 @@ def repaint(
             method_signature=gen2_contract_prime_app.score.method_signature(),
             args=[
                 score,
+            ],
+        ),
+        parent_score.set(parent_score),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=prime.parent_application_id.external(app_id),
+            method_signature=gen1_contract_prime_app.score.method_signature(),
+            args=[
+                parent_score,
             ],
         ),
         transforms.set(transforms_value),

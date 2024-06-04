@@ -1,6 +1,7 @@
 import func
 import gen2_const
 import gen2_contract_prime_app
+import gen1_contract_prime_app
 
 from pyteal import *
 from typing import *
@@ -58,6 +59,8 @@ def rename(
     price = Mul(const.rename_price, value_difference)
     score_value = Mul(const.rename_score, value_difference)
     score = abi.make(abi.Uint64)
+    parent_score_value = Div(score_value, const.parent_score_share)
+    parent_score = abi.make(abi.Uint64)
     transforms_value = value_difference
     transforms = abi.make(abi.Uint64)
     log = Concat(
@@ -89,6 +92,14 @@ def rename(
             method_signature=gen2_contract_prime_app.score.method_signature(),
             args=[
                 score,
+            ],
+        ),
+        parent_score.set(parent_score),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=prime.parent_application_id.external(app_id),
+            method_signature=gen1_contract_prime_app.score.method_signature(),
+            args=[
+                parent_score,
             ],
         ),
         transforms.set(transforms_value),

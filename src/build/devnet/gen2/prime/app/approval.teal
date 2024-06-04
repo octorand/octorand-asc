@@ -877,7 +877,6 @@ retsub
 // score
 score_25:
 proto 1 0
-int 0
 callsub assertcaller_10
 byte "Prime"
 int 48
@@ -889,24 +888,6 @@ byte "Prime"
 int 48
 int 8
 callsub setglobaluint_4
-frame_dig -1
-int 10
-/
-frame_bury 0
-itxn_begin
-int appl
-itxn_field TypeEnum
-byte "Prime"
-int 32
-int 8
-callsub getglobaluint_2
-itxn_field ApplicationID
-method "score(uint64)void"
-itxn_field ApplicationArgs
-frame_dig 0
-itob
-itxn_field ApplicationArgs
-itxn_submit
 retsub
 
 // initialize_caster

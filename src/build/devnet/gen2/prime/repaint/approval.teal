@@ -185,7 +185,7 @@ retsub
 repaint_9:
 proto 3 0
 int 0
-dup
+dupn 2
 byte "prrp"
 int 1
 itob
@@ -265,8 +265,26 @@ frame_dig 0
 itob
 itxn_field ApplicationArgs
 itxn_submit
-int 1
+frame_dig 1
 frame_bury 1
+itxn_begin
+int appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 32
+int 8
+callsub getglobalexternaluint_1
+itxn_field ApplicationID
+method "score(uint64)void"
+itxn_field ApplicationArgs
+frame_dig 1
+itob
+itxn_field ApplicationArgs
+itxn_submit
+int 1
+frame_bury 2
 itxn_begin
 int appl
 itxn_field TypeEnum
@@ -281,7 +299,7 @@ itxn_field ApplicationArgs
 frame_dig -2
 itob
 itxn_field ApplicationArgs
-frame_dig 1
+frame_dig 2
 itob
 itxn_field ApplicationArgs
 byte "prrp"

@@ -1,6 +1,5 @@
 import func
 import gen2_const
-import gen1_contract_prime_app
 
 from pyteal import *
 from typing import *
@@ -278,16 +277,7 @@ def optout(
 def score(
     value: abi.Uint64,
 ):
-    parent_value = abi.make(abi.Uint64)
     return Seq(
         assert_caller(),
         prime.score.increment(value.get()),
-        parent_value.set(Div(value.get(), const.parent_score_share)),
-        InnerTxnBuilder.ExecuteMethodCall(
-            app_id=prime.parent_application_id.get(),
-            method_signature=gen1_contract_prime_app.score.method_signature(),
-            args=[
-                parent_value,
-            ],
-        ),
     )
