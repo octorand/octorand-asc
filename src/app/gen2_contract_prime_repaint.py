@@ -85,7 +85,7 @@ def repaint(
                 score,
             ],
         ),
-        parent_score.set(parent_score),
+        parent_score.set(parent_score_value),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=prime.parent_application_id.external(app_id),
             method_signature=gen1_contract_prime_app.score.method_signature(),

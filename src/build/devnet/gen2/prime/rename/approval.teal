@@ -80,10 +80,10 @@ proto 1 1
 frame_dig -1
 asset_params_get AssetReserve
 store 5
-store 4
+store 3
 load 5
 assert
-load 4
+load 3
 retsub
 
 // prepare_log
@@ -104,9 +104,9 @@ proto 1 0
 txn Sender
 frame_dig -1
 asset_holding_get AssetBalance
-store 3
+store 4
 store 1
-load 3
+load 4
 assert
 load 1
 int 0
@@ -220,7 +220,7 @@ callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_9_l14
+bnz rename_9_l17
 frame_dig -1
 txnas Applications
 byte "Prime"
@@ -280,7 +280,7 @@ callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_9_l13
+bnz rename_9_l16
 frame_dig -1
 txnas Applications
 byte "Prime"
@@ -312,7 +312,7 @@ callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_9_l12
+bnz rename_9_l15
 frame_dig -1
 txnas Applications
 byte "Prime"
@@ -338,7 +338,32 @@ frame_dig 0
 itob
 itxn_field ApplicationArgs
 itxn_submit
-frame_dig 1
+int 100
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+>
+bnz rename_9_l14
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+frame_dig -2
+-
+rename_9_l8:
+*
+int 10
+/
 frame_bury 1
 itxn_begin
 int appl
@@ -366,7 +391,7 @@ callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_9_l11
+bnz rename_9_l13
 frame_dig -1
 txnas Applications
 byte "Prime"
@@ -377,7 +402,7 @@ frame_dig -3
 getbyte
 frame_dig -2
 -
-rename_9_l8:
+rename_9_l10:
 frame_bury 2
 itxn_begin
 int appl
@@ -430,7 +455,7 @@ callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 >
-bnz rename_9_l10
+bnz rename_9_l12
 frame_dig -1
 txnas Applications
 byte "Prime"
@@ -441,31 +466,7 @@ frame_dig -3
 getbyte
 frame_dig -2
 -
-b rename_9_l15
-rename_9_l10:
-frame_dig -2
-frame_dig -1
-txnas Applications
-byte "Prime"
-int 104
-int 16
-callsub getglobalexternalbytes_0
-frame_dig -3
-getbyte
--
-b rename_9_l15
-rename_9_l11:
-frame_dig -2
-frame_dig -1
-txnas Applications
-byte "Prime"
-int 104
-int 16
-callsub getglobalexternalbytes_0
-frame_dig -3
-getbyte
--
-b rename_9_l8
+b rename_9_l18
 rename_9_l12:
 frame_dig -2
 frame_dig -1
@@ -477,7 +478,7 @@ callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 -
-b rename_9_l6
+b rename_9_l18
 rename_9_l13:
 frame_dig -2
 frame_dig -1
@@ -489,7 +490,7 @@ callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 -
-b rename_9_l4
+b rename_9_l10
 rename_9_l14:
 frame_dig -2
 frame_dig -1
@@ -501,8 +502,44 @@ callsub getglobalexternalbytes_0
 frame_dig -3
 getbyte
 -
-b rename_9_l2
+b rename_9_l8
 rename_9_l15:
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+-
+b rename_9_l6
+rename_9_l16:
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+-
+b rename_9_l4
+rename_9_l17:
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+-
+b rename_9_l2
+rename_9_l18:
 *
 itob
 concat
