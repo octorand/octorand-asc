@@ -5,7 +5,6 @@ const devnet = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {
-
         let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.gen1.addr;
@@ -41,7 +40,6 @@ exports.execute = async function () {
 
             console.log('opted in gen1');
         }
-
     } catch (error) {
         console.log(error);
     }

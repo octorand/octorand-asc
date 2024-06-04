@@ -5,7 +5,6 @@ const devnet = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {
-
         let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.admin.addr;
@@ -39,9 +38,9 @@ exports.execute = async function () {
             });
 
             let response = await devnet.execute(composer);
-            let assetId = response.information['asset-index'];
+            let asset_id = response.information['asset-index'];
 
-            vault['asset_id'] = assetId;
+            vault['asset_id'] = asset_id;
             vault['manager'] = sender;
             vault['reserve'] = sender;
 
@@ -50,7 +49,6 @@ exports.execute = async function () {
 
             console.log('create vault asset');
         }
-
     } catch (error) {
         console.log(error);
     }

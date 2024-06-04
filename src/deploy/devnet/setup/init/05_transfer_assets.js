@@ -5,7 +5,6 @@ const devnet = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {
-
         let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.admin.addr;
@@ -86,7 +85,6 @@ exports.execute = async function () {
 
             console.log('transfer assets');
         }
-
     } catch (error) {
         console.log(error);
     }

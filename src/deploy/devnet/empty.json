@@ -9,7 +9,7 @@
         },
         "contracts": {
             "prime": {
-                "core": {},
+                "app": {},
                 "buy": {},
                 "list": {},
                 "mint": {},
@@ -29,7 +29,7 @@
         },
         "contracts": {
             "prime": {
-                "core": {},
+                "app": {},
                 "buy": {},
                 "list": {},
                 "mint": {},

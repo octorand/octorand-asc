@@ -5,7 +5,6 @@ const devnet = require('./../../../../chain/devnet');
 
 exports.execute = async function () {
     try {
-
         let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.player.addr;
@@ -56,7 +55,6 @@ exports.execute = async function () {
 
             console.log('opted in player');
         }
-
     } catch (error) {
         console.log(error);
     }

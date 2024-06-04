@@ -30,7 +30,6 @@ exports.execute = async function () {
 
             console.log('config prime input');
         };
-
     } catch (error) {
         console.log(error);
     }
