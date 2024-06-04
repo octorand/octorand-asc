@@ -1,0 +1,26 @@
+{
+    "name": "GenOnePrimeRepaint",
+    "methods": [
+        {
+            "name": "repaint",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "theme"
+                },
+                {
+                    "type": "uint64",
+                    "name": "skin"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

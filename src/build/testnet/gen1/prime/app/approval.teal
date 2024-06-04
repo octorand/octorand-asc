@@ -1,0 +1,1158 @@
+#pragma version 10
+txn NumAppArgs
+int 0
+==
+bnz main_l28
+txna ApplicationArgs 0
+method "initialize(uint64,asset,asset,asset)void"
+==
+bnz main_l27
+txna ApplicationArgs 0
+method "populate(uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64,byte[8])void"
+==
+bnz main_l26
+txna ApplicationArgs 0
+method "list(uint64,address,byte[240])void"
+==
+bnz main_l25
+txna ApplicationArgs 0
+method "unlist(address,byte[240])void"
+==
+bnz main_l24
+txna ApplicationArgs 0
+method "buy(address,byte[240])void"
+==
+bnz main_l23
+txna ApplicationArgs 0
+method "rename(uint64,uint64,uint64,byte[240])void"
+==
+bnz main_l22
+txna ApplicationArgs 0
+method "repaint(uint64,uint64,uint64,byte[240])void"
+==
+bnz main_l21
+txna ApplicationArgs 0
+method "upgrade(address,byte[240])void"
+==
+bnz main_l20
+txna ApplicationArgs 0
+method "mint(uint64,address,byte[240])void"
+==
+bnz main_l19
+txna ApplicationArgs 0
+method "withdraw(uint64,address,byte[240])void"
+==
+bnz main_l18
+txna ApplicationArgs 0
+method "optin(asset,byte[240])void"
+==
+bnz main_l17
+txna ApplicationArgs 0
+method "optout(asset,address,byte[240])void"
+==
+bnz main_l16
+txna ApplicationArgs 0
+method "score(uint64)void"
+==
+bnz main_l15
+err
+main_l15:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub scorecaster_38
+int 1
+return
+main_l16:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub optoutcaster_37
+int 1
+return
+main_l17:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub optincaster_36
+int 1
+return
+main_l18:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub withdrawcaster_35
+int 1
+return
+main_l19:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub mintcaster_34
+int 1
+return
+main_l20:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub upgradecaster_33
+int 1
+return
+main_l21:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub repaintcaster_32
+int 1
+return
+main_l22:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub renamecaster_31
+int 1
+return
+main_l23:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub buycaster_30
+int 1
+return
+main_l24:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub unlistcaster_29
+int 1
+return
+main_l25:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub listcaster_28
+int 1
+return
+main_l26:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub populatecaster_27
+int 1
+return
+main_l27:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub initializecaster_26
+int 1
+return
+main_l28:
+txn OnCompletion
+int NoOp
+==
+bnz main_l32
+txn OnCompletion
+int UpdateApplication
+==
+bnz main_l31
+err
+main_l31:
+txn ApplicationID
+int 0
+!=
+assert
+callsub update_12
+int 1
+return
+main_l32:
+txn ApplicationID
+int 0
+==
+assert
+callsub create_11
+int 1
+return
+
+// init_global
+initglobal_0:
+proto 1 0
+frame_dig -1
+int 120
+bzero
+app_global_put
+retsub
+
+// get_global_bytes
+getglobalbytes_1:
+proto 3 1
+frame_dig -3
+app_global_get
+frame_dig -2
+frame_dig -1
+extract3
+retsub
+
+// get_global_uint
+getglobaluint_2:
+proto 3 1
+frame_dig -3
+frame_dig -2
+frame_dig -1
+callsub getglobalbytes_1
+btoi
+retsub
+
+// set_global_bytes
+setglobalbytes_3:
+proto 4 0
+frame_dig -4
+len
+frame_dig -1
+==
+assert
+frame_dig -3
+frame_dig -3
+app_global_get
+int 0
+frame_dig -2
+extract3
+frame_dig -4
+concat
+frame_dig -3
+app_global_get
+frame_dig -2
+frame_dig -1
++
+int 120
+substring3
+concat
+app_global_put
+retsub
+
+// set_global_uint
+setglobaluint_4:
+proto 4 0
+frame_dig -4
+itob
+int 8
+frame_dig -1
+-
+frame_dig -1
+extract3
+frame_dig -3
+frame_dig -2
+frame_dig -1
+callsub setglobalbytes_3
+retsub
+
+// optin_into_asset
+optinintoasset_5:
+proto 1 0
+itxn_begin
+int axfer
+itxn_field TypeEnum
+frame_dig -1
+itxn_field XferAsset
+int 0
+itxn_field AssetAmount
+global CurrentApplicationAddress
+itxn_field AssetReceiver
+int 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// optout_from_asset
+optoutfromasset_6:
+proto 2 0
+itxn_begin
+int axfer
+itxn_field TypeEnum
+frame_dig -2
+itxn_field XferAsset
+int 0
+itxn_field AssetAmount
+frame_dig -1
+itxn_field AssetReceiver
+frame_dig -1
+itxn_field AssetCloseTo
+int 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// execute_payment
+executepayment_7:
+proto 2 0
+itxn_begin
+int pay
+itxn_field TypeEnum
+frame_dig -2
+itxn_field Receiver
+frame_dig -1
+itxn_field Amount
+int 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// execute_asset_transfer
+executeassettransfer_8:
+proto 3 0
+itxn_begin
+int axfer
+itxn_field TypeEnum
+frame_dig -3
+itxn_field XferAsset
+frame_dig -2
+itxn_field AssetReceiver
+frame_dig -1
+itxn_field AssetAmount
+int 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// assert_application_creator
+assertapplicationcreator_9:
+proto 2 0
+frame_dig -2
+app_params_get AppCreator
+store 1
+store 0
+load 1
+assert
+load 0
+frame_dig -1
+==
+assert
+retsub
+
+// assert_caller
+assertcaller_10:
+proto 0 0
+global CallerApplicationID
+addr L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y
+callsub assertapplicationcreator_9
+retsub
+
+// create
+create_11:
+proto 0 0
+txn Sender
+addr CMT5VJ7JICLKNWFXFJZQI6XPV4B4E4AXAWGLBARGH5SVUSHV47VPXZ37XE
+==
+assert
+byte "Prime"
+callsub initglobal_0
+retsub
+
+// update
+update_12:
+proto 0 0
+txn Sender
+addr L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y
+==
+assert
+retsub
+
+// initialize
+initialize_13:
+proto 4 0
+txn Sender
+addr L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y
+==
+assert
+frame_dig -4
+byte "Prime"
+int 0
+int 8
+callsub setglobaluint_4
+frame_dig -3
+txnas Assets
+byte "Prime"
+int 8
+int 8
+callsub setglobaluint_4
+frame_dig -2
+txnas Assets
+byte "Prime"
+int 16
+int 8
+callsub setglobaluint_4
+frame_dig -1
+txnas Assets
+byte "Prime"
+int 24
+int 8
+callsub setglobaluint_4
+int 0
+byte "Prime"
+int 56
+int 8
+callsub setglobaluint_4
+global ZeroAddress
+byte "Prime"
+int 64
+int 32
+callsub setglobalbytes_3
+frame_dig -3
+txnas Assets
+callsub optinintoasset_5
+frame_dig -2
+txnas Assets
+callsub optinintoasset_5
+frame_dig -1
+txnas Assets
+callsub optinintoasset_5
+retsub
+
+// populate
+populate_14:
+proto 11 0
+txn Sender
+addr L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y
+==
+assert
+frame_dig -11
+byte "Prime"
+int 40
+int 2
+callsub setglobaluint_4
+frame_dig -10
+byte "Prime"
+int 42
+int 2
+callsub setglobaluint_4
+frame_dig -9
+byte "Prime"
+int 44
+int 1
+callsub setglobaluint_4
+frame_dig -8
+byte "Prime"
+int 45
+int 1
+callsub setglobaluint_4
+frame_dig -7
+byte "Prime"
+int 46
+int 1
+callsub setglobaluint_4
+frame_dig -6
+byte "Prime"
+int 47
+int 1
+callsub setglobaluint_4
+frame_dig -5
+byte "Prime"
+int 48
+int 8
+callsub setglobaluint_4
+frame_dig -4
+byte "Prime"
+int 96
+int 2
+callsub setglobaluint_4
+frame_dig -3
+byte "Prime"
+int 98
+int 2
+callsub setglobaluint_4
+frame_dig -2
+byte "Prime"
+int 100
+int 2
+callsub setglobaluint_4
+frame_dig -1
+byte "Prime"
+int 104
+int 8
+callsub setglobalbytes_3
+retsub
+
+// list
+list_15:
+proto 3 0
+byte "Prime"
+int 64
+int 32
+callsub getglobalbytes_1
+global ZeroAddress
+==
+assert
+byte "Prime"
+int 56
+int 8
+callsub getglobaluint_2
+int 0
+==
+assert
+callsub assertcaller_10
+frame_dig -3
+byte "Prime"
+int 56
+int 8
+callsub setglobaluint_4
+frame_dig -2
+byte "Prime"
+int 64
+int 32
+callsub setglobalbytes_3
+frame_dig -1
+log
+retsub
+
+// unlist
+unlist_16:
+proto 2 0
+byte "Prime"
+int 56
+int 8
+callsub getglobaluint_2
+int 0
+>
+assert
+byte "Prime"
+int 64
+int 32
+callsub getglobalbytes_1
+frame_dig -2
+==
+assert
+callsub assertcaller_10
+byte "Prime"
+int 16
+int 8
+callsub getglobaluint_2
+frame_dig -2
+int 1
+callsub executeassettransfer_8
+int 0
+byte "Prime"
+int 56
+int 8
+callsub setglobaluint_4
+global ZeroAddress
+byte "Prime"
+int 64
+int 32
+callsub setglobalbytes_3
+frame_dig -1
+log
+retsub
+
+// buy
+buy_17:
+proto 2 0
+byte "Prime"
+int 56
+int 8
+callsub getglobaluint_2
+int 0
+>
+assert
+byte "Prime"
+int 64
+int 32
+callsub getglobalbytes_1
+global ZeroAddress
+!=
+assert
+callsub assertcaller_10
+byte "Prime"
+int 16
+int 8
+callsub getglobaluint_2
+frame_dig -2
+int 1
+callsub executeassettransfer_8
+int 0
+byte "Prime"
+int 56
+int 8
+callsub setglobaluint_4
+global ZeroAddress
+byte "Prime"
+int 64
+int 32
+callsub setglobalbytes_3
+byte "Prime"
+int 96
+int 2
+callsub getglobaluint_2
+int 1
++
+byte "Prime"
+int 96
+int 2
+callsub setglobaluint_4
+frame_dig -1
+log
+retsub
+
+// rename
+rename_18:
+proto 4 0
+callsub assertcaller_10
+byte "Prime"
+int 104
+int 8
+callsub getglobalbytes_1
+frame_dig -4
+frame_dig -3
+setbyte
+byte "Prime"
+int 104
+int 8
+callsub setglobalbytes_3
+byte "Prime"
+int 100
+int 2
+callsub getglobaluint_2
+frame_dig -2
++
+byte "Prime"
+int 100
+int 2
+callsub setglobaluint_4
+frame_dig -1
+log
+retsub
+
+// repaint
+repaint_19:
+proto 4 0
+callsub assertcaller_10
+frame_dig -4
+byte "Prime"
+int 40
+int 2
+callsub setglobaluint_4
+frame_dig -3
+byte "Prime"
+int 42
+int 2
+callsub setglobaluint_4
+byte "Prime"
+int 100
+int 2
+callsub getglobaluint_2
+frame_dig -2
++
+byte "Prime"
+int 100
+int 2
+callsub setglobaluint_4
+frame_dig -1
+log
+retsub
+
+// upgrade
+upgrade_20:
+proto 2 0
+byte "Prime"
+int 47
+int 1
+callsub getglobaluint_2
+int 0
+==
+assert
+callsub assertcaller_10
+byte "Prime"
+int 16
+int 8
+callsub getglobaluint_2
+frame_dig -2
+int 1
+callsub executeassettransfer_8
+int 1
+byte "Prime"
+int 47
+int 1
+callsub setglobaluint_4
+frame_dig -1
+log
+retsub
+
+// mint
+mint_21:
+proto 3 0
+callsub assertcaller_10
+byte "Prime"
+int 8
+int 8
+callsub getglobaluint_2
+frame_dig -2
+frame_dig -3
+callsub executeassettransfer_8
+byte "Prime"
+int 98
+int 2
+callsub getglobaluint_2
+int 1
++
+byte "Prime"
+int 98
+int 2
+callsub setglobaluint_4
+frame_dig -1
+log
+retsub
+
+// withdraw
+withdraw_22:
+proto 3 0
+callsub assertcaller_10
+frame_dig -2
+frame_dig -3
+callsub executepayment_7
+frame_dig -1
+log
+retsub
+
+// optin
+optin_23:
+proto 2 0
+frame_dig -2
+txnas Assets
+byte "Prime"
+int 8
+int 8
+callsub getglobaluint_2
+!=
+assert
+frame_dig -2
+txnas Assets
+byte "Prime"
+int 16
+int 8
+callsub getglobaluint_2
+!=
+assert
+frame_dig -2
+txnas Assets
+byte "Prime"
+int 24
+int 8
+callsub getglobaluint_2
+!=
+assert
+callsub assertcaller_10
+frame_dig -2
+txnas Assets
+callsub optinintoasset_5
+byte "Prime"
+int 102
+int 2
+callsub getglobaluint_2
+int 1
++
+byte "Prime"
+int 102
+int 2
+callsub setglobaluint_4
+frame_dig -1
+log
+retsub
+
+// optout
+optout_24:
+proto 3 0
+frame_dig -3
+txnas Assets
+byte "Prime"
+int 8
+int 8
+callsub getglobaluint_2
+!=
+assert
+frame_dig -3
+txnas Assets
+byte "Prime"
+int 16
+int 8
+callsub getglobaluint_2
+!=
+assert
+frame_dig -3
+txnas Assets
+byte "Prime"
+int 24
+int 8
+callsub getglobaluint_2
+!=
+assert
+callsub assertcaller_10
+frame_dig -3
+txnas Assets
+frame_dig -2
+callsub optoutfromasset_6
+byte "Prime"
+int 102
+int 2
+callsub getglobaluint_2
+int 1
+-
+byte "Prime"
+int 102
+int 2
+callsub setglobaluint_4
+frame_dig -1
+log
+retsub
+
+// score
+score_25:
+proto 1 0
+callsub assertcaller_10
+byte "Prime"
+int 48
+int 8
+callsub getglobaluint_2
+frame_dig -1
++
+byte "Prime"
+int 48
+int 8
+callsub setglobaluint_4
+retsub
+
+// initialize_caster
+initializecaster_26:
+proto 0 0
+int 0
+dupn 3
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+int 0
+getbyte
+frame_bury 1
+txna ApplicationArgs 3
+int 0
+getbyte
+frame_bury 2
+txna ApplicationArgs 4
+int 0
+getbyte
+frame_bury 3
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+callsub initialize_13
+retsub
+
+// populate_caster
+populatecaster_27:
+proto 0 0
+int 0
+dupn 9
+byte ""
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+btoi
+frame_bury 3
+txna ApplicationArgs 5
+btoi
+frame_bury 4
+txna ApplicationArgs 6
+btoi
+frame_bury 5
+txna ApplicationArgs 7
+btoi
+frame_bury 6
+txna ApplicationArgs 8
+btoi
+frame_bury 7
+txna ApplicationArgs 9
+btoi
+frame_bury 8
+txna ApplicationArgs 10
+btoi
+frame_bury 9
+txna ApplicationArgs 11
+frame_bury 10
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+frame_dig 4
+frame_dig 5
+frame_dig 6
+frame_dig 7
+frame_dig 8
+frame_dig 9
+frame_dig 10
+callsub populate_14
+retsub
+
+// list_caster
+listcaster_28:
+proto 0 0
+int 0
+byte ""
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+txna ApplicationArgs 3
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub list_15
+retsub
+
+// unlist_caster
+unlistcaster_29:
+proto 0 0
+byte ""
+dup
+txna ApplicationArgs 1
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub unlist_16
+retsub
+
+// buy_caster
+buycaster_30:
+proto 0 0
+byte ""
+dup
+txna ApplicationArgs 1
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub buy_17
+retsub
+
+// rename_caster
+renamecaster_31:
+proto 0 0
+int 0
+dupn 2
+byte ""
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+frame_bury 3
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+callsub rename_18
+retsub
+
+// repaint_caster
+repaintcaster_32:
+proto 0 0
+int 0
+dupn 2
+byte ""
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+btoi
+frame_bury 2
+txna ApplicationArgs 4
+frame_bury 3
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+callsub repaint_19
+retsub
+
+// upgrade_caster
+upgradecaster_33:
+proto 0 0
+byte ""
+dup
+txna ApplicationArgs 1
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub upgrade_20
+retsub
+
+// mint_caster
+mintcaster_34:
+proto 0 0
+int 0
+byte ""
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+txna ApplicationArgs 3
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub mint_21
+retsub
+
+// withdraw_caster
+withdrawcaster_35:
+proto 0 0
+int 0
+byte ""
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+txna ApplicationArgs 3
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub withdraw_22
+retsub
+
+// optin_caster
+optincaster_36:
+proto 0 0
+int 0
+byte ""
+txna ApplicationArgs 1
+int 0
+getbyte
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub optin_23
+retsub
+
+// optout_caster
+optoutcaster_37:
+proto 0 0
+int 0
+byte ""
+dup
+txna ApplicationArgs 1
+int 0
+getbyte
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+txna ApplicationArgs 3
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub optout_24
+retsub
+
+// score_caster
+scorecaster_38:
+proto 0 0
+int 0
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+frame_dig 0
+callsub score_25
+retsub

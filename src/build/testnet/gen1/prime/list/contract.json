@@ -1,0 +1,22 @@
+{
+    "name": "GenOnePrimeList",
+    "methods": [
+        {
+            "name": "list",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "price"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

@@ -1,0 +1,569 @@
+#pragma version 10
+txn NumAppArgs
+int 0
+==
+bnz main_l4
+txna ApplicationArgs 0
+method "rename(uint64,uint64,application)void"
+==
+bnz main_l3
+err
+main_l3:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub renamecaster_10
+int 1
+return
+main_l4:
+txn OnCompletion
+int NoOp
+==
+bnz main_l8
+txn OnCompletion
+int UpdateApplication
+==
+bnz main_l7
+err
+main_l7:
+txn ApplicationID
+int 0
+!=
+assert
+callsub update_8
+int 1
+return
+main_l8:
+txn ApplicationID
+int 0
+==
+assert
+callsub create_7
+int 1
+return
+
+// get_global_external_bytes
+getglobalexternalbytes_0:
+proto 4 1
+frame_dig -4
+frame_dig -3
+app_global_get_ex
+store 2
+store 0
+load 2
+assert
+load 0
+frame_dig -2
+frame_dig -1
+extract3
+retsub
+
+// get_global_external_uint
+getglobalexternaluint_1:
+proto 4 1
+frame_dig -4
+frame_dig -3
+frame_dig -2
+frame_dig -1
+callsub getglobalexternalbytes_0
+btoi
+retsub
+
+// get_asset_reserve
+getassetreserve_2:
+proto 1 1
+frame_dig -1
+asset_params_get AssetReserve
+store 5
+store 4
+load 5
+assert
+load 4
+retsub
+
+// prepare_log
+preparelog_3:
+proto 1 1
+frame_dig -1
+int 240
+frame_dig -1
+len
+-
+bzero
+concat
+retsub
+
+// assert_sender_asset_holding
+assertsenderassetholding_4:
+proto 1 0
+txn Sender
+frame_dig -1
+asset_holding_get AssetBalance
+store 3
+store 1
+load 3
+assert
+load 1
+int 0
+>
+assert
+retsub
+
+// assert_sender_asset_transfer
+assertsenderassettransfer_5:
+proto 4 0
+frame_dig -2
+int 0
+>
+assert
+frame_dig -1
+gtxns Sender
+txn Sender
+==
+assert
+frame_dig -1
+gtxns TypeEnum
+int axfer
+==
+assert
+frame_dig -1
+gtxns XferAsset
+frame_dig -4
+==
+assert
+frame_dig -1
+gtxns AssetReceiver
+frame_dig -3
+==
+assert
+frame_dig -1
+gtxns AssetAmount
+frame_dig -2
+==
+assert
+retsub
+
+// assert_application_creator
+assertapplicationcreator_6:
+proto 2 0
+frame_dig -2
+app_params_get AppCreator
+store 7
+store 6
+load 7
+assert
+load 6
+frame_dig -1
+==
+assert
+retsub
+
+// create
+create_7:
+proto 0 0
+txn Sender
+addr L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y
+==
+assert
+retsub
+
+// update
+update_8:
+proto 0 0
+txn Sender
+addr L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y
+==
+assert
+retsub
+
+// rename
+rename_9:
+proto 3 0
+int 0
+dupn 2
+byte "prrn"
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -3
+itob
+concat
+frame_dig -2
+itob
+concat
+int 1000000
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+>
+bnz rename_9_l17
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+frame_dig -2
+-
+rename_9_l2:
+*
+itob
+concat
+callsub preparelog_3
+log
+frame_dig -3
+int 15
+<=
+assert
+frame_dig -2
+int 65
+>=
+assert
+frame_dig -2
+int 90
+<=
+assert
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 16
+int 8
+callsub getglobalexternaluint_1
+callsub assertsenderassetholding_4
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 8
+int 8
+callsub getglobalexternaluint_1
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 8
+int 8
+callsub getglobalexternaluint_1
+callsub getassetreserve_2
+int 1000000
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+>
+bnz rename_9_l16
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+frame_dig -2
+-
+rename_9_l4:
+*
+txn GroupIndex
+int 1
++
+callsub assertsenderassettransfer_5
+frame_dig -1
+txnas Applications
+addr UJCTJKWSHYYIOPTAGHHHOESGYRW635P35CEL2WNLXHRKDNGNDJ35TTLYRY
+callsub assertapplicationcreator_6
+int 100
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+>
+bnz rename_9_l15
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+frame_dig -2
+-
+rename_9_l6:
+*
+frame_bury 0
+itxn_begin
+int appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+method "score(uint64)void"
+itxn_field ApplicationArgs
+frame_dig 0
+itob
+itxn_field ApplicationArgs
+itxn_submit
+int 100
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+>
+bnz rename_9_l14
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+frame_dig -2
+-
+rename_9_l8:
+*
+int 10
+/
+frame_bury 1
+itxn_begin
+int appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 32
+int 8
+callsub getglobalexternaluint_1
+itxn_field ApplicationID
+method "score(uint64)void"
+itxn_field ApplicationArgs
+frame_dig 1
+itob
+itxn_field ApplicationArgs
+itxn_submit
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+>
+bnz rename_9_l13
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+frame_dig -2
+-
+rename_9_l10:
+frame_bury 2
+itxn_begin
+int appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+method "rename(uint64,uint64,uint64,byte[240])void"
+itxn_field ApplicationArgs
+frame_dig -3
+itob
+itxn_field ApplicationArgs
+frame_dig -2
+itob
+itxn_field ApplicationArgs
+frame_dig 2
+itob
+itxn_field ApplicationArgs
+byte "prrn"
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -3
+itob
+concat
+frame_dig -2
+itob
+concat
+int 1000000
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+>
+bnz rename_9_l12
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+frame_dig -2
+-
+b rename_9_l18
+rename_9_l12:
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+-
+b rename_9_l18
+rename_9_l13:
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+-
+b rename_9_l10
+rename_9_l14:
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+-
+b rename_9_l8
+rename_9_l15:
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+-
+b rename_9_l6
+rename_9_l16:
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+-
+b rename_9_l4
+rename_9_l17:
+frame_dig -2
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 104
+int 16
+callsub getglobalexternalbytes_0
+frame_dig -3
+getbyte
+-
+b rename_9_l2
+rename_9_l18:
+*
+itob
+concat
+itxn_field ApplicationArgs
+itxn_submit
+retsub
+
+// rename_caster
+renamecaster_10:
+proto 0 0
+int 0
+dupn 2
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+btoi
+frame_bury 1
+txna ApplicationArgs 3
+int 0
+getbyte
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub rename_9
+retsub

@@ -1,0 +1,18 @@
+{
+    "name": "GenOnePrimeUnlist",
+    "methods": [
+        {
+            "name": "unlist",
+            "args": [
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

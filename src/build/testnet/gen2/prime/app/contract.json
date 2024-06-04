@@ -1,0 +1,290 @@
+{
+    "name": "GenOnePrime",
+    "methods": [
+        {
+            "name": "initialize",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "id"
+                },
+                {
+                    "type": "asset",
+                    "name": "platform_asset"
+                },
+                {
+                    "type": "asset",
+                    "name": "prime_asset"
+                },
+                {
+                    "type": "asset",
+                    "name": "legacy_asset"
+                },
+                {
+                    "type": "application",
+                    "name": "parent_application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "populate",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "theme"
+                },
+                {
+                    "type": "uint64",
+                    "name": "skin"
+                },
+                {
+                    "type": "uint64",
+                    "name": "is_founder"
+                },
+                {
+                    "type": "uint64",
+                    "name": "is_artifact"
+                },
+                {
+                    "type": "uint64",
+                    "name": "is_pioneer"
+                },
+                {
+                    "type": "uint64",
+                    "name": "is_explorer"
+                },
+                {
+                    "type": "uint64",
+                    "name": "score"
+                },
+                {
+                    "type": "uint64",
+                    "name": "sales"
+                },
+                {
+                    "type": "uint64",
+                    "name": "drains"
+                },
+                {
+                    "type": "uint64",
+                    "name": "transforms"
+                },
+                {
+                    "type": "byte[16]",
+                    "name": "name"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "list",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "price"
+                },
+                {
+                    "type": "address",
+                    "name": "seller"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "unlist",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "seller"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "buy",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "buyer"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "rename",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "index"
+                },
+                {
+                    "type": "uint64",
+                    "name": "value"
+                },
+                {
+                    "type": "uint64",
+                    "name": "transforms"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "repaint",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "theme"
+                },
+                {
+                    "type": "uint64",
+                    "name": "skin"
+                },
+                {
+                    "type": "uint64",
+                    "name": "transforms"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "upgrade",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "owner"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "mint",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "amount"
+                },
+                {
+                    "type": "address",
+                    "name": "owner"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "withdraw",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "amount"
+                },
+                {
+                    "type": "address",
+                    "name": "owner"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "optin",
+            "args": [
+                {
+                    "type": "asset",
+                    "name": "asset"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "optout",
+            "args": [
+                {
+                    "type": "asset",
+                    "name": "asset"
+                },
+                {
+                    "type": "address",
+                    "name": "owner"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "score",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "value"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

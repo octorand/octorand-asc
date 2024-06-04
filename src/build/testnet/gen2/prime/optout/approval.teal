@@ -1,0 +1,231 @@
+#pragma version 10
+txn NumAppArgs
+int 0
+==
+bnz main_l4
+txna ApplicationArgs 0
+method "optout(asset,application)void"
+==
+bnz main_l3
+err
+main_l3:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub optoutcaster_8
+int 1
+return
+main_l4:
+txn OnCompletion
+int NoOp
+==
+bnz main_l8
+txn OnCompletion
+int UpdateApplication
+==
+bnz main_l7
+err
+main_l7:
+txn ApplicationID
+int 0
+!=
+assert
+callsub update_6
+int 1
+return
+main_l8:
+txn ApplicationID
+int 0
+==
+assert
+callsub create_5
+int 1
+return
+
+// get_global_external_bytes
+getglobalexternalbytes_0:
+proto 4 1
+frame_dig -4
+frame_dig -3
+app_global_get_ex
+store 1
+store 0
+load 1
+assert
+load 0
+frame_dig -2
+frame_dig -1
+extract3
+retsub
+
+// get_global_external_uint
+getglobalexternaluint_1:
+proto 4 1
+frame_dig -4
+frame_dig -3
+frame_dig -2
+frame_dig -1
+callsub getglobalexternalbytes_0
+btoi
+retsub
+
+// prepare_log
+preparelog_2:
+proto 1 1
+frame_dig -1
+int 240
+frame_dig -1
+len
+-
+bzero
+concat
+retsub
+
+// assert_sender_asset_holding
+assertsenderassetholding_3:
+proto 1 0
+txn Sender
+frame_dig -1
+asset_holding_get AssetBalance
+store 3
+store 2
+load 3
+assert
+load 2
+int 0
+>
+assert
+retsub
+
+// assert_application_creator
+assertapplicationcreator_4:
+proto 2 0
+frame_dig -2
+app_params_get AppCreator
+store 5
+store 4
+load 5
+assert
+load 4
+frame_dig -1
+==
+assert
+retsub
+
+// create
+create_5:
+proto 0 0
+txn Sender
+addr L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y
+==
+assert
+retsub
+
+// update
+update_6:
+proto 0 0
+txn Sender
+addr L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y
+==
+assert
+retsub
+
+// optout
+optout_7:
+proto 2 0
+byte "proo"
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -2
+txnas Assets
+itob
+concat
+callsub preparelog_2
+log
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 16
+int 8
+callsub getglobalexternaluint_1
+callsub assertsenderassetholding_3
+frame_dig -1
+txnas Applications
+addr UJCTJKWSHYYIOPTAGHHHOESGYRW635P35CEL2WNLXHRKDNGNDJ35TTLYRY
+callsub assertapplicationcreator_4
+itxn_begin
+int appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+frame_dig -2
+txnas Assets
+itxn_field Assets
+method "optout(asset,address,byte[240])void"
+itxn_field ApplicationArgs
+byte 0x00
+itxn_field ApplicationArgs
+txn Sender
+itxn_field ApplicationArgs
+byte "proo"
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "Prime"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+txn Sender
+concat
+frame_dig -2
+txnas Assets
+itob
+concat
+itxn_field ApplicationArgs
+itxn_submit
+retsub
+
+// optout_caster
+optoutcaster_8:
+proto 0 0
+int 0
+dup
+txna ApplicationArgs 1
+int 0
+getbyte
+frame_bury 0
+txna ApplicationArgs 2
+int 0
+getbyte
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub optout_7
+retsub
