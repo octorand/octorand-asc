@@ -13,6 +13,7 @@ exports.execute = async function () {
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
         let application = config['gen1']['contracts']['prime']['app'];
+
         if (!application['application_id']) {
             let approvalProgram = fs.readFileSync('src/build/devnet/gen1/prime/app/approval.teal', 'utf8');
             let clearProgram = fs.readFileSync('src/build/devnet/gen1/prime/app/clear.teal', 'utf8');

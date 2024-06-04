@@ -12,17 +12,16 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
-        let core = config['gen1']['contracts']['prime']['core'];
+        let application = config['gen1']['contracts']['prime']['app'];
 
-        if (!core['funded']) {
-
+        if (!application['funded']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addTransaction({
                 signer: signer,
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: core['application_address'],
+                    to: application['application_address'],
                     amount: 400000,
                     suggestedParams: {
                         ...params,
@@ -34,14 +33,13 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            core['funded'] = true;
+            application['funded'] = true;
 
-            config['gen1']['contracts']['prime']['core'] = core;
+            config['gen1']['contracts']['prime']['app'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('funded prime core application');
+            console.log('funded prime app');
         }
-
     } catch (error) {
         console.log(error);
     }

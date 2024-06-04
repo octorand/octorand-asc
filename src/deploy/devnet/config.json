@@ -40,7 +40,13 @@
                 "app": {
                     "application_id": 676729441,
                     "application_address": "3WCXUBAOEDOCIKJLB6NNIHAI2IDLQR4RSNR77B2BLQB33GOX5L3ENREOWI",
-                    "application_version": 1
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "finalized": true,
+                    "transferred": true,
+                    "locked": true
                 },
                 "buy": {
                     "application_id": 676729454,

@@ -12,9 +12,9 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
-        let core = config['gen1']['contracts']['prime']['core'];
+        let application = config['gen1']['contracts']['prime']['app'];
 
-        if (!core['transferred']) {
+        if (!application['transferred']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -23,7 +23,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: core['application_address'],
+                    to: application['application_address'],
                     assetIndex: config['setup']['platform']['asset_id'],
                     amount: 1000000,
                     suggestedParams: {
@@ -39,7 +39,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: core['application_address'],
+                    to: application['application_address'],
                     amount: 1000000,
                     suggestedParams: {
                         ...params,
@@ -51,12 +51,12 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            core['transferred'] = true;
+            application['transferred'] = true;
 
-            config['gen1']['contracts']['prime']['core'] = core;
+            config['gen1']['contracts']['prime']['app'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('transferred core assets');
+            console.log('transferred assets');
         }
 
     } catch (error) {

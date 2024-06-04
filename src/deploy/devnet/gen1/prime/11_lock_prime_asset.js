@@ -12,10 +12,10 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
-        let core = config['gen1']['contracts']['prime']['core'];
+        let application = config['gen1']['contracts']['prime']['app'];
         let prime = config['gen1']['inputs']['prime'];
 
-        if (!core['locked']) {
+        if (!application['locked']) {
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -24,7 +24,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: core['application_address'],
+                    to: application['application_address'],
                     assetIndex: prime['prime_asset_id'],
                     amount: 1,
                     suggestedParams: {
@@ -37,9 +37,9 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            core['locked'] = true;
+            application['locked'] = true;
 
-            config['gen1']['contracts']['prime']['core'] = core;
+            config['gen1']['contracts']['prime']['app'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('locked prime asset');
