@@ -80,10 +80,10 @@ proto 1 1
 frame_dig -1
 asset_params_get AssetReserve
 store 5
-store 3
+store 4
 load 5
 assert
-load 3
+load 4
 retsub
 
 // prepare_log
@@ -104,9 +104,9 @@ proto 1 0
 txn Sender
 frame_dig -1
 asset_holding_get AssetBalance
-store 4
+store 3
 store 1
-load 4
+load 3
 assert
 load 1
 int 0

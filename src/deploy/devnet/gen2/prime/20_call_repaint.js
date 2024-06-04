@@ -38,7 +38,7 @@ exports.execute = async function () {
                 ],
                 suggestedParams: {
                     ...params,
-                    fee: 3000,
+                    fee: 4000,
                     flatFee: true
                 }
             });

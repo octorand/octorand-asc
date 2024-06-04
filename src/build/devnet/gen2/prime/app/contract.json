@@ -61,18 +61,6 @@
                     "name": "score"
                 },
                 {
-                    "type": "byte[16]",
-                    "name": "name"
-                }
-            ],
-            "returns": {
-                "type": "void"
-            }
-        },
-        {
-            "name": "finalize",
-            "args": [
-                {
                     "type": "uint64",
                     "name": "sales"
                 },
@@ -83,6 +71,10 @@
                 {
                     "type": "uint64",
                     "name": "transforms"
+                },
+                {
+                    "type": "byte[16]",
+                    "name": "name"
                 }
             ],
             "returns": {

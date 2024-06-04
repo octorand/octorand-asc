@@ -80,6 +80,9 @@ def populate(
     is_pioneer: abi.Uint64,
     is_explorer: abi.Uint64,
     score: abi.Uint64,
+    sales: abi.Uint64,
+    drains: abi.Uint64,
+    transforms: abi.Uint64,
     name: abi.StaticBytes[Literal[16]],
 ):
     return Seq(
@@ -91,21 +94,10 @@ def populate(
         prime.is_pioneer.set(is_pioneer.get()),
         prime.is_explorer.set(is_explorer.get()),
         prime.score.set(score.get()),
-        prime.name.set(name.get()),
-    )
-
-
-@router.method
-def finalize(
-    sales: abi.Uint64,
-    drains: abi.Uint64,
-    transforms: abi.Uint64,
-):
-    return Seq(
-        Assert(Txn.sender() == const.admin_address),
         prime.sales.set(sales.get()),
         prime.drains.set(drains.get()),
         prime.transforms.set(transforms.get()),
+        prime.name.set(name.get()),
     )
 
 
