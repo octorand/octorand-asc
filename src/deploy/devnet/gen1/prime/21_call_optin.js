@@ -17,7 +17,6 @@ exports.execute = async function () {
         let application = config['gen1']['contracts']['prime']['optin'];
 
         if (!application['optin']) {
-
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
@@ -27,7 +26,7 @@ exports.execute = async function () {
                 method: helpers.method(contract, 'optin'),
                 methodArgs: [
                     config['setup']['vault']['asset_id'],
-                    config['gen1']['contracts']['prime']['core']['application_id'],
+                    config['gen1']['contracts']['prime']['app']['application_id'],
                 ],
                 suggestedParams: {
                     ...params,
@@ -41,7 +40,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: config['gen1']['contracts']['prime']['core']['application_address'],
+                    to: config['gen1']['contracts']['prime']['app']['application_address'],
                     amount: 100000,
                     suggestedParams: {
                         ...params,
@@ -56,7 +55,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: config['gen1']['contracts']['prime']['core']['application_address'],
+                    to: config['gen1']['contracts']['prime']['app']['application_address'],
                     assetIndex: config['setup']['vault']['asset_id'],
                     amount: 300,
                     suggestedParams: {
@@ -76,7 +75,6 @@ exports.execute = async function () {
 
             console.log('called optin method');
         }
-
     } catch (error) {
         console.log(error);
     }

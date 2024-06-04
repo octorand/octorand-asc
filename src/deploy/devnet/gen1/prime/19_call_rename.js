@@ -18,7 +18,6 @@ exports.execute = async function () {
         let prime = config['gen1']['inputs']['prime'];
 
         if (!application['renamed']) {
-
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
@@ -29,7 +28,7 @@ exports.execute = async function () {
                 methodArgs: [
                     1,
                     68,
-                    config['gen1']['contracts']['prime']['core']['application_id'],
+                    config['gen1']['contracts']['prime']['app']['application_id'],
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id']
@@ -65,7 +64,7 @@ exports.execute = async function () {
                 methodArgs: [
                     6,
                     86,
-                    config['gen1']['contracts']['prime']['core']['application_id'],
+                    config['gen1']['contracts']['prime']['app']['application_id'],
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id']
@@ -102,7 +101,6 @@ exports.execute = async function () {
 
             console.log('called rename method');
         }
-
     } catch (error) {
         console.log(error);
     }

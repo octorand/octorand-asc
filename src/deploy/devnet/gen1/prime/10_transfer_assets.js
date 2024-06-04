@@ -58,7 +58,6 @@ exports.execute = async function () {
 
             console.log('transferred assets');
         }
-
     } catch (error) {
         console.log(error);
     }

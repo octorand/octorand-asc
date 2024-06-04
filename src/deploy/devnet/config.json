@@ -46,57 +46,337 @@
                     "populated": true,
                     "finalized": true,
                     "transferred": true,
-                    "locked": true
+                    "locked": true,
+                    "logs": [
+                        {
+                            "code": "prug",
+                            "version": 1,
+                            "timestamp": 1717471249,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_upgrade"
+                        },
+                        {
+                            "code": "prmt",
+                            "version": 1,
+                            "timestamp": 1717471254,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_mint",
+                            "amount": 100
+                        },
+                        {
+                            "code": "prwd",
+                            "version": 1,
+                            "timestamp": 1717471260,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_withdraw",
+                            "amount": 200
+                        },
+                        {
+                            "code": "prls",
+                            "version": 1,
+                            "timestamp": 1717471265,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_list",
+                            "price": 350
+                        },
+                        {
+                            "code": "prul",
+                            "version": 1,
+                            "timestamp": 1717471270,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_unlist"
+                        },
+                        {
+                            "code": "prls",
+                            "version": 1,
+                            "timestamp": 1717471276,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_list",
+                            "price": 350
+                        },
+                        {
+                            "code": "prby",
+                            "version": 1,
+                            "timestamp": 1717471281,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_buy",
+                            "seller": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "price": 350
+                        },
+                        {
+                            "code": "prrn",
+                            "version": 1,
+                            "timestamp": 1717471287,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_rename",
+                            "index": 1,
+                            "value": 68,
+                            "price": 20000000
+                        },
+                        {
+                            "code": "prrn",
+                            "version": 1,
+                            "timestamp": 1717471287,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_rename",
+                            "index": 6,
+                            "value": 86,
+                            "price": 30000000
+                        },
+                        {
+                            "code": "prrp",
+                            "version": 1,
+                            "timestamp": 1717471292,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_repaint",
+                            "theme": 3,
+                            "skin": 4,
+                            "price": 10000000
+                        },
+                        {
+                            "code": "proi",
+                            "version": 1,
+                            "timestamp": 1717471298,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_optin",
+                            "asset_id": 676721215
+                        },
+                        {
+                            "code": "proo",
+                            "version": 1,
+                            "timestamp": 1717471303,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_optout",
+                            "asset_id": 676721215
+                        }
+                    ],
+                    "state": {
+                        "id": 1,
+                        "platform_asset_id": 676721210,
+                        "prime_asset_id": 676732258,
+                        "legacy_asset_id": 676732314,
+                        "parent_application_id": 0,
+                        "theme": 3,
+                        "skin": 4,
+                        "is_founder": 1,
+                        "is_artifact": 0,
+                        "is_pioneer": 1,
+                        "is_explorer": 1,
+                        "score": 810,
+                        "price": 0,
+                        "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
+                        "sales": 11,
+                        "drains": 21,
+                        "transforms": 36,
+                        "vaults": 0,
+                        "name": "ADCDWXVZ"
+                    }
                 },
                 "buy": {
                     "application_id": 676729454,
                     "application_address": "A3EHYADXGAS4PYSAWB37RUEYW3XPFU4ZFRJGPLO2X7UAE4NIMHMQT36EQM",
-                    "application_version": 1
+                    "application_version": 1,
+                    "bought": true,
+                    "logs": [
+                        {
+                            "code": "prby",
+                            "version": 1,
+                            "timestamp": 1717471281,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_buy",
+                            "seller": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "price": 350
+                        }
+                    ]
                 },
                 "list": {
                     "application_id": 676729515,
                     "application_address": "VFMMPGVFJRM5B7U5VSNKXKBD4F7EQCHDKEFXPHGXQFSWMVLZYW2WZPOEGE",
-                    "application_version": 1
+                    "application_version": 1,
+                    "listed": true,
+                    "relisted": true,
+                    "logs": [
+                        {
+                            "code": "prls",
+                            "version": 1,
+                            "timestamp": 1717471265,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_list",
+                            "price": 350
+                        },
+                        {
+                            "code": "prls",
+                            "version": 1,
+                            "timestamp": 1717471276,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_list",
+                            "price": 350
+                        }
+                    ]
                 },
                 "mint": {
                     "application_id": 676729570,
                     "application_address": "HQQ4RVUW5PPJ3EDOBHQSL67GHNZVQIOYD65CX43FC5DYTDSXGNI2FFQTJE",
-                    "application_version": 1
+                    "application_version": 1,
+                    "minted": true,
+                    "logs": [
+                        {
+                            "code": "prmt",
+                            "version": 1,
+                            "timestamp": 1717471254,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_mint",
+                            "amount": 100
+                        }
+                    ]
                 },
                 "optin": {
                     "application_id": 676729585,
                     "application_address": "C6RSE73JKG53KQTWXHYRJGBXKILAZYSZZB7467RJWXM7EIDNV6THVKMZAY",
-                    "application_version": 1
+                    "application_version": 1,
+                    "optin": true,
+                    "logs": [
+                        {
+                            "code": "proi",
+                            "version": 1,
+                            "timestamp": 1717471298,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_optin",
+                            "asset_id": 676721215
+                        }
+                    ]
                 },
                 "optout": {
                     "application_id": 676729642,
                     "application_address": "5JQSFZGLN4L7ZWYXIVRQKSQ65CFKGRWV5MNT5RSHDZSICFCWHCRJD7BNG4",
-                    "application_version": 1
+                    "application_version": 1,
+                    "optout": true,
+                    "logs": [
+                        {
+                            "code": "proo",
+                            "version": 1,
+                            "timestamp": 1717471303,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_optout",
+                            "asset_id": 676721215
+                        }
+                    ]
                 },
                 "rename": {
                     "application_id": 676729707,
                     "application_address": "5UY4J3ZCYPHFZCHM6QGM6NATJUZN275UXUNNCULPPEL7MCRLQZNRQSKOVQ",
-                    "application_version": 1
+                    "application_version": 1,
+                    "renamed": true,
+                    "logs": [
+                        {
+                            "code": "prrn",
+                            "version": 1,
+                            "timestamp": 1717471287,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_rename",
+                            "index": 1,
+                            "value": 68,
+                            "price": 20000000
+                        },
+                        {
+                            "code": "prrn",
+                            "version": 1,
+                            "timestamp": 1717471287,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_rename",
+                            "index": 6,
+                            "value": 86,
+                            "price": 30000000
+                        }
+                    ]
                 },
                 "repaint": {
                     "application_id": 676729821,
                     "application_address": "VUVMULHQKIY2GOCAGN42UDXLLLOBJAZPIE3FLWZ6VAE6DLHDHP2B4QGSDQ",
-                    "application_version": 1
+                    "application_version": 1,
+                    "repainted": true,
+                    "logs": [
+                        {
+                            "code": "prrp",
+                            "version": 1,
+                            "timestamp": 1717471292,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_repaint",
+                            "theme": 3,
+                            "skin": 4,
+                            "price": 10000000
+                        }
+                    ]
                 },
                 "unlist": {
                     "application_id": 676729877,
                     "application_address": "4ZSKX3NHMENHBAXSOFTAPDP2LXPX4NEJW7X6PZZQHCGWBDBE2SZB6IOYCY",
-                    "application_version": 1
+                    "application_version": 1,
+                    "unlisted": true,
+                    "logs": [
+                        {
+                            "code": "prul",
+                            "version": 1,
+                            "timestamp": 1717471270,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_unlist"
+                        }
+                    ]
                 },
                 "upgrade": {
                     "application_id": 676729890,
                     "application_address": "MA4RNGJFIQSOVEKK4XS7RSIFXDDV5TWS4JPFJKIXVSTRXKD62ZWAHWP5TY",
-                    "application_version": 1
+                    "application_version": 1,
+                    "upgraded": true,
+                    "logs": [
+                        {
+                            "code": "prug",
+                            "version": 1,
+                            "timestamp": 1717471249,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_upgrade"
+                        }
+                    ]
                 },
                 "withdraw": {
                     "application_id": 676729925,
                     "application_address": "5J5W3LWTRBH4574A3YIXHS5BTEXWHI5GICSXIRRMTJMTMKP5ID4FU6CSQ4",
-                    "application_version": 1
+                    "application_version": 1,
+                    "withdrawn": true,
+                    "logs": [
+                        {
+                            "code": "prwd",
+                            "version": 1,
+                            "timestamp": 1717471260,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_withdraw",
+                            "amount": 200
+                        }
+                    ]
                 }
             }
         }

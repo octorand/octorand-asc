@@ -44,7 +44,6 @@ exports.execute = async function () {
 
             console.log('locked prime asset');
         }
-
     } catch (error) {
         console.log(error);
     }

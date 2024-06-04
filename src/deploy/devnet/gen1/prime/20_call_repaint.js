@@ -18,7 +18,6 @@ exports.execute = async function () {
         let prime = config['gen1']['inputs']['prime'];
 
         if (!application['repainted']) {
-
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
@@ -29,7 +28,7 @@ exports.execute = async function () {
                 methodArgs: [
                     3,
                     4,
-                    config['gen1']['contracts']['prime']['core']['application_id'],
+                    config['gen1']['contracts']['prime']['app']['application_id'],
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id']
@@ -66,7 +65,6 @@ exports.execute = async function () {
 
             console.log('called repaint method');
         }
-
     } catch (error) {
         console.log(error);
     }

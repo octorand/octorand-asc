@@ -18,7 +18,6 @@ exports.execute = async function () {
         let prime = config['gen1']['inputs']['prime'];
 
         if (!application['minted']) {
-
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
@@ -28,7 +27,7 @@ exports.execute = async function () {
                 method: helpers.method(contract, 'mint'),
                 methodArgs: [
                     100,
-                    config['gen1']['contracts']['prime']['core']['application_id'],
+                    config['gen1']['contracts']['prime']['app']['application_id'],
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id'],
@@ -50,7 +49,6 @@ exports.execute = async function () {
 
             console.log('called mint method');
         }
-
     } catch (error) {
         console.log(error);
     }

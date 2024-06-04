@@ -9,7 +9,7 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
-        let core = config['gen1']['contracts']['prime']['core'];
+        let application = config['gen1']['contracts']['prime']['app'];
 
         let state = {
             id: null,
@@ -33,7 +33,7 @@ exports.execute = async function () {
             name: null,
         };
 
-        let info = await connection.indexerClient.lookupApplications(core['application_id']).do();
+        let info = await connection.indexerClient.lookupApplications(application['application_id']).do();
         let global = info['application']['params']['global-state'];
 
         for (let i = 0; i < global.length; i++) {
@@ -66,9 +66,9 @@ exports.execute = async function () {
             }
         }
 
-        core['state'] = state;
+        application['state'] = state;
 
-        config['gen1']['contracts']['prime']['core'] = core;
+        config['gen1']['contracts']['prime']['app'] = application;
         fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
     } catch (error) {

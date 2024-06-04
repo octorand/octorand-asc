@@ -18,7 +18,6 @@ exports.execute = async function () {
         let prime = config['gen1']['inputs']['prime'];
 
         if (!application['finalized']) {
-
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({

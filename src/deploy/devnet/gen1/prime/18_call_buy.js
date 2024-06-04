@@ -18,7 +18,6 @@ exports.execute = async function () {
         let prime = config['gen1']['inputs']['prime'];
 
         if (!application['bought']) {
-
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addTransaction({
@@ -43,7 +42,7 @@ exports.execute = async function () {
                 appID: application['application_id'],
                 method: helpers.method(contract, 'buy'),
                 methodArgs: [
-                    config['gen1']['contracts']['prime']['core']['application_id'],
+                    config['gen1']['contracts']['prime']['app']['application_id'],
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id']
@@ -94,7 +93,6 @@ exports.execute = async function () {
 
             console.log('called buy method');
         }
-
     } catch (error) {
         console.log(error);
     }
