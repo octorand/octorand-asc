@@ -47,7 +47,7 @@ exports.execute = async function () {
                     from: sender,
                     to: connection.admin.addr,
                     assetIndex: config['setup']['platform']['asset_id'],
-                    amount: 20000000,
+                    amount: 2000000,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -62,8 +62,8 @@ exports.execute = async function () {
                 appID: application['application_id'],
                 method: helpers.method(contract, 'rename'),
                 methodArgs: [
-                    6,
-                    86,
+                    15,
+                    89,
                     config['gen2']['contracts']['prime']['app']['application_id'],
                 ],
                 appForeignAssets: [
@@ -83,7 +83,7 @@ exports.execute = async function () {
                     from: sender,
                     to: connection.admin.addr,
                     assetIndex: config['setup']['platform']['asset_id'],
-                    amount: 30000000,
+                    amount: 1000000,
                     suggestedParams: {
                         ...params,
                         fee: 1000,

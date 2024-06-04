@@ -18,7 +18,7 @@ exports.execute = async function () {
                 is_pioneer: 1,
                 is_explorer: 0,
                 score: 750,
-                name: 'ABCDWXYZ',
+                name: 'ABCDEFGHSTUVWXYZ',
                 price: 350,
                 sales: 10,
                 drains: 20,

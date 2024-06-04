@@ -33,7 +33,7 @@ exports.execute = async function () {
                     prime['is_pioneer'],
                     prime['is_explorer'],
                     prime['score'],
-                    helpers.bytes(prime['name'], 8),
+                    helpers.bytes(prime['name'], 16),
                 ],
                 suggestedParams: {
                     ...params,

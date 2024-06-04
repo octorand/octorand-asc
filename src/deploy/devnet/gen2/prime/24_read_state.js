@@ -61,7 +61,7 @@ exports.execute = async function () {
                     state.drains = connection.baseClient.decodeUint64(value.subarray(98, 100));
                     state.transforms = connection.baseClient.decodeUint64(value.subarray(100, 102));
                     state.vaults = connection.baseClient.decodeUint64(value.subarray(102, 104));
-                    state.name = value.subarray(104, 112).toString('utf-8').trim();
+                    state.name = value.subarray(104, 120).toString('utf-8').trim();
                     break;
             }
         }

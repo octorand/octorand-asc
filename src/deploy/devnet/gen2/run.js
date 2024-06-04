@@ -2,13 +2,13 @@ require('dotenv').config();
 
 exports.execute = async function () {
 
-    console.log('setup gen2 prime contracts');
+    console.log('gen2 prime setup contracts');
     await require('./prime/00_compile_contracts').execute();
     await require('./prime/01_create_main_application').execute();
     await require('./prime/02_create_sub_applications').execute();
     await require('./prime/03_update_applications').execute();
 
-    console.log('setup gen2 prime resources');
+    console.log('gen2 prime setup resources');
     await require('./prime/04_setup_prime_input').execute();
     await require('./prime/05_create_prime_assets').execute();
     await require('./prime/06_fund_application').execute();
@@ -18,7 +18,7 @@ exports.execute = async function () {
     await require('./prime/10_transfer_assets').execute();
     await require('./prime/11_lock_prime_asset').execute();
 
-    console.log('call gen2 prime functions');
+    console.log('gen2 prime call functions');
     await require('./prime/12_call_upgrade').execute();
     await require('./prime/13_call_mint').execute();
     await require('./prime/14_call_withdraw').execute();
@@ -31,7 +31,7 @@ exports.execute = async function () {
     await require('./prime/21_call_optin').execute();
     await require('./prime/22_call_optout').execute();
 
-    console.log('read gen2 application states');
+    console.log('gen2 prime read states');
     await require('./prime/23_read_logs').execute();
     await require('./prime/24_read_state').execute();
 

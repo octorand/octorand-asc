@@ -47,7 +47,7 @@ exports.execute = async function () {
                     from: sender,
                     to: connection.admin.addr,
                     assetIndex: config['setup']['platform']['asset_id'],
-                    amount: 10000000,
+                    amount: 1000000,
                     suggestedParams: {
                         ...params,
                         fee: 1000,

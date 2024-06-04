@@ -47,6 +47,9 @@ exports.execute = async function () {
                 appForeignAssets: [
                     prime['prime_asset_id']
                 ],
+                appForeignApps: [
+                    config['gen1']['contracts']['prime']['app']['application_id']
+                ],
                 suggestedParams: {
                     ...params,
                     fee: 3000,
@@ -74,8 +77,23 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
+                    to: connection.baseClient.getApplicationAddress(config['gen1']['contracts']['prime']['app']['application_id']),
+                    amount: Math.floor(prime['price'] * 0.05),
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                })
+            });
+
+            composer.addTransaction({
+                sender: sender,
+                signer: signer,
+                txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
+                    from: sender,
                     to: connection.admin.addr,
-                    amount: Math.floor(prime['price'] * 0.1),
+                    amount: Math.floor(prime['price'] * 0.05),
                     suggestedParams: {
                         ...params,
                         fee: 1000,
