@@ -11,8 +11,8 @@ class Config:
         self.rename_price = Int(10000000)
         self.repaint_price = Int(10000000)
         self.optin_price = Int(100000)
-        self.rename_score = Int(10)
-        self.repaint_score = Int(10)
+        self.rename_score = Int(100)
+        self.repaint_score = Int(100)
         self.admin_address = env.addr("ADMIN_ADDRESS")
         self.manager_address = env.addr("GEN1_MANAGER_ADDRESS")
 

@@ -33,6 +33,9 @@ exports.execute = async function () {
                 appForeignAssets: [
                     prime['prime_asset_id']
                 ],
+                appForeignApps: [
+                    config['gen1']['contracts']['prime']['app']['application_id']
+                ],
                 suggestedParams: {
                     ...params,
                     fee: 3000,
