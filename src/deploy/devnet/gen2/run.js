@@ -10,11 +10,11 @@ exports.execute = async function () {
 
     console.log('gen2 prime setup resources');
     await require('./prime/04_setup_prime_input').execute();
-    await require('./prime/05_create_prime_assets').execute();
-    await require('./prime/06_fund_application').execute();
-    await require('./prime/07_call_initialize').execute();
-    await require('./prime/08_call_populate').execute();
-    // await require('./prime/09_call_finalize').execute();
+    await require('./prime/05_create_prime_asset').execute();
+    await require('./prime/06_create_legacy_asset').execute();
+    await require('./prime/07_fund_application').execute();
+    await require('./prime/08_call_initialize').execute();
+    await require('./prime/09_call_populate').execute();
     await require('./prime/10_transfer_assets').execute();
     await require('./prime/11_lock_prime_asset').execute();
 
