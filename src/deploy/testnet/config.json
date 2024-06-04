@@ -1,30 +1,41 @@
 {
     "setup": {
-        "platform": {},
-        "vault": {}
+        "platform": {
+            "asset_id": 677109608,
+            "manager": "L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y",
+            "reserve": "L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y"
+        }
     },
     "gen1": {
-        "inputs": {
-            "prime": {}
-        },
         "contracts": {
-            "design": {},
-            "market": {},
-            "vault": {},
-            "wallet": {},
-            "storage": {}
+            "prime": {
+                "buy": {},
+                "list": {},
+                "mint": {},
+                "optin": {},
+                "optout": {},
+                "rename": {},
+                "repaint": {},
+                "unlist": {},
+                "upgrade": {},
+                "withdraw": {}
+            }
         }
     },
     "gen2": {
-        "inputs": {
-            "prime": {}
-        },
         "contracts": {
-            "design": {},
-            "market": {},
-            "vault": {},
-            "wallet": {},
-            "storage": {}
+            "prime": {
+                "buy": {},
+                "list": {},
+                "mint": {},
+                "optin": {},
+                "optout": {},
+                "rename": {},
+                "repaint": {},
+                "unlist": {},
+                "upgrade": {},
+                "withdraw": {}
+            }
         }
     }
 }

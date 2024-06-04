@@ -5,7 +5,6 @@ const testnet = require('./../../../../chain/testnet');
 
 exports.execute = async function () {
     try {
-
         let connection = await testnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
         let sender = connection.admin.addr;
@@ -28,8 +27,8 @@ exports.execute = async function () {
                     defaultFrozen: false,
                     manager: sender,
                     reserve: sender,
-                    unitName: "TEST",
-                    assetName: "Test",
+                    unitName: "OCTO",
+                    assetName: "Octorand",
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -50,7 +49,6 @@ exports.execute = async function () {
 
             console.log('create platform asset');
         }
-
     } catch (error) {
         console.log(error);
     }
