@@ -12,7 +12,6 @@ exports.execute = async function () {
         if (primes.length == 0) {
             for (let i = 0; i < 1000; i++) {
                 let source = legacy['primes'].find(p => p.id == i);
-
                 primes.push({
                     id: i,
                     parent_id: source.parent_id,
@@ -30,12 +29,28 @@ exports.execute = async function () {
                     name: source.name,
                 });
             }
-
-            config['gen1']['inputs']['primes'] = primes;
-            fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
-
-            console.log('create prime inputs');
+        } else {
+            for (let i = 0; i < 1000; i++) {
+                let source = legacy['primes'].find(p => p.id == i);
+                primes[i].id = i;
+                primes[i].parent_id = source.parent_id;
+                primes[i].theme = source.theme;
+                primes[i].skin = source.skin;
+                primes[i].is_founder = source.is_founder;
+                primes[i].is_artifact = source.is_artifact;
+                primes[i].is_pioneer = source.is_pioneer;
+                primes[i].is_explorer = source.is_explorer;
+                primes[i].score = source.score;
+                primes[i].sales = source.sales;
+                primes[i].drains = source.drains;
+                primes[i].transforms = source.transforms;
+                primes[i].vaults = source.vaults;
+                primes[i].name = source.name;
+            }
         }
+
+        config['gen1']['inputs']['primes'] = primes;
+        fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
     } catch (error) {
         console.log(error);
     }
