@@ -32,6 +32,7 @@ exports.execute = async function () {
                         config['setup']['platform']['asset_id'],
                         primes[i]['prime_asset_id'],
                         primes[i]['legacy_asset_id'],
+                        primes[i]['parent_application_id'],
                     ],
                     suggestedParams: {
                         ...params,

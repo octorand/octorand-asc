@@ -16269,7 +16269,7 @@
     },
     "gen2": {
         "inputs": {
-            "max": 10,
+            "max": 1,
             "primes": []
         },
         "contracts": {

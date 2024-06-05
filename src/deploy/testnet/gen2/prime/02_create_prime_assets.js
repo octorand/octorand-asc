@@ -29,8 +29,8 @@ exports.execute = async function () {
                         defaultFrozen: false,
                         manager: sender,
                         reserve: sender,
-                        unitName: 'OG1-' + String(primes[i]['id']).padStart(3, '0'),
-                        assetName: 'Octorand Gen1 #' + String(primes[i]['id']).padStart(3, '0'),
+                        unitName: 'OG2-' + String(primes[i]['id']).padStart(4, '0'),
+                        assetName: 'Octorand Gen2 #' + String(primes[i]['id']).padStart(4, '0'),
                         assetURL: 'template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}',
                         suggestedParams: {
                             ...params,

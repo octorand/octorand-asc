@@ -29,8 +29,8 @@ exports.execute = async function () {
                         defaultFrozen: false,
                         manager: sender,
                         reserve: sender,
-                        unitName: 'OCTO-' + String(primes[i]['id']).padStart(3, '0'),
-                        assetName: 'Octorand #' + String(primes[i]['id']).padStart(3, '0'),
+                        unitName: 'OP2-' + String(primes[i]['id']).padStart(4, '0'),
+                        assetName: 'Octo Prime Gen2 #' + String(primes[i]['id']).padStart(4, '0'),
                         suggestedParams: {
                             ...params,
                             fee: 1000,
