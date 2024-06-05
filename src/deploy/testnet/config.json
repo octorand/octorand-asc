@@ -7,6 +7,9 @@
         }
     },
     "gen1": {
+        "inputs": {
+            "prime": []
+        },
         "contracts": {
             "prime": {
                 "buy": {},
@@ -23,6 +26,9 @@
         }
     },
     "gen2": {
+        "inputs": {
+            "prime": []
+        },
         "contracts": {
             "prime": {
                 "buy": {},
