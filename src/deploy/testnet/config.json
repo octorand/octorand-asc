@@ -8,7 +8,7 @@
     },
     "gen1": {
         "inputs": {
-            "max": 10,
+            "max": 20,
             "primes": [
                 {
                     "id": 0,
@@ -284,7 +284,17 @@
                     "drains": 21,
                     "transforms": 70,
                     "vaults": 0,
-                    "name": "GRISGRIS"
+                    "name": "GRISGRIS",
+                    "legacy_asset_id": 677330396,
+                    "prime_asset_id": 677330643,
+                    "application_id": 677330943,
+                    "application_address": "PCC5ISIBRGQRXAUB6KO5WDGDK7EJAEQW5HOHRQGYTWRRVJ2HX22G4R7OQE",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 11,
@@ -300,7 +310,17 @@
                     "drains": 8,
                     "transforms": 0,
                     "vaults": 0,
-                    "name": "LIDNEGOK"
+                    "name": "LIDNEGOK",
+                    "legacy_asset_id": 677330451,
+                    "prime_asset_id": 677330657,
+                    "application_id": 677331006,
+                    "application_address": "BKEW4VXXSZ5YHXH2VBX6IIKPWC25CWZ5NU2ZXUOVOKFV7DT4Y3UFGKVWFY",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 12,
@@ -316,7 +336,17 @@
                     "drains": 2,
                     "transforms": 0,
                     "vaults": 0,
-                    "name": "FJAILPJB"
+                    "name": "FJAILPJB",
+                    "legacy_asset_id": 677330513,
+                    "prime_asset_id": 677330692,
+                    "application_id": 677331167,
+                    "application_address": "2JWQLCJZKSXPEEE5PLMKQBTWKS6UJJLVK5JMIRSF2AHR7GHIWITCXMPEZQ",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 13,
@@ -332,7 +362,17 @@
                     "drains": 102,
                     "transforms": 50,
                     "vaults": 0,
-                    "name": "THIRTEEN"
+                    "name": "THIRTEEN",
+                    "legacy_asset_id": 677330525,
+                    "prime_asset_id": 677330728,
+                    "application_id": 677331171,
+                    "application_address": "GOKGKHT7KJOQW4KVOZYFATOVLRD7KDSJSGWOY3B5X652WUZCGCXNPGOSPE",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 14,
@@ -348,7 +388,17 @@
                     "drains": 29,
                     "transforms": 50,
                     "vaults": 0,
-                    "name": "GOVERNOR"
+                    "name": "GOVERNOR",
+                    "legacy_asset_id": 677330583,
+                    "prime_asset_id": 677330785,
+                    "application_id": 677331178,
+                    "application_address": "RE4Q544MHWCLEJWTW7C2WPJ45NRZTWUEJZZTW3AMM2B3I2OZP7SEBVTJ34",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 15,
@@ -364,7 +414,17 @@
                     "drains": 5,
                     "transforms": 0,
                     "vaults": 0,
-                    "name": "JONAJKJG"
+                    "name": "JONAJKJG",
+                    "legacy_asset_id": 677330587,
+                    "prime_asset_id": 677330828,
+                    "application_id": 677331223,
+                    "application_address": "T2TZFILRWTJVSNKJCLP6XHIRUMZXYNKJW65F64I5JEPCA2NHGQ7XMY7Q6E",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 16,
@@ -380,7 +440,17 @@
                     "drains": 71,
                     "transforms": 57,
                     "vaults": 0,
-                    "name": "OCTODOTS"
+                    "name": "OCTODOTS",
+                    "legacy_asset_id": 677330591,
+                    "prime_asset_id": 677330833,
+                    "application_id": 677331233,
+                    "application_address": "UOJ5O3FANXJV7BX4U3TOE4QXSLJSVUIQPB6ZRFZWI3QGTKYZDOSVLYO5AI",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 17,
@@ -396,7 +466,17 @@
                     "drains": 0,
                     "transforms": 0,
                     "vaults": 0,
-                    "name": "KCGACBKM"
+                    "name": "KCGACBKM",
+                    "legacy_asset_id": 677330605,
+                    "prime_asset_id": 677330894,
+                    "application_id": 677331239,
+                    "application_address": "WWUCDDEFMKNI67U6F7UT3DFNJJYJYDVEVJ7OR6DNJHR7VE3566O352NHIM",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 18,
@@ -412,7 +492,17 @@
                     "drains": 9,
                     "transforms": 1,
                     "vaults": 0,
-                    "name": "MAAJADGK"
+                    "name": "MAAJADGK",
+                    "legacy_asset_id": 677330635,
+                    "prime_asset_id": 677330909,
+                    "application_id": 677331335,
+                    "application_address": "XJF6LU5YKXH5ZMGOJN252DXZ47WXVE72A3XY5EV6YEYYQLYI3IU5QBQK74",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 19,
@@ -428,7 +518,17 @@
                     "drains": 19,
                     "transforms": 0,
                     "vaults": 0,
-                    "name": "AAJCFNMB"
+                    "name": "AAJCFNMB",
+                    "legacy_asset_id": 677330640,
+                    "prime_asset_id": 677330938,
+                    "application_id": 677331368,
+                    "application_address": "VRC3GCCX2BO4PWG2EJXDTAPTRX26XRRDCIBQE3LH53PAFUBFDCDRLJ2FXA",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 20,

@@ -20,22 +20,18 @@ exports.execute = async function () {
             if (!primes[i]['funded']) {
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
-                composer.addMethodCall({
-                    sender: sender,
+                composer.addTransaction({
                     signer: signer,
-                    appID: application['application_id'],
-                    method: helpers.method(contract, 'initialize'),
-                    methodArgs: [
-                        prime['id'],
-                        config['setup']['platform']['asset_id'],
-                        prime['prime_asset_id'],
-                        prime['legacy_asset_id'],
-                    ],
-                    suggestedParams: {
-                        ...params,
-                        fee: 4000,
-                        flatFee: true
-                    }
+                    txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
+                        from: sender,
+                        to: primes[i]['application_address'],
+                        amount: 400000,
+                        suggestedParams: {
+                            ...params,
+                            fee: 1000,
+                            flatFee: true
+                        }
+                    })
                 });
 
                 await testnet.execute(composer);
