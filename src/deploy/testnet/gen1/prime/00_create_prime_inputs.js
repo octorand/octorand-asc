@@ -1,57 +1,41 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const testnet = require('./../../../../chain/testnet');
 
 exports.execute = async function () {
     try {
-        let connection = await testnet.get();
-        let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.legacy.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.legacy);
-
         let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
         let legacy = JSON.parse(fs.readFileSync('src/deploy/testnet/gen1/prime/legacy.json'));
 
+        let primes = config['gen1']['inputs']['prime'];
 
+        if (primes.length == 0) {
+            for (let i = 0; i < 1000; i++) {
+                let source = legacy['primes'].find(p => p.id == i);
 
-        let platform = config['setup']['platform'];
-
-        if (!platform['asset_id']) {
-
-            let composer = new connection.baseClient.AtomicTransactionComposer();
-
-            composer.addTransaction({
-                signer: signer,
-                txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
-                    from: sender,
-                    total: 1000000000000,
-                    decimals: 6,
-                    defaultFrozen: false,
-                    manager: sender,
-                    reserve: sender,
-                    unitName: "OCTO",
-                    assetName: "Octorand",
-                    suggestedParams: {
-                        ...params,
-                        fee: 1000,
-                        flatFee: true
-                    }
-                })
-            });
-
-            let response = await testnet.execute(composer);
-            let assetId = response.information['asset-index'];
-
-            platform['asset_id'] = assetId;
-            platform['manager'] = sender;
-            platform['reserve'] = sender;
-
-            config['setup']['platform'] = platform;
-            fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
-
-            console.log('create platform asset');
+                primes.push({
+                    id: i,
+                    parent_id: source.parent_id,
+                    theme: source.theme,
+                    skin: source.skin,
+                    is_founder: source.is_founder,
+                    is_artifact: source.is_artifact,
+                    is_pioneer: source.is_pioneer,
+                    is_explorer: source.is_explorer,
+                    score: source.score,
+                    sales: source.sales,
+                    drains: source.drains,
+                    transforms: source.transforms,
+                    vaults: source.vaults,
+                    name: source.name,
+                });
+            }
         }
+
+        config['gen1']['inputs']['prime'] = primes;
+        fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
+
+        console.log('create prime inputs');
     } catch (error) {
         console.log(error);
     }
