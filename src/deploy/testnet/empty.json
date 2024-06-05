@@ -4,6 +4,7 @@
     },
     "gen1": {
         "inputs": {
+            "max": 1,
             "primes": []
         },
         "contracts": {
@@ -23,6 +24,7 @@
     },
     "gen2": {
         "inputs": {
+            "max": 8,
             "primes": []
         },
         "contracts": {

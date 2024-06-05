@@ -7,31 +7,32 @@ exports.execute = async function () {
     try {
         let connection = await testnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen1.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
+        let sender = connection.admin.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
+
+        let version = 1;
 
         let max = config['gen1']['inputs']['max'];
 
         for (let i = 0; i < max; i++) {
             let primes = config['gen1']['inputs']['primes'];
 
-            if (!primes[i]['prime_asset_id']) {
+            if (primes[i]['application_version'] < version) {
+                let approvalProgram = fs.readFileSync('src/build/testnet/gen1/prime/app/approval.teal', 'utf8');
+                let clearProgram = fs.readFileSync('src/build/testnet/gen1/prime/app/clear.teal', 'utf8');
+
                 let composer = new connection.baseClient.AtomicTransactionComposer();
 
                 composer.addTransaction({
                     signer: signer,
-                    txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
+                    txn: connection.baseClient.makeApplicationUpdateTxnFromObject({
                         from: sender,
-                        total: 1,
-                        decimals: 0,
-                        defaultFrozen: false,
-                        manager: sender,
-                        reserve: sender,
-                        unitName: 'OG1-' + String(primes[i]['id']).padStart(3, '0'),
-                        assetName: 'Octorand Gen1 #' + String(primes[i]['id']).padStart(3, '0'),
-                        assetURL: 'template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}',
+                        appIndex: primes[i]['application_id'],
+                        onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
+                        approvalProgram: await testnet.compile(approvalProgram),
+                        clearProgram: await testnet.compile(clearProgram),
                         suggestedParams: {
                             ...params,
                             fee: 1000,
@@ -40,15 +41,14 @@ exports.execute = async function () {
                     })
                 });
 
-                let response = await testnet.execute(composer);
-                let asset_id = response.information['asset-index'];
+                await testnet.execute(composer);
 
-                primes[i]['prime_asset_id'] = asset_id;
+                primes[i]['application_version'] = version;;
 
                 config['gen1']['inputs']['primes'] = primes;
                 fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
-                console.log('create prime asset ' + i);
+                console.log('update main application ' + i);
             }
         }
     } catch (error) {

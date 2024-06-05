@@ -8,6 +8,7 @@
     },
     "gen1": {
         "inputs": {
+            "max": 10,
             "primes": [
                 {
                     "id": 0,
@@ -28,7 +29,10 @@
                     "prime_asset_id": 677265799,
                     "application_id": 677269595,
                     "application_address": "BOZO4EIV3CDC6HMU7X4LQBT5YT5RPJD5IIICXLEQ22PXX4EFSSTDNY6GMM",
-                    "application_version": 0
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true
                 },
                 {
                     "id": 1,
@@ -49,7 +53,10 @@
                     "prime_asset_id": 677265855,
                     "application_id": 677269615,
                     "application_address": "FXAJNFBTQIYNR2DGNYGC7CKVUMI3OISILWPJ675EROFWMHKB7VP4V4JPTQ",
-                    "application_version": 0
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true
                 },
                 {
                     "id": 2,
@@ -70,7 +77,10 @@
                     "prime_asset_id": 677265871,
                     "application_id": 677269652,
                     "application_address": "KB6J3TFSQA7B7MIMIOPEYQJE47ZEYK6ZQMOYO6TV4ENCLPER2L6XY6F2TA",
-                    "application_version": 0
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true
                 },
                 {
                     "id": 3,
@@ -91,7 +101,10 @@
                     "prime_asset_id": 677265876,
                     "application_id": 677269657,
                     "application_address": "UTKER2NVYRGVPOGMKDCYHX2EDXAAFDXBJHCZYLRUS2O6VEAXWTVH4HEUBA",
-                    "application_version": 0
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true
                 },
                 {
                     "id": 4,
@@ -112,7 +125,10 @@
                     "prime_asset_id": 677265986,
                     "application_id": 677269699,
                     "application_address": "K2PSH33FQA2IHLREHEICUEL3G6UP6LLK3CCKZXHQ2VARONOSXM37OPQAHI",
-                    "application_version": 0
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true
                 },
                 {
                     "id": 5,
@@ -133,7 +149,10 @@
                     "prime_asset_id": 677266070,
                     "application_id": 677269757,
                     "application_address": "CPA5O6J7MEPMAOHAMOS4YVRCK6YN7JE2OUE4ONNHYPHJJ2AT26LOVJMX54",
-                    "application_version": 0
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true
                 },
                 {
                     "id": 6,
@@ -154,7 +173,10 @@
                     "prime_asset_id": 677266115,
                     "application_id": 677269763,
                     "application_address": "RLNCXZNZV3UZ35HPOQLRICKH46QVHW56JVISWYJFSLFS6YHGCMA2PRCZFQ",
-                    "application_version": 0
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true
                 },
                 {
                     "id": 7,
@@ -175,7 +197,10 @@
                     "prime_asset_id": 677266120,
                     "application_id": 677269778,
                     "application_address": "PAXWWXOLO3IXHZCUUGR7SRLOPLMYWO3N2R3BQOA6VE3TDAH4TMZIA2OXN4",
-                    "application_version": 0
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true
                 },
                 {
                     "id": 8,
@@ -196,7 +221,10 @@
                     "prime_asset_id": 677266301,
                     "application_id": 677269808,
                     "application_address": "EH75E5JT6T2MJQXG45PPYQKKJLMJDPTAN74ZLE37TVQERRBVOK6T3U3H3M",
-                    "application_version": 0
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true
                 },
                 {
                     "id": 9,
@@ -217,7 +245,10 @@
                     "prime_asset_id": 677266306,
                     "application_id": 677269865,
                     "application_address": "NA5ILE7DEE64KA3O3ZXIA5URMAQXCEFTTLUKLVUKEM6OBQQTN3IF662BYA",
-                    "application_version": 0
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true
                 },
                 {
                     "id": 10,
@@ -16078,6 +16109,7 @@
     },
     "gen2": {
         "inputs": {
+            "max": 10,
             "primes": []
         },
         "contracts": {
