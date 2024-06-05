@@ -12,7 +12,7 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
 
-        let max = 1;
+        let max = 10;
 
         for (let i = 0; i < max; i++) {
             let primes = config['gen1']['inputs']['primes'];

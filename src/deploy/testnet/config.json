@@ -23,7 +23,8 @@
                     "drains": 114,
                     "transforms": 75,
                     "vaults": 0,
-                    "name": "ABSOLUTE"
+                    "name": "ABSOLUTE",
+                    "legacy_asset_id": 677254357
                 },
                 {
                     "id": 1,
@@ -39,7 +40,8 @@
                     "drains": 12,
                     "transforms": 46,
                     "vaults": 0,
-                    "name": "PRIMEVAL"
+                    "name": "PRIMEVAL",
+                    "legacy_asset_id": 677254872
                 },
                 {
                     "id": 2,
@@ -55,7 +57,8 @@
                     "drains": 0,
                     "transforms": 0,
                     "vaults": 0,
-                    "name": "CFAOCOED"
+                    "name": "CFAOCOED",
+                    "legacy_asset_id": 677254904
                 },
                 {
                     "id": 3,
@@ -71,7 +74,8 @@
                     "drains": 8,
                     "transforms": 115,
                     "vaults": 0,
-                    "name": "TRINITYX"
+                    "name": "TRINITYX",
+                    "legacy_asset_id": 677254938
                 },
                 {
                     "id": 4,
@@ -87,7 +91,8 @@
                     "drains": 0,
                     "transforms": 33,
                     "vaults": 0,
-                    "name": "DIAMONDS"
+                    "name": "DIAMONDS",
+                    "legacy_asset_id": 677254943
                 },
                 {
                     "id": 5,
@@ -103,7 +108,8 @@
                     "drains": 0,
                     "transforms": 0,
                     "vaults": 0,
-                    "name": "LNJACIDN"
+                    "name": "LNJACIDN",
+                    "legacy_asset_id": 677254956
                 },
                 {
                     "id": 6,
@@ -119,7 +125,8 @@
                     "drains": 31,
                     "transforms": 26,
                     "vaults": 0,
-                    "name": "WILDLIFE"
+                    "name": "WILDLIFE",
+                    "legacy_asset_id": 677254989
                 },
                 {
                     "id": 7,
@@ -135,7 +142,8 @@
                     "drains": 4,
                     "transforms": 20,
                     "vaults": 0,
-                    "name": "BONDGIRL"
+                    "name": "BONDGIRL",
+                    "legacy_asset_id": 677254993
                 },
                 {
                     "id": 8,
@@ -151,7 +159,8 @@
                     "drains": 2,
                     "transforms": 0,
                     "vaults": 0,
-                    "name": "ACNNICHE"
+                    "name": "ACNNICHE",
+                    "legacy_asset_id": 677254999
                 },
                 {
                     "id": 9,
@@ -167,7 +176,8 @@
                     "drains": 83,
                     "transforms": 58,
                     "vaults": 0,
-                    "name": "SSJPRIME"
+                    "name": "SSJPRIME",
+                    "legacy_asset_id": 677255038
                 },
                 {
                     "id": 10,
