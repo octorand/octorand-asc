@@ -8,7 +8,7 @@
     },
     "gen1": {
         "inputs": {
-            "prime": [
+            "primes": [
                 {
                     "id": 0,
                     "parent_id": 0,
@@ -16028,7 +16028,7 @@
     },
     "gen2": {
         "inputs": {
-            "prime": []
+            "primes": []
         },
         "contracts": {
             "prime": {

@@ -4,7 +4,7 @@
     },
     "gen1": {
         "inputs": {
-            "prime": []
+            "primes": []
         },
         "contracts": {
             "prime": {
@@ -23,7 +23,7 @@
     },
     "gen2": {
         "inputs": {
-            "prime": []
+            "primes": []
         },
         "contracts": {
             "prime": {

@@ -7,7 +7,7 @@ exports.execute = async function () {
         let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
         let legacy = JSON.parse(fs.readFileSync('src/deploy/testnet/gen1/prime/legacy.json'));
 
-        let primes = config['gen1']['inputs']['prime'];
+        let primes = config['gen1']['inputs']['primes'];
 
         if (primes.length == 0) {
             for (let i = 0; i < 1000; i++) {
@@ -32,7 +32,7 @@ exports.execute = async function () {
             }
         }
 
-        config['gen1']['inputs']['prime'] = primes;
+        config['gen1']['inputs']['primes'] = primes;
         fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
         console.log('create prime inputs');

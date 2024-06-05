@@ -12,42 +12,43 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
 
-        let platform = config['setup']['platform'];
+        let max = 1;
 
-        if (!platform['asset_id']) {
+        for (let i = 0; i < max; i++) {
+            let primes = config['gen1']['inputs']['primes'];
 
-            let composer = new connection.baseClient.AtomicTransactionComposer();
+            if (!primes[i]['legacy_asset_id']) {
+                let composer = new connection.baseClient.AtomicTransactionComposer();
 
-            composer.addTransaction({
-                signer: signer,
-                txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
-                    from: sender,
-                    total: 1000000000000,
-                    decimals: 6,
-                    defaultFrozen: false,
-                    manager: sender,
-                    reserve: sender,
-                    unitName: "OCTO",
-                    assetName: "Octorand",
-                    suggestedParams: {
-                        ...params,
-                        fee: 1000,
-                        flatFee: true
-                    }
-                })
-            });
+                composer.addTransaction({
+                    signer: signer,
+                    txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
+                        from: sender,
+                        total: 1,
+                        decimals: 0,
+                        defaultFrozen: false,
+                        manager: sender,
+                        reserve: sender,
+                        unitName: 'OCTO-' + String(primes[i]['id']).padStart(3, '0'),
+                        assetName: 'Octorand #' + String(primes[i]['id']).padStart(3, '0'),
+                        suggestedParams: {
+                            ...params,
+                            fee: 1000,
+                            flatFee: true
+                        }
+                    })
+                });
 
-            let response = await testnet.execute(composer);
-            let assetId = response.information['asset-index'];
+                let response = await testnet.execute(composer);
+                let asset_id = response.information['asset-index'];
 
-            platform['asset_id'] = assetId;
-            platform['manager'] = sender;
-            platform['reserve'] = sender;
+                primes[i]['legacy_asset_id'] = asset_id;
 
-            config['setup']['platform'] = platform;
-            fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
+                config['gen1']['inputs']['primes'] = primes;
+                fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('create platform asset');
+                console.log('create legacy asset ' + i);
+            }
         }
     } catch (error) {
         console.log(error);
