@@ -12,6 +12,7 @@ exports.execute = async function () {
         if (primes.length == 0) {
             for (let i = 0; i < 8000; i++) {
                 let source = legacy['primes'].find(p => p.id == i);
+                let parent = config['gen1']['inputs']['primes'].find(p => p.id == source.parent_id);
                 primes.push({
                     id: i,
                     parent_id: source.parent_id,
@@ -27,12 +28,13 @@ exports.execute = async function () {
                     transforms: source.transforms,
                     vaults: source.vaults,
                     name: source.name,
-                    parent_application_id: config['gen1']['inputs']['primes'].find(p => p.id == source.parent_id)['application_id']
+                    parent_application_id: parent ? parent['application_id'] : 0
                 });
             }
         } else {
             for (let i = 0; i < 8000; i++) {
                 let source = legacy['primes'].find(p => p.id == i);
+                let parent = config['gen1']['inputs']['primes'].find(p => p.id == source.parent_id);
                 primes[i].id = i;
                 primes[i].parent_id = source.parent_id;
                 primes[i].theme = source.theme;
@@ -47,7 +49,7 @@ exports.execute = async function () {
                 primes[i].transforms = source.transforms;
                 primes[i].vaults = source.vaults;
                 primes[i].name = source.name;
-                primes[i].parent_application_id = config['gen1']['inputs']['primes'].find(p => p.id == source.parent_id)['application_id']
+                primes[i].parent_application_id = parent ? parent['application_id'] : 0
             }
         }
 
