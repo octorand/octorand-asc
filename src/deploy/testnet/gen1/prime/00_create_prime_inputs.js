@@ -30,12 +30,12 @@ exports.execute = async function () {
                     name: source.name,
                 });
             }
+
+            config['gen1']['inputs']['primes'] = primes;
+            fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
+
+            console.log('create prime inputs');
         }
-
-        config['gen1']['inputs']['primes'] = primes;
-        fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
-
-        console.log('create prime inputs');
     } catch (error) {
         console.log(error);
     }

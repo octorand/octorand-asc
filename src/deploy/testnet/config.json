@@ -16114,16 +16114,56 @@
         },
         "contracts": {
             "prime": {
-                "buy": {},
-                "list": {},
-                "mint": {},
-                "optin": {},
-                "optout": {},
-                "rename": {},
-                "repaint": {},
-                "unlist": {},
-                "upgrade": {},
-                "withdraw": {}
+                "buy": {
+                    "application_id": 677328169,
+                    "application_address": "3DXSSKE4KW5L7XOKFDQYQUOC43NF2KKV4HLSP5AESKRSFB4Z7JE6G7QBRQ",
+                    "application_version": 1
+                },
+                "list": {
+                    "application_id": 677328204,
+                    "application_address": "KKL3OJSIPWEVSRPNMI4HIZZKBYEBTY4AKTMX7AVBWSK2ZW5LMVCPIC45J4",
+                    "application_version": 1
+                },
+                "mint": {
+                    "application_id": 677328219,
+                    "application_address": "QBLKHYNBY2G75MGADTXE32V4WMCTYFDTGAYRPJ7HOLM34PV5LT5EETIASM",
+                    "application_version": 1
+                },
+                "optin": {
+                    "application_id": 677328276,
+                    "application_address": "B6YG7P2IBR7GFLYX6LUKPH3NJ3FIXABXW7BSZ3OQ3GCPTQ3RBET3LN6GWE",
+                    "application_version": 1
+                },
+                "optout": {
+                    "application_id": 677328283,
+                    "application_address": "WF6VBESJC3RYJJLMWEQXLVZMX63C6FWGXPKEJW5GCOCVPYSY5ESA5VU3IY",
+                    "application_version": 1
+                },
+                "rename": {
+                    "application_id": 677328431,
+                    "application_address": "BZINNHVRX6XRP2W6JU2K43IN45PJHNGGPQ2QBLRK5YQXLAL5PR44PSOTNU",
+                    "application_version": 1
+                },
+                "repaint": {
+                    "application_id": 677328439,
+                    "application_address": "IL2UTTBCQBRCVOMRMNINMUIHFFPMW2HJY67E35AAL3MP7UCWN4L4YEU4RY",
+                    "application_version": 1
+                },
+                "unlist": {
+                    "application_id": 677328499,
+                    "application_address": "YY6SAI7USS6F7AO7MBVQIFG4OBIIEJ4I4HBUBCARRSLBUZXV5KRPOCPOF4",
+                    "application_version": 1
+                },
+                "upgrade": {
+                    "application_id": 677328546,
+                    "application_address": "O2JU6X2HIJ3EEPVPCFK3PEUGRK74TCJLFUUAFD67MPHKSC7VJBCOA7EMNQ",
+                    "application_version": 1
+                },
+                "withdraw": {
+                    "application_id": 677328636,
+                    "application_address": "JCB5AIIDINWZ3JPPORZL2WADGYTLOT2KQ5WSR4NDGUNIORZUJAZVQBO5OM",
+                    "application_version": 1
+                }
             }
         }
     },
