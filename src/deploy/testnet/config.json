@@ -24,7 +24,11 @@
                     "transforms": 75,
                     "vaults": 0,
                     "name": "ABSOLUTE",
-                    "legacy_asset_id": 677254357
+                    "legacy_asset_id": 677254357,
+                    "prime_asset_id": 677265799,
+                    "application_id": 677269595,
+                    "application_address": "BOZO4EIV3CDC6HMU7X4LQBT5YT5RPJD5IIICXLEQ22PXX4EFSSTDNY6GMM",
+                    "application_version": 0
                 },
                 {
                     "id": 1,
@@ -41,7 +45,11 @@
                     "transforms": 46,
                     "vaults": 0,
                     "name": "PRIMEVAL",
-                    "legacy_asset_id": 677254872
+                    "legacy_asset_id": 677254872,
+                    "prime_asset_id": 677265855,
+                    "application_id": 677269615,
+                    "application_address": "FXAJNFBTQIYNR2DGNYGC7CKVUMI3OISILWPJ675EROFWMHKB7VP4V4JPTQ",
+                    "application_version": 0
                 },
                 {
                     "id": 2,
@@ -58,7 +66,11 @@
                     "transforms": 0,
                     "vaults": 0,
                     "name": "CFAOCOED",
-                    "legacy_asset_id": 677254904
+                    "legacy_asset_id": 677254904,
+                    "prime_asset_id": 677265871,
+                    "application_id": 677269652,
+                    "application_address": "KB6J3TFSQA7B7MIMIOPEYQJE47ZEYK6ZQMOYO6TV4ENCLPER2L6XY6F2TA",
+                    "application_version": 0
                 },
                 {
                     "id": 3,
@@ -75,7 +87,11 @@
                     "transforms": 115,
                     "vaults": 0,
                     "name": "TRINITYX",
-                    "legacy_asset_id": 677254938
+                    "legacy_asset_id": 677254938,
+                    "prime_asset_id": 677265876,
+                    "application_id": 677269657,
+                    "application_address": "UTKER2NVYRGVPOGMKDCYHX2EDXAAFDXBJHCZYLRUS2O6VEAXWTVH4HEUBA",
+                    "application_version": 0
                 },
                 {
                     "id": 4,
@@ -92,7 +108,11 @@
                     "transforms": 33,
                     "vaults": 0,
                     "name": "DIAMONDS",
-                    "legacy_asset_id": 677254943
+                    "legacy_asset_id": 677254943,
+                    "prime_asset_id": 677265986,
+                    "application_id": 677269699,
+                    "application_address": "K2PSH33FQA2IHLREHEICUEL3G6UP6LLK3CCKZXHQ2VARONOSXM37OPQAHI",
+                    "application_version": 0
                 },
                 {
                     "id": 5,
@@ -109,7 +129,11 @@
                     "transforms": 0,
                     "vaults": 0,
                     "name": "LNJACIDN",
-                    "legacy_asset_id": 677254956
+                    "legacy_asset_id": 677254956,
+                    "prime_asset_id": 677266070,
+                    "application_id": 677269757,
+                    "application_address": "CPA5O6J7MEPMAOHAMOS4YVRCK6YN7JE2OUE4ONNHYPHJJ2AT26LOVJMX54",
+                    "application_version": 0
                 },
                 {
                     "id": 6,
@@ -126,7 +150,11 @@
                     "transforms": 26,
                     "vaults": 0,
                     "name": "WILDLIFE",
-                    "legacy_asset_id": 677254989
+                    "legacy_asset_id": 677254989,
+                    "prime_asset_id": 677266115,
+                    "application_id": 677269763,
+                    "application_address": "RLNCXZNZV3UZ35HPOQLRICKH46QVHW56JVISWYJFSLFS6YHGCMA2PRCZFQ",
+                    "application_version": 0
                 },
                 {
                     "id": 7,
@@ -143,7 +171,11 @@
                     "transforms": 20,
                     "vaults": 0,
                     "name": "BONDGIRL",
-                    "legacy_asset_id": 677254993
+                    "legacy_asset_id": 677254993,
+                    "prime_asset_id": 677266120,
+                    "application_id": 677269778,
+                    "application_address": "PAXWWXOLO3IXHZCUUGR7SRLOPLMYWO3N2R3BQOA6VE3TDAH4TMZIA2OXN4",
+                    "application_version": 0
                 },
                 {
                     "id": 8,
@@ -160,7 +192,11 @@
                     "transforms": 0,
                     "vaults": 0,
                     "name": "ACNNICHE",
-                    "legacy_asset_id": 677254999
+                    "legacy_asset_id": 677254999,
+                    "prime_asset_id": 677266301,
+                    "application_id": 677269808,
+                    "application_address": "EH75E5JT6T2MJQXG45PPYQKKJLMJDPTAN74ZLE37TVQERRBVOK6T3U3H3M",
+                    "application_version": 0
                 },
                 {
                     "id": 9,
@@ -177,7 +213,11 @@
                     "transforms": 58,
                     "vaults": 0,
                     "name": "SSJPRIME",
-                    "legacy_asset_id": 677255038
+                    "legacy_asset_id": 677255038,
+                    "prime_asset_id": 677266306,
+                    "application_id": 677269865,
+                    "application_address": "NA5ILE7DEE64KA3O3ZXIA5URMAQXCEFTTLUKLVUKEM6OBQQTN3IF662BYA",
+                    "application_version": 0
                 },
                 {
                     "id": 10,
