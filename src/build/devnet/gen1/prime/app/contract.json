@@ -300,6 +300,13 @@
             "returns": {
                 "type": "void"
             }
+        },
+        {
+            "name": "refresh",
+            "args": [],
+            "returns": {
+                "type": "void"
+            }
         }
     ],
     "networks": {}

@@ -315,3 +315,10 @@ def score(
         assert_caller(),
         prime.score.increment(value.get()),
     )
+
+
+@router.method
+def refresh():
+    return Seq(
+        refresh_balance(),
+    )
