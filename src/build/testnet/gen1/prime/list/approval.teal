@@ -177,7 +177,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -196,7 +196,7 @@ int 0
 assert
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 16
 int 8
 callsub getglobalexternaluint_1
@@ -234,7 +234,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 0
 int 8
 callsub getglobalexternaluint_1

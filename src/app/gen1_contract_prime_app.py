@@ -20,7 +20,8 @@ def assert_caller():
 def create():
     return Seq(
         Assert(Txn.sender() == const.manager_address),
-        func.init_global(prime.key),
+        func.init_global(prime.key_1),
+        func.init_global(prime.key_2),
     )
 
 
@@ -81,6 +82,7 @@ def populate(
     drains: abi.Uint64,
     transforms: abi.Uint64,
     name: abi.StaticBytes[Literal[8]],
+    owner: abi.Address,
 ):
     return Seq(
         Assert(Txn.sender() == const.admin_address),
@@ -95,6 +97,7 @@ def populate(
         prime.drains.set(drains.get()),
         prime.transforms.set(transforms.get()),
         prime.name.set(name.get()),
+        prime.owner.set(owner.get()),
     )
 
 
@@ -267,6 +270,18 @@ def optout(
         assert_caller(),
         func.optout_from_asset(asset.asset_id(), owner.get()),
         prime.vaults.decrement(Int(1)),
+        Log(log.get()),
+    )
+
+
+@router.method
+def claim(
+    owner: abi.Address,
+    log: abi.StaticBytes[Literal[240]],
+):
+    return Seq(
+        assert_caller(),
+        prime.owner.set(owner.get()),
         Log(log.get()),
     )
 

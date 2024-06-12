@@ -2,72 +2,64 @@
 txn NumAppArgs
 int 0
 ==
-bnz main_l28
+bnz main_l30
 txna ApplicationArgs 0
 method "initialize(uint64,asset,asset,asset)void"
 ==
-bnz main_l27
+bnz main_l29
 txna ApplicationArgs 0
-method "populate(uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64,byte[8])void"
+method "populate(uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64,byte[8],address)void"
 ==
-bnz main_l26
+bnz main_l28
 txna ApplicationArgs 0
 method "list(uint64,address,byte[240])void"
 ==
-bnz main_l25
+bnz main_l27
 txna ApplicationArgs 0
 method "unlist(address,byte[240])void"
 ==
-bnz main_l24
+bnz main_l26
 txna ApplicationArgs 0
 method "buy(address,byte[240])void"
 ==
-bnz main_l23
+bnz main_l25
 txna ApplicationArgs 0
 method "rename(uint64,uint64,uint64,byte[240])void"
 ==
-bnz main_l22
+bnz main_l24
 txna ApplicationArgs 0
 method "repaint(uint64,uint64,uint64,byte[240])void"
 ==
-bnz main_l21
+bnz main_l23
 txna ApplicationArgs 0
 method "upgrade(address,byte[240])void"
 ==
-bnz main_l20
+bnz main_l22
 txna ApplicationArgs 0
 method "mint(uint64,address,byte[240])void"
 ==
-bnz main_l19
+bnz main_l21
 txna ApplicationArgs 0
 method "withdraw(uint64,address,byte[240])void"
 ==
-bnz main_l18
+bnz main_l20
 txna ApplicationArgs 0
 method "optin(asset,byte[240])void"
 ==
-bnz main_l17
+bnz main_l19
 txna ApplicationArgs 0
 method "optout(asset,address,byte[240])void"
 ==
-bnz main_l16
+bnz main_l18
+txna ApplicationArgs 0
+method "claim(address,byte[240])void"
+==
+bnz main_l17
 txna ApplicationArgs 0
 method "score(uint64)void"
 ==
-bnz main_l15
+bnz main_l16
 err
-main_l15:
-txn OnCompletion
-int NoOp
-==
-txn ApplicationID
-int 0
-!=
-&&
-assert
-callsub scorecaster_38
-int 1
-return
 main_l16:
 txn OnCompletion
 int NoOp
@@ -77,7 +69,7 @@ int 0
 !=
 &&
 assert
-callsub optoutcaster_37
+callsub scorecaster_40
 int 1
 return
 main_l17:
@@ -89,7 +81,7 @@ int 0
 !=
 &&
 assert
-callsub optincaster_36
+callsub claimcaster_39
 int 1
 return
 main_l18:
@@ -101,7 +93,7 @@ int 0
 !=
 &&
 assert
-callsub withdrawcaster_35
+callsub optoutcaster_38
 int 1
 return
 main_l19:
@@ -113,7 +105,7 @@ int 0
 !=
 &&
 assert
-callsub mintcaster_34
+callsub optincaster_37
 int 1
 return
 main_l20:
@@ -125,7 +117,7 @@ int 0
 !=
 &&
 assert
-callsub upgradecaster_33
+callsub withdrawcaster_36
 int 1
 return
 main_l21:
@@ -137,7 +129,7 @@ int 0
 !=
 &&
 assert
-callsub repaintcaster_32
+callsub mintcaster_35
 int 1
 return
 main_l22:
@@ -149,7 +141,7 @@ int 0
 !=
 &&
 assert
-callsub renamecaster_31
+callsub upgradecaster_34
 int 1
 return
 main_l23:
@@ -161,7 +153,7 @@ int 0
 !=
 &&
 assert
-callsub buycaster_30
+callsub repaintcaster_33
 int 1
 return
 main_l24:
@@ -173,7 +165,7 @@ int 0
 !=
 &&
 assert
-callsub unlistcaster_29
+callsub renamecaster_32
 int 1
 return
 main_l25:
@@ -185,7 +177,7 @@ int 0
 !=
 &&
 assert
-callsub listcaster_28
+callsub buycaster_31
 int 1
 return
 main_l26:
@@ -197,7 +189,7 @@ int 0
 !=
 &&
 assert
-callsub populatecaster_27
+callsub unlistcaster_30
 int 1
 return
 main_l27:
@@ -209,20 +201,44 @@ int 0
 !=
 &&
 assert
-callsub initializecaster_26
+callsub listcaster_29
 int 1
 return
 main_l28:
 txn OnCompletion
 int NoOp
 ==
-bnz main_l32
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub populatecaster_28
+int 1
+return
+main_l29:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub initializecaster_27
+int 1
+return
+main_l30:
+txn OnCompletion
+int NoOp
+==
+bnz main_l34
 txn OnCompletion
 int UpdateApplication
 ==
-bnz main_l31
+bnz main_l33
 err
-main_l31:
+main_l33:
 txn ApplicationID
 int 0
 !=
@@ -230,7 +246,7 @@ assert
 callsub update_12
 int 1
 return
-main_l32:
+main_l34:
 txn ApplicationID
 int 0
 ==
@@ -409,7 +425,9 @@ txn Sender
 addr DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY
 ==
 assert
-byte "Prime"
+byte "P1"
+callsub initglobal_0
+byte "P2"
 callsub initglobal_0
 retsub
 
@@ -430,35 +448,35 @@ addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
 ==
 assert
 frame_dig -4
-byte "Prime"
+byte "P1"
 int 0
 int 8
 callsub setglobaluint_4
 frame_dig -3
 txnas Assets
-byte "Prime"
+byte "P1"
 int 8
 int 8
 callsub setglobaluint_4
 frame_dig -2
 txnas Assets
-byte "Prime"
+byte "P1"
 int 16
 int 8
 callsub setglobaluint_4
 frame_dig -1
 txnas Assets
-byte "Prime"
+byte "P1"
 int 24
 int 8
 callsub setglobaluint_4
 int 0
-byte "Prime"
+byte "P1"
 int 56
 int 8
 callsub setglobaluint_4
 global ZeroAddress
-byte "Prime"
+byte "P1"
 int 64
 int 32
 callsub setglobalbytes_3
@@ -475,79 +493,84 @@ retsub
 
 // populate
 populate_14:
-proto 11 0
+proto 12 0
 txn Sender
 addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
 ==
 assert
-frame_dig -11
-byte "Prime"
+frame_dig -12
+byte "P1"
 int 40
 int 2
 callsub setglobaluint_4
-frame_dig -10
-byte "Prime"
+frame_dig -11
+byte "P1"
 int 42
 int 2
 callsub setglobaluint_4
-frame_dig -9
-byte "Prime"
+frame_dig -10
+byte "P1"
 int 44
 int 1
 callsub setglobaluint_4
-frame_dig -8
-byte "Prime"
+frame_dig -9
+byte "P1"
 int 45
 int 1
 callsub setglobaluint_4
-frame_dig -7
-byte "Prime"
+frame_dig -8
+byte "P1"
 int 46
 int 1
 callsub setglobaluint_4
-frame_dig -6
-byte "Prime"
+frame_dig -7
+byte "P1"
 int 47
 int 1
 callsub setglobaluint_4
-frame_dig -5
-byte "Prime"
+frame_dig -6
+byte "P1"
 int 48
 int 8
 callsub setglobaluint_4
-frame_dig -4
-byte "Prime"
+frame_dig -5
+byte "P1"
 int 96
 int 2
 callsub setglobaluint_4
-frame_dig -3
-byte "Prime"
+frame_dig -4
+byte "P1"
 int 98
 int 2
 callsub setglobaluint_4
-frame_dig -2
-byte "Prime"
+frame_dig -3
+byte "P1"
 int 100
 int 2
 callsub setglobaluint_4
-frame_dig -1
-byte "Prime"
+frame_dig -2
+byte "P1"
 int 104
 int 8
+callsub setglobalbytes_3
+frame_dig -1
+byte "P2"
+int 0
+int 32
 callsub setglobalbytes_3
 retsub
 
 // list
 list_15:
 proto 3 0
-byte "Prime"
+byte "P1"
 int 64
 int 32
 callsub getglobalbytes_1
 global ZeroAddress
 ==
 assert
-byte "Prime"
+byte "P1"
 int 56
 int 8
 callsub getglobaluint_2
@@ -556,12 +579,12 @@ int 0
 assert
 callsub assertcaller_10
 frame_dig -3
-byte "Prime"
+byte "P1"
 int 56
 int 8
 callsub setglobaluint_4
 frame_dig -2
-byte "Prime"
+byte "P1"
 int 64
 int 32
 callsub setglobalbytes_3
@@ -572,14 +595,14 @@ retsub
 // unlist
 unlist_16:
 proto 2 0
-byte "Prime"
+byte "P1"
 int 56
 int 8
 callsub getglobaluint_2
 int 0
 >
 assert
-byte "Prime"
+byte "P1"
 int 64
 int 32
 callsub getglobalbytes_1
@@ -587,7 +610,7 @@ frame_dig -2
 ==
 assert
 callsub assertcaller_10
-byte "Prime"
+byte "P1"
 int 16
 int 8
 callsub getglobaluint_2
@@ -595,12 +618,12 @@ frame_dig -2
 int 1
 callsub executeassettransfer_8
 int 0
-byte "Prime"
+byte "P1"
 int 56
 int 8
 callsub setglobaluint_4
 global ZeroAddress
-byte "Prime"
+byte "P1"
 int 64
 int 32
 callsub setglobalbytes_3
@@ -611,14 +634,14 @@ retsub
 // buy
 buy_17:
 proto 2 0
-byte "Prime"
+byte "P1"
 int 56
 int 8
 callsub getglobaluint_2
 int 0
 >
 assert
-byte "Prime"
+byte "P1"
 int 64
 int 32
 callsub getglobalbytes_1
@@ -626,7 +649,7 @@ global ZeroAddress
 !=
 assert
 callsub assertcaller_10
-byte "Prime"
+byte "P1"
 int 16
 int 8
 callsub getglobaluint_2
@@ -634,22 +657,22 @@ frame_dig -2
 int 1
 callsub executeassettransfer_8
 int 0
-byte "Prime"
+byte "P1"
 int 56
 int 8
 callsub setglobaluint_4
 global ZeroAddress
-byte "Prime"
+byte "P1"
 int 64
 int 32
 callsub setglobalbytes_3
-byte "Prime"
+byte "P1"
 int 96
 int 2
 callsub getglobaluint_2
 int 1
 +
-byte "Prime"
+byte "P1"
 int 96
 int 2
 callsub setglobaluint_4
@@ -661,24 +684,24 @@ retsub
 rename_18:
 proto 4 0
 callsub assertcaller_10
-byte "Prime"
+byte "P1"
 int 104
 int 8
 callsub getglobalbytes_1
 frame_dig -4
 frame_dig -3
 setbyte
-byte "Prime"
+byte "P1"
 int 104
 int 8
 callsub setglobalbytes_3
-byte "Prime"
+byte "P1"
 int 100
 int 2
 callsub getglobaluint_2
 frame_dig -2
 +
-byte "Prime"
+byte "P1"
 int 100
 int 2
 callsub setglobaluint_4
@@ -691,22 +714,22 @@ repaint_19:
 proto 4 0
 callsub assertcaller_10
 frame_dig -4
-byte "Prime"
+byte "P1"
 int 40
 int 2
 callsub setglobaluint_4
 frame_dig -3
-byte "Prime"
+byte "P1"
 int 42
 int 2
 callsub setglobaluint_4
-byte "Prime"
+byte "P1"
 int 100
 int 2
 callsub getglobaluint_2
 frame_dig -2
 +
-byte "Prime"
+byte "P1"
 int 100
 int 2
 callsub setglobaluint_4
@@ -717,7 +740,7 @@ retsub
 // upgrade
 upgrade_20:
 proto 2 0
-byte "Prime"
+byte "P1"
 int 47
 int 1
 callsub getglobaluint_2
@@ -725,7 +748,7 @@ int 0
 ==
 assert
 callsub assertcaller_10
-byte "Prime"
+byte "P1"
 int 16
 int 8
 callsub getglobaluint_2
@@ -733,7 +756,7 @@ frame_dig -2
 int 1
 callsub executeassettransfer_8
 int 1
-byte "Prime"
+byte "P1"
 int 47
 int 1
 callsub setglobaluint_4
@@ -745,20 +768,20 @@ retsub
 mint_21:
 proto 3 0
 callsub assertcaller_10
-byte "Prime"
+byte "P1"
 int 8
 int 8
 callsub getglobaluint_2
 frame_dig -2
 frame_dig -3
 callsub executeassettransfer_8
-byte "Prime"
+byte "P1"
 int 98
 int 2
 callsub getglobaluint_2
 int 1
 +
-byte "Prime"
+byte "P1"
 int 98
 int 2
 callsub setglobaluint_4
@@ -782,7 +805,7 @@ optin_23:
 proto 2 0
 frame_dig -2
 txnas Assets
-byte "Prime"
+byte "P1"
 int 8
 int 8
 callsub getglobaluint_2
@@ -790,7 +813,7 @@ callsub getglobaluint_2
 assert
 frame_dig -2
 txnas Assets
-byte "Prime"
+byte "P1"
 int 16
 int 8
 callsub getglobaluint_2
@@ -798,7 +821,7 @@ callsub getglobaluint_2
 assert
 frame_dig -2
 txnas Assets
-byte "Prime"
+byte "P1"
 int 24
 int 8
 callsub getglobaluint_2
@@ -808,13 +831,13 @@ callsub assertcaller_10
 frame_dig -2
 txnas Assets
 callsub optinintoasset_5
-byte "Prime"
+byte "P1"
 int 102
 int 2
 callsub getglobaluint_2
 int 1
 +
-byte "Prime"
+byte "P1"
 int 102
 int 2
 callsub setglobaluint_4
@@ -827,7 +850,7 @@ optout_24:
 proto 3 0
 frame_dig -3
 txnas Assets
-byte "Prime"
+byte "P1"
 int 8
 int 8
 callsub getglobaluint_2
@@ -835,7 +858,7 @@ callsub getglobaluint_2
 assert
 frame_dig -3
 txnas Assets
-byte "Prime"
+byte "P1"
 int 16
 int 8
 callsub getglobaluint_2
@@ -843,7 +866,7 @@ callsub getglobaluint_2
 assert
 frame_dig -3
 txnas Assets
-byte "Prime"
+byte "P1"
 int 24
 int 8
 callsub getglobaluint_2
@@ -854,13 +877,13 @@ frame_dig -3
 txnas Assets
 frame_dig -2
 callsub optoutfromasset_6
-byte "Prime"
+byte "P1"
 int 102
 int 2
 callsub getglobaluint_2
 int 1
 -
-byte "Prime"
+byte "P1"
 int 102
 int 2
 callsub setglobaluint_4
@@ -868,24 +891,37 @@ frame_dig -1
 log
 retsub
 
+// claim
+claim_25:
+proto 2 0
+callsub assertcaller_10
+frame_dig -2
+byte "P2"
+int 0
+int 32
+callsub setglobalbytes_3
+frame_dig -1
+log
+retsub
+
 // score
-score_25:
+score_26:
 proto 1 0
 callsub assertcaller_10
-byte "Prime"
+byte "P1"
 int 48
 int 8
 callsub getglobaluint_2
 frame_dig -1
 +
-byte "Prime"
+byte "P1"
 int 48
 int 8
 callsub setglobaluint_4
 retsub
 
 // initialize_caster
-initializecaster_26:
+initializecaster_27:
 proto 0 0
 int 0
 dupn 3
@@ -912,11 +948,12 @@ callsub initialize_13
 retsub
 
 // populate_caster
-populatecaster_27:
+populatecaster_28:
 proto 0 0
 int 0
 dupn 9
 byte ""
+dup
 txna ApplicationArgs 1
 btoi
 frame_bury 0
@@ -949,6 +986,8 @@ btoi
 frame_bury 9
 txna ApplicationArgs 11
 frame_bury 10
+txna ApplicationArgs 12
+frame_bury 11
 frame_dig 0
 frame_dig 1
 frame_dig 2
@@ -960,11 +999,12 @@ frame_dig 7
 frame_dig 8
 frame_dig 9
 frame_dig 10
+frame_dig 11
 callsub populate_14
 retsub
 
 // list_caster
-listcaster_28:
+listcaster_29:
 proto 0 0
 int 0
 byte ""
@@ -983,7 +1023,7 @@ callsub list_15
 retsub
 
 // unlist_caster
-unlistcaster_29:
+unlistcaster_30:
 proto 0 0
 byte ""
 dup
@@ -997,7 +1037,7 @@ callsub unlist_16
 retsub
 
 // buy_caster
-buycaster_30:
+buycaster_31:
 proto 0 0
 byte ""
 dup
@@ -1011,7 +1051,7 @@ callsub buy_17
 retsub
 
 // rename_caster
-renamecaster_31:
+renamecaster_32:
 proto 0 0
 int 0
 dupn 2
@@ -1035,7 +1075,7 @@ callsub rename_18
 retsub
 
 // repaint_caster
-repaintcaster_32:
+repaintcaster_33:
 proto 0 0
 int 0
 dupn 2
@@ -1059,7 +1099,7 @@ callsub repaint_19
 retsub
 
 // upgrade_caster
-upgradecaster_33:
+upgradecaster_34:
 proto 0 0
 byte ""
 dup
@@ -1073,7 +1113,7 @@ callsub upgrade_20
 retsub
 
 // mint_caster
-mintcaster_34:
+mintcaster_35:
 proto 0 0
 int 0
 byte ""
@@ -1092,7 +1132,7 @@ callsub mint_21
 retsub
 
 // withdraw_caster
-withdrawcaster_35:
+withdrawcaster_36:
 proto 0 0
 int 0
 byte ""
@@ -1111,7 +1151,7 @@ callsub withdraw_22
 retsub
 
 // optin_caster
-optincaster_36:
+optincaster_37:
 proto 0 0
 int 0
 byte ""
@@ -1127,7 +1167,7 @@ callsub optin_23
 retsub
 
 // optout_caster
-optoutcaster_37:
+optoutcaster_38:
 proto 0 0
 int 0
 byte ""
@@ -1146,13 +1186,27 @@ frame_dig 2
 callsub optout_24
 retsub
 
+// claim_caster
+claimcaster_39:
+proto 0 0
+byte ""
+dup
+txna ApplicationArgs 1
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+frame_dig 0
+frame_dig 1
+callsub claim_25
+retsub
+
 // score_caster
-scorecaster_38:
+scorecaster_40:
 proto 0 0
 int 0
 txna ApplicationArgs 1
 btoi
 frame_bury 0
 frame_dig 0
-callsub score_25
+callsub score_26
 retsub

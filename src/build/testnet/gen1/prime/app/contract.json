@@ -71,6 +71,10 @@
                 {
                     "type": "byte[8]",
                     "name": "name"
+                },
+                {
+                    "type": "address",
+                    "name": "owner"
                 }
             ],
             "returns": {
@@ -256,6 +260,22 @@
                     "type": "asset",
                     "name": "asset"
                 },
+                {
+                    "type": "address",
+                    "name": "owner"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "claim",
+            "args": [
                 {
                     "type": "address",
                     "name": "owner"

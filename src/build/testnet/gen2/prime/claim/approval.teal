@@ -4,7 +4,7 @@ int 0
 ==
 bnz main_l4
 txna ApplicationArgs 0
-method "upgrade(application)void"
+method "claim(application)void"
 ==
 bnz main_l3
 err
@@ -17,7 +17,7 @@ int 0
 !=
 &&
 assert
-callsub upgradecaster_9
+callsub claimcaster_8
 int 1
 return
 main_l4:
@@ -35,7 +35,7 @@ txn ApplicationID
 int 0
 !=
 assert
-callsub update_7
+callsub update_6
 int 1
 return
 main_l8:
@@ -43,7 +43,7 @@ txn ApplicationID
 int 0
 ==
 assert
-callsub create_6
+callsub create_5
 int 1
 return
 
@@ -53,11 +53,11 @@ proto 4 1
 frame_dig -4
 frame_dig -3
 app_global_get_ex
-store 2
-store 0
-load 2
+store 3
+store 1
+load 3
 assert
-load 0
+load 1
 frame_dig -2
 frame_dig -1
 extract3
@@ -74,20 +74,8 @@ callsub getglobalexternalbytes_0
 btoi
 retsub
 
-// get_application_address
-getapplicationaddress_2:
-proto 1 1
-frame_dig -1
-app_params_get AppAddress
-store 3
-store 1
-load 3
-assert
-load 1
-retsub
-
 // prepare_log
-preparelog_3:
+preparelog_2:
 proto 1 1
 frame_dig -1
 int 240
@@ -98,42 +86,24 @@ bzero
 concat
 retsub
 
-// assert_sender_asset_transfer
-assertsenderassettransfer_4:
-proto 4 0
-frame_dig -2
+// assert_sender_asset_holding
+assertsenderassetholding_3:
+proto 1 0
+txn Sender
+frame_dig -1
+asset_holding_get AssetBalance
+store 2
+store 0
+load 2
+assert
+load 0
 int 0
 >
-assert
-frame_dig -1
-gtxns Sender
-txn Sender
-==
-assert
-frame_dig -1
-gtxns TypeEnum
-int axfer
-==
-assert
-frame_dig -1
-gtxns XferAsset
-frame_dig -4
-==
-assert
-frame_dig -1
-gtxns AssetReceiver
-frame_dig -3
-==
-assert
-frame_dig -1
-gtxns AssetAmount
-frame_dig -2
-==
 assert
 retsub
 
 // assert_application_creator
-assertapplicationcreator_5:
+assertapplicationcreator_4:
 proto 2 0
 frame_dig -2
 app_params_get AppCreator
@@ -148,27 +118,27 @@ assert
 retsub
 
 // create
-create_6:
+create_5:
 proto 0 0
 txn Sender
-addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+addr L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y
 ==
 assert
 retsub
 
 // update
-update_7:
+update_6:
 proto 0 0
 txn Sender
-addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+addr L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y
 ==
 assert
 retsub
 
-// upgrade
-upgrade_8:
+// claim
+claim_7:
 proto 1 0
-byte "prug"
+byte "prrp"
 int 1
 itob
 concat
@@ -185,37 +155,30 @@ itob
 concat
 txn Sender
 concat
-callsub preparelog_3
+callsub preparelog_2
 log
 frame_dig -1
 txnas Applications
 byte "P1"
-int 24
+int 16
 int 8
 callsub getglobalexternaluint_1
+callsub assertsenderassetholding_3
 frame_dig -1
 txnas Applications
-callsub getapplicationaddress_2
-int 1
-txn GroupIndex
-int 1
-+
-callsub assertsenderassettransfer_4
-frame_dig -1
-txnas Applications
-addr DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY
-callsub assertapplicationcreator_5
+addr UJCTJKWSHYYIOPTAGHHHOESGYRW635P35CEL2WNLXHRKDNGNDJ35TTLYRY
+callsub assertapplicationcreator_4
 itxn_begin
 int appl
 itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "upgrade(address,byte[240])void"
+method "claim(address,byte[240])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
-byte "prug"
+byte "prrp"
 int 1
 itob
 concat
@@ -236,8 +199,8 @@ itxn_field ApplicationArgs
 itxn_submit
 retsub
 
-// upgrade_caster
-upgradecaster_9:
+// claim_caster
+claimcaster_8:
 proto 0 0
 int 0
 txna ApplicationArgs 1
@@ -245,5 +208,5 @@ int 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub upgrade_8
+callsub claim_7
 retsub

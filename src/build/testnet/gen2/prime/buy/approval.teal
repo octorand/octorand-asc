@@ -172,7 +172,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -182,14 +182,14 @@ txn Sender
 concat
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 64
 int 32
 callsub getglobalexternalbytes_0
 concat
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 56
 int 8
 callsub getglobalexternaluint_1
@@ -199,13 +199,13 @@ callsub preparelog_3
 log
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 64
 int 32
 callsub getglobalexternalbytes_0
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 56
 int 8
 callsub getglobalexternaluint_1
@@ -219,14 +219,14 @@ int 1
 callsub assertsenderpayment_4
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 32
 int 8
 callsub getglobalexternaluint_1
 callsub getapplicationaddress_2
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 56
 int 8
 callsub getglobalexternaluint_1
@@ -241,7 +241,7 @@ callsub assertsenderpayment_4
 addr L44U7STO4ZDBT5ASU5JI4XUZYL2MD7BAF7LH75WWEHFL26DXDWZVXZ327Y
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 56
 int 8
 callsub getglobalexternaluint_1
@@ -276,7 +276,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -286,14 +286,14 @@ txn Sender
 concat
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 64
 int 32
 callsub getglobalexternalbytes_0
 concat
 frame_dig -1
 txnas Applications
-byte "Prime"
+byte "P1"
 int 56
 int 8
 callsub getglobalexternaluint_1

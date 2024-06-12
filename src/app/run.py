@@ -7,6 +7,7 @@ import env
 def run():
     compile("gen1_contract_prime_app", "gen1/prime/app")
     compile("gen1_contract_prime_buy", "gen1/prime/buy")
+    compile("gen1_contract_prime_claim", "gen1/prime/claim")
     compile("gen1_contract_prime_list", "gen1/prime/list")
     compile("gen1_contract_prime_mint", "gen1/prime/mint")
     compile("gen1_contract_prime_optin", "gen1/prime/optin")
@@ -19,6 +20,7 @@ def run():
 
     compile("gen2_contract_prime_app", "gen2/prime/app")
     compile("gen2_contract_prime_buy", "gen2/prime/buy")
+    compile("gen2_contract_prime_claim", "gen2/prime/claim")
     compile("gen2_contract_prime_list", "gen2/prime/list")
     compile("gen2_contract_prime_mint", "gen2/prime/mint")
     compile("gen2_contract_prime_optin", "gen2/prime/optin")
