@@ -69,7 +69,7 @@ int 0
 !=
 &&
 assert
-callsub scorecaster_40
+callsub scorecaster_41
 int 1
 return
 main_l17:
@@ -81,7 +81,7 @@ int 0
 !=
 &&
 assert
-callsub claimcaster_39
+callsub claimcaster_40
 int 1
 return
 main_l18:
@@ -93,7 +93,7 @@ int 0
 !=
 &&
 assert
-callsub optoutcaster_38
+callsub optoutcaster_39
 int 1
 return
 main_l19:
@@ -105,7 +105,7 @@ int 0
 !=
 &&
 assert
-callsub optincaster_37
+callsub optincaster_38
 int 1
 return
 main_l20:
@@ -117,7 +117,7 @@ int 0
 !=
 &&
 assert
-callsub withdrawcaster_36
+callsub withdrawcaster_37
 int 1
 return
 main_l21:
@@ -129,7 +129,7 @@ int 0
 !=
 &&
 assert
-callsub mintcaster_35
+callsub mintcaster_36
 int 1
 return
 main_l22:
@@ -141,7 +141,7 @@ int 0
 !=
 &&
 assert
-callsub upgradecaster_34
+callsub upgradecaster_35
 int 1
 return
 main_l23:
@@ -153,7 +153,7 @@ int 0
 !=
 &&
 assert
-callsub repaintcaster_33
+callsub repaintcaster_34
 int 1
 return
 main_l24:
@@ -165,7 +165,7 @@ int 0
 !=
 &&
 assert
-callsub renamecaster_32
+callsub renamecaster_33
 int 1
 return
 main_l25:
@@ -177,7 +177,7 @@ int 0
 !=
 &&
 assert
-callsub buycaster_31
+callsub buycaster_32
 int 1
 return
 main_l26:
@@ -189,7 +189,7 @@ int 0
 !=
 &&
 assert
-callsub unlistcaster_30
+callsub unlistcaster_31
 int 1
 return
 main_l27:
@@ -201,7 +201,7 @@ int 0
 !=
 &&
 assert
-callsub listcaster_29
+callsub listcaster_30
 int 1
 return
 main_l28:
@@ -213,7 +213,7 @@ int 0
 !=
 &&
 assert
-callsub populatecaster_28
+callsub populatecaster_29
 int 1
 return
 main_l29:
@@ -225,7 +225,7 @@ int 0
 !=
 &&
 assert
-callsub initializecaster_27
+callsub initializecaster_28
 int 1
 return
 main_l30:
@@ -243,7 +243,7 @@ txn ApplicationID
 int 0
 !=
 assert
-callsub update_12
+callsub update_13
 int 1
 return
 main_l34:
@@ -251,7 +251,7 @@ txn ApplicationID
 int 0
 ==
 assert
-callsub create_11
+callsub create_12
 int 1
 return
 
@@ -418,8 +418,33 @@ addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
 callsub assertapplicationcreator_9
 retsub
 
+// refresh_balance
+refreshbalance_11:
+proto 0 0
+global CurrentApplicationAddress
+byte "P1"
+int 8
+int 8
+callsub getglobaluint_2
+asset_holding_get AssetBalance
+store 2
+byte "P2"
+int 32
+int 8
+callsub setglobaluint_4
+global CurrentApplicationAddress
+balance
+global CurrentApplicationAddress
+min_balance
+-
+byte "P2"
+int 40
+int 8
+callsub setglobaluint_4
+retsub
+
 // create
-create_11:
+create_12:
 proto 0 0
 txn Sender
 addr SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ
@@ -432,7 +457,7 @@ callsub initglobal_0
 retsub
 
 // update
-update_12:
+update_13:
 proto 0 0
 txn Sender
 addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
@@ -441,7 +466,7 @@ assert
 retsub
 
 // initialize
-initialize_13:
+initialize_14:
 proto 5 0
 txn Sender
 addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
@@ -498,7 +523,7 @@ callsub optinintoasset_5
 retsub
 
 // populate
-populate_14:
+populate_15:
 proto 12 0
 txn Sender
 addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
@@ -567,7 +592,7 @@ callsub setglobalbytes_3
 retsub
 
 // list
-list_15:
+list_16:
 proto 3 0
 byte "P1"
 int 64
@@ -599,7 +624,7 @@ log
 retsub
 
 // unlist
-unlist_16:
+unlist_17:
 proto 2 0
 byte "P1"
 int 56
@@ -638,7 +663,7 @@ log
 retsub
 
 // buy
-buy_17:
+buy_18:
 proto 2 0
 byte "P1"
 int 56
@@ -687,7 +712,7 @@ log
 retsub
 
 // rename
-rename_18:
+rename_19:
 proto 4 0
 callsub assertcaller_10
 byte "P1"
@@ -716,7 +741,7 @@ log
 retsub
 
 // repaint
-repaint_19:
+repaint_20:
 proto 4 0
 callsub assertcaller_10
 frame_dig -4
@@ -744,7 +769,7 @@ log
 retsub
 
 // upgrade
-upgrade_20:
+upgrade_21:
 proto 2 0
 byte "P1"
 int 47
@@ -771,7 +796,7 @@ log
 retsub
 
 // mint
-mint_21:
+mint_22:
 proto 3 0
 callsub assertcaller_10
 byte "P1"
@@ -791,23 +816,25 @@ byte "P1"
 int 98
 int 2
 callsub setglobaluint_4
+callsub refreshbalance_11
 frame_dig -1
 log
 retsub
 
 // withdraw
-withdraw_22:
+withdraw_23:
 proto 3 0
 callsub assertcaller_10
 frame_dig -2
 frame_dig -3
 callsub executepayment_7
+callsub refreshbalance_11
 frame_dig -1
 log
 retsub
 
 // optin
-optin_23:
+optin_24:
 proto 2 0
 frame_dig -2
 txnas Assets
@@ -847,12 +874,13 @@ byte "P1"
 int 102
 int 2
 callsub setglobaluint_4
+callsub refreshbalance_11
 frame_dig -1
 log
 retsub
 
 // optout
-optout_24:
+optout_25:
 proto 3 0
 frame_dig -3
 txnas Assets
@@ -893,12 +921,13 @@ byte "P1"
 int 102
 int 2
 callsub setglobaluint_4
+callsub refreshbalance_11
 frame_dig -1
 log
 retsub
 
 // claim
-claim_25:
+claim_26:
 proto 2 0
 callsub assertcaller_10
 frame_dig -2
@@ -911,7 +940,7 @@ log
 retsub
 
 // score
-score_26:
+score_27:
 proto 1 0
 callsub assertcaller_10
 byte "P1"
@@ -927,7 +956,7 @@ callsub setglobaluint_4
 retsub
 
 // initialize_caster
-initializecaster_27:
+initializecaster_28:
 proto 0 0
 int 0
 dupn 4
@@ -955,11 +984,11 @@ frame_dig 1
 frame_dig 2
 frame_dig 3
 frame_dig 4
-callsub initialize_13
+callsub initialize_14
 retsub
 
 // populate_caster
-populatecaster_28:
+populatecaster_29:
 proto 0 0
 int 0
 dupn 9
@@ -1011,11 +1040,11 @@ frame_dig 8
 frame_dig 9
 frame_dig 10
 frame_dig 11
-callsub populate_14
+callsub populate_15
 retsub
 
 // list_caster
-listcaster_29:
+listcaster_30:
 proto 0 0
 int 0
 byte ""
@@ -1030,11 +1059,11 @@ frame_bury 2
 frame_dig 0
 frame_dig 1
 frame_dig 2
-callsub list_15
+callsub list_16
 retsub
 
 // unlist_caster
-unlistcaster_30:
+unlistcaster_31:
 proto 0 0
 byte ""
 dup
@@ -1044,11 +1073,11 @@ txna ApplicationArgs 2
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub unlist_16
+callsub unlist_17
 retsub
 
 // buy_caster
-buycaster_31:
+buycaster_32:
 proto 0 0
 byte ""
 dup
@@ -1058,11 +1087,11 @@ txna ApplicationArgs 2
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub buy_17
+callsub buy_18
 retsub
 
 // rename_caster
-renamecaster_32:
+renamecaster_33:
 proto 0 0
 int 0
 dupn 2
@@ -1082,11 +1111,11 @@ frame_dig 0
 frame_dig 1
 frame_dig 2
 frame_dig 3
-callsub rename_18
+callsub rename_19
 retsub
 
 // repaint_caster
-repaintcaster_33:
+repaintcaster_34:
 proto 0 0
 int 0
 dupn 2
@@ -1106,11 +1135,11 @@ frame_dig 0
 frame_dig 1
 frame_dig 2
 frame_dig 3
-callsub repaint_19
+callsub repaint_20
 retsub
 
 // upgrade_caster
-upgradecaster_34:
+upgradecaster_35:
 proto 0 0
 byte ""
 dup
@@ -1120,11 +1149,11 @@ txna ApplicationArgs 2
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub upgrade_20
+callsub upgrade_21
 retsub
 
 // mint_caster
-mintcaster_35:
+mintcaster_36:
 proto 0 0
 int 0
 byte ""
@@ -1139,11 +1168,11 @@ frame_bury 2
 frame_dig 0
 frame_dig 1
 frame_dig 2
-callsub mint_21
+callsub mint_22
 retsub
 
 // withdraw_caster
-withdrawcaster_36:
+withdrawcaster_37:
 proto 0 0
 int 0
 byte ""
@@ -1158,11 +1187,11 @@ frame_bury 2
 frame_dig 0
 frame_dig 1
 frame_dig 2
-callsub withdraw_22
+callsub withdraw_23
 retsub
 
 // optin_caster
-optincaster_37:
+optincaster_38:
 proto 0 0
 int 0
 byte ""
@@ -1174,11 +1203,11 @@ txna ApplicationArgs 2
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub optin_23
+callsub optin_24
 retsub
 
 // optout_caster
-optoutcaster_38:
+optoutcaster_39:
 proto 0 0
 int 0
 byte ""
@@ -1194,11 +1223,11 @@ frame_bury 2
 frame_dig 0
 frame_dig 1
 frame_dig 2
-callsub optout_24
+callsub optout_25
 retsub
 
 // claim_caster
-claimcaster_39:
+claimcaster_40:
 proto 0 0
 byte ""
 dup
@@ -1208,16 +1237,16 @@ txna ApplicationArgs 2
 frame_bury 1
 frame_dig 0
 frame_dig 1
-callsub claim_25
+callsub claim_26
 retsub
 
 // score_caster
-scorecaster_40:
+scorecaster_41:
 proto 0 0
 int 0
 txna ApplicationArgs 1
 btoi
 frame_bury 0
 frame_dig 0
-callsub score_26
+callsub score_27
 retsub

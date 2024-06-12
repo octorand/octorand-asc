@@ -17,6 +17,23 @@ def assert_caller():
 
 
 @Subroutine(TealType.none)
+def refresh_balance():
+    rewards = AssetHolding.balance(
+        Global.current_application_address(),
+        prime.platform_asset_id.get(),
+    )
+    royalties = Minus(
+        Balance(Global.current_application_address()),
+        MinBalance(Global.current_application_address()),
+    )
+    return Seq(
+        rewards,
+        prime.rewards.set(rewards.value()),
+        prime.royalties.set(royalties),
+    )
+
+
+@Subroutine(TealType.none)
 def create():
     return Seq(
         Assert(Txn.sender() == const.manager_address),
@@ -221,6 +238,7 @@ def mint(
             amount.get(),
         ),
         prime.drains.increment(Int(1)),
+        refresh_balance(),
         Log(log.get()),
     )
 
@@ -237,6 +255,7 @@ def withdraw(
             owner.get(),
             amount.get(),
         ),
+        refresh_balance(),
         Log(log.get()),
     )
 
@@ -253,6 +272,7 @@ def optin(
         assert_caller(),
         func.optin_into_asset(asset.asset_id()),
         prime.vaults.increment(Int(1)),
+        refresh_balance(),
         Log(log.get()),
     )
 
@@ -270,6 +290,7 @@ def optout(
         assert_caller(),
         func.optout_from_asset(asset.asset_id(), owner.get()),
         prime.vaults.decrement(Int(1)),
+        refresh_balance(),
         Log(log.get()),
     )
 
