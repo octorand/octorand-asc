@@ -31,6 +31,7 @@ exports.execute = async function () {
                 ],
                 appForeignAssets: [
                     prime['prime_asset_id'],
+                    config['setup']['platform']['asset_id']
                 ],
                 suggestedParams: {
                     ...params,

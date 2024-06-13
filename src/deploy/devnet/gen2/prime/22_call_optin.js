@@ -28,6 +28,9 @@ exports.execute = async function () {
                     config['setup']['vault']['asset_id'],
                     config['gen2']['contracts']['prime']['app']['application_id'],
                 ],
+                appForeignAssets: [
+                    config['setup']['platform']['asset_id']
+                ],
                 suggestedParams: {
                     ...params,
                     fee: 3000,
