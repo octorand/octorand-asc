@@ -10,7 +10,7 @@ exports.execute = async function () {
         let primes = config['gen1']['inputs']['primes'];
 
         if (primes.length == 0) {
-            for (let i = 0; i < 1000; i++) {
+            for (let i = 0; i < 10; i++) {
                 let source = legacy['primes'].find(p => p.id == i);
                 primes.push({
                     id: i,
@@ -27,10 +27,13 @@ exports.execute = async function () {
                     transforms: source.transforms,
                     vaults: source.vaults,
                     name: source.name,
+                    owner: source.owner,
+                    rewards: source.rewards,
+                    royalties: source.royalties
                 });
             }
         } else {
-            for (let i = 0; i < 1000; i++) {
+            for (let i = 0; i < 10; i++) {
                 let source = legacy['primes'].find(p => p.id == i);
                 primes[i].id = i;
                 primes[i].parent_id = source.parent_id;
@@ -46,6 +49,9 @@ exports.execute = async function () {
                 primes[i].transforms = source.transforms;
                 primes[i].vaults = source.vaults;
                 primes[i].name = source.name;
+                primes[i].owner = source.owner;
+                primes[i].rewards = source.rewards;
+                primes[i].royalties = source.royalties;
             }
         }
 

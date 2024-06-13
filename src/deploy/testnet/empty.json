@@ -4,12 +4,13 @@
     },
     "gen1": {
         "inputs": {
-            "max": 1,
+            "max": 10,
             "primes": []
         },
         "contracts": {
             "prime": {
                 "buy": {},
+                "claim": {},
                 "list": {},
                 "mint": {},
                 "optin": {},
@@ -24,12 +25,13 @@
     },
     "gen2": {
         "inputs": {
-            "max": 8,
+            "max": 80,
             "primes": []
         },
         "contracts": {
             "prime": {
                 "buy": {},
+                "claim": {},
                 "list": {},
                 "mint": {},
                 "optin": {},
