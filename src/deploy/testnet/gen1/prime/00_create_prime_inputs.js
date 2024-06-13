@@ -55,6 +55,8 @@ exports.execute = async function () {
             }
         }
 
+        primes.sort((first, second) => first.id - second.id);
+
         config['gen1']['inputs']['primes'] = primes;
         fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
     } catch (error) {

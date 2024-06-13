@@ -49,7 +49,7 @@ exports.execute = async function () {
                     let child = children[j];
                     let id = (j * 10) + i;
 
-                    primes[id].id = i;
+                    primes[id].id = id;
                     primes[id].parent_id = child.parent_id;
                     primes[id].theme = child.theme;
                     primes[id].skin = child.skin;
@@ -70,6 +70,8 @@ exports.execute = async function () {
                 }
             }
         }
+
+        primes.sort((first, second) => first.id - second.id);
 
         config['gen2']['inputs']['primes'] = primes;
         fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
