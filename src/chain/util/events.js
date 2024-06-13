@@ -53,6 +53,9 @@ exports.event = function (value) {
             data.name = 'prime_withdraw';
             data['amount'] = algosdk.decodeUint64(value.subarray(60, 68));
             break;
+        case 'prcl':
+            data.name = 'prime_claim';
+            break;
     }
 
     return data;

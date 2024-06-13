@@ -167,7 +167,8 @@
                             "version": 1,
                             "timestamp": 1718269503,
                             "prime": 1,
-                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY"
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_claim"
                         }
                     ],
                     "state": {
@@ -182,7 +183,7 @@
                         "is_artifact": 0,
                         "is_pioneer": 1,
                         "is_explorer": 1,
-                        "score": 1350,
+                        "score": 1390,
                         "price": 0,
                         "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
                         "sales": 11,
@@ -224,7 +225,8 @@
                             "version": 1,
                             "timestamp": 1718269503,
                             "prime": 1,
-                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY"
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_claim"
                         }
                     ]
                 },
@@ -559,7 +561,8 @@
                             "version": 1,
                             "timestamp": 1718269833,
                             "prime": 1,
-                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY"
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_claim"
                         }
                     ],
                     "state": {
@@ -616,7 +619,8 @@
                             "version": 1,
                             "timestamp": 1718269833,
                             "prime": 1,
-                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY"
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_claim"
                         }
                     ]
                 },
