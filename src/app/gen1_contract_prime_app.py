@@ -66,59 +66,6 @@ router = Router(
 
 
 @router.method
-def initialize(
-    id: abi.Uint64,
-    platform_asset: abi.Asset,
-    prime_asset: abi.Asset,
-    legacy_asset: abi.Asset,
-):
-    return Seq(
-        Assert(Txn.sender() == const.admin_address),
-        prime.id.set(id.get()),
-        prime.platform_asset_id.set(platform_asset.asset_id()),
-        prime.prime_asset_id.set(prime_asset.asset_id()),
-        prime.legacy_asset_id.set(legacy_asset.asset_id()),
-        prime.price.set(Int(0)),
-        prime.seller.set(Global.zero_address()),
-        func.optin_into_asset(platform_asset.asset_id()),
-        func.optin_into_asset(prime_asset.asset_id()),
-        func.optin_into_asset(legacy_asset.asset_id()),
-    )
-
-
-@router.method
-def populate(
-    theme: abi.Uint64,
-    skin: abi.Uint64,
-    is_founder: abi.Uint64,
-    is_artifact: abi.Uint64,
-    is_pioneer: abi.Uint64,
-    is_explorer: abi.Uint64,
-    score: abi.Uint64,
-    sales: abi.Uint64,
-    drains: abi.Uint64,
-    transforms: abi.Uint64,
-    name: abi.StaticBytes[Literal[8]],
-    owner: abi.Address,
-):
-    return Seq(
-        Assert(Txn.sender() == const.admin_address),
-        prime.theme.set(theme.get()),
-        prime.skin.set(skin.get()),
-        prime.is_founder.set(is_founder.get()),
-        prime.is_artifact.set(is_artifact.get()),
-        prime.is_pioneer.set(is_pioneer.get()),
-        prime.is_explorer.set(is_explorer.get()),
-        prime.score.set(score.get()),
-        prime.sales.set(sales.get()),
-        prime.drains.set(drains.get()),
-        prime.transforms.set(transforms.get()),
-        prime.name.set(name.get()),
-        prime.owner.set(owner.get()),
-    )
-
-
-@router.method
 def list(
     price: abi.Uint64,
     seller: abi.Address,
