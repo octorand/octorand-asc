@@ -32,9 +32,10 @@ exports.execute = async function () {
     await require('./prime/22_call_optin').execute();
     await require('./prime/23_call_optout').execute();
     await require('./prime/24_call_claim').execute();
+    await require('./prime/25_call_refresh').execute();
 
     console.log('gen1 prime read states');
-    await require('./prime/25_read_logs').execute();
-    await require('./prime/26_read_state').execute();
+    await require('./prime/26_read_logs').execute();
+    await require('./prime/27_read_state').execute();
 
 }

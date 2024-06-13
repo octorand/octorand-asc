@@ -47,7 +47,7 @@ def claim(
 ):
     app_id = application.application_id()
     log = Concat(
-        event.prime_repaint,
+        event.prime_claim,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(prime.id.external(app_id)),

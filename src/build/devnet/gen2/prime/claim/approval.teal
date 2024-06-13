@@ -138,7 +138,7 @@ retsub
 // claim
 claim_7:
 proto 1 0
-byte "prrp"
+byte "prcl"
 int 1
 itob
 concat
@@ -178,7 +178,7 @@ method "claim(address,byte[240])void"
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
-byte "prrp"
+byte "prcl"
 int 1
 itob
 concat
