@@ -4,53 +4,51 @@ const fs = require('fs');
 const testnet = require('./../../../../chain/testnet');
 
 exports.execute = async function () {
-    try {
-        let connection = await testnet.get();
-        let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.legacy.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.legacy);
 
-        let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
+    let connection = await testnet.get();
+    let params = await connection.algodClient.getTransactionParams().do();
+    let sender = connection.legacy.addr;
+    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.legacy);
 
-        let max = config['gen1']['inputs']['max'];
+    let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
 
-        for (let i = 0; i < max; i++) {
-            let primes = config['gen1']['inputs']['primes'];
+    let max = config['gen1']['inputs']['max'];
 
-            if (!primes[i]['legacy_asset_id']) {
-                let composer = new connection.baseClient.AtomicTransactionComposer();
+    for (let i = 0; i < max; i++) {
+        let primes = config['gen1']['inputs']['primes'];
 
-                composer.addTransaction({
-                    signer: signer,
-                    txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
-                        from: sender,
-                        total: 1,
-                        decimals: 0,
-                        defaultFrozen: false,
-                        manager: sender,
-                        reserve: sender,
-                        unitName: 'OCTO-' + String(primes[i]['id']).padStart(3, '0'),
-                        assetName: 'Octorand #' + String(primes[i]['id']).padStart(3, '0'),
-                        suggestedParams: {
-                            ...params,
-                            fee: 1000,
-                            flatFee: true
-                        }
-                    })
-                });
+        if (!primes[i]['legacy_asset_id']) {
+            let composer = new connection.baseClient.AtomicTransactionComposer();
 
-                let response = await testnet.execute(composer);
-                let asset_id = response.information['asset-index'];
+            composer.addTransaction({
+                signer: signer,
+                txn: connection.baseClient.makeAssetCreateTxnWithSuggestedParamsFromObject({
+                    from: sender,
+                    total: 1,
+                    decimals: 0,
+                    defaultFrozen: false,
+                    manager: sender,
+                    reserve: sender,
+                    unitName: 'OCTO-' + String(primes[i]['id']).padStart(3, '0'),
+                    assetName: 'Octorand #' + String(primes[i]['id']).padStart(3, '0'),
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                })
+            });
 
-                primes[i]['legacy_asset_id'] = asset_id;
+            let response = await testnet.execute(composer);
+            let asset_id = response.information['asset-index'];
 
-                config['gen1']['inputs']['primes'] = primes;
-                fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
+            primes[i]['legacy_asset_id'] = asset_id;
 
-                console.log('create legacy asset ' + i);
-            }
+            config['gen1']['inputs']['primes'] = primes;
+            fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
+
+            console.log('create legacy asset ' + i);
         }
-    } catch (error) {
-        console.log(error);
     }
+
 }

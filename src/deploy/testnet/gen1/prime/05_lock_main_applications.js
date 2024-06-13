@@ -4,49 +4,47 @@ const fs = require('fs');
 const testnet = require('./../../../../chain/testnet');
 
 exports.execute = async function () {
-    try {
-        let connection = await testnet.get();
-        let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen1.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
-        let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
+    let connection = await testnet.get();
+    let params = await connection.algodClient.getTransactionParams().do();
+    let sender = connection.gen1.addr;
+    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
-        let max = config['gen1']['inputs']['max'];
+    let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
 
-        for (let i = 0; i < max; i++) {
-            let primes = config['gen1']['inputs']['primes'];
+    let max = config['gen1']['inputs']['max'];
 
-            if (!primes[i]['locked']) {
-                let composer = new connection.baseClient.AtomicTransactionComposer();
+    for (let i = 0; i < max; i++) {
+        let primes = config['gen1']['inputs']['primes'];
 
-                composer.addTransaction({
-                    sender: sender,
-                    signer: signer,
-                    txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
-                        from: sender,
-                        to: primes[i]['application_address'],
-                        assetIndex: primes[i]['prime_asset_id'],
-                        amount: 1,
-                        suggestedParams: {
-                            ...params,
-                            fee: 1000,
-                            flatFee: true
-                        }
-                    })
-                });
+        if (!primes[i]['locked']) {
+            let composer = new connection.baseClient.AtomicTransactionComposer();
 
-                await testnet.execute(composer);
+            composer.addTransaction({
+                sender: sender,
+                signer: signer,
+                txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                    from: sender,
+                    to: primes[i]['application_address'],
+                    assetIndex: primes[i]['prime_asset_id'],
+                    amount: 1,
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                })
+            });
 
-                primes[i]['locked'] = true;
+            await testnet.execute(composer);
 
-                config['gen1']['inputs']['primes'] = primes;
-                fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
+            primes[i]['locked'] = true;
 
-                console.log('lock main application ' + i);
-            }
+            config['gen1']['inputs']['primes'] = primes;
+            fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
+
+            console.log('lock main application ' + i);
         }
-    } catch (error) {
-        console.log(error);
     }
+
 }
