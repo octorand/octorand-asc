@@ -42,7 +42,11 @@
                     "application_id": 680534721,
                     "application_address": "FCLRDDYYEWCOMFQHGUTI55QB2ZP4LIA7IAC6PHR4UY2OYVJK34IAUTCWTI",
                     "application_version": 0,
-                    "funded": true
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "transferred": true,
+                    "locked": true
                 },
                 "buy": {
                     "application_id": 680534727,
@@ -129,7 +133,11 @@
                     "application_id": 680535582,
                     "application_address": "KLSFAMLRXYGQ32EHBKORQOLHHA5C4OTHJTBTZSUBESBLPHNNHQUA4T4PYI",
                     "application_version": 0,
-                    "funded": true
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "transferred": true,
+                    "locked": true
                 },
                 "buy": {
                     "application_id": 680535613,
