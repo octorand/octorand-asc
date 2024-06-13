@@ -5,7 +5,7 @@ const algosdk = require("algosdk");
 (async () => {
     try {
         let server = process.env.TESTNET_ALGO_SERVER;
-        let mnemonic = process.env.TESTNET_GEN2_MANAGER_MNEMONIC;
+        let mnemonic = process.env.TESTNET_ADMIN_MNEMONIC;
 
         let client = new algosdk.Algodv2('', server, '');
         let user = algosdk.mnemonicToSecretKey(mnemonic);
@@ -13,7 +13,7 @@ const algosdk = require("algosdk");
         let signer = algosdk.makeBasicAccountTransactionSigner(user);
         let params = await client.getTransactionParams().do();
 
-        let receiver = process.env.TESTNET_ADMIN_ADDRESS;
+        let receiver = '';
         let amount = 10000000;
 
         let composer = new algosdk.AtomicTransactionComposer();
