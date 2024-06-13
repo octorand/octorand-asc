@@ -41,7 +41,7 @@
                 "app": {
                     "application_id": 680534721,
                     "application_address": "FCLRDDYYEWCOMFQHGUTI55QB2ZP4LIA7IAC6PHR4UY2OYVJK34IAUTCWTI",
-                    "application_version": 0,
+                    "application_version": 1,
                     "funded": true,
                     "initialized": true,
                     "populated": true,
@@ -66,7 +66,8 @@
                 "mint": {
                     "application_id": 680534775,
                     "application_address": "SHSLZ5XLOHN6IYNOUN27GIDTA2ABFB4ZXZDQNEFZ4KP7TBQHEOTO5MHQUY",
-                    "application_version": 1
+                    "application_version": 1,
+                    "minted": true
                 },
                 "optin": {
                     "application_id": 680534787,
@@ -96,7 +97,8 @@
                 "upgrade": {
                     "application_id": 680534905,
                     "application_address": "X3GEUIGLRK3QZWJSYNJHJZASORMJY5LGPLTZOVMUZUEYGSAMX6ZRQL6HQA",
-                    "application_version": 1
+                    "application_version": 1,
+                    "upgraded": true
                 },
                 "withdraw": {
                     "application_id": 680534998,

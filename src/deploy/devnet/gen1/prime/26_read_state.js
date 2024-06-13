@@ -31,6 +31,9 @@ exports.execute = async function () {
             transforms: null,
             vaults: null,
             name: null,
+            owner: null,
+            rewards: null,
+            royalties: null,
         };
 
         let info = await connection.indexerClient.lookupApplications(application['application_id']).do();
@@ -42,7 +45,7 @@ exports.execute = async function () {
             let value = Buffer.from(params.value['bytes'], 'base64');
 
             switch (key) {
-                case 'Prime':
+                case 'P1':
                     state.id = connection.baseClient.decodeUint64(value.subarray(0, 8));
                     state.platform_asset_id = connection.baseClient.decodeUint64(value.subarray(8, 16));
                     state.prime_asset_id = connection.baseClient.decodeUint64(value.subarray(16, 24));
@@ -62,6 +65,11 @@ exports.execute = async function () {
                     state.transforms = connection.baseClient.decodeUint64(value.subarray(100, 102));
                     state.vaults = connection.baseClient.decodeUint64(value.subarray(102, 104));
                     state.name = value.subarray(104, 112).toString('utf-8').trim();
+                    break;
+                case 'P2':
+                    state.owner = connection.baseClient.encodeAddress(value.subarray(0, 32));
+                    state.rewards = connection.baseClient.decodeUint64(value.subarray(32, 40));
+                    state.royalties = connection.baseClient.decodeUint64(value.subarray(40, 48));
                     break;
             }
         }

@@ -34,7 +34,7 @@ exports.execute = async function () {
     await require('./prime/24_call_claim').execute();
 
     console.log('gen2 prime read states');
-    // await require('./prime/23_read_logs').execute();
-    // await require('./prime/24_read_state').execute();
+    await require('./prime/23_read_logs').execute();
+    await require('./prime/24_read_state').execute();
 
 }
