@@ -7,7 +7,7 @@ exports.execute = async function () {
     try {
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
-        let contracts = ['app', 'buy', 'list', 'mint', 'optin', 'optout', 'rename', 'repaint', 'unlist', 'upgrade', 'withdraw'];
+        let contracts = ['app', 'buy', 'claim', 'list', 'mint', 'optin', 'optout', 'rename', 'repaint', 'unlist', 'upgrade', 'withdraw'];
 
         for (let i = 0; i < contracts.length; i++) {
             let contract = contracts[i];

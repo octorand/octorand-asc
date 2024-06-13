@@ -15,8 +15,8 @@ exports.execute = async function () {
         let application = config['gen1']['contracts']['prime']['app'];
 
         if (!application['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/devnet/gen1/prime/app/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/devnet/gen1/prime/app/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/devnet/gen1/prime/build/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/devnet/gen1/prime/build/clear.teal', 'utf8');
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -30,7 +30,7 @@ exports.execute = async function () {
                     numLocalInts: 0,
                     numLocalByteSlices: 0,
                     numGlobalInts: 0,
-                    numGlobalByteSlices: 1,
+                    numGlobalByteSlices: 2,
                     extraPages: 0,
                     suggestedParams: {
                         ...params,

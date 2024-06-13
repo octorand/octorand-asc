@@ -22,7 +22,8 @@ exports.execute = async function () {
                 price: 350,
                 sales: 10,
                 drains: 20,
-                transforms: 30
+                transforms: 30,
+                owner: 'SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ',
             }
 
             config['gen2']['inputs']['prime'] = prime;

@@ -19,20 +19,20 @@ exports.execute = async function () {
     await require('./prime/11_lock_prime_asset').execute();
 
     console.log('gen1 prime call functions');
-    await require('./prime/12_call_upgrade').execute();
-    await require('./prime/13_call_mint').execute();
-    await require('./prime/14_call_withdraw').execute();
-    await require('./prime/15_call_list').execute();
-    await require('./prime/16_call_unlist').execute();
-    await require('./prime/17_call_list').execute();
-    await require('./prime/18_call_buy').execute();
-    await require('./prime/19_call_rename').execute();
-    await require('./prime/20_call_repaint').execute();
-    await require('./prime/21_call_optin').execute();
-    await require('./prime/22_call_optout').execute();
+    // await require('./prime/12_call_upgrade').execute();
+    // await require('./prime/13_call_mint').execute();
+    // await require('./prime/14_call_withdraw').execute();
+    // await require('./prime/15_call_list').execute();
+    // await require('./prime/16_call_unlist').execute();
+    // await require('./prime/17_call_list').execute();
+    // await require('./prime/18_call_buy').execute();
+    // await require('./prime/19_call_rename').execute();
+    // await require('./prime/20_call_repaint').execute();
+    // await require('./prime/21_call_optin').execute();
+    // await require('./prime/22_call_optout').execute();
 
     console.log('gen1 prime read states');
-    await require('./prime/23_read_logs').execute();
-    await require('./prime/24_read_state').execute();
+    // await require('./prime/23_read_logs').execute();
+    // await require('./prime/24_read_state').execute();
 
 }
