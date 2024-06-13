@@ -1,201 +1,47 @@
 {
     "setup": {
-        "platform": {
-            "asset_id": 680530251,
-            "manager": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
-            "reserve": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM"
-        },
-        "vault": {
-            "asset_id": 680530309,
-            "manager": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
-            "reserve": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM"
-        },
-        "optin_gen1": true,
-        "optin_gen2": true,
-        "optin_player": true,
-        "transfer_assets": true
+        "platform": {},
+        "vault": {}
     },
     "gen1": {
         "inputs": {
-            "prime": {
-                "id": 1,
-                "theme": 1,
-                "skin": 2,
-                "is_founder": 1,
-                "is_artifact": 0,
-                "is_pioneer": 1,
-                "is_explorer": 0,
-                "score": 750,
-                "name": "ABCDWXYZ",
-                "price": 350,
-                "sales": 10,
-                "drains": 20,
-                "transforms": 30,
-                "owner": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
-                "prime_asset_id": 680535437,
-                "legacy_asset_id": 680535442
-            }
+            "prime": {}
         },
         "contracts": {
             "prime": {
-                "app": {
-                    "application_id": 680534721,
-                    "application_address": "FCLRDDYYEWCOMFQHGUTI55QB2ZP4LIA7IAC6PHR4UY2OYVJK34IAUTCWTI",
-                    "application_version": 1,
-                    "funded": true,
-                    "initialized": true,
-                    "populated": true,
-                    "transferred": true,
-                    "locked": true
-                },
-                "buy": {
-                    "application_id": 680534727,
-                    "application_address": "J6HVXEBW5XZ6T7UZVMBLY7G23DMTTSJ6NRMM2VHGFQQJHDWQAZ6VV4EMXQ",
-                    "application_version": 1
-                },
-                "claim": {
-                    "application_id": 680534741,
-                    "application_address": "UALDNCRKNIBLLYYFYF5B35Y2GRVTFZUWSBFMYM4ZGHD62LPDY2BQLN6U5E",
-                    "application_version": 1
-                },
-                "list": {
-                    "application_id": 680534770,
-                    "application_address": "ZVX4MRBDZBM7GKOWKEHXIEMPKV4AGVWO2I6M2IXTRG2KGMJOWJRPSZFAPA",
-                    "application_version": 1
-                },
-                "mint": {
-                    "application_id": 680534775,
-                    "application_address": "SHSLZ5XLOHN6IYNOUN27GIDTA2ABFB4ZXZDQNEFZ4KP7TBQHEOTO5MHQUY",
-                    "application_version": 1,
-                    "minted": true
-                },
-                "optin": {
-                    "application_id": 680534787,
-                    "application_address": "QCQTAV25JJFMDK3J3QRARUCQ57SCQ3DA73BMQYKIGYUO4R4O7GMWSKEC5E",
-                    "application_version": 1
-                },
-                "optout": {
-                    "application_id": 680534850,
-                    "application_address": "OH7TBPHFKBA56EAINTWDOUZULDJIY66NNPJCSWCYV4HZCGWLR25HCBK4IA",
-                    "application_version": 1
-                },
-                "rename": {
-                    "application_id": 680534856,
-                    "application_address": "QDETWFLYMLDXJFPMHXTQMGHEXWGBVGWF7IGFMQTTKXUXXPRIT44UCIRNTE",
-                    "application_version": 1
-                },
-                "repaint": {
-                    "application_id": 680534897,
-                    "application_address": "IQPNSHAEMJR4NS3LEEW4XKA6ARGMADQ7R4WZ5IXULZ62OQGCDN26OCQ2X4",
-                    "application_version": 1
-                },
-                "unlist": {
-                    "application_id": 680534902,
-                    "application_address": "CQ2EEIJ7IHBI3EHQ24OXXHAVNNLARN42BD4VFLFGRLY4XKCF5A32VCHPHY",
-                    "application_version": 1
-                },
-                "upgrade": {
-                    "application_id": 680534905,
-                    "application_address": "X3GEUIGLRK3QZWJSYNJHJZASORMJY5LGPLTZOVMUZUEYGSAMX6ZRQL6HQA",
-                    "application_version": 1,
-                    "upgraded": true
-                },
-                "withdraw": {
-                    "application_id": 680534998,
-                    "application_address": "WM4AWHJKXFTNHDM6KRYHPTEUQTWVWTASZIRU5CDFTYBUE7ENZKEU3TM7BQ",
-                    "application_version": 1
-                }
+                "app": {},
+                "buy": {},
+                "claim": {},
+                "list": {},
+                "mint": {},
+                "optin": {},
+                "optout": {},
+                "rename": {},
+                "repaint": {},
+                "unlist": {},
+                "upgrade": {},
+                "withdraw": {}
             }
         }
     },
     "gen2": {
         "inputs": {
-            "prime": {
-                "id": 1,
-                "theme": 1,
-                "skin": 2,
-                "is_founder": 1,
-                "is_artifact": 0,
-                "is_pioneer": 1,
-                "is_explorer": 0,
-                "score": 750,
-                "name": "ABCDEFGHSTUVWXYZ",
-                "price": 350,
-                "sales": 10,
-                "drains": 20,
-                "transforms": 30,
-                "owner": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
-                "prime_asset_id": 680536409,
-                "legacy_asset_id": 680536474
-            }
+            "prime": {}
         },
         "contracts": {
             "prime": {
-                "app": {
-                    "application_id": 680535582,
-                    "application_address": "KLSFAMLRXYGQ32EHBKORQOLHHA5C4OTHJTBTZSUBESBLPHNNHQUA4T4PYI",
-                    "application_version": 0,
-                    "funded": true,
-                    "initialized": true,
-                    "populated": true,
-                    "transferred": true,
-                    "locked": true
-                },
-                "buy": {
-                    "application_id": 680535613,
-                    "application_address": "4IGEEQSSJMU74D5VETAVBXBEGARCNQXP2WIQXSKRVFR4HCZ2H5PAOOXH3U",
-                    "application_version": 1
-                },
-                "claim": {
-                    "application_id": 680535648,
-                    "application_address": "BC3T2PQ26PX3GAQC42AVTKEIPBBDSSGOZAECGNPPSSRXUNLKNWYJQ5SWVU",
-                    "application_version": 1
-                },
-                "list": {
-                    "application_id": 680535680,
-                    "application_address": "TITYX7OX5D5OZFXTCCIZ32U7ZFDSAAODEWLGNJSRZY5NQRSICGUIN5V26A",
-                    "application_version": 1
-                },
-                "mint": {
-                    "application_id": 680535718,
-                    "application_address": "A5YKBJ73B6PEHG73QDM42KAY7SU2VYDD2WGR5E4YQKZ7F4WJUHUHWBQIKQ",
-                    "application_version": 1
-                },
-                "optin": {
-                    "application_id": 680535724,
-                    "application_address": "P34ZLA7ODV2ZLLILJQ2ZPBBFZAKMOPYEP42LX7G3QQ73B5ISUJQEQOWIGM",
-                    "application_version": 1
-                },
-                "optout": {
-                    "application_id": 680535756,
-                    "application_address": "2RNEEIT4BIWARMUEZDDF4URXDCCYNAVT7JWZI2GQQOMUA7CW4WUBXJR46Q",
-                    "application_version": 1
-                },
-                "rename": {
-                    "application_id": 680535770,
-                    "application_address": "72HDKNKRZB7EKPAO6ISPNLQT7MN6VP67J6GNWWUMWJIKWPYLX4VUQFEDME",
-                    "application_version": 1
-                },
-                "repaint": {
-                    "application_id": 680535773,
-                    "application_address": "G4L5HN5U7CBRBYA3NLIVREVG53YEDSQV2GJAI5HMZRRRRHFCRQASTM2KQQ",
-                    "application_version": 1
-                },
-                "unlist": {
-                    "application_id": 680535805,
-                    "application_address": "4BKQJYMVASBCRWPD6PQPBC77JUDRS2H6QDAJSLPAPFR3PGCEUIIHI3KHC4",
-                    "application_version": 1
-                },
-                "upgrade": {
-                    "application_id": 680535877,
-                    "application_address": "VQKKBETRTC3SEZSGDMH4VIO5RBNYFVRJ25IJNDQINFK4AQSPFT6OEMS6H4",
-                    "application_version": 1
-                },
-                "withdraw": {
-                    "application_id": 680535883,
-                    "application_address": "BBGYMYTBTFXEBS7D5GCWUXWUNBQELGXDJTYYGLNNX4CNT4H4QRHW3MRB2U",
-                    "application_version": 1
-                }
+                "app": {},
+                "buy": {},
+                "claim": {},
+                "list": {},
+                "mint": {},
+                "optin": {},
+                "optout": {},
+                "rename": {},
+                "repaint": {},
+                "unlist": {},
+                "upgrade": {},
+                "withdraw": {}
             }
         }
     }
