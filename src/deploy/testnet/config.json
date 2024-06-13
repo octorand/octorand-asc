@@ -27,7 +27,17 @@
                     "name": "ABSOLUTE",
                     "owner": "2PDACHSAOPSY7RW7Y2RT3PYK2HUYWDOOZX2HN6XORTUG7AXF7EQGQFPWEI",
                     "rewards": 0,
-                    "royalties": 100000
+                    "royalties": 100000,
+                    "legacy_asset_id": 680780967,
+                    "prime_asset_id": 680781267,
+                    "application_id": 680781467,
+                    "application_address": "LQCRONRP6MQYAILQ7SNZ3HY3E2PJXOOXHIMAUVP4F7O2RK3UWZ5OCQSEKU",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 1,
@@ -46,7 +56,17 @@
                     "name": "PRIMEVAL",
                     "owner": "IH5R7TIUYCYNMBJIQSONOHZASDLCTTGGB6OTMFYCVD3QJKMFC2UX7WRDY4",
                     "rewards": 759809300,
-                    "royalties": 8394308
+                    "royalties": 8394308,
+                    "legacy_asset_id": 680781027,
+                    "prime_asset_id": 680781270,
+                    "application_id": 680781485,
+                    "application_address": "L4AAHG3QX5E3LBWUOBGG64DGPQGDLCYJDSVIVUGJPPRTHIH6LCPO5SF5Q4",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 2,
@@ -65,7 +85,17 @@
                     "name": "CFAOCOED",
                     "owner": "SBEAVOJBY2VQRTHZ4QW46NVPKYNA4WISETJ2QPKVGCF4HJ4ZK3OREX4R7I",
                     "rewards": 1000000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "legacy_asset_id": 680781065,
+                    "prime_asset_id": 680781334,
+                    "application_id": 680781588,
+                    "application_address": "XODPOJ4H23KUFH5F3PZ4MSMHUJJHXHOGJYVDLPU4JPR54UROV3UAJCVQWA",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 3,
@@ -84,7 +114,17 @@
                     "name": "TRINITYX",
                     "owner": "KB3OMH5WE6AUWVYZRNRQFAASDJGULMMNUOTSZZEI6IAMDLGYXLNSJ6RZHA",
                     "rewards": 582934400,
-                    "royalties": 11089607
+                    "royalties": 11089607,
+                    "legacy_asset_id": 680781068,
+                    "prime_asset_id": 680781337,
+                    "application_id": 680781646,
+                    "application_address": "KF2YKG7PJUB2JPWLWWNV3QXBGRXYMT25RKYKHOEWEUO3N6AP4FPWBAY63U",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 4,
@@ -103,7 +143,17 @@
                     "name": "DIAMONDS",
                     "owner": "OHQT2OQ5OPANNPOCBGXN6QCDWAXXIE2MIV4DZJMV2EOC36XVFKS2ACQ7IY",
                     "rewards": 1000000000,
-                    "royalties": 14958944
+                    "royalties": 14958944,
+                    "legacy_asset_id": 680781071,
+                    "prime_asset_id": 680781352,
+                    "application_id": 680781712,
+                    "application_address": "4XNM5ODWPOCSBGLDJ6A3TSRKQJE6HPYSHXQIKXSGHNVN3UANMOIOZIXJYE",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 5,
@@ -122,7 +172,17 @@
                     "name": "LNJACIDN",
                     "owner": "OHQT2OQ5OPANNPOCBGXN6QCDWAXXIE2MIV4DZJMV2EOC36XVFKS2ACQ7IY",
                     "rewards": 1000000000,
-                    "royalties": 6685105
+                    "royalties": 6685105,
+                    "legacy_asset_id": 680781153,
+                    "prime_asset_id": 680781358,
+                    "application_id": 680781717,
+                    "application_address": "V2POBK5FDODQRCZ3UOYQOVDXB52QXOGUHAQYFNDSPCNJZPHEFI4RBMGZ5Q",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 6,
@@ -141,7 +201,17 @@
                     "name": "WILDLIFE",
                     "owner": "2ZD3HMEZLDFTOJYD7DVAEWZLGAKTRZWUVYON7M4QTRYZ7SAKSGWFACTRCE",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "legacy_asset_id": 680781217,
+                    "prime_asset_id": 680781388,
+                    "application_id": 680781756,
+                    "application_address": "J3WKSGZ6C6P2SUSNEIU6ZMOHPOIRJ2DFXCCWSYSIFASNME25J3TXFJUY3E",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 7,
@@ -160,7 +230,17 @@
                     "name": "BONDGIRL",
                     "owner": "RGKRSOBNULGABUFKM7XC6OJUMNV6XJMD7F37TRNNAFI2CDPIIOQJVEYCR4",
                     "rewards": 0,
-                    "royalties": 1320000
+                    "royalties": 1320000,
+                    "legacy_asset_id": 680781247,
+                    "prime_asset_id": 680781392,
+                    "application_id": 680781786,
+                    "application_address": "EJFWAAYIG5R2744GTS7A7NF4MWEYHSOWSLS3EODSJL6P34MBYUKTFIE2LQ",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 8,
@@ -179,7 +259,17 @@
                     "name": "ACNNICHE",
                     "owner": "BG7O3Y4AGCVLMSLWEPGSGYYNKFJOASBK5DGCWXSKZAFTIHW2TAHOQN77N4",
                     "rewards": 733351000,
-                    "royalties": 7485857
+                    "royalties": 7485857,
+                    "legacy_asset_id": 680781250,
+                    "prime_asset_id": 680781457,
+                    "application_id": 680781790,
+                    "application_address": "N75OFADLW325NUZHE76SS6IKPULCERTT2IROEWV7SHYVPPGXJJXTQ562LU",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 9,
@@ -198,23 +288,77 @@
                     "name": "SSJPRIME",
                     "owner": "QQLXRHAZIUGVMWZVRJ22I4TESYOGM3DRTKYD2WEF5M6ZWG7LCR6KJO6HH4",
                     "rewards": 0,
-                    "royalties": 664000
+                    "royalties": 664000,
+                    "legacy_asset_id": 680781253,
+                    "prime_asset_id": 680781461,
+                    "application_id": 680781887,
+                    "application_address": "6JN25OEYWJ4MFPXN7SVZFT6TMXX6MZFU42IEOAPRKZJKYN4NTTGV3OIF4I",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 }
             ]
         },
         "contracts": {
             "prime": {
-                "buy": {},
-                "claim": {},
-                "list": {},
-                "mint": {},
-                "optin": {},
-                "optout": {},
-                "rename": {},
-                "repaint": {},
-                "unlist": {},
-                "upgrade": {},
-                "withdraw": {}
+                "buy": {
+                    "application_id": 680782792,
+                    "application_address": "SUUHVCGJLR2ITUJMENTYEPB7Z2KPMXLMQ3KNLMHM5WJKKNMG5HJ4NN7GGU",
+                    "application_version": 1
+                },
+                "claim": {
+                    "application_id": 680782805,
+                    "application_address": "WRXNO6KGB5Q76IVWRFHYCO65BFHRJISWS2RP7CCXVBGYR5ZANMYADLCJII",
+                    "application_version": 1
+                },
+                "list": {
+                    "application_id": 680782809,
+                    "application_address": "CTZUTU2CWSGZXRQFTB2VVN7TIN55XYOGQNHQO6PYNVTBQRM6YBE73EW2DQ",
+                    "application_version": 1
+                },
+                "mint": {
+                    "application_id": 680782813,
+                    "application_address": "YQ637CZAOZB5RCZXLQAU3LNNAWCPX5H5AEM4LZJSYLAWQM4IW65IMEP74I",
+                    "application_version": 1
+                },
+                "optin": {
+                    "application_id": 680782904,
+                    "application_address": "GPPLSVBDAVFP352W6DDUMX3FY7PGTKBUHIH6J4J4EWXUHHU5BPD7GT737Q",
+                    "application_version": 1
+                },
+                "optout": {
+                    "application_id": 680782990,
+                    "application_address": "K4S5WO5H3K5SQM3UJHFZABZ67EHPIFXVRTPZLLXU6MZRZJDG4XOCIKCXFY",
+                    "application_version": 1
+                },
+                "rename": {
+                    "application_id": 680782993,
+                    "application_address": "NFIHW6PVR7E6QE23YPHU2UDWC3PBDVZ2Y2BX3FJLQALR6T36AOLJ53WV64",
+                    "application_version": 1
+                },
+                "repaint": {
+                    "application_id": 680783006,
+                    "application_address": "RBK6RTEBVDBDGR654H3DYOQ6UUTMVGVOKQJMMT3UJCGFKVPOVIWVGIORYE",
+                    "application_version": 1
+                },
+                "unlist": {
+                    "application_id": 680783038,
+                    "application_address": "XHSKP7CETXC6CA2JBYEIW5IILYLO2NQUPAX2KRUF3P7QEO5X64M7P3EI5Q",
+                    "application_version": 1
+                },
+                "upgrade": {
+                    "application_id": 680783094,
+                    "application_address": "TNKCC5EH2DFMPAPYMEOAL774CM3ZLVRHZN2PHMU7B7KQT4MIQ5AKK3TQZQ",
+                    "application_version": 1
+                },
+                "withdraw": {
+                    "application_id": 680783160,
+                    "application_address": "J24Q23D6AZWTJR3XKTEWAVTLRUYLFV6URYNHSVCFNBPVDKELWXZECGDB3A",
+                    "application_version": 1
+                }
             }
         }
     },
@@ -239,7 +383,18 @@
                     "name": "ABSOLUTEDBHFDMLM",
                     "owner": "VVCR4Q2GYOQO3ENWQDQEFFGTNDJRA56QIYHUQ3RCZT36I6WXBAUU2FS7QE",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781467,
+                    "legacy_asset_id": 680783475,
+                    "prime_asset_id": 680785092,
+                    "application_id": 680786862,
+                    "application_address": "WB4L6JLKGCJH3AMTNT2NGGIXJQRF5AABJ2OLJWMX6WEBTDSDJDEQAFWTIA",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 1,
@@ -258,7 +413,18 @@
                     "name": "PRIMEVALPAGLAKIC",
                     "owner": "VVCR4Q2GYOQO3ENWQDQEFFGTNDJRA56QIYHUQ3RCZT36I6WXBAUU2FS7QE",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781485,
+                    "legacy_asset_id": 680783479,
+                    "prime_asset_id": 680785096,
+                    "application_id": 680786943,
+                    "application_address": "6DMF4PXHKGI2XYD67D55DF3A6PTR47SHDQNJBZGWQQNOLPCCRZ2J6WYUQQ",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 2,
@@ -277,7 +443,18 @@
                     "name": "CFAOCOEDIIBLMAJG",
                     "owner": "VVCR4Q2GYOQO3ENWQDQEFFGTNDJRA56QIYHUQ3RCZT36I6WXBAUU2FS7QE",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781588,
+                    "legacy_asset_id": 680783482,
+                    "prime_asset_id": 680785126,
+                    "application_id": 680786981,
+                    "application_address": "7AFKPTU56MQABGM74MO7VBHVCMX3N6L7INC2VI5TOSXOVQ7YVTCZFPYDUY",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 3,
@@ -296,7 +473,18 @@
                     "name": "TNLCNKCXENBFAOEI",
                     "owner": "VVCR4Q2GYOQO3ENWQDQEFFGTNDJRA56QIYHUQ3RCZT36I6WXBAUU2FS7QE",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781646,
+                    "legacy_asset_id": 680783538,
+                    "prime_asset_id": 680785138,
+                    "application_id": 680786985,
+                    "application_address": "TADJ65JLFZ3HDRJCFT2CCMH2RHRAGQYGOMTEN3YE4BFZY5NJLXVNXFUJG4",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 4,
@@ -315,7 +503,18 @@
                     "name": "DIAMONDSIFADCBDM",
                     "owner": "VVCR4Q2GYOQO3ENWQDQEFFGTNDJRA56QIYHUQ3RCZT36I6WXBAUU2FS7QE",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781712,
+                    "legacy_asset_id": 680783550,
+                    "prime_asset_id": 680785141,
+                    "application_id": 680787098,
+                    "application_address": "YJ4DOINBQGXDT6YWXDBJ6SWLA62R66VGHEURWUEB2KTJUHT4CJWMHGW76Y",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 5,
@@ -334,7 +533,18 @@
                     "name": "LNJACIDNGKODPFCD",
                     "owner": "VVCR4Q2GYOQO3ENWQDQEFFGTNDJRA56QIYHUQ3RCZT36I6WXBAUU2FS7QE",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781717,
+                    "legacy_asset_id": 680783553,
+                    "prime_asset_id": 680785170,
+                    "application_id": 680787116,
+                    "application_address": "CMYE7G7PQ4YOCFNNEPSU4AQUU4NZ4EKPWC455GWWKLRQUP5VZUECROC64U",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 6,
@@ -353,7 +563,18 @@
                     "name": "WILDLIFEFCEJHEON",
                     "owner": "VVCR4Q2GYOQO3ENWQDQEFFGTNDJRA56QIYHUQ3RCZT36I6WXBAUU2FS7QE",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781756,
+                    "legacy_asset_id": 680783557,
+                    "prime_asset_id": 680785173,
+                    "application_id": 680787121,
+                    "application_address": "FFMOWIWTWNTLCO4S4LW3CTE2OEFEAZUYG22OVVBT3IIIIR74C3O3F6CVCI",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 7,
@@ -372,7 +593,18 @@
                     "name": "MONDFFPIBAHKLCJM",
                     "owner": "VVCR4Q2GYOQO3ENWQDQEFFGTNDJRA56QIYHUQ3RCZT36I6WXBAUU2FS7QE",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781786,
+                    "legacy_asset_id": 680783587,
+                    "prime_asset_id": 680785263,
+                    "application_id": 680787134,
+                    "application_address": "6PIXROTQ5CDNQLBSJNHYJYYV4JQ3YVPWEQ4L4EJUHX4LTY5R5DDCFJAYKE",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 8,
@@ -391,7 +623,18 @@
                     "name": "ACNNICHEHJNGEOMB",
                     "owner": "VVCR4Q2GYOQO3ENWQDQEFFGTNDJRA56QIYHUQ3RCZT36I6WXBAUU2FS7QE",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781790,
+                    "legacy_asset_id": 680783599,
+                    "prime_asset_id": 680785312,
+                    "application_id": 680787199,
+                    "application_address": "36ACX53X52VIMMJUZYJTAZRVTEXHFRHTHFY5BLYCHLBEHGKKFDVWGQNKVQ",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 9,
@@ -410,7 +653,18 @@
                     "name": "AAFMLDLBOPIOLKPC",
                     "owner": "VVCR4Q2GYOQO3ENWQDQEFFGTNDJRA56QIYHUQ3RCZT36I6WXBAUU2FS7QE",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781887,
+                    "legacy_asset_id": 680783628,
+                    "prime_asset_id": 680785315,
+                    "application_id": 680787204,
+                    "application_address": "ZHLP5E3QBNXO4VRNAZX2AKPK7XEISYP6JZ55HKFIFRXUSF3IJYMYNV2DCU",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 10,
@@ -429,7 +683,18 @@
                     "name": "ABSOLUTECPHBEIIH",
                     "owner": "MFLSGPK5XEGPV44O4MMIYAAGCOUKXNNPC3X7RATMUEUYPSEVSYHH24MQZA",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781467,
+                    "legacy_asset_id": 680783681,
+                    "prime_asset_id": 680785344,
+                    "application_id": 680787217,
+                    "application_address": "FMBHHTTTHLNYHN7MSTEQAIZ3TDA2Z3HBTPFOUR2CJNKT62UECN2UK3ZNVU",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 11,
@@ -448,7 +713,18 @@
                     "name": "PRIMEVALSPOILING",
                     "owner": "DONKM7NEXXDLWWZT3SMKO2IZ3ZKSZC47EFFWHSUFCXNN232EQLXO7PNPU4",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781485,
+                    "legacy_asset_id": 680783684,
+                    "prime_asset_id": 680785358,
+                    "application_id": 680787277,
+                    "application_address": "NLD4M5AUOTZPXKASSXN56HYDSZX3YFT6WBKC5HLJVHCLAFRRBJPVC2VX24",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 12,
@@ -467,7 +743,18 @@
                     "name": "CFAOCOEDBAHMEGPH",
                     "owner": "RXOJ3RJMYEVYD5GDWEYGZDM6BULN3HRVHF5CQN7FIX2CHQ5L2FISBCCX2I",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781588,
+                    "legacy_asset_id": 680783696,
+                    "prime_asset_id": 680785388,
+                    "application_id": 680787282,
+                    "application_address": "LEG34TXM2E32EFEGYVYPBYYT4D6U72IDPBTAFJZR27HDGGOUKVAL4OWCS4",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 13,
@@ -486,7 +773,18 @@
                     "name": "TNLCNKCXPCPKNDLL",
                     "owner": "TZODOLUI47MKUHF7UH3YXOEDTVOGP2CQ67Y4PT5WKHLY3IU5IQPYYKW5EY",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781646,
+                    "legacy_asset_id": 680783700,
+                    "prime_asset_id": 680785392,
+                    "application_id": 680787297,
+                    "application_address": "7A5NTRRLZG52SB4BNNOPVPGZPQJAS6BCABY5TVT4XZRLHTGSFEGPZTGOZ4",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 14,
@@ -505,7 +803,18 @@
                     "name": "DIAMONDSKFEOIGDP",
                     "owner": "OCEKQDLSVRMMTF5TKIFMJV6X5S3XN2ZAFSVO5OTJ2JFMLKDEWEEP3I5S5Y",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781712,
+                    "legacy_asset_id": 680783703,
+                    "prime_asset_id": 680785422,
+                    "application_id": 680787327,
+                    "application_address": "SCVSJ53P6TI3ATTXAL7DPAAGT5P3BETUB5SGOBUB5GRFVZTYIBIUY2L62E",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 15,
@@ -524,7 +833,18 @@
                     "name": "LUCKLESSLUCKLESS",
                     "owner": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781717,
+                    "legacy_asset_id": 680783706,
+                    "prime_asset_id": 680785435,
+                    "application_id": 680787357,
+                    "application_address": "OPVR327KUTYH4A76T7KYDZT4IUIWO43ZRZ4BG3LIYRCDVD4OTD67P3WUGM",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 16,
@@ -543,7 +863,18 @@
                     "name": "WILDLIFEWILDLIFE",
                     "owner": "2J4GULZCSJKYCO5SGOFNMU3RLHKUK32QRHCAOB7KS5GXKGMPXAHJQHVP2I",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781756,
+                    "legacy_asset_id": 680783718,
+                    "prime_asset_id": 680785465,
+                    "application_id": 680787370,
+                    "application_address": "RVXTDZ2J4V5LOZHRWI7OE732AXXUV635OM4YU2ET4VR5JAI4FX35A2UXUM",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 17,
@@ -562,7 +893,18 @@
                     "name": "MONDFFPIBLADHKDD",
                     "owner": "RGKRSOBNULGABUFKM7XC6OJUMNV6XJMD7F37TRNNAFI2CDPIIOQJVEYCR4",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781786,
+                    "legacy_asset_id": 680783777,
+                    "prime_asset_id": 680785469,
+                    "application_id": 680787425,
+                    "application_address": "VUJ4NDYRH2RTF56T7HIKUQA2Z3O2NIJRXDCX72AQ35KGP6SJGLCDJ4K6NM",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 18,
@@ -581,7 +923,18 @@
                     "name": "ACNNICHEBFJPGKCP",
                     "owner": "WFKOKOTGBCK5SNZWQ3IFCZQDKBYR4KR5NV4DUJFEXPV2TLLVUI2WW76YGE",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781790,
+                    "legacy_asset_id": 680783780,
+                    "prime_asset_id": 680785473,
+                    "application_id": 680787455,
+                    "application_address": "ZR3J7Q2J7JL2POLCYSWJTEXUMC3F2Q4V7T2PSB6EDSYKUDQDE7TLMTRSBU",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 19,
@@ -600,7 +953,18 @@
                     "name": "AAFMLDLBMDLIHILN",
                     "owner": "Q33CKOV3K3RPUEQOTSVBEUQ362ARR6XJU3YJOMZADQLZCQWFIWBRWBAXOM",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781887,
+                    "legacy_asset_id": 680783796,
+                    "prime_asset_id": 680785517,
+                    "application_id": 680787499,
+                    "application_address": "OMMD67YIAMKSDDBRYIBM5S3ULJJEQ3RID4DTPC3XQAMRZWTETW5FOVUCCM",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 20,
@@ -619,7 +983,18 @@
                     "name": "ABSOLUTEABSOLUTE",
                     "owner": "TORY56FCGWXBTPMDCXAWFIGO33CCFN2NGUU2G7TXUIKLPR7UDJ6KHS5K7A",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781467,
+                    "legacy_asset_id": 680783799,
+                    "prime_asset_id": 680785521,
+                    "application_id": 680787530,
+                    "application_address": "CDEEB7CW3BFFDJQ3EHQ3H5PBNCTVWSNSNGCFRYBNZFISFL2BDIQ63F3JTM",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 21,
@@ -638,7 +1013,18 @@
                     "name": "PRIMEVALPRIMEVAL",
                     "owner": "VCUBRHBKDMAWO62FGOBCJDPPMYMCP2EZIY26PMJK4A4KLZTTQ7SVZZRK4E",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781485,
+                    "legacy_asset_id": 680783885,
+                    "prime_asset_id": 680785576,
+                    "application_id": 680787571,
+                    "application_address": "B2652I7S4HPXU523GVGMWK4GPACMFDY4BMPYPPKYMUKXQMWD6X72GW2BAY",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 22,
@@ -657,7 +1043,18 @@
                     "name": "CFAOCOEDJHJPGGAB",
                     "owner": "Q33CKOV3K3RPUEQOTSVBEUQ362ARR6XJU3YJOMZADQLZCQWFIWBRWBAXOM",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781588,
+                    "legacy_asset_id": 680783888,
+                    "prime_asset_id": 680785580,
+                    "application_id": 680787615,
+                    "application_address": "YIDGW3CWVIISNPUHUCZWFLAY5CQSD53677QP7VXUBMWW55E42USNADGEVM",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 23,
@@ -676,7 +1073,18 @@
                     "name": "TNLCNKCXDEKMJGHC",
                     "owner": "Q33CKOV3K3RPUEQOTSVBEUQ362ARR6XJU3YJOMZADQLZCQWFIWBRWBAXOM",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781646,
+                    "legacy_asset_id": 680783926,
+                    "prime_asset_id": 680785592,
+                    "application_id": 680787651,
+                    "application_address": "SGH3JRDFBKG2K2SNYUMGDVAWMIFOKUGMOZTO4F3DWOSTYGVXRWPB7PGJD4",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 24,
@@ -695,7 +1103,18 @@
                     "name": "DIAMONDSBILDNPIA",
                     "owner": "OCEKQDLSVRMMTF5TKIFMJV6X5S3XN2ZAFSVO5OTJ2JFMLKDEWEEP3I5S5Y",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781712,
+                    "legacy_asset_id": 680783929,
+                    "prime_asset_id": 680785621,
+                    "application_id": 680787680,
+                    "application_address": "NBC7NCEBXCN3UH4RLZLW6WZYE3GSUCM4C6VEEBWYBQKN6BQ5ZBUCQQZWUY",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 25,
@@ -714,7 +1133,18 @@
                     "name": "LNJACIDNJBMANGII",
                     "owner": "OHQT2OQ5OPANNPOCBGXN6QCDWAXXIE2MIV4DZJMV2EOC36XVFKS2ACQ7IY",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781717,
+                    "legacy_asset_id": 680783933,
+                    "prime_asset_id": 680785650,
+                    "application_id": 680787737,
+                    "application_address": "LHUL6OPOFL3SG7WFVBBLFACQUFYVYMPQ7X5B2UBQZOMKV6DV73HXMIH5EE",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 26,
@@ -733,7 +1163,18 @@
                     "name": "WILDLIFEPRESERVE",
                     "owner": "2PDACHSAOPSY7RW7Y2RT3PYK2HUYWDOOZX2HN6XORTUG7AXF7EQGQFPWEI",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781756,
+                    "legacy_asset_id": 680783962,
+                    "prime_asset_id": 680785653,
+                    "application_id": 680787769,
+                    "application_address": "HPMKKPFLG5J636P4RBN2OKRWP2SNUD7AVRIXACCZ6BQM7PADYTTECXWFOE",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 27,
@@ -752,7 +1193,18 @@
                     "name": "MONDFFPIDKFLCILO",
                     "owner": "RGKRSOBNULGABUFKM7XC6OJUMNV6XJMD7F37TRNNAFI2CDPIIOQJVEYCR4",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781786,
+                    "legacy_asset_id": 680783975,
+                    "prime_asset_id": 680785665,
+                    "application_id": 680787775,
+                    "application_address": "JR57HRYNDQ6PVQLFUJUH6WGKBIXFXK7Y4ORT77DQBQRWLC7RGTBKIJT6MY",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 28,
@@ -771,7 +1223,18 @@
                     "name": "ACNNICHEPDKPDPNM",
                     "owner": "Q33CKOV3K3RPUEQOTSVBEUQ362ARR6XJU3YJOMZADQLZCQWFIWBRWBAXOM",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781790,
+                    "legacy_asset_id": 680784056,
+                    "prime_asset_id": 680785668,
+                    "application_id": 680787821,
+                    "application_address": "RRGNUNTOL5K7P56NNQEPKTIN5MZZJQHUG6OC6QCBOBMS5XEG273XZAXGSE",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 29,
@@ -790,7 +1253,18 @@
                     "name": "AAFMLDLBKBNMAPBM",
                     "owner": "Q33CKOV3K3RPUEQOTSVBEUQ362ARR6XJU3YJOMZADQLZCQWFIWBRWBAXOM",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781887,
+                    "legacy_asset_id": 680784059,
+                    "prime_asset_id": 680785697,
+                    "application_id": 680787906,
+                    "application_address": "UPKKN3XGZIMNB3L2CZTGN2GP3WRXSQRN5TA5F7XPNVL4JV6SYCVIVFR5QA",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 30,
@@ -809,7 +1283,18 @@
                     "name": "ABSOLUTEPKCFJNJL",
                     "owner": "TZODOLUI47MKUHF7UH3YXOEDTVOGP2CQ67Y4PT5WKHLY3IU5IQPYYKW5EY",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781467,
+                    "legacy_asset_id": 680784062,
+                    "prime_asset_id": 680785740,
+                    "application_id": 680787989,
+                    "application_address": "4BF2IM7NS4VXISCQU5SGRTNL7FRSTQHQZ62MJU6CWXIS453E4AIVZGGLQM",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 31,
@@ -828,7 +1313,18 @@
                     "name": "PRIMEVALLAVENDER",
                     "owner": "VCUBRHBKDMAWO62FGOBCJDPPMYMCP2EZIY26PMJK4A4KLZTTQ7SVZZRK4E",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781485,
+                    "legacy_asset_id": 680784100,
+                    "prime_asset_id": 680785795,
+                    "application_id": 680788004,
+                    "application_address": "6LYW6Q74WHTALPHPBP7HOTENTDZKD4NS2YVOOJCEV2W4IZWXUQSA32SN2Q",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 32,
@@ -847,7 +1343,18 @@
                     "name": "CFAOCOEDMJDPJDGN",
                     "owner": "WFKOKOTGBCK5SNZWQ3IFCZQDKBYR4KR5NV4DUJFEXPV2TLLVUI2WW76YGE",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781588,
+                    "legacy_asset_id": 680784134,
+                    "prime_asset_id": 680785798,
+                    "application_id": 680788009,
+                    "application_address": "VRCF5TA5HMAX6RPB6262SQET7KOSYEXP6AZDKRNPTPJKKJG2NMOPFEKQWM",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 33,
@@ -866,7 +1373,18 @@
                     "name": "TNLCNKCXBPEHDGOL",
                     "owner": "IOJKBR3QNZBZNBKL22HDCSL5FK6E6OZTJDPL3XTXWNWLMMBVK63A2DXINI",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781646,
+                    "legacy_asset_id": 680784163,
+                    "prime_asset_id": 680785802,
+                    "application_id": 680788079,
+                    "application_address": "W2HAQ5T3P45225O7HN45V33UYD4NEKDVZ3DHEFQIL4K7OLOBQ363TC3STU",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 34,
@@ -885,7 +1403,18 @@
                     "name": "DIAMONDSCCLIDAPM",
                     "owner": "LOXKKM4IFUEQEC55DTIXQNLRM7AHTC5YLK7UVLQBIXQR4EOQS67GC275DI",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781712,
+                    "legacy_asset_id": 680784166,
+                    "prime_asset_id": 680785814,
+                    "application_id": 680788136,
+                    "application_address": "3U2SWCK4KNNJWCJVQTSSEB5B6VJJ6L4ESO6IZHZWNZZY35USDBGRMQC4YU",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 35,
@@ -904,7 +1433,18 @@
                     "name": "LNJACIDNGJCCCCMC",
                     "owner": "TZODOLUI47MKUHF7UH3YXOEDTVOGP2CQ67Y4PT5WKHLY3IU5IQPYYKW5EY",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781717,
+                    "legacy_asset_id": 680784178,
+                    "prime_asset_id": 680785817,
+                    "application_id": 680788171,
+                    "application_address": "KGJICFJPYT7IWUKVOC2EWKI27CSA67LIXNEZ3L2MLV7M6EIGFPAZAFG76I",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 36,
@@ -923,7 +1463,18 @@
                     "name": "WILDLIFEHAGEGOHN",
                     "owner": "WFKOKOTGBCK5SNZWQ3IFCZQDKBYR4KR5NV4DUJFEXPV2TLLVUI2WW76YGE",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781756,
+                    "legacy_asset_id": 680784183,
+                    "prime_asset_id": 680785846,
+                    "application_id": 680788235,
+                    "application_address": "3GXSHDZZRSZGA7BPBZML3JJIR5ZIBQTHTK3I4NABAKV2VBMWJLJ5YAPGFA",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 37,
@@ -942,7 +1493,18 @@
                     "name": "MONDFFPIAPJGMGNG",
                     "owner": "A7VNRQTXHPYLVEY4T4KBMQ24SGJUCWLOATW2WTYJZKT3MGMQWDFSJJ4NDU",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781786,
+                    "legacy_asset_id": 680784239,
+                    "prime_asset_id": 680785849,
+                    "application_id": 680788265,
+                    "application_address": "JEH43YIJ46OHU3BKKASI4QVWQFOGQG7H6IVW7RNXJYS62CM7VNYZ3F7B3Y",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 38,
@@ -961,7 +1523,18 @@
                     "name": "ACNNICHEJGINHKLP",
                     "owner": "WFKOKOTGBCK5SNZWQ3IFCZQDKBYR4KR5NV4DUJFEXPV2TLLVUI2WW76YGE",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781790,
+                    "legacy_asset_id": 680784243,
+                    "prime_asset_id": 680785888,
+                    "application_id": 680788296,
+                    "application_address": "SO7PYWZ3CJZTTBXIYG7JWL2LF3YIJUY2P5WJ4HLRJHUHTRC5VRVG27PAYA",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 39,
@@ -980,7 +1553,18 @@
                     "name": "AAFMLDLBCPIFKMEN",
                     "owner": "QQLXRHAZIUGVMWZVRJ22I4TESYOGM3DRTKYD2WEF5M6ZWG7LCR6KJO6HH4",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781887,
+                    "legacy_asset_id": 680784261,
+                    "prime_asset_id": 680785917,
+                    "application_id": 680788335,
+                    "application_address": "5BEYP4UGNWKCSGXBU3JGAYPGVQBTVARBU4JRYDBQK2WS72F5APDZRJUYNI",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 40,
@@ -999,7 +1583,18 @@
                     "name": "FOREKNOWABLENESS",
                     "owner": "JTYVWNXGZSVYCJOBF7JUWPPIIAAYUN35IVOLZTO7EBPDGHMW6SR2XNGNV4",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781467,
+                    "legacy_asset_id": 680784272,
+                    "prime_asset_id": 680785972,
+                    "application_id": 680788338,
+                    "application_address": "4PAQEHFIS5HG5GUXLWKGOIDTPZVRB45L27T335K7YE4CVSDVR6PHQIQJ54",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 41,
@@ -1018,7 +1613,18 @@
                     "name": "PRIMEVALHCLJEKCP",
                     "owner": "FPL3PHDXEDCADWMQGIRMIG5PYB7X5PNNVX7WJGWWGKD72P236JUCUVJKZA",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781485,
+                    "legacy_asset_id": 680784276,
+                    "prime_asset_id": 680786032,
+                    "application_id": 680788420,
+                    "application_address": "N6GXIL7NOXIDEPSOXPKYLFZ24DTUR3IAOFLAWWRV3OGVMSHSH3WKVC7NRU",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 42,
@@ -1037,7 +1643,18 @@
                     "name": "CFAOCOEDEGLNFFHA",
                     "owner": "S2Z52YQOK7OQOIUPWUL3ISEZVTHPEAL6X6TZ2DDEVLVKARURM65ND5WAHM",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781588,
+                    "legacy_asset_id": 680784332,
+                    "prime_asset_id": 680786044,
+                    "application_id": 680788459,
+                    "application_address": "2KFCR33EUJ42UHBWRBQEUXC27DWB4L73GCYGDK4EHRRWKYINH743HRCD2I",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 43,
@@ -1056,7 +1673,18 @@
                     "name": "POLEPOLEMERIDIAN",
                     "owner": "NL66VJG37IF5RDPF6PRLW5DPRUMHAWSSLTTFCW75JWJ4KOGNN7LKCO232Q",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781646,
+                    "legacy_asset_id": 680784376,
+                    "prime_asset_id": 680786047,
+                    "application_id": 680788495,
+                    "application_address": "OB5Y77ROO7NEVFMROEU4AHSLJ2N55ZO7PLPSHV2XIBNNMGAWZXYBLSJ6HM",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 44,
@@ -1075,7 +1703,18 @@
                     "name": "DIAMONDSWEDDINGS",
                     "owner": "DONKM7NEXXDLWWZT3SMKO2IZ3ZKSZC47EFFWHSUFCXNN232EQLXO7PNPU4",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781712,
+                    "legacy_asset_id": 680784380,
+                    "prime_asset_id": 680786077,
+                    "application_id": 680788498,
+                    "application_address": "FCTUKMRNU6WJ2Z3BYOAOVJSYAJL6VLFPZUKBOJFGM22FBWDSW6BFFJ3MIE",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 45,
@@ -1094,7 +1733,18 @@
                     "name": "LNJACIDNKMEGEKLL",
                     "owner": "ERZDYU3EHS5HDCZ36METPHL7YJ5CG475INGOLHJE3EEGJVZWWECYVVMH2A",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781717,
+                    "legacy_asset_id": 680784384,
+                    "prime_asset_id": 680786080,
+                    "application_id": 680788512,
+                    "application_address": "4FAW3OG5KYHX5HXL6EORXUK4JLNUY2QEPY4MYLHASDWXE7YZ4DOCLCY5QI",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 46,
@@ -1113,7 +1763,18 @@
                     "name": "WILDLIFEEKEBCJHO",
                     "owner": "XWEPQHDVFIGGJTZ25KQMUM7LICUIDST4I7ZW53IRFAT4YR6TQYPAYN7NPM",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781756,
+                    "legacy_asset_id": 680784413,
+                    "prime_asset_id": 680786092,
+                    "application_id": 680788517,
+                    "application_address": "Q26W5LRUFXS6H36EK5MEM54PJQQGWPHPYJDGKUNBETKL5LWVFSBW6WNNMA",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 47,
@@ -1132,7 +1793,18 @@
                     "name": "MONDFFPIJANEBIAA",
                     "owner": "CHK2ZEKPCJPYAO6VK62HW62NCRVOUK36IB6HQGWO4TVETSZXV5QV6P5HJU",
                     "rewards": 6466982,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781786,
+                    "legacy_asset_id": 680784452,
+                    "prime_asset_id": 680786096,
+                    "application_id": 680788530,
+                    "application_address": "RA4WMI36OAIKNS4JLDF2YNLMXXIJAVXQTGEWMMZ4RJASCYIQYOTMPTCFQQ",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 48,
@@ -1151,7 +1823,18 @@
                     "name": "ACNNICHENJNKOIIL",
                     "owner": "3RQINGGVD27DVGE3EQX267JBNFT3MTIQX53NCTZK6T7Y2ISIGGUXITCCI4",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781790,
+                    "legacy_asset_id": 680784455,
+                    "prime_asset_id": 680786104,
+                    "application_id": 680788535,
+                    "application_address": "2SCNGIAPDZADVLE7PGLIPBMQG2N2QJ7TAIHYN3UGPPOOSEJW5WD5CP2KHE",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 49,
@@ -1170,7 +1853,18 @@
                     "name": "AAFMLDLBAENGNLKD",
                     "owner": "MHRGQIPLP74CI63YVSOBYFYXPH62THMWUB74Y2DI2RQMTPDZJ27R4VHUQQ",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781887,
+                    "legacy_asset_id": 680784463,
+                    "prime_asset_id": 680786133,
+                    "application_id": 680788591,
+                    "application_address": "I2LCVXDQWHFUXNHTU5WGLUIJAT6AGD5CDWLYLQJW542EUWHDMYR6SE5KQM",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 50,
@@ -1189,7 +1883,18 @@
                     "name": "ABSOLUTECAKPLCJM",
                     "owner": "NG7P2KCBIJBWK4YZE47F5XVYZDGCTZDYRJHKINFGFJKH6RATVFODV4LU2A",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781467,
+                    "legacy_asset_id": 680784518,
+                    "prime_asset_id": 680786145,
+                    "application_id": 680788630,
+                    "application_address": "WP273G3JMDSROVLTM63CJPSKHKU2LOPB5NQMKEY6BOYFXMZE4Y7ZTM45BU",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 51,
@@ -1208,7 +1913,18 @@
                     "name": "PRIMEVALIIFBKIEN",
                     "owner": "B4C4BUQ6EY42PVEDY2D5ABNK4AFCMGDLUGDF62NDU37DPAER4YA7HDEMGE",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781485,
+                    "legacy_asset_id": 680784556,
+                    "prime_asset_id": 680786148,
+                    "application_id": 680788717,
+                    "application_address": "7PL6GRWPDODR63CUSJQE7H2DNKSXYQZU5KBZWX3FZCDSRPLOE4YCPRLWH4",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 52,
@@ -1227,7 +1943,18 @@
                     "name": "CFAOCOEDDHIDBPJO",
                     "owner": "A6LSWZFR55MTC4LOHYYLW5BWKRLVZL2U2UVRYVQYKTCH7ZCTPUNMFDIIWQ",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781588,
+                    "legacy_asset_id": 680784585,
+                    "prime_asset_id": 680786182,
+                    "application_id": 680788746,
+                    "application_address": "FCIDPL722EYP6MM7P6KCD3PI4CCQC6WCT2EQHJMEPX2HRC2M6FTXKTRYTQ",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 53,
@@ -1246,7 +1973,18 @@
                     "name": "TNLCNKCXCHKJELGM",
                     "owner": "FKHR4TQWT46JXS2HEVYHHUDS62PPBN5KHNYJD2QTC4X2EAZ4ZEZ3ASRXQA",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781646,
+                    "legacy_asset_id": 680784614,
+                    "prime_asset_id": 680786186,
+                    "application_id": 680788760,
+                    "application_address": "WMAGMSN6DB6IHZG4X5RXKOAJTPJIA2BUOKDNRBONJ45GA56PCQYFIEKAWU",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 54,
@@ -1265,7 +2003,18 @@
                     "name": "LIFELESSLEMONADE",
                     "owner": "FLINHV6N5VHDH45HUBKTDMYFI6MKGI24CAGCOQIFTPVYLSM2G4WPZ6U2PQ",
                     "rewards": 27076853,
-                    "royalties": 3201585
+                    "royalties": 3201585,
+                    "parent_application_id": 680781712,
+                    "legacy_asset_id": 680784674,
+                    "prime_asset_id": 680786215,
+                    "application_id": 680788816,
+                    "application_address": "GYMQ32MHBRMUSYO4YJ2CUHO56VONTLUP7BQJV23DJPAQZ5JKJHZVST7O7Q",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 55,
@@ -1284,7 +2033,18 @@
                     "name": "LNJACIDNBHMOACBG",
                     "owner": "DFU2ML6H7ZPX54KLEIOETXG7H6TC4OQFWRX6FDZZRM3VAHMYDQPIMNHCO4",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781717,
+                    "legacy_asset_id": 680784686,
+                    "prime_asset_id": 680786228,
+                    "application_id": 680788820,
+                    "application_address": "T2AO2EPEVPOMBKDDH5Y7NNGRB44KDJ4OPS6A53GOIBYEY4SW5AVJIVIXNQ",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 56,
@@ -1303,7 +2063,18 @@
                     "name": "WILDLIFEDEFENDER",
                     "owner": "WDQ4BB6YG7G4GBY3MQXWH2A45HC6S6BWBUZBZJLOZMPOGQ5UBRL23UE6FU",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781756,
+                    "legacy_asset_id": 680784689,
+                    "prime_asset_id": 680786257,
+                    "application_id": 680788823,
+                    "application_address": "XGDNVQCVT2FFRFTJZLZVKTOYKDMRR5USVBWXIVTSEP4LH2W2RFYAYRJJWE",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 57,
@@ -1322,7 +2093,18 @@
                     "name": "MONDFFPINPNIGHKA",
                     "owner": "VCUBRHBKDMAWO62FGOBCJDPPMYMCP2EZIY26PMJK4A4KLZTTQ7SVZZRK4E",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781786,
+                    "legacy_asset_id": 680784692,
+                    "prime_asset_id": 680786313,
+                    "application_id": 680788836,
+                    "application_address": "2A3ROJ7LC64GYZR4IJQVO6UHVFSIM5OF73THYCLFYABELG37KLSN6G2DZA",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 58,
@@ -1341,7 +2123,18 @@
                     "name": "ACNNICHEJLJHNAIN",
                     "owner": "TZODOLUI47MKUHF7UH3YXOEDTVOGP2CQ67Y4PT5WKHLY3IU5IQPYYKW5EY",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781790,
+                    "legacy_asset_id": 680784696,
+                    "prime_asset_id": 680786316,
+                    "application_id": 680788866,
+                    "application_address": "B7RBSVEAQLO67LFIMGDZ3D6PGQPOYBUB36MOJELQ6QO3XFN2VVCMBIH2R4",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 59,
@@ -1360,7 +2153,18 @@
                     "name": "AAFMLDLBDGKJJEFM",
                     "owner": "WREN3NBKU4FBPCUYPIX6U4IIBEFLRMWI45SLDK5JZM4X6HQAV73SARCF5U",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781887,
+                    "legacy_asset_id": 680784708,
+                    "prime_asset_id": 680786354,
+                    "application_id": 680788962,
+                    "application_address": "VMOAKUOQZ55N34DBILC7C7GYVVDFUPZD367WBXHDHUMAZHWMKPPQ33MGK4",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 60,
@@ -1379,7 +2183,18 @@
                     "name": "ABSOLUTEEHMNMIMI",
                     "owner": "FHXLSTKBBZNV6YEMJD6E4KYEEWFNCBRELRBZQ3H72LNO3K6RFH5WO646CI",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781467,
+                    "legacy_asset_id": 680784763,
+                    "prime_asset_id": 680786357,
+                    "application_id": 680788966,
+                    "application_address": "VONAIFL573F2WJIZTKB7VZCVHNP7ZAIZKWLAURVJ3MNB2YIQWIGVSPIBIE",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 61,
@@ -1398,7 +2213,18 @@
                     "name": "PRIMEVALAINPPMHA",
                     "owner": "HOKFUGXZRZR25MAUGTEXBE7J74XV45PZKC5BJBY5W5L2OM2IUDJXPZOCYY",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781485,
+                    "legacy_asset_id": 680784766,
+                    "prime_asset_id": 680786386,
+                    "application_id": 680788971,
+                    "application_address": "MEY4F4ILUT5NT6BCWV74F345SWH3YI7WHPLGOIN6QYEOMJZ47VMA2C5C3M",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 62,
@@ -1417,7 +2243,18 @@
                     "name": "CFAOCOEDJEBKICLE",
                     "owner": "PYCLGU4R6FTLSBOCCG7FRWGFQZD4VRZLUSMW7XMQZ5NYVQXOFLBTB4BETE",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781588,
+                    "legacy_asset_id": 680784795,
+                    "prime_asset_id": 680786441,
+                    "application_id": 680789018,
+                    "application_address": "TUY2WCTZVTZVWFXBF223BBF7RCNDU7VGFFIVGLXIY2V7JP3KUY624ZIH6Y",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 63,
@@ -1436,7 +2273,18 @@
                     "name": "TNLCNKCXLEBNPKNN",
                     "owner": "RXOJ3RJMYEVYD5GDWEYGZDM6BULN3HRVHF5CQN7FIX2CHQ5L2FISBCCX2I",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781646,
+                    "legacy_asset_id": 680784807,
+                    "prime_asset_id": 680786485,
+                    "application_id": 680789049,
+                    "application_address": "LUY4LNONMJMQRLZVB7Y672JIGD4XYXH4ONFMFRBQAWALPCQDB52SKVGK7E",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 64,
@@ -1455,7 +2303,18 @@
                     "name": "DIAMONDSMYHANDSR",
                     "owner": "OHQT2OQ5OPANNPOCBGXN6QCDWAXXIE2MIV4DZJMV2EOC36XVFKS2ACQ7IY",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781712,
+                    "legacy_asset_id": 680784810,
+                    "prime_asset_id": 680786567,
+                    "application_id": 680789081,
+                    "application_address": "W35YRN7NKDI2WTNHFNA7MNILQJRNLPAG4GVUXTO7HB6IHCCPF7EIODOPWI",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 65,
@@ -1474,7 +2333,18 @@
                     "name": "LNJACIDNOFPHGONO",
                     "owner": "OHQT2OQ5OPANNPOCBGXN6QCDWAXXIE2MIV4DZJMV2EOC36XVFKS2ACQ7IY",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781717,
+                    "legacy_asset_id": 680784813,
+                    "prime_asset_id": 680786571,
+                    "application_id": 680789095,
+                    "application_address": "JC4M4ULZVXXZRO3OF3TSNDOUVLVPTYRAXNO3N6EUD2JDBJCMVC26YITAW4",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 66,
@@ -1493,7 +2363,18 @@
                     "name": "WILDLIFEAARDVARK",
                     "owner": "FPL3PHDXEDCADWMQGIRMIG5PYB7X5PNNVX7WJGWWGKD72P236JUCUVJKZA",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781756,
+                    "legacy_asset_id": 680784847,
+                    "prime_asset_id": 680786602,
+                    "application_id": 680789101,
+                    "application_address": "OLN7GOXO3H4XNXGG33WWZDK45UYMMA267OIVF7S32WCAORDZVSSTM5MLY4",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 67,
@@ -1512,7 +2393,18 @@
                     "name": "MONDFFPIEFEJDLFJ",
                     "owner": "RXOJ3RJMYEVYD5GDWEYGZDM6BULN3HRVHF5CQN7FIX2CHQ5L2FISBCCX2I",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781786,
+                    "legacy_asset_id": 680784859,
+                    "prime_asset_id": 680786615,
+                    "application_id": 680789172,
+                    "application_address": "IFW4TUGKVYPZUK3ZZ5C4L5LMS3O5AROVG3UKUYFCKSD3CYCFKRHBVSYDKM",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 68,
@@ -1531,7 +2423,18 @@
                     "name": "ACNNICHENPFBAHCM",
                     "owner": "MEVRH2M2IRHRDM4X5RP7AJRMNEEDK7RNCHVFD5KXJ6YJS545S55J2VG5RU",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781790,
+                    "legacy_asset_id": 680784862,
+                    "prime_asset_id": 680786619,
+                    "application_id": 680789204,
+                    "application_address": "TZIP4DEYQKKWKEG35HLSK27RL77MPO3VMCTVIW2VVCBDFCSQYFRQ3RF6PY",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 69,
@@ -1550,7 +2453,18 @@
                     "name": "AAFMLDLBOOKOPJBL",
                     "owner": "MHRGQIPLP74CI63YVSOBYFYXPH62THMWUB74Y2DI2RQMTPDZJ27R4VHUQQ",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781887,
+                    "legacy_asset_id": 680784944,
+                    "prime_asset_id": 680786675,
+                    "application_id": 680789233,
+                    "application_address": "IHMTQ22RYHI7PXC5HYBEXQ6KYGPUHZESAYDWHF5IHDWEHQYFF2P462WBEQ",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 70,
@@ -1569,7 +2483,18 @@
                     "name": "ABSOLUTEZEROZERO",
                     "owner": "2PDACHSAOPSY7RW7Y2RT3PYK2HUYWDOOZX2HN6XORTUG7AXF7EQGQFPWEI",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781467,
+                    "legacy_asset_id": 680784947,
+                    "prime_asset_id": 680786680,
+                    "application_id": 680789246,
+                    "application_address": "ORNHEZL73AECNAQ4UD6YMDU4377ZEPX3OCSK7KFIWMVWILBSNH6FYQJYSI",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 71,
@@ -1588,7 +2513,18 @@
                     "name": "PRIMEVALGHCPPHDJ",
                     "owner": "IH5R7TIUYCYNMBJIQSONOHZASDLCTTGGB6OTMFYCVD3QJKMFC2UX7WRDY4",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781485,
+                    "legacy_asset_id": 680784960,
+                    "prime_asset_id": 680786693,
+                    "application_id": 680789249,
+                    "application_address": "63XV63WJB6RMMDJAVE7DM6B2M2EQ6IXZZGNWFLLN25S43IJDX5BZZU52FQ",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 72,
@@ -1607,7 +2543,18 @@
                     "name": "HISTORICAPOLLOXI",
                     "owner": "SBEAVOJBY2VQRTHZ4QW46NVPKYNA4WISETJ2QPKVGCF4HJ4ZK3OREX4R7I",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781588,
+                    "legacy_asset_id": 680784966,
+                    "prime_asset_id": 680786749,
+                    "application_id": 680789253,
+                    "application_address": "27USM7INESOXBV5H7OQRMCUCPL3447STGP32MZNQF5KFN72EREJQ2OYFOI",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 73,
@@ -1626,7 +2573,18 @@
                     "name": "UNLCNKCXFEEEIAPH",
                     "owner": "LWT6235B2XIVC3BB4ENQGD72S3QE5JJCWOZAUPBJ2PXPZGCAMXPFIG5UCM",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781646,
+                    "legacy_asset_id": 680784969,
+                    "prime_asset_id": 680786752,
+                    "application_id": 680789282,
+                    "application_address": "MTET5QG4F3XW3KMPGLVIGF6DFOMVUSKNENR724BN4RKXOD6H5LSIZDH5RA",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 74,
@@ -1645,7 +2603,18 @@
                     "name": "DIAMONDSNTHERUFF",
                     "owner": "OHQT2OQ5OPANNPOCBGXN6QCDWAXXIE2MIV4DZJMV2EOC36XVFKS2ACQ7IY",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781712,
+                    "legacy_asset_id": 680784998,
+                    "prime_asset_id": 680786786,
+                    "application_id": 680789295,
+                    "application_address": "KMGRAJNHTWHLHMZCUY4IIEG2CPWZTFSEU2K2HFAOUWSCEPBC67ND6LVC6M",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 75,
@@ -1664,7 +2633,18 @@
                     "name": "LNJACIDNIFHEHPKL",
                     "owner": "OHQT2OQ5OPANNPOCBGXN6QCDWAXXIE2MIV4DZJMV2EOC36XVFKS2ACQ7IY",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781717,
+                    "legacy_asset_id": 680785001,
+                    "prime_asset_id": 680786798,
+                    "application_id": 680789330,
+                    "application_address": "7FJE35UWL2CYQBJUEAWVQA4KY2L2UWB7MGTYRSUHK4IXFNC7KYWARNKFEQ",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 76,
@@ -1683,7 +2663,18 @@
                     "name": "WILDLIFEBAOHIJBB",
                     "owner": "2ZD3HMEZLDFTOJYD7DVAEWZLGAKTRZWUVYON7M4QTRYZ7SAKSGWFACTRCE",
                     "rewards": 0,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781756,
+                    "legacy_asset_id": 680785013,
+                    "prime_asset_id": 680786827,
+                    "application_id": 680789333,
+                    "application_address": "4DU4P2GNNVDWKWVF4CBFK2WZCWVVCXXJOKKSICTX56UENZNLHMTGWBY2XQ",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 77,
@@ -1702,7 +2693,18 @@
                     "name": "MONDFFPIJIGADFEN",
                     "owner": "RGKRSOBNULGABUFKM7XC6OJUMNV6XJMD7F37TRNNAFI2CDPIIOQJVEYCR4",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781786,
+                    "legacy_asset_id": 680785073,
+                    "prime_asset_id": 680786831,
+                    "application_id": 680789347,
+                    "application_address": "BZKGALFY3GMZEJJPH4XSMUF6F4EMTUS3EDSDLRVTAACBZZVIPUJDASDL3Y",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 78,
@@ -1721,7 +2723,18 @@
                     "name": "ACNNICHEKAFKMIJC",
                     "owner": "BG7O3Y4AGCVLMSLWEPGSGYYNKFJOASBK5DGCWXSKZAFTIHW2TAHOQN77N4",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781790,
+                    "legacy_asset_id": 680785076,
+                    "prime_asset_id": 680786834,
+                    "application_id": 680789429,
+                    "application_address": "LZZXEMQVFQXZJGEZPDBR63RXF4M2ULNBUZ5IC3F6Y7CUAFXWA5IVIECLKY",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 },
                 {
                     "id": 79,
@@ -1740,23 +2753,78 @@
                     "name": "SSJPRIMEFDNLPEJL",
                     "owner": "US2LVOYCTY5HCYBI6A7NOAGCUK6VEBVAMRNBHMVPT56CFAQCJUP2MMJVQY",
                     "rewards": 8000000,
-                    "royalties": 0
+                    "royalties": 0,
+                    "parent_application_id": 680781887,
+                    "legacy_asset_id": 680785079,
+                    "prime_asset_id": 680786846,
+                    "application_id": 680789442,
+                    "application_address": "KTISCNRQTOCQTTDVP4SJD6OMOB2KTAHRYRUUV3ZVRZ5YIXB2WFY4Z3BQZE",
+                    "application_version": 1,
+                    "funded": true,
+                    "initialized": true,
+                    "populated": true,
+                    "loaded": true,
+                    "locked": true
                 }
             ]
         },
         "contracts": {
             "prime": {
-                "buy": {},
-                "claim": {},
-                "list": {},
-                "mint": {},
-                "optin": {},
-                "optout": {},
-                "rename": {},
-                "repaint": {},
-                "unlist": {},
-                "upgrade": {},
-                "withdraw": {}
+                "buy": {
+                    "application_id": 680795007,
+                    "application_address": "YIDMETVMEER5Y4XJAW5C2DMZ4L3ZFXV4HLNBOSA4IPXLGHBYJQOVQL443Q",
+                    "application_version": 1
+                },
+                "claim": {
+                    "application_id": 680795010,
+                    "application_address": "XP6XTIZGEAGY4JCTAC5CXYXSF3FAR3YYDCQFOCXTS2YALSZL7HBPMYBKA4",
+                    "application_version": 1
+                },
+                "list": {
+                    "application_id": 680795023,
+                    "application_address": "VBQQVJYW2CMF6RHAPAOM3MHNQ2QVNAGUX25CWKOMVD54KUIO7MFPULVMNM",
+                    "application_version": 1
+                },
+                "mint": {
+                    "application_id": 680795111,
+                    "application_address": "EO2ECJN4XVGZSXYRAW7D3Q52IQHLHEJ2U255TMSA2ZN2AX6KEMKJWJPHCE",
+                    "application_version": 1
+                },
+                "optin": {
+                    "application_id": 680795193,
+                    "application_address": "JPT4PBZJBMDYRWZUNBRC4GTWKBPK7UPADRV2Y2IKJNH7BWBZF2WR3I4UOM",
+                    "application_version": 1
+                },
+                "optout": {
+                    "application_id": 680795232,
+                    "application_address": "7UDZ666HICEVMKXC5ARTTS7B5UDABN5VYDNEWM3DJLAUSOXTA33HCSDZQU",
+                    "application_version": 1
+                },
+                "rename": {
+                    "application_id": 680795236,
+                    "application_address": "PWWIJBIQFV522Y45CEI7CFDTQOXSQKCPYGWJCDRUGX2Q6ZHQOLR2KGBDB4",
+                    "application_version": 1
+                },
+                "repaint": {
+                    "application_id": 680795240,
+                    "application_address": "XN2HWQEG6TPMS5CEXEY6WODUB6WD3W5ZZ6GA62YKBHD37KPBGIXIQ53B5M",
+                    "application_version": 1
+                },
+                "unlist": {
+                    "application_id": 680795284,
+                    "application_address": "KUQQI3WBLTA3NRNYRFQPHIRGR6HOCAUSRJIIRXXAMQ2DWU6R2YS4RNXEWI",
+                    "application_version": 1
+                },
+                "upgrade": {
+                    "application_id": 680795340,
+                    "application_address": "W74SJDEX2ATLAM2OXHIY3BCP5ETO2ZC6IFTIY6AUADWHBNKKOZMCULIAHM",
+                    "application_version": 1
+                },
+                "withdraw": {
+                    "application_id": 680795410,
+                    "application_address": "R4SEHILROAJGR53FCAELJVFXTOMKQCUAZHIYK4KBSCWDJZH2YW42NIZHRY",
+                    "application_version": 1
+                }
             }
         }
     }
