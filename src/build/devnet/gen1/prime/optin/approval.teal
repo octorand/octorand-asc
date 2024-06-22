@@ -192,7 +192,7 @@ callsub getapplicationaddress_2
 int 100000
 txn GroupIndex
 int 1
-+
+-
 callsub assertsenderpayment_4
 frame_dig -1
 txnas Applications
