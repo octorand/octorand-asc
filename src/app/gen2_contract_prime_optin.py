@@ -60,7 +60,7 @@ def optin(
         func.assert_sender_payment(
             func.get_application_address(app_id),
             const.optin_price,
-            Add(Txn.group_index(), Int(1)),
+            Minus(Txn.group_index(), Int(1)),
         ),
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(

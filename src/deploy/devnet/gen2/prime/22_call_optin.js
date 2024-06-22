@@ -19,6 +19,21 @@ exports.execute = async function () {
         if (!application['optin']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
+            composer.addTransaction({
+                sender: sender,
+                signer: signer,
+                txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
+                    from: sender,
+                    to: config['gen2']['contracts']['prime']['app']['application_address'],
+                    amount: 100000,
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                })
+            });
+
             composer.addMethodCall({
                 sender: sender,
                 signer: signer,
@@ -36,21 +51,6 @@ exports.execute = async function () {
                     fee: 3000,
                     flatFee: true
                 }
-            });
-
-            composer.addTransaction({
-                sender: sender,
-                signer: signer,
-                txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
-                    from: sender,
-                    to: config['gen2']['contracts']['prime']['app']['application_address'],
-                    amount: 100000,
-                    suggestedParams: {
-                        ...params,
-                        fee: 1000,
-                        flatFee: true
-                    }
-                })
             });
 
             composer.addTransaction({
