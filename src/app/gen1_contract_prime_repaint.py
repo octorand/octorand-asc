@@ -64,8 +64,8 @@ def repaint(
     )
     return Seq(
         Log(func.prepare_log(log)),
-        Assert(theme.get() <= Int(7)),
-        Assert(skin.get() <= Int(7)),
+        Assert(theme.get() <= Int(15)),
+        Assert(skin.get() <= Int(15)),
         func.assert_sender_asset_holding(prime.prime_asset_id.external(app_id)),
         func.assert_sender_asset_transfer(
             prime.platform_asset_id.external(app_id),

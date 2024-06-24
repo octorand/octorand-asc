@@ -215,11 +215,11 @@ concat
 callsub preparelog_3
 log
 frame_dig -3
-int 7
+int 15
 <=
 assert
 frame_dig -2
-int 7
+int 15
 <=
 assert
 frame_dig -1
