@@ -26,8 +26,8 @@ exports.execute = async function () {
                 appID: application['application_id'],
                 method: helpers.method(contract, 'repaint'),
                 methodArgs: [
-                    3,
-                    4,
+                    13,
+                    14,
                     config['gen1']['contracts']['prime']['app']['application_id'],
                 ],
                 appForeignAssets: [

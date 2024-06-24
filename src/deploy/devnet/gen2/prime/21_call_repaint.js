@@ -27,7 +27,7 @@ exports.execute = async function () {
                 method: helpers.method(contract, 'repaint'),
                 methodArgs: [
                     3,
-                    4,
+                    12,
                     config['gen2']['contracts']['prime']['app']['application_id'],
                 ],
                 appForeignAssets: [
