@@ -256,7 +256,7 @@ def claim(
 
 
 @router.method
-def event(
+def fire(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(

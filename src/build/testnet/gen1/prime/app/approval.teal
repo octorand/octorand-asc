@@ -48,7 +48,7 @@ method "claim(address,byte[240])void"
 ==
 bnz main_l19
 txna ApplicationArgs 0
-method "event(byte[240])void"
+method "fire(byte[240])void"
 ==
 bnz main_l18
 txna ApplicationArgs 0
@@ -93,7 +93,7 @@ int 0
 !=
 &&
 assert
-callsub eventcaster_39
+callsub firecaster_39
 int 1
 return
 main_l19:
@@ -818,8 +818,8 @@ frame_dig -1
 log
 retsub
 
-// event
-event_25:
+// fire
+fire_25:
 proto 1 0
 callsub assertcaller_10
 frame_dig -1
@@ -1045,14 +1045,14 @@ frame_dig 1
 callsub claim_24
 retsub
 
-// event_caster
-eventcaster_39:
+// fire_caster
+firecaster_39:
 proto 0 0
 byte ""
 txna ApplicationArgs 1
 frame_bury 0
 frame_dig 0
-callsub event_25
+callsub fire_25
 retsub
 
 // score_caster
