@@ -256,6 +256,16 @@ def claim(
 
 
 @router.method
+def event(
+    log: abi.StaticBytes[Literal[240]],
+):
+    return Seq(
+        assert_caller(),
+        Log(log.get()),
+    )
+
+
+@router.method
 def score(
     value: abi.Uint64,
 ):

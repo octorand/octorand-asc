@@ -53,11 +53,11 @@ proto 4 1
 frame_dig -4
 frame_dig -3
 app_global_get_ex
-store 2
-store 1
-load 2
+store 3
+store 0
+load 3
 assert
-load 1
+load 0
 frame_dig -2
 frame_dig -1
 extract3
@@ -92,11 +92,11 @@ proto 1 0
 txn Sender
 frame_dig -1
 asset_holding_get AssetBalance
-store 3
-store 0
-load 3
+store 2
+store 1
+load 2
 assert
-load 0
+load 1
 int 0
 >
 assert

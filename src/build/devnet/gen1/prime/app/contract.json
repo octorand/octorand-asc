@@ -210,6 +210,18 @@
             }
         },
         {
+            "name": "event",
+            "args": [
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
             "name": "score",
             "args": [
                 {
