@@ -12,6 +12,26 @@
             "returns": {
                 "type": "void"
             }
+        },
+        {
+            "name": "fire",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "timestamp"
+                },
+                {
+                    "type": "address",
+                    "name": "sender"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
         }
     ],
     "networks": {}

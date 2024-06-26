@@ -75,3 +75,33 @@ def list(
             ],
         ),
     )
+
+
+@router.method
+def fire(
+    timestamp: abi.Uint64,
+    sender: abi.Address,
+    price: abi.Uint64,
+    application: abi.Application,
+):
+    app_id = application.application_id()
+    log = Concat(
+        event.prime_list,
+        Itob(Int(0)),
+        Itob(timestamp.get()),
+        Itob(prime.id.external(app_id)),
+        sender.get(),
+        Itob(price.get()),
+    )
+    return Seq(
+        Assert(Txn.sender() == const.admin_address),
+        Log(func.prepare_log(log)),
+        func.assert_application_creator(app_id, const.manager_address),
+        InnerTxnBuilder.ExecuteMethodCall(
+            app_id=app_id,
+            method_signature=gen1_contract_prime_app.fire.method_signature(),
+            args=[
+                log,
+            ],
+        ),
+    )
