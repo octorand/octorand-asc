@@ -384,9 +384,9 @@ assertapplicationcreator_9:
 proto 2 0
 frame_dig -2
 app_params_get AppCreator
-store 1
+store 2
 store 0
-load 1
+load 2
 assert
 load 0
 frame_dig -1
@@ -411,7 +411,7 @@ int 8
 int 8
 callsub getglobaluint_2
 asset_holding_get AssetBalance
-store 2
+store 1
 byte "P2"
 int 32
 int 8
@@ -553,6 +553,11 @@ callsub setglobaluint_4
 global ZeroAddress
 byte "P1"
 int 64
+int 32
+callsub setglobalbytes_3
+frame_dig -2
+byte "P2"
+int 0
 int 32
 callsub setglobalbytes_3
 byte "P1"

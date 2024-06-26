@@ -555,6 +555,11 @@ byte "P1"
 int 64
 int 32
 callsub setglobalbytes_3
+frame_dig -2
+byte "P2"
+int 0
+int 32
+callsub setglobalbytes_3
 byte "P1"
 int 96
 int 2

@@ -117,6 +117,7 @@ def buy(
         ),
         prime.price.set(Int(0)),
         prime.seller.set(Global.zero_address()),
+        prime.owner.set(buyer.get()),
         prime.sales.increment(Int(1)),
         Log(log.get()),
     )
