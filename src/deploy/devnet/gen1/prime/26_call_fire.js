@@ -98,7 +98,7 @@ exports.execute = async function () {
                 }
             });
 
-            let optinContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/opin/contract.json')));
+            let optinContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/optin/contract.json')));
             let optinApplication = config['gen1']['contracts']['prime']['optin'];
             composer.addMethodCall({
                 sender: sender,
@@ -118,7 +118,7 @@ exports.execute = async function () {
                 }
             });
 
-            let optoutContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/opout/contract.json')));
+            let optoutContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/optout/contract.json')));
             let optoutApplication = config['gen1']['contracts']['prime']['optout'];
             composer.addMethodCall({
                 sender: sender,

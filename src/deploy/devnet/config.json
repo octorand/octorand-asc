@@ -204,7 +204,8 @@
                         "owner": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
                         "rewards": 999900,
                         "royalties": 1099800
-                    }
+                    },
+                    "fire": true
                 },
                 "buy": {
                     "application_id": 690479148,
@@ -608,7 +609,8 @@
                         "owner": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
                         "rewards": 999900,
                         "royalties": 1099800
-                    }
+                    },
+                    "fire": true
                 },
                 "buy": {
                     "application_id": 690480528,

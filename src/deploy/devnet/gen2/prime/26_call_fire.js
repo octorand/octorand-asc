@@ -8,8 +8,8 @@ exports.execute = async function () {
     try {
         let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.player.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
+        let sender = connection.admin.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
@@ -98,7 +98,7 @@ exports.execute = async function () {
                 }
             });
 
-            let optinContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen2/prime/opin/contract.json')));
+            let optinContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen2/prime/optin/contract.json')));
             let optinApplication = config['gen2']['contracts']['prime']['optin'];
             composer.addMethodCall({
                 sender: sender,
@@ -118,7 +118,7 @@ exports.execute = async function () {
                 }
             });
 
-            let optoutContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen2/prime/opout/contract.json')));
+            let optoutContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen2/prime/optout/contract.json')));
             let optoutApplication = config['gen2']['contracts']['prime']['optout'];
             composer.addMethodCall({
                 sender: sender,
