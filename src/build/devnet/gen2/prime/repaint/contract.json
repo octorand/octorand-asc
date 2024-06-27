@@ -20,6 +20,34 @@
             "returns": {
                 "type": "void"
             }
+        },
+        {
+            "name": "fire",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "timestamp"
+                },
+                {
+                    "type": "address",
+                    "name": "sender"
+                },
+                {
+                    "type": "uint64",
+                    "name": "theme"
+                },
+                {
+                    "type": "uint64",
+                    "name": "skin"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
         }
     ],
     "networks": {}

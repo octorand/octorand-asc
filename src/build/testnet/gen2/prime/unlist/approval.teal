@@ -2,13 +2,17 @@
 txn NumAppArgs
 int 0
 ==
-bnz main_l4
+bnz main_l6
 txna ApplicationArgs 0
 method "unlist(application)void"
 ==
-bnz main_l3
+bnz main_l5
+txna ApplicationArgs 0
+method "fire(uint64,address,application)void"
+==
+bnz main_l4
 err
-main_l3:
+main_l4:
 txn OnCompletion
 int NoOp
 ==
@@ -17,20 +21,32 @@ int 0
 !=
 &&
 assert
-callsub unlistcaster_7
+callsub firecaster_9
 int 1
 return
-main_l4:
+main_l5:
 txn OnCompletion
 int NoOp
 ==
-bnz main_l8
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub unlistcaster_8
+int 1
+return
+main_l6:
+txn OnCompletion
+int NoOp
+==
+bnz main_l10
 txn OnCompletion
 int UpdateApplication
 ==
-bnz main_l7
+bnz main_l9
 err
-main_l7:
+main_l9:
 txn ApplicationID
 int 0
 !=
@@ -38,7 +54,7 @@ assert
 callsub update_5
 int 1
 return
-main_l8:
+main_l10:
 txn ApplicationID
 int 0
 ==
@@ -176,8 +192,67 @@ itxn_field ApplicationArgs
 itxn_submit
 retsub
 
+// fire
+fire_7:
+proto 3 0
+txn Sender
+addr EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU
+==
+assert
+byte "prul"
+int 0
+itob
+concat
+frame_dig -3
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+frame_dig -2
+concat
+callsub preparelog_2
+log
+frame_dig -1
+txnas Applications
+addr KHN4MN3BGPOMNEVWZPKSY7IEUBNDCFGLFWMR4XVAUWWCEDU337JVQSLSLA
+callsub assertapplicationcreator_3
+itxn_begin
+int appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+method "fire(byte[240])void"
+itxn_field ApplicationArgs
+byte "prul"
+int 0
+itob
+concat
+frame_dig -3
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+frame_dig -2
+concat
+itxn_field ApplicationArgs
+itxn_submit
+retsub
+
 // unlist_caster
-unlistcaster_7:
+unlistcaster_8:
 proto 0 0
 int 0
 txna ApplicationArgs 1
@@ -186,4 +261,25 @@ getbyte
 frame_bury 0
 frame_dig 0
 callsub unlist_6
+retsub
+
+// fire_caster
+firecaster_9:
+proto 0 0
+int 0
+byte ""
+int 0
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+txna ApplicationArgs 3
+int 0
+getbyte
+frame_bury 2
+frame_dig 0
+frame_dig 1
+frame_dig 2
+callsub fire_7
 retsub

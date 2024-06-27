@@ -2,13 +2,17 @@
 txn NumAppArgs
 int 0
 ==
-bnz main_l4
+bnz main_l6
 txna ApplicationArgs 0
 method "optin(asset,application)void"
 ==
-bnz main_l3
+bnz main_l5
+txna ApplicationArgs 0
+method "fire(uint64,address,asset,application)void"
+==
+bnz main_l4
 err
-main_l3:
+main_l4:
 txn OnCompletion
 int NoOp
 ==
@@ -17,20 +21,32 @@ int 0
 !=
 &&
 assert
-callsub optincaster_9
+callsub firecaster_11
 int 1
 return
-main_l4:
+main_l5:
 txn OnCompletion
 int NoOp
 ==
-bnz main_l8
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub optincaster_10
+int 1
+return
+main_l6:
+txn OnCompletion
+int NoOp
+==
+bnz main_l10
 txn OnCompletion
 int UpdateApplication
 ==
-bnz main_l7
+bnz main_l9
 err
-main_l7:
+main_l9:
 txn ApplicationID
 int 0
 !=
@@ -38,7 +54,7 @@ assert
 callsub update_7
 int 1
 return
-main_l8:
+main_l10:
 txn ApplicationID
 int 0
 ==
@@ -53,9 +69,9 @@ proto 4 1
 frame_dig -4
 frame_dig -3
 app_global_get_ex
-store 2
+store 3
 store 0
-load 2
+load 3
 assert
 load 0
 frame_dig -2
@@ -79,9 +95,9 @@ getapplicationaddress_2:
 proto 1 1
 frame_dig -1
 app_params_get AppAddress
-store 3
+store 2
 store 1
-load 3
+load 2
 assert
 load 1
 retsub
@@ -236,8 +252,75 @@ itxn_field ApplicationArgs
 itxn_submit
 retsub
 
+// fire
+fire_9:
+proto 4 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+byte "proi"
+int 0
+itob
+concat
+frame_dig -4
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+frame_dig -3
+concat
+frame_dig -2
+txnas Assets
+itob
+concat
+callsub preparelog_3
+log
+frame_dig -1
+txnas Applications
+addr DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY
+callsub assertapplicationcreator_5
+itxn_begin
+int appl
+itxn_field TypeEnum
+frame_dig -1
+txnas Applications
+itxn_field ApplicationID
+method "fire(byte[240])void"
+itxn_field ApplicationArgs
+byte "proi"
+int 0
+itob
+concat
+frame_dig -4
+itob
+concat
+frame_dig -1
+txnas Applications
+byte "P1"
+int 0
+int 8
+callsub getglobalexternaluint_1
+itob
+concat
+frame_dig -3
+concat
+frame_dig -2
+txnas Assets
+itob
+concat
+itxn_field ApplicationArgs
+itxn_submit
+retsub
+
 // optin_caster
-optincaster_9:
+optincaster_10:
 proto 0 0
 int 0
 dup
@@ -252,4 +335,31 @@ frame_bury 1
 frame_dig 0
 frame_dig 1
 callsub optin_8
+retsub
+
+// fire_caster
+firecaster_11:
+proto 0 0
+int 0
+byte ""
+int 0
+dup
+txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
+frame_bury 1
+txna ApplicationArgs 3
+int 0
+getbyte
+frame_bury 2
+txna ApplicationArgs 4
+int 0
+getbyte
+frame_bury 3
+frame_dig 0
+frame_dig 1
+frame_dig 2
+frame_dig 3
+callsub fire_9
 retsub

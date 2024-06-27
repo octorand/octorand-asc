@@ -210,7 +210,7 @@
             }
         },
         {
-            "name": "event",
+            "name": "fire",
             "args": [
                 {
                     "type": "byte[240]",
