@@ -41,6 +41,10 @@
                     "name": "skin"
                 },
                 {
+                    "type": "uint64",
+                    "name": "price"
+                },
+                {
                     "type": "application",
                     "name": "application"
                 }

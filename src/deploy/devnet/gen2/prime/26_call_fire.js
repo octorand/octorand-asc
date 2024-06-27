@@ -172,6 +172,7 @@ exports.execute = async function () {
                     connection.player.addr,
                     107,
                     107,
+                    107,
                     config['gen2']['contracts']['prime']['app']['application_id'],
                 ],
                 suggestedParams: {

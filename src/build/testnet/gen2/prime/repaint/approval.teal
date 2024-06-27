@@ -8,7 +8,7 @@ method "repaint(uint64,uint64,application)void"
 ==
 bnz main_l5
 txna ApplicationArgs 0
-method "fire(uint64,address,uint64,uint64,application)void"
+method "fire(uint64,address,uint64,uint64,uint64,application)void"
 ==
 bnz main_l4
 err
@@ -352,7 +352,7 @@ retsub
 
 // fire
 fire_10:
-proto 5 0
+proto 6 0
 txn Sender
 addr EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU
 ==
@@ -361,7 +361,7 @@ byte "prrp"
 int 0
 itob
 concat
-frame_dig -5
+frame_dig -6
 itob
 concat
 frame_dig -1
@@ -372,7 +372,10 @@ int 8
 callsub getglobalexternaluint_1
 itob
 concat
+frame_dig -5
+concat
 frame_dig -4
+itob
 concat
 frame_dig -3
 itob
@@ -398,7 +401,7 @@ byte "prrp"
 int 0
 itob
 concat
-frame_dig -5
+frame_dig -6
 itob
 concat
 frame_dig -1
@@ -409,7 +412,10 @@ int 8
 callsub getglobalexternaluint_1
 itob
 concat
+frame_dig -5
+concat
 frame_dig -4
+itob
 concat
 frame_dig -3
 itob
@@ -448,7 +454,7 @@ proto 0 0
 int 0
 byte ""
 int 0
-dupn 2
+dupn 3
 txna ApplicationArgs 1
 btoi
 frame_bury 0
@@ -461,13 +467,17 @@ txna ApplicationArgs 4
 btoi
 frame_bury 3
 txna ApplicationArgs 5
+btoi
+frame_bury 4
+txna ApplicationArgs 6
 int 0
 getbyte
-frame_bury 4
+frame_bury 5
 frame_dig 0
 frame_dig 1
 frame_dig 2
 frame_dig 3
 frame_dig 4
+frame_dig 5
 callsub fire_10
 retsub

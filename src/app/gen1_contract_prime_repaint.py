@@ -102,6 +102,7 @@ def fire(
     sender: abi.Address,
     theme: abi.Uint64,
     skin: abi.Uint64,
+    price: abi.Uint64,
     application: abi.Application,
 ):
     app_id = application.application_id()
@@ -113,6 +114,7 @@ def fire(
         sender.get(),
         Itob(theme.get()),
         Itob(skin.get()),
+        Itob(price.get()),
     )
     return Seq(
         Assert(Txn.sender() == const.admin_address),
