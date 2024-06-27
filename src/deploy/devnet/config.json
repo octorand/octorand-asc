@@ -169,6 +169,16 @@
                             "prime": 1,
                             "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
                             "name": "prime_claim"
+                        },
+                        {
+                            "code": "prby",
+                            "version": 0,
+                            "timestamp": 100,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_buy",
+                            "seller": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                            "price": 100
                         }
                     ],
                     "state": {
@@ -183,7 +193,7 @@
                         "is_artifact": 0,
                         "is_pioneer": 1,
                         "is_explorer": 1,
-                        "score": 1350,
+                        "score": 1390,
                         "price": 0,
                         "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
                         "sales": 11,
@@ -211,6 +221,16 @@
                             "name": "prime_buy",
                             "seller": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
                             "price": 350
+                        },
+                        {
+                            "code": "prby",
+                            "version": 0,
+                            "timestamp": 100,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_buy",
+                            "seller": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                            "price": 100
                         }
                     ]
                 },
