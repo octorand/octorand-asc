@@ -1,0 +1,86 @@
+{
+    "name": "GenOnePrime",
+    "methods": [
+        {
+            "name": "initialize",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "id"
+                },
+                {
+                    "type": "asset",
+                    "name": "platform_asset"
+                },
+                {
+                    "type": "asset",
+                    "name": "prime_asset"
+                },
+                {
+                    "type": "asset",
+                    "name": "legacy_asset"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "populate",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "theme"
+                },
+                {
+                    "type": "uint64",
+                    "name": "skin"
+                },
+                {
+                    "type": "uint64",
+                    "name": "is_founder"
+                },
+                {
+                    "type": "uint64",
+                    "name": "is_artifact"
+                },
+                {
+                    "type": "uint64",
+                    "name": "is_pioneer"
+                },
+                {
+                    "type": "uint64",
+                    "name": "is_explorer"
+                },
+                {
+                    "type": "uint64",
+                    "name": "score"
+                },
+                {
+                    "type": "uint64",
+                    "name": "sales"
+                },
+                {
+                    "type": "uint64",
+                    "name": "drains"
+                },
+                {
+                    "type": "uint64",
+                    "name": "transforms"
+                },
+                {
+                    "type": "byte[8]",
+                    "name": "name"
+                },
+                {
+                    "type": "address",
+                    "name": "owner"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

@@ -119,7 +119,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: primes[i]['application_address'],
-                    amount: 100000,
+                    amount: primes[i]['royalties'],
                     suggestedParams: {
                         ...params,
                         fee: 1000,
