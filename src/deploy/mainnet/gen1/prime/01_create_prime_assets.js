@@ -44,6 +44,7 @@ exports.execute = async function () {
             let asset_id = response.information['asset-index'];
 
             primes[i]['prime_asset_id'] = asset_id;
+            primes[i]['asset_version'] = 0;
 
             config['gen1']['inputs']['primes'] = primes;
             fs.writeFileSync('src/deploy/mainnet/config.json', JSON.stringify(config, null, 4));

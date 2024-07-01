@@ -5,6 +5,7 @@ exports.execute = async function () {
     console.log('gen2 prime setup resources');
     await require('./prime/00_create_prime_inputs').execute();
     await require('./prime/01_create_prime_assets').execute();
+    await require('./prime/02_update_prime_assets').execute();
 
     console.log('gen2 prime setup contracts');
     // await require('./prime/03_create_main_applications').execute();
