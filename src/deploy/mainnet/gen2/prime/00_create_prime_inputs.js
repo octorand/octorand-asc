@@ -49,6 +49,8 @@ exports.execute = async function () {
 
             for (let j = 0; j < 8; j++) {
                 let child = children[j];
+                let id = child.id;
+
                 primes[id].id = child.id;
                 primes[id].parent_id = child.parent_id;
                 primes[id].theme = child.theme;
@@ -66,9 +68,9 @@ exports.execute = async function () {
                 primes[id].owner = child.owner;
                 primes[id].rewards = child.rewards;
                 primes[id].royalties = child.royalties;
-                primes[i].legacy_asset_id = child.legacy_asset_id;
-                primes[i].legacy_application_id = child.legacy_application_id;
-                primes[i].legacy_application_address = child.legacy_application_address;
+                primes[id].legacy_asset_id = child.legacy_asset_id;
+                primes[id].legacy_application_id = child.legacy_application_id;
+                primes[id].legacy_application_address = child.legacy_application_address;
                 primes[id].parent_application_id = parent['application_id'];
             }
         }
