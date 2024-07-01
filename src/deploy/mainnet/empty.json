@@ -1,10 +1,14 @@
 {
     "setup": {
-        "platform": {}
+        "platform": {
+            "asset_id": 559219992,
+            "manager": "NP5K3WA5H6SBM36DJDZDMPFDVQPRIX6RAXNZ3H6EIC32K6C75YNAMM6Z44",
+            "reserve": "NP5K3WA5H6SBM36DJDZDMPFDVQPRIX6RAXNZ3H6EIC32K6C75YNAMM6Z44"
+        }
     },
     "gen1": {
         "inputs": {
-            "max": 10,
+            "max": 1,
             "primes": []
         },
         "contracts": {
@@ -25,7 +29,7 @@
     },
     "gen2": {
         "inputs": {
-            "max": 80,
+            "max": 1,
             "primes": []
         },
         "contracts": {
