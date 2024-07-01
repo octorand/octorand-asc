@@ -4,6 +4,10 @@
             "asset_id": 559219992,
             "manager": "NP5K3WA5H6SBM36DJDZDMPFDVQPRIX6RAXNZ3H6EIC32K6C75YNAMM6Z44",
             "reserve": "NP5K3WA5H6SBM36DJDZDMPFDVQPRIX6RAXNZ3H6EIC32K6C75YNAMM6Z44"
+        },
+        "ipfs": {
+            "cid": "QmazcFmPBrq9cEtyc7YokExMEWV2jEohWmftJjPiChjHq9",
+            "reserve": ""
         }
     },
     "gen1": {
