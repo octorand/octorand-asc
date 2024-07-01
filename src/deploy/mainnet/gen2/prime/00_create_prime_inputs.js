@@ -8,18 +8,17 @@ exports.execute = async function () {
     let legacy = JSON.parse(fs.readFileSync('src/deploy/mainnet/gen2/prime/legacy.json'));
 
     let primes = config['gen2']['inputs']['primes'];
+    let max = config['gen1']['inputs']['max'];
 
     if (primes.length == 0) {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < max; i++) {
             let parent = config['gen1']['inputs']['primes'].find(p => p.id == i);
             let children = legacy['primes'].filter(p => p.parent_id == i);
 
             for (let j = 0; j < 8; j++) {
                 let child = children[j];
-                let id = (j * 10) + i;
-
                 primes.push({
-                    id: id,
+                    id: child.id,
                     parent_id: child.parent_id,
                     theme: child.theme,
                     skin: child.skin,
@@ -36,20 +35,21 @@ exports.execute = async function () {
                     owner: child.owner,
                     rewards: child.rewards,
                     royalties: child.royalties,
-                    parent_application_id: parent['application_id']
+                    legacy_asset_id: child.legacy_asset_id,
+                    legacy_application_id: child.legacy_application_id,
+                    legacy_application_address: child.legacy_application_address,
+                    parent_application_id: parent['application_id'],
                 });
             }
         }
     } else {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < max; i++) {
             let parent = config['gen1']['inputs']['primes'].find(p => p.id == i);
             let children = legacy['primes'].filter(p => p.parent_id == i);
 
             for (let j = 0; j < 8; j++) {
                 let child = children[j];
-                let id = (j * 10) + i;
-
-                primes[id].id = id;
+                primes[id].id = child.id;
                 primes[id].parent_id = child.parent_id;
                 primes[id].theme = child.theme;
                 primes[id].skin = child.skin;
@@ -66,6 +66,9 @@ exports.execute = async function () {
                 primes[id].owner = child.owner;
                 primes[id].rewards = child.rewards;
                 primes[id].royalties = child.royalties;
+                primes[i].legacy_asset_id = child.legacy_asset_id;
+                primes[i].legacy_application_id = child.legacy_application_id;
+                primes[i].legacy_application_address = child.legacy_application_address;
                 primes[id].parent_application_id = parent['application_id'];
             }
         }

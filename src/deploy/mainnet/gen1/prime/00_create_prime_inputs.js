@@ -8,9 +8,10 @@ exports.execute = async function () {
     let legacy = JSON.parse(fs.readFileSync('src/deploy/mainnet/gen1/prime/legacy.json'));
 
     let primes = config['gen1']['inputs']['primes'];
+    let max = config['gen1']['inputs']['max'];
 
     if (primes.length == 0) {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < max; i++) {
             let source = legacy['primes'].find(p => p.id == i);
             primes.push({
                 id: i,
@@ -29,11 +30,14 @@ exports.execute = async function () {
                 name: source.name,
                 owner: source.owner,
                 rewards: source.rewards,
-                royalties: source.royalties
+                royalties: source.royalties,
+                legacy_asset_id: source.legacy_asset_id,
+                legacy_application_id: source.legacy_application_id,
+                legacy_application_address: source.legacy_application_address
             });
         }
     } else {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < max; i++) {
             let source = legacy['primes'].find(p => p.id == i);
             primes[i].id = i;
             primes[i].parent_id = source.parent_id;
@@ -52,6 +56,9 @@ exports.execute = async function () {
             primes[i].owner = source.owner;
             primes[i].rewards = source.rewards;
             primes[i].royalties = source.royalties;
+            primes[i].legacy_asset_id = source.legacy_asset_id;
+            primes[i].legacy_application_id = source.legacy_application_id;
+            primes[i].legacy_application_address = source.legacy_application_address;
         }
     }
 
