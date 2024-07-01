@@ -1,0 +1,47 @@
+{
+    "setup": {
+        "platform": {}
+    },
+    "gen1": {
+        "inputs": {
+            "max": 10,
+            "primes": []
+        },
+        "contracts": {
+            "prime": {
+                "buy": {},
+                "claim": {},
+                "list": {},
+                "mint": {},
+                "optin": {},
+                "optout": {},
+                "rename": {},
+                "repaint": {},
+                "unlist": {},
+                "upgrade": {},
+                "withdraw": {}
+            }
+        }
+    },
+    "gen2": {
+        "inputs": {
+            "max": 80,
+            "primes": []
+        },
+        "contracts": {
+            "prime": {
+                "buy": {},
+                "claim": {},
+                "list": {},
+                "mint": {},
+                "optin": {},
+                "optout": {},
+                "rename": {},
+                "repaint": {},
+                "unlist": {},
+                "upgrade": {},
+                "withdraw": {}
+            }
+        }
+    }
+}

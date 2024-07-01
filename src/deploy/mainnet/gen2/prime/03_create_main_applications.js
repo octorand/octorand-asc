@@ -1,0 +1,62 @@
+require('dotenv').config();
+
+const fs = require('fs');
+const mainnet = require('./../../../../chain/mainnet');
+const helpers = require('./../../../../chain/util/helpers');
+
+exports.execute = async function () {
+
+    let connection = await mainnet.get();
+    let params = await connection.algodClient.getTransactionParams().do();
+    let sender = connection.gen2.addr;
+    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
+
+    let config = JSON.parse(fs.readFileSync('src/deploy/mainnet/config.json'));
+
+    let max = config['gen2']['inputs']['max'];
+
+    for (let i = 0; i < max; i++) {
+        let primes = config['gen2']['inputs']['primes'];
+
+        if (!primes[i]['application_id']) {
+            let approvalProgram = fs.readFileSync('src/build/mainnet/gen2/prime/build/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/mainnet/gen2/prime/build/clear.teal', 'utf8');
+
+            let composer = new connection.baseClient.AtomicTransactionComposer();
+
+            composer.addTransaction({
+                signer: signer,
+                txn: connection.baseClient.makeApplicationCreateTxnFromObject({
+                    from: sender,
+                    onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
+                    approvalProgram: await mainnet.compile(approvalProgram),
+                    clearProgram: await mainnet.compile(clearProgram),
+                    numLocalInts: 0,
+                    numLocalByteSlices: 0,
+                    numGlobalInts: 0,
+                    numGlobalByteSlices: 2,
+                    extraPages: 0,
+                    note: helpers.bytes('ID:' + primes[i]['id']),
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                })
+            });
+
+            let response = await mainnet.execute(composer);
+            let application_id = response.information['application-index'];
+
+            primes[i]['application_id'] = application_id;
+            primes[i]['application_address'] = connection.baseClient.getApplicationAddress(application_id);
+            primes[i]['application_version'] = 0;
+
+            config['gen2']['inputs']['primes'] = primes;
+            fs.writeFileSync('src/deploy/mainnet/config.json', JSON.stringify(config, null, 4));
+
+            console.log('create main application ' + i);
+        }
+    }
+
+}
