@@ -15,6 +15,9 @@ exports.event = function (value) {
             data['seller'] = algosdk.encodeAddress(value.subarray(60, 92));
             data['price'] = algosdk.decodeUint64(value.subarray(92, 100));
             break;
+        case 'prcl':
+            data.name = 'prime_claim';
+            break;
         case 'prls':
             data.name = 'prime_list';
             data['price'] = algosdk.decodeUint64(value.subarray(60, 68));
@@ -52,9 +55,6 @@ exports.event = function (value) {
         case 'prwd':
             data.name = 'prime_withdraw';
             data['amount'] = algosdk.decodeUint64(value.subarray(60, 68));
-            break;
-        case 'prcl':
-            data.name = 'prime_claim';
             break;
     }
 
