@@ -6,7 +6,6 @@ const mainnet = require('./../../../../chain/mainnet');
 exports.execute = async function () {
 
     let connection = await mainnet.get();
-    let params = await connection.algodClient.getTransactionParams().do();
     let sender = connection.admin.addr;
     let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
@@ -25,6 +24,7 @@ exports.execute = async function () {
             let approvalProgram = fs.readFileSync('src/build/mainnet/gen2/prime/' + contract + '/approval.teal', 'utf8');
             let clearProgram = fs.readFileSync('src/build/mainnet/gen2/prime/' + contract + '/clear.teal', 'utf8');
 
+            let params = await connection.algodClient.getTransactionParams().do();
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addTransaction({
