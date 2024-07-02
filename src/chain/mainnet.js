@@ -10,6 +10,7 @@ exports.get = async function () {
     let admin = algosdk.mnemonicToSecretKey(process.env.MAINNET_ADMIN_MNEMONIC);
     let gen1 = algosdk.mnemonicToSecretKey(process.env.MAINNET_GEN1_MANAGER_MNEMONIC);
     let gen2 = algosdk.mnemonicToSecretKey(process.env.MAINNET_GEN2_MANAGER_MNEMONIC);
+    let legacy = algosdk.mnemonicToSecretKey(process.env.MAINNET_LEGACY_MNEMONIC);
 
     return {
         baseClient: baseClient,
@@ -18,6 +19,7 @@ exports.get = async function () {
         admin: admin,
         gen1: gen1,
         gen2: gen2,
+        legacy: legacy,
     }
 }
 
