@@ -165,5 +165,4 @@ exports.execute = async function () {
             console.log('update main application ' + i);
         }
     }
-
 }

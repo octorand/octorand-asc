@@ -52,5 +52,4 @@ exports.execute = async function () {
             console.log('create prime asset ' + i);
         }
     }
-
 }

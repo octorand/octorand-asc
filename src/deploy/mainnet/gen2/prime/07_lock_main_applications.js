@@ -46,5 +46,4 @@ exports.execute = async function () {
             console.log('lock main application ' + i);
         }
     }
-
 }

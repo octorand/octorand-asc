@@ -58,5 +58,4 @@ exports.execute = async function () {
             console.log('created prime ' + contract);
         }
     }
-
 }

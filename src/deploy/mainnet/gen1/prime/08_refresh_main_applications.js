@@ -48,5 +48,4 @@ exports.execute = async function () {
             console.log('refresh main application ' + i);
         }
     }
-
 }

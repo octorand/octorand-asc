@@ -53,5 +53,4 @@ exports.execute = async function () {
             console.log('updated prime ' + contract);
         }
     }
-
 }

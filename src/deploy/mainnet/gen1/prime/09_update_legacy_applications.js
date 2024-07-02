@@ -6,28 +6,33 @@ const mainnet = require('./../../../../chain/mainnet');
 exports.execute = async function () {
 
     let connection = await mainnet.get();
-    let params = await connection.algodClient.getTransactionParams().do();
-    let sender = connection.gen1.addr;
-    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
+    let sender = '';
+    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.legacy);
 
     let config = JSON.parse(fs.readFileSync('src/deploy/mainnet/config.json'));
+
+    let version = 1;
 
     let max = config['gen1']['inputs']['max'];
 
     for (let i = 0; i < max; i++) {
         let primes = config['gen1']['inputs']['primes'];
 
-        if (!primes[i]['locked']) {
+        if (primes[i]['legacy_application_version'] < version) {
+            let params = await connection.algodClient.getTransactionParams().do();
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
+            let approvalProgram = fs.readFileSync('src/build/mainnet/gen1/prime/legacy/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/mainnet/gen1/prime/legacy/clear.teal', 'utf8');
+
             composer.addTransaction({
-                sender: sender,
                 signer: signer,
-                txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                txn: connection.baseClient.makeApplicationUpdateTxnFromObject({
                     from: sender,
-                    to: primes[i]['application_address'],
-                    assetIndex: primes[i]['prime_asset_id'],
-                    amount: 1,
+                    appIndex: primes[i]['legacy_application_id'],
+                    onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
+                    approvalProgram: await mainnet.compile(approvalProgram),
+                    clearProgram: await mainnet.compile(clearProgram),
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -38,12 +43,12 @@ exports.execute = async function () {
 
             await mainnet.execute(composer);
 
-            primes[i]['locked'] = true;
+            primes[i]['legacy_application_version'] = version;
 
             config['gen1']['inputs']['primes'] = primes;
             fs.writeFileSync('src/deploy/mainnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('lock main application ' + i);
+            console.log('updated legacy application ' + i);
         }
     }
 }

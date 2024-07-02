@@ -80,5 +80,4 @@ exports.execute = async function () {
 
     config['gen2']['inputs']['primes'] = primes;
     fs.writeFileSync('src/deploy/mainnet/config.json', JSON.stringify(config, null, 4));
-
 }
