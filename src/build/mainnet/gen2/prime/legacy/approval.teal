@@ -1,0 +1,81 @@
+#pragma version 10
+txn NumAppArgs
+int 0
+==
+bnz main_l4
+txna ApplicationArgs 0
+method "initialize()void"
+==
+bnz main_l3
+err
+main_l3:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub initializecaster_3
+int 1
+return
+main_l4:
+txn OnCompletion
+int UpdateApplication
+==
+bnz main_l8
+txn OnCompletion
+int DeleteApplication
+==
+bnz main_l7
+err
+main_l7:
+txn ApplicationID
+int 0
+!=
+assert
+callsub delete_1
+int 1
+return
+main_l8:
+txn ApplicationID
+int 0
+!=
+assert
+callsub update_0
+int 1
+return
+
+// update
+update_0:
+proto 0 0
+txn Sender
+addr NXZLEEQ35KIZ3V3MHFXOOQNEINVLYAU7JCAOZZTQRCDREO4O34I27KLIXU
+==
+assert
+retsub
+
+// delete
+delete_1:
+proto 0 0
+txn Sender
+addr NXZLEEQ35KIZ3V3MHFXOOQNEINVLYAU7JCAOZZTQRCDREO4O34I27KLIXU
+==
+assert
+retsub
+
+// initialize
+initialize_2:
+proto 0 0
+txn Sender
+addr NXZLEEQ35KIZ3V3MHFXOOQNEINVLYAU7JCAOZZTQRCDREO4O34I27KLIXU
+==
+assert
+retsub
+
+// initialize_caster
+initializecaster_3:
+proto 0 0
+callsub initialize_2
+retsub

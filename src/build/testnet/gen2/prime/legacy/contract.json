@@ -1,0 +1,13 @@
+{
+    "name": "GenTwoPrime",
+    "methods": [
+        {
+            "name": "initialize",
+            "args": [],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

@@ -1,0 +1,13 @@
+{
+    "name": "GenOnePrime",
+    "methods": [
+        {
+            "name": "initialize",
+            "args": [],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}
