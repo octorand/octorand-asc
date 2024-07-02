@@ -7,7 +7,6 @@ const helpers = require('./../../../../chain/util/helpers');
 exports.execute = async function () {
 
     let connection = await mainnet.get();
-    let params = await connection.algodClient.getTransactionParams().do();
     let sender = connection.gen2.addr;
     let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
 
@@ -21,6 +20,7 @@ exports.execute = async function () {
         let primes = config['gen2']['inputs']['primes'];
 
         if (!primes[i]['asset_version'] || primes[i]['asset_version'] < version) {
+            let params = await connection.algodClient.getTransactionParams().do();
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             let properties = {};
