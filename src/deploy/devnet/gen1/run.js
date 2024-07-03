@@ -45,4 +45,11 @@ exports.execute = async function () {
     await require('./prime/33_read_logs').execute();
     await require('./prime/34_read_state').execute();
 
+    console.log('gen1 prime manage legacy');
+    await require('./prime/35_create_legacy_application').execute();
+    await require('./prime/36_fund_legacy_application').execute();
+    await require('./prime/37_update_legacy_application').execute();
+    await require('./prime/38_optout_legacy_application').execute();
+    await require('./prime/39_withdraw_legacy_application').execute();
+    await require('./prime/40_delete_legacy_application').execute();
 }

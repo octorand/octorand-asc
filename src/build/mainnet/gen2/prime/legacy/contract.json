@@ -2,6 +2,18 @@
     "name": "GenTwoPrime",
     "methods": [
         {
+            "name": "optin",
+            "args": [
+                {
+                    "type": "asset",
+                    "name": "asset"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
             "name": "optout",
             "args": [
                 {

@@ -2,28 +2,20 @@
 txn NumAppArgs
 int 0
 ==
-bnz main_l6
+bnz main_l8
+txna ApplicationArgs 0
+method "optin(asset)void"
+==
+bnz main_l7
 txna ApplicationArgs 0
 method "optout(asset)void"
 ==
-bnz main_l5
+bnz main_l6
 txna ApplicationArgs 0
 method "withdraw()void"
 ==
-bnz main_l4
+bnz main_l5
 err
-main_l4:
-txn OnCompletion
-int NoOp
-==
-txn ApplicationID
-int 0
-!=
-&&
-assert
-callsub withdrawcaster_5
-int 1
-return
 main_l5:
 txn OnCompletion
 int NoOp
@@ -33,20 +25,44 @@ int 0
 !=
 &&
 assert
-callsub optoutcaster_4
+callsub withdrawcaster_7
 int 1
 return
 main_l6:
 txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub optoutcaster_6
+int 1
+return
+main_l7:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub optincaster_5
+int 1
+return
+main_l8:
+txn OnCompletion
 int UpdateApplication
 ==
-bnz main_l10
+bnz main_l12
 txn OnCompletion
 int DeleteApplication
 ==
-bnz main_l9
+bnz main_l11
 err
-main_l9:
+main_l11:
 txn ApplicationID
 int 0
 !=
@@ -54,7 +70,7 @@ assert
 callsub delete_1
 int 1
 return
-main_l10:
+main_l12:
 txn ApplicationID
 int 0
 !=
@@ -81,8 +97,30 @@ addr NXZLEEQ35KIZ3V3MHFXOOQNEINVLYAU7JCAOZZTQRCDREO4O34I27KLIXU
 assert
 retsub
 
+// optin
+optin_2:
+proto 1 0
+txn Sender
+addr NXZLEEQ35KIZ3V3MHFXOOQNEINVLYAU7JCAOZZTQRCDREO4O34I27KLIXU
+==
+assert
+itxn_begin
+int axfer
+itxn_field TypeEnum
+frame_dig -1
+txnas Assets
+itxn_field XferAsset
+int 0
+itxn_field AssetAmount
+global CurrentApplicationAddress
+itxn_field AssetReceiver
+int 0
+itxn_field Fee
+itxn_submit
+retsub
+
 // optout
-optout_2:
+optout_3:
 proto 1 0
 txn Sender
 addr NXZLEEQ35KIZ3V3MHFXOOQNEINVLYAU7JCAOZZTQRCDREO4O34I27KLIXU
@@ -106,7 +144,7 @@ itxn_submit
 retsub
 
 // withdraw
-withdraw_3:
+withdraw_4:
 proto 0 0
 txn Sender
 addr NXZLEEQ35KIZ3V3MHFXOOQNEINVLYAU7JCAOZZTQRCDREO4O34I27KLIXU
@@ -126,8 +164,8 @@ itxn_field Fee
 itxn_submit
 retsub
 
-// optout_caster
-optoutcaster_4:
+// optin_caster
+optincaster_5:
 proto 0 0
 int 0
 txna ApplicationArgs 1
@@ -135,11 +173,23 @@ int 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub optout_2
+callsub optin_2
+retsub
+
+// optout_caster
+optoutcaster_6:
+proto 0 0
+int 0
+txna ApplicationArgs 1
+int 0
+getbyte
+frame_bury 0
+frame_dig 0
+callsub optout_3
 retsub
 
 // withdraw_caster
-withdrawcaster_5:
+withdrawcaster_7:
 proto 0 0
-callsub withdraw_3
+callsub withdraw_4
 retsub
