@@ -18,6 +18,26 @@
             }
         },
         {
+            "name": "move",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "price"
+                },
+                {
+                    "type": "address",
+                    "name": "seller"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
             "name": "fire",
             "args": [
                 {
