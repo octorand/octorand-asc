@@ -11,5 +11,6 @@ exports.execute = async function () {
     await require('./prime/03_create_sub_applications').execute();
     await require('./prime/04_update_sub_applications').execute();
     await require('./prime/05_create_main_applications').execute();
+    await require('./prime/06_update_main_applications').execute();
 
 }
