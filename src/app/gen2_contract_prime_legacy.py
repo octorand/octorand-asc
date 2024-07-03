@@ -8,6 +8,13 @@ const = gen2_const.Config()
 
 
 @Subroutine(TealType.none)
+def create():
+    return Seq(
+        Assert(Txn.sender() == const.manager_address),
+    )
+
+
+@Subroutine(TealType.none)
 def update():
     return Seq(
         Assert(Txn.sender() == const.admin_address),
