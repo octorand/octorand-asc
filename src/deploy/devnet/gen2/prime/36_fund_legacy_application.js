@@ -12,9 +12,9 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/legacy/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen2/prime/legacy/contract.json')));
 
-        let application = config['gen1']['contracts']['prime']['legacy'];
+        let application = config['gen2']['contracts']['prime']['legacy'];
 
         if (!application['funded']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
@@ -68,7 +68,7 @@ exports.execute = async function () {
 
             application['funded'] = true;
 
-            config['gen1']['contracts']['prime']['legacy'] = application;
+            config['gen2']['contracts']['prime']['legacy'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('funded legacy app');

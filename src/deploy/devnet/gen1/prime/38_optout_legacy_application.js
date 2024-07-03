@@ -12,6 +12,7 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/gen1/prime/legacy/contract.json')));
 
         let application = config['gen1']['contracts']['prime']['legacy'];
 
