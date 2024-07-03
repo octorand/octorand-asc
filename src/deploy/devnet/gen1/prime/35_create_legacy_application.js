@@ -7,16 +7,16 @@ exports.execute = async function () {
     try {
         let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen2.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
+        let sender = connection.gen1.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
-        let application = config['gen2']['contracts']['prime']['legacy'];
+        let application = config['gen1']['contracts']['prime']['legacy'];
 
         if (!application['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/devnet/gen2/prime/legacy/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/devnet/gen2/prime/legacy/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/devnet/gen1/prime/legacy/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/devnet/gen1/prime/legacy/clear.teal', 'utf8');
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -47,7 +47,7 @@ exports.execute = async function () {
             application['application_address'] = connection.baseClient.getApplicationAddress(application_id);
             application['application_version'] = 0;
 
-            config['gen2']['contracts']['prime']['legacy'] = application;
+            config['gen1']['contracts']['prime']['legacy'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('created legacy app');
