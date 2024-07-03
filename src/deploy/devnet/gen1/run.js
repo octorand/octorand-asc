@@ -34,9 +34,13 @@ exports.execute = async function () {
     await require('./prime/24_call_claim').execute();
     await require('./prime/25_call_refresh').execute();
     await require('./prime/26_call_fire').execute();
+    await require('./prime/27_call_move').execute();
+    await require('./prime/28_call_unlist').execute();
+    await require('./prime/29_call_move').execute();
+    await require('./prime/30_call_buy').execute();
 
     console.log('gen1 prime read states');
-    await require('./prime/27_read_logs').execute();
-    await require('./prime/28_read_state').execute();
+    await require('./prime/31_read_logs').execute();
+    await require('./prime/32_read_state').execute();
 
 }
