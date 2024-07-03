@@ -271,6 +271,42 @@
                             "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
                             "name": "prime_withdraw",
                             "amount": 110
+                        },
+                        {
+                            "code": "prls",
+                            "version": 1,
+                            "timestamp": 1719983979,
+                            "prime": 1,
+                            "sender": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                            "name": "prime_list",
+                            "price": 350
+                        },
+                        {
+                            "code": "prul",
+                            "version": 1,
+                            "timestamp": 1719983987,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_unlist"
+                        },
+                        {
+                            "code": "prls",
+                            "version": 1,
+                            "timestamp": 1719983993,
+                            "prime": 1,
+                            "sender": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                            "name": "prime_list",
+                            "price": 350
+                        },
+                        {
+                            "code": "prby",
+                            "version": 1,
+                            "timestamp": 1719983998,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_buy",
+                            "seller": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "price": 350
                         }
                     ],
                     "state": {
@@ -288,7 +324,7 @@
                         "score": 1390,
                         "price": 0,
                         "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
-                        "sales": 11,
+                        "sales": 12,
                         "drains": 21,
                         "transforms": 36,
                         "vaults": 0,
@@ -296,7 +332,9 @@
                         "owner": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
                         "rewards": 999900,
                         "royalties": 1099800
-                    }
+                    },
+                    "opted": true,
+                    "retransferred": true
                 },
                 "buy": {
                     "application_id": 690539496,
@@ -323,8 +361,19 @@
                             "name": "prime_buy",
                             "seller": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
                             "price": 100
+                        },
+                        {
+                            "code": "prby",
+                            "version": 1,
+                            "timestamp": 1719983998,
+                            "prime": 1,
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "name": "prime_buy",
+                            "seller": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "price": 350
                         }
-                    ]
+                    ],
+                    "rebought": true
                 },
                 "claim": {
                     "application_id": 690539500,
@@ -383,8 +432,28 @@
                             "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
                             "name": "prime_list",
                             "price": 102
+                        },
+                        {
+                            "code": "prls",
+                            "version": 1,
+                            "timestamp": 1719983979,
+                            "prime": 1,
+                            "sender": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                            "name": "prime_list",
+                            "price": 350
+                        },
+                        {
+                            "code": "prls",
+                            "version": 1,
+                            "timestamp": 1719983993,
+                            "prime": 1,
+                            "sender": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                            "name": "prime_list",
+                            "price": 350
                         }
-                    ]
+                    ],
+                    "moved": true,
+                    "removed": true
                 },
                 "mint": {
                     "application_id": 690539605,
@@ -556,8 +625,17 @@
                             "prime": 1,
                             "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
                             "name": "prime_unlist"
+                        },
+                        {
+                            "code": "prul",
+                            "version": 1,
+                            "timestamp": 1719983987,
+                            "prime": 1,
+                            "sender": "DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY",
+                            "name": "prime_unlist"
                         }
-                    ]
+                    ],
+                    "unmoved": true
                 },
                 "upgrade": {
                     "application_id": 690539775,
@@ -868,6 +946,32 @@
                             "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
                             "name": "prime_withdraw",
                             "amount": 110
+                        },
+                        {
+                            "code": "prls",
+                            "version": 1,
+                            "timestamp": 1719984039,
+                            "prime": 1,
+                            "sender": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                            "name": "prime_list",
+                            "price": 350
+                        },
+                        {
+                            "code": "prul",
+                            "version": 1,
+                            "timestamp": 1719984045,
+                            "prime": 1,
+                            "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                            "name": "prime_unlist"
+                        },
+                        {
+                            "code": "prls",
+                            "version": 1,
+                            "timestamp": 1719984050,
+                            "prime": 1,
+                            "sender": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                            "name": "prime_list",
+                            "price": 350
                         }
                     ],
                     "state": {
@@ -883,8 +987,8 @@
                         "is_pioneer": 1,
                         "is_explorer": 1,
                         "score": 1150,
-                        "price": 0,
-                        "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
+                        "price": 350,
+                        "seller": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
                         "sales": 11,
                         "drains": 21,
                         "transforms": 34,
@@ -893,7 +997,9 @@
                         "owner": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
                         "rewards": 999900,
                         "royalties": 1099800
-                    }
+                    },
+                    "opted": true,
+                    "retransferred": true
                 },
                 "buy": {
                     "application_id": 690541146,
@@ -980,8 +1086,28 @@
                             "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
                             "name": "prime_list",
                             "price": 102
+                        },
+                        {
+                            "code": "prls",
+                            "version": 1,
+                            "timestamp": 1719984039,
+                            "prime": 1,
+                            "sender": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                            "name": "prime_list",
+                            "price": 350
+                        },
+                        {
+                            "code": "prls",
+                            "version": 1,
+                            "timestamp": 1719984050,
+                            "prime": 1,
+                            "sender": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                            "name": "prime_list",
+                            "price": 350
                         }
-                    ]
+                    ],
+                    "moved": true,
+                    "removed": true
                 },
                 "mint": {
                     "application_id": 690541284,
@@ -1153,8 +1279,17 @@
                             "prime": 1,
                             "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
                             "name": "prime_unlist"
+                        },
+                        {
+                            "code": "prul",
+                            "version": 1,
+                            "timestamp": 1719984045,
+                            "prime": 1,
+                            "sender": "SQIMRT6PMR5OX6WNWLJYCFPXW67AXQNVIFKYEQLVKPQ5GTCAMTO7WK7NGQ",
+                            "name": "prime_unlist"
                         }
-                    ]
+                    ],
+                    "unmoved": true
                 },
                 "upgrade": {
                     "application_id": 690541388,
