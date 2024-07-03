@@ -31,6 +31,10 @@ def delete():
 router = Router(
     name="GenTwoPrime",
     bare_calls=BareCallActions(
+        no_op=OnCompleteAction(
+            action=create,
+            call_config=CallConfig.CREATE,
+        ),
         update_application=OnCompleteAction(
             action=update,
             call_config=CallConfig.CALL,

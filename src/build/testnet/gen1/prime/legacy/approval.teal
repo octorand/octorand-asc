@@ -25,7 +25,7 @@ int 0
 !=
 &&
 assert
-callsub withdrawcaster_7
+callsub withdrawcaster_8
 int 1
 return
 main_l6:
@@ -37,7 +37,7 @@ int 0
 !=
 &&
 assert
-callsub optoutcaster_6
+callsub optoutcaster_7
 int 1
 return
 main_l7:
@@ -49,38 +49,59 @@ int 0
 !=
 &&
 assert
-callsub optincaster_5
+callsub optincaster_6
 int 1
 return
 main_l8:
 txn OnCompletion
+int NoOp
+==
+bnz main_l14
+txn OnCompletion
 int UpdateApplication
 ==
-bnz main_l12
+bnz main_l13
 txn OnCompletion
 int DeleteApplication
 ==
-bnz main_l11
+bnz main_l12
 err
-main_l11:
-txn ApplicationID
-int 0
-!=
-assert
-callsub delete_1
-int 1
-return
 main_l12:
 txn ApplicationID
 int 0
 !=
 assert
-callsub update_0
+callsub delete_2
+int 1
+return
+main_l13:
+txn ApplicationID
+int 0
+!=
+assert
+callsub update_1
+int 1
+return
+main_l14:
+txn ApplicationID
+int 0
+==
+assert
+callsub create_0
 int 1
 return
 
+// create
+create_0:
+proto 0 0
+txn Sender
+addr 5VOHHIR344ZYOVOL6BKKVOTB27ZDLLQMVACB3MUVM3ZX2PEMNYU2DUW6GQ
+==
+assert
+retsub
+
 // update
-update_0:
+update_1:
 proto 0 0
 txn Sender
 addr EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU
@@ -89,7 +110,7 @@ assert
 retsub
 
 // delete
-delete_1:
+delete_2:
 proto 0 0
 txn Sender
 addr EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU
@@ -98,7 +119,7 @@ assert
 retsub
 
 // optin
-optin_2:
+optin_3:
 proto 1 0
 txn Sender
 addr EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU
@@ -120,7 +141,7 @@ itxn_submit
 retsub
 
 // optout
-optout_3:
+optout_4:
 proto 1 0
 txn Sender
 addr EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU
@@ -144,7 +165,7 @@ itxn_submit
 retsub
 
 // withdraw
-withdraw_4:
+withdraw_5:
 proto 0 0
 txn Sender
 addr EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU
@@ -165,7 +186,7 @@ itxn_submit
 retsub
 
 // optin_caster
-optincaster_5:
+optincaster_6:
 proto 0 0
 int 0
 txna ApplicationArgs 1
@@ -173,11 +194,11 @@ int 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub optin_2
+callsub optin_3
 retsub
 
 // optout_caster
-optoutcaster_6:
+optoutcaster_7:
 proto 0 0
 int 0
 txna ApplicationArgs 1
@@ -185,11 +206,11 @@ int 0
 getbyte
 frame_bury 0
 frame_dig 0
-callsub optout_3
+callsub optout_4
 retsub
 
 // withdraw_caster
-withdrawcaster_7:
+withdrawcaster_8:
 proto 0 0
-callsub withdraw_4
+callsub withdraw_5
 retsub
