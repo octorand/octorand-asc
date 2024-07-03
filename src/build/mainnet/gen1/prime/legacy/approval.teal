@@ -2,13 +2,17 @@
 txn NumAppArgs
 int 0
 ==
-bnz main_l4
+bnz main_l6
 txna ApplicationArgs 0
-method "initialize()void"
+method "optout(asset)void"
 ==
-bnz main_l3
+bnz main_l5
+txna ApplicationArgs 0
+method "withdraw()void"
+==
+bnz main_l4
 err
-main_l3:
+main_l4:
 txn OnCompletion
 int NoOp
 ==
@@ -17,20 +21,32 @@ int 0
 !=
 &&
 assert
-callsub initializecaster_3
+callsub withdrawcaster_5
 int 1
 return
-main_l4:
+main_l5:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub optoutcaster_4
+int 1
+return
+main_l6:
 txn OnCompletion
 int UpdateApplication
 ==
-bnz main_l8
+bnz main_l10
 txn OnCompletion
 int DeleteApplication
 ==
-bnz main_l7
+bnz main_l9
 err
-main_l7:
+main_l9:
 txn ApplicationID
 int 0
 !=
@@ -38,7 +54,7 @@ assert
 callsub delete_1
 int 1
 return
-main_l8:
+main_l10:
 txn ApplicationID
 int 0
 !=
@@ -65,17 +81,65 @@ addr NXZLEEQ35KIZ3V3MHFXOOQNEINVLYAU7JCAOZZTQRCDREO4O34I27KLIXU
 assert
 retsub
 
-// initialize
-initialize_2:
+// optout
+optout_2:
+proto 1 0
+txn Sender
+addr NXZLEEQ35KIZ3V3MHFXOOQNEINVLYAU7JCAOZZTQRCDREO4O34I27KLIXU
+==
+assert
+itxn_begin
+int axfer
+itxn_field TypeEnum
+frame_dig -1
+txnas Assets
+itxn_field XferAsset
+int 0
+itxn_field AssetAmount
+txn Sender
+itxn_field AssetReceiver
+txn Sender
+itxn_field AssetCloseTo
+int 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// withdraw
+withdraw_3:
 proto 0 0
 txn Sender
 addr NXZLEEQ35KIZ3V3MHFXOOQNEINVLYAU7JCAOZZTQRCDREO4O34I27KLIXU
 ==
 assert
+itxn_begin
+int pay
+itxn_field TypeEnum
+int 0
+itxn_field Amount
+txn Sender
+itxn_field Receiver
+txn Sender
+itxn_field CloseRemainderTo
+int 0
+itxn_field Fee
+itxn_submit
 retsub
 
-// initialize_caster
-initializecaster_3:
+// optout_caster
+optoutcaster_4:
 proto 0 0
-callsub initialize_2
+int 0
+txna ApplicationArgs 1
+int 0
+getbyte
+frame_bury 0
+frame_dig 0
+callsub optout_2
+retsub
+
+// withdraw_caster
+withdrawcaster_5:
+proto 0 0
+callsub withdraw_3
 retsub

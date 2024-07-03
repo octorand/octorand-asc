@@ -1,4 +1,3 @@
-import func
 import gen1_const
 
 from pyteal import *
@@ -39,7 +38,33 @@ router = Router(
 
 
 @router.method
-def initialize():
+def optout(asset: abi.Asset):
     return Seq(
         Assert(Txn.sender() == const.admin_address),
+        InnerTxnBuilder.Execute(
+            {
+                TxnField.type_enum: TxnType.AssetTransfer,
+                TxnField.xfer_asset: asset.asset_id(),
+                TxnField.asset_amount: Int(0),
+                TxnField.asset_receiver: Txn.sender(),
+                TxnField.asset_close_to: Txn.sender(),
+                TxnField.fee: Int(0),
+            }
+        ),
+    )
+
+
+@router.method
+def withdraw():
+    return Seq(
+        Assert(Txn.sender() == const.admin_address),
+        InnerTxnBuilder.Execute(
+            {
+                TxnField.type_enum: TxnType.Payment,
+                TxnField.amount: Int(0),
+                TxnField.receiver: Txn.sender(),
+                TxnField.close_remainder_to: Txn.sender(),
+                TxnField.fee: Int(0),
+            }
+        ),
     )

@@ -2,7 +2,19 @@
     "name": "GenTwoPrime",
     "methods": [
         {
-            "name": "initialize",
+            "name": "optout",
+            "args": [
+                {
+                    "type": "asset",
+                    "name": "asset"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "withdraw",
             "args": [],
             "returns": {
                 "type": "void"
