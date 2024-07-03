@@ -7,7 +7,6 @@ const helpers = require('./../../../../chain/util/helpers');
 exports.execute = async function () {
 
     let connection = await mainnet.get();
-    let params = await connection.algodClient.getTransactionParams().do();
     let sender = connection.admin.addr;
     let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
@@ -21,6 +20,7 @@ exports.execute = async function () {
     for (let i = 0; i < max; i++) {
         let primes = config['gen1']['inputs']['primes'];
 
+        let params = await connection.algodClient.getTransactionParams().do();
         let composer = new connection.baseClient.AtomicTransactionComposer();
 
         if (!primes[i]['funded']) {
@@ -93,41 +93,6 @@ exports.execute = async function () {
             });
         }
 
-        if (!primes[i]['loaded']) {
-            primes[i]['loaded'] = true;
-
-            composer.addTransaction({
-                sender: sender,
-                signer: signer,
-                txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
-                    from: sender,
-                    to: primes[i]['application_address'],
-                    assetIndex: config['setup']['platform']['asset_id'],
-                    amount: primes[i]['rewards'],
-                    suggestedParams: {
-                        ...params,
-                        fee: 1000,
-                        flatFee: true
-                    }
-                })
-            });
-
-            composer.addTransaction({
-                sender: sender,
-                signer: signer,
-                txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
-                    from: sender,
-                    to: primes[i]['application_address'],
-                    amount: primes[i]['royalties'],
-                    suggestedParams: {
-                        ...params,
-                        fee: 1000,
-                        flatFee: true
-                    }
-                })
-            });
-        }
-
         if (primes[i]['application_version'] < version) {
             primes[i]['application_version'] = version;
 
@@ -157,10 +122,6 @@ exports.execute = async function () {
             config['gen1']['inputs']['primes'] = primes;
             fs.writeFileSync('src/deploy/mainnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('fund main application ' + i);
-            console.log('initialize main application ' + i);
-            console.log('populate main application ' + i);
-            console.log('load main application ' + i);
             console.log('update main application ' + i);
         }
     }

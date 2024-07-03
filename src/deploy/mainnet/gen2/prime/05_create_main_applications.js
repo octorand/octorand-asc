@@ -7,7 +7,6 @@ const helpers = require('./../../../../chain/util/helpers');
 exports.execute = async function () {
 
     let connection = await mainnet.get();
-    let params = await connection.algodClient.getTransactionParams().do();
     let sender = connection.gen2.addr;
     let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen2);
 
@@ -22,6 +21,7 @@ exports.execute = async function () {
             let approvalProgram = fs.readFileSync('src/build/mainnet/gen2/prime/build/approval.teal', 'utf8');
             let clearProgram = fs.readFileSync('src/build/mainnet/gen2/prime/build/clear.teal', 'utf8');
 
+            let params = await connection.algodClient.getTransactionParams().do();
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addTransaction({
