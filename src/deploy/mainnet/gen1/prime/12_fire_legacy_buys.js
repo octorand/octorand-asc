@@ -63,7 +63,5 @@ exports.execute = async function () {
                 }
             }
         }
-
-        break;
     }
 }
