@@ -11,6 +11,7 @@ exports.execute = async function () {
     let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
     let config = JSON.parse(fs.readFileSync('src/deploy/mainnet/config.json'));
+    let sales = JSON.parse(fs.readFileSync('src/deploy/mainnet/gen1/prime/sales.json'));
 
     let legacyContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/mainnet/gen1/prime/legacy/contract.json')));
     let appContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/mainnet/gen1/prime/app/contract.json')));
@@ -24,6 +25,39 @@ exports.execute = async function () {
 
             let params = await connection.algodClient.getTransactionParams().do();
             let composer = new connection.baseClient.AtomicTransactionComposer();
+
+            let profile = sales['sales'].find(x => x.id == primes[i].id);
+            if (!profile) {
+                composer.addTransaction({
+                    signer: signer,
+                    txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                        from: sender,
+                        to: sender,
+                        assetIndex: primes[i]['legacy_asset_id'],
+                        total: 0,
+                        suggestedParams: {
+                            ...params,
+                            fee: 1000,
+                            flatFee: true
+                        }
+                    })
+                });
+
+                composer.addMethodCall({
+                    sender: sender,
+                    signer: signer,
+                    appID: primes[i]['legacy_application_id'],
+                    method: helpers.method(legacyContract, 'optout'),
+                    methodArgs: [
+                        primes[i]['legacy_asset_id']
+                    ],
+                    suggestedParams: {
+                        ...params,
+                        fee: 2000,
+                        flatFee: true
+                    }
+                });
+            }
 
             composer.addMethodCall({
                 sender: sender,
