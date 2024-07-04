@@ -121,6 +121,8 @@ exports.execute = async function () {
                         });
 
                         await mainnet.execute(composer);
+
+                        console.log('moved legacy asset ' + asset.id);
                     }
                 }
             }
