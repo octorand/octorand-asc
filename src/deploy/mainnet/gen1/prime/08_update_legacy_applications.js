@@ -6,7 +6,7 @@ const mainnet = require('./../../../../chain/mainnet');
 exports.execute = async function () {
 
     let connection = await mainnet.get();
-    let sender = '';
+    let sender = 'YVG5656ZA7M4QQUZHUJWV4VO6CM432LDUTKKYL6CJJLQVLSRHALMZ4MFKQ';
     let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.legacy);
 
     let config = JSON.parse(fs.readFileSync('src/deploy/mainnet/config.json'));
