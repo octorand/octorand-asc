@@ -25,13 +25,13 @@ exports.execute = async function () {
         if (!primes[i]['fired_buys']) {
 
             let profile = events['primes'].find(x => x.id == primes[i].id);
-            if (!profile) {
+            if (profile) {
                 let buys = profile['buys'];
                 if (buys.length > 0) {
                     let params = await connection.algodClient.getTransactionParams().do();
                     let composer = new connection.baseClient.AtomicTransactionComposer();
 
-                    for (let j = 0; j < buys.length; j += 16) {
+                    for (let j = 0; j < buys.length; j++) {
                         composer.addMethodCall({
                             sender: sender,
                             signer: signer,
@@ -52,18 +52,18 @@ exports.execute = async function () {
                         });
                     }
 
-                    // await mainnet.execute(composer);
+                    await mainnet.execute(composer);
 
-                    // primes[i]['fired_buys'] = true;
+                    primes[i]['fired_buys'] = true;
 
-                    // config['gen1']['inputs']['primes'] = primes;
-                    // fs.writeFileSync('src/deploy/mainnet/config.json', JSON.stringify(config, null, 4));
+                    config['gen1']['inputs']['primes'] = primes;
+                    fs.writeFileSync('src/deploy/mainnet/config.json', JSON.stringify(config, null, 4));
 
                     console.log('fired_legacy buys ' + i);
-
-                    break;
                 }
             }
         }
+
+        break;
     }
 }
