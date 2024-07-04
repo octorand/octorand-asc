@@ -18,10 +18,6 @@ exports.execute = async function () {
     let max = config['gen1']['inputs']['max'];
 
     for (let i = 0; i < max; i++) {
-        if (i != 900) {
-            continue;
-        }
-
         let primes = config['gen1']['inputs']['primes'];
 
         if (!primes[i]['moved_rewards']) {
