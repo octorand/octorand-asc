@@ -17,5 +17,7 @@ exports.execute = async function () {
     await require('./prime/09_move_legacy_vaults').execute();
     await require('./prime/10_move_legacy_listings').execute();
     await require('./prime/11_move_legacy_rewards').execute();
+    await require('./prime/12_fire_legacy_buys').execute();
+    await require('./prime/13_delete_legacy_applications').execute();
 
 }
