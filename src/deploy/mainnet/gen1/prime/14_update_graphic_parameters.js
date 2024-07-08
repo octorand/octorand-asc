@@ -55,5 +55,5 @@ exports.execute = async function () {
 
     fs.writeFileSync('src/deploy/mainnet/gen1/prime/graphics.json', JSON.stringify(graphics, null, 4));
 
-    console.log('updated graphics');
+    console.log('updated graphic parameters');
 }
