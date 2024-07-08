@@ -20,16 +20,33 @@ exports.execute = async function () {
     let primes = [];
 
     for (let i = 0; i < applications.length; i++) {
-        let id = i;
-        let name = '';
+        let id = 0;
         let theme = 0;
         let skin = 0;
+        let name = '';
+
+        let global = applications[i]['params']['global-state'];
+
+        for (let j = 0; j < global.length; j++) {
+            let params = global[j];
+            let key = Buffer.from(params.key, 'base64').toString('utf-8');
+            let value = Buffer.from(params.value['bytes'], 'base64');
+
+            switch (key) {
+                case 'P1':
+                    id = connection.baseClient.decodeUint64(value.subarray(0, 8));
+                    theme = connection.baseClient.decodeUint64(value.subarray(40, 42));
+                    skin = connection.baseClient.decodeUint64(value.subarray(42, 44));
+                    name = value.subarray(104, 112).toString('utf-8').trim();
+                    break;
+            }
+        }
 
         primes.push({
             id: id,
-            name: name,
+            theme: theme,
             skin: skin,
-            theme: theme
+            name: name,
         });
     }
 
