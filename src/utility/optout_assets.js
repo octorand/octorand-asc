@@ -15,7 +15,7 @@ const algosdk = require("algosdk");
         let signer = algosdk.makeBasicAccountTransactionSigner(user);
         let params = await client.getTransactionParams().do();
 
-        let account_assets_info = await indexer.lookupAccountAssets(sender).limit(10).do();
+        let account_assets_info = await indexer.lookupAccountAssets(sender).limit(10000).do();
         let assets = account_assets_info.assets;
 
         for (let i = 0; i < assets.length; i++) {
@@ -25,6 +25,7 @@ const algosdk = require("algosdk");
             if (amount == 0) {
                 let asset_info = await indexer.lookupAssetByID(asset_id).do();
                 let receiver = asset_info['asset']['params']['creator'];
+                let name = asset_info['asset']['params']['name'];
 
                 let composer = new algosdk.AtomicTransactionComposer();
 
@@ -46,13 +47,11 @@ const algosdk = require("algosdk");
 
                 composer.execute(client, 10)
                     .then(() => {
-                        console.log(asset_id, amount, receiver);
+                        console.log(asset_id, amount, receiver, name);
                     })
                     .catch(() => {
                         console.log('FAILED');
                     });
-
-                break;
             }
         }
     } catch (error) {
