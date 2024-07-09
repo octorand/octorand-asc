@@ -10,19 +10,20 @@ exports.execute = async function () {
 
     let connection = await mainnet.get();
 
-    let graphics = JSON.parse(fs.readFileSync('src/deploy/mainnet/gen1/prime/graphics.json'));
-    let primes = graphics['primes'];
+    let config = JSON.parse(fs.readFileSync('src/deploy/mainnet/config.json'));
 
-    for (let i = 0; i < primes.length; i++) {
-        let prime = primes[i];
+    let max = config['gen1']['inputs']['max'];
 
-        let source = 'src/deploy/mainnet/gen1/prime/graphics/png/' + prime.id + '.png';
+    for (let i = 0; i < max; i++) {
+        let primes = config['gen1']['inputs']['primes'];
+
+        let source = 'src/deploy/mainnet/gen1/prime/graphics/png/' + primes[i].id + '.png';
         let token = Buffer.from(process.env.INFURA_PROJECT_ID + ':' + process.env.INFURA_PROJECT_SECRET).toString('base64');
 
         var data = new forms();
         data.append('file', fs.createReadStream(source));
 
-        var config = {
+        var request = {
             method: 'post',
             url: 'https://ipfs.infura.io:5001/api/v0/add',
             headers: {
@@ -32,20 +33,22 @@ exports.execute = async function () {
             data: data
         };
 
-        const res = await axios(config);
+        const res = await axios(request);
 
         let cid = new cids(res.data.Hash);
         let hash = Buffer.from(cid.multihash.slice(-32));
         let reserve = connection.baseClient.encodeAddress(Uint8Array.from(Buffer.from(hash)));
 
-        primes[i]['cid'] = res.data.Hash;
-        primes[i]['reserve'] = reserve;
-        primes[i]['version'] = prime.version ? (prime.version + 1) : 0;
+        if (primes[i]['asset_reserve'] != reserve) {
+            primes[i]['asset_cid'] = res.data.Hash;
+            primes[i]['asset_reserve'] = reserve;
+            primes[i]['asset_version'] = 0;
 
-        graphics['primes'] = primes;
-        fs.writeFileSync('src/deploy/mainnet/gen1/prime/graphics.json', JSON.stringify(graphics, null, 4));
+            config['gen1']['inputs']['primes'] = primes;
+            fs.writeFileSync('src/deploy/mainnet/config.json', JSON.stringify(config, null, 4));
 
-        console.log('uploaded graphic png ' + i);
+            console.log('uploaded graphic png ' + i);
+        }
 
         break;
     }
