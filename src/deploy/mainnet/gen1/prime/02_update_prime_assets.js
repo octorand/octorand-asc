@@ -38,7 +38,7 @@ exports.execute = async function () {
                     assetIndex: primes[i]['prime_asset_id'],
                     note: helpers.bytes(JSON.stringify(metadata)),
                     manager: sender,
-                    reserve: config['setup']['ipfs']['reserve'],
+                    reserve: primes[i]['asset_reserve'],
                     strictEmptyAddressChecking: false,
                     suggestedParams: {
                         ...params,

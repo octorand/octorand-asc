@@ -49,8 +49,6 @@ exports.execute = async function () {
 
             console.log('uploaded graphic png ' + i);
         }
-
-        break;
     }
 
     console.log('uploaded graphic pngs');
