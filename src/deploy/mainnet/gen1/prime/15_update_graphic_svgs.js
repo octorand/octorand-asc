@@ -57,8 +57,8 @@ exports.skin0 = function (prime) {
     }
 
     let svg = builder.newInstance();
-    svg = svg.height(200);
-    svg = svg.width(200);
+    svg = svg.height(512);
+    svg = svg.width(512);
     svg = svg.viewBox('0 0 512 512');
 
     svg = exports.svgBackground(svg, shades);
@@ -114,8 +114,8 @@ exports.skin1 = function (prime) {
     }
 
     let svg = builder.newInstance();
-    svg = svg.height(200);
-    svg = svg.width(200);
+    svg = svg.height(512);
+    svg = svg.width(512);
     svg = svg.viewBox('0 0 512 512');
 
     svg = exports.svgBackground(svg, shades);
@@ -165,8 +165,8 @@ exports.skin2 = function (prime) {
 
 
     let svg = builder.newInstance();
-    svg = svg.height(200);
-    svg = svg.width(200);
+    svg = svg.height(512);
+    svg = svg.width(512);
     svg = svg.viewBox('0 0 512 512');
 
     svg = exports.svgBackground(svg, shades);
