@@ -63,6 +63,18 @@ exports.skin0 = function (prime) {
     svg = svg.width(200);
     svg = svg.viewBox('0 0 512 512');
 
+    svg = exports.svgBackground(svg, shades);
+    svg = exports.svgBlocks(svg, blocks);
+    svg = exports.svgArcs(svg, arcs);
+    svg = exports.svgSlices(svg, slices);
+
+    for (let i = 0; i < arms.length; i++) {
+        let arm = arms[i];
+        svg = svg.circle({ 'cx': arm.x, 'cy': arm.y, 'r': '20', 'fill': arm.color, 'stroke-width': '4', 'stroke': '#25282c' });
+    }
+
+    svg = exports.svgCenter(svg, shades);
+
     return svg.render();
 }
 
@@ -108,6 +120,23 @@ exports.skin1 = function (prime) {
     svg = svg.width(200);
     svg = svg.viewBox('0 0 512 512');
 
+    svg = exports.svgBackground(svg, shades);
+    svg = exports.svgBlocks(svg, blocks);
+    svg = exports.svgArcs(svg, arcs);
+
+    for (let i = 0; i < pies.length; i++) {
+        let pie = pies[i];
+        svg = svg.path({ 'd': pie.path, 'fill': pie.color });
+    }
+
+    for (let i = 0; i < pies.length; i++) {
+        let pie = pies[i];
+        svg = svg.path({ 'd': pie.curve, 'fill': 'none', 'stroke-width': '4', 'stroke': '#25282c' });
+    }
+
+    svg = exports.svgSlices(svg, slices);
+    svg = exports.svgCenter(svg, shades);
+
     return svg.render();
 }
 
@@ -142,5 +171,64 @@ exports.skin2 = function (prime) {
     svg = svg.width(200);
     svg = svg.viewBox('0 0 512 512');
 
+    svg = exports.svgBackground(svg, shades);
+    svg = exports.svgBlocks(svg, blocks);
+    svg = exports.svgArcs(svg, arcs);
+    svg = exports.svgSlices(svg, slices);
+
+    for (let i = 0; i < twirls.length; i++) {
+        let twirl = twirls[i];
+        svg = svg.circle({ 'r': twirl.radius, 'cx': '256', 'cy': '256', 'fill': twirl.color });
+    }
+
+    for (let i = 0; i < borders.length; i++) {
+        let border = borders[i];
+        svg = svg.circle({ 'r': border.radius, 'cx': '256', 'cy': '256', 'stroke-width': '4', 'stroke': '#25282c', 'fill': 'none' });
+    }
+
+    svg = exports.svgCenter(svg, shades);
+
     return svg.render();
+}
+
+exports.svgBackground = function (svg, shades) {
+    svg = svg.circle({ 'r': '250', 'cx': '256', 'cy': '256', 'stroke-width': '0', 'fill': shades[2] });
+
+    return svg;
+}
+
+exports.svgBlocks = function (svg, blocks) {
+    for (let i = 0; i < blocks.length; i++) {
+        let block = blocks[i];
+        svg = svg.path({ 'd': block.curve, 'stroke-width': '50', 'stroke': block.color, 'fill': 'none' });
+    }
+
+    return svg;
+}
+
+exports.svgArcs = function (svg, arcs) {
+    for (let i = 0; i < arcs.length; i++) {
+        let arc = arcs[i];
+        svg = svg.line({ 'x1': arc.x1, 'y1': arc.y1, 'x2': arc.x2, 'y2': arc.y2, 'stroke-width': '4', 'stroke': '#25282c' });
+    }
+
+    svg = svg.circle({ 'r': '254', 'cx': '256', 'cy': '256', 'stroke-width': '4', 'stroke': '#25282c', 'fill': 'none' });
+    svg = svg.circle({ 'r': '208', 'cx': '256', 'cy': '256', 'stroke-width': '4', 'stroke': '#25282c', 'fill': 'none' });
+
+    return svg;
+}
+
+exports.svgSlices = function (svg, slices) {
+    for (let i = 0; i < slices.length; i++) {
+        let slice = slices[i];
+        svg = svg.line({ 'x1': '256', 'y1': '256', 'x2': slice.x, 'y2': slice.y, 'stroke-width': '4', 'stroke': '#25282c' });
+    }
+
+    return svg;
+}
+
+exports.svgCenter = function (svg, shades) {
+    svg = svg.circle({ 'r': '30', 'cx': '256', 'cy': '256', 'stroke-width': '4', 'stroke': '#25282c', 'fill': shades[6] });
+
+    return svg;
 }
