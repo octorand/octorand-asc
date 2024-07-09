@@ -5,7 +5,7 @@ exports.execute = async function () {
     console.log('gen1 prime setup resources');
     await require('./prime/00_create_prime_inputs').execute();
     await require('./prime/01_create_prime_assets').execute();
-    // await require('./prime/02_update_prime_assets').execute();
+    await require('./prime/02_update_prime_assets').execute();
 
     console.log('gen1 prime setup contracts');
     await require('./prime/03_create_sub_applications').execute();
@@ -21,7 +21,7 @@ exports.execute = async function () {
     await require('./prime/13_delete_legacy_applications').execute();
 
     console.log('gen1 prime setup graphics');
-    let graphic = true;
+    let graphic = false;
     if (graphic) {
         await require('./prime/14_update_graphic_parameters').execute();
         await require('./prime/15_update_graphic_svgs').execute();
