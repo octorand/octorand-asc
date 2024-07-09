@@ -26,8 +26,6 @@ exports.execute = async function () {
         fs.writeFileSync('src/deploy/mainnet/gen1/prime/graphics/svg/' + prime.id + '.svg', svg);
 
         console.log('updated graphic svg ' + i);
-
-        break;
     }
 
     console.log('updated graphic svgs');
@@ -58,7 +56,7 @@ exports.skin0 = function (prime) {
         });
     }
 
-    let svg = builder;
+    let svg = builder.newInstance();
     svg = svg.height(200);
     svg = svg.width(200);
     svg = svg.viewBox('0 0 512 512');
@@ -115,7 +113,7 @@ exports.skin1 = function (prime) {
         });
     }
 
-    let svg = builder;
+    let svg = builder.newInstance();
     svg = svg.height(200);
     svg = svg.width(200);
     svg = svg.viewBox('0 0 512 512');
@@ -166,7 +164,7 @@ exports.skin2 = function (prime) {
     ];
 
 
-    let svg = builder;
+    let svg = builder.newInstance();
     svg = svg.height(200);
     svg = svg.width(200);
     svg = svg.viewBox('0 0 512 512');
