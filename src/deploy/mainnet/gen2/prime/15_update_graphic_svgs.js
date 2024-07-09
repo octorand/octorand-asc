@@ -275,7 +275,7 @@ exports.svgSlices = function (svg, slices) {
 exports.svgCrosses = function (svg, crosses, shades) {
     for (let i = 0; i < crosses.length; i++) {
         let cross = crosses[i];
-        svg = svg.circle({ 'r': '16', 'cx': cross.x, 'cy': cross.y, 'stroke-width': '4', 'stroke': '#25282c', 'fill': shades[6] });
+        svg = svg.circle({ 'r': '24', 'cx': cross.x, 'cy': cross.y, 'stroke-width': '4', 'stroke': '#25282c', 'fill': shades[6] });
     }
 
     return svg;
