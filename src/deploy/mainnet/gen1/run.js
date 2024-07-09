@@ -26,6 +26,6 @@ exports.execute = async function () {
         await require('./prime/14_update_graphic_parameters').execute();
         await require('./prime/15_update_graphic_svgs').execute();
         await require('./prime/16_update_graphic_pngs').execute();
-        // await require('./prime/17_upload_graphic_pngs').execute();
+        await require('./prime/17_upload_graphic_pngs').execute();
     }
 }
