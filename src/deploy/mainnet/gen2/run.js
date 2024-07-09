@@ -21,7 +21,7 @@ exports.execute = async function () {
     await require('./prime/13_delete_legacy_applications').execute();
 
     console.log('gen2 prime setup graphics');
-    let graphic = true;
+    let graphic = false;
     if (graphic) {
         await require('./prime/14_update_graphic_parameters').execute();
         await require('./prime/15_update_graphic_svgs').execute();
