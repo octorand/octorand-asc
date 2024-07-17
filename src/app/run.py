@@ -35,6 +35,14 @@ def run():
     compile("gen2_contract_prime_upgrade", "gen2/prime/upgrade")
     compile("gen2_contract_prime_withdraw", "gen2/prime/withdraw")
 
+    compile("launchpad_contract_guardians_app", "launchpad/guardians/app")
+    compile("launchpad_contract_guardians_legacy", "launchpad/guardians/legacy")
+    compile("launchpad_contract_guardians_manage", "launchpad/guardians/manage")
+
+    compile("launchpad_contract_takos_app", "launchpad/takos/app")
+    compile("launchpad_contract_takos_legacy", "launchpad/takos/legacy")
+    compile("launchpad_contract_takos_manage", "launchpad/takos/manage")
+
 
 def compile(script, folder):
     contract = __import__(script)
