@@ -1,0 +1,216 @@
+#pragma version 10
+txn NumAppArgs
+int 0
+==
+bnz main_l8
+txna ApplicationArgs 0
+method "optin(asset)void"
+==
+bnz main_l7
+txna ApplicationArgs 0
+method "optout(asset)void"
+==
+bnz main_l6
+txna ApplicationArgs 0
+method "withdraw()void"
+==
+bnz main_l5
+err
+main_l5:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub withdrawcaster_8
+int 1
+return
+main_l6:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub optoutcaster_7
+int 1
+return
+main_l7:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub optincaster_6
+int 1
+return
+main_l8:
+txn OnCompletion
+int NoOp
+==
+bnz main_l14
+txn OnCompletion
+int UpdateApplication
+==
+bnz main_l13
+txn OnCompletion
+int DeleteApplication
+==
+bnz main_l12
+err
+main_l12:
+txn ApplicationID
+int 0
+!=
+assert
+callsub delete_2
+int 1
+return
+main_l13:
+txn ApplicationID
+int 0
+!=
+assert
+callsub update_1
+int 1
+return
+main_l14:
+txn ApplicationID
+int 0
+==
+assert
+callsub create_0
+int 1
+return
+
+// create
+create_0:
+proto 0 0
+txn Sender
+addr DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY
+==
+assert
+retsub
+
+// update
+update_1:
+proto 0 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+retsub
+
+// delete
+delete_2:
+proto 0 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+retsub
+
+// optin
+optin_3:
+proto 1 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+itxn_begin
+int axfer
+itxn_field TypeEnum
+frame_dig -1
+txnas Assets
+itxn_field XferAsset
+int 0
+itxn_field AssetAmount
+global CurrentApplicationAddress
+itxn_field AssetReceiver
+int 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// optout
+optout_4:
+proto 1 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+itxn_begin
+int axfer
+itxn_field TypeEnum
+frame_dig -1
+txnas Assets
+itxn_field XferAsset
+int 0
+itxn_field AssetAmount
+txn Sender
+itxn_field AssetReceiver
+txn Sender
+itxn_field AssetCloseTo
+int 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// withdraw
+withdraw_5:
+proto 0 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+itxn_begin
+int pay
+itxn_field TypeEnum
+int 0
+itxn_field Amount
+txn Sender
+itxn_field Receiver
+txn Sender
+itxn_field CloseRemainderTo
+int 0
+itxn_field Fee
+itxn_submit
+retsub
+
+// optin_caster
+optincaster_6:
+proto 0 0
+int 0
+txna ApplicationArgs 1
+int 0
+getbyte
+frame_bury 0
+frame_dig 0
+callsub optin_3
+retsub
+
+// optout_caster
+optoutcaster_7:
+proto 0 0
+int 0
+txna ApplicationArgs 1
+int 0
+getbyte
+frame_bury 0
+frame_dig 0
+callsub optout_4
+retsub
+
+// withdraw_caster
+withdrawcaster_8:
+proto 0 0
+callsub withdraw_5
+retsub
