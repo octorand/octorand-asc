@@ -5,8 +5,8 @@ from pyteal import *
 from typing import *
 
 
-const = gen1_const.Config()
-prime = gen1_const.Prime()
+const = launchpad_const.GuardiansConfig()
+item = launchpad_const.Item()
 
 
 @Subroutine(TealType.none)
@@ -20,16 +20,11 @@ def assert_caller():
 def refresh_balance():
     rewards = AssetHolding.balance(
         Global.current_application_address(),
-        prime.platform_asset_id.get(),
-    )
-    royalties = Minus(
-        Balance(Global.current_application_address()),
-        MinBalance(Global.current_application_address()),
+        item.platform_asset_id.get(),
     )
     return Seq(
         rewards,
-        prime.rewards.set(rewards.value()),
-        prime.royalties.set(royalties),
+        item.rewards.set(rewards.value()),
     )
 
 
@@ -37,8 +32,7 @@ def refresh_balance():
 def create():
     return Seq(
         Assert(Txn.sender() == const.manager_address),
-        func.init_global(prime.key_1),
-        func.init_global(prime.key_2),
+        func.init_global(item.key),
     )
 
 
@@ -66,17 +60,39 @@ router = Router(
 
 
 @router.method
+def initialize(
+    id: abi.Uint64,
+    platform_asset: abi.Asset,
+    item_asset: abi.Asset,
+    name: abi.StaticBytes[Literal[16]],
+    owner: abi.Address,
+):
+    return Seq(
+        Assert(Txn.sender() == const.admin_address),
+        item.id.set(id.get()),
+        item.platform_asset_id.set(platform_asset.asset_id()),
+        item.item_asset_id.set(item_asset.asset_id()),
+        item.name.set(name.get()),
+        item.owner.set(owner.get()),
+        item.price.set(Int(0)),
+        item.seller.set(Global.zero_address()),
+        func.optin_into_asset(platform_asset.asset_id()),
+        func.optin_into_asset(item_asset.asset_id()),
+    )
+
+
+@router.method
 def list(
     price: abi.Uint64,
     seller: abi.Address,
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(prime.seller.get() == Global.zero_address()),
-        Assert(prime.price.get() == Int(0)),
+        Assert(item.seller.get() == Global.zero_address()),
+        Assert(item.price.get() == Int(0)),
         assert_caller(),
-        prime.price.set(price.get()),
-        prime.seller.set(seller.get()),
+        item.price.set(price.get()),
+        item.seller.set(seller.get()),
         Log(log.get()),
     )
 
@@ -87,16 +103,16 @@ def unlist(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(prime.price.get() > Int(0)),
-        Assert(prime.seller.get() == seller.get()),
+        Assert(item.price.get() > Int(0)),
+        Assert(item.seller.get() == seller.get()),
         assert_caller(),
         func.execute_asset_transfer(
-            prime.prime_asset_id.get(),
+            item.item_asset_id.get(),
             seller.get(),
             Int(1),
         ),
-        prime.price.set(Int(0)),
-        prime.seller.set(Global.zero_address()),
+        item.price.set(Int(0)),
+        item.seller.set(Global.zero_address()),
         Log(log.get()),
     )
 
@@ -107,67 +123,29 @@ def buy(
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
-        Assert(prime.price.get() > Int(0)),
-        Assert(prime.seller.get() != Global.zero_address()),
+        Assert(item.price.get() > Int(0)),
+        Assert(item.seller.get() != Global.zero_address()),
         assert_caller(),
         func.execute_asset_transfer(
-            prime.prime_asset_id.get(),
+            item.item_asset_id.get(),
             buyer.get(),
             Int(1),
         ),
-        prime.price.set(Int(0)),
-        prime.seller.set(Global.zero_address()),
-        prime.owner.set(buyer.get()),
-        prime.sales.increment(Int(1)),
+        item.price.set(Int(0)),
+        item.seller.set(Global.zero_address()),
+        item.owner.set(buyer.get()),
         Log(log.get()),
     )
 
 
 @router.method
 def rename(
-    index: abi.Uint64,
-    value: abi.Uint64,
-    transforms: abi.Uint64,
+    name: abi.StaticBytes[Literal[16]],
     log: abi.StaticBytes[Literal[240]],
 ):
     return Seq(
         assert_caller(),
-        prime.name.set(SetByte(prime.name.get(), index.get(), value.get())),
-        prime.transforms.increment(transforms.get()),
-        Log(log.get()),
-    )
-
-
-@router.method
-def repaint(
-    theme: abi.Uint64,
-    skin: abi.Uint64,
-    transforms: abi.Uint64,
-    log: abi.StaticBytes[Literal[240]],
-):
-    return Seq(
-        assert_caller(),
-        prime.theme.set(theme.get()),
-        prime.skin.set(skin.get()),
-        prime.transforms.increment(transforms.get()),
-        Log(log.get()),
-    )
-
-
-@router.method
-def upgrade(
-    owner: abi.Address,
-    log: abi.StaticBytes[Literal[240]],
-):
-    return Seq(
-        Assert(prime.is_explorer.get() == Int(0)),
-        assert_caller(),
-        func.execute_asset_transfer(
-            prime.prime_asset_id.get(),
-            owner.get(),
-            Int(1),
-        ),
-        prime.is_explorer.set(Int(1)),
+        item.name.set(name.get()),
         Log(log.get()),
     )
 
@@ -181,63 +159,10 @@ def mint(
     return Seq(
         assert_caller(),
         func.execute_asset_transfer(
-            prime.platform_asset_id.get(),
+            item.platform_asset_id.get(),
             owner.get(),
             amount.get(),
         ),
-        prime.drains.increment(Int(1)),
-        refresh_balance(),
-        Log(log.get()),
-    )
-
-
-@router.method
-def withdraw(
-    amount: abi.Uint64,
-    owner: abi.Address,
-    log: abi.StaticBytes[Literal[240]],
-):
-    return Seq(
-        assert_caller(),
-        func.execute_payment(
-            owner.get(),
-            amount.get(),
-        ),
-        refresh_balance(),
-        Log(log.get()),
-    )
-
-
-@router.method
-def optin(
-    asset: abi.Asset,
-    log: abi.StaticBytes[Literal[240]],
-):
-    return Seq(
-        Assert(asset.asset_id() != prime.platform_asset_id.get()),
-        Assert(asset.asset_id() != prime.prime_asset_id.get()),
-        Assert(asset.asset_id() != prime.legacy_asset_id.get()),
-        assert_caller(),
-        func.optin_into_asset(asset.asset_id()),
-        prime.vaults.increment(Int(1)),
-        refresh_balance(),
-        Log(log.get()),
-    )
-
-
-@router.method
-def optout(
-    asset: abi.Asset,
-    owner: abi.Address,
-    log: abi.StaticBytes[Literal[240]],
-):
-    return Seq(
-        Assert(asset.asset_id() != prime.platform_asset_id.get()),
-        Assert(asset.asset_id() != prime.prime_asset_id.get()),
-        Assert(asset.asset_id() != prime.legacy_asset_id.get()),
-        assert_caller(),
-        func.optout_from_asset(asset.asset_id(), owner.get()),
-        prime.vaults.decrement(Int(1)),
         refresh_balance(),
         Log(log.get()),
     )
@@ -250,7 +175,7 @@ def claim(
 ):
     return Seq(
         assert_caller(),
-        prime.owner.set(owner.get()),
+        item.owner.set(owner.get()),
         Log(log.get()),
     )
 
@@ -262,16 +187,6 @@ def fire(
     return Seq(
         assert_caller(),
         Log(log.get()),
-    )
-
-
-@router.method
-def score(
-    value: abi.Uint64,
-):
-    return Seq(
-        assert_caller(),
-        prime.score.increment(value.get()),
     )
 
 

@@ -1,14 +1,14 @@
 import func
 import launchpad_const
-import gen1_contract_prime_app
+import launchpad_contract_guardians_app
 
 from pyteal import *
 from typing import *
 
 
-const = gen1_const.Config()
-prime = gen1_const.Prime()
-event = gen1_const.Event()
+const = launchpad_const.GuardiansConfig()
+prime = launchpad_const.Prime()
+event = launchpad_const.Event()
 
 
 @Subroutine(TealType.none)

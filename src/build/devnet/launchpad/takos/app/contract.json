@@ -1,6 +1,34 @@
 {
-    "name": "GenOnePrime",
+    "name": "LaunchpadTakos",
     "methods": [
+        {
+            "name": "initialize",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "id"
+                },
+                {
+                    "type": "asset",
+                    "name": "platform_asset"
+                },
+                {
+                    "type": "asset",
+                    "name": "item_asset"
+                },
+                {
+                    "type": "byte[16]",
+                    "name": "name"
+                },
+                {
+                    "type": "address",
+                    "name": "owner"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
         {
             "name": "list",
             "args": [
@@ -57,56 +85,8 @@
             "name": "rename",
             "args": [
                 {
-                    "type": "uint64",
-                    "name": "index"
-                },
-                {
-                    "type": "uint64",
-                    "name": "value"
-                },
-                {
-                    "type": "uint64",
-                    "name": "transforms"
-                },
-                {
-                    "type": "byte[240]",
-                    "name": "log"
-                }
-            ],
-            "returns": {
-                "type": "void"
-            }
-        },
-        {
-            "name": "repaint",
-            "args": [
-                {
-                    "type": "uint64",
-                    "name": "theme"
-                },
-                {
-                    "type": "uint64",
-                    "name": "skin"
-                },
-                {
-                    "type": "uint64",
-                    "name": "transforms"
-                },
-                {
-                    "type": "byte[240]",
-                    "name": "log"
-                }
-            ],
-            "returns": {
-                "type": "void"
-            }
-        },
-        {
-            "name": "upgrade",
-            "args": [
-                {
-                    "type": "address",
-                    "name": "owner"
+                    "type": "byte[16]",
+                    "name": "name"
                 },
                 {
                     "type": "byte[240]",
@@ -123,62 +103,6 @@
                 {
                     "type": "uint64",
                     "name": "amount"
-                },
-                {
-                    "type": "address",
-                    "name": "owner"
-                },
-                {
-                    "type": "byte[240]",
-                    "name": "log"
-                }
-            ],
-            "returns": {
-                "type": "void"
-            }
-        },
-        {
-            "name": "withdraw",
-            "args": [
-                {
-                    "type": "uint64",
-                    "name": "amount"
-                },
-                {
-                    "type": "address",
-                    "name": "owner"
-                },
-                {
-                    "type": "byte[240]",
-                    "name": "log"
-                }
-            ],
-            "returns": {
-                "type": "void"
-            }
-        },
-        {
-            "name": "optin",
-            "args": [
-                {
-                    "type": "asset",
-                    "name": "asset"
-                },
-                {
-                    "type": "byte[240]",
-                    "name": "log"
-                }
-            ],
-            "returns": {
-                "type": "void"
-            }
-        },
-        {
-            "name": "optout",
-            "args": [
-                {
-                    "type": "asset",
-                    "name": "asset"
                 },
                 {
                     "type": "address",
@@ -215,18 +139,6 @@
                 {
                     "type": "byte[240]",
                     "name": "log"
-                }
-            ],
-            "returns": {
-                "type": "void"
-            }
-        },
-        {
-            "name": "score",
-            "args": [
-                {
-                    "type": "uint64",
-                    "name": "value"
                 }
             ],
             "returns": {
