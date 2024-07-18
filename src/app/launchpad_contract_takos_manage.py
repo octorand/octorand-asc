@@ -1,5 +1,5 @@
 import func
-import gen1_const
+import launchpad_const
 import gen1_contract_prime_app
 
 from pyteal import *
@@ -26,7 +26,7 @@ def update():
 
 
 router = Router(
-    name="GenOnePrimeBuy",
+    name="LaunchpadTakosManage",
     bare_calls=BareCallActions(
         no_op=OnCompleteAction(
             action=create,

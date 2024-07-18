@@ -1,5 +1,5 @@
 import func
-import gen1_const
+import launchpad_const
 
 from pyteal import *
 from typing import *
@@ -50,7 +50,7 @@ def update():
 
 
 router = Router(
-    name="GenOnePrime",
+    name="LaunchpadTakos",
     bare_calls=BareCallActions(
         no_op=OnCompleteAction(
             action=create,

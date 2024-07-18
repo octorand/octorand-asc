@@ -31,7 +31,7 @@ class TakosConfig:
         self.rename_burner_share = Int(60)
         self.admin_address = env.addr("ADMIN_ADDRESS")
         self.manager_address = env.addr("LAUNCHPAD_TAKOS_MANAGER_ADDRESS")
-        self.artist_address = env.addr("LAUNCHPAD_TAOKS_ARTIST_ADDRESS")
+        self.artist_address = env.addr("LAUNCHPAD_TAKOS_ARTIST_ADDRESS")
         self.treasury_address = env.addr("LAUNCHPAD_TAKOS_TREASURY_ADDRESS")
         self.burner_address = env.addr("BURNER_APPLICATION_ADDRESS")
 

@@ -1,10 +1,10 @@
-import gen1_const
+import launchpad_const
 
 from pyteal import *
 from typing import *
 
 
-const = gen1_const.Config()
+const = launchpad_const.TakosConfig()
 
 
 @Subroutine(TealType.none)
@@ -29,7 +29,7 @@ def delete():
 
 
 router = Router(
-    name="GenOnePrime",
+    name="LaunchpadTakos",
     bare_calls=BareCallActions(
         no_op=OnCompleteAction(
             action=create,
