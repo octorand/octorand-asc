@@ -4,59 +4,56 @@ import func
 from pyteal import *
 
 
-class Config:
+class GuardiansConfig:
     def __init__(self):
-        self.seller_market_share = Int(90)
-        self.parent_market_share = Int(5)
-        self.admin_market_share = Int(5)
-        self.rename_price = Int(1000000)
-        self.repaint_price = Int(1000000)
-        self.optin_price = Int(100000)
-        self.rename_score = Int(100)
-        self.repaint_score = Int(100)
-        self.parent_score_share = Int(10)
+        self.seller_market_share = Int(95)
+        self.artist_market_share = Int(3)
+        self.admin_market_share = Int(2)
+        self.rename_price = Int(3000000)
+        self.rename_admin_share = Int(10)
+        self.rename_treasury_share = Int(30)
+        self.rename_burner_share = Int(60)
         self.admin_address = env.addr("ADMIN_ADDRESS")
-        self.manager_address = env.addr("GEN2_MANAGER_ADDRESS")
+        self.manager_address = env.addr("LAUNCHPAD_GUARDIANS_MANAGER_ADDRESS")
+        self.artist_address = env.addr("LAUNCHPAD_GUARDIANS_ARTIST_ADDRESS")
+        self.treasury_address = env.addr("LAUNCHPAD_GUARDIANS_TREASURY_ADDRESS")
+        self.burner_address = env.addr("BURNER_APPLICATION_ADDRESS")
 
 
-class Prime:
+class TakosConfig:
     def __init__(self):
-        self.key_1 = Bytes("P1")
-        self.key_2 = Bytes("P2")
-        self.id = func.GlobalUint(self.key_1, 0, 8)
-        self.platform_asset_id = func.GlobalUint(self.key_1, 8, 8)
-        self.prime_asset_id = func.GlobalUint(self.key_1, 16, 8)
-        self.legacy_asset_id = func.GlobalUint(self.key_1, 24, 8)
-        self.parent_application_id = func.GlobalUint(self.key_1, 32, 8)
-        self.theme = func.GlobalUint(self.key_1, 40, 2)
-        self.skin = func.GlobalUint(self.key_1, 42, 2)
-        self.is_founder = func.GlobalUint(self.key_1, 44, 1)
-        self.is_artifact = func.GlobalUint(self.key_1, 45, 1)
-        self.is_pioneer = func.GlobalUint(self.key_1, 46, 1)
-        self.is_explorer = func.GlobalUint(self.key_1, 47, 1)
-        self.score = func.GlobalUint(self.key_1, 48, 8)
-        self.price = func.GlobalUint(self.key_1, 56, 8)
-        self.seller = func.GlobalBytes(self.key_1, 64, 32)
-        self.sales = func.GlobalUint(self.key_1, 96, 2)
-        self.drains = func.GlobalUint(self.key_1, 98, 2)
-        self.transforms = func.GlobalUint(self.key_1, 100, 2)
-        self.vaults = func.GlobalUint(self.key_1, 102, 2)
-        self.name = func.GlobalBytes(self.key_1, 104, 16)
-        self.owner = func.GlobalBytes(self.key_2, 0, 32)
-        self.rewards = func.GlobalUint(self.key_2, 32, 8)
-        self.royalties = func.GlobalUint(self.key_2, 40, 8)
+        self.seller_market_share = Int(95)
+        self.artist_market_share = Int(3)
+        self.admin_market_share = Int(2)
+        self.rename_price = Int(3000000)
+        self.rename_admin_share = Int(10)
+        self.rename_treasury_share = Int(30)
+        self.rename_burner_share = Int(60)
+        self.admin_address = env.addr("ADMIN_ADDRESS")
+        self.manager_address = env.addr("LAUNCHPAD_TAKOS_MANAGER_ADDRESS")
+        self.artist_address = env.addr("LAUNCHPAD_TAOKS_ARTIST_ADDRESS")
+        self.treasury_address = env.addr("LAUNCHPAD_TAKOS_TREASURY_ADDRESS")
+        self.burner_address = env.addr("BURNER_APPLICATION_ADDRESS")
+
+
+class Item:
+    def __init__(self):
+        self.key = Bytes("P")
+        self.id = func.GlobalUint(self.key, 0, 8)
+        self.platform_asset_id = func.GlobalUint(self.key, 8, 8)
+        self.item_asset_id = func.GlobalUint(self.key, 16, 8)
+        self.rewards = func.GlobalUint(self.key, 24, 8)
+        self.price = func.GlobalUint(self.key, 32, 8)
+        self.seller = func.GlobalBytes(self.key, 40, 32)
+        self.owner = func.GlobalBytes(self.key, 72, 32)
+        self.name = func.GlobalBytes(self.key, 104, 16)
 
 
 class Event:
     def __init__(self):
-        self.prime_buy = Bytes("prby")
-        self.prime_claim = Bytes("prcl")
-        self.prime_list = Bytes("prls")
-        self.prime_mint = Bytes("prmt")
-        self.prime_optin = Bytes("proi")
-        self.prime_optout = Bytes("proo")
-        self.prime_rename = Bytes("prrn")
-        self.prime_repaint = Bytes("prrp")
-        self.prime_unlist = Bytes("prul")
-        self.prime_upgrade = Bytes("prug")
-        self.prime_withdraw = Bytes("prwd")
+        self.item_buy = Bytes("imby")
+        self.item_claim = Bytes("imcl")
+        self.item_list = Bytes("imls")
+        self.item_mint = Bytes("immt")
+        self.prime_rename = Bytes("imrn")
+        self.prime_unlist = Bytes("imul")
