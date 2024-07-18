@@ -4,11 +4,11 @@ int 0
 ==
 bnz main_l6
 txna ApplicationArgs 0
-method "buy(application)void"
+method "mint(uint64,application)void"
 ==
 bnz main_l5
 txna ApplicationArgs 0
-method "fire(uint64,address,address,uint64,application)void"
+method "fire(uint64,address,uint64,application)void"
 ==
 bnz main_l4
 err
@@ -33,7 +33,7 @@ int 0
 !=
 &&
 assert
-callsub buycaster_9
+callsub mintcaster_9
 int 1
 return
 main_l6:
@@ -69,11 +69,11 @@ proto 4 1
 frame_dig -4
 frame_dig -3
 app_global_get_ex
-store 1
-store 0
-load 1
+store 3
+store 2
+load 3
 assert
-load 0
+load 2
 frame_dig -2
 frame_dig -1
 extract3
@@ -102,32 +102,19 @@ bzero
 concat
 retsub
 
-// assert_sender_payment
-assertsenderpayment_3:
-proto 3 0
-frame_dig -2
+// assert_sender_asset_holding
+assertsenderassetholding_3:
+proto 1 0
+txn Sender
+frame_dig -1
+asset_holding_get AssetBalance
+store 1
+store 0
+load 1
+assert
+load 0
 int 0
 >
-assert
-frame_dig -1
-gtxns Sender
-txn Sender
-==
-assert
-frame_dig -1
-gtxns TypeEnum
-int pay
-==
-assert
-frame_dig -1
-gtxns Receiver
-frame_dig -3
-==
-assert
-frame_dig -1
-gtxns Amount
-frame_dig -2
-==
 assert
 retsub
 
@@ -136,11 +123,11 @@ assertapplicationcreator_4:
 proto 2 0
 frame_dig -2
 app_params_get AppCreator
-store 3
-store 2
-load 3
+store 5
+store 4
+load 5
 assert
-load 2
+load 4
 frame_dig -1
 ==
 assert
@@ -164,10 +151,10 @@ addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
 assert
 retsub
 
-// buy
-buy_7:
-proto 1 0
-byte "prby"
+// mint
+mint_7:
+proto 2 0
+byte "immt"
 int 1
 itob
 concat
@@ -176,7 +163,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "P"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -184,61 +171,25 @@ itob
 concat
 txn Sender
 concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 64
-int 32
-callsub getglobalexternalbytes_0
-concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 56
-int 8
-callsub getglobalexternaluint_1
+frame_dig -2
 itob
 concat
 callsub preparelog_2
 log
+frame_dig -2
+int 0
+>
+assert
 frame_dig -1
 txnas Applications
-byte "P1"
-int 64
-int 32
-callsub getglobalexternalbytes_0
-frame_dig -1
-txnas Applications
-byte "P1"
-int 56
+byte "P"
+int 16
 int 8
 callsub getglobalexternaluint_1
-int 90
-*
-int 100
-/
-txn GroupIndex
-int 1
-+
-callsub assertsenderpayment_3
-addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+callsub assertsenderassetholding_3
 frame_dig -1
 txnas Applications
-byte "P1"
-int 56
-int 8
-callsub getglobalexternaluint_1
-int 10
-*
-int 100
-/
-txn GroupIndex
-int 2
-+
-callsub assertsenderpayment_3
-frame_dig -1
-txnas Applications
-addr DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY
+addr TELG3SIELJOYVZVWM44MUZBMVMZCSJHKTGSV7KBS3A3R55JNZ575TO2V3U
 callsub assertapplicationcreator_4
 itxn_begin
 int appl
@@ -246,11 +197,14 @@ itxn_field TypeEnum
 frame_dig -1
 txnas Applications
 itxn_field ApplicationID
-method "buy(address,byte[240])void"
+method "mint(uint64,address,byte[240])void"
+itxn_field ApplicationArgs
+frame_dig -2
+itob
 itxn_field ApplicationArgs
 txn Sender
 itxn_field ApplicationArgs
-byte "prby"
+byte "immt"
 int 1
 itob
 concat
@@ -259,7 +213,7 @@ itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "P"
 int 0
 int 8
 callsub getglobalexternaluint_1
@@ -267,19 +221,7 @@ itob
 concat
 txn Sender
 concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 64
-int 32
-callsub getglobalexternalbytes_0
-concat
-frame_dig -1
-txnas Applications
-byte "P1"
-int 56
-int 8
-callsub getglobalexternaluint_1
+frame_dig -2
 itob
 concat
 itxn_field ApplicationArgs
@@ -288,27 +230,25 @@ retsub
 
 // fire
 fire_8:
-proto 5 0
+proto 4 0
 txn Sender
 addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
 ==
 assert
-byte "prby"
+byte "immt"
 int 0
 itob
 concat
-frame_dig -5
+frame_dig -4
 itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "P"
 int 0
 int 8
 callsub getglobalexternaluint_1
 itob
-concat
-frame_dig -4
 concat
 frame_dig -3
 concat
@@ -319,7 +259,7 @@ callsub preparelog_2
 log
 frame_dig -1
 txnas Applications
-addr DC6OQRWYO5RCGWNKHBLUE5HZ7DGUEMRO5NXVYPHIJBS3FHDCVEU7GKGHWY
+addr TELG3SIELJOYVZVWM44MUZBMVMZCSJHKTGSV7KBS3A3R55JNZ575TO2V3U
 callsub assertapplicationcreator_4
 itxn_begin
 int appl
@@ -329,22 +269,20 @@ txnas Applications
 itxn_field ApplicationID
 method "fire(byte[240])void"
 itxn_field ApplicationArgs
-byte "prby"
+byte "immt"
 int 0
 itob
 concat
-frame_dig -5
+frame_dig -4
 itob
 concat
 frame_dig -1
 txnas Applications
-byte "P1"
+byte "P"
 int 0
 int 8
 callsub getglobalexternaluint_1
 itob
-concat
-frame_dig -4
 concat
 frame_dig -3
 concat
@@ -355,16 +293,21 @@ itxn_field ApplicationArgs
 itxn_submit
 retsub
 
-// buy_caster
-buycaster_9:
+// mint_caster
+mintcaster_9:
 proto 0 0
 int 0
+dup
 txna ApplicationArgs 1
+btoi
+frame_bury 0
+txna ApplicationArgs 2
 int 0
 getbyte
-frame_bury 0
+frame_bury 1
 frame_dig 0
-callsub buy_7
+frame_dig 1
+callsub mint_7
 retsub
 
 // fire_caster
@@ -372,7 +315,6 @@ firecaster_10:
 proto 0 0
 int 0
 byte ""
-dup
 int 0
 dup
 txna ApplicationArgs 1
@@ -381,18 +323,15 @@ frame_bury 0
 txna ApplicationArgs 2
 frame_bury 1
 txna ApplicationArgs 3
+btoi
 frame_bury 2
 txna ApplicationArgs 4
-btoi
-frame_bury 3
-txna ApplicationArgs 5
 int 0
 getbyte
-frame_bury 4
+frame_bury 3
 frame_dig 0
 frame_dig 1
 frame_dig 2
 frame_dig 3
-frame_dig 4
 callsub fire_8
 retsub

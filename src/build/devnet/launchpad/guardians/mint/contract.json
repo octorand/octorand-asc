@@ -1,9 +1,13 @@
 {
-    "name": "GenOnePrimeBuy",
+    "name": "LaunchpadGuardiansMint",
     "methods": [
         {
-            "name": "buy",
+            "name": "mint",
             "args": [
+                {
+                    "type": "uint64",
+                    "name": "amount"
+                },
                 {
                     "type": "application",
                     "name": "application"
@@ -25,12 +29,8 @@
                     "name": "sender"
                 },
                 {
-                    "type": "address",
-                    "name": "seller"
-                },
-                {
                     "type": "uint64",
-                    "name": "price"
+                    "name": "amount"
                 },
                 {
                     "type": "application",

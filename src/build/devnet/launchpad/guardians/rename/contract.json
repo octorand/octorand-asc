@@ -1,0 +1,50 @@
+{
+    "name": "LaunchpadGuardiansRename",
+    "methods": [
+        {
+            "name": "rename",
+            "args": [
+                {
+                    "type": "byte[16]",
+                    "name": "name"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "fire",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "timestamp"
+                },
+                {
+                    "type": "address",
+                    "name": "sender"
+                },
+                {
+                    "type": "byte[16]",
+                    "name": "name"
+                },
+                {
+                    "type": "uint64",
+                    "name": "price"
+                },
+                {
+                    "type": "application",
+                    "name": "application"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

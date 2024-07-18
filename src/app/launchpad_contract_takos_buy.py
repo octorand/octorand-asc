@@ -7,7 +7,7 @@ from typing import *
 
 
 const = launchpad_const.TakosConfig()
-prime = launchpad_const.Prime()
+item = launchpad_const.Item()
 event = launchpad_const.Event()
 
 
@@ -26,7 +26,7 @@ def update():
 
 
 router = Router(
-    name="LaunchpadTakosManage",
+    name="LaunchpadTakosBuy",
     bare_calls=BareCallActions(
         no_op=OnCompleteAction(
             action=create,
@@ -46,33 +46,39 @@ def buy(
     application: abi.Application,
 ):
     app_id = application.application_id()
-    seller_share = Mul(prime.price.external(app_id), const.seller_market_share)
-    admin_share = Mul(prime.price.external(app_id), const.admin_market_share)
+    seller_share = Mul(item.price.external(app_id), const.seller_market_share)
+    artist_share = Mul(item.price.external(app_id), const.artist_market_share)
+    admin_share = Mul(item.price.external(app_id), const.admin_market_share)
     log = Concat(
-        event.prime_buy,
+        event.item_buy,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(prime.id.external(app_id)),
+        Itob(item.id.external(app_id)),
         Txn.sender(),
-        prime.seller.external(app_id),
-        Itob(prime.price.external(app_id)),
+        item.seller.external(app_id),
+        Itob(item.price.external(app_id)),
     )
     return Seq(
         Log(func.prepare_log(log)),
         func.assert_sender_payment(
-            prime.seller.external(app_id),
+            item.seller.external(app_id),
             Div(seller_share, Int(100)),
             Add(Txn.group_index(), Int(1)),
         ),
         func.assert_sender_payment(
+            const.artist_address,
+            Div(artist_share, Int(100)),
+            Add(Txn.group_index(), Int(2)),
+        ),
+        func.assert_sender_payment(
             const.admin_address,
             Div(admin_share, Int(100)),
-            Add(Txn.group_index(), Int(2)),
+            Add(Txn.group_index(), Int(3)),
         ),
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=gen1_contract_prime_app.buy.method_signature(),
+            method_signature=launchpad_contract_takos_app.buy.method_signature(),
             args=[
                 Txn.sender(),
                 log,
@@ -91,10 +97,10 @@ def fire(
 ):
     app_id = application.application_id()
     log = Concat(
-        event.prime_buy,
+        event.item_buy,
         Itob(Int(0)),
         Itob(timestamp.get()),
-        Itob(prime.id.external(app_id)),
+        Itob(item.id.external(app_id)),
         sender.get(),
         seller.get(),
         Itob(price.get()),
@@ -105,7 +111,7 @@ def fire(
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=gen1_contract_prime_app.fire.method_signature(),
+            method_signature=launchpad_contract_takos_app.fire.method_signature(),
             args=[
                 log,
             ],

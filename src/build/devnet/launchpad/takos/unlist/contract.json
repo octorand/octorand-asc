@@ -1,8 +1,8 @@
 {
-    "name": "GenOnePrimeBuy",
+    "name": "LaunchpadTakosUnlist",
     "methods": [
         {
-            "name": "buy",
+            "name": "unlist",
             "args": [
                 {
                     "type": "application",
@@ -23,14 +23,6 @@
                 {
                     "type": "address",
                     "name": "sender"
-                },
-                {
-                    "type": "address",
-                    "name": "seller"
-                },
-                {
-                    "type": "uint64",
-                    "name": "price"
                 },
                 {
                     "type": "application",

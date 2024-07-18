@@ -36,12 +36,22 @@ def run():
     compile("gen2_contract_prime_withdraw", "gen2/prime/withdraw")
 
     compile("launchpad_contract_guardians_app", "launchpad/guardians/app")
+    compile("launchpad_contract_guardians_buy", "launchpad/guardians/buy")
+    compile("launchpad_contract_guardians_claim", "launchpad/guardians/claim")
     compile("launchpad_contract_guardians_legacy", "launchpad/guardians/legacy")
-    compile("launchpad_contract_guardians_manage", "launchpad/guardians/manage")
+    compile("launchpad_contract_guardians_list", "launchpad/guardians/list")
+    compile("launchpad_contract_guardians_mint", "launchpad/guardians/mint")
+    compile("launchpad_contract_guardians_rename", "launchpad/guardians/rename")
+    compile("launchpad_contract_guardians_unlist", "launchpad/guardians/unlist")
 
     compile("launchpad_contract_takos_app", "launchpad/takos/app")
+    compile("launchpad_contract_takos_buy", "launchpad/takos/buy")
+    compile("launchpad_contract_takos_claim", "launchpad/takos/claim")
     compile("launchpad_contract_takos_legacy", "launchpad/takos/legacy")
-    compile("launchpad_contract_takos_manage", "launchpad/takos/manage")
+    compile("launchpad_contract_takos_list", "launchpad/takos/list")
+    compile("launchpad_contract_takos_mint", "launchpad/takos/mint")
+    compile("launchpad_contract_takos_rename", "launchpad/takos/rename")
+    compile("launchpad_contract_takos_unlist", "launchpad/takos/unlist")
 
 
 def compile(script, folder):

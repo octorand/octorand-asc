@@ -55,5 +55,5 @@ class Event:
         self.item_claim = Bytes("imcl")
         self.item_list = Bytes("imls")
         self.item_mint = Bytes("immt")
-        self.prime_rename = Bytes("imrn")
-        self.prime_unlist = Bytes("imul")
+        self.item_rename = Bytes("imrn")
+        self.item_unlist = Bytes("imul")

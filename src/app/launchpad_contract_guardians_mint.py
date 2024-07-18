@@ -7,7 +7,7 @@ from typing import *
 
 
 const = launchpad_const.GuardiansConfig()
-prime = launchpad_const.Prime()
+item = launchpad_const.Item()
 event = launchpad_const.Event()
 
 
@@ -26,7 +26,7 @@ def update():
 
 
 router = Router(
-    name="LaunchpadGuardiansManage",
+    name="LaunchpadGuardiansMint",
     bare_calls=BareCallActions(
         no_op=OnCompleteAction(
             action=create,
@@ -42,38 +42,29 @@ router = Router(
 
 
 @router.method
-def buy(
+def mint(
+    amount: abi.Uint64,
     application: abi.Application,
 ):
     app_id = application.application_id()
-    seller_share = Mul(prime.price.external(app_id), const.seller_market_share)
-    admin_share = Mul(prime.price.external(app_id), const.admin_market_share)
     log = Concat(
-        event.prime_buy,
+        event.item_mint,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
-        Itob(prime.id.external(app_id)),
+        Itob(item.id.external(app_id)),
         Txn.sender(),
-        prime.seller.external(app_id),
-        Itob(prime.price.external(app_id)),
+        Itob(amount.get()),
     )
     return Seq(
         Log(func.prepare_log(log)),
-        func.assert_sender_payment(
-            prime.seller.external(app_id),
-            Div(seller_share, Int(100)),
-            Add(Txn.group_index(), Int(1)),
-        ),
-        func.assert_sender_payment(
-            const.admin_address,
-            Div(admin_share, Int(100)),
-            Add(Txn.group_index(), Int(2)),
-        ),
+        Assert(amount.get() > Int(0)),
+        func.assert_sender_asset_holding(item.item_asset_id.external(app_id)),
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=gen1_contract_prime_app.buy.method_signature(),
+            method_signature=launchpad_contract_guardians_app.mint.method_signature(),
             args=[
+                amount,
                 Txn.sender(),
                 log,
             ],
@@ -85,19 +76,17 @@ def buy(
 def fire(
     timestamp: abi.Uint64,
     sender: abi.Address,
-    seller: abi.Address,
-    price: abi.Uint64,
+    amount: abi.Uint64,
     application: abi.Application,
 ):
     app_id = application.application_id()
     log = Concat(
-        event.prime_buy,
+        event.item_mint,
         Itob(Int(0)),
         Itob(timestamp.get()),
-        Itob(prime.id.external(app_id)),
+        Itob(item.id.external(app_id)),
         sender.get(),
-        seller.get(),
-        Itob(price.get()),
+        Itob(amount.get()),
     )
     return Seq(
         Assert(Txn.sender() == const.admin_address),
@@ -105,7 +94,7 @@ def fire(
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=gen1_contract_prime_app.fire.method_signature(),
+            method_signature=launchpad_contract_guardians_app.fire.method_signature(),
             args=[
                 log,
             ],
