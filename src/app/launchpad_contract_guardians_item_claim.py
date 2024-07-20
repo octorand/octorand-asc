@@ -1,12 +1,12 @@
 import func
 import launchpad_const
-import launchpad_contract_takos_app
+import launchpad_contract_guardians_item_app
 
 from pyteal import *
 from typing import *
 
 
-const = launchpad_const.TakosConfig()
+const = launchpad_const.GuardiansConfig()
 item = launchpad_const.Item()
 event = launchpad_const.Event()
 
@@ -26,7 +26,7 @@ def update():
 
 
 router = Router(
-    name="LaunchpadTakosUnlist",
+    name="LaunchpadGuardiansClaim",
     bare_calls=BareCallActions(
         no_op=OnCompleteAction(
             action=create,
@@ -42,12 +42,12 @@ router = Router(
 
 
 @router.method
-def unlist(
+def claim(
     application: abi.Application,
 ):
     app_id = application.application_id()
     log = Concat(
-        event.item_unlist,
+        event.item_claim,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(item.id.external(app_id)),
@@ -55,10 +55,11 @@ def unlist(
     )
     return Seq(
         Log(func.prepare_log(log)),
+        func.assert_sender_asset_holding(item.item_asset_id.external(app_id)),
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=launchpad_contract_takos_app.unlist.method_signature(),
+            method_signature=launchpad_contract_guardians_item_app.claim.method_signature(),
             args=[
                 Txn.sender(),
                 log,
@@ -75,7 +76,7 @@ def fire(
 ):
     app_id = application.application_id()
     log = Concat(
-        event.item_unlist,
+        event.item_claim,
         Itob(Int(0)),
         Itob(timestamp.get()),
         Itob(item.id.external(app_id)),
@@ -87,7 +88,7 @@ def fire(
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=launchpad_contract_takos_app.fire.method_signature(),
+            method_signature=launchpad_contract_guardians_item_app.fire.method_signature(),
             args=[
                 log,
             ],

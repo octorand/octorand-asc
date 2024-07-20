@@ -1,7 +1,9 @@
 {
     "setup": {
         "platform": {},
-        "vault": {}
+        "vault": {},
+        "guardians": {},
+        "takos": {}
     },
     "gen1": {
         "inputs": {
@@ -49,9 +51,6 @@
     },
     "launchpad": {
         "guardians": {
-            "setup": {
-                "asset": {}
-            },
             "inputs": {
                 "item": {}
             },
@@ -69,9 +68,6 @@
             }
         },
         "takos": {
-            "setup": {
-                "asset": {}
-            },
             "inputs": {
                 "item": {}
             },

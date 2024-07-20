@@ -10,8 +10,24 @@
             "manager": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
             "reserve": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM"
         },
+        "guardians": {
+            "asset_id": 703956531,
+            "manager": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+            "reserve": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM"
+        },
+        "takos": {
+            "asset_id": 703956573,
+            "manager": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+            "reserve": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM"
+        },
         "optin_gen1": true,
         "optin_gen2": true,
+        "optin_guardians_manager": true,
+        "optin_guardians_artist": true,
+        "optin_guardians_treasury": true,
+        "optin_takos_manager": true,
+        "optin_takos_artist": true,
+        "optin_takos_treasury": true,
         "optin_player": true,
         "transfer_assets": true
     },
@@ -1385,9 +1401,6 @@
     },
     "launchpad": {
         "guardians": {
-            "setup": {
-                "asset": {}
-            },
             "inputs": {
                 "item": {}
             },
@@ -1405,9 +1418,6 @@
             }
         },
         "takos": {
-            "setup": {
-                "asset": {}
-            },
             "inputs": {
                 "item": {}
             },

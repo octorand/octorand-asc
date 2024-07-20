@@ -1,6 +1,6 @@
 import func
 import launchpad_const
-import launchpad_contract_takos_app
+import launchpad_contract_takos_item_app
 
 from pyteal import *
 from typing import *
@@ -26,7 +26,7 @@ def update():
 
 
 router = Router(
-    name="LaunchpadTakosBuy",
+    name="LaunchpadTakosRename",
     bare_calls=BareCallActions(
         no_op=OnCompleteAction(
             action=create,
@@ -42,35 +42,40 @@ router = Router(
 
 
 @router.method
-def buy(
+def rename(
+    name: abi.StaticBytes[Literal[16]],
     application: abi.Application,
 ):
     app_id = application.application_id()
-    seller_share = Mul(item.price.external(app_id), const.seller_market_share)
-    artist_share = Mul(item.price.external(app_id), const.artist_market_share)
-    admin_share = Mul(item.price.external(app_id), const.admin_market_share)
+    burner_share = Mul(const.rename_price, const.rename_burner_share)
+    treasury_share = Mul(const.rename_price, const.rename_treasury_share)
+    admin_share = Mul(const.rename_price, const.rename_admin_share)
     log = Concat(
-        event.item_buy,
+        event.item_rename,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(item.id.external(app_id)),
         Txn.sender(),
-        item.seller.external(app_id),
-        Itob(item.price.external(app_id)),
+        name.get(),
+        Itob(const.rename_price),
     )
     return Seq(
         Log(func.prepare_log(log)),
-        func.assert_sender_payment(
-            item.seller.external(app_id),
-            Div(seller_share, Int(100)),
+        func.assert_sender_asset_holding(item.item_asset_id.external(app_id)),
+        func.assert_sender_asset_transfer(
+            item.platform_asset_id.external(app_id),
+            const.burner_address,
+            Div(burner_share, Int(100)),
             Add(Txn.group_index(), Int(1)),
         ),
-        func.assert_sender_payment(
-            const.artist_address,
-            Div(artist_share, Int(100)),
+        func.assert_sender_asset_transfer(
+            item.platform_asset_id.external(app_id),
+            const.treasury_address,
+            Div(treasury_share, Int(100)),
             Add(Txn.group_index(), Int(2)),
         ),
-        func.assert_sender_payment(
+        func.assert_sender_asset_transfer(
+            item.platform_asset_id.external(app_id),
             const.admin_address,
             Div(admin_share, Int(100)),
             Add(Txn.group_index(), Int(3)),
@@ -78,9 +83,9 @@ def buy(
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=launchpad_contract_takos_app.buy.method_signature(),
+            method_signature=launchpad_contract_takos_item_app.rename.method_signature(),
             args=[
-                Txn.sender(),
+                name,
                 log,
             ],
         ),
@@ -91,18 +96,18 @@ def buy(
 def fire(
     timestamp: abi.Uint64,
     sender: abi.Address,
-    seller: abi.Address,
+    name: abi.StaticBytes[Literal[16]],
     price: abi.Uint64,
     application: abi.Application,
 ):
     app_id = application.application_id()
     log = Concat(
-        event.item_buy,
+        event.item_rename,
         Itob(Int(0)),
         Itob(timestamp.get()),
         Itob(item.id.external(app_id)),
         sender.get(),
-        seller.get(),
+        name.get(),
         Itob(price.get()),
     )
     return Seq(
@@ -111,7 +116,7 @@ def fire(
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=launchpad_contract_takos_app.fire.method_signature(),
+            method_signature=launchpad_contract_takos_item_app.fire.method_signature(),
             args=[
                 log,
             ],

@@ -1,12 +1,12 @@
 import func
 import launchpad_const
-import launchpad_contract_guardians_app
+import launchpad_contract_takos_item_app
 
 from pyteal import *
 from typing import *
 
 
-const = launchpad_const.GuardiansConfig()
+const = launchpad_const.TakosConfig()
 item = launchpad_const.Item()
 event = launchpad_const.Event()
 
@@ -26,7 +26,7 @@ def update():
 
 
 router = Router(
-    name="LaunchpadGuardiansRename",
+    name="LaunchpadTakosMint",
     bare_calls=BareCallActions(
         no_op=OnCompleteAction(
             action=create,
@@ -42,50 +42,30 @@ router = Router(
 
 
 @router.method
-def rename(
-    name: abi.StaticBytes[Literal[16]],
+def mint(
+    amount: abi.Uint64,
     application: abi.Application,
 ):
     app_id = application.application_id()
-    burner_share = Mul(const.rename_price, const.rename_burner_share)
-    treasury_share = Mul(const.rename_price, const.rename_treasury_share)
-    admin_share = Mul(const.rename_price, const.rename_admin_share)
     log = Concat(
-        event.item_rename,
+        event.item_mint,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(item.id.external(app_id)),
         Txn.sender(),
-        name.get(),
-        Itob(const.rename_price),
+        Itob(amount.get()),
     )
     return Seq(
         Log(func.prepare_log(log)),
+        Assert(amount.get() > Int(0)),
         func.assert_sender_asset_holding(item.item_asset_id.external(app_id)),
-        func.assert_sender_asset_transfer(
-            item.platform_asset_id.external(app_id),
-            const.burner_address,
-            Div(burner_share, Int(100)),
-            Add(Txn.group_index(), Int(1)),
-        ),
-        func.assert_sender_asset_transfer(
-            item.platform_asset_id.external(app_id),
-            const.treasury_address,
-            Div(treasury_share, Int(100)),
-            Add(Txn.group_index(), Int(2)),
-        ),
-        func.assert_sender_asset_transfer(
-            item.platform_asset_id.external(app_id),
-            const.admin_address,
-            Div(admin_share, Int(100)),
-            Add(Txn.group_index(), Int(3)),
-        ),
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=launchpad_contract_guardians_app.rename.method_signature(),
+            method_signature=launchpad_contract_takos_item_app.mint.method_signature(),
             args=[
-                name,
+                amount,
+                Txn.sender(),
                 log,
             ],
         ),
@@ -96,19 +76,17 @@ def rename(
 def fire(
     timestamp: abi.Uint64,
     sender: abi.Address,
-    name: abi.StaticBytes[Literal[16]],
-    price: abi.Uint64,
+    amount: abi.Uint64,
     application: abi.Application,
 ):
     app_id = application.application_id()
     log = Concat(
-        event.item_rename,
+        event.item_mint,
         Itob(Int(0)),
         Itob(timestamp.get()),
         Itob(item.id.external(app_id)),
         sender.get(),
-        name.get(),
-        Itob(price.get()),
+        Itob(amount.get()),
     )
     return Seq(
         Assert(Txn.sender() == const.admin_address),
@@ -116,7 +94,7 @@ def fire(
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=launchpad_contract_guardians_app.fire.method_signature(),
+            method_signature=launchpad_contract_takos_item_app.fire.method_signature(),
             args=[
                 log,
             ],

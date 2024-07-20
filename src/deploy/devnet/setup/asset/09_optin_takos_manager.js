@@ -7,12 +7,12 @@ exports.execute = async function () {
     try {
         let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.player.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.player);
+        let sender = connection.takos.manager.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.takos.manager);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
-        let opted = config['setup']['optin_player'];
+        let opted = config['setup']['optin_takos_manager'];
 
         if (!opted) {
 
@@ -23,22 +23,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: sender,
-                    assetIndex: config['setup']['platform']['asset_id'],
-                    total: 0,
-                    suggestedParams: {
-                        ...params,
-                        fee: 1000,
-                        flatFee: true
-                    }
-                })
-            });
-
-            composer.addTransaction({
-                signer: signer,
-                txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
-                    from: sender,
-                    to: sender,
-                    assetIndex: config['setup']['vault']['asset_id'],
+                    assetIndex: config['setup']['takos']['asset_id'],
                     total: 0,
                     suggestedParams: {
                         ...params,
@@ -50,10 +35,10 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            config['setup']['optin_player'] = true;
+            config['setup']['optin_takos_manager'] = true;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('opted in player');
+            console.log('opted in takos manager');
         }
     } catch (error) {
         console.log(error);

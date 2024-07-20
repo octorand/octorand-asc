@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const fs = require('fs');
 const devnet = require('./../../../../chain/devnet');
+const helpers = require('./../../../../chain/util/helpers');
 
 exports.execute = async function () {
     try {
@@ -11,20 +12,19 @@ exports.execute = async function () {
         let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/legacy/contract.json')));
 
-        let transferred = config['setup']['transfer_assets'];
+        let application = config['launchpad']['guardians']['contracts']['item']['legacy'];
 
-        if (!transferred) {
-
+        if (!application['funded']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addTransaction({
                 signer: signer,
-                txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: connection.player.addr,
-                    assetIndex: config['setup']['platform']['asset_id'],
-                    amount: 10000000000,
+                    to: application['application_address'],
+                    amount: 500000,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -33,43 +33,29 @@ exports.execute = async function () {
                 })
             });
 
-            composer.addTransaction({
+            composer.addMethodCall({
+                sender: sender,
                 signer: signer,
-                txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
-                    from: sender,
-                    to: connection.player.addr,
-                    assetIndex: config['setup']['vault']['asset_id'],
-                    amount: 10000000000,
-                    suggestedParams: {
-                        ...params,
-                        fee: 1000,
-                        flatFee: true
-                    }
-                })
+                appID: application['application_id'],
+                method: helpers.method(contract, 'optin'),
+                methodArgs: [
+                    config['setup']['platform']['asset_id'],
+                ],
+                suggestedParams: {
+                    ...params,
+                    fee: 2000,
+                    flatFee: true
+                }
             });
 
             composer.addTransaction({
+                sender: sender,
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: connection.gen1.addr,
+                    to: application['application_address'],
                     assetIndex: config['setup']['platform']['asset_id'],
-                    amount: 10000000000,
-                    suggestedParams: {
-                        ...params,
-                        fee: 1000,
-                        flatFee: true
-                    }
-                })
-            });
-
-            composer.addTransaction({
-                signer: signer,
-                txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
-                    from: sender,
-                    to: connection.gen2.addr,
-                    assetIndex: config['setup']['platform']['asset_id'],
-                    amount: 10000000000,
+                    amount: 1000000,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -80,10 +66,12 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            config['setup']['transfer_assets'] = true;
+            application['funded'] = true;
+
+            config['launchpad']['guardians']['contracts']['item']['legacy'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('transfer assets');
+            console.log('funded legacy app');
         }
     } catch (error) {
         console.log(error);

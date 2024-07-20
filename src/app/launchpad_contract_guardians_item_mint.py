@@ -1,12 +1,12 @@
 import func
 import launchpad_const
-import launchpad_contract_takos_app
+import launchpad_contract_guardians_item_app
 
 from pyteal import *
 from typing import *
 
 
-const = launchpad_const.TakosConfig()
+const = launchpad_const.GuardiansConfig()
 item = launchpad_const.Item()
 event = launchpad_const.Event()
 
@@ -26,7 +26,7 @@ def update():
 
 
 router = Router(
-    name="LaunchpadTakosList",
+    name="LaunchpadGuardiansMint",
     bare_calls=BareCallActions(
         no_op=OnCompleteAction(
             action=create,
@@ -42,73 +42,30 @@ router = Router(
 
 
 @router.method
-def list(
-    price: abi.Uint64,
+def mint(
+    amount: abi.Uint64,
     application: abi.Application,
 ):
     app_id = application.application_id()
     log = Concat(
-        event.item_list,
+        event.item_mint,
         Itob(Int(1)),
         Itob(Global.latest_timestamp()),
         Itob(item.id.external(app_id)),
         Txn.sender(),
-        Itob(price.get()),
+        Itob(amount.get()),
     )
     return Seq(
         Log(func.prepare_log(log)),
-        Assert(price.get() > Int(0)),
-        func.assert_sender_asset_transfer(
-            item.item_asset_id.external(app_id),
-            func.get_application_address(app_id),
-            Int(1),
-            Add(Txn.group_index(), Int(1)),
-        ),
+        Assert(amount.get() > Int(0)),
+        func.assert_sender_asset_holding(item.item_asset_id.external(app_id)),
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=launchpad_contract_takos_app.list.method_signature(),
+            method_signature=launchpad_contract_guardians_item_app.mint.method_signature(),
             args=[
-                price,
+                amount,
                 Txn.sender(),
-                log,
-            ],
-        ),
-    )
-
-
-@router.method
-def move(
-    price: abi.Uint64,
-    seller: abi.Address,
-    application: abi.Application,
-):
-    app_id = application.application_id()
-    log = Concat(
-        event.item_list,
-        Itob(Int(1)),
-        Itob(Global.latest_timestamp()),
-        Itob(item.id.external(app_id)),
-        Txn.sender(),
-        Itob(price.get()),
-    )
-    return Seq(
-        Assert(Txn.sender() == const.admin_address),
-        Log(func.prepare_log(log)),
-        Assert(price.get() > Int(0)),
-        func.assert_sender_asset_transfer(
-            item.item_asset_id.external(app_id),
-            func.get_application_address(app_id),
-            Int(1),
-            Add(Txn.group_index(), Int(1)),
-        ),
-        func.assert_application_creator(app_id, const.manager_address),
-        InnerTxnBuilder.ExecuteMethodCall(
-            app_id=app_id,
-            method_signature=launchpad_contract_takos_app.list.method_signature(),
-            args=[
-                price,
-                seller,
                 log,
             ],
         ),
@@ -119,17 +76,17 @@ def move(
 def fire(
     timestamp: abi.Uint64,
     sender: abi.Address,
-    price: abi.Uint64,
+    amount: abi.Uint64,
     application: abi.Application,
 ):
     app_id = application.application_id()
     log = Concat(
-        event.item_list,
+        event.item_mint,
         Itob(Int(0)),
         Itob(timestamp.get()),
         Itob(item.id.external(app_id)),
         sender.get(),
-        Itob(price.get()),
+        Itob(amount.get()),
     )
     return Seq(
         Assert(Txn.sender() == const.admin_address),
@@ -137,7 +94,7 @@ def fire(
         func.assert_application_creator(app_id, const.manager_address),
         InnerTxnBuilder.ExecuteMethodCall(
             app_id=app_id,
-            method_signature=launchpad_contract_takos_app.fire.method_signature(),
+            method_signature=launchpad_contract_guardians_item_app.fire.method_signature(),
             args=[
                 log,
             ],
