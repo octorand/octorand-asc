@@ -12,10 +12,12 @@ exports.execute = async function () {
     await require('./asset/06_optin_guardians_manager').execute();
     await require('./asset/07_optin_guardians_artist').execute();
     await require('./asset/08_optin_guardians_treasury').execute();
-    await require('./asset/09_optin_takos_manager').execute();
-    await require('./asset/10_optin_takos_artist').execute();
-    await require('./asset/11_optin_takos_treasury').execute();
-    await require('./asset/12_optin_player').execute();
-    await require('./asset/13_transfer_assets').execute();
+    await require('./asset/09_optin_guardians_burner').execute();
+    await require('./asset/10_optin_takos_manager').execute();
+    await require('./asset/11_optin_takos_artist').execute();
+    await require('./asset/12_optin_takos_treasury').execute();
+    await require('./asset/13_optin_takos_burner').execute();
+    await require('./asset/14_optin_player').execute();
+    await require('./asset/15_transfer_assets').execute();
 
 }
