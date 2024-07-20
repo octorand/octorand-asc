@@ -44,7 +44,7 @@ exports.execute = async function () {
                     config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
                 ],
                 appForeignAssets: [
-                    config['setup']['platform']['asset_id']
+                    config['setup']['guardians']['asset_id']
                 ],
                 suggestedParams: {
                     ...params,

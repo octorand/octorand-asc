@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const fs = require('fs');
 const devnet = require('./../../../../../chain/devnet');
-const helpers = require('./../../../../chain/util/helpers');
+const helpers = require('./../../../../../chain/util/helpers');
 
 exports.execute = async function () {
     try {
@@ -15,7 +15,7 @@ exports.execute = async function () {
         let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/mint/contract.json')));
 
         let application = config['launchpad']['guardians']['contracts']['item']['mint'];
-        let prime = config['launchpad']['guardians']['inputs']['item'];
+        let item = config['launchpad']['guardians']['inputs']['item'];
 
         if (!application['minted']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
@@ -30,8 +30,8 @@ exports.execute = async function () {
                     config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
                 ],
                 appForeignAssets: [
-                    prime['prime_asset_id'],
-                    config['setup']['platform']['asset_id']
+                    item['item_asset_id'],
+                    config['setup']['guardians']['asset_id']
                 ],
                 suggestedParams: {
                     ...params,

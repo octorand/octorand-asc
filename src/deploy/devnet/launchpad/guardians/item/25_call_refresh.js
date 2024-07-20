@@ -26,7 +26,7 @@ exports.execute = async function () {
                 method: helpers.method(contract, 'refresh'),
                 methodArgs: [],
                 appForeignAssets: [
-                    config['setup']['platform']['asset_id']
+                    config['setup']['guardians']['asset_id']
                 ],
                 suggestedParams: {
                     ...params,

@@ -39,7 +39,7 @@ exports.execute = async function () {
                 appID: application['application_id'],
                 method: helpers.method(contract, 'optin'),
                 methodArgs: [
-                    config['setup']['platform']['asset_id'],
+                    config['setup']['guardians']['asset_id'],
                 ],
                 suggestedParams: {
                     ...params,
@@ -54,7 +54,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: application['application_address'],
-                    assetIndex: config['setup']['platform']['asset_id'],
+                    assetIndex: config['setup']['guardians']['asset_id'],
                     amount: 1000000,
                     suggestedParams: {
                         ...params,

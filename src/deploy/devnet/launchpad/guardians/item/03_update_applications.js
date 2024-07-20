@@ -14,7 +14,7 @@ exports.execute = async function () {
 
         let version = 1;
 
-        let contracts = ['buy', 'claim', 'list', 'mint', 'rename', 'unlist'];
+        let contracts = ['app', 'buy', 'claim', 'list', 'mint', 'rename', 'unlist'];
 
         for (let i = 0; i < contracts.length; i++) {
             let contract = contracts[i];

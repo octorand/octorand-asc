@@ -9,20 +9,14 @@ exports.execute = async function () {
     await require('./item/03_update_applications').execute();
 
     console.log('launchpad guardians item setup resources');
-    // await require('./item/04_setup_item_input').execute();
-    // await require('./item/05_create_item_asset').execute();
-    // await require('./item/06_create_legacy_asset').execute();
-    // await require('./item/07_fund_application').execute();
-    // await require('./item/08_call_initialize').execute();
-    // await require('./item/09_call_populate').execute();
-    // await require('./item/10_transfer_assets').execute();
-    // await require('./item/11_lock_item_asset').execute();
+    await require('./item/04_setup_item_input').execute();
+    await require('./item/05_create_item_asset').execute();
+    await require('./item/06_fund_application').execute();
+    await require('./item/07_call_initialize').execute();
+    await require('./item/08_transfer_assets').execute();
 
     console.log('launchpad guardians item call functions');
-    // await require('./item/12_update_main_application').execute();
-    // await require('./item/13_call_upgrade').execute();
-    // await require('./item/14_call_mint').execute();
-    // await require('./item/15_call_withdraw').execute();
+    await require('./item/09_call_mint').execute();
     // await require('./item/16_call_list').execute();
     // await require('./item/17_call_unlist').execute();
     // await require('./item/18_call_list').execute();

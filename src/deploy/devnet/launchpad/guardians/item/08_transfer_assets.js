@@ -15,7 +15,6 @@ exports.execute = async function () {
         let application = config['launchpad']['guardians']['contracts']['item']['app'];
 
         if (!application['transferred']) {
-
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addTransaction({
@@ -24,22 +23,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: application['application_address'],
-                    assetIndex: config['setup']['platform']['asset_id'],
-                    amount: 1000000,
-                    suggestedParams: {
-                        ...params,
-                        fee: 1000,
-                        flatFee: true
-                    }
-                })
-            });
-
-            composer.addTransaction({
-                sender: sender,
-                signer: signer,
-                txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
-                    from: sender,
-                    to: application['application_address'],
+                    assetIndex: config['setup']['guardians']['asset_id'],
                     amount: 1000000,
                     suggestedParams: {
                         ...params,
@@ -56,7 +40,7 @@ exports.execute = async function () {
             config['launchpad']['guardians']['contracts']['item']['app'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('transferred assets');
+            console.log('transfer assets');
         }
     } catch (error) {
         console.log(error);

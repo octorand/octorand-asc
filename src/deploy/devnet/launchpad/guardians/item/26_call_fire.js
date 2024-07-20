@@ -108,7 +108,7 @@ exports.execute = async function () {
                 methodArgs: [
                     104,
                     connection.player.addr,
-                    config['setup']['platform']['asset_id'],
+                    config['setup']['guardians']['asset_id'],
                     config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
                 ],
                 suggestedParams: {
@@ -128,7 +128,7 @@ exports.execute = async function () {
                 methodArgs: [
                     105,
                     connection.player.addr,
-                    config['setup']['platform']['asset_id'],
+                    config['setup']['guardians']['asset_id'],
                     config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
                 ],
                 suggestedParams: {

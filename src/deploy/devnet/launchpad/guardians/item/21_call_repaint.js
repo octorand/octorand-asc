@@ -46,7 +46,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: connection.admin.addr,
-                    assetIndex: config['setup']['platform']['asset_id'],
+                    assetIndex: config['setup']['guardians']['asset_id'],
                     amount: 10000000,
                     suggestedParams: {
                         ...params,

@@ -12,9 +12,9 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
-        let prime = config['launchpad']['guardians']['inputs']['item'];
+        let item = config['launchpad']['guardians']['inputs']['item'];
 
-        if (!prime['legacy_asset_id']) {
+        if (!item['item_asset_id']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addTransaction({
@@ -26,8 +26,9 @@ exports.execute = async function () {
                     defaultFrozen: false,
                     manager: sender,
                     reserve: sender,
-                    unitName: 'TGL1-' + String(prime['id']).padStart(3, '0'),
-                    assetName: 'Test Gen1 Legacy #' + String(prime['id']).padStart(3, '0'),
+                    unitName: 'LG-' + String(item['id']).padStart(3, '0'),
+                    assetName: 'Test Launchpad #' + String(item['id']).padStart(3, '0'),
+                    assetURL: 'template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}',
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -39,12 +40,12 @@ exports.execute = async function () {
             let response = await devnet.execute(composer);
             let asset_id = response.information['asset-index'];
 
-            prime['legacy_asset_id'] = asset_id;
+            item['item_asset_id'] = asset_id;
 
-            config['launchpad']['guardians']['inputs']['item'] = prime;
+            config['launchpad']['guardians']['inputs']['item'] = item;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('create legacy asset');
+            console.log('create guardians item asset');
         };
     } catch (error) {
         console.log(error);

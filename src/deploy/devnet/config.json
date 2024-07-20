@@ -1404,14 +1404,23 @@
     "launchpad": {
         "guardians": {
             "inputs": {
-                "item": {}
+                "item": {
+                    "id": 1,
+                    "name": "TESTER",
+                    "price": 550,
+                    "owner": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                    "item_asset_id": 703978958
+                }
             },
             "contracts": {
                 "item": {
                     "app": {
-                        "application_id": 703975474,
-                        "application_address": "JN5IBBKC37I65VYYKDH6IXDFF3BPEZVO6QZKRNOBCV4PNHDIGYERFRBSTQ",
-                        "application_version": 0
+                        "application_id": 703979757,
+                        "application_address": "TMXX7ARXK22H7X2BAKGV3H3OB3BJBKCMBROZOLTDKC7MYK2T25URNZRW3Q",
+                        "application_version": 1,
+                        "funded": true,
+                        "initialized": true,
+                        "transferred": true
                     },
                     "buy": {
                         "application_id": 703975969,
@@ -1432,7 +1441,8 @@
                     "mint": {
                         "application_id": 703976061,
                         "application_address": "BJ7556WWGKWRKGHTFJSCJZGR6BJG6HFLOTGR4RULFAVJ4N7HT7UNH3ZWRM",
-                        "application_version": 1
+                        "application_version": 1,
+                        "minted": true
                     },
                     "rename": {
                         "application_id": 703976065,

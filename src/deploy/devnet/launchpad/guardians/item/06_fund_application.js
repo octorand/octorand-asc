@@ -22,7 +22,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: application['application_address'],
-                    amount: 400000,
+                    amount: 300000,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -38,7 +38,7 @@ exports.execute = async function () {
             config['launchpad']['guardians']['contracts']['item']['app'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('funded prime app');
+            console.log('funded guardians item app');
         }
     } catch (error) {
         console.log(error);

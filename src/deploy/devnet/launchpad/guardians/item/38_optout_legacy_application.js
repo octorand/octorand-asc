@@ -25,7 +25,7 @@ exports.execute = async function () {
                 appID: application['application_id'],
                 method: helpers.method(contract, 'optout'),
                 methodArgs: [
-                    config['setup']['platform']['asset_id'],
+                    config['setup']['guardians']['asset_id'],
                 ],
                 suggestedParams: {
                     ...params,
