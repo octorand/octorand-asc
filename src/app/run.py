@@ -5,185 +5,81 @@ import env
 
 
 def run():
-    compile(
-        "gen1_contract_prime_app",
-        "gen1/prime/app",
-    )
-    compile(
-        "gen1_contract_prime_build",
-        "gen1/prime/build",
-    )
-    compile(
-        "gen1_contract_prime_buy",
-        "gen1/prime/buy",
-    )
-    compile(
-        "gen1_contract_prime_claim",
-        "gen1/prime/claim",
-    )
-    compile(
-        "gen1_contract_prime_legacy",
-        "gen1/prime/legacy",
-    )
-    compile(
-        "gen1_contract_prime_list",
-        "gen1/prime/list",
-    )
-    compile(
-        "gen1_contract_prime_mint",
-        "gen1/prime/mint",
-    )
-    compile(
-        "gen1_contract_prime_optin",
-        "gen1/prime/optin",
-    )
-    compile(
-        "gen1_contract_prime_optout",
-        "gen1/prime/optout",
-    )
-    compile(
-        "gen1_contract_prime_rename",
-        "gen1/prime/rename",
-    )
-    compile(
-        "gen1_contract_prime_repaint",
-        "gen1/prime/repaint",
-    )
-    compile(
-        "gen1_contract_prime_unlist",
-        "gen1/prime/unlist",
-    )
-    compile(
-        "gen1_contract_prime_upgrade",
-        "gen1/prime/upgrade",
-    )
-    compile(
-        "gen1_contract_prime_withdraw",
-        "gen1/prime/withdraw",
-    )
+    gen1_prime = [
+        "app",
+        "build",
+        "buy",
+        "claim",
+        "legacy",
+        "list",
+        "mint",
+        "optin",
+        "optout",
+        "rename",
+        "repaint",
+        "unlist",
+        "upgrade",
+        "withdraw",
+    ]
+    for x in gen1_prime:
+        compile(
+            "gen1_contract_prime_" + x,
+            "gen1/prime/" + x,
+        )
 
-    compile(
-        "gen2_contract_prime_app",
-        "gen2/prime/app",
-    )
-    compile(
-        "gen2_contract_prime_build",
-        "gen2/prime/build",
-    )
-    compile(
-        "gen2_contract_prime_buy",
-        "gen2/prime/buy",
-    )
-    compile(
-        "gen2_contract_prime_claim",
-        "gen2/prime/claim",
-    )
-    compile(
-        "gen2_contract_prime_legacy",
-        "gen2/prime/legacy",
-    )
-    compile(
-        "gen2_contract_prime_list",
-        "gen2/prime/list",
-    )
-    compile(
-        "gen2_contract_prime_mint",
-        "gen2/prime/mint",
-    )
-    compile(
-        "gen2_contract_prime_optin",
-        "gen2/prime/optin",
-    )
-    compile(
-        "gen2_contract_prime_optout",
-        "gen2/prime/optout",
-    )
-    compile(
-        "gen2_contract_prime_rename",
-        "gen2/prime/rename",
-    )
-    compile(
-        "gen2_contract_prime_repaint",
-        "gen2/prime/repaint",
-    )
-    compile(
-        "gen2_contract_prime_unlist",
-        "gen2/prime/unlist",
-    )
-    compile(
-        "gen2_contract_prime_upgrade",
-        "gen2/prime/upgrade",
-    )
-    compile(
-        "gen2_contract_prime_withdraw",
-        "gen2/prime/withdraw",
-    )
+    gen2_prime = [
+        "app",
+        "build",
+        "buy",
+        "claim",
+        "legacy",
+        "list",
+        "mint",
+        "optin",
+        "optout",
+        "rename",
+        "repaint",
+        "unlist",
+        "upgrade",
+        "withdraw",
+    ]
+    for x in gen2_prime:
+        compile(
+            "gen2_contract_prime_" + x,
+            "gen2/prime/" + x,
+        )
 
-    compile(
-        "launchpad_contract_guardians_item_app",
-        "launchpad/guardians/item/app",
-    )
-    compile(
-        "launchpad_contract_guardians_item_buy",
-        "launchpad/guardians/item/buy",
-    )
-    compile(
-        "launchpad_contract_guardians_item_claim",
-        "launchpad/guardians/item/claim",
-    )
-    compile(
-        "launchpad_contract_guardians_item_legacy",
-        "launchpad/guardians/item/legacy",
-    )
-    compile(
-        "launchpad_contract_guardians_item_list",
-        "launchpad/guardians/item/list",
-    )
-    compile(
-        "launchpad_contract_guardians_item_mint",
-        "launchpad/guardians/item/mint",
-    )
-    compile(
-        "launchpad_contract_guardians_item_rename",
-        "launchpad/guardians/item/rename",
-    )
-    compile(
-        "launchpad_contract_guardians_item_unlist",
-        "launchpad/guardians/item/unlist",
-    )
+    launchpad_guardians_item = [
+        "app",
+        "buy",
+        "claim",
+        "legacy",
+        "list",
+        "mint",
+        "rename",
+        "unlist",
+    ]
+    for x in launchpad_guardians_item:
+        compile(
+            "launchpad_contract_guardians_item_" + x,
+            "launchpad/guardians/item/" + x,
+        )
 
-    compile(
-        "launchpad_contract_takos_item_app",
-        "launchpad/takos/item/app",
-    )
-    compile(
-        "launchpad_contract_takos_item_buy",
-        "launchpad/takos/item/buy",
-    )
-    compile(
-        "launchpad_contract_takos_item_claim",
-        "launchpad/takos/item/claim",
-    )
-    compile(
-        "launchpad_contract_takos_item_legacy",
-        "launchpad/takos/item/legacy",
-    )
-    compile(
-        "launchpad_contract_takos_item_list",
-        "launchpad/takos/item/list",
-    )
-    compile(
-        "launchpad_contract_takos_item_mint",
-        "launchpad/takos/item/mint",
-    )
-    compile(
-        "launchpad_contract_takos_item_rename",
-        "launchpad/takos/item/rename",
-    )
-    compile(
-        "launchpad_contract_takos_item_unlist",
-        "launchpad/takos/item/unlist",
-    )
+    launchpad_takos_item = [
+        "app",
+        "buy",
+        "claim",
+        "legacy",
+        "list",
+        "mint",
+        "rename",
+        "unlist",
+    ]
+    for x in launchpad_takos_item:
+        compile(
+            "launchpad_contract_takos_item_" + x,
+            "launchpad/takos/item/" + x,
+        )
 
 
 def compile(script, folder):
