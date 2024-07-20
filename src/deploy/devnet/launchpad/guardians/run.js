@@ -33,8 +33,8 @@ exports.execute = async function () {
     await require('./item/23_call_buy').execute();
 
     console.log('launchpad guardians item read states');
-    // await require('./item/33_read_logs').execute();
-    // await require('./item/34_read_state').execute();
+    await require('./item/24_read_logs').execute();
+    await require('./item/25_read_state').execute();
 
     console.log('launchpad guardians item manage legacy');
     // await require('./item/35_create_legacy_application').execute();

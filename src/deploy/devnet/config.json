@@ -1424,20 +1424,249 @@
                         "refresh": true,
                         "fire": true,
                         "opted": true,
-                        "retransferred": true
+                        "retransferred": true,
+                        "logs": [
+                            {
+                                "code": "immt",
+                                "version": 1,
+                                "timestamp": 1721474473,
+                                "prime": 1,
+                                "sender": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "name": "item_mint",
+                                "amount": 100
+                            },
+                            {
+                                "code": "imls",
+                                "version": 1,
+                                "timestamp": 1721474884,
+                                "prime": 1,
+                                "sender": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "name": "item_list",
+                                "price": 550
+                            },
+                            {
+                                "code": "imul",
+                                "version": 1,
+                                "timestamp": 1721474889,
+                                "prime": 1,
+                                "sender": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "name": "item_unlist"
+                            },
+                            {
+                                "code": "imls",
+                                "version": 1,
+                                "timestamp": 1721474895,
+                                "prime": 1,
+                                "sender": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "name": "item_list",
+                                "price": 550
+                            },
+                            {
+                                "code": "imby",
+                                "version": 1,
+                                "timestamp": 1721474900,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_buy",
+                                "seller": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "price": 550
+                            },
+                            {
+                                "code": "imcl",
+                                "version": 1,
+                                "timestamp": 1721476186,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_claim"
+                            },
+                            {
+                                "code": "imrn",
+                                "version": 1,
+                                "timestamp": 1721476878,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "TESTER-2",
+                                "price": 3000000
+                            },
+                            {
+                                "code": "imcl",
+                                "version": 1,
+                                "timestamp": 1721476908,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_claim"
+                            },
+                            {
+                                "code": "imby",
+                                "version": 0,
+                                "timestamp": 100,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_buy",
+                                "seller": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                                "price": 100
+                            },
+                            {
+                                "code": "imcl",
+                                "version": 0,
+                                "timestamp": 101,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_claim"
+                            },
+                            {
+                                "code": "imls",
+                                "version": 0,
+                                "timestamp": 102,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_list",
+                                "price": 102
+                            },
+                            {
+                                "code": "immt",
+                                "version": 0,
+                                "timestamp": 103,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_mint",
+                                "amount": 103
+                            },
+                            {
+                                "code": "imrn",
+                                "version": 0,
+                                "timestamp": 104,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "104",
+                                "price": 104
+                            },
+                            {
+                                "code": "imul",
+                                "version": 0,
+                                "timestamp": 105,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_unlist"
+                            },
+                            {
+                                "code": "imls",
+                                "version": 1,
+                                "timestamp": 1721477340,
+                                "prime": 1,
+                                "sender": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                                "name": "item_list",
+                                "price": 550
+                            },
+                            {
+                                "code": "imul",
+                                "version": 1,
+                                "timestamp": 1721477345,
+                                "prime": 1,
+                                "sender": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "name": "item_unlist"
+                            },
+                            {
+                                "code": "imls",
+                                "version": 1,
+                                "timestamp": 1721477351,
+                                "prime": 1,
+                                "sender": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                                "name": "item_list",
+                                "price": 550
+                            },
+                            {
+                                "code": "imby",
+                                "version": 1,
+                                "timestamp": 1721477356,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_buy",
+                                "seller": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "price": 550
+                            }
+                        ],
+                        "state": {
+                            "id": 1,
+                            "platform_asset_id": 703956531,
+                            "item_asset_id": 703978958,
+                            "price": 0,
+                            "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
+                            "name": "TESTER-2",
+                            "owner": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "rewards": 999900
+                        }
                     },
                     "buy": {
                         "application_id": 703975969,
                         "application_address": "62TN4RPNYVCJNSNW5PGEDYFMEULYDJJEE3TZ25FUXVELSO72W3XG26555I",
                         "application_version": 1,
                         "bought": true,
-                        "rebought": true
+                        "rebought": true,
+                        "logs": [
+                            {
+                                "code": "imby",
+                                "version": 1,
+                                "timestamp": 1721474900,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_buy",
+                                "seller": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "price": 550
+                            },
+                            {
+                                "code": "imby",
+                                "version": 0,
+                                "timestamp": 100,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_buy",
+                                "seller": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                                "price": 100
+                            },
+                            {
+                                "code": "imby",
+                                "version": 1,
+                                "timestamp": 1721477356,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_buy",
+                                "seller": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "price": 550
+                            }
+                        ]
                     },
                     "claim": {
                         "application_id": 703975975,
                         "application_address": "BZECKXRRL74SQLGYC5OWEMACFKMZ4N754BD4AQMVKJE56CVPWBLJ2NQ7JY",
                         "application_version": 1,
-                        "claim": true
+                        "claim": true,
+                        "logs": [
+                            {
+                                "code": "imcl",
+                                "version": 1,
+                                "timestamp": 1721476186,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_claim"
+                            },
+                            {
+                                "code": "imcl",
+                                "version": 1,
+                                "timestamp": 1721476908,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_claim"
+                            },
+                            {
+                                "code": "imcl",
+                                "version": 0,
+                                "timestamp": 101,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_claim"
+                            }
+                        ]
                     },
                     "legacy": {},
                     "list": {
@@ -1447,26 +1676,139 @@
                         "listed": true,
                         "relisted": true,
                         "moved": true,
-                        "removed": true
+                        "removed": true,
+                        "logs": [
+                            {
+                                "code": "imls",
+                                "version": 1,
+                                "timestamp": 1721474884,
+                                "prime": 1,
+                                "sender": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "name": "item_list",
+                                "price": 550
+                            },
+                            {
+                                "code": "imls",
+                                "version": 1,
+                                "timestamp": 1721474895,
+                                "prime": 1,
+                                "sender": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "name": "item_list",
+                                "price": 550
+                            },
+                            {
+                                "code": "imls",
+                                "version": 0,
+                                "timestamp": 102,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_list",
+                                "price": 102
+                            },
+                            {
+                                "code": "imls",
+                                "version": 1,
+                                "timestamp": 1721477340,
+                                "prime": 1,
+                                "sender": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                                "name": "item_list",
+                                "price": 550
+                            },
+                            {
+                                "code": "imls",
+                                "version": 1,
+                                "timestamp": 1721477351,
+                                "prime": 1,
+                                "sender": "7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM",
+                                "name": "item_list",
+                                "price": 550
+                            }
+                        ]
                     },
                     "mint": {
                         "application_id": 703976061,
                         "application_address": "BJ7556WWGKWRKGHTFJSCJZGR6BJG6HFLOTGR4RULFAVJ4N7HT7UNH3ZWRM",
                         "application_version": 1,
-                        "minted": true
+                        "minted": true,
+                        "logs": [
+                            {
+                                "code": "immt",
+                                "version": 1,
+                                "timestamp": 1721474473,
+                                "prime": 1,
+                                "sender": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "name": "item_mint",
+                                "amount": 100
+                            },
+                            {
+                                "code": "immt",
+                                "version": 0,
+                                "timestamp": 103,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_mint",
+                                "amount": 103
+                            }
+                        ]
                     },
                     "rename": {
                         "application_id": 703976065,
                         "application_address": "XPVDNPTUYPFF5ER3CC2DGYIXFX7265MONILP366FJIU3B3K3KNSH3LV77Q",
                         "application_version": 1,
-                        "renamed": true
+                        "renamed": true,
+                        "logs": [
+                            {
+                                "code": "imrn",
+                                "version": 1,
+                                "timestamp": 1721476878,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "TESTER-2",
+                                "price": 3000000
+                            },
+                            {
+                                "code": "imrn",
+                                "version": 0,
+                                "timestamp": 104,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "104",
+                                "price": 104
+                            }
+                        ]
                     },
                     "unlist": {
                         "application_id": 703976072,
                         "application_address": "WDNXCN4SCRNYR77KRK5DC7EUDYEE2E3LXQ4HXUMFGLHHQECDTOOT7OMA3A",
                         "application_version": 1,
                         "unlisted": true,
-                        "unmoved": true
+                        "unmoved": true,
+                        "logs": [
+                            {
+                                "code": "imul",
+                                "version": 1,
+                                "timestamp": 1721474889,
+                                "prime": 1,
+                                "sender": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "name": "item_unlist"
+                            },
+                            {
+                                "code": "imul",
+                                "version": 0,
+                                "timestamp": 105,
+                                "prime": 1,
+                                "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                                "name": "item_unlist"
+                            },
+                            {
+                                "code": "imul",
+                                "version": 1,
+                                "timestamp": 1721477345,
+                                "prime": 1,
+                                "sender": "HOBH3SYPFUU36ZVSL3BDNNLYG52JSXOICLIFTWIGWYF4ZUQ7QML2AE3G3Y",
+                                "name": "item_unlist"
+                            }
+                        ]
                     }
                 }
             }

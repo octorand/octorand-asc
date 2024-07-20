@@ -3,7 +3,7 @@ require('dotenv').config();
 const fs = require('fs');
 const devnet = require('./../../../../../chain/devnet');
 const helpers = require('./../../../../../chain/util/helpers');
-const events = require('./../../../../chain/util/events');
+const events = require('./../../../../../chain/util/events');
 
 exports.execute = async function () {
     try {
@@ -11,7 +11,7 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
-        let contracts = ['app', 'buy', 'claim', 'list', 'mint', 'optin', 'optout', 'rename', 'repaint', 'unlist', 'upgrade', 'withdraw'];
+        let contracts = ['app', 'buy', 'claim', 'list', 'mint', 'rename', 'unlist'];
 
         for (let i = 0; i < contracts.length; i++) {
             let contract = contracts[i];
