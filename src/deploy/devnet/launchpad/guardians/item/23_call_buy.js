@@ -15,7 +15,7 @@ exports.execute = async function () {
         let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/buy/contract.json')));
 
         let application = config['launchpad']['guardians']['contracts']['item']['buy'];
-        let prime = config['launchpad']['guardians']['inputs']['item'];
+        let item = config['launchpad']['guardians']['inputs']['item'];
 
         if (!application['rebought']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
@@ -26,7 +26,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: sender,
-                    assetIndex: prime['prime_asset_id'],
+                    assetIndex: item['item_asset_id'],
                     amount: 0,
                     suggestedParams: {
                         ...params,
@@ -45,7 +45,7 @@ exports.execute = async function () {
                     config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
                 ],
                 appForeignAssets: [
-                    prime['prime_asset_id']
+                    item['item_asset_id']
                 ],
                 suggestedParams: {
                     ...params,
@@ -60,7 +60,22 @@ exports.execute = async function () {
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: connection.guardians.manager.addr,
-                    amount: Math.floor(prime['price'] * 0.9),
+                    amount: Math.floor(item['price'] * 0.95),
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                })
+            });
+
+            composer.addTransaction({
+                sender: sender,
+                signer: signer,
+                txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
+                    from: sender,
+                    to: connection.guardians.artist.addr,
+                    amount: Math.floor(item['price'] * 0.03),
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -75,7 +90,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: connection.admin.addr,
-                    amount: Math.floor(prime['price'] * 0.1),
+                    amount: Math.floor(item['price'] * 0.02),
                     suggestedParams: {
                         ...params,
                         fee: 1000,

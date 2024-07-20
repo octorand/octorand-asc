@@ -52,6 +52,36 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
+                    to: connection.player.addr,
+                    assetIndex: config['setup']['guardians']['asset_id'],
+                    amount: 10000000000,
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                })
+            });
+
+            composer.addTransaction({
+                signer: signer,
+                txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                    from: sender,
+                    to: connection.player.addr,
+                    assetIndex: config['setup']['takos']['asset_id'],
+                    amount: 10000000000,
+                    suggestedParams: {
+                        ...params,
+                        fee: 1000,
+                        flatFee: true
+                    }
+                })
+            });
+
+            composer.addTransaction({
+                signer: signer,
+                txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                    from: sender,
                     to: connection.gen1.addr,
                     assetIndex: config['setup']['platform']['asset_id'],
                     amount: 10000000000,

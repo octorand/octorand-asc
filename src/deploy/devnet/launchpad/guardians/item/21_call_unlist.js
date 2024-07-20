@@ -8,31 +8,32 @@ exports.execute = async function () {
     try {
         let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.admin.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
+        let sender = connection.guardians.manager.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.guardians.manager);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
-        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/list/contract.json')));
+        let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/unlist/contract.json')));
 
-        let application = config['launchpad']['guardians']['contracts']['item']['list'];
-        let prime = config['launchpad']['guardians']['inputs']['item'];
+        let application = config['launchpad']['guardians']['contracts']['item']['unlist'];
+        let item = config['launchpad']['guardians']['inputs']['item'];
 
-        if (!application['removed']) {
+        if (!application['unmoved']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
                 sender: sender,
                 signer: signer,
                 appID: application['application_id'],
-                method: helpers.method(contract, 'move'),
+                method: helpers.method(contract, 'unlist'),
                 methodArgs: [
-                    prime['price'],
-                    connection.guardians.manager.addr,
                     config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
+                ],
+                appForeignAssets: [
+                    item['item_asset_id']
                 ],
                 suggestedParams: {
                     ...params,
-                    fee: 2000,
+                    fee: 3000,
                     flatFee: true
                 }
             });
@@ -42,8 +43,8 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: config['launchpad']['guardians']['contracts']['item']['app']['application_address'],
-                    assetIndex: prime['prime_asset_id'],
+                    to: connection.admin.addr,
+                    assetIndex: item['item_asset_id'],
                     amount: 1,
                     suggestedParams: {
                         ...params,
@@ -55,12 +56,12 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            application['removed'] = true;
+            application['unmoved'] = true;
 
-            config['launchpad']['guardians']['contracts']['item']['list'] = application;
+            config['launchpad']['guardians']['contracts']['item']['unlist'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('called move method');
+            console.log('called unlist method');
         }
     } catch (error) {
         console.log(error);

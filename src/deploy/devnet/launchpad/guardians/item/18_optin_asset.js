@@ -13,7 +13,7 @@ exports.execute = async function () {
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
         let application = config['launchpad']['guardians']['contracts']['item']['app'];
-        let prime = config['launchpad']['guardians']['inputs']['item'];
+        let item = config['launchpad']['guardians']['inputs']['item'];
 
         if (!application['opted']) {
 
@@ -25,7 +25,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: connection.admin.addr,
-                    assetIndex: prime['prime_asset_id'],
+                    assetIndex: item['item_asset_id'],
                     amount: 0,
                     suggestedParams: {
                         ...params,

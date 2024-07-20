@@ -1420,18 +1420,24 @@
                         "application_version": 1,
                         "funded": true,
                         "initialized": true,
-                        "transferred": true
+                        "transferred": true,
+                        "refresh": true,
+                        "fire": true,
+                        "opted": true,
+                        "retransferred": true
                     },
                     "buy": {
                         "application_id": 703975969,
                         "application_address": "62TN4RPNYVCJNSNW5PGEDYFMEULYDJJEE3TZ25FUXVELSO72W3XG26555I",
                         "application_version": 1,
-                        "bought": true
+                        "bought": true,
+                        "rebought": true
                     },
                     "claim": {
                         "application_id": 703975975,
                         "application_address": "BZECKXRRL74SQLGYC5OWEMACFKMZ4N754BD4AQMVKJE56CVPWBLJ2NQ7JY",
-                        "application_version": 1
+                        "application_version": 1,
+                        "claim": true
                     },
                     "legacy": {},
                     "list": {
@@ -1439,7 +1445,9 @@
                         "application_address": "KNQ73MRN4JVR6EGOJGNWLTICZOOZ3RTRUYYTPHUT6EKA5M3RJIXAC5LOXU",
                         "application_version": 1,
                         "listed": true,
-                        "relisted": true
+                        "relisted": true,
+                        "moved": true,
+                        "removed": true
                     },
                     "mint": {
                         "application_id": 703976061,
@@ -1450,13 +1458,15 @@
                     "rename": {
                         "application_id": 703976065,
                         "application_address": "XPVDNPTUYPFF5ER3CC2DGYIXFX7265MONILP366FJIU3B3K3KNSH3LV77Q",
-                        "application_version": 1
+                        "application_version": 1,
+                        "renamed": true
                     },
                     "unlist": {
                         "application_id": 703976072,
                         "application_address": "WDNXCN4SCRNYR77KRK5DC7EUDYEE2E3LXQ4HXUMFGLHHQECDTOOT7OMA3A",
                         "application_version": 1,
-                        "unlisted": true
+                        "unlisted": true,
+                        "unmoved": true
                     }
                 }
             }

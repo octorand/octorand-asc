@@ -15,9 +15,9 @@ exports.execute = async function () {
         let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/list/contract.json')));
 
         let application = config['launchpad']['guardians']['contracts']['item']['list'];
-        let prime = config['launchpad']['guardians']['inputs']['item'];
+        let item = config['launchpad']['guardians']['inputs']['item'];
 
-        if (!application['moved']) {
+        if (!application['removed']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
@@ -26,7 +26,7 @@ exports.execute = async function () {
                 appID: application['application_id'],
                 method: helpers.method(contract, 'move'),
                 methodArgs: [
-                    prime['price'],
+                    item['price'],
                     connection.guardians.manager.addr,
                     config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
                 ],
@@ -43,7 +43,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: config['launchpad']['guardians']['contracts']['item']['app']['application_address'],
-                    assetIndex: prime['prime_asset_id'],
+                    assetIndex: item['item_asset_id'],
                     amount: 1,
                     suggestedParams: {
                         ...params,
@@ -55,7 +55,7 @@ exports.execute = async function () {
 
             await devnet.execute(composer);
 
-            application['moved'] = true;
+            application['removed'] = true;
 
             config['launchpad']['guardians']['contracts']['item']['list'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
