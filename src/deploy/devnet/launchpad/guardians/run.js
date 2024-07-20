@@ -4,9 +4,9 @@ exports.execute = async function () {
 
     console.log('launchpad guardians item setup contracts');
     await require('./item/00_compile_contracts').execute();
-    // await require('./item/01_create_main_application').execute();
-    // await require('./item/02_create_sub_applications').execute();
-    // await require('./item/03_update_applications').execute();
+    await require('./item/01_create_main_application').execute();
+    await require('./item/02_create_sub_applications').execute();
+    await require('./item/03_update_applications').execute();
 
     console.log('launchpad guardians item setup resources');
     // await require('./item/04_setup_item_input').execute();

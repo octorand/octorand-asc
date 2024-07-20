@@ -12,7 +12,7 @@ exports.execute = async function () {
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
-        let contracts = ['buy', 'claim', 'list', 'mint', 'optin', 'optout', 'rename', 'repaint', 'unlist', 'upgrade', 'withdraw'];
+        let contracts = ['buy', 'claim', 'list', 'mint', 'rename', 'unlist'];
 
         for (let i = 0; i < contracts.length; i++) {
             let contract = contracts[i];
@@ -55,7 +55,7 @@ exports.execute = async function () {
                 config['launchpad']['guardians']['contracts']['item'][contract] = application;
                 fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-                console.log('created prime ' + contract);
+                console.log('created launchpad guardians ' + contract);
             }
         }
     } catch (error) {

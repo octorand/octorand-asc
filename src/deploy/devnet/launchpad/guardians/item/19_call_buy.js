@@ -59,7 +59,7 @@ exports.execute = async function () {
                 signer: signer,
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
-                    to: connection.gen1.addr,
+                    to: connection.guardians.manager.addr,
                     amount: Math.floor(prime['price'] * 0.9),
                     suggestedParams: {
                         ...params,

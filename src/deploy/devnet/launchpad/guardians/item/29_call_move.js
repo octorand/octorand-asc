@@ -27,7 +27,7 @@ exports.execute = async function () {
                 method: helpers.method(contract, 'move'),
                 methodArgs: [
                     prime['price'],
-                    connection.gen1.addr,
+                    connection.guardians.manager.addr,
                     config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
                 ],
                 suggestedParams: {

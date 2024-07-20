@@ -8,8 +8,8 @@ exports.execute = async function () {
     try {
         let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen1.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
+        let sender = connection.guardians.manager.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.guardians.manager);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
         let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/list/contract.json')));

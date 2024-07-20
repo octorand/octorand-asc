@@ -29,7 +29,9 @@
         "optin_takos_artist": true,
         "optin_takos_treasury": true,
         "optin_player": true,
-        "transfer_assets": true
+        "transfer_assets": true,
+        "optin_guardians_burner": true,
+        "optin_takos_burner": true
     },
     "gen1": {
         "inputs": {
@@ -1406,14 +1408,42 @@
             },
             "contracts": {
                 "item": {
-                    "app": {},
-                    "buy": {},
-                    "claim": {},
+                    "app": {
+                        "application_id": 703975474,
+                        "application_address": "JN5IBBKC37I65VYYKDH6IXDFF3BPEZVO6QZKRNOBCV4PNHDIGYERFRBSTQ",
+                        "application_version": 0
+                    },
+                    "buy": {
+                        "application_id": 703975969,
+                        "application_address": "62TN4RPNYVCJNSNW5PGEDYFMEULYDJJEE3TZ25FUXVELSO72W3XG26555I",
+                        "application_version": 1
+                    },
+                    "claim": {
+                        "application_id": 703975975,
+                        "application_address": "BZECKXRRL74SQLGYC5OWEMACFKMZ4N754BD4AQMVKJE56CVPWBLJ2NQ7JY",
+                        "application_version": 1
+                    },
                     "legacy": {},
-                    "list": {},
-                    "mint": {},
-                    "rename": {},
-                    "unlist": {}
+                    "list": {
+                        "application_id": 703976010,
+                        "application_address": "KNQ73MRN4JVR6EGOJGNWLTICZOOZ3RTRUYYTPHUT6EKA5M3RJIXAC5LOXU",
+                        "application_version": 1
+                    },
+                    "mint": {
+                        "application_id": 703976061,
+                        "application_address": "BJ7556WWGKWRKGHTFJSCJZGR6BJG6HFLOTGR4RULFAVJ4N7HT7UNH3ZWRM",
+                        "application_version": 1
+                    },
+                    "rename": {
+                        "application_id": 703976065,
+                        "application_address": "XPVDNPTUYPFF5ER3CC2DGYIXFX7265MONILP366FJIU3B3K3KNSH3LV77Q",
+                        "application_version": 1
+                    },
+                    "unlist": {
+                        "application_id": 703976072,
+                        "application_address": "WDNXCN4SCRNYR77KRK5DC7EUDYEE2E3LXQ4HXUMFGLHHQECDTOOT7OMA3A",
+                        "application_version": 1
+                    }
                 }
             }
         },

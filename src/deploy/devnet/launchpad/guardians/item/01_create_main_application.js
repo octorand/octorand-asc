@@ -7,16 +7,16 @@ exports.execute = async function () {
     try {
         let connection = await devnet.get();
         let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.gen1.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
+        let sender = connection.guardians.manager.addr;
+        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.guardians.manager);
 
         let config = JSON.parse(fs.readFileSync('src/deploy/devnet/config.json'));
 
         let application = config['launchpad']['guardians']['contracts']['item']['app'];
 
         if (!application['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/devnet/launchpad/guardians/item/build/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/devnet/launchpad/guardians/item/build/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/devnet/launchpad/guardians/item/app/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/devnet/launchpad/guardians/item/app/clear.teal', 'utf8');
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -30,7 +30,7 @@ exports.execute = async function () {
                     numLocalInts: 0,
                     numLocalByteSlices: 0,
                     numGlobalInts: 0,
-                    numGlobalByteSlices: 2,
+                    numGlobalByteSlices: 1,
                     extraPages: 0,
                     suggestedParams: {
                         ...params,
@@ -50,7 +50,7 @@ exports.execute = async function () {
             config['launchpad']['guardians']['contracts']['item']['app'] = application;
             fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('created prime app');
+            console.log('created launchpad guardians app');
         }
     } catch (error) {
         console.log(error);

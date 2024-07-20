@@ -14,7 +14,7 @@ exports.execute = async function () {
 
         let version = 1;
 
-        let contracts = ['buy', 'claim', 'list', 'mint', 'optin', 'optout', 'rename', 'repaint', 'unlist', 'upgrade', 'withdraw'];
+        let contracts = ['buy', 'claim', 'list', 'mint', 'rename', 'unlist'];
 
         for (let i = 0; i < contracts.length; i++) {
             let contract = contracts[i];
@@ -50,7 +50,7 @@ exports.execute = async function () {
                 config['launchpad']['guardians']['contracts']['item'][contract] = application;
                 fs.writeFileSync('src/deploy/devnet/config.json', JSON.stringify(config, null, 4));
 
-                console.log('updated prime ' + contract);
+                console.log('updated launchpad guardians ' + contract);
             }
         }
     } catch (error) {
