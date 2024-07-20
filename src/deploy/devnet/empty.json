@@ -46,5 +46,47 @@
                 "withdraw": {}
             }
         }
+    },
+    "launchpad": {
+        "guardians": {
+            "setup": {
+                "asset": {}
+            },
+            "inputs": {
+                "item": {}
+            },
+            "contracts": {
+                "item": {
+                    "app": {},
+                    "buy": {},
+                    "claim": {},
+                    "legacy": {},
+                    "list": {},
+                    "mint": {},
+                    "rename": {},
+                    "unlist": {}
+                }
+            }
+        },
+        "takos": {
+            "setup": {
+                "asset": {}
+            },
+            "inputs": {
+                "item": {}
+            },
+            "contracts": {
+                "item": {
+                    "app": {},
+                    "buy": {},
+                    "claim": {},
+                    "legacy": {},
+                    "list": {},
+                    "mint": {},
+                    "rename": {},
+                    "unlist": {}
+                }
+            }
+        }
     }
 }

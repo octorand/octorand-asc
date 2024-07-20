@@ -323,7 +323,7 @@
                         "is_artifact": 0,
                         "is_pioneer": 1,
                         "is_explorer": 1,
-                        "score": 1350,
+                        "score": 1390,
                         "price": 0,
                         "seller": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ",
                         "sales": 12,
@@ -1379,6 +1379,48 @@
                             "amount": 110
                         }
                     ]
+                }
+            }
+        }
+    },
+    "launchpad": {
+        "guardians": {
+            "setup": {
+                "asset": {}
+            },
+            "inputs": {
+                "item": {}
+            },
+            "contracts": {
+                "item": {
+                    "app": {},
+                    "buy": {},
+                    "claim": {},
+                    "legacy": {},
+                    "list": {},
+                    "mint": {},
+                    "rename": {},
+                    "unlist": {}
+                }
+            }
+        },
+        "takos": {
+            "setup": {
+                "asset": {}
+            },
+            "inputs": {
+                "item": {}
+            },
+            "contracts": {
+                "item": {
+                    "app": {},
+                    "buy": {},
+                    "claim": {},
+                    "legacy": {},
+                    "list": {},
+                    "mint": {},
+                    "rename": {},
+                    "unlist": {}
                 }
             }
         }
