@@ -1425,7 +1425,8 @@
                     "buy": {
                         "application_id": 703975969,
                         "application_address": "62TN4RPNYVCJNSNW5PGEDYFMEULYDJJEE3TZ25FUXVELSO72W3XG26555I",
-                        "application_version": 1
+                        "application_version": 1,
+                        "bought": true
                     },
                     "claim": {
                         "application_id": 703975975,
@@ -1436,7 +1437,9 @@
                     "list": {
                         "application_id": 703976010,
                         "application_address": "KNQ73MRN4JVR6EGOJGNWLTICZOOZ3RTRUYYTPHUT6EKA5M3RJIXAC5LOXU",
-                        "application_version": 1
+                        "application_version": 1,
+                        "listed": true,
+                        "relisted": true
                     },
                     "mint": {
                         "application_id": 703976061,
@@ -1452,7 +1455,8 @@
                     "unlist": {
                         "application_id": 703976072,
                         "application_address": "WDNXCN4SCRNYR77KRK5DC7EUDYEE2E3LXQ4HXUMFGLHHQECDTOOT7OMA3A",
-                        "application_version": 1
+                        "application_version": 1,
+                        "unlisted": true
                     }
                 }
             }

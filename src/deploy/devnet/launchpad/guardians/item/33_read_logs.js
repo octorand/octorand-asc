@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const fs = require('fs');
 const devnet = require('./../../../../../chain/devnet');
-const helpers = require('./../../../../chain/util/helpers');
+const helpers = require('./../../../../../chain/util/helpers');
 const events = require('./../../../../chain/util/events');
 
 exports.execute = async function () {

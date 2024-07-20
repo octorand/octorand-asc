@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const fs = require('fs');
 const devnet = require('./../../../../../chain/devnet');
-const helpers = require('./../../../../chain/util/helpers');
+const helpers = require('./../../../../../chain/util/helpers');
 
 exports.execute = async function () {
     try {
@@ -98,46 +98,6 @@ exports.execute = async function () {
                 }
             });
 
-            let optinContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/optin/contract.json')));
-            let optinApplication = config['launchpad']['guardians']['contracts']['item']['optin'];
-            composer.addMethodCall({
-                sender: sender,
-                signer: signer,
-                appID: optinApplication['application_id'],
-                method: helpers.method(optinContract, 'fire'),
-                methodArgs: [
-                    104,
-                    connection.player.addr,
-                    config['setup']['guardians']['asset_id'],
-                    config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
-                ],
-                suggestedParams: {
-                    ...params,
-                    fee: 2000,
-                    flatFee: true
-                }
-            });
-
-            let optoutContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/optout/contract.json')));
-            let optoutApplication = config['launchpad']['guardians']['contracts']['item']['optout'];
-            composer.addMethodCall({
-                sender: sender,
-                signer: signer,
-                appID: optoutApplication['application_id'],
-                method: helpers.method(optoutContract, 'fire'),
-                methodArgs: [
-                    105,
-                    connection.player.addr,
-                    config['setup']['guardians']['asset_id'],
-                    config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
-                ],
-                suggestedParams: {
-                    ...params,
-                    fee: 2000,
-                    flatFee: true
-                }
-            });
-
             let renameContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/rename/contract.json')));
             let renameApplication = config['launchpad']['guardians']['contracts']['item']['rename'];
             composer.addMethodCall({
@@ -146,33 +106,10 @@ exports.execute = async function () {
                 appID: renameApplication['application_id'],
                 method: helpers.method(renameContract, 'fire'),
                 methodArgs: [
-                    106,
+                    104,
                     connection.player.addr,
-                    106,
-                    106,
-                    106,
-                    config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
-                ],
-                suggestedParams: {
-                    ...params,
-                    fee: 2000,
-                    flatFee: true
-                }
-            });
-
-            let repaintContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/repaint/contract.json')));
-            let repaintApplication = config['launchpad']['guardians']['contracts']['item']['repaint'];
-            composer.addMethodCall({
-                sender: sender,
-                signer: signer,
-                appID: repaintApplication['application_id'],
-                method: helpers.method(repaintContract, 'fire'),
-                methodArgs: [
-                    107,
-                    connection.player.addr,
-                    107,
-                    107,
-                    107,
+                    helpers.bytes('104', 16),
+                    104,
                     config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
                 ],
                 suggestedParams: {
@@ -190,47 +127,8 @@ exports.execute = async function () {
                 appID: unlistApplication['application_id'],
                 method: helpers.method(unlistContract, 'fire'),
                 methodArgs: [
-                    108,
+                    105,
                     connection.player.addr,
-                    config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
-                ],
-                suggestedParams: {
-                    ...params,
-                    fee: 2000,
-                    flatFee: true
-                }
-            });
-
-            let upgradeContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/upgrade/contract.json')));
-            let upgradeApplication = config['launchpad']['guardians']['contracts']['item']['upgrade'];
-            composer.addMethodCall({
-                sender: sender,
-                signer: signer,
-                appID: upgradeApplication['application_id'],
-                method: helpers.method(upgradeContract, 'fire'),
-                methodArgs: [
-                    109,
-                    connection.player.addr,
-                    config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
-                ],
-                suggestedParams: {
-                    ...params,
-                    fee: 2000,
-                    flatFee: true
-                }
-            });
-
-            let withdrawContract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/devnet/launchpad/guardians/item/withdraw/contract.json')));
-            let withdrawApplication = config['launchpad']['guardians']['contracts']['item']['withdraw'];
-            composer.addMethodCall({
-                sender: sender,
-                signer: signer,
-                appID: withdrawApplication['application_id'],
-                method: helpers.method(withdrawContract, 'fire'),
-                methodArgs: [
-                    110,
-                    connection.player.addr,
-                    110,
                     config['launchpad']['guardians']['contracts']['item']['app']['application_id'],
                 ],
                 suggestedParams: {

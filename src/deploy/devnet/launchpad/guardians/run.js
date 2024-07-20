@@ -17,14 +17,14 @@ exports.execute = async function () {
 
     console.log('launchpad guardians item call functions');
     await require('./item/09_call_mint').execute();
-    // await require('./item/16_call_list').execute();
-    // await require('./item/17_call_unlist').execute();
-    // await require('./item/18_call_list').execute();
-    // await require('./item/19_call_buy').execute();
-    // await require('./item/20_call_rename').execute();
-    // await require('./item/21_call_repaint').execute();
-    // await require('./item/22_call_optin').execute();
-    // await require('./item/23_call_optout').execute();
+    await require('./item/10_call_list').execute();
+    await require('./item/11_call_unlist').execute();
+    await require('./item/12_call_list').execute();
+    await require('./item/13_call_buy').execute();
+    // await require('./item/14_call_rename').execute();
+    // await require('./item/15_call_claim').execute();
+    // await require('./item/16_call_refresh').execute();
+    // await require('./item/17_call_fire').execute();
     // await require('./item/24_call_claim').execute();
     // await require('./item/25_call_refresh').execute();
     // await require('./item/26_call_fire').execute();
