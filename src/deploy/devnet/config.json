@@ -1668,7 +1668,15 @@
                             }
                         ]
                     },
-                    "legacy": {},
+                    "legacy": {
+                        "application_id": 703992040,
+                        "application_address": "ASBWMJVA3G42PNNYTRI7O3M3DUNMT5LHMCBR4JCQ43V4DYO5B7ZDFNXTYI",
+                        "application_version": 1,
+                        "funded": true,
+                        "optout": true,
+                        "withdraw": true,
+                        "deleted": true
+                    },
                     "list": {
                         "application_id": 703976010,
                         "application_address": "KNQ73MRN4JVR6EGOJGNWLTICZOOZ3RTRUYYTPHUT6EKA5M3RJIXAC5LOXU",

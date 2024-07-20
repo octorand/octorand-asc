@@ -37,10 +37,10 @@ exports.execute = async function () {
     await require('./item/25_read_state').execute();
 
     console.log('launchpad guardians item manage legacy');
-    // await require('./item/35_create_legacy_application').execute();
-    // await require('./item/36_fund_legacy_application').execute();
-    // await require('./item/37_update_legacy_application').execute();
-    // await require('./item/38_optout_legacy_application').execute();
-    // await require('./item/39_withdraw_legacy_application').execute();
-    // await require('./item/40_delete_legacy_application').execute();
+    await require('./item/26_create_legacy_application').execute();
+    await require('./item/27_fund_legacy_application').execute();
+    await require('./item/28_update_legacy_application').execute();
+    await require('./item/29_optout_legacy_application').execute();
+    await require('./item/30_withdraw_legacy_application').execute();
+    await require('./item/31_delete_legacy_application').execute();
 }
