@@ -5,7 +5,7 @@ from pyteal import *
 from typing import *
 
 
-const = launchpad_const.GuardiansConfig()
+const = launchpad_const.TakosConfig()
 item = launchpad_const.Item()
 
 
