@@ -5,7 +5,7 @@ const fs = require('fs');
 exports.execute = async function () {
 
     let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
-    let legacy = JSON.parse(fs.readFileSync('src/deploy/testnet/gen1/prime/legacy.json'));
+    let legacy = JSON.parse(fs.readFileSync('src/deploy/testnet/gen1/prime/primes.json'));
 
     let primes = config['gen1']['inputs']['primes'];
 
