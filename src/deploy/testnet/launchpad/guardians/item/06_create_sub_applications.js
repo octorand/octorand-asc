@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const testnet = require('./../../../../chain/testnet');
+const testnet = require('./../../../../../chain/testnet');
 
 exports.execute = async function () {
 
@@ -17,11 +17,11 @@ exports.execute = async function () {
     for (let i = 0; i < contracts.length; i++) {
         let contract = contracts[i];
 
-        let application = config['gen1']['contracts']['prime'][contract];
+        let application = config['gen1']['contracts']['item'][contract];
 
         if (!application['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/testnet/gen1/prime/' + contract + '/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/testnet/gen1/prime/' + contract + '/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/testnet/gen1/item/' + contract + '/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/testnet/gen1/item/' + contract + '/clear.teal', 'utf8');
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -52,10 +52,10 @@ exports.execute = async function () {
             application['application_address'] = connection.baseClient.getApplicationAddress(application_id);
             application['application_version'] = 0;
 
-            config['gen1']['contracts']['prime'][contract] = application;
+            config['gen1']['contracts']['item'][contract] = application;
             fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('created prime ' + contract);
+            console.log('created item ' + contract);
         }
     }
 

@@ -1,26 +1,26 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const testnet = require('./../../../../chain/testnet');
-const helpers = require('./../../../../chain/util/helpers');
+const testnet = require('./../../../../../chain/testnet');
+const helpers = require('./../../../../../chain/util/helpers');
 
 exports.execute = async function () {
 
     let connection = await testnet.get();
     let params = await connection.algodClient.getTransactionParams().do();
-    let sender = connection.gen1.addr;
-    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
+    let sender = connection.guardians.manager.addr;
+    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.guardians.manager);
 
     let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
 
-    let max = config['gen1']['inputs']['max'];
+    let max = config['launchpad']['guardians']['inputs']['max'];
 
     for (let i = 0; i < max; i++) {
-        let primes = config['gen1']['inputs']['primes'];
+        let items = config['gen1']['inputs']['items'];
 
-        if (!primes[i]['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/testnet/gen1/prime/build/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/testnet/gen1/prime/build/clear.teal', 'utf8');
+        if (!items[i]['application_id']) {
+            let approvalProgram = fs.readFileSync('src/build/testnet/gen1/item/build/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/testnet/gen1/item/build/clear.teal', 'utf8');
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -36,7 +36,7 @@ exports.execute = async function () {
                     numGlobalInts: 0,
                     numGlobalByteSlices: 2,
                     extraPages: 0,
-                    note: helpers.bytes('ID:' + primes[i]['id']),
+                    note: helpers.bytes('ID:' + items[i]['id']),
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -48,11 +48,11 @@ exports.execute = async function () {
             let response = await testnet.execute(composer);
             let application_id = response.information['application-index'];
 
-            primes[i]['application_id'] = application_id;
-            primes[i]['application_address'] = connection.baseClient.getApplicationAddress(application_id);
-            primes[i]['application_version'] = 0;
+            items[i]['application_id'] = application_id;
+            items[i]['application_address'] = connection.baseClient.getApplicationAddress(application_id);
+            items[i]['application_version'] = 0;
 
-            config['gen1']['inputs']['primes'] = primes;
+            config['gen1']['inputs']['items'] = items;
             fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('create main application ' + i);

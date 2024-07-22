@@ -2940,7 +2940,98 @@
         "guardians": {
             "inputs": {
                 "max": 10,
-                "items": []
+                "items": [
+                    {
+                        "id": 0,
+                        "name": "Guardian 000",
+                        "owner": "33FLM4G4RC7K5R5QDYRA2BIXBXVZHVQRTVCQW2SYB6ZAJ6JNYX7RFLW3NE",
+                        "rewards": 52000000,
+                        "score": 69512,
+                        "rank": 91,
+                        "image": "QmUiBNrH7GS8pR4JKsrfqKsfhqBauAjiP55rLJ6NHSXndn"
+                    },
+                    {
+                        "id": 1,
+                        "name": "Guardian 001",
+                        "owner": "INNXFSZIGUQLRENDROQGJDBC6CFXXC3XVQJFYL2ZG5U3BTKP763J7KMUOY",
+                        "rewards": 90000000,
+                        "score": 61108,
+                        "rank": 345,
+                        "image": "QmcEt5AnuTspcC6Hc7EhJk3EdpYGUkuJL78wQiVxLdy4nZ"
+                    },
+                    {
+                        "id": 2,
+                        "name": "Guardian 002",
+                        "owner": "YVG5656ZA7M4QQUZHUJWV4VO6CM432LDUTKKYL6CJJLQVLSRHALMZ4MFKQ",
+                        "rewards": 98000000,
+                        "score": 69225,
+                        "rank": 99,
+                        "image": "QmcpuV62CAoCYmLbhKpwDK4Y3s4HgN9ikFAkMb1vX4WVub"
+                    },
+                    {
+                        "id": 3,
+                        "name": "Guardian 003",
+                        "owner": "IQXFARND6HJXF6IMWZX34WHUQVBKXXL5ZJP5Q45FOMGUQEAD6N6CX6LG5A",
+                        "rewards": 60000000,
+                        "score": 69933,
+                        "rank": 84,
+                        "image": "QmNyPzUWm9hojtez75YGY1DQwu1dx2FNEbKjfohSJziLiQ"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Guardian 004",
+                        "owner": "OQHHRNGDXMXTTLQXU54TGGT2AMF7PVSVOM3QTBGXBXY6HFJXDOADCWGVPQ",
+                        "rewards": 67000000,
+                        "score": 40800,
+                        "rank": 0,
+                        "image": "QmcsXJwcvLKqH5rZCY6UxjnDFfJLb7WT6Ksaisfux5QeuH"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Guardian 005",
+                        "owner": "OQHHRNGDXMXTTLQXU54TGGT2AMF7PVSVOM3QTBGXBXY6HFJXDOADCWGVPQ",
+                        "rewards": 69000000,
+                        "score": 40800,
+                        "rank": 0,
+                        "image": "QmaXcwXqUtc3rHTFPZSje7QxyZC1CyYo83QKboFS3UgXa3"
+                    },
+                    {
+                        "id": 6,
+                        "name": "Guardian 006",
+                        "owner": "OQHHRNGDXMXTTLQXU54TGGT2AMF7PVSVOM3QTBGXBXY6HFJXDOADCWGVPQ",
+                        "rewards": 78000000,
+                        "score": 40800,
+                        "rank": 0,
+                        "image": "QmdtiowSNacBe8stPCWHUFEtjGeQtd8hwtAnEJSrZY9ET4"
+                    },
+                    {
+                        "id": 7,
+                        "name": "Guardian 007",
+                        "owner": "YVG5656ZA7M4QQUZHUJWV4VO6CM432LDUTKKYL6CJJLQVLSRHALMZ4MFKQ",
+                        "rewards": 56000000,
+                        "score": 65205,
+                        "rank": 222,
+                        "image": "QmcCyQMqtVAPHrHdKjgtRoFebSJz4QT14TxFPQusvRwkTA"
+                    },
+                    {
+                        "id": 8,
+                        "name": "Guardian 008",
+                        "owner": "MUHSWEKB2E5YNKJJ7ZB7OXLV7G7H5ZACU6PAREWJIE77M36MIQHSKOCSPY",
+                        "rewards": 92000000,
+                        "score": 63779,
+                        "rank": 266,
+                        "image": "QmSKWSXTK49ggFaTRfCSzvVhb99CKBS2wdVMtoAT9BtzpP"
+                    },
+                    {
+                        "id": 9,
+                        "name": "Guardian 009",
+                        "owner": "OQHHRNGDXMXTTLQXU54TGGT2AMF7PVSVOM3QTBGXBXY6HFJXDOADCWGVPQ",
+                        "rewards": 88000000,
+                        "score": 40800,
+                        "rank": 0,
+                        "image": "QmSHw99izFNUJyA7FFDuHFwNkR9wiChDWBxCqgnYRcNYHJ"
+                    }
+                ]
             },
             "contracts": {
                 "item": {

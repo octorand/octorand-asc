@@ -1,8 +1,8 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const testnet = require('./../../../../chain/testnet');
-const helpers = require('./../../../../chain/util/helpers');
+const testnet = require('./../../../../../chain/testnet');
+const helpers = require('./../../../../../chain/util/helpers');
 
 exports.execute = async function () {
 
@@ -12,20 +12,20 @@ exports.execute = async function () {
     let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
     let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
-    let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/testnet/gen1/prime/app/contract.json')));
+    let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/testnet/gen1/item/app/contract.json')));
 
-    let max = config['gen1']['inputs']['max'];
+    let max = config['launchpad']['guardians']['inputs']['max'];
 
     for (let i = 0; i < max; i++) {
-        let primes = config['gen1']['inputs']['primes'];
+        let items = config['gen1']['inputs']['items'];
 
-        if (!primes[i]['refreshed']) {
+        if (!items[i]['refreshed']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addMethodCall({
                 sender: sender,
                 signer: signer,
-                appID: primes[i]['application_id'],
+                appID: items[i]['application_id'],
                 method: helpers.method(contract, 'refresh'),
                 methodArgs: [],
                 appForeignAssets: [
@@ -40,9 +40,9 @@ exports.execute = async function () {
 
             await testnet.execute(composer);
 
-            primes[i]['refreshed'] = true;
+            items[i]['refreshed'] = true;
 
-            config['gen1']['inputs']['primes'] = primes;
+            config['gen1']['inputs']['items'] = items;
             fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('refresh main application ' + i);

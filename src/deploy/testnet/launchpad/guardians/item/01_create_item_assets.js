@@ -1,23 +1,23 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const testnet = require('./../../../../chain/testnet');
+const testnet = require('./../../../../../chain/testnet');
 
 exports.execute = async function () {
 
     let connection = await testnet.get();
     let params = await connection.algodClient.getTransactionParams().do();
-    let sender = connection.legacy.addr;
-    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.legacy);
+    let sender = connection.guardians.manager.addr;
+    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.guardians.manager);
 
     let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
 
-    let max = config['gen1']['inputs']['max'];
+    let max = config['launchpad']['guardians']['inputs']['max'];
 
     for (let i = 0; i < max; i++) {
-        let primes = config['gen1']['inputs']['primes'];
+        let items = config['launchpad']['guardians']['inputs']['items'];
 
-        if (!primes[i]['legacy_asset_id']) {
+        if (!items[i]['asset_id']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addTransaction({
@@ -29,8 +29,9 @@ exports.execute = async function () {
                     defaultFrozen: false,
                     manager: sender,
                     reserve: sender,
-                    unitName: 'OCTO-' + String(primes[i]['id']).padStart(3, '0'),
-                    assetName: 'Octorand #' + String(primes[i]['id']).padStart(3, '0'),
+                    unitName: 'GUARD' + String(items[i]['id']).padStart(3, '0'),
+                    assetName: 'Guardian #' + String(items[i]['id']).padStart(3, '0'),
+                    assetURL: 'template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}',
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -42,12 +43,12 @@ exports.execute = async function () {
             let response = await testnet.execute(composer);
             let asset_id = response.information['asset-index'];
 
-            primes[i]['legacy_asset_id'] = asset_id;
+            items[i]['asset_id'] = asset_id;
 
-            config['gen1']['inputs']['primes'] = primes;
+            config['launchpad']['guardians']['inputs']['items'] = items;
             fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('create legacy asset ' + i);
+            console.log('create item asset ' + i);
         }
     }
 
