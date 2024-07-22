@@ -8,16 +8,16 @@ exports.execute = async function () {
 
     let connection = await testnet.get();
     let params = await connection.algodClient.getTransactionParams().do();
-    let sender = connection.guardians.manager.addr;
-    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.guardians.manager);
+    let sender = connection.takos.manager.addr;
+    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.takos.manager);
 
     let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
-    let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/testnet/launchpad/guardians/item/app/contract.json')));
+    let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/testnet/launchpad/takos/item/app/contract.json')));
 
-    let max = config['launchpad']['guardians']['inputs']['max'];
+    let max = config['launchpad']['takos']['inputs']['max'];
 
     for (let i = 0; i < max; i++) {
-        let items = config['launchpad']['guardians']['inputs']['items'];
+        let items = config['launchpad']['takos']['inputs']['items'];
 
         if (!items[i]['refreshed']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
@@ -29,7 +29,7 @@ exports.execute = async function () {
                 method: helpers.method(contract, 'refresh'),
                 methodArgs: [],
                 appForeignAssets: [
-                    config['setup']['guardians']['asset_id']
+                    config['setup']['takos']['asset_id']
                 ],
                 suggestedParams: {
                     ...params,
@@ -42,7 +42,7 @@ exports.execute = async function () {
 
             items[i]['refreshed'] = true;
 
-            config['launchpad']['guardians']['inputs']['items'] = items;
+            config['launchpad']['takos']['inputs']['items'] = items;
             fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('refresh main application ' + i);

@@ -19,11 +19,11 @@ exports.execute = async function () {
     for (let i = 0; i < contracts.length; i++) {
         let contract = contracts[i];
 
-        let application = config['launchpad']['guardians']['contracts']['item'][contract];
+        let application = config['launchpad']['takos']['contracts']['item'][contract];
 
         if (application['application_version'] < version) {
-            let approvalProgram = fs.readFileSync('src/build/testnet/launchpad/guardians/item/' + contract + '/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/testnet/launchpad/guardians/item/' + contract + '/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/testnet/launchpad/takos/item/' + contract + '/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/testnet/launchpad/takos/item/' + contract + '/clear.teal', 'utf8');
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -47,7 +47,7 @@ exports.execute = async function () {
 
             application['application_version'] = version;
 
-            config['launchpad']['guardians']['contracts']['item'][contract] = application;
+            config['launchpad']['takos']['contracts']['item'][contract] = application;
             fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('updated item ' + contract);

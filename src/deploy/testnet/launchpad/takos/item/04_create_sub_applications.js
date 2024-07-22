@@ -12,29 +12,31 @@ exports.execute = async function () {
 
     let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
 
-    let version = 1;
-
     let contracts = ['buy', 'claim', 'list', 'mint', 'rename', 'unlist'];
 
     for (let i = 0; i < contracts.length; i++) {
         let contract = contracts[i];
 
-        let application = config['launchpad']['guardians']['contracts']['item'][contract];
+        let application = config['launchpad']['takos']['contracts']['item'][contract];
 
-        if (application['application_version'] < version) {
-            let approvalProgram = fs.readFileSync('src/build/testnet/launchpad/guardians/item/' + contract + '/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/testnet/launchpad/guardians/item/' + contract + '/clear.teal', 'utf8');
+        if (!application['application_id']) {
+            let approvalProgram = fs.readFileSync('src/build/testnet/launchpad/takos/item/' + contract + '/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/testnet/launchpad/takos/item/' + contract + '/clear.teal', 'utf8');
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addTransaction({
                 signer: signer,
-                txn: connection.baseClient.makeApplicationUpdateTxnFromObject({
+                txn: connection.baseClient.makeApplicationCreateTxnFromObject({
                     from: sender,
-                    appIndex: application['application_id'],
                     onComplete: connection.baseClient.OnApplicationComplete.NoOpOC,
                     approvalProgram: await testnet.compile(approvalProgram),
                     clearProgram: await testnet.compile(clearProgram),
+                    numLocalInts: 0,
+                    numLocalByteSlices: 0,
+                    numGlobalInts: 0,
+                    numGlobalByteSlices: 0,
+                    extraPages: 0,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -43,14 +45,17 @@ exports.execute = async function () {
                 })
             });
 
-            await testnet.execute(composer);
+            let response = await testnet.execute(composer);
+            let application_id = response.information['application-index'];
 
-            application['application_version'] = version;
+            application['application_id'] = application_id;
+            application['application_address'] = connection.baseClient.getApplicationAddress(application_id);
+            application['application_version'] = 0;
 
-            config['launchpad']['guardians']['contracts']['item'][contract] = application;
+            config['launchpad']['takos']['contracts']['item'][contract] = application;
             fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('updated item ' + contract);
+            console.log('created item ' + contract);
         }
     }
 

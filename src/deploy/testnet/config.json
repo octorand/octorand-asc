@@ -2955,7 +2955,8 @@
                         "application_version": 1,
                         "funded": true,
                         "initialized": true,
-                        "loaded": true
+                        "loaded": true,
+                        "refreshed": true
                     },
                     {
                         "id": 1,
@@ -2971,7 +2972,8 @@
                         "application_version": 1,
                         "funded": true,
                         "initialized": true,
-                        "loaded": true
+                        "loaded": true,
+                        "refreshed": true
                     },
                     {
                         "id": 2,
@@ -2987,7 +2989,8 @@
                         "application_version": 1,
                         "funded": true,
                         "initialized": true,
-                        "loaded": true
+                        "loaded": true,
+                        "refreshed": true
                     },
                     {
                         "id": 3,
@@ -3003,7 +3006,8 @@
                         "application_version": 1,
                         "funded": true,
                         "initialized": true,
-                        "loaded": true
+                        "loaded": true,
+                        "refreshed": true
                     },
                     {
                         "id": 4,
@@ -3019,7 +3023,8 @@
                         "application_version": 1,
                         "funded": true,
                         "initialized": true,
-                        "loaded": true
+                        "loaded": true,
+                        "refreshed": true
                     },
                     {
                         "id": 5,
@@ -3035,7 +3040,8 @@
                         "application_version": 1,
                         "funded": true,
                         "initialized": true,
-                        "loaded": true
+                        "loaded": true,
+                        "refreshed": true
                     },
                     {
                         "id": 6,
@@ -3051,7 +3057,8 @@
                         "application_version": 1,
                         "funded": true,
                         "initialized": true,
-                        "loaded": true
+                        "loaded": true,
+                        "refreshed": true
                     },
                     {
                         "id": 7,
@@ -3067,7 +3074,8 @@
                         "application_version": 1,
                         "funded": true,
                         "initialized": true,
-                        "loaded": true
+                        "loaded": true,
+                        "refreshed": true
                     },
                     {
                         "id": 8,
@@ -3083,7 +3091,8 @@
                         "application_version": 1,
                         "funded": true,
                         "initialized": true,
-                        "loaded": true
+                        "loaded": true,
+                        "refreshed": true
                     },
                     {
                         "id": 9,
@@ -3099,25 +3108,142 @@
                         "application_version": 1,
                         "funded": true,
                         "initialized": true,
-                        "loaded": true
+                        "loaded": true,
+                        "refreshed": true
                     }
                 ]
             },
             "contracts": {
                 "item": {
-                    "buy": {},
-                    "claim": {},
-                    "list": {},
-                    "mint": {},
-                    "rename": {},
-                    "unlist": {}
+                    "buy": {
+                        "application_id": 704429190,
+                        "application_address": "2EQS2R2QOBQY3OA33PEOTYZRNE5E3QDRDTUBBEMC6EFWSL6OCNNCYOI3VA",
+                        "application_version": 1
+                    },
+                    "claim": {
+                        "application_id": 704429193,
+                        "application_address": "PSKE3E6Z6RU6ZJCDL7TWFSVRFJOLYYTL63CJ532DZXTVFXXMC6F4XTHGZ4",
+                        "application_version": 1
+                    },
+                    "list": {
+                        "application_id": 704429200,
+                        "application_address": "H3IDNKTPDJ3N7N2QSD7YUB7EI27DVXOJYM6BMC4WRLGMQSMNGUVD3VKKIU",
+                        "application_version": 1
+                    },
+                    "mint": {
+                        "application_id": 704429219,
+                        "application_address": "EGB5ONLZXESBDSESWEGLYJRVQC5R5TFO64ZJQLAS5JTQDAZWMYO6VWSQ74",
+                        "application_version": 1
+                    },
+                    "rename": {
+                        "application_id": 704429257,
+                        "application_address": "46Y5VBHKK5XLWOJVY37UMEXRBJHITKPFDGHZ5ANWHVLFDS5FKUWRMIS3VA",
+                        "application_version": 1
+                    },
+                    "unlist": {
+                        "application_id": 704429591,
+                        "application_address": "Y2P2N3INCBNDTIXAZ2NEO4KSY7OYYIZ72VG5M7ZV7T7YQFX7ORKS2IMAAQ",
+                        "application_version": 1
+                    }
                 }
             }
         },
         "takos": {
             "inputs": {
                 "max": 10,
-                "items": []
+                "items": [
+                    {
+                        "id": 0,
+                        "name": "Tako 0000",
+                        "owner": "TZODOLUI47MKUHF7UH3YXOEDTVOGP2CQ67Y4PT5WKHLY3IU5IQPYYKW5EY",
+                        "rewards": 0,
+                        "score": 195125,
+                        "rank": 1253,
+                        "image": "QmSEs4zEoHhVNha5bwWVpeq1kjarsJF9TWMicgk1raTcZv",
+                        "asset_id": 704430293
+                    },
+                    {
+                        "id": 1,
+                        "name": "Tako 0001",
+                        "owner": "US2LVOYCTY5HCYBI6A7NOAGCUK6VEBVAMRNBHMVPT56CFAQCJUP2MMJVQY",
+                        "rewards": 0,
+                        "score": 195049,
+                        "rank": 1288,
+                        "image": "QmYUUnC9CXa8c7mr5BxPAxQy4eMfFSFMdJXmXBh6CEEgTW"
+                    },
+                    {
+                        "id": 2,
+                        "name": "Tako 0002",
+                        "owner": "AT44H23KIYYAGD7KKOH7QA5I2XDN5O7YPD5IS7H5727PK65J7L5D3LL57U",
+                        "rewards": 1860000,
+                        "score": 198963,
+                        "rank": 222,
+                        "image": "QmRp2yRVEgVyijkC5yrN7CCkWUZ31iDwsi6bFEA6by6WGW"
+                    },
+                    {
+                        "id": 3,
+                        "name": "Tako 0003",
+                        "owner": "RWYPY3WPFLAA3D4YNR5ZGGITWY4DJMHU6NO2G33FS4AYZXTTUPJ75KPHBU",
+                        "rewards": 197000000,
+                        "score": 195406,
+                        "rank": 1144,
+                        "image": "Qmb3cuc1B3wzaYhSdL9giaBgEEJNPxrY8ytpXL5PwEwjqL"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Tako 0004",
+                        "owner": "ZYB5LJXYDNTINBDE3ZF3ZYLAQLWYP3RYBW4FMQA6XDLY7O5FSVCFDS6WOA",
+                        "rewards": 69000000,
+                        "score": 193740,
+                        "rank": 1745,
+                        "image": "QmbwhatEntBjygAkZ2Pt7KaJZCxeK49GgZE7JXdhLn65LA"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Tako 0005",
+                        "owner": "ETDM7KE3YDXSYP6CDBNQQQASKVOZS6OMGDWEKDE6BSIZYS2EY2IKBJXRNM",
+                        "rewards": 90325000,
+                        "score": 195285,
+                        "rank": 1198,
+                        "image": "QmWwWw7VnJDXSfxvDvDz7YEa4dkzkK7hJqqGkPPKiT1uFr"
+                    },
+                    {
+                        "id": 6,
+                        "name": "Tako 0006",
+                        "owner": "I6BQR7I3WVK2RA456KBQSFTGVTG2EALBFCXG6R23ADDO4UZOD6VULPE3ZI",
+                        "rewards": 0,
+                        "score": 192847,
+                        "rank": 1844,
+                        "image": "QmVTrnNawcanetigJvCggyohERMwH1wVAbuSsVbGg2JA7Z"
+                    },
+                    {
+                        "id": 7,
+                        "name": "Tako 0007",
+                        "owner": "FPL3PHDXEDCADWMQGIRMIG5PYB7X5PNNVX7WJGWWGKD72P236JUCUVJKZA",
+                        "rewards": 0,
+                        "score": 196054,
+                        "rank": 895,
+                        "image": "QmQLHoLj3dNPsM6fqoEsq2xtuD9mHdGSBFpRSbkjUQ1CoU"
+                    },
+                    {
+                        "id": 8,
+                        "name": "Tako 0008",
+                        "owner": "I6BQR7I3WVK2RA456KBQSFTGVTG2EALBFCXG6R23ADDO4UZOD6VULPE3ZI",
+                        "rewards": 0,
+                        "score": 196369,
+                        "rank": 786,
+                        "image": "QmQDrBXc5Hx2j7xkakUprHUv54czksfJjA4CwcrTs9wbGo"
+                    },
+                    {
+                        "id": 9,
+                        "name": "Tako 0009",
+                        "owner": "RGKRSOBNULGABUFKM7XC6OJUMNV6XJMD7F37TRNNAFI2CDPIIOQJVEYCR4",
+                        "rewards": 88000000,
+                        "score": 191559,
+                        "rank": 1881,
+                        "image": "Qma2Q9GQo7Bekpm5SfNxEc7NKgRGv3NvYzEDo4DYeg6KKp"
+                    }
+                ]
             },
             "contracts": {
                 "item": {
