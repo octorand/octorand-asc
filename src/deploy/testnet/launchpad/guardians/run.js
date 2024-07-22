@@ -7,10 +7,9 @@ exports.execute = async function () {
     await require('./item/01_create_item_assets').execute();
 
     console.log('launchpad guardians item setup resources');
-    // await require('./prime/03_create_main_applications').execute();
-    // await require('./prime/04_update_main_applications').execute();
-    // await require('./prime/05_lock_main_applications').execute();
-    // await require('./prime/06_create_sub_applications').execute();
-    // await require('./prime/07_update_sub_applications').execute();
-    // await require('./prime/08_refresh_main_applications').execute();
+    await require('./item/02_create_main_applications').execute();
+    await require('./item/03_update_main_applications').execute();
+    // await require('./item/04_create_sub_applications').execute();
+    // await require('./item/05_update_sub_applications').execute();
+    // await require('./item/06_refresh_main_applications').execute();
 }

@@ -16,11 +16,11 @@ exports.execute = async function () {
     let max = config['launchpad']['guardians']['inputs']['max'];
 
     for (let i = 0; i < max; i++) {
-        let items = config['gen1']['inputs']['items'];
+        let items = config['launchpad']['guardians']['inputs']['items'];
 
         if (!items[i]['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/testnet/gen1/item/build/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/testnet/gen1/item/build/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/testnet/launchpad/guardians/item/app/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/testnet/launchpad/guardians/item/app/clear.teal', 'utf8');
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -34,7 +34,7 @@ exports.execute = async function () {
                     numLocalInts: 0,
                     numLocalByteSlices: 0,
                     numGlobalInts: 0,
-                    numGlobalByteSlices: 2,
+                    numGlobalByteSlices: 1,
                     extraPages: 0,
                     note: helpers.bytes('ID:' + items[i]['id']),
                     suggestedParams: {
@@ -52,7 +52,7 @@ exports.execute = async function () {
             items[i]['application_address'] = connection.baseClient.getApplicationAddress(application_id);
             items[i]['application_version'] = 0;
 
-            config['gen1']['inputs']['items'] = items;
+            config['launchpad']['guardians']['inputs']['items'] = items;
             fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('create main application ' + i);

@@ -12,14 +12,14 @@ exports.execute = async function () {
     let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
     let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
-    let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/testnet/gen1/item/build/contract.json')));
+    let contract = new connection.baseClient.ABIContract(JSON.parse(fs.readFileSync('src/build/testnet/launchpad/guardians/item/app/contract.json')));
 
     let version = 1;
 
     let max = config['launchpad']['guardians']['inputs']['max'];
 
     for (let i = 0; i < max; i++) {
-        let items = config['gen1']['inputs']['items'];
+        let items = config['launchpad']['guardians']['inputs']['items'];
 
         let composer = new connection.baseClient.AtomicTransactionComposer();
 
