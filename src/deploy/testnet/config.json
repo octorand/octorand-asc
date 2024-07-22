@@ -2952,7 +2952,10 @@
                         "asset_id": 704419491,
                         "application_id": 704420173,
                         "application_address": "KWCP5PBL2LEV43OYRC6CM6IZHNY5CHG2AX2FKZNE3GMCD4CXPTRJILFY74",
-                        "application_version": 0
+                        "application_version": 1,
+                        "funded": true,
+                        "initialized": true,
+                        "loaded": true
                     },
                     {
                         "id": 1,
@@ -2965,7 +2968,10 @@
                         "asset_id": 704419533,
                         "application_id": 704420207,
                         "application_address": "F27KW35V5DOCCFLPQFP3NPBPE74GO35E6OIBGP3GGPVY42ZJQTQQ2FZ5KY",
-                        "application_version": 0
+                        "application_version": 1,
+                        "funded": true,
+                        "initialized": true,
+                        "loaded": true
                     },
                     {
                         "id": 2,
@@ -2978,7 +2984,10 @@
                         "asset_id": 704419567,
                         "application_id": 704420226,
                         "application_address": "HBOWZBFCSQAV7WQC2MNTBTMIDYGPTNXSMGAMYQ2UGJPEOU3FLOGYAGI4VY",
-                        "application_version": 0
+                        "application_version": 1,
+                        "funded": true,
+                        "initialized": true,
+                        "loaded": true
                     },
                     {
                         "id": 3,
@@ -2991,7 +3000,10 @@
                         "asset_id": 704419570,
                         "application_id": 704420261,
                         "application_address": "HFOY4YJG4EPEGA2LBSZNO7RDOCPNCBXRSKL7VEYR6IBRV6NIRP755YU37E",
-                        "application_version": 0
+                        "application_version": 1,
+                        "funded": true,
+                        "initialized": true,
+                        "loaded": true
                     },
                     {
                         "id": 4,
@@ -3004,7 +3016,10 @@
                         "asset_id": 704419578,
                         "application_id": 704420264,
                         "application_address": "NYFPG3TI3M225HLFVUG224JT7GIUQI5PZ74653UPC5IIOKRWEOEDMNCZEY",
-                        "application_version": 0
+                        "application_version": 1,
+                        "funded": true,
+                        "initialized": true,
+                        "loaded": true
                     },
                     {
                         "id": 5,
@@ -3017,7 +3032,10 @@
                         "asset_id": 704419590,
                         "application_id": 704420282,
                         "application_address": "TWYLTUEJQ45KDFV5IAGF7ZZNYACQIVVL4L3TYFWEHDMCZDX6WJFBZ36HOE",
-                        "application_version": 0
+                        "application_version": 1,
+                        "funded": true,
+                        "initialized": true,
+                        "loaded": true
                     },
                     {
                         "id": 6,
@@ -3030,7 +3048,10 @@
                         "asset_id": 704419623,
                         "application_id": 704420288,
                         "application_address": "VIMNCBBBMYKE7XZKL72M2PDMEEDH4DDGJ74GNRYJFE4RWPRN3DTZMTFQUQ",
-                        "application_version": 0
+                        "application_version": 1,
+                        "funded": true,
+                        "initialized": true,
+                        "loaded": true
                     },
                     {
                         "id": 7,
@@ -3043,7 +3064,10 @@
                         "asset_id": 704419626,
                         "application_id": 704420326,
                         "application_address": "T5AIIOHZQ2QUH5OTMM4NHDMVUUBYYHTWWTHE7WB4MSX6XHSA2BRXVCBKPU",
-                        "application_version": 0
+                        "application_version": 1,
+                        "funded": true,
+                        "initialized": true,
+                        "loaded": true
                     },
                     {
                         "id": 8,
@@ -3056,7 +3080,10 @@
                         "asset_id": 704419634,
                         "application_id": 704420370,
                         "application_address": "OYZ2HMIPAXQSZ2BKBV3BKUFTICZWDLHHLCG6ZQ5LXKNZVM733ZCJNFWBCA",
-                        "application_version": 0
+                        "application_version": 1,
+                        "funded": true,
+                        "initialized": true,
+                        "loaded": true
                     },
                     {
                         "id": 9,
@@ -3069,7 +3096,10 @@
                         "asset_id": 704419646,
                         "application_id": 704420376,
                         "application_address": "3QUIFQKOPI4BFEO3JY67Q3UWIQTX2JZPOYUGEQEDVURA2UIJE4LXCNZHQI",
-                        "application_version": 0
+                        "application_version": 1,
+                        "funded": true,
+                        "initialized": true,
+                        "loaded": true
                     }
                 ]
             },

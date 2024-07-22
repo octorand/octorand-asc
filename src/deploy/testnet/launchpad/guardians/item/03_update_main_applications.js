@@ -31,7 +31,7 @@ exports.execute = async function () {
                 txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: items[i]['application_address'],
-                    amount: 400000,
+                    amount: 300000,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -51,43 +51,14 @@ exports.execute = async function () {
                 method: helpers.method(contract, 'initialize'),
                 methodArgs: [
                     items[i]['id'],
-                    config['setup']['platform']['asset_id'],
-                    items[i]['item_asset_id'],
-                    items[i]['legacy_asset_id'],
-                ],
-                suggestedParams: {
-                    ...params,
-                    fee: 4000,
-                    flatFee: true
-                }
-            });
-        }
-
-        if (!items[i]['populated']) {
-            items[i]['populated'] = true;
-
-            composer.addMethodCall({
-                sender: sender,
-                signer: signer,
-                appID: items[i]['application_id'],
-                method: helpers.method(contract, 'populate'),
-                methodArgs: [
-                    items[i]['theme'],
-                    items[i]['skin'],
-                    items[i]['is_founder'],
-                    items[i]['is_artifact'],
-                    items[i]['is_pioneer'],
-                    items[i]['is_explorer'],
-                    items[i]['score'],
-                    items[i]['sales'],
-                    items[i]['drains'],
-                    items[i]['transforms'],
-                    helpers.bytes(items[i]['name'], 8),
+                    config['setup']['guardians']['asset_id'],
+                    items[i]['asset_id'],
+                    helpers.bytes(items[i]['name'], 16),
                     items[i]['owner'],
                 ],
                 suggestedParams: {
                     ...params,
-                    fee: 1000,
+                    fee: 3000,
                     flatFee: true
                 }
             });
@@ -102,23 +73,8 @@ exports.execute = async function () {
                 txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     from: sender,
                     to: items[i]['application_address'],
-                    assetIndex: config['setup']['platform']['asset_id'],
+                    assetIndex: config['setup']['guardians']['asset_id'],
                     amount: items[i]['rewards'],
-                    suggestedParams: {
-                        ...params,
-                        fee: 1000,
-                        flatFee: true
-                    }
-                })
-            });
-
-            composer.addTransaction({
-                sender: sender,
-                signer: signer,
-                txn: connection.baseClient.makePaymentTxnWithSuggestedParamsFromObject({
-                    from: sender,
-                    to: items[i]['application_address'],
-                    amount: 100000,
                     suggestedParams: {
                         ...params,
                         fee: 1000,
@@ -131,8 +87,8 @@ exports.execute = async function () {
         if (items[i]['application_version'] < version) {
             items[i]['application_version'] = version;
 
-            let approvalProgram = fs.readFileSync('src/build/testnet/gen1/item/app/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/testnet/gen1/item/app/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/testnet/launchpad/guardians/item/app/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/testnet/launchpad/guardians/item/app/clear.teal', 'utf8');
 
             composer.addTransaction({
                 signer: signer,
@@ -154,15 +110,13 @@ exports.execute = async function () {
         if (composer.count() > 0) {
             await testnet.execute(composer);
 
-            config['gen1']['inputs']['items'] = items;
+            config['launchpad']['guardians']['inputs']['items'] = items;
             fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('fund main application ' + i);
             console.log('initialize main application ' + i);
-            console.log('populate main application ' + i);
             console.log('load main application ' + i);
             console.log('update main application ' + i);
         }
     }
-
 }
