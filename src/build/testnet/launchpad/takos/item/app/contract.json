@@ -1,0 +1,157 @@
+{
+    "name": "LaunchpadTakos",
+    "methods": [
+        {
+            "name": "initialize",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "id"
+                },
+                {
+                    "type": "asset",
+                    "name": "platform_asset"
+                },
+                {
+                    "type": "asset",
+                    "name": "item_asset"
+                },
+                {
+                    "type": "byte[16]",
+                    "name": "name"
+                },
+                {
+                    "type": "address",
+                    "name": "owner"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "list",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "price"
+                },
+                {
+                    "type": "address",
+                    "name": "seller"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "unlist",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "seller"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "buy",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "buyer"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "rename",
+            "args": [
+                {
+                    "type": "byte[16]",
+                    "name": "name"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "mint",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "amount"
+                },
+                {
+                    "type": "address",
+                    "name": "owner"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "claim",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "owner"
+                },
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "fire",
+            "args": [
+                {
+                    "type": "byte[240]",
+                    "name": "log"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "refresh",
+            "args": [],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}
