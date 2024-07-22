@@ -1,20 +1,23 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const testnet = require('./../../../../../chain/testnet');
+const testnet = require('./../../../../chain/testnet');
 
 exports.execute = async function () {
-    try {
-        let connection = await testnet.get();
-        let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.takos.manager.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.takos.manager);
 
-        let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
+    let connection = await testnet.get();
+    let params = await connection.algodClient.getTransactionParams().do();
+    let sender = connection.gen1.addr;
+    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.gen1);
 
-        let item = config['launchpad']['takos']['inputs']['item'];
+    let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
 
-        if (!item['item_asset_id']) {
+    let max = config['gen1']['inputs']['max'];
+
+    for (let i = 0; i < max; i++) {
+        let primes = config['gen1']['inputs']['primes'];
+
+        if (!primes[i]['prime_asset_id']) {
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
             composer.addTransaction({
@@ -26,8 +29,8 @@ exports.execute = async function () {
                     defaultFrozen: false,
                     manager: sender,
                     reserve: sender,
-                    unitName: 'LG-' + String(item['id']).padStart(3, '0'),
-                    assetName: 'Test Launchpad #' + String(item['id']).padStart(3, '0'),
+                    unitName: 'OG1-' + String(primes[i]['id']).padStart(3, '0'),
+                    assetName: 'Octorand Gen1 #' + String(primes[i]['id']).padStart(3, '0'),
                     assetURL: 'template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}',
                     suggestedParams: {
                         ...params,
@@ -40,14 +43,13 @@ exports.execute = async function () {
             let response = await testnet.execute(composer);
             let asset_id = response.information['asset-index'];
 
-            item['item_asset_id'] = asset_id;
+            primes[i]['prime_asset_id'] = asset_id;
 
-            config['launchpad']['takos']['inputs']['item'] = item;
+            config['gen1']['inputs']['primes'] = primes;
             fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('create takos item asset');
-        };
-    } catch (error) {
-        console.log(error);
+            console.log('create prime asset ' + i);
+        }
     }
+
 }

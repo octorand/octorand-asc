@@ -3,16 +3,15 @@ require('dotenv').config();
 exports.execute = async function () {
 
     console.log('launchpad takos item setup contracts');
-    // await require('./item/00_compile_contracts').execute();
-    // await require('./item/01_create_main_application').execute();
-    // await require('./item/02_create_sub_applications').execute();
-    // await require('./item/03_update_applications').execute();
+    // await require('./prime/00_create_prime_inputs').execute();
+    // await require('./prime/01_create_legacy_assets').execute();
+    // await require('./prime/02_create_prime_assets').execute();
 
     console.log('launchpad takos item setup resources');
-    // await require('./item/04_setup_item_input').execute();
-    // await require('./item/05_create_item_asset').execute();
-    // await require('./item/06_fund_application').execute();
-    // await require('./item/07_call_initialize').execute();
-    // await require('./item/08_transfer_assets').execute();
-
+    // await require('./prime/03_create_main_applications').execute();
+    // await require('./prime/04_update_main_applications').execute();
+    // await require('./prime/05_lock_main_applications').execute();
+    // await require('./prime/06_create_sub_applications').execute();
+    // await require('./prime/07_update_sub_applications').execute();
+    // await require('./prime/08_refresh_main_applications').execute();
 }

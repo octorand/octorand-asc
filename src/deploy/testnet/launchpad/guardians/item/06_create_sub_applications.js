@@ -1,22 +1,27 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const testnet = require('./../../../../../chain/testnet');
+const testnet = require('./../../../../chain/testnet');
 
 exports.execute = async function () {
-    try {
-        let connection = await testnet.get();
-        let params = await connection.algodClient.getTransactionParams().do();
-        let sender = connection.takos.manager.addr;
-        let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.takos.manager);
 
-        let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
+    let connection = await testnet.get();
+    let params = await connection.algodClient.getTransactionParams().do();
+    let sender = connection.admin.addr;
+    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.admin);
 
-        let application = config['launchpad']['takos']['contracts']['item']['app'];
+    let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
+
+    let contracts = ['buy', 'claim', 'list', 'mint', 'optin', 'optout', 'rename', 'repaint', 'unlist', 'upgrade', 'withdraw'];
+
+    for (let i = 0; i < contracts.length; i++) {
+        let contract = contracts[i];
+
+        let application = config['gen1']['contracts']['prime'][contract];
 
         if (!application['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/testnet/launchpad/takos/item/app/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/testnet/launchpad/takos/item/app/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/testnet/gen1/prime/' + contract + '/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/testnet/gen1/prime/' + contract + '/clear.teal', 'utf8');
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -30,7 +35,7 @@ exports.execute = async function () {
                     numLocalInts: 0,
                     numLocalByteSlices: 0,
                     numGlobalInts: 0,
-                    numGlobalByteSlices: 1,
+                    numGlobalByteSlices: 0,
                     extraPages: 0,
                     suggestedParams: {
                         ...params,
@@ -47,12 +52,11 @@ exports.execute = async function () {
             application['application_address'] = connection.baseClient.getApplicationAddress(application_id);
             application['application_version'] = 0;
 
-            config['launchpad']['takos']['contracts']['item']['app'] = application;
+            config['gen1']['contracts']['prime'][contract] = application;
             fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
 
-            console.log('created launchpad takos app');
+            console.log('created prime ' + contract);
         }
-    } catch (error) {
-        console.log(error);
     }
+
 }
