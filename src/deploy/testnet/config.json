@@ -2935,5 +2935,39 @@
                 }
             }
         }
+    },
+    "launchpad": {
+        "guardians": {
+            "inputs": {
+                "max": 10,
+                "items": []
+            },
+            "contracts": {
+                "item": {
+                    "buy": {},
+                    "claim": {},
+                    "list": {},
+                    "mint": {},
+                    "rename": {},
+                    "unlist": {}
+                }
+            }
+        },
+        "takos": {
+            "inputs": {
+                "max": 10,
+                "items": []
+            },
+            "contracts": {
+                "item": {
+                    "buy": {},
+                    "claim": {},
+                    "list": {},
+                    "mint": {},
+                    "rename": {},
+                    "unlist": {}
+                }
+            }
+        }
     }
 }
