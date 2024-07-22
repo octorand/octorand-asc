@@ -4,7 +4,25 @@
             "asset_id": 680649213,
             "manager": "EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU",
             "reserve": "EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU"
-        }
+        },
+        "guardians": {
+            "asset_id": 704366178,
+            "manager": "EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU",
+            "reserve": "EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU"
+        },
+        "takos": {
+            "asset_id": 704366187,
+            "manager": "EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU",
+            "reserve": "EQ6CG4M4TT7AKK2E3L6GPCJQREBUTL272SGBKIG7DP3RCKIN3AJNPD27HU"
+        },
+        "optin_guardians_manager": true,
+        "optin_guardians_artist": true,
+        "optin_guardians_treasury": true,
+        "optin_guardians_burner": true,
+        "optin_takos_manager": true,
+        "optin_takos_artist": true,
+        "optin_takos_treasury": true,
+        "optin_takos_burner": true
     },
     "gen1": {
         "inputs": {

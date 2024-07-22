@@ -1,6 +1,8 @@
 {
     "setup": {
-        "platform": {}
+        "platform": {},
+        "guardians": {},
+        "takos": {}
     },
     "gen1": {
         "inputs": {
