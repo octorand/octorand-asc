@@ -1,0 +1,424 @@
+{
+    "sales": [
+        {
+            "id": "takos-0007",
+            "seller": "FPL3PHDXEDCADWMQGIRMIG5PYB7X5PNNVX7WJGWWGKD72P236JUCUVJKZA",
+            "price": 200000000
+        },
+        {
+            "id": "takos-0018",
+            "seller": "446S3AEXQDLUWF2RQCANXSAJFEJ7EYWRNOCPUNJ5YR4QE7I4Z6OGFKQQCE",
+            "price": 69000000
+        },
+        {
+            "id": "takos-0019",
+            "seller": "MYFG3THILHAIQKBOQ7NSMDHMAAOQLOARCFP6SCJBQDHH2RPILAUPFRGNUM",
+            "price": 500000000
+        },
+        {
+            "id": "takos-0023",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 300000000
+        },
+        {
+            "id": "takos-0034",
+            "seller": "GZUS3ROE6T7QJA4LQTKKS7TGUFON3IZIGI7XLBJPZQDZSZTIYB2A2FDXQM",
+            "price": 88000000
+        },
+        {
+            "id": "takos-0037",
+            "seller": "5DOZTLOTXJGA42YRQAK6RKB3X6UZ3DZ5BC6JUCGQF2PBOZSVUVYJMHY5DA",
+            "price": 35000000
+        },
+        {
+            "id": "takos-0084",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 35000000
+        },
+        {
+            "id": "takos-0089",
+            "seller": "RGKRSOBNULGABUFKM7XC6OJUMNV6XJMD7F37TRNNAFI2CDPIIOQJVEYCR4",
+            "price": 999000000
+        },
+        {
+            "id": "takos-0106",
+            "seller": "YXA7NZIZMLABW525ALR6XHLCJSD3JOMUM7FQNRJDJMGDNHXRSCQIOOKXBA",
+            "price": 75000000
+        },
+        {
+            "id": "takos-0134",
+            "seller": "4FN2HR7URXQKXE3VOUVXTRSPBGQA6UOFXCASIR4SCCBLSLLR74QGUB2EYI",
+            "price": 1000000000
+        },
+        {
+            "id": "takos-0137",
+            "seller": "CUB6FFX6LPYCIN7J3JMBO7F4FJXD3TNG2RKUSBL5FOFQDYPQLUWO3TKRXY",
+            "price": 420000000
+        },
+        {
+            "id": "takos-0151",
+            "seller": "446S3AEXQDLUWF2RQCANXSAJFEJ7EYWRNOCPUNJ5YR4QE7I4Z6OGFKQQCE",
+            "price": 99000000
+        },
+        {
+            "id": "takos-0153",
+            "seller": "H2AV2KJPBY6BHGVUZJAESWBPB2DTDQ5MLNZQL4REIRVRAEJ64P5HUDVPPU",
+            "price": 85000000
+        },
+        {
+            "id": "takos-0175",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 150000000
+        },
+        {
+            "id": "takos-0186",
+            "seller": "3O3OEMEVGLY5MQFOS2FUXQQJQ4RJ27MBBFAJREHGMUSNZHILWVWWXIMICA",
+            "price": 129000000
+        },
+        {
+            "id": "takos-0193",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 250000000
+        },
+        {
+            "id": "takos-0214",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 250000000
+        },
+        {
+            "id": "takos-0230",
+            "seller": "KESSSPXDU7BFBKZAYASOGWTBDPUUNDEGSYTRCGILZ6WEK765I47DARSJNY",
+            "price": 85000000
+        },
+        {
+            "id": "takos-0280",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 35000000
+        },
+        {
+            "id": "takos-0309",
+            "seller": "446S3AEXQDLUWF2RQCANXSAJFEJ7EYWRNOCPUNJ5YR4QE7I4Z6OGFKQQCE",
+            "price": 330000000
+        },
+        {
+            "id": "takos-0326",
+            "seller": "5JTOCJVFANIQPTSAY5ILMKDXVI4HSBWTULTI3B2UEXSDUCAZLT7YAYTZRY",
+            "price": 50000000
+        },
+        {
+            "id": "takos-0341",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 59000000
+        },
+        {
+            "id": "takos-0352",
+            "seller": "FHLU26A2V3TNWU25NZOX4OPPL4RHG2G73FDAEYHMT2V6FFVTOYQPVMUQG4",
+            "price": 260000000
+        },
+        {
+            "id": "takos-0362",
+            "seller": "LIONS6PJKO5GEIAW5IL2XANQLR6L3GJ4F75VUJN3Q53RJAID4PGJZQG4OU",
+            "price": 222000000
+        },
+        {
+            "id": "takos-0435",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 100000000
+        },
+        {
+            "id": "takos-0479",
+            "seller": "H7HKJK76ONZTFIYQA4IEWSMI2P5MKAYF2FCB3FP7RA4G7ONSESJGY2CJY4",
+            "price": 58000000
+        },
+        {
+            "id": "takos-0480",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 350000000
+        },
+        {
+            "id": "takos-0484",
+            "seller": "WREN3NBKU4FBPCUYPIX6U4IIBEFLRMWI45SLDK5JZM4X6HQAV73SARCF5U",
+            "price": 500000000
+        },
+        {
+            "id": "takos-0493",
+            "seller": "IGOXLWPQY7Z5KDFXYDBUIHFJ4HV4MYRGQSFSOQSLMSUYO6BMBKQAZBPZKA",
+            "price": 60000000
+        },
+        {
+            "id": "takos-0532",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 35000000
+        },
+        {
+            "id": "takos-0552",
+            "seller": "RGKRSOBNULGABUFKM7XC6OJUMNV6XJMD7F37TRNNAFI2CDPIIOQJVEYCR4",
+            "price": 999000000
+        },
+        {
+            "id": "takos-0579",
+            "seller": "KESSSPXDU7BFBKZAYASOGWTBDPUUNDEGSYTRCGILZ6WEK765I47DARSJNY",
+            "price": 150000000
+        },
+        {
+            "id": "takos-0612",
+            "seller": "XBOMMMEOIUWEOPDKT4T5AVZY7F52X25GVKW2B4COREGMNYCLQ2GHFOUOM4",
+            "price": 169000000
+        },
+        {
+            "id": "takos-0617",
+            "seller": "WGGI7WTD445BXMD32MUA7DWY6AOFXLRHJQMSTTV65MK3WJZGRRM6MY7KDU",
+            "price": 250000000
+        },
+        {
+            "id": "takos-0618",
+            "seller": "L3FOGNZ3ZIKKFAZY2ZS54W7AKJ36FRL6YB2KWATAUX54UNTNGU7J2IQDNU",
+            "price": 60000000
+        },
+        {
+            "id": "takos-0622",
+            "seller": "FPL3PHDXEDCADWMQGIRMIG5PYB7X5PNNVX7WJGWWGKD72P236JUCUVJKZA",
+            "price": 175000000
+        },
+        {
+            "id": "takos-0632",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 150000000
+        },
+        {
+            "id": "takos-0647",
+            "seller": "4XPWXTIHFL35D5QJXYKNCZ6GY7NLRYZUAREKLDCUSQM652G2KS7NP7FPUI",
+            "price": 499000000
+        },
+        {
+            "id": "takos-0650",
+            "seller": "XBOMMMEOIUWEOPDKT4T5AVZY7F52X25GVKW2B4COREGMNYCLQ2GHFOUOM4",
+            "price": 999000000
+        },
+        {
+            "id": "takos-0662",
+            "seller": "KESSSPXDU7BFBKZAYASOGWTBDPUUNDEGSYTRCGILZ6WEK765I47DARSJNY",
+            "price": 85000000
+        },
+        {
+            "id": "takos-0665",
+            "seller": "5DOZTLOTXJGA42YRQAK6RKB3X6UZ3DZ5BC6JUCGQF2PBOZSVUVYJMHY5DA",
+            "price": 35000000
+        },
+        {
+            "id": "takos-0670",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 1999000000
+        },
+        {
+            "id": "takos-0718",
+            "seller": "GLLORY6ET4F4TAUW3MZGQED6FMF5BE4JXAIJAL2XEEOIQVI5K4RJPFOPXE",
+            "price": 12500000000
+        },
+        {
+            "id": "takos-0723",
+            "seller": "RXOJ3RJMYEVYD5GDWEYGZDM6BULN3HRVHF5CQN7FIX2CHQ5L2FISBCCX2I",
+            "price": 10000000000
+        },
+        {
+            "id": "takos-0735",
+            "seller": "4FN2HR7URXQKXE3VOUVXTRSPBGQA6UOFXCASIR4SCCBLSLLR74QGUB2EYI",
+            "price": 711000000
+        },
+        {
+            "id": "takos-0784",
+            "seller": "FPL3PHDXEDCADWMQGIRMIG5PYB7X5PNNVX7WJGWWGKD72P236JUCUVJKZA",
+            "price": 275000000
+        },
+        {
+            "id": "takos-0787",
+            "seller": "A6VAZTTD7NYLECAARZBDK2BTVH7BBFAMKHZYYFW7Q35A4QGSVHEQYSRZAA",
+            "price": 149000000
+        },
+        {
+            "id": "takos-0816",
+            "seller": "PLCXWHTAPQEKGATW6SBJUOH3JHCFBYFPFSYWYZ7YMODE6IQ7JCRSKK6SRI",
+            "price": 150000000
+        },
+        {
+            "id": "takos-0866",
+            "seller": "GDWXAUNAKQPK4ELIV3QB3EKXH7BBVQN5KFEWJ7ICHZ32PF53KIAOIQP6EI",
+            "price": 180000000
+        },
+        {
+            "id": "takos-0882",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 35000000
+        },
+        {
+            "id": "takos-0894",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 180000000
+        },
+        {
+            "id": "takos-0922",
+            "seller": "YGU7MXLAQMMAQIKP4SYOU6THDW77N5NBZSTD3PZUDXPZ3DB6OGKCOLBE2U",
+            "price": 175000000
+        },
+        {
+            "id": "takos-0947",
+            "seller": "NMUQLIUPGIEALT4OWPMAQ3UZQZTECOF76CBHIVEXK6PD7T6BGKKUKO6GXE",
+            "price": 60000000
+        },
+        {
+            "id": "takos-0975",
+            "seller": "CFVDYC4WRXQO4ZH2OP2ZHJ25G3SFVGGSEVTZOFFVNZZ43N26ZNGYXQ6QBI",
+            "price": 200000000
+        },
+        {
+            "id": "takos-0997",
+            "seller": "VTWTQKW5EKENXSP4BCQACUEEU3X3UQDXFXSI46UBL6775FZRXZKHCNZBYY",
+            "price": 290000000
+        },
+        {
+            "id": "takos-1051",
+            "seller": "XBOMMMEOIUWEOPDKT4T5AVZY7F52X25GVKW2B4COREGMNYCLQ2GHFOUOM4",
+            "price": 150000000
+        },
+        {
+            "id": "takos-1096",
+            "seller": "FHLU26A2V3TNWU25NZOX4OPPL4RHG2G73FDAEYHMT2V6FFVTOYQPVMUQG4",
+            "price": 375000000
+        },
+        {
+            "id": "takos-1102",
+            "seller": "H7HKJK76ONZTFIYQA4IEWSMI2P5MKAYF2FCB3FP7RA4G7ONSESJGY2CJY4",
+            "price": 58000000
+        },
+        {
+            "id": "takos-1109",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 35000000
+        },
+        {
+            "id": "takos-1149",
+            "seller": "4XPWXTIHFL35D5QJXYKNCZ6GY7NLRYZUAREKLDCUSQM652G2KS7NP7FPUI",
+            "price": 999000000
+        },
+        {
+            "id": "takos-1157",
+            "seller": "25STWXSIMTTIWWXHHVBMUDDWQFKNS6IQGY2ROHAN7ENVRV4W52O27BBPVE",
+            "price": 60000000
+        },
+        {
+            "id": "takos-1161",
+            "seller": "3QNZP5SYMTVOWI46SITYDJAT5M4GP5ILEF7HWXGGYWP6H5ESZYSNKB6HOI",
+            "price": 77000000
+        },
+        {
+            "id": "takos-1169",
+            "seller": "JTYVWNXGZSVYCJOBF7JUWPPIIAAYUN35IVOLZTO7EBPDGHMW6SR2XNGNV4",
+            "price": 60000000
+        },
+        {
+            "id": "takos-1178",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 35000000
+        },
+        {
+            "id": "takos-1191",
+            "seller": "RGKRSOBNULGABUFKM7XC6OJUMNV6XJMD7F37TRNNAFI2CDPIIOQJVEYCR4",
+            "price": 299000000
+        },
+        {
+            "id": "takos-1219",
+            "seller": "LIONS6PJKO5GEIAW5IL2XANQLR6L3GJ4F75VUJN3Q53RJAID4PGJZQG4OU",
+            "price": 888000000
+        },
+        {
+            "id": "takos-1324",
+            "seller": "446S3AEXQDLUWF2RQCANXSAJFEJ7EYWRNOCPUNJ5YR4QE7I4Z6OGFKQQCE",
+            "price": 69000000
+        },
+        {
+            "id": "takos-1334",
+            "seller": "YGU7MXLAQMMAQIKP4SYOU6THDW77N5NBZSTD3PZUDXPZ3DB6OGKCOLBE2U",
+            "price": 300000000
+        },
+        {
+            "id": "takos-1364",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 49000000
+        },
+        {
+            "id": "takos-1375",
+            "seller": "YXA7NZIZMLABW525ALR6XHLCJSD3JOMUM7FQNRJDJMGDNHXRSCQIOOKXBA",
+            "price": 75000000
+        },
+        {
+            "id": "takos-1379",
+            "seller": "KESSSPXDU7BFBKZAYASOGWTBDPUUNDEGSYTRCGILZ6WEK765I47DARSJNY",
+            "price": 150000000
+        },
+        {
+            "id": "takos-1386",
+            "seller": "RMYRGT4MD2JIC4ARHF4OPQNY756IWJGMETZOYEDU3NOHTCYJ6R4VUFRSSI",
+            "price": 1200000000
+        },
+        {
+            "id": "takos-1401",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 35000000
+        },
+        {
+            "id": "takos-1411",
+            "seller": "5KEHO4XN6NFXTUEJOH26ZBLMHDK7YFGEBDIIHTFWF5KQLBLZLMBGZHJAXA",
+            "price": 75000000
+        },
+        {
+            "id": "takos-1434",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 200000000
+        },
+        {
+            "id": "takos-1441",
+            "seller": "ZNXCSJI7KRPYI2VQZ2U4AAEZW5GKRVNIYKX6ECEHBDXTYML37T72D4ULUI",
+            "price": 189000000
+        },
+        {
+            "id": "takos-1529",
+            "seller": "3O3OEMEVGLY5MQFOS2FUXQQJQ4RJ27MBBFAJREHGMUSNZHILWVWWXIMICA",
+            "price": 129000000
+        },
+        {
+            "id": "takos-1581",
+            "seller": "H7HKJK76ONZTFIYQA4IEWSMI2P5MKAYF2FCB3FP7RA4G7ONSESJGY2CJY4",
+            "price": 58000000
+        },
+        {
+            "id": "takos-1634",
+            "seller": "BHVH35ZEDLY2MDU43SUSQ4SOXTZMKJHEXGZ5RKDQ45HVZNGY2MJP4PVVXE",
+            "price": 80000000
+        },
+        {
+            "id": "takos-1652",
+            "seller": "SUN5FUGH4YSMVVRJH66NUZLEU5YMHFACFPC56Q5RTJJQQZE3R2U5CTLVCU",
+            "price": 60000000
+        },
+        {
+            "id": "takos-1674",
+            "seller": "RGKRSOBNULGABUFKM7XC6OJUMNV6XJMD7F37TRNNAFI2CDPIIOQJVEYCR4",
+            "price": 999000000
+        },
+        {
+            "id": "takos-1709",
+            "seller": "LIONS6PJKO5GEIAW5IL2XANQLR6L3GJ4F75VUJN3Q53RJAID4PGJZQG4OU",
+            "price": 222000000
+        },
+        {
+            "id": "takos-1782",
+            "seller": "H2AV2KJPBY6BHGVUZJAESWBPB2DTDQ5MLNZQL4REIRVRAEJ64P5HUDVPPU",
+            "price": 2250000000
+        },
+        {
+            "id": "takos-1788",
+            "seller": "JTYVWNXGZSVYCJOBF7JUWPPIIAAYUN35IVOLZTO7EBPDGHMW6SR2XNGNV4",
+            "price": 60000000
+        }
+    ]
+}
