@@ -3,7 +3,7 @@ require('dotenv').config();
 exports.execute = async function () {
 
     console.log('launchpad guardians item setup contracts');
-    // await require('./item/00_create_item_inputs').execute();
+    await require('./item/00_create_item_inputs').execute();
     // await require('./item/01_create_item_assets').execute();
 
     console.log('launchpad guardians item setup resources');

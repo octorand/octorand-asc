@@ -51,5 +51,39 @@
                 "withdraw": {}
             }
         }
+    },
+    "launchpad": {
+        "guardians": {
+            "inputs": {
+                "max": 1000,
+                "items": []
+            },
+            "contracts": {
+                "item": {
+                    "buy": {},
+                    "claim": {},
+                    "list": {},
+                    "mint": {},
+                    "rename": {},
+                    "unlist": {}
+                }
+            }
+        },
+        "takos": {
+            "inputs": {
+                "max": 1888,
+                "items": []
+            },
+            "contracts": {
+                "item": {
+                    "buy": {},
+                    "claim": {},
+                    "list": {},
+                    "mint": {},
+                    "rename": {},
+                    "unlist": {}
+                }
+            }
+        }
     }
 }

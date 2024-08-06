@@ -4,13 +4,14 @@ const fs = require('fs');
 
 exports.execute = async function () {
 
-    let config = JSON.parse(fs.readFileSync('src/deploy/testnet/config.json'));
-    let legacy = JSON.parse(fs.readFileSync('src/deploy/testnet/launchpad/takos/item/items.json'));
+    let config = JSON.parse(fs.readFileSync('src/deploy/mainnet/config.json'));
+    let legacy = JSON.parse(fs.readFileSync('src/deploy/mainnet/launchpad/guardians/item/items.json'));
 
-    let items = config['launchpad']['takos']['inputs']['items'];
+    let items = config['launchpad']['guardians']['inputs']['items'];
+    let max = config['launchpad']['guardians']['inputs']['max'];
 
     if (items.length == 0) {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < max; i++) {
             let source = legacy['items'].find(x => x.id == i);
             items.push({
                 id: i,
@@ -23,7 +24,7 @@ exports.execute = async function () {
             });
         }
     } else {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < max; i++) {
             let source = legacy['items'].find(p => p.id == i);
             items[i].id = i;
             items[i].name = source.name;
@@ -37,7 +38,7 @@ exports.execute = async function () {
 
     items.sort((first, second) => first.id - second.id);
 
-    config['launchpad']['takos']['inputs']['items'] = items;
-    fs.writeFileSync('src/deploy/testnet/config.json', JSON.stringify(config, null, 4));
+    config['launchpad']['guardians']['inputs']['items'] = items;
+    fs.writeFileSync('src/deploy/mainnet/config.json', JSON.stringify(config, null, 4));
 
 }
