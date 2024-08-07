@@ -8,19 +8,19 @@ exports.execute = async function () {
 
     let connection = await mainnet.get();
     let params = await connection.algodClient.getTransactionParams().do();
-    let sender = connection.guardians.manager.addr;
-    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.guardians.manager);
+    let sender = connection.takos.manager.addr;
+    let signer = connection.baseClient.makeBasicAccountTransactionSigner(connection.takos.manager);
 
     let config = JSON.parse(fs.readFileSync('src/deploy/mainnet/config.json'));
 
-    let max = config['launchpad']['guardians']['inputs']['max'];
+    let max = config['launchpad']['takos']['inputs']['max'];
 
     for (let i = 0; i < max; i++) {
-        let items = config['launchpad']['guardians']['inputs']['items'];
+        let items = config['launchpad']['takos']['inputs']['items'];
 
         if (!items[i]['application_id']) {
-            let approvalProgram = fs.readFileSync('src/build/mainnet/launchpad/guardians/item/app/approval.teal', 'utf8');
-            let clearProgram = fs.readFileSync('src/build/mainnet/launchpad/guardians/item/app/clear.teal', 'utf8');
+            let approvalProgram = fs.readFileSync('src/build/mainnet/launchpad/takos/item/app/approval.teal', 'utf8');
+            let clearProgram = fs.readFileSync('src/build/mainnet/launchpad/takos/item/app/clear.teal', 'utf8');
 
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
@@ -52,7 +52,7 @@ exports.execute = async function () {
             items[i]['application_address'] = connection.baseClient.getApplicationAddress(application_id);
             items[i]['application_version'] = 0;
 
-            config['launchpad']['guardians']['inputs']['items'] = items;
+            config['launchpad']['takos']['inputs']['items'] = items;
             fs.writeFileSync('src/deploy/mainnet/config.json', JSON.stringify(config, null, 4));
 
             console.log('create main application ' + i);
