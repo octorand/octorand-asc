@@ -9,4 +9,5 @@ exports.execute = async function () {
     await require('./item/01_create_sub_applications').execute();
     await require('./item/02_update_sub_applications').execute();
     await require('./item/03_create_main_applications').execute();
+    await require('./item/04_update_main_applications').execute();
 }
