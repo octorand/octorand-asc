@@ -20,7 +20,10 @@ exports.execute = async function () {
                 rewards: source.rewards,
                 score: source.score,
                 rank: source.rank,
-                image: source.image
+                image: source.image,
+                asset_id: source.asset_id,
+                legacy_application_id: source.application_id,
+                legacy_application_address: source.application_address,
             });
         }
     } else {
@@ -33,6 +36,9 @@ exports.execute = async function () {
             items[i].score = source.score;
             items[i].rank = source.rank;
             items[i].image = source.image;
+            items[i].asset_id = source.asset_id;
+            items[i].legacy_application_id = source.application_id;
+            items[i].legacy_application_address = source.application_address;
         }
     }
 
