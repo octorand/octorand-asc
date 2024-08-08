@@ -40,7 +40,7 @@ exports.execute = async function () {
                     txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                         from: sender,
                         to: sender,
-                        assetIndex: items[i]['item_asset_id'],
+                        assetIndex: items[i]['asset_id'],
                         total: 0,
                         suggestedParams: {
                             ...params,
@@ -56,7 +56,7 @@ exports.execute = async function () {
                     appID: items[i]['legacy_application_id'],
                     method: helpers.method(legacyContract, 'optout'),
                     methodArgs: [
-                        items[i]['item_asset_id'],
+                        items[i]['asset_id'],
                     ],
                     suggestedParams: {
                         ...params,
@@ -88,7 +88,7 @@ exports.execute = async function () {
                     txn: connection.baseClient.makeAssetTransferTxnWithSuggestedParamsFromObject({
                         from: sender,
                         to: items[i]['application_address'],
-                        assetIndex: items[i]['item_asset_id'],
+                        assetIndex: items[i]['asset_id'],
                         amount: 1,
                         suggestedParams: {
                             ...params,
