@@ -26,7 +26,7 @@ exports.execute = async function () {
             let params = await connection.algodClient.getTransactionParams().do();
             let composer = new connection.baseClient.AtomicTransactionComposer();
 
-            let profile = sales['sales'].find(x => x.id == items[i].id);
+            let profile = sales['sales'].find(x => x.id == 'guardians-' + String(items[i].id).padStart(3, '0'));
             if (!profile) {
                 composer.addTransaction({
                     signer: signer,
