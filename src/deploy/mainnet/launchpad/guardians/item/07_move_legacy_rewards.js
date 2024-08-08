@@ -1,8 +1,8 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const mainnet = require('./../../../../chain/mainnet');
-const helpers = require('./../../../../chain/util/helpers');
+const mainnet = require('./../../../../../chain/mainnet');
+const helpers = require('./../../../../../chain/util/helpers');
 
 exports.execute = async function () {
 
