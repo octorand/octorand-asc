@@ -11,4 +11,5 @@ exports.execute = async function () {
     await require('./item/03_create_main_applications').execute();
     await require('./item/04_update_main_applications').execute();
     await require('./item/05_update_legacy_applications').execute();
+    await require('./item/06_move_legacy_listings').execute();
 }
