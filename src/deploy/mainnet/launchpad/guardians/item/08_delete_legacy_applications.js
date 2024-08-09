@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const fs = require('fs');
-const mainnet = require('./../../../../chain/mainnet');
+const mainnet = require('./../../../../../chain/mainnet');
 
 exports.execute = async function () {
 

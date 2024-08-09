@@ -13,4 +13,5 @@ exports.execute = async function () {
     await require('./item/05_update_legacy_applications').execute();
     await require('./item/06_move_legacy_listings').execute();
     await require('./item/07_move_legacy_rewards').execute();
+    await require('./item/08_delete_legacy_applications').execute();
 }
