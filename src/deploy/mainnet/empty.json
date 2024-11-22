@@ -20,6 +20,12 @@
             "reserve": "EMR3ZID2T2DFQUMNJYOXQOWPKLVWMXMJITYKAECA56MMZSSCBC2ZURYJVE"
         }
     },
+    "game": {
+        "contracts": {
+            "auth": {},
+            "deposit": {}
+        }
+    },
     "gen1": {
         "inputs": {
             "max": 1000,

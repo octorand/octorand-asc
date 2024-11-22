@@ -4,6 +4,12 @@
         "guardians": {},
         "takos": {}
     },
+    "game": {
+        "contracts": {
+            "auth": {},
+            "deposit": {}
+        }
+    },
     "gen1": {
         "inputs": {
             "max": 10,

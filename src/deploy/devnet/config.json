@@ -33,6 +33,12 @@
         "optin_player": true,
         "transfer_assets": true
     },
+    "game": {
+        "contracts": {
+            "auth": {},
+            "deposit": {}
+        }
+    },
     "gen1": {
         "inputs": {
             "prime": {

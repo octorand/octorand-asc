@@ -24,6 +24,12 @@
         "optin_takos_treasury": true,
         "optin_takos_burner": true
     },
+    "game": {
+        "contracts": {
+            "auth": {},
+            "deposit": {}
+        }
+    },
     "gen1": {
         "inputs": {
             "max": 10,

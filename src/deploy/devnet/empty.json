@@ -5,6 +5,12 @@
         "guardians": {},
         "takos": {}
     },
+    "game": {
+        "contracts": {
+            "auth": {},
+            "deposit": {}
+        }
+    },
     "gen1": {
         "inputs": {
             "prime": {}
