@@ -56,9 +56,9 @@ def deposit(
         Log(func.prepare_log(log)),
         Assert(amount.get() > Int(0)),
         func.assert_sender_asset_transfer(
-            statistic.platform_asset_id,
-            func.get_asset_reserve(statistic.platform_asset_id),
-            amount,
+            statistic.platform_asset_id.get(),
+            func.get_asset_reserve(statistic.platform_asset_id.get()),
+            amount.get(),
             Add(Txn.group_index(), Int(1)),
         ),
         statistic.deposit_count.increment(Int(1)),

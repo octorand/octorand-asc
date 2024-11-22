@@ -69,11 +69,11 @@ proto 4 1
 frame_dig -4
 frame_dig -3
 app_global_get_ex
-store 3
-store 2
-load 3
+store 5
+store 4
+load 5
 assert
-load 2
+load 4
 frame_dig -2
 frame_dig -1
 extract3
@@ -95,11 +95,11 @@ getassetreserve_2:
 proto 1 1
 frame_dig -1
 asset_params_get AssetReserve
-store 5
-store 4
-load 5
+store 1
+store 0
+load 1
 assert
-load 4
+load 0
 retsub
 
 // prepare_log
@@ -120,11 +120,11 @@ proto 1 0
 txn Sender
 frame_dig -1
 asset_holding_get AssetBalance
-store 1
-store 0
-load 1
+store 3
+store 2
+load 3
 assert
-load 0
+load 2
 int 0
 >
 assert
