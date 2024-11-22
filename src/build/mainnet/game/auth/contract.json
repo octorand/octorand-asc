@@ -1,0 +1,18 @@
+{
+    "name": "GameAuth",
+    "methods": [
+        {
+            "name": "auth",
+            "args": [
+                {
+                    "type": "byte[48]",
+                    "name": "key"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

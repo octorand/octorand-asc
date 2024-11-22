@@ -1,0 +1,190 @@
+#pragma version 10
+txn NumAppArgs
+int 0
+==
+bnz main_l4
+txna ApplicationArgs 0
+method "auth(byte[48])void"
+==
+bnz main_l3
+err
+main_l3:
+txn OnCompletion
+int NoOp
+==
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub authcaster_9
+int 1
+return
+main_l4:
+txn OnCompletion
+int NoOp
+==
+bnz main_l8
+txn OnCompletion
+int UpdateApplication
+==
+bnz main_l7
+err
+main_l7:
+txn ApplicationID
+int 0
+!=
+assert
+callsub update_7
+int 1
+return
+main_l8:
+txn ApplicationID
+int 0
+==
+assert
+callsub create_6
+int 1
+return
+
+// init_global
+initglobal_0:
+proto 1 0
+frame_dig -1
+int 120
+bzero
+app_global_put
+retsub
+
+// get_global_bytes
+getglobalbytes_1:
+proto 3 1
+frame_dig -3
+app_global_get
+frame_dig -2
+frame_dig -1
+extract3
+retsub
+
+// get_global_uint
+getglobaluint_2:
+proto 3 1
+frame_dig -3
+frame_dig -2
+frame_dig -1
+callsub getglobalbytes_1
+btoi
+retsub
+
+// set_global_bytes
+setglobalbytes_3:
+proto 4 0
+frame_dig -4
+len
+frame_dig -1
+==
+assert
+frame_dig -3
+frame_dig -3
+app_global_get
+int 0
+frame_dig -2
+extract3
+frame_dig -4
+concat
+frame_dig -3
+app_global_get
+frame_dig -2
+frame_dig -1
++
+int 120
+substring3
+concat
+app_global_put
+retsub
+
+// set_global_uint
+setglobaluint_4:
+proto 4 0
+frame_dig -4
+itob
+int 8
+frame_dig -1
+-
+frame_dig -1
+extract3
+frame_dig -3
+frame_dig -2
+frame_dig -1
+callsub setglobalbytes_3
+retsub
+
+// prepare_log
+preparelog_5:
+proto 1 1
+frame_dig -1
+int 240
+frame_dig -1
+len
+-
+bzero
+concat
+retsub
+
+// create
+create_6:
+proto 0 0
+txn Sender
+addr NXZLEEQ35KIZ3V3MHFXOOQNEINVLYAU7JCAOZZTQRCDREO4O34I27KLIXU
+==
+assert
+byte "P"
+callsub initglobal_0
+retsub
+
+// update
+update_7:
+proto 0 0
+txn Sender
+addr NXZLEEQ35KIZ3V3MHFXOOQNEINVLYAU7JCAOZZTQRCDREO4O34I27KLIXU
+==
+assert
+retsub
+
+// auth
+auth_8:
+proto 1 0
+byte "gmat"
+int 1
+itob
+concat
+global LatestTimestamp
+itob
+concat
+txn Sender
+concat
+frame_dig -1
+concat
+callsub preparelog_5
+log
+byte "P"
+int 0
+int 8
+callsub getglobaluint_2
+int 1
++
+byte "P"
+int 0
+int 8
+callsub setglobaluint_4
+retsub
+
+// auth_caster
+authcaster_9:
+proto 0 0
+byte ""
+txna ApplicationArgs 1
+frame_bury 0
+frame_dig 0
+callsub auth_8
+retsub
