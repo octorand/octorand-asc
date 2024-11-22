@@ -62,6 +62,12 @@ exports.event = function (log) {
         case 'imul':
             data.params = exports.decodeItemUnlistParams(data.version, value);
             break;
+        case 'gmat':
+            data.params = exports.decodeGameAuthParams(data.version, value);
+            break;
+        case 'gmdp':
+            data.params = exports.decodeGameDepositParams(data.version, value);
+            break;
     }
 
     return data;
@@ -405,6 +411,42 @@ exports.decodeItemUnlistParams = function (version, value) {
         case 1:
             params.item = algosdk.decodeUint64(value.subarray(20, 28));
             params.sender = algosdk.encodeAddress(value.subarray(28, 60));
+            break;
+    }
+
+    return params;
+}
+
+exports.decodeGameAuthParams = function (version, value) {
+    let params = {
+        name: 'game_auth',
+        sender: null,
+        key: '',
+    };
+
+    switch (version) {
+        case 0:
+        case 1:
+            params.sender = algosdk.encodeAddress(value.subarray(20, 52));
+            params.key = value.subarray(52, 100).toString('utf-8').trim();
+            break;
+    }
+
+    return params;
+}
+
+exports.decodeGameDepositParams = function (version, value) {
+    let params = {
+        name: 'game_deposit',
+        sender: null,
+        amount: null,
+    };
+
+    switch (version) {
+        case 0:
+        case 1:
+            params.sender = algosdk.encodeAddress(value.subarray(20, 52));
+            params.amount = algosdk.decodeUint64(value.subarray(52, 60));
             break;
     }
 
