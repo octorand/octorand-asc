@@ -2,13 +2,17 @@
 txn NumAppArgs
 int 0
 ==
-bnz main_l4
+bnz main_l6
+txna ApplicationArgs 0
+method "initialize(asset)void"
+==
+bnz main_l5
 txna ApplicationArgs 0
 method "deposit(uint64)void"
 ==
-bnz main_l3
+bnz main_l4
 err
-main_l3:
+main_l4:
 txn OnCompletion
 int NoOp
 ==
@@ -17,20 +21,32 @@ int 0
 !=
 &&
 assert
-callsub depositcaster_11
+callsub depositcaster_13
 int 1
 return
-main_l4:
+main_l5:
 txn OnCompletion
 int NoOp
 ==
-bnz main_l8
+txn ApplicationID
+int 0
+!=
+&&
+assert
+callsub initializecaster_12
+int 1
+return
+main_l6:
+txn OnCompletion
+int NoOp
+==
+bnz main_l10
 txn OnCompletion
 int UpdateApplication
 ==
-bnz main_l7
+bnz main_l9
 err
-main_l7:
+main_l9:
 txn ApplicationID
 int 0
 !=
@@ -38,7 +54,7 @@ assert
 callsub update_9
 int 1
 return
-main_l8:
+main_l10:
 txn ApplicationID
 int 0
 ==
@@ -197,8 +213,23 @@ addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
 assert
 retsub
 
+// initialize
+initialize_10:
+proto 1 0
+txn Sender
+addr 7OADTMWJEC7NNXEOQITJYWDZI4DDDAULFL7U65SAPAODY2WAJQRDOEGBEM
+==
+assert
+frame_dig -1
+txnas Assets
+byte "P"
+int 0
+int 8
+callsub setglobaluint_4
+retsub
+
 // deposit
-deposit_10:
+deposit_11:
 proto 1 0
 byte "gmdp"
 int 1
@@ -254,13 +285,25 @@ int 8
 callsub setglobaluint_4
 retsub
 
+// initialize_caster
+initializecaster_12:
+proto 0 0
+int 0
+txna ApplicationArgs 1
+int 0
+getbyte
+frame_bury 0
+frame_dig 0
+callsub initialize_10
+retsub
+
 // deposit_caster
-depositcaster_11:
+depositcaster_13:
 proto 0 0
 int 0
 txna ApplicationArgs 1
 btoi
 frame_bury 0
 frame_dig 0
-callsub deposit_10
+callsub deposit_11
 retsub

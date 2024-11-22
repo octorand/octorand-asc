@@ -42,6 +42,16 @@ router = Router(
 
 
 @router.method
+def initialize(
+    platform_asset: abi.Asset,
+):
+    return Seq(
+        Assert(Txn.sender() == const.admin_address),
+        statistic.platform_asset_id.set(platform_asset.asset_id()),
+    )
+
+
+@router.method
 def deposit(
     amount: abi.Uint64,
 ):

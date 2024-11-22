@@ -2,6 +2,18 @@
     "name": "GameDeposit",
     "methods": [
         {
+            "name": "initialize",
+            "args": [
+                {
+                    "type": "asset",
+                    "name": "platform_asset"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
             "name": "deposit",
             "args": [
                 {
