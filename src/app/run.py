@@ -5,6 +5,16 @@ import env
 
 
 def run():
+    game = [
+        "auth",
+        "deposit",
+    ]
+    for x in game:
+        compile(
+            "game_contract_" + x,
+            "game/" + x,
+        )
+
     gen1_prime = [
         "app",
         "build",

@@ -8,7 +8,7 @@ load_dotenv()
 
 
 def env():
-    return "TESTNET"
+    return "DEVNET"
 
 
 def uint(key):
