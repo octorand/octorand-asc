@@ -26,8 +26,17 @@
     },
     "game": {
         "contracts": {
-            "auth": {},
-            "deposit": {}
+            "auth": {
+                "application_id": 729715291,
+                "application_address": "LCECSSU7TZ25ZRNO37SAFJKYO3CPKHYB546VT7ZDYVDVIYHNOZBCTEADOQ",
+                "application_version": 1
+            },
+            "deposit": {
+                "application_id": 729715292,
+                "application_address": "7K3ZRHNWWMCZGNSK4F4GEZCW2OM2CN6IMV6QH4SVEULHYDGMQGATFKT3OQ",
+                "application_version": 1,
+                "initialized": true
+            }
         }
     },
     "gen1": {
