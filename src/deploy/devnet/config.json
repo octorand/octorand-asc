@@ -35,8 +35,51 @@
     },
     "game": {
         "contracts": {
-            "auth": {},
-            "deposit": {}
+            "auth": {
+                "application_id": 729697522,
+                "application_address": "EQ2DJEHT7BAZLBB3AGHY3NAC2UFJOGDXDBJ77K64FTEZGRQODOK5QXBI54",
+                "application_version": 1,
+                "authenticated": true,
+                "logs": [
+                    {
+                        "code": "gmat",
+                        "version": 1,
+                        "timestamp": 1732357858,
+                        "params": {
+                            "name": "game_auth",
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "key": "ABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCD"
+                        }
+                    }
+                ],
+                "state": {
+                    "auth_count": 1
+                }
+            },
+            "deposit": {
+                "application_id": 729697566,
+                "application_address": "B3DJGQB6C2WGLQIYUZW3KXSFESVGFZBHLYQTLSKSWT6Y2DRPGXNNLLI2MQ",
+                "application_version": 1,
+                "initialized": true,
+                "deposited": true,
+                "logs": [
+                    {
+                        "code": "gmdp",
+                        "version": 1,
+                        "timestamp": 1732358099,
+                        "params": {
+                            "name": "game_deposit",
+                            "sender": "3CSPBFV7DYVW5QIJSQFVILB7AEKRQISFNR3VBVFAO5XU7ENEJPRFOSSBMY",
+                            "amount": 100
+                        }
+                    }
+                ],
+                "state": {
+                    "platform_asset_id": 704001673,
+                    "deposit_count": 1,
+                    "deposit_amount": 100
+                }
+            }
         }
     },
     "gen1": {
